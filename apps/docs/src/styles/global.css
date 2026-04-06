@@ -3,19 +3,19 @@
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities);
 
-/* Import light/dark CSS variables from rnui-themes (skip base.css to avoid clashing with Starlight) */
+/* Import CSS variables from rnui-themes */
 @import '@e412/rnui-themes/light';
 @import '@e412/rnui-themes/dark';
 
 @source "../../node_modules/@e412/rnui-react/dist";
 
-/* Starlight uses [data-theme="dark"], but rnui uses .dark class.
-   Duplicate dark variables for Starlight's selector so they activate in dark mode. */
+/* Starlight uses [data-theme="dark"], rnui uses .dark class.
+   Duplicate dark variables for Starlight's selector. */
 [data-theme="dark"] {
   --background: 0.145 0 0;
   --foreground: 0.985 0 0;
   --card: 0.145 0 0;
-  --card-foreground: 0.985 0 0;
+  --card-foreground: 0.145 0 0;
   --popover: 0.145 0 0;
   --popover-foreground: 0.985 0 0;
   --primary: 0.985 0 0;
@@ -87,12 +87,16 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* Starlight uses data-theme, rnui components use dark: variant with .dark class.
-   This custom variant makes dark: work with both selectors. */
 @custom-variant dark (&:is(.dark *, [data-theme="dark"] *));
 
-/* shadcn components expect base.css to set default border-color on all elements.
-   We scope this to .not-content (component previews) to avoid breaking Starlight's chrome. */
+/* shadcn base resets scoped to component preview areas only.
+   These replicate what @e412/rnui-themes/base.css does globally,
+   but confined to .not-content so Starlight's chrome is untouched. */
+.not-content {
+  color: oklch(var(--foreground));
+  background-color: oklch(var(--background));
+}
+
 .not-content *,
 .not-content *::before,
 .not-content *::after {

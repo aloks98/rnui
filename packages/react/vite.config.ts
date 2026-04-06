@@ -1,6 +1,13 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'node:path'
 import dts from 'vite-plugin-dts'
+import pkg from './package.json' with { type: 'json' }
+
+const external = [
+  ...Object.keys(pkg.dependencies ?? {}),
+  ...Object.keys(pkg.peerDependencies ?? {}),
+  'react/jsx-runtime',
+]
 
 export default defineConfig({
   plugins: [
@@ -21,12 +28,7 @@ export default defineConfig({
       fileName: (format) => `index.${format === 'es' ? 'mjs' : 'cjs'}`,
     },
     rolldownOptions: {
-      external: [
-        'react',
-        'react-dom',
-        'react/jsx-runtime',
-        /^@e412\/rnui-themes/,
-      ],
+      external,
     },
     outDir: 'dist',
     emptyOutDir: true,

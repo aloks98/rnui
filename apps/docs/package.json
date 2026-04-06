@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "NODE_OPTIONS='--import ./register-require.mjs' astro build",
+    "build": "astro build",
     "preview": "astro preview"
   },
   "dependencies": {

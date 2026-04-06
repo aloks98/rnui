@@ -1,0 +1,58 @@
+import type { Meta, StoryObj } from '@storybook/react'
+import { ToggleGroup, ToggleGroupItem } from '@e412/rnui-react'
+
+const meta = {
+  title: 'Components/ToggleGroup',
+  component: ToggleGroup,
+} satisfies Meta<typeof ToggleGroup>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {
+  render: () => (
+    <ToggleGroup type="multiple">
+      <ToggleGroupItem value="bold" aria-label="Toggle bold">
+        Bold
+      </ToggleGroupItem>
+      <ToggleGroupItem value="italic" aria-label="Toggle italic">
+        Italic
+      </ToggleGroupItem>
+      <ToggleGroupItem value="underline" aria-label="Toggle underline">
+        Underline
+      </ToggleGroupItem>
+    </ToggleGroup>
+  ),
+}
+
+export const Single: Story = {
+  render: () => (
+    <ToggleGroup type="single">
+      <ToggleGroupItem value="left" aria-label="Left align">
+        Left
+      </ToggleGroupItem>
+      <ToggleGroupItem value="center" aria-label="Center align">
+        Center
+      </ToggleGroupItem>
+      <ToggleGroupItem value="right" aria-label="Right align">
+        Right
+      </ToggleGroupItem>
+    </ToggleGroup>
+  ),
+}
+
+export const Outline: Story = {
+  render: () => (
+    <ToggleGroup type="multiple" variant="outline">
+      <ToggleGroupItem value="bold" aria-label="Toggle bold">
+        Bold
+      </ToggleGroupItem>
+      <ToggleGroupItem value="italic" aria-label="Toggle italic">
+        Italic
+      </ToggleGroupItem>
+      <ToggleGroupItem value="underline" aria-label="Toggle underline">
+        Underline
+      </ToggleGroupItem>
+    </ToggleGroup>
+  ),
+}

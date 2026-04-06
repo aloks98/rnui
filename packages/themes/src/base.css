@@ -2,7 +2,7 @@
   *,
   *::before,
   *::after {
-    border-color: var(--border);
+    border-color: oklch(var(--border));
   }
 
   html {

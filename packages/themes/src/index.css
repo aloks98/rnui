@@ -29,6 +29,8 @@
   --color-warning-foreground: var(--warning-foreground);
   --color-invert: var(--invert);
   --color-invert-foreground: var(--invert-foreground);
+  --color-focus: var(--focus);
+  --color-focus-foreground: var(--focus-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);

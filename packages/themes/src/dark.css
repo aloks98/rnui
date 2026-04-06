@@ -23,6 +23,8 @@
   --warning-foreground: oklch(68.1% 0.162 75.834);
   --invert: oklch(37% 0.013 285.805);
   --invert-foreground: oklch(98.5% 0 0);
+  --focus: oklch(54.6% 0.245 262.881);
+  --focus-foreground: oklch(98.5% 0 0);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);

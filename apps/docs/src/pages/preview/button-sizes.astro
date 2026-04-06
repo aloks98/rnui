@@ -1,0 +1,11 @@
+---
+import PreviewLayout from '../../layouts/preview-layout.astro'
+import { Button } from '@e412/rnui-react'
+---
+<PreviewLayout>
+  <div style="display: flex; gap: 1rem; align-items: center;">
+    <Button client:load size="sm">Small</Button>
+    <Button client:load size="default">Default</Button>
+    <Button client:load size="lg">Large</Button>
+  </div>
+</PreviewLayout>

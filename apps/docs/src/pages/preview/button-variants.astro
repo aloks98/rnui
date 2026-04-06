@@ -1,0 +1,13 @@
+---
+import PreviewLayout from '../../layouts/preview-layout.astro'
+import { Button } from '@e412/rnui-react'
+---
+<PreviewLayout>
+  <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+    <Button client:load variant="secondary">Secondary</Button>
+    <Button client:load variant="destructive">Destructive</Button>
+    <Button client:load variant="outline">Outline</Button>
+    <Button client:load variant="ghost">Ghost</Button>
+    <Button client:load variant="link">Link</Button>
+  </div>
+</PreviewLayout>

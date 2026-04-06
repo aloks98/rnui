@@ -4,8 +4,6 @@ description: A container component for grouping related content.
 ---
 
 import { ComponentPreview } from '../../../components/component-preview'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@e412/rnui-react'
-import { Button } from '@e412/rnui-react'
 
 ## Usage
 
@@ -22,7 +20,7 @@ import {
 
 ## Default
 
-<ComponentPreview client:load code={`<Card className="w-[350px]">
+<ComponentPreview client:load src="/preview/card-default" height={250} code={`<Card className="w-[350px]">
   <CardHeader>
     <CardTitle>Card Title</CardTitle>
     <CardDescription>Card description goes here.</CardDescription>
@@ -33,34 +31,15 @@ import {
   <CardFooter>
     <Button>Action</Button>
   </CardFooter>
-</Card>`}>
-  <Card className="w-[350px]">
-    <CardHeader>
-      <CardTitle>Card Title</CardTitle>
-      <CardDescription>Card description goes here.</CardDescription>
-    </CardHeader>
-    <CardContent>
-      <p>Card content goes here.</p>
-    </CardContent>
-    <CardFooter>
-      <Button>Action</Button>
-    </CardFooter>
-  </Card>
-</ComponentPreview>
+</Card>`} />
 
 ## Simple Card
 
-<ComponentPreview client:load code={`<Card className="w-[350px]">
+<ComponentPreview client:load src="/preview/card-simple" height={120} code={`<Card className="w-[350px]">
   <CardContent className="pt-6">
     <p>A simple card with just content.</p>
   </CardContent>
-</Card>`}>
-  <Card className="w-[350px]">
-    <CardContent className="pt-6">
-      <p>A simple card with just content.</p>
-    </CardContent>
-  </Card>
-</ComponentPreview>
+</Card>`} />
 
 ## Props
 

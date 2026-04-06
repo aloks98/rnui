@@ -4,7 +4,6 @@ description: A button component with multiple variants and sizes.
 ---
 
 import { ComponentPreview } from '../../../components/component-preview'
-import { Button } from '@e412/rnui-react'
 
 ## Usage
 
@@ -14,55 +13,21 @@ import { Button } from '@e412/rnui-react'
 
 ## Default
 
-<ComponentPreview client:load code={`<Button>Button</Button>`}>
-  <Button>Button</Button>
-</ComponentPreview>
+<ComponentPreview client:load src="/preview/button-default" code={`<Button>Button</Button>`} />
 
 ## Variants
 
-### Secondary
-
-<ComponentPreview client:load code={`<Button variant="secondary">Secondary</Button>`}>
-  <Button variant="secondary">Secondary</Button>
-</ComponentPreview>
-
-### Destructive
-
-<ComponentPreview client:load code={`<Button variant="destructive">Destructive</Button>`}>
-  <Button variant="destructive">Destructive</Button>
-</ComponentPreview>
-
-### Outline
-
-<ComponentPreview client:load code={`<Button variant="outline">Outline</Button>`}>
-  <Button variant="outline">Outline</Button>
-</ComponentPreview>
-
-### Ghost
-
-<ComponentPreview client:load code={`<Button variant="ghost">Ghost</Button>`}>
-  <Button variant="ghost">Ghost</Button>
-</ComponentPreview>
-
-### Link
-
-<ComponentPreview client:load code={`<Button variant="link">Link</Button>`}>
-  <Button variant="link">Link</Button>
-</ComponentPreview>
+<ComponentPreview client:load src="/preview/button-variants" height={80} code={`<Button variant="secondary">Secondary</Button>
+<Button variant="destructive">Destructive</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>`} />
 
 ## Sizes
 
-<ComponentPreview client:load code={`<div className="flex items-center gap-4">
-  <Button size="sm">Small</Button>
-  <Button size="default">Default</Button>
-  <Button size="lg">Large</Button>
-</div>`}>
-  <div className="flex items-center gap-4">
-    <Button size="sm">Small</Button>
-    <Button size="default">Default</Button>
-    <Button size="lg">Large</Button>
-  </div>
-</ComponentPreview>
+<ComponentPreview client:load src="/preview/button-sizes" height={80} code={`<Button size="sm">Small</Button>
+<Button size="default">Default</Button>
+<Button size="lg">Large</Button>`} />
 
 ## Props
 

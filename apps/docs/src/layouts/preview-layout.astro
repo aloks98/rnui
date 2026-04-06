@@ -1,0 +1,49 @@
+---
+/**
+ * Bare layout for component preview iframes.
+ * Loads only rnui themes + Tailwind — no Starlight CSS.
+ */
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      @import "tailwindcss";
+      @import "@e412/rnui-themes";
+      @source "../../node_modules/@e412/rnui-react/dist";
+
+      body {
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        margin: 0;
+      }
+    </style>
+    <script>
+      function syncTheme() {
+        try {
+          const parentTheme = window.parent?.document?.documentElement?.getAttribute('data-theme');
+          if (parentTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      }
+      syncTheme();
+      try {
+        const observer = new MutationObserver(syncTheme);
+        observer.observe(window.parent.document.documentElement, {
+          attributes: true,
+          attributeFilter: ['data-theme'],
+        });
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

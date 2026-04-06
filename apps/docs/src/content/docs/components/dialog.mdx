@@ -3,7 +3,7 @@ title: Dialog
 description: A modal dialog component for focused interactions.
 ---
 
-import { DialogDemo } from '../../../components/dialog-demo'
+import { ComponentPreview } from '../../../components/component-preview'
 
 ## Usage
 
@@ -21,7 +21,26 @@ import {
 
 ## Default
 
-<DialogDemo client:only="react" />
+<ComponentPreview client:load src="/preview/dialog-default" height={80} code={`<Dialog>
+  <DialogTrigger asChild>
+    <Button variant="outline">Open Dialog</Button>
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Dialog Title</DialogTitle>
+      <DialogDescription>
+        This is a description of the dialog content.
+      </DialogDescription>
+    </DialogHeader>
+    <div className="py-4">
+      <p>Dialog body content goes here.</p>
+    </div>
+    <DialogFooter>
+      <Button variant="outline">Cancel</Button>
+      <Button>Confirm</Button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>`} />
 
 ## Props
 

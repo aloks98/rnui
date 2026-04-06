@@ -1,0 +1,23 @@
+{
+  "name": "@e412/rnui",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r --filter @e412/rnui-themes run build && pnpm -r --filter @e412/rnui-react run build",
+    "lint": "oxlint packages/",
+    "format": "oxfmt packages/",
+    "format:check": "oxfmt --check packages/",
+    "changeset": "changeset",
+    "release": "pnpm build && changeset version && pnpm publish -r"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.0",
+    "oxlint": "^1.0.0",
+    "oxfmt": "^0.1.0",
+    "typescript": "^5.8.0"
+  },
+  "packageManager": "pnpm@10.8.0",
+  "engines": {
+    "node": ">=20"
+  }
+}

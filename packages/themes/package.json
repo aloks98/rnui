@@ -1,0 +1,19 @@
+{
+  "name": "@e412/rnui-themes",
+  "version": "0.0.1",
+  "type": "module",
+  "files": ["dist"],
+  "main": "./dist/index.css",
+  "exports": {
+    ".": "./dist/index.css",
+    "./base": "./dist/base.css",
+    "./light": "./dist/light.css",
+    "./dark": "./dist/dark.css"
+  },
+  "scripts": {
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^8.0.0"
+  }
+}

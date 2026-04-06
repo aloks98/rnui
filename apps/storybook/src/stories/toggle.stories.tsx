@@ -29,10 +29,37 @@ export const Small: Story = {
   ),
 }
 
+export const Large: Story = {
+  render: () => (
+    <Toggle size="lg" aria-label="Toggle large">
+      Large
+    </Toggle>
+  ),
+}
+
 export const Disabled: Story = {
   render: () => (
     <Toggle disabled aria-label="Toggle disabled">
       Disabled
     </Toggle>
+  ),
+}
+
+export const AllVariants: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+      <Toggle aria-label="Default">Default</Toggle>
+      <Toggle variant="outline" aria-label="Outline">Outline</Toggle>
+    </div>
+  ),
+}
+
+export const AllSizes: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+      <Toggle size="sm" aria-label="Small">SM</Toggle>
+      <Toggle size="default" aria-label="Default">Default</Toggle>
+      <Toggle size="lg" aria-label="Large">LG</Toggle>
+    </div>
   ),
 }

@@ -20,3 +20,27 @@ export const Default: Story = {
     </div>
   ),
 }
+
+export const Square: Story = {
+  render: () => (
+    <div className="w-[300px]">
+      <AspectRatio ratio={1}>
+        <div className="flex h-full w-full items-center justify-center rounded-md bg-muted text-muted-foreground">
+          1:1 Square
+        </div>
+      </AspectRatio>
+    </div>
+  ),
+}
+
+export const FourByThree: Story = {
+  render: () => (
+    <div className="w-[400px]">
+      <AspectRatio ratio={4 / 3}>
+        <div className="flex h-full w-full items-center justify-center rounded-md bg-muted text-muted-foreground">
+          4:3 Aspect Ratio
+        </div>
+      </AspectRatio>
+    </div>
+  ),
+}

@@ -26,3 +26,36 @@ export const Small: Story = {
     </div>
   ),
 }
+
+export const Disabled: Story = {
+  render: () => (
+    <div className="flex items-center space-x-2">
+      <Switch id="disabled-switch" disabled />
+      <Label htmlFor="disabled-switch">Disabled</Label>
+    </div>
+  ),
+}
+
+export const DisabledChecked: Story = {
+  render: () => (
+    <div className="flex items-center space-x-2">
+      <Switch id="disabled-checked-switch" disabled defaultChecked />
+      <Label htmlFor="disabled-checked-switch">Disabled and checked</Label>
+    </div>
+  ),
+}
+
+export const AllSizes: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+      <div className="flex items-center space-x-2">
+        <Switch id="size-sm" size="sm" />
+        <Label htmlFor="size-sm">Small</Label>
+      </div>
+      <div className="flex items-center space-x-2">
+        <Switch id="size-default" />
+        <Label htmlFor="size-default">Default</Label>
+      </div>
+    </div>
+  ),
+}

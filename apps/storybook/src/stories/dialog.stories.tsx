@@ -42,3 +42,46 @@ export const Default: Story = {
     </Dialog>
   ),
 }
+
+export const WithoutCloseButton: Story = {
+  render: () => (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline">No Close Button</Button>
+      </DialogTrigger>
+      <DialogContent showCloseButton={false}>
+        <DialogHeader>
+          <DialogTitle>No close button</DialogTitle>
+          <DialogDescription>
+            This dialog has no close button in the corner.
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter showCloseButton>
+          <Button>Save</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  ),
+}
+
+export const FooterWithCloseButton: Story = {
+  render: () => (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline">Footer Close</Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Information</DialogTitle>
+          <DialogDescription>
+            This dialog footer includes an automatic close button.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="py-4">
+          <p>Some informational content here.</p>
+        </div>
+        <DialogFooter showCloseButton />
+      </DialogContent>
+    </Dialog>
+  ),
+}

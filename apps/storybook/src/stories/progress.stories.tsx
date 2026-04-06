@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Progress } from '@e412/rnui-react'
+import { Progress, ProgressLabel, ProgressValue } from '@e412/rnui-react'
 
 const meta = {
   title: 'Components/Progress',
@@ -19,4 +19,13 @@ export const Empty: Story = {
 
 export const Full: Story = {
   render: () => <Progress value={100} className="w-[60%]" />,
+}
+
+export const WithLabelAndValue: Story = {
+  render: () => (
+    <Progress value={60} className="w-[60%]">
+      <ProgressLabel>Uploading...</ProgressLabel>
+      <ProgressValue />
+    </Progress>
+  ),
 }

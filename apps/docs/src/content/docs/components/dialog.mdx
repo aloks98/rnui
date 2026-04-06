@@ -3,8 +3,6 @@ title: Dialog
 description: A modal dialog component for focused interactions.
 ---
 
-import { ComponentPreview } from '../../../components/component-preview'
-
 ## Usage
 
 ```tsx
@@ -21,7 +19,8 @@ import {
 
 ## Default
 
-<ComponentPreview client:load src="/preview/dialog-default" height={80} code={`<Dialog>
+```tsx
+<Dialog>
   <DialogTrigger asChild>
     <Button variant="outline">Open Dialog</Button>
   </DialogTrigger>
@@ -40,7 +39,8 @@ import {
       <Button>Confirm</Button>
     </DialogFooter>
   </DialogContent>
-</Dialog>`} />
+</Dialog>
+```
 
 ## Props
 

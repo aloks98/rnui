@@ -3,8 +3,6 @@ title: Card
 description: A container component for grouping related content.
 ---
 
-import { ComponentPreview } from '../../../components/component-preview'
-
 ## Usage
 
 ```tsx
@@ -20,7 +18,8 @@ import {
 
 ## Default
 
-<ComponentPreview client:load src="/preview/card-default" height={250} code={`<Card className="w-[350px]">
+```tsx
+<Card className="w-[350px]">
   <CardHeader>
     <CardTitle>Card Title</CardTitle>
     <CardDescription>Card description goes here.</CardDescription>
@@ -31,15 +30,18 @@ import {
   <CardFooter>
     <Button>Action</Button>
   </CardFooter>
-</Card>`} />
+</Card>
+```
 
 ## Simple Card
 
-<ComponentPreview client:load src="/preview/card-simple" height={120} code={`<Card className="w-[350px]">
+```tsx
+<Card className="w-[350px]">
   <CardContent className="pt-6">
     <p>A simple card with just content.</p>
   </CardContent>
-</Card>`} />
+</Card>
+```
 
 ## Props
 

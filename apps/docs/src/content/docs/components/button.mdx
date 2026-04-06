@@ -3,8 +3,6 @@ title: Button
 description: A button component with multiple variants and sizes.
 ---
 
-import { ComponentPreview } from '../../../components/component-preview'
-
 ## Usage
 
 ```tsx
@@ -13,21 +11,27 @@ import { Button } from '@e412/rnui-react'
 
 ## Default
 
-<ComponentPreview client:load src="/preview/button-default" code={`<Button>Button</Button>`} />
+```tsx
+<Button>Button</Button>
+```
 
 ## Variants
 
-<ComponentPreview client:load src="/preview/button-variants" height={80} code={`<Button variant="secondary">Secondary</Button>
+```tsx
+<Button variant="secondary">Secondary</Button>
 <Button variant="destructive">Destructive</Button>
 <Button variant="outline">Outline</Button>
 <Button variant="ghost">Ghost</Button>
-<Button variant="link">Link</Button>`} />
+<Button variant="link">Link</Button>
+```
 
 ## Sizes
 
-<ComponentPreview client:load src="/preview/button-sizes" height={80} code={`<Button size="sm">Small</Button>
+```tsx
+<Button size="sm">Small</Button>
 <Button size="default">Default</Button>
-<Button size="lg">Large</Button>`} />
+<Button size="lg">Large</Button>
+```
 
 ## Props
 

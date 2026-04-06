@@ -90,3 +90,11 @@
 /* Starlight uses data-theme, rnui components use dark: variant with .dark class.
    This custom variant makes dark: work with both selectors. */
 @custom-variant dark (&:is(.dark *, [data-theme="dark"] *));
+
+/* shadcn components expect base.css to set default border-color on all elements.
+   We scope this to .not-content (component previews) to avoid breaking Starlight's chrome. */
+.not-content *,
+.not-content *::before,
+.not-content *::after {
+  border-color: oklch(var(--border));
+}

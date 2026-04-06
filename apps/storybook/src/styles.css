@@ -1,3 +1,4 @@
 @import "tailwindcss";
 @import "@e412/rnui-themes";
+@import "tw-animate-css";
 @source "../node_modules/@e412/rnui-react/dist";

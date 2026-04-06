@@ -3,11 +3,8 @@ import { resolve } from 'node:path'
 import dts from 'vite-plugin-dts'
 import pkg from './package.json' with { type: 'json' }
 
-const external = [
-  ...Object.keys(pkg.dependencies ?? {}),
-  ...Object.keys(pkg.peerDependencies ?? {}),
-  'react/jsx-runtime',
-]
+// Externalize everything that isn't a relative/absolute import (i.e. all node_modules)
+const external = (id: string) => !id.startsWith('.') && !id.startsWith('/') && !id.startsWith('@/')
 
 export default defineConfig({
   plugins: [

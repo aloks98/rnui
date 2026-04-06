@@ -1,0 +1,65 @@
+---
+title: Getting Started
+description: Install and set up @e412/rnui in your project.
+---
+
+import { Button } from '@e412/rnui-react'
+
+## Installation
+
+Install the React components and themes packages:
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+Or with pnpm:
+
+```bash
+pnpm add @e412/rnui-react @e412/rnui-themes
+```
+
+## CSS Setup
+
+Import the theme CSS in your app's global stylesheet:
+
+```css
+@import '@e412/rnui-themes';
+@import 'tw-animate-css';
+```
+
+## Tailwind v4 Integration
+
+The theme CSS includes a `@theme inline` block that automatically registers all design tokens with Tailwind v4. Just importing `@e412/rnui-themes` gives you utilities like `bg-primary`, `text-muted-foreground`, etc.
+
+Add the library to your Tailwind content sources:
+
+```css
+@source "../node_modules/@e412/rnui-react/dist";
+```
+
+## Dark Mode
+
+Toggle dark mode by adding the `dark` class to your `<html>` element:
+
+```html
+<html class="dark">
+```
+
+The theme automatically switches all color tokens.
+
+## Quick Example
+
+Once installed, import and use components:
+
+```tsx
+import { Button } from '@e412/rnui-react'
+
+export function MyApp() {
+  return <Button>Click me</Button>
+}
+```
+
+Here's a live preview:
+
+<Button client:load>Click me</Button>

@@ -8,6 +8,8 @@
     "format": "oxfmt packages/",
     "format:check": "oxfmt --check packages/",
     "changeset": "changeset",
+    "docs:dev": "pnpm --filter @e412/docs dev",
+    "docs:build": "pnpm --filter @e412/docs build",
     "release": "pnpm build && changeset version && pnpm publish -r"
   },
   "devDependencies": {

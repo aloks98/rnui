@@ -3,9 +3,7 @@ title: Dialog
 description: A modal dialog component for focused interactions.
 ---
 
-import { ComponentPreview } from '../../../components/component-preview'
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@e412/rnui-react'
-import { Button } from '@e412/rnui-react'
+import { DialogDemo } from '../../../components/dialog-demo'
 
 ## Usage
 
@@ -23,47 +21,7 @@ import {
 
 ## Default
 
-<ComponentPreview client:load code={`<Dialog>
-  <DialogTrigger asChild>
-    <Button variant="outline">Open Dialog</Button>
-  </DialogTrigger>
-  <DialogContent>
-    <DialogHeader>
-      <DialogTitle>Dialog Title</DialogTitle>
-      <DialogDescription>
-        This is a description of the dialog content.
-      </DialogDescription>
-    </DialogHeader>
-    <div className="py-4">
-      <p>Dialog body content goes here.</p>
-    </div>
-    <DialogFooter>
-      <Button variant="outline">Cancel</Button>
-      <Button>Confirm</Button>
-    </DialogFooter>
-  </DialogContent>
-</Dialog>`}>
-  <Dialog>
-    <DialogTrigger asChild>
-      <Button variant="outline">Open Dialog</Button>
-    </DialogTrigger>
-    <DialogContent>
-      <DialogHeader>
-        <DialogTitle>Dialog Title</DialogTitle>
-        <DialogDescription>
-          This is a description of the dialog content.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="py-4">
-        <p>Dialog body content goes here.</p>
-      </div>
-      <DialogFooter>
-        <Button variant="outline">Cancel</Button>
-        <Button>Confirm</Button>
-      </DialogFooter>
-    </DialogContent>
-  </Dialog>
-</ComponentPreview>
+<DialogDemo client:only="react" />
 
 ## Props
 

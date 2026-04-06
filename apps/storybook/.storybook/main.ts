@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(ts|tsx)'],
+  addons: ['@vueless/storybook-dark-mode'],
   framework: '@storybook/react-vite',
   viteFinal(config) {
     config.plugins ??= []

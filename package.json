@@ -10,6 +10,8 @@
     "changeset": "changeset",
     "docs:dev": "pnpm --filter @e412/docs dev",
     "docs:build": "pnpm --filter @e412/docs build",
+    "storybook": "pnpm --filter @e412/storybook dev",
+    "storybook:build": "pnpm --filter @e412/storybook build",
     "release": "pnpm build && changeset version && pnpm publish -r"
   },
   "devDependencies": {

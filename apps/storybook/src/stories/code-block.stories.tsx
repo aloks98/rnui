@@ -106,6 +106,37 @@ const x = 42`,
   },
 }
 
+export const CustomTheme: Story = {
+  args: {
+    code: `function greet(name: string) {
+  console.log(\`Hello, \${name}!\`)
+}
+
+greet("World")`,
+    language: 'ts',
+    themes: {
+      light: 'vitesse-light',
+      dark: 'vitesse-dark',
+    },
+    showLineNumbers: true,
+  },
+}
+
+export const DraculaTheme: Story = {
+  args: {
+    code: `const colors = {
+  primary: '#bd93f9',
+  background: '#282a36',
+  foreground: '#f8f8f2',
+}`,
+    language: 'ts',
+    themes: {
+      light: 'one-light',
+      dark: 'dracula',
+    },
+  },
+}
+
 export const Inline: Story = {
   render: () => (
     <p className="text-sm text-foreground">

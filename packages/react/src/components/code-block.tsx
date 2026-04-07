@@ -18,6 +18,7 @@ export interface CodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string
   highlightLines?: number[]
   themes?: CodeBlockTheme
+  fontSize?: string
 }
 
 const defaultThemes: CodeBlockTheme = {
@@ -33,6 +34,7 @@ function CodeBlock({
   title,
   highlightLines = [],
   themes = defaultThemes,
+  fontSize = "13px",
   className,
   ...props
 }: CodeBlockProps) {
@@ -87,6 +89,7 @@ function CodeBlock({
         "group/code-block relative overflow-hidden rounded-lg border border-border",
         className
       )}
+      style={{ fontSize }}
       {...props}
     >
       {/* Header */}
@@ -116,13 +119,13 @@ function CodeBlock({
       {/* Code area — background comes from shiki theme */}
       <div className="overflow-x-auto">
         {isLoading ? (
-          <pre className="bg-muted/30 p-4 text-[13px] leading-relaxed text-foreground">
+          <pre className="bg-muted/30 p-4 leading-relaxed text-foreground">
             <code>{code}</code>
           </pre>
         ) : highlightedHtml ? (
           <div
             className={cn(
-              "code-block-content text-[13px]",
+              "code-block-content",
               "[&_pre]:overflow-x-auto [&_pre]:p-4 [&_pre]:leading-relaxed",
               "[&_code]:block",
               // Dual theme: shiki outputs --shiki-light/--shiki-dark CSS variables
@@ -136,7 +139,7 @@ function CodeBlock({
             dangerouslySetInnerHTML={{ __html: highlightedHtml }}
           />
         ) : (
-          <pre className="bg-muted/30 p-4 text-[13px] leading-relaxed text-foreground">
+          <pre className="bg-muted/30 p-4 leading-relaxed text-foreground">
             <code>{code}</code>
           </pre>
         )}

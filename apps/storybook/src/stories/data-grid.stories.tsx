@@ -4,6 +4,9 @@ import {
   DataGrid,
   DataGridContainer,
   DataGridTable,
+  DataGridTableDnd,
+  DataGridTableDndRows,
+  DataGridTableDndRowHandle,
   DataGridTableRowSelect,
   DataGridTableRowSelectAll,
   DataGridPagination,
@@ -35,6 +38,9 @@ import {
   VisibilityState,
   useReactTable,
 } from '@tanstack/react-table'
+import { DragEndEvent, UniqueIdentifier } from '@dnd-kit/core'
+import { arrayMove } from '@dnd-kit/sortable'
+import { UserIcon, MailIcon, BriefcaseIcon, DollarSignIcon, BuildingIcon, ActivityIcon } from 'lucide-react'
 
 // ---------------------------------------------------------------------------
 // Shared data
@@ -726,6 +732,707 @@ function CardContainerStory() {
 }
 
 // ---------------------------------------------------------------------------
+// 15. SubDataGrid — expandable rows with nested sub-table
+// ---------------------------------------------------------------------------
+
+interface IOrderItem {
+  id: string
+  product: string
+  category: string
+  price: number
+  quantity: number
+}
+
+interface IUserWithItems extends IUser {
+  items: IOrderItem[]
+}
+
+const demoDataWithItems: IUserWithItems[] = demoData.map((user, idx) => ({
+  ...user,
+  items: [
+    { id: `${user.id}-1`, product: 'Widget A', category: 'Electronics', price: 29.99, quantity: idx + 1 },
+    { id: `${user.id}-2`, product: 'Widget B', category: 'Accessories', price: 19.99, quantity: 2 },
+    { id: `${user.id}-3`, product: 'Widget C', category: 'Office', price: 49.99, quantity: 1 },
+  ],
+}))
+
+function OrderItemsSubTable({ items }: { items: IOrderItem[] }) {
+  const columns = useMemo<ColumnDef<IOrderItem>[]>(
+    () => [
+      { accessorKey: 'product', header: 'Product', size: 200 },
+      { accessorKey: 'category', header: 'Category', size: 120 },
+      {
+        accessorKey: 'price',
+        header: 'Price',
+        cell: (info) => <span>${(info.getValue() as number).toFixed(2)}</span>,
+        size: 100,
+      },
+      { accessorKey: 'quantity', header: 'Qty', size: 80 },
+    ],
+    [],
+  )
+
+  const table = useReactTable({
+    data: items,
+    columns,
+    getRowId: (row) => row.id,
+    getCoreRowModel: getCoreRowModel(),
+  })
+
+  return (
+    <div className="bg-background p-4">
+      <DataGrid table={table} recordCount={items.length} tableLayout={{ cellBorder: true }}>
+        <DataGridContainer>
+          <DataGridScrollArea>
+            <DataGridTable />
+          </DataGridScrollArea>
+        </DataGridContainer>
+      </DataGrid>
+    </div>
+  )
+}
+
+function SubDataGridStory() {
+  const [pagination, setPagination] = useState<PaginationState>({ pageIndex: 0, pageSize: 5 })
+  const [expanded, setExpanded] = useState<ExpandedState>({})
+
+  const columns = useMemo<ColumnDef<IUserWithItems>[]>(
+    () => [
+      {
+        id: 'expand',
+        header: () => null,
+        cell: ({ row }) =>
+          row.getCanExpand() ? (
+            <Button variant="ghost" size="sm" onClick={() => row.toggleExpanded()} className="size-7 p-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`transition-transform ${row.getIsExpanded() ? 'rotate-90' : ''}`}
+              >
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </Button>
+          ) : null,
+        size: 40,
+        enableSorting: false,
+        meta: {
+          expandedContent: (row: IUserWithItems) => <OrderItemsSubTable items={row.items} />,
+        },
+      },
+      {
+        accessorKey: 'name',
+        header: 'Name',
+        cell: (info) => <span className="font-medium">{info.getValue() as string}</span>,
+        size: 180,
+      },
+      {
+        accessorKey: 'email',
+        header: 'Email',
+        cell: (info) => <span className="text-muted-foreground">{info.getValue() as string}</span>,
+        size: 220,
+      },
+      {
+        accessorKey: 'items',
+        header: 'Items',
+        cell: ({ row }) => {
+          const count = row.original.items.length
+          return (
+            <span
+              className="text-foreground hover:text-primary cursor-pointer font-medium"
+              onClick={() => row.toggleExpanded()}
+            >
+              {count} {count === 1 ? 'item' : 'items'}
+            </span>
+          )
+        },
+        size: 100,
+      },
+      {
+        accessorKey: 'status',
+        header: 'Status',
+        cell: ({ row }) => (
+          <Badge variant={row.original.status === 'active' ? 'success-light' : 'secondary'} radius="full">
+            {row.original.status}
+          </Badge>
+        ),
+        size: 100,
+      },
+    ],
+    [],
+  )
+
+  const table = useReactTable({
+    columns,
+    data: demoDataWithItems,
+    pageCount: Math.ceil(demoDataWithItems.length / pagination.pageSize),
+    getRowId: (row) => row.id,
+    getRowCanExpand: (row) => row.original.items.length > 0,
+    state: { pagination, expanded },
+    onPaginationChange: setPagination,
+    onExpandedChange: setExpanded,
+    getCoreRowModel: getCoreRowModel(),
+    getExpandedRowModel: getExpandedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+  })
+
+  return (
+    <DataGrid table={table} recordCount={demoDataWithItems.length}>
+      <div className="w-full space-y-2.5">
+        <DataGridContainer>
+          <DataGridScrollArea>
+            <DataGridTable />
+          </DataGridScrollArea>
+        </DataGridContainer>
+        <DataGridPagination />
+      </div>
+    </DataGrid>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// 16. ColumnIcons — DataGridColumnHeader with icon prop
+// ---------------------------------------------------------------------------
+
+function ColumnIconsStory() {
+  const [pagination, setPagination] = useState<PaginationState>({ pageIndex: 0, pageSize: 5 })
+  const [sorting, setSorting] = useState<SortingState>([])
+
+  const columns = useMemo<ColumnDef<IUser>[]>(
+    () => [
+      {
+        accessorKey: 'name',
+        id: 'name',
+        header: ({ column }) => <DataGridColumnHeader title="Name" icon={<UserIcon className="size-3.5" />} column={column} />,
+        cell: (info) => <span className="font-medium">{info.getValue() as string}</span>,
+        size: 180,
+        enableSorting: true,
+      },
+      {
+        accessorKey: 'email',
+        id: 'email',
+        header: ({ column }) => <DataGridColumnHeader title="Email" icon={<MailIcon className="size-3.5" />} column={column} />,
+        cell: (info) => <span className="text-muted-foreground">{info.getValue() as string}</span>,
+        size: 220,
+        enableSorting: true,
+      },
+      {
+        accessorKey: 'role',
+        id: 'role',
+        header: ({ column }) => <DataGridColumnHeader title="Role" icon={<BriefcaseIcon className="size-3.5" />} column={column} />,
+        size: 150,
+        enableSorting: true,
+      },
+      {
+        accessorKey: 'company',
+        id: 'company',
+        header: ({ column }) => <DataGridColumnHeader title="Company" icon={<BuildingIcon className="size-3.5" />} column={column} />,
+        size: 140,
+        enableSorting: true,
+      },
+      {
+        accessorKey: 'status',
+        id: 'status',
+        header: ({ column }) => <DataGridColumnHeader title="Status" icon={<ActivityIcon className="size-3.5" />} column={column} />,
+        cell: ({ row }) => (
+          <Badge variant={row.original.status === 'active' ? 'success-light' : 'secondary'} radius="full">
+            {row.original.status}
+          </Badge>
+        ),
+        size: 100,
+        enableSorting: true,
+      },
+      {
+        accessorKey: 'balance',
+        id: 'balance',
+        header: ({ column }) => <DataGridColumnHeader title="Balance" icon={<DollarSignIcon className="size-3.5" />} column={column} />,
+        cell: (info) => <span className="font-semibold">${(info.getValue() as number).toFixed(2)}</span>,
+        size: 120,
+        enableSorting: true,
+        meta: { headerClassName: 'text-right', cellClassName: 'text-right' },
+      },
+    ],
+    [],
+  )
+
+  const table = useReactTable({
+    columns,
+    data: demoData,
+    pageCount: Math.ceil(demoData.length / pagination.pageSize),
+    getRowId: (row) => row.id,
+    state: { pagination, sorting },
+    onPaginationChange: setPagination,
+    onSortingChange: setSorting,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+  })
+
+  return (
+    <DataGrid table={table} recordCount={demoData.length}>
+      <div className="w-full space-y-2.5">
+        <DataGridContainer>
+          <DataGridScrollArea>
+            <DataGridTable />
+          </DataGridScrollArea>
+        </DataGridContainer>
+        <DataGridPagination />
+      </div>
+    </DataGrid>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// 17. MovableColumns — columnOrder state with columnsMovable
+// ---------------------------------------------------------------------------
+
+function MovableColumnsStory() {
+  const [pagination, setPagination] = useState<PaginationState>({ pageIndex: 0, pageSize: 5 })
+  const [sorting, setSorting] = useState<SortingState>([])
+
+  const columns = useMemo<ColumnDef<IUser>[]>(
+    () => [
+      {
+        accessorKey: 'name',
+        id: 'name',
+        header: ({ column }) => <DataGridColumnHeader title="Name" column={column} />,
+        cell: (info) => <span className="font-medium">{info.getValue() as string}</span>,
+        size: 180,
+        enableSorting: true,
+        enableHiding: false,
+      },
+      {
+        accessorKey: 'email',
+        id: 'email',
+        header: ({ column }) => <DataGridColumnHeader title="Email" column={column} />,
+        cell: (info) => <span className="text-muted-foreground">{info.getValue() as string}</span>,
+        size: 220,
+        enableSorting: true,
+      },
+      {
+        accessorKey: 'role',
+        id: 'role',
+        header: ({ column }) => <DataGridColumnHeader title="Role" column={column} />,
+        size: 150,
+        enableSorting: true,
+      },
+      {
+        accessorKey: 'status',
+        id: 'status',
+        header: 'Status',
+        cell: ({ row }) => (
+          <Badge variant={row.original.status === 'active' ? 'success-light' : 'secondary'} radius="full">
+            {row.original.status}
+          </Badge>
+        ),
+        size: 100,
+      },
+    ],
+    [],
+  )
+
+  const [columnOrder, setColumnOrder] = useState<string[]>(columns.map((col) => col.id as string))
+
+  const table = useReactTable({
+    columns,
+    data: demoData,
+    pageCount: Math.ceil(demoData.length / pagination.pageSize),
+    getRowId: (row) => row.id,
+    state: { pagination, sorting, columnOrder },
+    onColumnOrderChange: setColumnOrder,
+    onPaginationChange: setPagination,
+    onSortingChange: setSorting,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+  })
+
+  return (
+    <DataGrid table={table} recordCount={demoData.length} tableLayout={{ columnsMovable: true }}>
+      <div className="w-full space-y-2.5">
+        <DataGridContainer>
+          <DataGridScrollArea>
+            <DataGridTable />
+          </DataGridScrollArea>
+        </DataGridContainer>
+        <DataGridPagination />
+      </div>
+    </DataGrid>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// 18. DraggableColumns — DataGridTableDnd with drag-and-drop column reorder
+// ---------------------------------------------------------------------------
+
+function DraggableColumnsStory() {
+  const [pagination, setPagination] = useState<PaginationState>({ pageIndex: 0, pageSize: 5 })
+
+  const columns = useMemo<ColumnDef<IUser>[]>(
+    () => [
+      {
+        accessorKey: 'name',
+        id: 'name',
+        header: 'Name',
+        cell: (info) => <span className="font-medium">{info.getValue() as string}</span>,
+        size: 180,
+        enableHiding: false,
+      },
+      {
+        accessorKey: 'email',
+        id: 'email',
+        header: 'Email',
+        cell: (info) => <span className="text-muted-foreground">{info.getValue() as string}</span>,
+        size: 220,
+      },
+      {
+        accessorKey: 'role',
+        id: 'role',
+        header: 'Role',
+        size: 150,
+      },
+      {
+        accessorKey: 'status',
+        id: 'status',
+        header: 'Status',
+        cell: ({ row }) => (
+          <Badge variant={row.original.status === 'active' ? 'success-light' : 'secondary'} radius="full">
+            {row.original.status}
+          </Badge>
+        ),
+        size: 100,
+      },
+    ],
+    [],
+  )
+
+  const [columnOrder, setColumnOrder] = useState<string[]>(columns.map((col) => col.id as string))
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event
+    if (active && over && active.id !== over.id) {
+      setColumnOrder((order) => {
+        const oldIndex = order.indexOf(active.id as string)
+        const newIndex = order.indexOf(over.id as string)
+        return arrayMove(order, oldIndex, newIndex)
+      })
+    }
+  }
+
+  const table = useReactTable({
+    columns,
+    data: demoData,
+    pageCount: Math.ceil(demoData.length / pagination.pageSize),
+    getRowId: (row) => row.id,
+    state: { pagination, columnOrder },
+    onColumnOrderChange: setColumnOrder,
+    onPaginationChange: setPagination,
+    getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+  })
+
+  return (
+    <DataGrid table={table} recordCount={demoData.length} tableLayout={{ columnsDraggable: true }}>
+      <div className="w-full space-y-2.5">
+        <DataGridContainer>
+          <DataGridScrollArea>
+            <DataGridTableDnd handleDragEnd={handleDragEnd} />
+          </DataGridScrollArea>
+        </DataGridContainer>
+        <DataGridPagination />
+      </div>
+    </DataGrid>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// 19. DraggableRows — DataGridTableDndRows with row drag handles
+// ---------------------------------------------------------------------------
+
+function DraggableRowsStory() {
+  const [data, setData] = useState(demoData.slice(0, 6))
+
+  const dataIds = useMemo<UniqueIdentifier[]>(() => data.map(({ id }) => id), [data])
+
+  const columns = useMemo<ColumnDef<IUser>[]>(
+    () => [
+      {
+        id: 'drag',
+        cell: () => <DataGridTableDndRowHandle />,
+        size: 30,
+      },
+      {
+        accessorKey: 'name',
+        id: 'name',
+        header: 'Name',
+        cell: (info) => <span className="font-medium">{info.getValue() as string}</span>,
+        size: 180,
+      },
+      {
+        accessorKey: 'email',
+        id: 'email',
+        header: 'Email',
+        cell: (info) => <span className="text-muted-foreground">{info.getValue() as string}</span>,
+        size: 220,
+      },
+      {
+        accessorKey: 'role',
+        id: 'role',
+        header: 'Role',
+        size: 150,
+      },
+      {
+        accessorKey: 'status',
+        id: 'status',
+        header: 'Status',
+        cell: ({ row }) => (
+          <Badge variant={row.original.status === 'active' ? 'success-light' : 'secondary'} radius="full">
+            {row.original.status}
+          </Badge>
+        ),
+        size: 100,
+      },
+    ],
+    [],
+  )
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event
+    if (active && over && active.id !== over.id) {
+      setData((prev) => {
+        const oldIndex = dataIds.indexOf(active.id)
+        const newIndex = dataIds.indexOf(over.id)
+        return arrayMove(prev, oldIndex, newIndex)
+      })
+    }
+  }
+
+  const table = useReactTable({
+    columns,
+    data,
+    getRowId: (row) => row.id,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+  })
+
+  return (
+    <DataGrid table={table} recordCount={data.length} tableLayout={{ rowsDraggable: true }}>
+      <div className="w-full space-y-2.5">
+        <DataGridContainer>
+          <DataGridScrollArea>
+            <DataGridTableDndRows handleDragEnd={handleDragEnd} dataIds={dataIds} />
+          </DataGridScrollArea>
+        </DataGridContainer>
+      </div>
+    </DataGrid>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// 20. ResizableColumns — columnResizeMode with columnsResizable
+// ---------------------------------------------------------------------------
+
+function ResizableColumnsStory() {
+  const [pagination, setPagination] = useState<PaginationState>({ pageIndex: 0, pageSize: 5 })
+  const [sorting, setSorting] = useState<SortingState>([])
+
+  const columns = useMemo<ColumnDef<IUser>[]>(
+    () => [
+      {
+        accessorKey: 'name',
+        id: 'name',
+        header: ({ column }) => <DataGridColumnHeader title="Name" column={column} />,
+        cell: (info) => <span className="font-medium">{info.getValue() as string}</span>,
+        size: 250,
+        enableSorting: true,
+      },
+      {
+        accessorKey: 'email',
+        id: 'email',
+        header: ({ column }) => <DataGridColumnHeader title="Email" column={column} />,
+        cell: (info) => <span className="text-muted-foreground">{info.getValue() as string}</span>,
+        size: 280,
+        enableSorting: true,
+      },
+      {
+        accessorKey: 'role',
+        id: 'role',
+        header: ({ column }) => <DataGridColumnHeader title="Role" column={column} />,
+        size: 200,
+        enableSorting: true,
+      },
+      {
+        accessorKey: 'status',
+        id: 'status',
+        header: ({ column }) => <DataGridColumnHeader title="Status" column={column} />,
+        cell: ({ row }) => (
+          <Badge variant={row.original.status === 'active' ? 'success-light' : 'secondary'} radius="full">
+            {row.original.status}
+          </Badge>
+        ),
+        size: 150,
+        enableResizing: false,
+      },
+    ],
+    [],
+  )
+
+  const table = useReactTable({
+    columns,
+    data: demoData,
+    pageCount: Math.ceil(demoData.length / pagination.pageSize),
+    getRowId: (row) => row.id,
+    state: { pagination, sorting },
+    columnResizeMode: 'onChange',
+    onPaginationChange: setPagination,
+    onSortingChange: setSorting,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+  })
+
+  return (
+    <DataGrid table={table} recordCount={demoData.length} tableLayout={{ columnsResizable: true }}>
+      <div className="w-full space-y-2.5">
+        <DataGridContainer>
+          <DataGridScrollArea>
+            <DataGridTable />
+          </DataGridScrollArea>
+        </DataGridContainer>
+        <DataGridPagination />
+      </div>
+    </DataGrid>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// 21. ColumnControls — sortable + pinnable + resizable + visibility + movable
+// ---------------------------------------------------------------------------
+
+function ColumnControlsStory() {
+  const [pagination, setPagination] = useState<PaginationState>({ pageIndex: 0, pageSize: 5 })
+  const [sorting, setSorting] = useState<SortingState>([])
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
+
+  const columns = useMemo<ColumnDef<IUser>[]>(
+    () => [
+      {
+        accessorKey: 'name',
+        id: 'name',
+        header: ({ column }) => <DataGridColumnHeader title="Name" visibility={true} column={column} />,
+        cell: (info) => <span className="font-medium">{info.getValue() as string}</span>,
+        size: 220,
+        enableSorting: true,
+        enableHiding: false,
+        enableResizing: true,
+      },
+      {
+        accessorKey: 'email',
+        id: 'email',
+        header: ({ column }) => <DataGridColumnHeader title="Email" visibility={true} column={column} />,
+        cell: (info) => <span className="text-muted-foreground">{info.getValue() as string}</span>,
+        size: 260,
+        enableSorting: true,
+        enableHiding: true,
+        enableResizing: true,
+      },
+      {
+        accessorKey: 'role',
+        id: 'role',
+        header: ({ column }) => <DataGridColumnHeader title="Role" visibility={true} column={column} />,
+        size: 180,
+        enableSorting: true,
+        enableHiding: true,
+        enableResizing: true,
+      },
+      {
+        accessorKey: 'company',
+        id: 'company',
+        header: ({ column }) => <DataGridColumnHeader title="Company" visibility={true} column={column} />,
+        size: 160,
+        enableSorting: true,
+        enableHiding: true,
+        enableResizing: true,
+      },
+      {
+        accessorKey: 'status',
+        id: 'status',
+        header: ({ column }) => <DataGridColumnHeader title="Status" visibility={true} column={column} />,
+        cell: ({ row }) => (
+          <Badge variant={row.original.status === 'active' ? 'success-light' : 'secondary'} radius="full">
+            {row.original.status}
+          </Badge>
+        ),
+        size: 120,
+        enableSorting: true,
+        enableHiding: true,
+        enableResizing: false,
+      },
+      {
+        accessorKey: 'balance',
+        id: 'balance',
+        header: ({ column }) => <DataGridColumnHeader title="Balance" visibility={true} column={column} />,
+        cell: (info) => <span className="font-semibold">${(info.getValue() as number).toFixed(2)}</span>,
+        size: 140,
+        enableSorting: true,
+        enableHiding: true,
+        enableResizing: true,
+        meta: { headerClassName: 'text-right', cellClassName: 'text-right' },
+      },
+    ],
+    [],
+  )
+
+  const [columnOrder, setColumnOrder] = useState<string[]>(columns.map((col) => col.id as string))
+
+  const table = useReactTable({
+    columns,
+    data: demoData,
+    pageCount: Math.ceil(demoData.length / pagination.pageSize),
+    getRowId: (row) => row.id,
+    state: { pagination, sorting, columnOrder, columnVisibility },
+    columnResizeMode: 'onChange',
+    onPaginationChange: setPagination,
+    onSortingChange: setSorting,
+    onColumnOrderChange: setColumnOrder,
+    onColumnVisibilityChange: setColumnVisibility,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+  })
+
+  return (
+    <DataGrid
+      table={table}
+      recordCount={demoData.length}
+      tableLayout={{ columnsPinnable: true, columnsResizable: true, columnsMovable: true, columnsVisibility: true }}
+    >
+      <div className="w-full space-y-2.5">
+        <div className="flex justify-end">
+          <DataGridColumnVisibility
+            table={table}
+            trigger={<Button variant="outline" size="sm">Toggle Columns</Button>}
+          />
+        </div>
+        <DataGridContainer>
+          <DataGridScrollArea>
+            <DataGridTable />
+          </DataGridScrollArea>
+        </DataGridContainer>
+        <DataGridPagination />
+      </div>
+    </DataGrid>
+  )
+}
+
+// ---------------------------------------------------------------------------
 // Story exports
 // ---------------------------------------------------------------------------
 
@@ -751,3 +1458,10 @@ export const StickyHeader: Story = { render: () => <StickyHeaderStory /> }
 export const LoadingSkeleton: Story = { render: () => <LoadingSkeletonStory /> }
 export const FooterTotals: Story = { render: () => <FooterTotalsStory /> }
 export const CardContainer: Story = { render: () => <CardContainerStory /> }
+export const SubDataGrid: Story = { render: () => <SubDataGridStory /> }
+export const ColumnIcons: Story = { render: () => <ColumnIconsStory /> }
+export const MovableColumns: Story = { render: () => <MovableColumnsStory /> }
+export const DraggableColumns: Story = { render: () => <DraggableColumnsStory /> }
+export const DraggableRows: Story = { render: () => <DraggableRowsStory /> }
+export const ResizableColumns: Story = { render: () => <ResizableColumnsStory /> }
+export const ColumnControls: Story = { render: () => <ColumnControlsStory /> }

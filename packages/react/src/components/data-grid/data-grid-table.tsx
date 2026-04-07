@@ -11,7 +11,7 @@ import {
   useMemo,
   useState,
 } from "react"
-import { useDataGrid } from "@/components/reui/data-grid/data-grid"
+import { useDataGrid } from "@/components/data-grid/data-grid"
 import {
   Cell,
   Column,

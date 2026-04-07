@@ -4,7 +4,7 @@ import { HTMLAttributes, memo, ReactNode, useMemo } from "react"
 import {
   getColumnHeaderLabel,
   useDataGrid,
-} from "@/components/reui/data-grid/data-grid"
+} from "@/components/data-grid/data-grid"
 import { Column } from "@tanstack/react-table"
 
 import { cn } from "@/lib/utils"

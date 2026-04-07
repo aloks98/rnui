@@ -8,7 +8,7 @@ import {
   useMemo,
   useState,
 } from "react"
-import { useDataGrid } from "@/components/reui/data-grid/data-grid"
+import { useDataGrid } from "@/components/data-grid/data-grid"
 import {
   DataGridTableBase,
   DataGridTableBody,
@@ -22,7 +22,7 @@ import {
   DataGridTableRowSpacer,
   DataGridTableViewport,
   getDataGridTableRowSections,
-} from "@/components/reui/data-grid/data-grid-table"
+} from "@/components/data-grid/data-grid-table"
 import { flexRender, HeaderGroup, Row, Table } from "@tanstack/react-table"
 import {
   useVirtualizer,

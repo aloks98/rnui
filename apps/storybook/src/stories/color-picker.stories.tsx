@@ -16,7 +16,6 @@ export const Default: Story = {
     return (
       <div className="flex items-center gap-3">
         <ColorPicker value={color} onChange={setColor} />
-        <span className="text-sm text-muted-foreground font-mono">{color}</span>
       </div>
     )
   },
@@ -28,23 +27,33 @@ export const WithPresets: Story = {
     const presets = [
       '#ef4444', '#f97316', '#eab308', '#22c55e',
       '#3b82f6', '#8b5cf6', '#ec4899', '#000000',
+      '#6b7280', '#14b8a6', '#f43f5e', '#ffffff',
     ]
     return (
       <div className="flex items-center gap-3">
         <ColorPicker value={color} onChange={setColor} presets={presets} />
-        <span className="text-sm text-muted-foreground font-mono">{color}</span>
       </div>
     )
   },
 }
 
-export const WithAlpha: Story = {
+export const RGBFormat: Story = {
   render: () => {
-    const [color, setColor] = useState('#3b82f6')
+    const [color, setColor] = useState('#8b5cf6')
     return (
       <div className="flex items-center gap-3">
-        <ColorPicker value={color} onChange={setColor} showAlpha />
-        <span className="text-sm text-muted-foreground font-mono">{color}</span>
+        <ColorPicker value={color} onChange={setColor} defaultFormat="rgb" />
+      </div>
+    )
+  },
+}
+
+export const HSLFormat: Story = {
+  render: () => {
+    const [color, setColor] = useState('#22c55e')
+    return (
+      <div className="flex items-center gap-3">
+        <ColorPicker value={color} onChange={setColor} defaultFormat="hsl" />
       </div>
     )
   },

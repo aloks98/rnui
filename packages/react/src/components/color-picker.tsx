@@ -287,28 +287,40 @@ function HueSlider({
 function ChannelInputGroup({
   channels,
 }: {
-  channels: { value: number; min: number; max: number; onChange: (v: number) => void }[]
+  channels: { value: number; min: number; max: number; suffix?: string; onChange: (v: number) => void }[]
 }) {
   return (
     <div className="flex flex-1">
       {channels.map((ch, i) => (
-        <Input
+        <div
           key={i}
-          type="number"
-          min={ch.min}
-          max={ch.max}
-          value={ch.value}
-          onChange={(e) => {
-            const v = parseInt(e.target.value)
-            if (!isNaN(v)) ch.onChange(Math.max(ch.min, Math.min(ch.max, v)))
-          }}
           className={cn(
-            "h-7 w-full px-1 text-center font-mono text-xs [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none",
-            i === 0 && "rounded-r-none border-r-0",
-            i === channels.length - 1 && "rounded-l-none",
-            i > 0 && i < channels.length - 1 && "rounded-none border-r-0",
+            "relative flex-1",
+            i === 0 && "[&_input]:rounded-r-none [&_input]:border-r-0",
+            i === channels.length - 1 && "[&_input]:rounded-l-none",
+            i > 0 && i < channels.length - 1 && "[&_input]:rounded-none [&_input]:border-r-0",
           )}
-        />
+        >
+          <Input
+            type="number"
+            min={ch.min}
+            max={ch.max}
+            value={ch.value}
+            onChange={(e) => {
+              const v = parseInt(e.target.value)
+              if (!isNaN(v)) ch.onChange(Math.max(ch.min, Math.min(ch.max, v)))
+            }}
+            className={cn(
+              "h-7 w-full px-1 text-center font-mono text-xs [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none",
+              ch.suffix && "pr-4",
+            )}
+          />
+          {ch.suffix && (
+            <span className="pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-[10px] text-muted-foreground">
+              {ch.suffix}
+            </span>
+          )}
+        </div>
       ))}
     </div>
   )
@@ -334,16 +346,17 @@ function ColorPicker({
   const currentHsl = React.useMemo(() => rgbToHsl(currentRgb.r, currentRgb.g, currentRgb.b), [currentRgb])
 
   React.useEffect(() => {
-    setHsv(hexToHsv(value))
-    setHexInput(value)
+    const parsed = parseColorInput(value) ?? value
+    setHsv(hexToHsv(parsed))
+    setHexInput(parsed)
   }, [value])
 
   const emitChange = React.useCallback(
     (hex: string) => {
       setHexInput(hex)
-      onChange?.(hex)
+      onChange?.(formatColor(hex, format))
     },
-    [onChange]
+    [onChange, format]
   )
 
   const updateFromHsv = React.useCallback(
@@ -431,7 +444,7 @@ function ColorPicker({
           className="size-4 rounded-sm border border-border"
           style={{ backgroundColor: currentHex, opacity: alpha }}
         />
-        <span className="font-mono text-xs">{currentHex}</span>
+        <span className="font-mono text-xs">{formatColor(currentHex, format)}</span>
       </PopoverTrigger>
       <PopoverContent data-slot="color-picker" className="w-64 p-3">
         <div className="flex flex-col gap-3">
@@ -499,7 +512,7 @@ function ColorPicker({
                   { value: currentRgb.r, min: 0, max: 255, onChange: (r) => updateFromRgb(r, currentRgb.g, currentRgb.b) },
                   { value: currentRgb.g, min: 0, max: 255, onChange: (g) => updateFromRgb(currentRgb.r, g, currentRgb.b) },
                   { value: currentRgb.b, min: 0, max: 255, onChange: (b) => updateFromRgb(currentRgb.r, currentRgb.g, b) },
-                  ...(showAlpha ? [{ value: Math.round(alpha * 100), min: 0, max: 100, onChange: (a: number) => setAlpha(a / 100) }] : []),
+                  ...(showAlpha ? [{ value: Math.round(alpha * 100), min: 0, max: 100, suffix: "%", onChange: (a: number) => setAlpha(a / 100) }] : []),
                 ]}
               />
             ) : (
@@ -508,7 +521,7 @@ function ColorPicker({
                   { value: currentHsl.h, min: 0, max: 360, onChange: (h) => updateFromHsl(h, currentHsl.s, currentHsl.l) },
                   { value: currentHsl.s, min: 0, max: 100, onChange: (s) => updateFromHsl(currentHsl.h, s, currentHsl.l) },
                   { value: currentHsl.l, min: 0, max: 100, onChange: (l) => updateFromHsl(currentHsl.h, currentHsl.s, l) },
-                  ...(showAlpha ? [{ value: Math.round(alpha * 100), min: 0, max: 100, onChange: (a: number) => setAlpha(a / 100) }] : []),
+                  ...(showAlpha ? [{ value: Math.round(alpha * 100), min: 0, max: 100, suffix: "%", onChange: (a: number) => setAlpha(a / 100) }] : []),
                 ]}
               />
             )}

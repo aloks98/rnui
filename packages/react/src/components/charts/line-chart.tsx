@@ -58,11 +58,17 @@ function LineChart({
       ]
 
   const chartOption: EChartsOption = {
-    xAxis: { type: "category", data: cats },
-    yAxis: { type: "value" },
+    grid: {
+      containLabel: true,
+      left: 16,
+      right: 16,
+      top: 24,
+      bottom: showLegend ? 32 : 8,
+    },
+    xAxis: { type: "category", data: cats, axisTick: { show: false }, splitLine: { show: false } },
+    yAxis: { type: "value", axisLine: { show: false }, axisTick: { show: false }, splitLine: { lineStyle: { type: "dashed" as const, opacity: 0.5 } } },
     series: chartSeries,
     legend: showLegend ? { show: true, bottom: 0, padding: [5, 0] } : undefined,
-    grid: { bottom: showLegend ? 32 : 8 },
     ...option,
   }
 

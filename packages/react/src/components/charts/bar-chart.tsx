@@ -48,15 +48,21 @@ function BarChart({
   ]
 
   const chartOption: EChartsOption = {
+    grid: {
+      containLabel: true,
+      left: 16,
+      right: 16,
+      top: 24,
+      bottom: showLegend ? 32 : 8,
+    },
     xAxis: horizontal
-      ? { type: "value" }
-      : { type: "category", data: cats },
+      ? { type: "value", axisLine: { show: false }, axisTick: { show: false }, splitLine: { lineStyle: { type: "dashed" as const, opacity: 0.5 } } }
+      : { type: "category", data: cats, axisTick: { show: false }, splitLine: { show: false } },
     yAxis: horizontal
-      ? { type: "category", data: cats }
-      : { type: "value" },
+      ? { type: "category", data: cats, axisLine: { show: false }, axisTick: { show: false }, splitLine: { show: false } }
+      : { type: "value", axisLine: { show: false }, axisTick: { show: false }, splitLine: { lineStyle: { type: "dashed" as const, opacity: 0.5 } } },
     series: defaultSeries,
     legend: showLegend ? { show: true, bottom: 0, padding: [5, 0] } : undefined,
-    grid: { bottom: showLegend ? 32 : 8 },
     ...option,
   }
 

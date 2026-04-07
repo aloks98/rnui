@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useMemo } from "react"
+import React, { useMemo, useRef } from "react"
 import ReactEChartsCore from "echarts-for-react/esm/core"
 import * as echarts from "echarts/core"
 import { SVGRenderer } from "echarts/renderers"
@@ -44,10 +44,13 @@ function EChart({
   opts,
 }: EChartProps) {
   const themeColors = useChartTheme()
-  const palette = useMemo(() => getChartColorPalette(themeColors), [themeColors])
+  const palette = getChartColorPalette(themeColors)
+  const chartRef = useRef<any>(null)
+
+  // Stable serialized key for theme colors to avoid unnecessary recalc
+  const colorKey = palette.join(",")
 
   const mergedOption = useMemo<EChartsOption>(() => {
-    // Check if colors are loaded (empty string means not yet)
     const hasColors = palette.length > 0 && palette[0] !== ""
 
     const base: EChartsOption = {
@@ -57,15 +60,7 @@ function EChart({
         color: themeColors.mutedForeground || undefined,
         fontSize: 12,
       },
-      grid: {
-        containLabel: true,
-        left: 16,
-        right: 16,
-        top: 24,
-        bottom: 8,
-      },
       tooltip: {
-        trigger: "axis",
         backgroundColor: themeColors.card || undefined,
         borderColor: themeColors.border || undefined,
         textStyle: {
@@ -85,30 +80,20 @@ function EChart({
         itemHeight: 12,
         itemGap: 16,
       },
-      xAxis: {
-        axisLine: { lineStyle: { color: themeColors.border || undefined } },
-        axisTick: { show: false },
-        axisLabel: { color: themeColors.mutedForeground || undefined, fontSize: 11 },
-        splitLine: { show: false },
-      },
-      yAxis: {
-        axisLine: { show: false },
-        axisTick: { show: false },
-        axisLabel: { color: themeColors.mutedForeground || undefined, fontSize: 11 },
-        splitLine: { lineStyle: { color: themeColors.border || undefined, type: "dashed" as const, opacity: 0.5 } },
-      },
     }
 
     return deepMerge(base, option) as EChartsOption
-  }, [option, palette, themeColors])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [option, colorKey])
 
   return (
     <div data-slot="echart" className={cn("w-full", className)}>
       <ReactEChartsCore
+        ref={chartRef}
         echarts={echarts}
         option={mergedOption}
         style={{ height, width: "100%" }}
-        notMerge={true}
+        notMerge={false}
         lazyUpdate={true}
         showLoading={loading}
         opts={{ renderer: "svg", ...opts }}

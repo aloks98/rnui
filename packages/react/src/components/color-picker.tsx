@@ -15,6 +15,7 @@ export interface ColorPickerProps {
   onChange?: (value: string) => void
   defaultFormat?: ColorFormat
   presets?: string[]
+  showAlpha?: boolean
   className?: string
 }
 
@@ -281,51 +282,111 @@ function HueSlider({
 
 // --- Main Component ---
 
+// --- Channel number input ---
+
+function ChannelInput({
+  value,
+  min,
+  max,
+  label,
+  onChange,
+}: {
+  value: number
+  min: number
+  max: number
+  label: string
+  onChange: (v: number) => void
+}) {
+  return (
+    <div className="flex flex-col items-center gap-1">
+      <Input
+        type="number"
+        min={min}
+        max={max}
+        value={value}
+        onChange={(e) => {
+          const v = parseInt(e.target.value)
+          if (!isNaN(v)) onChange(Math.max(min, Math.min(max, v)))
+        }}
+        className="h-7 w-full px-1 text-center font-mono text-xs [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+      />
+      <span className="text-[10px] uppercase text-muted-foreground">{label}</span>
+    </div>
+  )
+}
+
+// --- Main Component ---
+
 function ColorPicker({
   value = "#3b82f6",
   onChange,
   defaultFormat = "hex",
   presets,
+  showAlpha = false,
   className,
 }: ColorPickerProps) {
   const [hsv, setHsv] = React.useState(() => hexToHsv(value))
   const [format, setFormat] = React.useState<ColorFormat>(defaultFormat)
-  const [textInput, setTextInput] = React.useState(() => formatColor(value, defaultFormat))
+  const [alpha, setAlpha] = React.useState(1)
+  const [hexInput, setHexInput] = React.useState(value)
 
   const currentHex = React.useMemo(() => hsvToHex(hsv.h, hsv.s, hsv.v), [hsv])
+  const currentRgb = React.useMemo(() => hexToRgb(currentHex), [currentHex])
+  const currentHsl = React.useMemo(() => rgbToHsl(currentRgb.r, currentRgb.g, currentRgb.b), [currentRgb])
 
   React.useEffect(() => {
-    const newHsv = hexToHsv(value)
-    setHsv(newHsv)
-    setTextInput(formatColor(value, format))
+    setHsv(hexToHsv(value))
+    setHexInput(value)
   }, [value])
 
-  const updateColor = React.useCallback(
-    (h: number, s: number, v: number) => {
-      setHsv({ h, s, v })
-      const hex = hsvToHex(h, s, v)
-      setTextInput(formatColor(hex, format))
+  const emitChange = React.useCallback(
+    (hex: string) => {
+      setHexInput(hex)
       onChange?.(hex)
     },
-    [format, onChange]
+    [onChange]
   )
 
-  const handleFormatChange = React.useCallback(() => {
-    const formats: ColorFormat[] = ["hex", "rgb", "hsl"]
-    const nextIdx = (formats.indexOf(format) + 1) % formats.length
-    const next = formats[nextIdx]
-    setFormat(next)
-    setTextInput(formatColor(currentHex, next))
-  }, [format, currentHex])
+  const updateFromHsv = React.useCallback(
+    (h: number, s: number, v: number) => {
+      setHsv({ h, s, v })
+      emitChange(hsvToHex(h, s, v))
+    },
+    [emitChange]
+  )
 
-  const handleTextChange = React.useCallback(
+  const updateFromRgb = React.useCallback(
+    (r: number, g: number, b: number) => {
+      const hex = rgbToHex(r, g, b)
+      setHsv(hexToHsv(hex))
+      emitChange(hex)
+    },
+    [emitChange]
+  )
+
+  const updateFromHsl = React.useCallback(
+    (h: number, s: number, l: number) => {
+      // HSL to RGB
+      const ss = s / 100, ll = l / 100
+      const a = ss * Math.min(ll, 1 - ll)
+      const f = (n: number) => {
+        const k = (n + h / 30) % 12
+        return ll - a * Math.max(-1, Math.min(k - 3, 9 - k, 1))
+      }
+      const hex = rgbToHex(Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255))
+      setHsv(hexToHsv(hex))
+      emitChange(hex)
+    },
+    [emitChange]
+  )
+
+  const handleHexInput = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const val = e.target.value
-      setTextInput(val)
+      setHexInput(val)
       const parsed = parseColorInput(val)
       if (parsed) {
-        const newHsv = hexToHsv(parsed)
-        setHsv(newHsv)
+        setHsv(hexToHsv(parsed))
         onChange?.(parsed)
       }
     },
@@ -334,13 +395,27 @@ function ColorPicker({
 
   const handlePresetClick = React.useCallback(
     (preset: string) => {
-      const newHsv = hexToHsv(preset)
-      setHsv(newHsv)
-      setTextInput(formatColor(preset, format))
-      onChange?.(preset)
+      setHsv(hexToHsv(preset))
+      emitChange(preset)
     },
-    [format, onChange]
+    [emitChange]
   )
+
+  const handleFormatChange = React.useCallback(() => {
+    const formats: ColorFormat[] = ["hex", "rgb", "hsl"]
+    const nextIdx = (formats.indexOf(format) + 1) % formats.length
+    setFormat(formats[nextIdx])
+  }, [format])
+
+  const handleEyeDropper = React.useCallback(() => {
+    if ("EyeDropper" in window) {
+      const eyeDropper = new (window as any).EyeDropper()
+      eyeDropper
+        .open()
+        .then((result: { sRGBHex: string }) => handlePresetClick(result.sRGBHex))
+        .catch(() => {})
+    }
+  }, [handlePresetClick])
 
   return (
     <Popover>
@@ -355,61 +430,109 @@ function ColorPicker({
       >
         <span
           className="size-4 rounded-sm border border-border"
-          style={{ backgroundColor: currentHex }}
+          style={{ backgroundColor: currentHex, opacity: alpha }}
         />
         <span className="font-mono text-xs">{currentHex}</span>
       </PopoverTrigger>
-      <PopoverContent
-        data-slot="color-picker"
-        className="w-64 p-3"
-      >
+      <PopoverContent data-slot="color-picker" className="w-64 p-3">
         <div className="flex flex-col gap-3">
           {/* Color area */}
           <ColorArea
             hue={hsv.h}
             saturation={hsv.s}
             brightness={hsv.v}
-            onChange={(s, v) => updateColor(hsv.h, s, v)}
+            onChange={(s, v) => updateFromHsv(hsv.h, s, v)}
           />
 
           {/* Hue slider */}
           <HueSlider
             hue={hsv.h}
-            onChange={(h) => updateColor(h, hsv.s, hsv.v)}
+            onChange={(h) => updateFromHsv(h, hsv.s, hsv.v)}
           />
 
-          {/* Format selector + value input */}
+          {/* Alpha slider */}
+          {showAlpha && (
+            <div
+              className="relative h-3 w-full cursor-pointer rounded-full border border-border"
+              style={{
+                background: `linear-gradient(to right, transparent, ${currentHex})`,
+              }}
+            >
+              <input
+                type="range"
+                min={0}
+                max={100}
+                value={Math.round(alpha * 100)}
+                onChange={(e) => setAlpha(parseInt(e.target.value) / 100)}
+                className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+              />
+              <div
+                className="absolute top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white shadow-md pointer-events-none"
+                style={{
+                  left: `${alpha * 100}%`,
+                  backgroundColor: currentHex,
+                }}
+              />
+            </div>
+          )}
+
+          {/* Format selector + inputs */}
           <div className="flex items-center gap-1.5">
             <Button
               variant="outline"
               size="sm"
-              className="shrink-0 px-2 font-mono text-xs uppercase"
+              className="shrink-0 px-2 font-mono text-[10px] uppercase"
               onClick={handleFormatChange}
             >
               {format}
             </Button>
-            <Input
-              value={textInput}
-              onChange={handleTextChange}
-              className="h-8 font-mono text-xs"
-              spellCheck={false}
-            />
-            <Button
-              variant="outline"
-              size="icon-sm"
-              className="shrink-0"
-              onClick={() => {
-                if ("EyeDropper" in window) {
-                  const eyeDropper = new (window as any).EyeDropper()
-                  eyeDropper.open().then((result: { sRGBHex: string }) => {
-                    handlePresetClick(result.sRGBHex)
-                  }).catch(() => {})
-                }
-              }}
-              title="Pick color from screen"
-            >
-              <Pipette className="size-3.5" />
-            </Button>
+
+            {format === "hex" ? (
+              <Input
+                value={hexInput}
+                onChange={handleHexInput}
+                className="h-7 flex-1 font-mono text-xs"
+                spellCheck={false}
+              />
+            ) : format === "rgb" ? (
+              <div className="flex flex-1 gap-1">
+                <ChannelInput label="R" value={currentRgb.r} min={0} max={255} onChange={(r) => updateFromRgb(r, currentRgb.g, currentRgb.b)} />
+                <ChannelInput label="G" value={currentRgb.g} min={0} max={255} onChange={(g) => updateFromRgb(currentRgb.r, g, currentRgb.b)} />
+                <ChannelInput label="B" value={currentRgb.b} min={0} max={255} onChange={(b) => updateFromRgb(currentRgb.r, currentRgb.g, b)} />
+              </div>
+            ) : (
+              <div className="flex flex-1 gap-1">
+                <ChannelInput label="H" value={currentHsl.h} min={0} max={360} onChange={(h) => updateFromHsl(h, currentHsl.s, currentHsl.l)} />
+                <ChannelInput label="S" value={currentHsl.s} min={0} max={100} onChange={(s) => updateFromHsl(currentHsl.h, s, currentHsl.l)} />
+                <ChannelInput label="L" value={currentHsl.l} min={0} max={100} onChange={(l) => updateFromHsl(currentHsl.h, currentHsl.s, l)} />
+              </div>
+            )}
+
+            {showAlpha && (
+              <div className="flex flex-col items-center gap-1">
+                <Input
+                  type="number"
+                  min={0}
+                  max={100}
+                  value={Math.round(alpha * 100)}
+                  onChange={(e) => setAlpha(Math.max(0, Math.min(100, parseInt(e.target.value) || 0)) / 100)}
+                  className="h-7 w-12 px-1 text-center font-mono text-xs [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                />
+                <span className="text-[10px] uppercase text-muted-foreground">A%</span>
+              </div>
+            )}
+
+            {"EyeDropper" in globalThis && (
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                className="shrink-0"
+                onClick={handleEyeDropper}
+                title="Pick color from screen"
+              >
+                <Pipette className="size-3.5" />
+              </Button>
+            )}
           </div>
 
           {/* Presets */}

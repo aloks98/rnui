@@ -116,13 +116,13 @@ function CodeBlock({
       {/* Code area — background comes from shiki theme */}
       <div className="overflow-x-auto">
         {isLoading ? (
-          <pre className="bg-muted/30 p-4 text-sm leading-relaxed text-foreground">
+          <pre className="bg-muted/30 p-4 text-[13px] leading-relaxed text-foreground">
             <code>{code}</code>
           </pre>
         ) : highlightedHtml ? (
           <div
             className={cn(
-              "code-block-content text-sm",
+              "code-block-content text-[13px]",
               "[&_pre]:overflow-x-auto [&_pre]:p-4 [&_pre]:leading-relaxed",
               "[&_code]:block",
               // Dual theme: shiki outputs --shiki-light/--shiki-dark CSS variables
@@ -136,7 +136,7 @@ function CodeBlock({
             dangerouslySetInnerHTML={{ __html: highlightedHtml }}
           />
         ) : (
-          <pre className="bg-muted/30 p-4 text-sm leading-relaxed text-foreground">
+          <pre className="bg-muted/30 p-4 text-[13px] leading-relaxed text-foreground">
             <code>{code}</code>
           </pre>
         )}

@@ -110,7 +110,7 @@ function CodeBlock({
           <div
             className={cn(
               "code-block-content text-sm [&_pre]:overflow-x-auto [&_pre]:p-4 [&_pre]:leading-relaxed [&_pre]:!bg-transparent",
-              showLineNumbers && "[&_code]:counter-reset-[line] [&_.line]:before:counter-increment-[line] [&_.line]:before:content-[counter(line)] [&_.line]:before:mr-4 [&_.line]:before:inline-block [&_.line]:before:w-6 [&_.line]:before:text-right [&_.line]:before:text-[#3d4450] [&_.line]:before:select-none [&_.line]:before:tabular-nums",
+              showLineNumbers && "[&_.line[data-line]]:before:content-[attr(data-line)] [&_.line[data-line]]:before:mr-4 [&_.line[data-line]]:before:inline-block [&_.line[data-line]]:before:w-6 [&_.line[data-line]]:before:text-right [&_.line[data-line]]:before:text-[#3d4450] [&_.line[data-line]]:before:select-none [&_.line[data-line]]:before:tabular-nums",
               "[&_.highlighted-line]:bg-white/5 [&_.highlighted-line]:border-l-2 [&_.highlighted-line]:border-primary [&_.highlighted-line]:-ml-4 [&_.highlighted-line]:pl-[14px] [&_.highlighted-line]:-mr-4 [&_.highlighted-line]:pr-4",
             )}
             dangerouslySetInnerHTML={{ __html: highlightedHtml }}

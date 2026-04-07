@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { parse, formatHex, formatRgb, formatHsl, converter } from "culori"
 import { Pipette } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -19,125 +20,72 @@ export interface ColorPickerProps {
   className?: string
 }
 
-// --- Color conversion helpers ---
+// --- Color conversion via culori ---
 
-function hexToHsv(hex: string): { h: number; s: number; v: number } {
-  const { r, g, b } = hexToRgb(hex)
-  const rr = r / 255, gg = g / 255, bb = b / 255
-  const max = Math.max(rr, gg, bb), min = Math.min(rr, gg, bb)
-  const d = max - min
-  let h = 0
-  const s = max === 0 ? 0 : d / max
-  const v = max
+const toHsv = converter("hsv")
+const toRgb = converter("rgb")
+const toHsl = converter("hsl")
 
-  if (d !== 0) {
-    switch (max) {
-      case rr: h = ((gg - bb) / d + (gg < bb ? 6 : 0)) / 6; break
-      case gg: h = ((bb - rr) / d + 2) / 6; break
-      case bb: h = ((rr - gg) / d + 4) / 6; break
-    }
+function colorToHex(input: string): string {
+  try {
+    const parsed = parse(input)
+    return parsed ? formatHex(parsed) : "#000000"
+  } catch {
+    return "#000000"
   }
-  return { h: h * 360, s, v }
+}
+
+function hexToHsv(input: string): { h: number; s: number; v: number } {
+  const hsv = toHsv(input)
+  if (!hsv) return { h: 0, s: 0, v: 0 }
+  return { h: hsv.h ?? 0, s: hsv.s ?? 0, v: hsv.v ?? 0 }
 }
 
 function hsvToHex(h: number, s: number, v: number): string {
-  const { r, g, b } = hsvToRgb(h, s, v)
-  return rgbToHex(r, g, b)
+  return formatHex({ mode: "hsv", h, s, v }) ?? "#000000"
 }
 
-function hsvToRgb(h: number, s: number, v: number): { r: number; g: number; b: number } {
-  const c = v * s
-  const x = c * (1 - Math.abs(((h / 60) % 2) - 1))
-  const m = v - c
-  let r = 0, g = 0, b = 0
-
-  if (h < 60) { r = c; g = x }
-  else if (h < 120) { r = x; g = c }
-  else if (h < 180) { g = c; b = x }
-  else if (h < 240) { g = x; b = c }
-  else if (h < 300) { r = x; b = c }
-  else { r = c; b = x }
-
+function hexToRgb(input: string): { r: number; g: number; b: number } {
+  const rgb = toRgb(input)
+  if (!rgb) return { r: 0, g: 0, b: 0 }
   return {
-    r: Math.round((r + m) * 255),
-    g: Math.round((g + m) * 255),
-    b: Math.round((b + m) * 255),
-  }
-}
-
-function hexToRgb(hex: string): { r: number; g: number; b: number } {
-  const clean = hex.replace("#", "")
-  return {
-    r: parseInt(clean.slice(0, 2), 16) || 0,
-    g: parseInt(clean.slice(2, 4), 16) || 0,
-    b: parseInt(clean.slice(4, 6), 16) || 0,
+    r: Math.round((rgb.r ?? 0) * 255),
+    g: Math.round((rgb.g ?? 0) * 255),
+    b: Math.round((rgb.b ?? 0) * 255),
   }
 }
 
 function rgbToHex(r: number, g: number, b: number): string {
-  return (
-    "#" +
-    [r, g, b]
-      .map((v) => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, "0"))
-      .join("")
-  )
+  return formatHex({ mode: "rgb", r: r / 255, g: g / 255, b: b / 255 }) ?? "#000000"
 }
 
-function rgbToHsl(r: number, g: number, b: number): { h: number; s: number; l: number } {
-  const rr = r / 255, gg = g / 255, bb = b / 255
-  const max = Math.max(rr, gg, bb), min = Math.min(rr, gg, bb)
-  const l = (max + min) / 2
-  let h = 0, s = 0
-
-  if (max !== min) {
-    const d = max - min
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
-    switch (max) {
-      case rr: h = ((gg - bb) / d + (gg < bb ? 6 : 0)) / 6; break
-      case gg: h = ((bb - rr) / d + 2) / 6; break
-      case bb: h = ((rr - gg) / d + 4) / 6; break
-    }
+function hexToHsl(input: string): { h: number; s: number; l: number } {
+  const hsl = toHsl(input)
+  if (!hsl) return { h: 0, s: 0, l: 0 }
+  return {
+    h: Math.round(hsl.h ?? 0),
+    s: Math.round((hsl.s ?? 0) * 100),
+    l: Math.round((hsl.l ?? 0) * 100),
   }
-  return { h: Math.round(h * 360), s: Math.round(s * 100), l: Math.round(l * 100) }
 }
 
 function formatColor(hex: string, format: ColorFormat): string {
   if (format === "hex") return hex
   const { r, g, b } = hexToRgb(hex)
   if (format === "rgb") return `rgb(${r}, ${g}, ${b})`
-  const { h, s, l } = rgbToHsl(r, g, b)
+  const { h, s, l } = hexToHsl(hex)
   return `hsl(${h}, ${s}%, ${l}%)`
 }
 
 function parseColorInput(input: string): string | null {
   const trimmed = input.trim()
-
-  // Hex
-  if (/^#?([0-9a-fA-F]{6})$/.test(trimmed)) {
-    return trimmed.startsWith("#") ? trimmed : `#${trimmed}`
+  if (!trimmed) return null
+  try {
+    const parsed = parse(trimmed.startsWith("#") ? trimmed : trimmed.match(/^[0-9a-fA-F]{6}$/) ? `#${trimmed}` : trimmed)
+    return parsed ? formatHex(parsed) : null
+  } catch {
+    return null
   }
-
-  // rgb(r, g, b)
-  const rgbMatch = trimmed.match(/^rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})/)
-  if (rgbMatch) {
-    return rgbToHex(+rgbMatch[1], +rgbMatch[2], +rgbMatch[3])
-  }
-
-  // hsl(h, s%, l%)
-  const hslMatch = trimmed.match(/^hsla?\(\s*(\d{1,3})\s*,\s*(\d{1,3})%?\s*,\s*(\d{1,3})%?/)
-  if (hslMatch) {
-    const h = +hslMatch[1] / 360
-    const s = +hslMatch[2] / 100
-    const l = +hslMatch[3] / 100
-    const a = s * Math.min(l, 1 - l)
-    const f = (n: number) => {
-      const k = (n + h * 12) % 12
-      return l - a * Math.max(-1, Math.min(k - 3, 9 - k, 1))
-    }
-    return rgbToHex(Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255))
-  }
-
-  return null
 }
 
 // --- Color Area (saturation/brightness) ---

@@ -1,0 +1,59 @@
+"use client"
+
+import * as echarts from "echarts/core"
+import { PieChart as PieChartType } from "echarts/charts"
+import type { EChartsOption } from "echarts"
+
+import { EChart, type EChartProps } from "./echart"
+
+echarts.use([PieChartType])
+
+export interface PieChartDataItem {
+  name: string
+  value: number
+}
+
+export interface PieChartProps extends Omit<EChartProps, "option"> {
+  data: PieChartDataItem[]
+  donut?: boolean
+  showLegend?: boolean
+  showLabels?: boolean
+  option?: Partial<EChartsOption>
+}
+
+function PieChart({
+  data,
+  donut = false,
+  showLegend = true,
+  showLabels = true,
+  option = {},
+  ...props
+}: PieChartProps) {
+  const chartOption: EChartsOption = {
+    tooltip: { trigger: "item" },
+    legend: showLegend ? { show: true, bottom: 0 } : undefined,
+    grid: undefined,
+    series: [
+      {
+        type: "pie",
+        radius: donut ? ["40%", "70%"] : "70%",
+        center: ["50%", "45%"],
+        data,
+        label: { show: showLabels, fontSize: 12 },
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: "rgba(0, 0, 0, 0.2)",
+          },
+        },
+        itemStyle: { borderRadius: donut ? 6 : 4, borderWidth: 2, borderColor: "transparent" },
+      },
+    ],
+    ...option,
+  }
+
+  return <EChart option={chartOption} {...props} />
+}
+
+export { PieChart }

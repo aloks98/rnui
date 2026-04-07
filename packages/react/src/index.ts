@@ -83,6 +83,7 @@ export * from './components/color-picker'
 export * from './components/copy-button'
 export * from './components/empty-state'
 export * from './components/stat-card'
+export * from './components/charts'
 
 // Hooks
 export * from './hooks/use-mobile'

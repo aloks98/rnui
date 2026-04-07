@@ -1,87 +1,93 @@
 import React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
-interface StatusIndicatorProps {
-  state: "active" | "down" | "fixing" | "idle"
-  color?: string
+const statusIndicatorVariants = cva(
+  "relative inline-flex rounded-full",
+  {
+    variants: {
+      state: {
+        active: "bg-success",
+        down: "bg-destructive",
+        fixing: "bg-warning",
+        idle: "bg-muted-foreground",
+      },
+      size: {
+        sm: "size-2",
+        md: "size-3",
+        lg: "size-4",
+      },
+    },
+    defaultVariants: {
+      state: "idle",
+      size: "md",
+    },
+  }
+)
+
+const statusPingVariants = cva(
+  "absolute inline-flex rounded-full opacity-75 animate-ping",
+  {
+    variants: {
+      state: {
+        active: "bg-success/60",
+        down: "bg-destructive/60",
+        fixing: "bg-warning/60",
+        idle: "bg-muted-foreground/60",
+      },
+      size: {
+        sm: "size-2",
+        md: "size-3",
+        lg: "size-4",
+      },
+    },
+    defaultVariants: {
+      state: "idle",
+      size: "md",
+    },
+  }
+)
+
+interface StatusIndicatorProps
+  extends VariantProps<typeof statusIndicatorVariants> {
   label?: string
   className?: string
-  size?: "sm" | "md" | "lg"
   labelClassName?: string
 }
 
-const getStateColors = (state: StatusIndicatorProps["state"]) => {
-  switch (state) {
-    case "active":
-      return { dot: "bg-green-500", ping: "bg-green-300" }
-    case "down":
-      return { dot: "bg-red-500", ping: "bg-red-300" }
-    case "fixing":
-      return { dot: "bg-yellow-500", ping: "bg-yellow-300" }
-    case "idle":
-    default:
-      return { dot: "bg-slate-700", ping: "bg-slate-400" }
-  }
-}
-
-const getSizeClasses = (size: StatusIndicatorProps["size"]) => {
-  switch (size) {
-    case "sm":
-      return { dot: "h-2 w-2", ping: "h-2 w-2" }
-    case "lg":
-      return { dot: "h-4 w-4", ping: "h-4 w-4" }
-    case "md":
-    default:
-      return { dot: "h-3 w-3", ping: "h-3 w-3" }
-  }
-}
-
-const StatusIndicator: React.FC<StatusIndicatorProps> = ({
+function StatusIndicator({
   state = "idle",
-  color,
   label,
   className,
   size = "md",
   labelClassName,
-}) => {
+}: StatusIndicatorProps) {
   const shouldAnimate =
     state === "active" || state === "fixing" || state === "down"
-  const colors = getStateColors(state)
-  const sizeClasses = getSizeClasses(size)
 
   return (
-    <div className={cn("flex items-center gap-2", className)}>
+    <div
+      data-slot="status-indicator"
+      data-state={state}
+      className={cn("flex items-center gap-2", className)}
+    >
       <div className="relative flex items-center">
         {shouldAnimate && (
-          <span
-            className={cn(
-              "absolute inline-flex rounded-full opacity-75 animate-ping",
-              sizeClasses.ping,
-              colors.ping
-            )}
-          />
+          <span className={cn(statusPingVariants({ state, size }))} />
         )}
-        <span
-          className={cn(
-            "relative inline-flex rounded-full",
-            sizeClasses.dot,
-            colors.dot
-          )}
-        />
+        <span className={cn(statusIndicatorVariants({ state, size }))} />
       </div>
       {label && (
-        <p
-          className={cn(
-            "text-sm text-slate-700 dark:text-slate-300",
-            labelClassName
-          )}
+        <span
+          data-slot="status-indicator-label"
+          className={cn("text-sm text-foreground", labelClassName)}
         >
           {label}
-        </p>
+        </span>
       )}
     </div>
   )
 }
 
-export { StatusIndicator }
+export { StatusIndicator, statusIndicatorVariants }
 export type { StatusIndicatorProps }

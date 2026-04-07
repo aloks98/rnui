@@ -55,13 +55,13 @@ const getDataType = (value: any): DataType => {
 const getTypeStyle = (type: DataType): string => {
   switch (type) {
     case "string":
-      return "text-green-600 dark:text-green-400"
+      return "text-success-foreground"
     case "number":
-      return "text-orange-600 dark:text-orange-400"
+      return "text-warning-foreground"
     case "boolean":
-      return "text-blue-600 dark:text-blue-400"
+      return "text-info-foreground"
     case "null":
-      return "text-gray-500 dark:text-gray-400"
+      return "text-muted-foreground"
     default:
       return ""
   }
@@ -134,10 +134,10 @@ const SmartValue = React.forwardRef<
           )}
         >
           <span
-            className="w-3 h-3 rounded-[2px] border border-white/20 shrink-0"
+            className="size-3 rounded-sm border border-border shrink-0"
             style={{ backgroundColor: value }}
           />
-          <span className="text-green-600 dark:text-green-400">{`'${value}'`}</span>
+          <span className="text-success-foreground">{`'${value}'`}</span>
         </span>
       )
     }
@@ -156,7 +156,7 @@ const SmartValue = React.forwardRef<
               rel="noopener noreferrer"
               {...(props as any)}
               className={cn(
-                "text-green-600 dark:text-green-400 hover:underline hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-pre-wrap break-all",
+                "text-success-foreground hover:underline hover:text-info-foreground transition-colors whitespace-pre-wrap break-all",
                 !isExpanded && "line-clamp-3",
                 props.className
               )}
@@ -200,7 +200,7 @@ const SmartValue = React.forwardRef<
           rel="noopener noreferrer"
           {...(props as any)}
           className={cn(
-            "text-green-600 dark:text-green-400 hover:underline hover:text-blue-600 dark:hover:text-blue-400 transition-colors",
+            "text-success-foreground hover:underline hover:text-info-foreground transition-colors",
             isLongUrl ? "whitespace-pre-wrap break-all" : "whitespace-nowrap",
             props.className
           )}
@@ -470,8 +470,9 @@ const JsonViewer: React.FC<JsonViewerProps> = ({
 
   return (
     <div
+      data-slot="json-viewer"
       className={cn(
-        "relative font-mono text-[13px] leading-6 w-full text-foreground bg-secondary/10 dark:bg-muted/50 rounded-md border border-border flex flex-col",
+        "relative font-mono text-[13px] leading-6 w-full text-foreground bg-card rounded-lg border border-border flex flex-col",
         className
       )}
     >
@@ -479,7 +480,7 @@ const JsonViewer: React.FC<JsonViewerProps> = ({
         <div className="text-xs font-medium text-muted-foreground px-2">
           {title}
         </div>
-        <div className="flex items-center rounded-md border bg-muted/50 overflow-hidden">
+        <div className="flex items-center rounded-md border bg-secondary overflow-hidden">
           <Button
             variant="ghost"
             size="sm"
@@ -635,11 +636,11 @@ const JsonNode: React.FC<JsonNodeProps> = ({
 }
 
 const indentColors = [
-  "border-red-300/60 dark:border-red-700/60",
-  "border-yellow-300/60 dark:border-yellow-700/60",
-  "border-green-300/60 dark:border-green-700/60",
-  "border-blue-300/60 dark:border-blue-700/60",
-  "border-purple-300/60 dark:border-purple-700/60",
+  "border-destructive/40",
+  "border-warning/40",
+  "border-success/40",
+  "border-info/40",
+  "border-focus/40",
 ]
 
 const JsonObject: React.FC<{
@@ -672,7 +673,7 @@ const JsonObject: React.FC<{
     <div
       className={cn(
         "inline-flex items-center text-left h-6 leading-6 group rounded-sm px-1 -ml-1 w-full cursor-pointer select-none",
-        isOpen && "hover:bg-muted-foreground/20"
+        isOpen && "hover:bg-accent"
       )}
       onDoubleClick={
         collapseOn === "doubleClick" ? () => toggleNode(path) : undefined
@@ -682,7 +683,7 @@ const JsonObject: React.FC<{
       }
     >
       {objectKey && (
-        <span className="text-purple-600 dark:text-purple-400 inline-flex items-center group font-medium">
+        <span className="text-info inline-flex items-center group font-medium">
           {`'${objectKey}'`}
           <span className="text-muted-foreground mx-1">: </span>
         </span>
@@ -726,7 +727,7 @@ const JsonObject: React.FC<{
               "pl-5 border-l",
               showColorIndent
                 ? indentColors[level % indentColors.length]
-                : "border-[rgba(0,0,0,0.1)] dark:border-[rgba(255,255,255,0.1)]"
+                : "border-border"
             )}
           >
             {entries.map(([key, value], index) => {
@@ -743,7 +744,7 @@ const JsonObject: React.FC<{
                   className={cn(
                     "group rounded-md",
                     !isChildCollapsible && "flex items-start min-h-6",
-                    isChildOpen ? "" : "hover:bg-muted-foreground/20"
+                    isChildOpen ? "" : "hover:bg-accent"
                   )}
                 >
                   {isChildCollapsible ? (
@@ -761,7 +762,7 @@ const JsonObject: React.FC<{
                     />
                   ) : (
                     <>
-                      <span className="text-purple-600 dark:text-purple-400 inline-flex items-center">
+                      <span className="text-info inline-flex items-center">
                         {`'${key}'`}
                       </span>
                       <span className="text-muted-foreground">: </span>
@@ -827,7 +828,7 @@ const JsonArray: React.FC<{
     <div
       className={cn(
         "inline-flex items-center text-left h-6 leading-6 group rounded-sm px-1 -ml-1 w-full cursor-pointer select-none",
-        isOpen && "hover:bg-muted-foreground/20"
+        isOpen && "hover:bg-accent"
       )}
       onDoubleClick={
         collapseOn === "doubleClick" ? () => toggleNode(path) : undefined
@@ -837,7 +838,7 @@ const JsonArray: React.FC<{
       }
     >
       {objectKey && (
-        <span className="text-purple-600 dark:text-purple-400 inline-flex items-center group">
+        <span className="text-info inline-flex items-center group">
           {`'${objectKey}'`}
           <span className="text-muted-foreground mx-1">: </span>
         </span>
@@ -881,7 +882,7 @@ const JsonArray: React.FC<{
               "pl-5 border-l",
               showColorIndent
                 ? indentColors[level % indentColors.length]
-                : "border-[rgba(0,0,0,0.1)] dark:border-[rgba(255,255,255,0.1)]"
+                : "border-border"
             )}
           >
             {itemsToShow.map((item, index) => {
@@ -899,7 +900,7 @@ const JsonArray: React.FC<{
                     "group rounded-md",
                     !isChildCollapsible &&
                       "flex sm:items-center items-start sm:h-6 h-auto",
-                    isChildOpen ? "" : "hover:bg-muted-foreground/20"
+                    isChildOpen ? "" : "hover:bg-accent"
                   )}
                 >
                   <JsonNode
@@ -923,7 +924,7 @@ const JsonArray: React.FC<{
                     variant="secondary"
                     size="sm"
                     onClick={() => setShowAll(true)}
-                    className="h-auto px-2 py-0.5 text-xs bg-secondary/30 hover:bg-secondary/50 text-muted-foreground hover:text-foreground mt-1"
+                    className="h-auto px-2 py-0.5 text-xs bg-secondary hover:bg-secondary/80 text-muted-foreground hover:text-foreground mt-1"
                   >
                     Show {data.length - truncation.itemsPerArray} more items...
                   </Button>
@@ -932,7 +933,7 @@ const JsonArray: React.FC<{
                     variant="secondary"
                     size="sm"
                     onClick={() => setShowAll(false)}
-                    className="h-auto px-2 py-0.5 text-xs bg-secondary/30 hover:bg-secondary/50 text-muted-foreground hover:text-foreground mt-1"
+                    className="h-auto px-2 py-0.5 text-xs bg-secondary hover:bg-secondary/80 text-muted-foreground hover:text-foreground mt-1"
                   >
                     Show Less
                   </Button>

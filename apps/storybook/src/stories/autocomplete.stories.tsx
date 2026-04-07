@@ -34,8 +34,8 @@ export const Default: Story = {
                 {fruit}
               </AutocompleteItem>
             ))}
-            <AutocompleteEmpty>No results found.</AutocompleteEmpty>
           </AutocompleteList>
+          <AutocompleteEmpty>No results found.</AutocompleteEmpty>
         </AutocompleteContent>
       </Autocomplete>
     </div>
@@ -68,8 +68,8 @@ export const WithGroups: Story = {
                 </AutocompleteItem>
               ))}
             </AutocompleteGroup>
-            <AutocompleteEmpty>No results found.</AutocompleteEmpty>
           </AutocompleteList>
+          <AutocompleteEmpty>No results found.</AutocompleteEmpty>
         </AutocompleteContent>
       </Autocomplete>
     </div>
@@ -89,8 +89,8 @@ export const WithClear: Story = {
                 {fruit}
               </AutocompleteItem>
             ))}
-            <AutocompleteEmpty>No results found.</AutocompleteEmpty>
           </AutocompleteList>
+          <AutocompleteEmpty>No results found.</AutocompleteEmpty>
         </AutocompleteContent>
       </Autocomplete>
     </div>

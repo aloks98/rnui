@@ -77,6 +77,11 @@ export * from './components/toggle'
 export * from './components/toggle-group'
 export * from './components/tooltip'
 export * from './components/tree'
+export * from './components/sortable'
+export * from './components/color-picker'
+export * from './components/copy-button'
+export * from './components/empty-state'
+export * from './components/stat-card'
 
 // Hooks
 export * from './hooks/use-mobile'

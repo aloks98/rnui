@@ -58,3 +58,14 @@ export const HSLFormat: Story = {
     )
   },
 }
+
+export const WithAlpha: Story = {
+  render: () => {
+    const [color, setColor] = useState('#3b82f6')
+    return (
+      <div className="flex items-center gap-3">
+        <ColorPicker value={color} onChange={setColor} showAlpha defaultFormat="rgb" />
+      </div>
+    )
+  },
+}

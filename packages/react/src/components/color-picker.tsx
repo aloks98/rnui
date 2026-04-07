@@ -282,35 +282,43 @@ function HueSlider({
 
 // --- Main Component ---
 
-// --- Channel number input ---
+// --- Channel input group (connected borders) ---
 
-function ChannelInput({
-  value,
-  min,
-  max,
-  label,
-  onChange,
+function ChannelInputGroup({
+  channels,
 }: {
-  value: number
-  min: number
-  max: number
-  label: string
-  onChange: (v: number) => void
+  channels: { label: string; value: number; min: number; max: number; onChange: (v: number) => void }[]
 }) {
   return (
-    <div className="flex flex-col items-center gap-1">
-      <Input
-        type="number"
-        min={min}
-        max={max}
-        value={value}
-        onChange={(e) => {
-          const v = parseInt(e.target.value)
-          if (!isNaN(v)) onChange(Math.max(min, Math.min(max, v)))
-        }}
-        className="h-7 w-full px-1 text-center font-mono text-xs [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-      />
-      <span className="text-[10px] uppercase text-muted-foreground">{label}</span>
+    <div className="flex flex-1 flex-col gap-1">
+      <div className="flex">
+        {channels.map((ch, i) => (
+          <Input
+            key={ch.label}
+            type="number"
+            min={ch.min}
+            max={ch.max}
+            value={ch.value}
+            onChange={(e) => {
+              const v = parseInt(e.target.value)
+              if (!isNaN(v)) ch.onChange(Math.max(ch.min, Math.min(ch.max, v)))
+            }}
+            className={cn(
+              "h-7 w-full px-1 text-center font-mono text-xs [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none",
+              i === 0 && "rounded-r-none border-r-0",
+              i === channels.length - 1 && "rounded-l-none",
+              i > 0 && i < channels.length - 1 && "rounded-none border-r-0",
+            )}
+          />
+        ))}
+      </div>
+      <div className="flex">
+        {channels.map((ch) => (
+          <span key={ch.label} className="flex-1 text-center text-[10px] uppercase text-muted-foreground">
+            {ch.label}
+          </span>
+        ))}
+      </div>
     </div>
   )
 }
@@ -488,24 +496,31 @@ function ColorPicker({
             </Button>
 
             {format === "hex" ? (
-              <Input
-                value={hexInput}
-                onChange={handleHexInput}
-                className="h-7 flex-1 font-mono text-xs"
-                spellCheck={false}
-              />
+              <div className="flex flex-1 flex-col gap-1">
+                <Input
+                  value={hexInput}
+                  onChange={handleHexInput}
+                  className="h-7 font-mono text-xs"
+                  spellCheck={false}
+                />
+                <span className="text-center text-[10px] uppercase text-muted-foreground">Hex</span>
+              </div>
             ) : format === "rgb" ? (
-              <div className="flex flex-1 gap-1">
-                <ChannelInput label="R" value={currentRgb.r} min={0} max={255} onChange={(r) => updateFromRgb(r, currentRgb.g, currentRgb.b)} />
-                <ChannelInput label="G" value={currentRgb.g} min={0} max={255} onChange={(g) => updateFromRgb(currentRgb.r, g, currentRgb.b)} />
-                <ChannelInput label="B" value={currentRgb.b} min={0} max={255} onChange={(b) => updateFromRgb(currentRgb.r, currentRgb.g, b)} />
-              </div>
+              <ChannelInputGroup
+                channels={[
+                  { label: "R", value: currentRgb.r, min: 0, max: 255, onChange: (r) => updateFromRgb(r, currentRgb.g, currentRgb.b) },
+                  { label: "G", value: currentRgb.g, min: 0, max: 255, onChange: (g) => updateFromRgb(currentRgb.r, g, currentRgb.b) },
+                  { label: "B", value: currentRgb.b, min: 0, max: 255, onChange: (b) => updateFromRgb(currentRgb.r, currentRgb.g, b) },
+                ]}
+              />
             ) : (
-              <div className="flex flex-1 gap-1">
-                <ChannelInput label="H" value={currentHsl.h} min={0} max={360} onChange={(h) => updateFromHsl(h, currentHsl.s, currentHsl.l)} />
-                <ChannelInput label="S" value={currentHsl.s} min={0} max={100} onChange={(s) => updateFromHsl(currentHsl.h, s, currentHsl.l)} />
-                <ChannelInput label="L" value={currentHsl.l} min={0} max={100} onChange={(l) => updateFromHsl(currentHsl.h, currentHsl.s, l)} />
-              </div>
+              <ChannelInputGroup
+                channels={[
+                  { label: "H", value: currentHsl.h, min: 0, max: 360, onChange: (h) => updateFromHsl(h, currentHsl.s, currentHsl.l) },
+                  { label: "S", value: currentHsl.s, min: 0, max: 100, onChange: (s) => updateFromHsl(currentHsl.h, s, currentHsl.l) },
+                  { label: "L", value: currentHsl.l, min: 0, max: 100, onChange: (l) => updateFromHsl(currentHsl.h, currentHsl.s, l) },
+                ]}
+              />
             )}
 
             {showAlpha && (
@@ -516,7 +531,7 @@ function ColorPicker({
                   max={100}
                   value={Math.round(alpha * 100)}
                   onChange={(e) => setAlpha(Math.max(0, Math.min(100, parseInt(e.target.value) || 0)) / 100)}
-                  className="h-7 w-12 px-1 text-center font-mono text-xs [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                  className="h-7 w-10 px-1 text-center font-mono text-xs [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                 />
                 <span className="text-[10px] uppercase text-muted-foreground">A%</span>
               </div>

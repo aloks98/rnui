@@ -1,4 +1,4 @@
-export { EChart, type EChartProps } from "./echart"
+export { EChart, echarts, type EChartProps } from "./echart"
 export { useChartTheme, getChartColorPalette, type ChartThemeColors } from "./use-chart-theme"
 export { BarChart, type BarChartProps, type BarChartDataItem } from "./bar-chart"
 export { LineChart, type LineChartProps, type LineChartSeries, type LineChartDataItem } from "./line-chart"

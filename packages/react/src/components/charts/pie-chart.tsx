@@ -1,12 +1,7 @@
 "use client"
 
-import * as echarts from "echarts/core"
-import { PieChart as PieChartType } from "echarts/charts"
 import type { EChartsOption } from "echarts"
-
 import { EChart, type EChartProps } from "./echart"
-
-echarts.use([PieChartType])
 
 export interface PieChartDataItem {
   name: string
@@ -31,7 +26,9 @@ function PieChart({
 }: PieChartProps) {
   const chartOption: EChartsOption = {
     tooltip: { trigger: "item" },
-    legend: showLegend ? { show: true, bottom: 0, padding: [5, 0] } : undefined,
+    legend: showLegend
+      ? { show: true, bottom: 0, padding: [5, 0] }
+      : undefined,
     grid: undefined,
     series: [
       {
@@ -47,7 +44,11 @@ function PieChart({
             shadowColor: "rgba(0, 0, 0, 0.2)",
           },
         },
-        itemStyle: { borderRadius: donut ? 6 : 4, borderWidth: 2, borderColor: "transparent" },
+        itemStyle: {
+          borderRadius: donut ? 6 : 4,
+          borderWidth: 2,
+          borderColor: "transparent",
+        },
       },
     ],
     ...option,

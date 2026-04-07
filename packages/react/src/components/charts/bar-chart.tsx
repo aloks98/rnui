@@ -1,12 +1,7 @@
 "use client"
 
-import * as echarts from "echarts/core"
-import { BarChart as BarChartType } from "echarts/charts"
 import type { EChartsOption } from "echarts"
-
 import { EChart, type EChartProps } from "./echart"
-
-echarts.use([BarChartType])
 
 export interface BarChartDataItem {
   name: string
@@ -42,8 +37,9 @@ function BarChart({
       data: data.map((d) => d.value),
       stack: stacked ? "total" : undefined,
       barMaxWidth: 40,
-      radius: [4, 4, 0, 0],
-      itemStyle: { borderRadius: horizontal ? [0, 4, 4, 0] : [4, 4, 0, 0] },
+      itemStyle: {
+        borderRadius: horizontal ? [0, 4, 4, 0] : [4, 4, 0, 0],
+      },
     },
   ]
 
@@ -56,13 +52,40 @@ function BarChart({
       bottom: showLegend ? 32 : 8,
     },
     xAxis: horizontal
-      ? { type: "value", axisLine: { show: false }, axisTick: { show: false }, splitLine: { lineStyle: { type: "dashed" as const, opacity: 0.5 } } }
-      : { type: "category", data: cats, axisTick: { show: false }, splitLine: { show: false } },
+      ? {
+          type: "value",
+          axisLine: { show: false },
+          axisTick: { show: false },
+          splitLine: {
+            lineStyle: { type: "dashed" as const, opacity: 0.5 },
+          },
+        }
+      : {
+          type: "category",
+          data: cats,
+          axisTick: { show: false },
+          splitLine: { show: false },
+        },
     yAxis: horizontal
-      ? { type: "category", data: cats, axisLine: { show: false }, axisTick: { show: false }, splitLine: { show: false } }
-      : { type: "value", axisLine: { show: false }, axisTick: { show: false }, splitLine: { lineStyle: { type: "dashed" as const, opacity: 0.5 } } },
+      ? {
+          type: "category",
+          data: cats,
+          axisLine: { show: false },
+          axisTick: { show: false },
+          splitLine: { show: false },
+        }
+      : {
+          type: "value",
+          axisLine: { show: false },
+          axisTick: { show: false },
+          splitLine: {
+            lineStyle: { type: "dashed" as const, opacity: 0.5 },
+          },
+        },
     series: defaultSeries,
-    legend: showLegend ? { show: true, bottom: 0, padding: [5, 0] } : undefined,
+    legend: showLegend
+      ? { show: true, bottom: 0, padding: [5, 0] }
+      : undefined,
     ...option,
   }
 

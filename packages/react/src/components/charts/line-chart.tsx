@@ -1,12 +1,7 @@
 "use client"
 
-import * as echarts from "echarts/core"
-import { LineChart as LineChartType } from "echarts/charts"
 import type { EChartsOption } from "echarts"
-
 import { EChart, type EChartProps } from "./echart"
-
-echarts.use([LineChartType])
 
 export interface LineChartDataItem {
   name: string
@@ -65,10 +60,24 @@ function LineChart({
       top: 24,
       bottom: showLegend ? 32 : 8,
     },
-    xAxis: { type: "category", data: cats, axisTick: { show: false }, splitLine: { show: false } },
-    yAxis: { type: "value", axisLine: { show: false }, axisTick: { show: false }, splitLine: { lineStyle: { type: "dashed" as const, opacity: 0.5 } } },
+    xAxis: {
+      type: "category",
+      data: cats,
+      axisTick: { show: false },
+      splitLine: { show: false },
+    },
+    yAxis: {
+      type: "value",
+      axisLine: { show: false },
+      axisTick: { show: false },
+      splitLine: {
+        lineStyle: { type: "dashed" as const, opacity: 0.5 },
+      },
+    },
     series: chartSeries,
-    legend: showLegend ? { show: true, bottom: 0, padding: [5, 0] } : undefined,
+    legend: showLegend
+      ? { show: true, bottom: 0, padding: [5, 0] }
+      : undefined,
     ...option,
   }
 

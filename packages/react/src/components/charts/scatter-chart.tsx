@@ -1,12 +1,7 @@
 "use client"
 
-import * as echarts from "echarts/core"
-import { ScatterChart as ScatterChartType } from "echarts/charts"
 import type { EChartsOption } from "echarts"
-
 import { EChart, type EChartProps } from "./echart"
-
-echarts.use([ScatterChartType])
 
 export interface ScatterChartSeries {
   name: string
@@ -40,10 +35,26 @@ function ScatterChart({
       top: 24,
       bottom: showLegend ? 32 : 8,
     },
-    xAxis: { type: "value" as const, axisLine: { show: false }, axisTick: { show: false }, splitLine: { lineStyle: { type: "dashed" as const, opacity: 0.5 } } },
-    yAxis: { type: "value" as const, axisLine: { show: false }, axisTick: { show: false }, splitLine: { lineStyle: { type: "dashed" as const, opacity: 0.5 } } },
+    xAxis: {
+      type: "value" as const,
+      axisLine: { show: false },
+      axisTick: { show: false },
+      splitLine: {
+        lineStyle: { type: "dashed" as const, opacity: 0.5 },
+      },
+    },
+    yAxis: {
+      type: "value" as const,
+      axisLine: { show: false },
+      axisTick: { show: false },
+      splitLine: {
+        lineStyle: { type: "dashed" as const, opacity: 0.5 },
+      },
+    },
     series: chartSeries,
-    legend: showLegend ? { show: true, bottom: 0, padding: [5, 0] } : undefined,
+    legend: showLegend
+      ? { show: true, bottom: 0, padding: [5, 0] }
+      : undefined,
     ...option,
   }
 

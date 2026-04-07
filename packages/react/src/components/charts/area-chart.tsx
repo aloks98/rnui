@@ -1,12 +1,7 @@
 "use client"
 
-import * as echarts from "echarts/core"
-import { LineChart as LineChartType } from "echarts/charts"
 import type { EChartsOption } from "echarts"
-
 import { EChart, type EChartProps } from "./echart"
-
-echarts.use([LineChartType])
 
 export interface AreaChartSeries {
   name: string
@@ -34,7 +29,7 @@ function AreaChart({
   option = {},
   ...props
 }: AreaChartProps) {
-  const chartSeries = series.map((s, i) => ({
+  const chartSeries = series.map((s) => ({
     type: "line" as const,
     name: s.name,
     data: s.data,
@@ -46,7 +41,10 @@ function AreaChart({
           opacity: 0.3,
           color: {
             type: "linear" as const,
-            x: 0, y: 0, x2: 0, y2: 1,
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
             colorStops: [
               { offset: 0, color: "currentColor" },
               { offset: 1, color: "transparent" },
@@ -64,10 +62,25 @@ function AreaChart({
       top: 24,
       bottom: showLegend ? 32 : 8,
     },
-    xAxis: { type: "category", data: categories, boundaryGap: false, axisTick: { show: false }, splitLine: { show: false } },
-    yAxis: { type: "value", axisLine: { show: false }, axisTick: { show: false }, splitLine: { lineStyle: { type: "dashed" as const, opacity: 0.5 } } },
+    xAxis: {
+      type: "category",
+      data: categories,
+      boundaryGap: false,
+      axisTick: { show: false },
+      splitLine: { show: false },
+    },
+    yAxis: {
+      type: "value",
+      axisLine: { show: false },
+      axisTick: { show: false },
+      splitLine: {
+        lineStyle: { type: "dashed" as const, opacity: 0.5 },
+      },
+    },
     series: chartSeries,
-    legend: showLegend ? { show: true, bottom: 0, padding: [5, 0] } : undefined,
+    legend: showLegend
+      ? { show: true, bottom: 0, padding: [5, 0] }
+      : undefined,
     ...option,
   }
 

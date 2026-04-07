@@ -66,6 +66,7 @@ export function useChartTheme(): ChartThemeColors {
   return colors
 }
 
+// CSS variables already contain full oklch() values — use them directly
 export function getChartColorPalette(colors: ChartThemeColors): string[] {
   return [
     colors.chart1,
@@ -73,5 +74,5 @@ export function getChartColorPalette(colors: ChartThemeColors): string[] {
     colors.chart3,
     colors.chart4,
     colors.chart5,
-  ].filter(Boolean).map((c) => (c.startsWith("oklch") ? c : `oklch(${c})`))
+  ].filter(Boolean)
 }

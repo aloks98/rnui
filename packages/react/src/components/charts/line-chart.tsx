@@ -61,7 +61,8 @@ function LineChart({
     xAxis: { type: "category", data: cats },
     yAxis: { type: "value" },
     series: chartSeries,
-    legend: showLegend ? { show: true, bottom: 0 } : undefined,
+    legend: showLegend ? { show: true, bottom: 0, padding: [5, 0] } : undefined,
+    grid: { bottom: showLegend ? 32 : 8 },
     ...option,
   }
 

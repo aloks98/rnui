@@ -36,7 +36,8 @@ function ScatterChart({
     xAxis: { type: "value" as const },
     yAxis: { type: "value" as const },
     series: chartSeries,
-    legend: showLegend ? { show: true, bottom: 0 } : undefined,
+    legend: showLegend ? { show: true, bottom: 0, padding: [5, 0] } : undefined,
+    grid: { bottom: showLegend ? 32 : 8 },
     ...option,
   }
 

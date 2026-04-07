@@ -31,7 +31,7 @@ function PieChart({
 }: PieChartProps) {
   const chartOption: EChartsOption = {
     tooltip: { trigger: "item" },
-    legend: showLegend ? { show: true, bottom: 0 } : undefined,
+    legend: showLegend ? { show: true, bottom: 0, padding: [5, 0] } : undefined,
     grid: undefined,
     series: [
       {

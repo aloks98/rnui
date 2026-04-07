@@ -55,7 +55,8 @@ function BarChart({
       ? { type: "category", data: cats }
       : { type: "value" },
     series: defaultSeries,
-    legend: showLegend ? { show: true, bottom: 0 } : undefined,
+    legend: showLegend ? { show: true, bottom: 0, padding: [5, 0] } : undefined,
+    grid: { bottom: showLegend ? 32 : 8 },
     ...option,
   }
 

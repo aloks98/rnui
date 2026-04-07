@@ -47,36 +47,55 @@ function EChart({
   const palette = useMemo(() => getChartColorPalette(themeColors), [themeColors])
 
   const mergedOption = useMemo<EChartsOption>(() => {
+    // Check if colors are loaded (empty string means not yet)
+    const hasColors = palette.length > 0 && palette[0] !== ""
+
     const base: EChartsOption = {
-      color: palette.length > 0 ? palette : undefined,
+      color: hasColors ? palette : undefined,
       textStyle: {
         fontFamily: "inherit",
-        color: themeColors.mutedForeground
-          ? `oklch(${themeColors.mutedForeground})`
-          : undefined,
+        color: themeColors.mutedForeground || undefined,
+        fontSize: 12,
       },
       grid: {
         containLabel: true,
-        left: 12,
-        right: 12,
-        top: 40,
-        bottom: 12,
+        left: 16,
+        right: 16,
+        top: 24,
+        bottom: 8,
       },
       tooltip: {
         trigger: "axis",
-        backgroundColor: themeColors.card
-          ? `oklch(${themeColors.card})`
-          : undefined,
-        borderColor: themeColors.border
-          ? `oklch(${themeColors.border})`
-          : undefined,
+        backgroundColor: themeColors.card || undefined,
+        borderColor: themeColors.border || undefined,
         textStyle: {
-          color: themeColors.foreground
-            ? `oklch(${themeColors.foreground})`
-            : undefined,
+          color: themeColors.foreground || undefined,
           fontSize: 12,
         },
         borderWidth: 1,
+        padding: [8, 12],
+        extraCssText: "border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);",
+      },
+      legend: {
+        textStyle: {
+          color: themeColors.mutedForeground || undefined,
+          fontSize: 12,
+        },
+        itemWidth: 12,
+        itemHeight: 12,
+        itemGap: 16,
+      },
+      xAxis: {
+        axisLine: { lineStyle: { color: themeColors.border || undefined } },
+        axisTick: { show: false },
+        axisLabel: { color: themeColors.mutedForeground || undefined, fontSize: 11 },
+        splitLine: { show: false },
+      },
+      yAxis: {
+        axisLine: { show: false },
+        axisTick: { show: false },
+        axisLabel: { color: themeColors.mutedForeground || undefined, fontSize: 11 },
+        splitLine: { lineStyle: { color: themeColors.border || undefined, type: "dashed" as const, opacity: 0.5 } },
       },
     }
 

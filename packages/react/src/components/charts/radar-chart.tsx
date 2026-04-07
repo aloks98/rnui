@@ -1,5 +1,6 @@
 "use client"
 
+import { useMemo } from "react"
 import type { EChartsOption } from "echarts"
 import { EChart, type EChartProps } from "./echart"
 
@@ -24,10 +25,10 @@ function RadarChart({
   indicators,
   series,
   showLegend = true,
-  option = {},
+  option,
   ...props
 }: RadarChartProps) {
-  const chartOption: EChartsOption = {
+  const chartOption = useMemo<EChartsOption>(() => ({
     tooltip: { trigger: "item" },
     legend: showLegend
       ? { show: true, bottom: 0, padding: [5, 0] }
@@ -48,7 +49,7 @@ function RadarChart({
       },
     ],
     ...option,
-  }
+  }), [indicators, series, showLegend, option])
 
   return <EChart option={chartOption} {...props} />
 }

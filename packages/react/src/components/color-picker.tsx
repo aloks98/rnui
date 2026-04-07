@@ -291,7 +291,7 @@ function ColorPicker({
 
   const currentHex = React.useMemo(() => hsvToHex(hsv.h, hsv.s, hsv.v), [hsv])
   const currentRgb = React.useMemo(() => hexToRgb(currentHex), [currentHex])
-  const currentHsl = React.useMemo(() => rgbToHsl(currentRgb.r, currentRgb.g, currentRgb.b), [currentRgb])
+  const currentHsl = React.useMemo(() => hexToHsl(currentHex), [currentHex])
 
   React.useEffect(() => {
     const parsed = parseColorInput(value) ?? value

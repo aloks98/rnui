@@ -1,5 +1,6 @@
 "use client"
 
+import { useMemo } from "react"
 import type { EChartsOption } from "echarts"
 import { EChart, type EChartProps } from "./echart"
 
@@ -26,63 +27,63 @@ function AreaChart({
   stacked = false,
   showLegend = true,
   gradient = true,
-  option = {},
+  option,
   ...props
 }: AreaChartProps) {
-  const chartSeries = series.map((s) => ({
-    type: "line" as const,
-    name: s.name,
-    data: s.data,
-    smooth: s.smooth ?? smooth,
-    stack: stacked ? "total" : undefined,
-    symbolSize: 4,
-    areaStyle: gradient
-      ? {
-          opacity: 0.3,
-          color: {
-            type: "linear" as const,
-            x: 0,
-            y: 0,
-            x2: 0,
-            y2: 1,
-            colorStops: [
-              { offset: 0, color: "currentColor" },
-              { offset: 1, color: "transparent" },
-            ],
-          },
-        }
-      : { opacity: 0.15 },
-  }))
+  const chartOption = useMemo<EChartsOption>(() => {
+    const chartSeries = series.map((s) => ({
+      type: "line" as const,
+      name: s.name,
+      data: s.data,
+      smooth: s.smooth ?? smooth,
+      stack: stacked ? "total" : undefined,
+      symbolSize: 4,
+      areaStyle: gradient
+        ? {
+            color: {
+              type: "linear" as const,
+              x: 0, y: 0, x2: 0, y2: 1,
+              colorStops: [
+                { offset: 0, color: "inherit" },
+                { offset: 1, color: "transparent" },
+              ],
+              global: false,
+            },
+            opacity: 0.4,
+          }
+        : { opacity: 0.15 },
+    }))
 
-  const chartOption: EChartsOption = {
-    grid: {
-      containLabel: true,
-      left: 16,
-      right: 16,
-      top: 24,
-      bottom: showLegend ? 32 : 8,
-    },
-    xAxis: {
-      type: "category",
-      data: categories,
-      boundaryGap: false,
-      axisTick: { show: false },
-      splitLine: { show: false },
-    },
-    yAxis: {
-      type: "value",
-      axisLine: { show: false },
-      axisTick: { show: false },
-      splitLine: {
-        lineStyle: { type: "dashed" as const, opacity: 0.5 },
+    return {
+      grid: {
+        containLabel: true,
+        left: 16,
+        right: 16,
+        top: 24,
+        bottom: showLegend ? 32 : 8,
       },
-    },
-    series: chartSeries,
-    legend: showLegend
-      ? { show: true, bottom: 0, padding: [5, 0] }
-      : undefined,
-    ...option,
-  }
+      xAxis: {
+        type: "category",
+        data: categories,
+        boundaryGap: false,
+        axisTick: { show: false },
+        splitLine: { show: false },
+      },
+      yAxis: {
+        type: "value",
+        axisLine: { show: false },
+        axisTick: { show: false },
+        splitLine: {
+          lineStyle: { type: "dashed" as const, opacity: 0.5 },
+        },
+      },
+      series: chartSeries,
+      legend: showLegend
+        ? { show: true, bottom: 0, padding: [5, 0] }
+        : undefined,
+      ...option,
+    }
+  }, [categories, series, smooth, stacked, showLegend, gradient, option])
 
   return <EChart option={chartOption} {...props} />
 }

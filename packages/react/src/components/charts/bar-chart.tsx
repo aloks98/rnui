@@ -1,5 +1,6 @@
 "use client"
 
+import { useMemo } from "react"
 import type { EChartsOption } from "echarts"
 import { EChart, type EChartProps } from "./echart"
 
@@ -26,68 +27,70 @@ function BarChart({
   horizontal = false,
   stacked = false,
   showLegend = false,
-  option = {},
+  option,
   ...props
 }: BarChartProps) {
-  const cats = categories ?? data.map((d) => d.name)
+  const chartOption = useMemo<EChartsOption>(() => {
+    const cats = categories ?? data.map((d) => d.name)
 
-  const defaultSeries = series ?? [
-    {
-      type: "bar" as const,
-      data: data.map((d) => d.value),
-      stack: stacked ? "total" : undefined,
-      barMaxWidth: 40,
-      itemStyle: {
-        borderRadius: horizontal ? [0, 4, 4, 0] : [4, 4, 0, 0],
+    const defaultSeries = series ?? [
+      {
+        type: "bar" as const,
+        data: data.map((d) => d.value),
+        stack: stacked ? "total" : undefined,
+        barMaxWidth: 40,
+        itemStyle: {
+          borderRadius: horizontal ? [0, 4, 4, 0] : [4, 4, 0, 0],
+        },
       },
-    },
-  ]
+    ]
 
-  const chartOption: EChartsOption = {
-    grid: {
-      containLabel: true,
-      left: 16,
-      right: 16,
-      top: 24,
-      bottom: showLegend ? 32 : 8,
-    },
-    xAxis: horizontal
-      ? {
-          type: "value",
-          axisLine: { show: false },
-          axisTick: { show: false },
-          splitLine: {
-            lineStyle: { type: "dashed" as const, opacity: 0.5 },
+    return {
+      grid: {
+        containLabel: true,
+        left: 16,
+        right: 16,
+        top: 24,
+        bottom: showLegend ? 32 : 8,
+      },
+      xAxis: horizontal
+        ? {
+            type: "value",
+            axisLine: { show: false },
+            axisTick: { show: false },
+            splitLine: {
+              lineStyle: { type: "dashed" as const, opacity: 0.5 },
+            },
+          }
+        : {
+            type: "category",
+            data: cats,
+            axisTick: { show: false },
+            splitLine: { show: false },
           },
-        }
-      : {
-          type: "category",
-          data: cats,
-          axisTick: { show: false },
-          splitLine: { show: false },
-        },
-    yAxis: horizontal
-      ? {
-          type: "category",
-          data: cats,
-          axisLine: { show: false },
-          axisTick: { show: false },
-          splitLine: { show: false },
-        }
-      : {
-          type: "value",
-          axisLine: { show: false },
-          axisTick: { show: false },
-          splitLine: {
-            lineStyle: { type: "dashed" as const, opacity: 0.5 },
+      yAxis: horizontal
+        ? {
+            type: "category",
+            data: cats,
+            axisLine: { show: false },
+            axisTick: { show: false },
+            splitLine: { show: false },
+          }
+        : {
+            type: "value",
+            axisLine: { show: false },
+            axisTick: { show: false },
+            splitLine: {
+              lineStyle: { type: "dashed" as const, opacity: 0.5 },
+            },
           },
-        },
-    series: defaultSeries,
-    legend: showLegend
-      ? { show: true, bottom: 0, padding: [5, 0] }
-      : undefined,
-    ...option,
-  }
+      series: defaultSeries,
+      legend: showLegend
+        ? { show: true, bottom: 0, padding: [5, 0] }
+        : undefined,
+      ...option,
+    }
+  }, [data, categories, series, horizontal, stacked, showLegend, option])
 
   return <EChart option={chartOption} {...props} />
 }

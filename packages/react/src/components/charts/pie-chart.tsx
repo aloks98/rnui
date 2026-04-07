@@ -1,5 +1,6 @@
 "use client"
 
+import { useMemo } from "react"
 import type { EChartsOption } from "echarts"
 import { EChart, type EChartProps } from "./echart"
 
@@ -21,10 +22,10 @@ function PieChart({
   donut = false,
   showLegend = true,
   showLabels = true,
-  option = {},
+  option,
   ...props
 }: PieChartProps) {
-  const chartOption: EChartsOption = {
+  const chartOption = useMemo<EChartsOption>(() => ({
     tooltip: { trigger: "item" },
     legend: showLegend
       ? { show: true, bottom: 0, padding: [5, 0] }
@@ -52,7 +53,7 @@ function PieChart({
       },
     ],
     ...option,
-  }
+  }), [data, donut, showLegend, showLabels, option])
 
   return <EChart option={chartOption} {...props} />
 }

@@ -29,6 +29,7 @@ const meta = {
       description: 'Collapse trigger interaction',
     },
   },
+  parameters: { layout: 'padded' },
 } satisfies Meta<typeof JsonViewer>
 
 export default meta

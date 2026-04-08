@@ -30,6 +30,7 @@ const meta = {
       </div>
     ),
   ],
+  parameters: { layout: 'padded' },
 } satisfies Meta<typeof BarChart>
 
 export default meta

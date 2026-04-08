@@ -17,6 +17,7 @@ const meta = {
     },
     disabled: { control: 'boolean' },
   },
+  parameters: { layout: 'padded' },
 } satisfies Meta<typeof Accordion>
 
 export default meta

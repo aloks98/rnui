@@ -20,6 +20,7 @@ const meta = {
       description: 'Size variant for filter chips',
     },
   },
+  parameters: { layout: 'padded' },
 } satisfies Meta<typeof Filters>
 
 export default meta

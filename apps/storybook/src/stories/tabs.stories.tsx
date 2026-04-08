@@ -16,6 +16,7 @@ const meta = {
       description: 'Tab orientation',
     },
   },
+  parameters: { layout: 'padded' },
 } satisfies Meta<typeof Tabs>
 
 export default meta

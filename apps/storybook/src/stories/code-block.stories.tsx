@@ -14,6 +14,7 @@ const meta = {
     showCopy: { control: 'boolean' },
     title: { control: 'text' },
   },
+  parameters: { layout: 'padded' },
 } satisfies Meta<typeof CodeBlock>
 
 export default meta

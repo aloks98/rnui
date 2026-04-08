@@ -21,6 +21,7 @@ const meta = {
     },
     onChange: { action: 'changed' },
   },
+  parameters: { layout: 'padded' },
 } satisfies Meta<typeof DateSelector>
 
 export default meta

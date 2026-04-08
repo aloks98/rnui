@@ -33,6 +33,7 @@ const meta = {
       </div>
     ),
   ],
+  parameters: { layout: 'padded' },
 } satisfies Meta<typeof EChart>
 
 export default meta

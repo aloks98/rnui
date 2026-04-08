@@ -26,6 +26,7 @@ const meta = {
       </div>
     ),
   ],
+  parameters: { layout: 'padded' },
 } satisfies Meta<typeof ScatterChart>
 
 export default meta

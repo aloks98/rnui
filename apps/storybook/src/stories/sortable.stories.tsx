@@ -7,6 +7,7 @@ const meta = {
   title: 'Components/Sortable',
   component: Sortable,
   tags: ['autodocs'],
+  parameters: { layout: 'padded' },
 } satisfies Meta<typeof Sortable>
 
 export default meta

@@ -35,6 +35,7 @@ const meta = {
       description: 'Default active step',
     },
   },
+  parameters: { layout: 'padded' },
 } satisfies Meta<typeof Timeline>
 
 export default meta

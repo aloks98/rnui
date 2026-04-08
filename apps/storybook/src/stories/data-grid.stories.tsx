@@ -1440,6 +1440,7 @@ const meta = {
   title: 'Components/DataGrid',
   component: DataGrid,
   tags: ['autodocs'],
+  parameters: { layout: 'padded' },
 } satisfies Meta<typeof DataGrid>
 
 export default meta

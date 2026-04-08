@@ -34,6 +34,7 @@ const meta = {
       </div>
     ),
   ],
+  parameters: { layout: 'padded' },
 } satisfies Meta<typeof PieChart>
 
 export default meta

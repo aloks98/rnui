@@ -13,6 +13,7 @@ const meta = {
   title: 'Components/Table',
   component: Table,
   tags: ['autodocs'],
+  parameters: { layout: 'padded' },
 } satisfies Meta<typeof Table>
 
 export default meta

@@ -33,6 +33,7 @@ const meta = {
       description: 'Type of toggle icon',
     },
   },
+  parameters: { layout: 'padded' },
 } satisfies Meta<typeof Tree>
 
 export default meta

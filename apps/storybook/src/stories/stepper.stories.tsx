@@ -30,6 +30,7 @@ const meta = {
       description: 'Default active step',
     },
   },
+  parameters: { layout: 'padded' },
 } satisfies Meta<typeof Stepper>
 
 export default meta

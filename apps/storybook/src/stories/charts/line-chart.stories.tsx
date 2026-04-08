@@ -4,6 +4,29 @@ import { LineChart, EChart } from '@e412/rnui-react'
 const meta = {
   title: 'Charts/LineChart',
   component: LineChart,
+  tags: ['autodocs'],
+  argTypes: {
+    height: {
+      control: { type: 'number', min: 100, max: 600 },
+      description: 'Chart height in pixels',
+    },
+    smooth: {
+      control: 'boolean',
+      description: 'Use smooth curves',
+    },
+    showLegend: {
+      control: 'boolean',
+      description: 'Show chart legend',
+    },
+    loading: {
+      control: 'boolean',
+      description: 'Show loading state',
+    },
+    animateOnMount: {
+      control: 'boolean',
+      description: 'Animate chart on mount',
+    },
+  },
   decorators: [
     (Story: any) => (
       <div className="w-full max-w-2xl">
@@ -16,21 +39,17 @@ const meta = {
 export default meta
 
 export const LineChartDefault: StoryObj = {
-  render: () => (
-    <div className="w-full max-w-2xl">
-      <LineChart
-        data={[
-          { name: 'Mon', value: 820 },
-          { name: 'Tue', value: 932 },
-          { name: 'Wed', value: 901 },
-          { name: 'Thu', value: 1234 },
-          { name: 'Fri', value: 1290 },
-          { name: 'Sat', value: 1530 },
-          { name: 'Sun', value: 1320 },
-        ]}
-      />
-    </div>
-  ),
+  args: {
+    data: [
+      { name: 'Mon', value: 820 },
+      { name: 'Tue', value: 932 },
+      { name: 'Wed', value: 901 },
+      { name: 'Thu', value: 1234 },
+      { name: 'Fri', value: 1290 },
+      { name: 'Sat', value: 1530 },
+      { name: 'Sun', value: 1320 },
+    ],
+  },
 }
 
 export const LineChartMultiSeries: StoryObj = {

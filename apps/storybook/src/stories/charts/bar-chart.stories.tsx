@@ -4,6 +4,25 @@ import { BarChart } from '@e412/rnui-react'
 const meta = {
   title: 'Charts/BarChart',
   component: BarChart,
+  tags: ['autodocs'],
+  argTypes: {
+    height: {
+      control: { type: 'number', min: 100, max: 600 },
+      description: 'Chart height in pixels',
+    },
+    horizontal: {
+      control: 'boolean',
+      description: 'Whether to render bars horizontally',
+    },
+    showLegend: {
+      control: 'boolean',
+      description: 'Show chart legend',
+    },
+    loading: {
+      control: 'boolean',
+      description: 'Show loading state',
+    },
+  },
   decorators: [
     (Story: any) => (
       <div className="w-full max-w-2xl">

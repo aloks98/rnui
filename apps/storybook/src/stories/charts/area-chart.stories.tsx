@@ -4,6 +4,29 @@ import { AreaChart } from '@e412/rnui-react'
 const meta = {
   title: 'Charts/AreaChart',
   component: AreaChart,
+  tags: ['autodocs'],
+  argTypes: {
+    height: {
+      control: { type: 'number', min: 100, max: 600 },
+      description: 'Chart height in pixels',
+    },
+    stacked: {
+      control: 'boolean',
+      description: 'Stack areas on top of each other',
+    },
+    smooth: {
+      control: 'boolean',
+      description: 'Use smooth curves',
+    },
+    showLegend: {
+      control: 'boolean',
+      description: 'Show chart legend',
+    },
+    loading: {
+      control: 'boolean',
+      description: 'Show loading state',
+    },
+  },
   decorators: [
     (Story: any) => (
       <div className="w-full max-w-2xl">
@@ -22,17 +45,16 @@ const areaSeries = [
 const areaCategories = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
 
 export const AreaChartDefault: StoryObj = {
-  render: () => (
-    <div className="w-full max-w-2xl">
-      <AreaChart categories={areaCategories} series={areaSeries} />
-    </div>
-  ),
+  args: {
+    categories: areaCategories,
+    series: areaSeries,
+  },
 }
 
 export const AreaChartStacked: StoryObj = {
-  render: () => (
-    <div className="w-full max-w-2xl">
-      <AreaChart categories={areaCategories} series={areaSeries} stacked={true} />
-    </div>
-  ),
+  args: {
+    categories: areaCategories,
+    series: areaSeries,
+    stacked: true,
+  },
 }

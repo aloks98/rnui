@@ -4,6 +4,29 @@ import { PieChart } from '@e412/rnui-react'
 const meta = {
   title: 'Charts/PieChart',
   component: PieChart,
+  tags: ['autodocs'],
+  argTypes: {
+    height: {
+      control: { type: 'number', min: 100, max: 600 },
+      description: 'Chart height in pixels',
+    },
+    donut: {
+      control: 'boolean',
+      description: 'Render as a donut chart',
+    },
+    showLegend: {
+      control: 'boolean',
+      description: 'Show chart legend',
+    },
+    showLabels: {
+      control: 'boolean',
+      description: 'Show slice labels',
+    },
+    loading: {
+      control: 'boolean',
+      description: 'Show loading state',
+    },
+  },
   decorators: [
     (Story: any) => (
       <div className="w-full max-w-2xl">
@@ -24,19 +47,16 @@ const browserData = [
 ]
 
 export const PieChartDefault: StoryObj = {
-  render: () => (
-    <div className="w-full max-w-2xl">
-      <PieChart data={browserData} />
-    </div>
-  ),
+  args: {
+    data: browserData,
+  },
 }
 
 export const DonutChart: StoryObj = {
-  render: () => (
-    <div className="w-full max-w-2xl">
-      <PieChart data={browserData} donut={true} />
-    </div>
-  ),
+  args: {
+    data: browserData,
+    donut: true,
+  },
 }
 
 export const CustomColors: StoryObj = {

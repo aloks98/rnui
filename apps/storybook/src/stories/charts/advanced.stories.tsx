@@ -7,6 +7,25 @@ echarts.use([GaugeChart])
 const meta = {
   title: 'Charts/Advanced',
   component: EChart,
+  tags: ['autodocs'],
+  argTypes: {
+    height: {
+      control: { type: 'number', min: 100, max: 600 },
+      description: 'Chart height in pixels',
+    },
+    loading: {
+      control: 'boolean',
+      description: 'Show loading state',
+    },
+    preset: {
+      control: 'boolean',
+      description: 'Apply default chart presets',
+    },
+    animateOnMount: {
+      control: 'boolean',
+      description: 'Animate chart on mount',
+    },
+  },
   decorators: [
     (Story: any) => (
       <div className="w-full max-w-2xl">

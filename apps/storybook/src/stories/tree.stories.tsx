@@ -21,6 +21,18 @@ import {
 const meta = {
   title: 'Components/Tree',
   component: Tree,
+  tags: ['autodocs'],
+  argTypes: {
+    indent: {
+      control: { type: 'number', min: 8, max: 40 },
+      description: 'Indentation in pixels per level',
+    },
+    toggleIconType: {
+      control: 'select',
+      options: ['chevron', 'plus-minus'],
+      description: 'Type of toggle icon',
+    },
+  },
 } satisfies Meta<typeof Tree>
 
 export default meta

@@ -4,6 +4,7 @@ import { Badge } from '@e412/rnui-react'
 const meta = {
   title: 'Components/Badge',
   component: Badge,
+  tags: ['autodocs'],
   argTypes: {
     variant: {
       control: 'select',

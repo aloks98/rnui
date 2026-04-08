@@ -5,6 +5,13 @@ import { InfoIcon, CircleCheckIcon, TriangleAlertIcon, OctagonXIcon } from 'luci
 const meta = {
   title: 'Components/Alert',
   component: Alert,
+  tags: ['autodocs'],
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['default', 'destructive', 'info', 'success', 'warning', 'invert'],
+    },
+  },
 } satisfies Meta<typeof Alert>
 
 export default meta

@@ -4,6 +4,12 @@ import { AspectRatio } from '@e412/rnui-react'
 const meta = {
   title: 'Components/AspectRatio',
   component: AspectRatio,
+  tags: ['autodocs'],
+  argTypes: {
+    ratio: {
+      control: 'number',
+    },
+  },
 } satisfies Meta<typeof AspectRatio>
 
 export default meta

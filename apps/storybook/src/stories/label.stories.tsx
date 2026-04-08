@@ -4,6 +4,17 @@ import { Label, Input } from '@e412/rnui-react'
 const meta = {
   title: 'Components/Label',
   component: Label,
+  tags: ['autodocs'],
+  argTypes: {
+    children: {
+      control: 'text',
+      description: 'Label text content',
+    },
+    htmlFor: {
+      control: 'text',
+      description: 'ID of the form element the label is associated with',
+    },
+  },
 } satisfies Meta<typeof Label>
 
 export default meta

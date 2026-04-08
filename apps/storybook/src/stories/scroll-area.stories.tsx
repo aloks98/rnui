@@ -4,6 +4,7 @@ import { ScrollArea, Separator } from '@e412/rnui-react'
 const meta = {
   title: 'Components/ScrollArea',
   component: ScrollArea,
+  tags: ['autodocs'],
 } satisfies Meta<typeof ScrollArea>
 
 export default meta

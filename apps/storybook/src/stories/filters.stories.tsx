@@ -12,6 +12,14 @@ import { FilterIcon } from 'lucide-react'
 const meta = {
   title: 'Components/Filters',
   component: Filters,
+  tags: ['autodocs'],
+  argTypes: {
+    size: {
+      control: 'select',
+      options: ['sm', 'default'],
+      description: 'Size variant for filter chips',
+    },
+  },
 } satisfies Meta<typeof Filters>
 
 export default meta

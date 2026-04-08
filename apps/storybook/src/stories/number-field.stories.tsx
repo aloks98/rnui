@@ -13,6 +13,34 @@ import {
 const meta = {
   title: 'Components/NumberField',
   component: NumberField,
+  tags: ['autodocs'],
+  argTypes: {
+    defaultValue: {
+      control: 'number',
+      description: 'Default value of the number field',
+    },
+    min: {
+      control: 'number',
+      description: 'Minimum allowed value',
+    },
+    max: {
+      control: 'number',
+      description: 'Maximum allowed value',
+    },
+    step: {
+      control: 'number',
+      description: 'Step increment value',
+    },
+    size: {
+      control: 'select',
+      options: ['sm', 'default', 'lg'],
+      description: 'Size variant of the number field',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Whether the number field is disabled',
+    },
+  },
 } satisfies Meta<typeof NumberField>
 
 export default meta

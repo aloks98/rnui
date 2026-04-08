@@ -4,6 +4,13 @@ import { Skeleton } from '@e412/rnui-react'
 const meta = {
   title: 'Components/Skeleton',
   component: Skeleton,
+  tags: ['autodocs'],
+  argTypes: {
+    className: {
+      control: 'text',
+      description: 'CSS classes to control size and shape of the skeleton',
+    },
+  },
 } satisfies Meta<typeof Skeleton>
 
 export default meta

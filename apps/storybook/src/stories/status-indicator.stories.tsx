@@ -4,14 +4,21 @@ import { StatusIndicator } from '@e412/rnui-react'
 const meta = {
   title: 'Components/StatusIndicator',
   component: StatusIndicator,
+  tags: ['autodocs'],
   argTypes: {
     state: {
       control: 'select',
       options: ['active', 'down', 'fixing', 'idle'],
+      description: 'Current status state',
     },
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
+      description: 'Indicator size',
+    },
+    label: {
+      control: 'text',
+      description: 'Optional label text',
     },
   },
 } satisfies Meta<typeof StatusIndicator>

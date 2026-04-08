@@ -4,6 +4,11 @@ import { Checkbox, Label } from '@e412/rnui-react'
 const meta = {
   title: 'Components/Checkbox',
   component: Checkbox,
+  tags: ['autodocs'],
+  argTypes: {
+    disabled: { control: 'boolean' },
+    defaultChecked: { control: 'boolean' },
+  },
 } satisfies Meta<typeof Checkbox>
 
 export default meta

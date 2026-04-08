@@ -14,6 +14,14 @@ import {
 const meta = {
   title: 'Components/Drawer',
   component: Drawer,
+  tags: ['autodocs'],
+  argTypes: {
+    direction: {
+      control: 'select',
+      options: ['top', 'bottom', 'left', 'right'],
+      description: 'The direction the drawer slides in from',
+    },
+  },
 } satisfies Meta<typeof Drawer>
 
 export default meta

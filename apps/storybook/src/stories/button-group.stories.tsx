@@ -4,6 +4,13 @@ import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText, Button } from '@e41
 const meta = {
   title: 'Components/ButtonGroup',
   component: ButtonGroup,
+  tags: ['autodocs'],
+  argTypes: {
+    orientation: {
+      control: 'select',
+      options: ['horizontal', 'vertical'],
+    },
+  },
 } satisfies Meta<typeof ButtonGroup>
 
 export default meta

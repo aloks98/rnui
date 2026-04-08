@@ -4,18 +4,22 @@ import { CopyButton } from '@e412/rnui-react'
 const meta = {
   title: 'Components/CopyButton',
   component: CopyButton,
+  tags: ['autodocs'],
+  argTypes: {
+    value: {
+      control: 'text',
+      description: 'The text value to copy to clipboard',
+    },
+  },
 } satisfies Meta<typeof CopyButton>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: () => (
-    <div className="flex items-center gap-2">
-      <code className="rounded bg-muted px-2 py-1 text-sm font-mono">npm install @e412/rnui-react</code>
-      <CopyButton value="npm install @e412/rnui-react" />
-    </div>
-  ),
+  args: {
+    value: 'npm install @e412/rnui-react',
+  },
 }
 
 export const WithCustomText: Story = {

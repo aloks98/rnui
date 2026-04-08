@@ -5,6 +5,23 @@ import { ColorPicker } from '@e412/rnui-react'
 const meta = {
   title: 'Components/ColorPicker',
   component: ColorPicker,
+  tags: ['autodocs'],
+  argTypes: {
+    value: {
+      control: 'color',
+      description: 'The current color value (hex string)',
+    },
+    defaultFormat: {
+      control: 'select',
+      options: ['hex', 'rgb', 'hsl'],
+      description: 'Default color format to display',
+    },
+    showAlpha: {
+      control: 'boolean',
+      description: 'Whether to show the alpha slider',
+    },
+    onChange: { action: 'changed' },
+  },
 } satisfies Meta<typeof ColorPicker>
 
 export default meta

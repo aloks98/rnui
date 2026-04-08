@@ -4,13 +4,20 @@ import { Spinner, Button } from '@e412/rnui-react'
 const meta = {
   title: 'Components/Spinner',
   component: Spinner,
+  tags: ['autodocs'],
+  argTypes: {
+    className: {
+      control: 'text',
+      description: 'Custom CSS class for sizing (e.g. size-3, size-6, size-8)',
+    },
+  },
 } satisfies Meta<typeof Spinner>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: () => <Spinner />,
+  args: {},
 }
 
 export const CustomSize: Story = {

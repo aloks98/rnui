@@ -4,6 +4,31 @@ import { JsonViewer } from '@e412/rnui-react'
 const meta = {
   title: 'Components/JsonViewer',
   component: JsonViewer,
+  tags: ['autodocs'],
+  argTypes: {
+    title: {
+      control: 'text',
+      description: 'Title displayed at the top of the viewer',
+    },
+    defaultExpanded: {
+      control: 'select',
+      options: [true, false, 0, 1, 2, 3],
+      description: 'Whether to expand nodes by default, or expand to a specific depth level',
+    },
+    showLineNumbers: {
+      control: 'boolean',
+      description: 'Show line numbers in the viewer',
+    },
+    showColorIndent: {
+      control: 'boolean',
+      description: 'Show colored indent lines',
+    },
+    collapseOn: {
+      control: 'select',
+      options: ['click', 'doubleClick'],
+      description: 'Collapse trigger interaction',
+    },
+  },
 } satisfies Meta<typeof JsonViewer>
 
 export default meta

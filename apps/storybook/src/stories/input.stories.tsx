@@ -4,13 +4,33 @@ import { Input, Label } from '@e412/rnui-react'
 const meta = {
   title: 'Components/Input',
   component: Input,
+  tags: ['autodocs'],
+  argTypes: {
+    type: {
+      control: 'select',
+      options: ['text', 'email', 'password', 'number', 'tel', 'url', 'file'],
+      description: 'The input type',
+    },
+    placeholder: {
+      control: 'text',
+      description: 'Placeholder text',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Whether the input is disabled',
+    },
+  },
 } satisfies Meta<typeof Input>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: () => <Input type="email" placeholder="Email" className="max-w-sm" />,
+  args: {
+    type: 'email',
+    placeholder: 'Email',
+    className: 'max-w-sm',
+  },
 }
 
 export const WithLabel: Story = {
@@ -23,7 +43,11 @@ export const WithLabel: Story = {
 }
 
 export const Disabled: Story = {
-  render: () => <Input disabled placeholder="Disabled" className="max-w-sm" />,
+  args: {
+    disabled: true,
+    placeholder: 'Disabled',
+    className: 'max-w-sm',
+  },
 }
 
 export const File: Story = {

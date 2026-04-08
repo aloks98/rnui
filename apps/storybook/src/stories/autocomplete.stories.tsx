@@ -14,6 +14,7 @@ import {
 const meta = {
   title: 'Components/Autocomplete',
   component: Autocomplete,
+  tags: ['autodocs'],
 } satisfies Meta<typeof Autocomplete>
 
 export default meta

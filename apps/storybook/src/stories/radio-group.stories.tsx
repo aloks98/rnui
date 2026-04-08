@@ -4,6 +4,22 @@ import { RadioGroup, RadioGroupItem, Label } from '@e412/rnui-react'
 const meta = {
   title: 'Components/RadioGroup',
   component: RadioGroup,
+  tags: ['autodocs'],
+  argTypes: {
+    defaultValue: {
+      control: 'text',
+      description: 'Default selected value',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Whether the radio group is disabled',
+    },
+    orientation: {
+      control: 'select',
+      options: ['horizontal', 'vertical'],
+      description: 'Layout orientation of the radio group',
+    },
+  },
 } satisfies Meta<typeof RadioGroup>
 
 export default meta

@@ -4,6 +4,7 @@ import { HoverCard, HoverCardContent, HoverCardTrigger, Button } from '@e412/rnu
 const meta = {
   title: 'Components/HoverCard',
   component: HoverCard,
+  tags: ['autodocs'],
 } satisfies Meta<typeof HoverCard>
 
 export default meta

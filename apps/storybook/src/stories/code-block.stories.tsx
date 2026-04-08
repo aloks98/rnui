@@ -4,6 +4,16 @@ import { CodeBlock, InlineCode } from '@e412/rnui-react'
 const meta = {
   title: 'Components/CodeBlock',
   component: CodeBlock,
+  tags: ['autodocs'],
+  argTypes: {
+    language: {
+      control: 'select',
+      options: ['tsx', 'ts', 'jsx', 'js', 'css', 'json', 'bash', 'html', 'text'],
+    },
+    showLineNumbers: { control: 'boolean' },
+    showCopy: { control: 'boolean' },
+    title: { control: 'text' },
+  },
 } satisfies Meta<typeof CodeBlock>
 
 export default meta

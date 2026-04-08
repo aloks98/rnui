@@ -10,6 +10,13 @@ import {
 const meta = {
   title: 'Components/Carousel',
   component: Carousel,
+  tags: ['autodocs'],
+  argTypes: {
+    orientation: {
+      control: 'select',
+      options: ['horizontal', 'vertical'],
+    },
+  },
 } satisfies Meta<typeof Carousel>
 
 export default meta

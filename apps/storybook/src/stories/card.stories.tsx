@@ -12,6 +12,13 @@ import {
 const meta = {
   title: 'Components/Card',
   component: Card,
+  tags: ['autodocs'],
+  argTypes: {
+    size: {
+      control: 'select',
+      options: ['default', 'sm'],
+    },
+  },
 } satisfies Meta<typeof Card>
 
 export default meta

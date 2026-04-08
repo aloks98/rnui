@@ -1439,6 +1439,7 @@ function ColumnControlsStory() {
 const meta = {
   title: 'Components/DataGrid',
   component: DataGrid,
+  tags: ['autodocs'],
 } satisfies Meta<typeof DataGrid>
 
 export default meta

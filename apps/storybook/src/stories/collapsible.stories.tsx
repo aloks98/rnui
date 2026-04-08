@@ -4,6 +4,10 @@ import { Collapsible, CollapsibleTrigger, CollapsibleContent, Button } from '@e4
 const meta = {
   title: 'Components/Collapsible',
   component: Collapsible,
+  tags: ['autodocs'],
+  argTypes: {
+    disabled: { control: 'boolean' },
+  },
 } satisfies Meta<typeof Collapsible>
 
 export default meta

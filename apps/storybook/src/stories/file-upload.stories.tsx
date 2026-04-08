@@ -3,6 +3,7 @@ import { useFileUpload, formatBytes, cn, Button } from '@e412/rnui-react'
 
 const meta = {
   title: 'Hooks/useFileUpload',
+  tags: ['autodocs'],
 } satisfies Meta
 
 export default meta

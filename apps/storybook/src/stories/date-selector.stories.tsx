@@ -5,15 +5,31 @@ import { DateSelector, DateSelectorValue, formatDateValue } from '@e412/rnui-rea
 const meta = {
   title: 'Components/DateSelector',
   component: DateSelector,
+  tags: ['autodocs'],
+  argTypes: {
+    label: {
+      control: 'text',
+      description: 'Label displayed above the date selector',
+    },
+    showInput: {
+      control: 'boolean',
+      description: 'Whether to show the text input',
+    },
+    showTwoMonths: {
+      control: 'boolean',
+      description: 'Whether to show two months in the calendar',
+    },
+    onChange: { action: 'changed' },
+  },
 } satisfies Meta<typeof DateSelector>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: () => (
+  render: (args) => (
     <div className="w-full max-w-xl">
-      <DateSelector />
+      <DateSelector {...args} />
     </div>
   ),
 }

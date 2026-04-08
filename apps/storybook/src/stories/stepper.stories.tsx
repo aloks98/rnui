@@ -18,6 +18,18 @@ import { CheckIcon, LoaderCircleIcon, ArrowLeftIcon } from 'lucide-react'
 const meta = {
   title: 'Components/Stepper',
   component: Stepper,
+  tags: ['autodocs'],
+  argTypes: {
+    orientation: {
+      control: 'select',
+      options: ['horizontal', 'vertical'],
+      description: 'Stepper orientation',
+    },
+    defaultValue: {
+      control: { type: 'number', min: 1 },
+      description: 'Default active step',
+    },
+  },
 } satisfies Meta<typeof Stepper>
 
 export default meta

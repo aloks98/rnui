@@ -12,6 +12,7 @@ import {
 const meta = {
   title: 'Components/Menubar',
   component: Menubar,
+  tags: ['autodocs'],
 } satisfies Meta<typeof Menubar>
 
 export default meta

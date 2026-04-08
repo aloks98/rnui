@@ -5,6 +5,17 @@ import { Inbox, Plus } from 'lucide-react'
 const meta = {
   title: 'Components/EmptyState',
   component: EmptyState,
+  tags: ['autodocs'],
+  argTypes: {
+    title: {
+      control: 'text',
+      description: 'The heading text for the empty state',
+    },
+    description: {
+      control: 'text',
+      description: 'The description text below the title',
+    },
+  },
 } satisfies Meta<typeof EmptyState>
 
 export default meta

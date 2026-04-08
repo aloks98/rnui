@@ -6,6 +6,7 @@ import { GripVertical } from 'lucide-react'
 const meta = {
   title: 'Components/Sortable',
   component: Sortable,
+  tags: ['autodocs'],
 } satisfies Meta<typeof Sortable>
 
 export default meta

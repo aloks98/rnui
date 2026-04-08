@@ -4,6 +4,18 @@ import { Separator } from '@e412/rnui-react'
 const meta = {
   title: 'Components/Separator',
   component: Separator,
+  tags: ['autodocs'],
+  argTypes: {
+    orientation: {
+      control: 'select',
+      options: ['horizontal', 'vertical'],
+      description: 'Orientation of the separator',
+    },
+    decorative: {
+      control: 'boolean',
+      description: 'Whether the separator is purely decorative (no semantic meaning)',
+    },
+  },
 } satisfies Meta<typeof Separator>
 
 export default meta

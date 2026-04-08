@@ -5,6 +5,7 @@ import * as React from 'react'
 const meta = {
   title: 'Components/Calendar',
   component: Calendar,
+  tags: ['autodocs'],
 } satisfies Meta<typeof Calendar>
 
 export default meta

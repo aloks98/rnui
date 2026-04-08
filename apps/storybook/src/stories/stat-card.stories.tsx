@@ -5,6 +5,21 @@ import { DollarSign, Users, ShoppingCart, TrendingUp } from 'lucide-react'
 const meta = {
   title: 'Components/StatCard',
   component: StatCard,
+  tags: ['autodocs'],
+  argTypes: {
+    title: {
+      control: 'text',
+      description: 'Card title',
+    },
+    value: {
+      control: 'text',
+      description: 'Main value to display',
+    },
+    description: {
+      control: 'text',
+      description: 'Description text below the value',
+    },
+  },
 } satisfies Meta<typeof StatCard>
 
 export default meta

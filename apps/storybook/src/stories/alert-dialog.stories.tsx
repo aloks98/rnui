@@ -16,6 +16,7 @@ import {
 const meta = {
   title: 'Components/AlertDialog',
   component: AlertDialog,
+  tags: ['autodocs'],
 } satisfies Meta<typeof AlertDialog>
 
 export default meta

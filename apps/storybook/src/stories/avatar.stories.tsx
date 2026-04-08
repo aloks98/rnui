@@ -11,6 +11,13 @@ import {
 const meta = {
   title: 'Components/Avatar',
   component: Avatar,
+  tags: ['autodocs'],
+  argTypes: {
+    size: {
+      control: 'select',
+      options: ['sm', 'default', 'lg'],
+    },
+  },
 } satisfies Meta<typeof Avatar>
 
 export default meta

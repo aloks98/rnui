@@ -4,6 +4,7 @@ import { Popover, PopoverContent, PopoverTrigger, Button, Input, Label } from '@
 const meta = {
   title: 'Components/Popover',
   component: Popover,
+  tags: ['autodocs'],
 } satisfies Meta<typeof Popover>
 
 export default meta

@@ -4,6 +4,18 @@ import { NativeSelect, NativeSelectOption, NativeSelectOptGroup, Label } from '@
 const meta = {
   title: 'Components/NativeSelect',
   component: NativeSelect,
+  tags: ['autodocs'],
+  argTypes: {
+    size: {
+      control: 'select',
+      options: ['sm', 'default'],
+      description: 'Size variant of the select',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Whether the select is disabled',
+    },
+  },
 } satisfies Meta<typeof NativeSelect>
 
 export default meta

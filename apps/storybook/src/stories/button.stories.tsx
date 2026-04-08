@@ -4,6 +4,7 @@ import { Button } from '@e412/rnui-react'
 const meta = {
   title: 'Components/Button',
   component: Button,
+  tags: ['autodocs'],
   argTypes: {
     variant: {
       control: 'select',
@@ -11,7 +12,7 @@ const meta = {
     },
     size: {
       control: 'select',
-      options: ['default', 'sm', 'lg', 'icon'],
+      options: ['default', 'xs', 'sm', 'lg', 'icon', 'icon-xs', 'icon-sm', 'icon-lg'],
     },
     disabled: { control: 'boolean' },
   },

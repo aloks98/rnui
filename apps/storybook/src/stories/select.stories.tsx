@@ -13,6 +13,17 @@ import {
 const meta = {
   title: 'Components/Select',
   component: Select,
+  tags: ['autodocs'],
+  argTypes: {
+    disabled: {
+      control: 'boolean',
+      description: 'Whether the select is disabled',
+    },
+    defaultValue: {
+      control: 'text',
+      description: 'Default selected value',
+    },
+  },
 } satisfies Meta<typeof Select>
 
 export default meta

@@ -5,6 +5,7 @@ import { toast } from 'sonner'
 const meta = {
   title: 'Components/Sonner',
   component: Toaster,
+  tags: ['autodocs'],
 } satisfies Meta<typeof Toaster>
 
 export default meta

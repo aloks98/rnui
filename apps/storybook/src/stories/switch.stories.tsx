@@ -4,15 +4,34 @@ import { Switch, Label } from '@e412/rnui-react'
 const meta = {
   title: 'Components/Switch',
   component: Switch,
+  tags: ['autodocs'],
+  argTypes: {
+    disabled: {
+      control: 'boolean',
+      description: 'Whether the switch is disabled',
+    },
+    defaultChecked: {
+      control: 'boolean',
+      description: 'Default checked state',
+    },
+    size: {
+      control: 'select',
+      options: ['sm', 'default'],
+      description: 'Switch size',
+    },
+  },
 } satisfies Meta<typeof Switch>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: () => (
+  args: {
+    id: 'airplane-mode',
+  },
+  render: (args) => (
     <div className="flex items-center space-x-2">
-      <Switch id="airplane-mode" />
+      <Switch {...args} />
       <Label htmlFor="airplane-mode">Airplane Mode</Label>
     </div>
   ),

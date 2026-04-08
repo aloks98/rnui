@@ -4,6 +4,33 @@ import { ToggleGroup, ToggleGroupItem } from '@e412/rnui-react'
 const meta = {
   title: 'Components/ToggleGroup',
   component: ToggleGroup,
+  tags: ['autodocs'],
+  argTypes: {
+    type: {
+      control: 'select',
+      options: ['single', 'multiple'],
+      description: 'Selection type',
+    },
+    variant: {
+      control: 'select',
+      options: ['default', 'outline'],
+      description: 'Toggle group variant',
+    },
+    size: {
+      control: 'select',
+      options: ['sm', 'default', 'lg'],
+      description: 'Toggle group size',
+    },
+    orientation: {
+      control: 'select',
+      options: ['horizontal', 'vertical'],
+      description: 'Group orientation',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Whether the group is disabled',
+    },
+  },
 } satisfies Meta<typeof ToggleGroup>
 
 export default meta

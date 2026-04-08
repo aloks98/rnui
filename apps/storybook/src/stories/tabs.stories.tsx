@@ -4,6 +4,18 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@e412/rnui-react'
 const meta = {
   title: 'Components/Tabs',
   component: Tabs,
+  tags: ['autodocs'],
+  argTypes: {
+    defaultValue: {
+      control: 'text',
+      description: 'Default active tab value',
+    },
+    orientation: {
+      control: 'select',
+      options: ['horizontal', 'vertical'],
+      description: 'Tab orientation',
+    },
+  },
 } satisfies Meta<typeof Tabs>
 
 export default meta

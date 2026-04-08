@@ -23,6 +23,18 @@ import {
 const meta = {
   title: 'Components/Timeline',
   component: Timeline,
+  tags: ['autodocs'],
+  argTypes: {
+    orientation: {
+      control: 'select',
+      options: ['vertical', 'horizontal'],
+      description: 'Timeline orientation',
+    },
+    defaultValue: {
+      control: { type: 'number', min: 1 },
+      description: 'Default active step',
+    },
+  },
 } satisfies Meta<typeof Timeline>
 
 export default meta

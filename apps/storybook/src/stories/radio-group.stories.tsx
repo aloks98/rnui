@@ -43,3 +43,22 @@ export const Default: Story = {
     </RadioGroup>
   ),
 }
+
+export const Disabled: Story = {
+  render: () => (
+    <RadioGroup defaultValue="comfortable" disabled>
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value="default" id="r4" />
+        <Label htmlFor="r4">Default</Label>
+      </div>
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value="comfortable" id="r5" />
+        <Label htmlFor="r5">Comfortable</Label>
+      </div>
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem value="compact" id="r6" />
+        <Label htmlFor="r6">Compact</Label>
+      </div>
+    </RadioGroup>
+  ),
+}

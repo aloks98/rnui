@@ -4,13 +4,27 @@ import { Textarea, Label } from '@e412/rnui-react'
 const meta = {
   title: 'Components/Textarea',
   component: Textarea,
+  tags: ['autodocs'],
+  argTypes: {
+    placeholder: {
+      control: 'text',
+      description: 'Placeholder text',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Whether the textarea is disabled',
+    },
+  },
 } satisfies Meta<typeof Textarea>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: () => <Textarea placeholder="Type your message here." className="max-w-sm" />,
+  args: {
+    placeholder: 'Type your message here.',
+    className: 'max-w-sm',
+  },
 }
 
 export const WithLabel: Story = {

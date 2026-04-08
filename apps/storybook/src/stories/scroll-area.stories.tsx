@@ -29,3 +29,21 @@ export const Default: Story = {
     </ScrollArea>
   ),
 }
+
+export const Horizontal: Story = {
+  render: () => (
+    <ScrollArea className="w-96 whitespace-nowrap rounded-md border">
+      <div className="flex w-max space-x-4 p-4">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <figure key={i} className="shrink-0">
+            <div className="overflow-hidden rounded-md">
+              <div className="h-24 w-36 bg-muted flex items-center justify-center text-muted-foreground text-sm">
+                Item {i + 1}
+              </div>
+            </div>
+          </figure>
+        ))}
+      </div>
+    </ScrollArea>
+  ),
+}

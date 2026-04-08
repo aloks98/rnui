@@ -10,6 +10,7 @@ import {
 const meta = {
   title: 'Components/Tooltip',
   component: Tooltip,
+  tags: ['autodocs'],
 } satisfies Meta<typeof Tooltip>
 
 export default meta

@@ -265,3 +265,390 @@ export const BaseEChart: StoryObj = {
     </div>
   ),
 }
+
+/* ------------------------------------------------------------------ */
+/*  Custom Tooltip                                                     */
+/* ------------------------------------------------------------------ */
+
+export const CustomTooltip: StoryObj = {
+  render: () => (
+    <div className="w-full max-w-2xl">
+      <BarChart
+        data={[
+          { name: 'Jan', value: 4200 },
+          { name: 'Feb', value: 3800 },
+          { name: 'Mar', value: 5100 },
+          { name: 'Apr', value: 4600 },
+          { name: 'May', value: 5800 },
+          { name: 'Jun', value: 6200 },
+        ]}
+        option={{
+          tooltip: {
+            trigger: 'axis',
+            formatter: (params: any) => {
+              const p = Array.isArray(params) ? params[0] : params
+              return `<div style="font-weight:600;margin-bottom:4px">${p.name}</div>
+                <div style="display:flex;align-items:center;gap:6px">
+                  <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${p.color}"></span>
+                  Revenue: <b>$${p.value.toLocaleString()}</b>
+                </div>`
+            },
+          },
+        }}
+      />
+    </div>
+  ),
+}
+
+/* ------------------------------------------------------------------ */
+/*  Custom Colors                                                      */
+/* ------------------------------------------------------------------ */
+
+export const CustomColors: StoryObj = {
+  render: () => (
+    <div className="w-full max-w-2xl">
+      <PieChart
+        data={[
+          { name: 'Design', value: 35 },
+          { name: 'Development', value: 40 },
+          { name: 'Marketing', value: 15 },
+          { name: 'Sales', value: 10 },
+        ]}
+        option={{
+          color: ['#6366f1', '#ec4899', '#14b8a6', '#f59e0b'],
+        }}
+      />
+    </div>
+  ),
+}
+
+/* ------------------------------------------------------------------ */
+/*  Annotations (markLine + markPoint)                                 */
+/* ------------------------------------------------------------------ */
+
+export const Annotations: StoryObj = {
+  render: () => (
+    <div className="w-full max-w-2xl">
+      <LineChart
+        data={[
+          { name: 'Mon', value: 820 },
+          { name: 'Tue', value: 932 },
+          { name: 'Wed', value: 901 },
+          { name: 'Thu', value: 1234 },
+          { name: 'Fri', value: 1290 },
+          { name: 'Sat', value: 1530 },
+          { name: 'Sun', value: 1320 },
+        ]}
+        smooth
+        option={{
+          series: [
+            {
+              type: 'line',
+              data: [820, 932, 901, 1234, 1290, 1530, 1320],
+              smooth: true,
+              symbolSize: 6,
+              markPoint: {
+                data: [
+                  { type: 'max', name: 'Max' },
+                  { type: 'min', name: 'Min' },
+                ],
+                label: { fontSize: 10 },
+              },
+              markLine: {
+                data: [
+                  { type: 'average', name: 'Average' },
+                ],
+                label: { formatter: 'Avg: {c}', fontSize: 11 },
+                lineStyle: { type: 'dashed' },
+              },
+            },
+          ],
+          xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            axisTick: { show: false },
+            splitLine: { show: false },
+          },
+          yAxis: {
+            type: 'value',
+            axisLine: { show: false },
+            axisTick: { show: false },
+            splitLine: { lineStyle: { type: 'dashed', opacity: 0.5 } },
+          },
+          grid: { containLabel: true, left: 16, right: 16, top: 40, bottom: 8 },
+        }}
+      />
+    </div>
+  ),
+}
+
+/* ------------------------------------------------------------------ */
+/*  Data Zoom (interactive range selection)                            */
+/* ------------------------------------------------------------------ */
+
+export const DataZoom: StoryObj = {
+  render: () => {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    const data = [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+
+    return (
+      <div className="w-full max-w-2xl">
+        <EChart
+          option={{
+            xAxis: { type: 'category', data: months, axisTick: { show: false }, splitLine: { show: false } },
+            yAxis: { type: 'value', axisLine: { show: false }, axisTick: { show: false }, splitLine: { lineStyle: { type: 'dashed', opacity: 0.5 } } },
+            grid: { containLabel: true, left: 16, right: 16, top: 24, bottom: 60 },
+            dataZoom: [
+              { type: 'slider', start: 0, end: 100, height: 20, bottom: 8 },
+              { type: 'inside', start: 0, end: 100 },
+            ],
+            series: [
+              {
+                type: 'bar',
+                data,
+                barMaxWidth: 40,
+                itemStyle: { borderRadius: [4, 4, 0, 0] },
+              },
+            ],
+            tooltip: { trigger: 'axis' },
+          }}
+          height={400}
+        />
+      </div>
+    )
+  },
+}
+
+/* ------------------------------------------------------------------ */
+/*  Mixed Chart (Bar + Line)                                           */
+/* ------------------------------------------------------------------ */
+
+export const MixedChart: StoryObj = {
+  render: () => (
+    <div className="w-full max-w-2xl">
+      <EChart
+        option={{
+          xAxis: { type: 'category', data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], axisTick: { show: false }, splitLine: { show: false } },
+          yAxis: [
+            { type: 'value', name: 'Revenue ($)', axisLine: { show: false }, axisTick: { show: false }, splitLine: { lineStyle: { type: 'dashed', opacity: 0.5 } } },
+            { type: 'value', name: 'Growth (%)', axisLine: { show: false }, axisTick: { show: false }, splitLine: { show: false } },
+          ],
+          grid: { containLabel: true, left: 16, right: 16, top: 40, bottom: 32 },
+          legend: { show: true, bottom: 0 },
+          tooltip: { trigger: 'axis' },
+          series: [
+            {
+              name: 'Revenue',
+              type: 'bar',
+              data: [4200, 3800, 5100, 4600, 5800, 6200],
+              barMaxWidth: 40,
+              itemStyle: { borderRadius: [4, 4, 0, 0] },
+            },
+            {
+              name: 'Growth',
+              type: 'line',
+              yAxisIndex: 1,
+              data: [12, -5, 18, 8, 22, 15],
+              smooth: true,
+              symbolSize: 6,
+            },
+          ],
+        }}
+        height={400}
+      />
+    </div>
+  ),
+}
+
+/* ------------------------------------------------------------------ */
+/*  Negative Values                                                    */
+/* ------------------------------------------------------------------ */
+
+export const NegativeValues: StoryObj = {
+  render: () => (
+    <div className="w-full max-w-2xl">
+      <BarChart
+        data={[
+          { name: 'Jan', value: 200 },
+          { name: 'Feb', value: -120 },
+          { name: 'Mar', value: 350 },
+          { name: 'Apr', value: -80 },
+          { name: 'May', value: 280 },
+          { name: 'Jun', value: -150 },
+        ]}
+        option={{
+          series: [
+            {
+              type: 'bar',
+              data: [200, -120, 350, -80, 280, -150],
+              barMaxWidth: 40,
+              itemStyle: {
+                borderRadius: [4, 4, 0, 0],
+                color: (params: any) => params.value >= 0 ? '#22c55e' : '#ef4444',
+              },
+            },
+          ],
+          xAxis: { type: 'category', data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], axisTick: { show: false }, splitLine: { show: false } },
+          yAxis: { type: 'value', axisLine: { show: false }, axisTick: { show: false }, splitLine: { lineStyle: { type: 'dashed', opacity: 0.5 } } },
+          grid: { containLabel: true, left: 16, right: 16, top: 24, bottom: 8 },
+        }}
+      />
+    </div>
+  ),
+}
+
+/* ------------------------------------------------------------------ */
+/*  Loading State                                                      */
+/* ------------------------------------------------------------------ */
+
+export const LoadingState: StoryObj = {
+  render: () => (
+    <div className="w-full max-w-2xl">
+      <BarChart
+        data={[
+          { name: 'Mon', value: 4200 },
+          { name: 'Tue', value: 3800 },
+          { name: 'Wed', value: 5100 },
+        ]}
+        loading={true}
+      />
+    </div>
+  ),
+}
+
+/* ------------------------------------------------------------------ */
+/*  No Animation                                                       */
+/* ------------------------------------------------------------------ */
+
+export const NoAnimation: StoryObj = {
+  render: () => (
+    <div className="w-full max-w-2xl">
+      <LineChart
+        data={[
+          { name: 'Mon', value: 820 },
+          { name: 'Tue', value: 932 },
+          { name: 'Wed', value: 901 },
+          { name: 'Thu', value: 1234 },
+          { name: 'Fri', value: 1290 },
+        ]}
+        animateOnMount={false}
+        option={{ animation: false }}
+      />
+    </div>
+  ),
+}
+
+/* ------------------------------------------------------------------ */
+/*  Custom Height                                                      */
+/* ------------------------------------------------------------------ */
+
+export const CustomHeight: StoryObj = {
+  render: () => (
+    <div className="w-full max-w-2xl">
+      <BarChart
+        data={[
+          { name: 'A', value: 40 },
+          { name: 'B', value: 65 },
+          { name: 'C', value: 30 },
+          { name: 'D', value: 80 },
+        ]}
+        height={200}
+      />
+    </div>
+  ),
+}
+
+/* ------------------------------------------------------------------ */
+/*  Donut with Center Label                                            */
+/* ------------------------------------------------------------------ */
+
+export const DonutWithCenterLabel: StoryObj = {
+  render: () => (
+    <div className="w-full max-w-2xl">
+      <PieChart
+        data={[
+          { name: 'Used', value: 72 },
+          { name: 'Free', value: 28 },
+        ]}
+        donut
+        showLegend={false}
+        showLabels={false}
+        option={{
+          color: ['#3b82f6', '#e5e7eb'],
+          series: [
+            {
+              type: 'pie',
+              radius: ['55%', '75%'],
+              center: ['50%', '50%'],
+              data: [
+                { name: 'Used', value: 72 },
+                { name: 'Free', value: 28, itemStyle: { color: '#e5e7eb' } },
+              ],
+              label: { show: false },
+              emphasis: { scale: false },
+              itemStyle: { borderRadius: 6, borderWidth: 3, borderColor: 'transparent' },
+            },
+          ],
+          graphic: [
+            {
+              type: 'text',
+              left: 'center',
+              top: '42%',
+              style: {
+                text: '72%',
+                fontSize: 28,
+                fontWeight: 'bold',
+                textAlign: 'center',
+              },
+            },
+            {
+              type: 'text',
+              left: 'center',
+              top: '55%',
+              style: {
+                text: 'Storage Used',
+                fontSize: 12,
+                textAlign: 'center',
+                fill: '#6b7280',
+              },
+            },
+          ],
+        }}
+      />
+    </div>
+  ),
+}
+
+/* ------------------------------------------------------------------ */
+/*  Sparkline (minimal inline chart)                                   */
+/* ------------------------------------------------------------------ */
+
+export const Sparkline: StoryObj = {
+  render: () => (
+    <div className="flex items-center gap-4">
+      <span className="text-sm text-muted-foreground">Revenue</span>
+      <div className="w-32">
+        <EChart
+          option={{
+            grid: { left: 0, right: 0, top: 2, bottom: 2 },
+            xAxis: { show: false, type: 'category', data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] },
+            yAxis: { show: false, type: 'value' },
+            series: [{
+              type: 'line',
+              data: [820, 932, 901, 1234, 1290, 1530, 1320],
+              smooth: true,
+              symbol: 'none',
+              lineStyle: { width: 1.5 },
+              areaStyle: { opacity: 0.1 },
+            }],
+            tooltip: { show: false },
+          }}
+          height={32}
+          preset={false}
+          animateOnMount={false}
+        />
+      </div>
+      <span className="text-sm font-medium">$1,320</span>
+    </div>
+  ),
+}

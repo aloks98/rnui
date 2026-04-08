@@ -83,12 +83,14 @@ export const NegativeValues: StoryObj = {
           series: [
             {
               type: 'bar',
-              data: [200, -120, 350, -80, 280, -150],
+              data: [200, -120, 350, -80, 280, -150].map((v) => ({
+                value: v,
+                itemStyle: {
+                  borderRadius: v >= 0 ? [4, 4, 0, 0] : [0, 0, 4, 4],
+                  color: v >= 0 ? '#22c55e' : '#ef4444',
+                },
+              })),
               barMaxWidth: 40,
-              itemStyle: {
-                borderRadius: [4, 4, 0, 0],
-                color: (params: any) => params.value >= 0 ? '#22c55e' : '#ef4444',
-              },
             },
           ],
           xAxis: { type: 'category', data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], axisTick: { show: false }, splitLine: { show: false } },

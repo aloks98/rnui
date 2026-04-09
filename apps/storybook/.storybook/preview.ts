@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/react'
+import { themes } from 'storybook/theming'
 import '../src/styles.css'
 
 const preview: Preview = {
@@ -13,6 +14,7 @@ const preview: Preview = {
     backgrounds: { disable: true },
     layout: 'centered',
     docs: {
+      theme: themes.dark,
       canvas: {
         sourceState: 'shown',
       },
@@ -33,24 +35,16 @@ const preview: Preview = {
     },
   },
   initialGlobals: {
-    theme: 'light',
+    theme: 'dark',
   },
   decorators: [
     (Story, context) => {
       const theme = context.globals.theme
 
-      // Apply dark mode to the iframe document
+      // Apply to current iframe document
       document.documentElement.classList.toggle('dark', theme === 'dark')
       document.body.style.backgroundColor = theme === 'dark' ? '#0a0a0a' : '#ffffff'
       document.body.style.color = theme === 'dark' ? '#fafafa' : ''
-
-      // Also try to apply to the parent docs page
-      try {
-        const docsRoot = document.querySelector('.docs-story')
-        if (docsRoot) {
-          (docsRoot as HTMLElement).style.backgroundColor = theme === 'dark' ? '#0a0a0a' : ''
-        }
-      } catch {}
 
       return Story()
     },

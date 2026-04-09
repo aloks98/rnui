@@ -27,14 +27,6 @@ const preview: Preview = {
       },
       defaultTheme: 'light',
     }),
-    // Ensure body bg follows theme variables
-    (Story, context) => {
-      const root = document.documentElement
-      const isDark = root.classList.contains('dark')
-      document.body.style.backgroundColor = isDark ? 'oklch(0.145 0 0)' : 'oklch(1 0 0)'
-      document.body.style.color = isDark ? 'oklch(0.985 0 0)' : 'oklch(0.145 0 0)'
-      return Story()
-    },
   ],
 }
 

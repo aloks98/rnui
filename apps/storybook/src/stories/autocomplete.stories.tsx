@@ -7,7 +7,6 @@ import {
   AutocompleteItem,
   AutocompleteGroup,
   AutocompleteGroupLabel,
-  AutocompleteEmpty,
   Label,
 } from '@e412/rnui-react'
 
@@ -36,7 +35,6 @@ export const Default: Story = {
               </AutocompleteItem>
             ))}
           </AutocompleteList>
-          <AutocompleteEmpty>No results found.</AutocompleteEmpty>
         </AutocompleteContent>
       </Autocomplete>
     </div>
@@ -70,7 +68,6 @@ export const WithGroups: Story = {
               ))}
             </AutocompleteGroup>
           </AutocompleteList>
-          <AutocompleteEmpty>No results found.</AutocompleteEmpty>
         </AutocompleteContent>
       </Autocomplete>
     </div>
@@ -91,7 +88,6 @@ export const WithClear: Story = {
               </AutocompleteItem>
             ))}
           </AutocompleteList>
-          <AutocompleteEmpty>No results found.</AutocompleteEmpty>
         </AutocompleteContent>
       </Autocomplete>
     </div>

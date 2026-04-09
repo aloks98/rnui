@@ -8,7 +8,6 @@ import {
   ComboboxItem,
   ComboboxGroup,
   ComboboxLabel,
-  ComboboxEmpty,
   ComboboxSeparator,
 } from '@e412/rnui-react'
 
@@ -35,7 +34,6 @@ export const Default: Story = {
       <ComboboxInput placeholder="Search fruits..." />
       <ComboboxContent>
         <ComboboxList>
-          <ComboboxEmpty>No results found.</ComboboxEmpty>
           {fruits.map((fruit) => (
             <ComboboxItem key={fruit.value} value={fruit.value}>
               {fruit.label}
@@ -53,7 +51,6 @@ export const WithClearButton: Story = {
       <ComboboxInput placeholder="Search fruits..." showClear />
       <ComboboxContent>
         <ComboboxList>
-          <ComboboxEmpty>No results found.</ComboboxEmpty>
           {fruits.map((fruit) => (
             <ComboboxItem key={fruit.value} value={fruit.value}>
               {fruit.label}
@@ -71,7 +68,6 @@ export const WithGroups: Story = {
       <ComboboxInput placeholder="Search..." />
       <ComboboxContent>
         <ComboboxList>
-          <ComboboxEmpty>No results found.</ComboboxEmpty>
           <ComboboxGroup>
             <ComboboxLabel>Fruits</ComboboxLabel>
             <ComboboxItem value="apple">Apple</ComboboxItem>

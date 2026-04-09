@@ -29,6 +29,7 @@ export const Default: Story = {
       <Autocomplete>
         <AutocompleteInput placeholder="Search a fruit..." />
         <AutocompleteContent>
+          <AutocompleteEmpty>No results found.</AutocompleteEmpty>
           <AutocompleteList>
             {fruits.map((fruit) => (
               <AutocompleteItem key={fruit} value={fruit}>
@@ -36,7 +37,6 @@ export const Default: Story = {
               </AutocompleteItem>
             ))}
           </AutocompleteList>
-          <AutocompleteEmpty>No results found.</AutocompleteEmpty>
         </AutocompleteContent>
       </Autocomplete>
     </div>
@@ -52,6 +52,7 @@ export const WithGroups: Story = {
       <Autocomplete>
         <AutocompleteInput placeholder="Search produce..." />
         <AutocompleteContent>
+          <AutocompleteEmpty>No results found.</AutocompleteEmpty>
           <AutocompleteList>
             <AutocompleteGroup>
               <AutocompleteGroupLabel>Fruits</AutocompleteGroupLabel>
@@ -70,7 +71,6 @@ export const WithGroups: Story = {
               ))}
             </AutocompleteGroup>
           </AutocompleteList>
-          <AutocompleteEmpty>No results found.</AutocompleteEmpty>
         </AutocompleteContent>
       </Autocomplete>
     </div>
@@ -84,6 +84,7 @@ export const WithClear: Story = {
       <Autocomplete>
         <AutocompleteInput placeholder="Search a fruit..." showClear />
         <AutocompleteContent>
+          <AutocompleteEmpty>No results found.</AutocompleteEmpty>
           <AutocompleteList>
             {fruits.map((fruit) => (
               <AutocompleteItem key={fruit} value={fruit}>
@@ -91,7 +92,6 @@ export const WithClear: Story = {
               </AutocompleteItem>
             ))}
           </AutocompleteList>
-          <AutocompleteEmpty>No results found.</AutocompleteEmpty>
         </AutocompleteContent>
       </Autocomplete>
     </div>

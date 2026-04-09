@@ -34,8 +34,8 @@ export const Default: Story = {
     <Combobox>
       <ComboboxInput placeholder="Search fruits..." />
       <ComboboxContent>
+        <ComboboxEmpty>No results found.</ComboboxEmpty>
         <ComboboxList>
-          <ComboboxEmpty>No results found.</ComboboxEmpty>
           {fruits.map((fruit) => (
             <ComboboxItem key={fruit.value} value={fruit.value}>
               {fruit.label}
@@ -52,6 +52,7 @@ export const WithClearButton: Story = {
     <Combobox>
       <ComboboxInput placeholder="Search fruits..." showClear />
       <ComboboxContent>
+        <ComboboxEmpty>No results found.</ComboboxEmpty>
         <ComboboxList>
           {fruits.map((fruit) => (
             <ComboboxItem key={fruit.value} value={fruit.value}>
@@ -69,6 +70,7 @@ export const WithGroups: Story = {
     <Combobox>
       <ComboboxInput placeholder="Search..." />
       <ComboboxContent>
+        <ComboboxEmpty>No results found.</ComboboxEmpty>
         <ComboboxList>
           <ComboboxGroup>
             <ComboboxLabel>Fruits</ComboboxLabel>

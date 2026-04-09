@@ -73,9 +73,10 @@ export const WithDropdown: Story = {
   render: () => (
     <ButtonGroup>
       <Button variant="outline">Follow</Button>
+      <ButtonGroupSeparator />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" className="pl-2!">
+          <Button variant="outline" size="icon">
             <ChevronDownIcon />
           </Button>
         </DropdownMenuTrigger>
@@ -133,7 +134,7 @@ export const Sizes: Story = {
         <Button variant="outline" size="lg">Large</Button>
         <Button variant="outline" size="lg">Button</Button>
         <Button variant="outline" size="lg">Group</Button>
-        <Button variant="outline" size="icon">
+        <Button variant="outline" size="icon-lg">
           <PlusIcon />
         </Button>
       </ButtonGroup>

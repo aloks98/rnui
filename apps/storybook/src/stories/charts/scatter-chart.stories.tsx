@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ScatterChart } from '@e412/rnui-react'
+import { ScatterChart, Card, CardHeader, CardTitle, CardDescription, CardContent } from '@e412/rnui-react'
 
 const meta = {
   title: 'Charts/ScatterChart',
@@ -19,37 +19,41 @@ const meta = {
       description: 'Show loading state',
     },
   },
-  decorators: [
-    (Story: any) => (
-      <div className="w-full max-w-2xl">
-        <Story />
-      </div>
-    ),
-  ],
   parameters: { layout: 'padded' },
 } satisfies Meta<typeof ScatterChart>
 
 export default meta
 
 export const ScatterChartDefault: StoryObj = {
-  args: {
-    series: [
-      {
-        name: 'Cluster A',
-        data: [
-          [10, 8.04], [8, 6.95], [13, 7.58], [9, 8.81], [11, 8.33],
-          [14, 9.96], [6, 7.24], [4, 4.26], [12, 10.84], [7, 4.82],
-          [5, 5.68], [9.5, 7.71], [3, 4.1], [8.5, 6.42], [11.5, 9.12],
-        ],
-      },
-      {
-        name: 'Cluster B',
-        data: [
-          [20, 18.04], [18, 16.95], [23, 17.58], [19, 18.81], [21, 18.33],
-          [24, 19.96], [16, 17.24], [14, 14.26], [22, 20.84], [17, 14.82],
-          [15, 15.68], [19.5, 17.71], [13, 14.1], [18.5, 16.42], [21.5, 19.12],
-        ],
-      },
-    ],
-  },
+  render: () => (
+    <Card className="w-full max-w-2xl">
+      <CardHeader>
+        <CardTitle>Height vs Weight</CardTitle>
+        <CardDescription>Body measurements across two sample groups</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <ScatterChart
+          series={[
+            {
+              name: 'Group A',
+              data: [
+                [161, 51], [167, 59], [159, 49], [157, 63], [155, 53],
+                [170, 59], [159, 47], [166, 69], [176, 66], [160, 75],
+                [172, 55], [164, 51], [169, 77], [175, 67], [163, 58],
+              ],
+            },
+            {
+              name: 'Group B',
+              data: [
+                [174, 65], [175, 71], [193, 80], [186, 72], [187, 78],
+                [181, 74], [184, 86], [178, 68], [191, 77], [180, 76],
+                [177, 70], [183, 84], [189, 82], [185, 79], [192, 85],
+              ],
+            },
+          ]}
+          height={350}
+        />
+      </CardContent>
+    </Card>
+  ),
 }

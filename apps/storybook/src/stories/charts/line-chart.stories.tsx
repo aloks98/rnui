@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { LineChart, EChart } from '@e412/rnui-react'
+import { LineChart, EChart, Card, CardHeader, CardTitle, CardDescription, CardContent } from '@e412/rnui-react'
 
 const meta = {
   title: 'Charts/LineChart',
@@ -27,120 +27,147 @@ const meta = {
       description: 'Animate chart on mount',
     },
   },
-  decorators: [
-    (Story: any) => (
-      <div className="w-full max-w-2xl">
-        <Story />
-      </div>
-    ),
-  ],
   parameters: { layout: 'padded' },
 } satisfies Meta<typeof LineChart>
 
 export default meta
 
 export const LineChartDefault: StoryObj = {
-  args: {
-    data: [
-      { name: 'Mon', value: 820 },
-      { name: 'Tue', value: 932 },
-      { name: 'Wed', value: 901 },
-      { name: 'Thu', value: 1234 },
-      { name: 'Fri', value: 1290 },
-      { name: 'Sat', value: 1530 },
-      { name: 'Sun', value: 1320 },
-    ],
-  },
+  render: () => (
+    <Card className="w-full max-w-2xl">
+      <CardHeader>
+        <CardTitle>Weekly Page Views</CardTitle>
+        <CardDescription>Daily page views for the current week</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <LineChart
+          data={[
+            { name: 'Mon', value: 12400 },
+            { name: 'Tue', value: 14800 },
+            { name: 'Wed', value: 13200 },
+            { name: 'Thu', value: 16900 },
+            { name: 'Fri', value: 18200 },
+            { name: 'Sat', value: 21500 },
+            { name: 'Sun', value: 19800 },
+          ]}
+          height={350}
+        />
+      </CardContent>
+    </Card>
+  ),
 }
 
 export const LineChartMultiSeries: StoryObj = {
   render: () => (
-    <div className="w-full max-w-2xl">
-      <LineChart
-        categories={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']}
-        series={[
-          { name: 'Revenue', data: [4200, 3800, 5100, 4600, 5800, 6200] },
-          { name: 'Expenses', data: [2800, 3200, 2900, 3100, 2700, 3500] },
-          { name: 'Profit', data: [1400, 600, 2200, 1500, 3100, 2700] },
-        ]}
-        smooth={true}
-        showLegend={true}
-      />
-    </div>
+    <Card className="w-full max-w-2xl">
+      <CardHeader>
+        <CardTitle>Revenue Trends</CardTitle>
+        <CardDescription>Revenue, expenses, and profit over the past 12 months</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <LineChart
+          categories={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
+          series={[
+            { name: 'Revenue', data: [42000, 38000, 51000, 46000, 58000, 62000, 55000, 67000, 71000, 64000, 73000, 81000] },
+            { name: 'Expenses', data: [28000, 32000, 29000, 31000, 27000, 35000, 33000, 36000, 34000, 38000, 37000, 41000] },
+            { name: 'Profit', data: [14000, 6000, 22000, 15000, 31000, 27000, 22000, 31000, 37000, 26000, 36000, 40000] },
+          ]}
+          smooth={true}
+          showLegend={true}
+          height={350}
+        />
+      </CardContent>
+    </Card>
   ),
 }
 
 export const Annotations: StoryObj = {
-  render: () => (
-    <div className="w-full max-w-2xl">
-      <LineChart
-        data={[
-          { name: 'Mon', value: 820 },
-          { name: 'Tue', value: 932 },
-          { name: 'Wed', value: 901 },
-          { name: 'Thu', value: 1234 },
-          { name: 'Fri', value: 1290 },
-          { name: 'Sat', value: 1530 },
-          { name: 'Sun', value: 1320 },
-        ]}
-        smooth
-        option={{
-          series: [
-            {
-              type: 'line',
-              data: [820, 932, 901, 1234, 1290, 1530, 1320],
-              smooth: true,
-              symbolSize: 6,
-              markPoint: {
-                data: [
-                  { type: 'max', name: 'Max' },
-                  { type: 'min', name: 'Min' },
-                ],
-                label: { fontSize: 10 },
+  render: () => {
+    const pageViews = [8200, 9320, 9010, 12340, 12900, 15300, 13200]
+    return (
+      <Card className="w-full max-w-2xl">
+        <CardHeader>
+          <CardTitle>Traffic Analysis</CardTitle>
+          <CardDescription>Page views with min, max, and average annotations</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <LineChart
+            data={[
+              { name: 'Mon', value: 8200 },
+              { name: 'Tue', value: 9320 },
+              { name: 'Wed', value: 9010 },
+              { name: 'Thu', value: 12340 },
+              { name: 'Fri', value: 12900 },
+              { name: 'Sat', value: 15300 },
+              { name: 'Sun', value: 13200 },
+            ]}
+            smooth
+            height={350}
+            option={{
+              series: [
+                {
+                  type: 'line',
+                  data: pageViews,
+                  smooth: true,
+                  symbolSize: 6,
+                  markPoint: {
+                    data: [
+                      { type: 'max', name: 'Max' },
+                      { type: 'min', name: 'Min' },
+                    ],
+                    label: { fontSize: 10 },
+                  },
+                  markLine: {
+                    data: [
+                      { type: 'average', name: 'Average' },
+                    ],
+                    label: { formatter: 'Avg: {c}', fontSize: 11 },
+                    lineStyle: { type: 'dashed' },
+                  },
+                },
+              ],
+              xAxis: {
+                type: 'category',
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                axisTick: { show: false },
+                splitLine: { show: false },
               },
-              markLine: {
-                data: [
-                  { type: 'average', name: 'Average' },
-                ],
-                label: { formatter: 'Avg: {c}', fontSize: 11 },
-                lineStyle: { type: 'dashed' },
+              yAxis: {
+                type: 'value',
+                axisLine: { show: false },
+                axisTick: { show: false },
+                splitLine: { lineStyle: { type: 'dashed', opacity: 0.5 } },
               },
-            },
-          ],
-          xAxis: {
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            axisTick: { show: false },
-            splitLine: { show: false },
-          },
-          yAxis: {
-            type: 'value',
-            axisLine: { show: false },
-            axisTick: { show: false },
-            splitLine: { lineStyle: { type: 'dashed', opacity: 0.5 } },
-          },
-          grid: { containLabel: true, left: 16, right: 16, top: 40, bottom: 8 },
-        }}
-      />
-    </div>
-  ),
+              grid: { containLabel: true, left: 16, right: 16, top: 40, bottom: 8 },
+            }}
+          />
+        </CardContent>
+      </Card>
+    )
+  },
 }
 
 export const NoAnimation: StoryObj = {
   render: () => (
-    <div className="w-full max-w-2xl">
-      <LineChart
-        data={[
-          { name: 'Mon', value: 820 },
-          { name: 'Tue', value: 932 },
-          { name: 'Wed', value: 901 },
-          { name: 'Thu', value: 1234 },
-          { name: 'Fri', value: 1290 },
-        ]}
-        animateOnMount={false}
-        option={{ animation: false }}
-      />
-    </div>
+    <Card className="w-full max-w-2xl">
+      <CardHeader>
+        <CardTitle>Static Chart</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <LineChart
+          data={[
+            { name: 'Mon', value: 820 },
+            { name: 'Tue', value: 932 },
+            { name: 'Wed', value: 901 },
+            { name: 'Thu', value: 1234 },
+            { name: 'Fri', value: 1290 },
+          ]}
+          animateOnMount={false}
+          option={{ animation: false }}
+          height={350}
+        />
+      </CardContent>
+    </Card>
   ),
 }
 

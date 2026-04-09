@@ -2,3 +2,51 @@
 @import "@e412/rnui-themes";
 @import "tw-animate-css";
 @source "../node_modules/@e412/rnui-react/dist";
+
+/*
+ * Force Storybook docs page to respect dark mode.
+ * Storybook injects its own theme CSS — these overrides ensure
+ * the docs wrapper, content, and all nested elements follow .dark class.
+ */
+html.dark body,
+html.dark .sb-wrapper,
+html.dark .sbdocs,
+html.dark .sbdocs-wrapper,
+html.dark .sbdocs-content,
+html.dark [id^="anchor--"],
+html.dark .docs-story {
+  background-color: oklch(0.145 0 0) !important;
+  color: oklch(0.985 0 0) !important;
+}
+
+html.dark .sbdocs h1,
+html.dark .sbdocs h2,
+html.dark .sbdocs h3,
+html.dark .sbdocs h4,
+html.dark .sbdocs p,
+html.dark .sbdocs li,
+html.dark .sbdocs td,
+html.dark .sbdocs th,
+html.dark .sbdocs label,
+html.dark .sbdocs span {
+  color: oklch(0.985 0 0) !important;
+}
+
+html.dark .sbdocs hr,
+html.dark .sbdocs-separator {
+  border-color: oklch(0.269 0 0) !important;
+}
+
+html.dark .docblock-source,
+html.dark .docblock-code-toggle,
+html.dark .sbdocs pre {
+  background-color: oklch(0.205 0 0) !important;
+  color: oklch(0.985 0 0) !important;
+}
+
+html.dark .docblock-argstable th,
+html.dark .docblock-argstable td {
+  background-color: oklch(0.145 0 0) !important;
+  color: oklch(0.985 0 0) !important;
+  border-color: oklch(0.269 0 0) !important;
+}

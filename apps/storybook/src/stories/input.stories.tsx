@@ -141,11 +141,30 @@ export const Grid: Story = {
 
 export const WithInputGroup: Story = {
   render: () => (
-    <div className="grid w-full max-w-sm gap-1.5">
-      <Label>Website</Label>
+    <div className="grid w-full max-w-sm gap-6">
       <InputGroup>
-        <InputGroupAddon className="border-r border-input bg-muted/50 pr-2.5">https://</InputGroupAddon>
-        <InputGroupInput placeholder="example.com" />
+        <InputGroupAddon>
+          <InputGroupText>$</InputGroupText>
+        </InputGroupAddon>
+        <InputGroupInput placeholder="0.00" />
+        <InputGroupAddon align="inline-end">
+          <InputGroupText>USD</InputGroupText>
+        </InputGroupAddon>
+      </InputGroup>
+      <InputGroup>
+        <InputGroupAddon>
+          <InputGroupText>https://</InputGroupText>
+        </InputGroupAddon>
+        <InputGroupInput placeholder="example.com" className="pl-0.5!" />
+        <InputGroupAddon align="inline-end">
+          <InputGroupText>.com</InputGroupText>
+        </InputGroupAddon>
+      </InputGroup>
+      <InputGroup>
+        <InputGroupInput placeholder="Enter your username" />
+        <InputGroupAddon align="inline-end">
+          <InputGroupText>@company.com</InputGroupText>
+        </InputGroupAddon>
       </InputGroup>
     </div>
   ),

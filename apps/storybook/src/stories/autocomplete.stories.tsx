@@ -5,8 +5,6 @@ import {
   AutocompleteContent,
   AutocompleteList,
   AutocompleteItem,
-  AutocompleteGroup,
-  AutocompleteGroupLabel,
   AutocompleteEmpty,
   Label,
 } from '@e412/rnui-react'
@@ -26,16 +24,16 @@ export const Default: Story = {
   render: () => (
     <div className="grid w-full max-w-sm gap-1.5">
       <Label>Fruit</Label>
-      <Autocomplete>
+      <Autocomplete items={fruits}>
         <AutocompleteInput placeholder="Search a fruit..." />
         <AutocompleteContent>
           <AutocompleteEmpty>No results found.</AutocompleteEmpty>
           <AutocompleteList>
-            {fruits.map((fruit) => (
-              <AutocompleteItem key={fruit} value={fruit}>
-                {fruit}
+            {(item) => (
+              <AutocompleteItem key={item} value={item}>
+                {item}
               </AutocompleteItem>
-            ))}
+            )}
           </AutocompleteList>
         </AutocompleteContent>
       </Autocomplete>
@@ -49,27 +47,21 @@ export const WithGroups: Story = {
   render: () => (
     <div className="grid w-full max-w-sm gap-1.5">
       <Label>Produce</Label>
-      <Autocomplete>
+      <Autocomplete
+        items={[
+          { label: 'Fruits', items: fruits },
+          { label: 'Vegetables', items: vegetables },
+        ]}
+      >
         <AutocompleteInput placeholder="Search produce..." />
         <AutocompleteContent>
           <AutocompleteEmpty>No results found.</AutocompleteEmpty>
           <AutocompleteList>
-            <AutocompleteGroup>
-              <AutocompleteGroupLabel>Fruits</AutocompleteGroupLabel>
-              {fruits.map((fruit) => (
-                <AutocompleteItem key={fruit} value={fruit}>
-                  {fruit}
-                </AutocompleteItem>
-              ))}
-            </AutocompleteGroup>
-            <AutocompleteGroup>
-              <AutocompleteGroupLabel>Vegetables</AutocompleteGroupLabel>
-              {vegetables.map((vegetable) => (
-                <AutocompleteItem key={vegetable} value={vegetable}>
-                  {vegetable}
-                </AutocompleteItem>
-              ))}
-            </AutocompleteGroup>
+            {(item) => (
+              <AutocompleteItem key={item} value={item}>
+                {item}
+              </AutocompleteItem>
+            )}
           </AutocompleteList>
         </AutocompleteContent>
       </Autocomplete>
@@ -81,16 +73,16 @@ export const WithClear: Story = {
   render: () => (
     <div className="grid w-full max-w-sm gap-1.5">
       <Label>Fruit</Label>
-      <Autocomplete>
+      <Autocomplete items={fruits}>
         <AutocompleteInput placeholder="Search a fruit..." showClear />
         <AutocompleteContent>
           <AutocompleteEmpty>No results found.</AutocompleteEmpty>
           <AutocompleteList>
-            {fruits.map((fruit) => (
-              <AutocompleteItem key={fruit} value={fruit}>
-                {fruit}
+            {(item) => (
+              <AutocompleteItem key={item} value={item}>
+                {item}
               </AutocompleteItem>
-            ))}
+            )}
           </AutocompleteList>
         </AutocompleteContent>
       </Autocomplete>

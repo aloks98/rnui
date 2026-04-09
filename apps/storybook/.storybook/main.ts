@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(ts|tsx)'],
-  addons: ['@storybook/addon-docs', 'storybook-dark-mode'],
+  addons: ['@storybook/addon-docs', 'storybook-dark-mode/preset'],
   framework: '@storybook/react-vite',
   docs: {
     defaultName: 'Docs',

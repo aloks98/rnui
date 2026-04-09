@@ -1,5 +1,4 @@
 import type { Preview } from '@storybook/react'
-import { themes } from 'storybook/theming'
 import '../src/styles.css'
 
 const preview: Preview = {
@@ -14,7 +13,6 @@ const preview: Preview = {
     backgrounds: { disable: true },
     layout: 'centered',
     docs: {
-      theme: themes.dark,
       canvas: {
         sourceState: 'shown',
       },
@@ -35,16 +33,29 @@ const preview: Preview = {
     },
   },
   initialGlobals: {
-    theme: 'dark',
+    theme: 'light',
   },
   decorators: [
     (Story, context) => {
-      const theme = context.globals.theme
+      const isDark = context.globals.theme === 'dark'
 
-      // Apply to current iframe document
-      document.documentElement.classList.toggle('dark', theme === 'dark')
-      document.body.style.backgroundColor = theme === 'dark' ? '#0a0a0a' : '#ffffff'
-      document.body.style.color = theme === 'dark' ? '#fafafa' : ''
+      // Apply to this iframe's document
+      document.documentElement.classList.toggle('dark', isDark)
+      document.body.style.backgroundColor = isDark ? '#0a0a0a' : '#ffffff'
+      document.body.style.color = isDark ? '#fafafa' : ''
+
+      // In docs mode, also update all sibling story iframes
+      try {
+        const storyFrames = window.parent?.document?.querySelectorAll('iframe[data-is-storybook]')
+        storyFrames?.forEach((frame: Element) => {
+          const iframeDoc = (frame as HTMLIFrameElement).contentDocument
+          if (iframeDoc && iframeDoc !== document) {
+            iframeDoc.documentElement.classList.toggle('dark', isDark)
+            iframeDoc.body.style.backgroundColor = isDark ? '#0a0a0a' : '#ffffff'
+            iframeDoc.body.style.color = isDark ? '#fafafa' : ''
+          }
+        })
+      } catch {}
 
       return Story()
     },

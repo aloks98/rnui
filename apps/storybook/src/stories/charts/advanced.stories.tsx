@@ -26,7 +26,7 @@ const meta = {
       description: 'Animate chart on mount',
     },
   },
-  parameters: { layout: 'padded' },
+  parameters: { layout: 'centered' },
 } satisfies Meta<typeof EChart>
 
 export default meta

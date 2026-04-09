@@ -27,7 +27,7 @@ const meta = {
       description: 'Show loading state',
     },
   },
-  parameters: { layout: 'padded' },
+  parameters: { layout: 'centered' },
 } satisfies Meta<typeof PieChart>
 
 export default meta

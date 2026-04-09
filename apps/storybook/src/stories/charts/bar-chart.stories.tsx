@@ -23,7 +23,7 @@ const meta = {
       description: 'Show loading state',
     },
   },
-  parameters: { layout: 'padded' },
+  parameters: { layout: 'centered' },
 } satisfies Meta<typeof BarChart>
 
 export default meta

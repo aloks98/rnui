@@ -9,26 +9,41 @@ function applyTheme(isDark: boolean) {
   const root = document.documentElement
   root.classList.toggle('dark', isDark)
   root.classList.toggle('light', !isDark)
-  document.body.style.backgroundColor = isDark ? 'oklch(0.145 0 0)' : 'oklch(1 0 0)'
-  document.body.style.color = isDark ? 'oklch(0.985 0 0)' : 'oklch(0.145 0 0)'
+
+  const bg = isDark ? 'oklch(0.145 0 0)' : 'oklch(1 0 0)'
+  const fg = isDark ? 'oklch(0.985 0 0)' : 'oklch(0.145 0 0)'
+
+  // Set on body
+  document.body.style.backgroundColor = bg
+  document.body.style.color = fg
+
+  // Override Storybook's docs wrapper background
+  const docsWrapper = document.querySelector('.sb-wrapper')
+  if (docsWrapper) {
+    ;(docsWrapper as HTMLElement).style.backgroundColor = bg
+    ;(docsWrapper as HTMLElement).style.color = fg
+  }
+
+  // Also target any docs-story containers (story preview wrappers in docs)
+  document.querySelectorAll('.docs-story').forEach((el) => {
+    ;(el as HTMLElement).style.backgroundColor = bg
+  })
 }
 
-// Read initial state from localStorage (where the addon persists it)
 function getIsDark(): boolean {
   try {
     const stored = localStorage.getItem('sb-addon-themes-3')
     if (stored) {
-      const parsed = JSON.parse(stored)
-      return parsed.current === 'dark'
+      return JSON.parse(stored).current === 'dark'
     }
   } catch {}
   return false
 }
 
-// Apply on module load (covers initial render of all iframes)
+// Apply on module load
 applyTheme(getIsDark())
 
-// Listen for toggle events (covers subsequent toggles)
+// Listen for toggle events
 const channel = addons.getChannel()
 channel.on(DARK_MODE_EVENT_NAME, applyTheme)
 
@@ -60,8 +75,15 @@ const preview: Preview = {
   decorators: [
     (Story) => {
       useEffect(() => {
-        // Re-apply on mount in case this iframe loaded after the toggle
         applyTheme(getIsDark())
+
+        // Watch for late-rendered docs containers
+        const observer = new MutationObserver(() => {
+          applyTheme(getIsDark())
+        })
+        observer.observe(document.body, { childList: true, subtree: true })
+
+        return () => observer.disconnect()
       }, [])
       return Story()
     },

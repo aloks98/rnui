@@ -8,6 +8,7 @@ export { ScatterChart, type ScatterChartProps, type ScatterChartSeries } from ".
 export { registerShadcnTheme, getThemeMode, getThemeName } from "./theme-registry"
 export { buildEChartsTheme, extractShadcnColors, resolveColor } from "./theme-builder"
 export { applyMinimalPreset } from "./preset"
+export { chartConfig, ChartConfigBuilder } from "./chart-config"
 export type {
   ThemeMode,
   ShadcnChartColors,

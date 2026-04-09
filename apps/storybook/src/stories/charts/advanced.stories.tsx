@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { EChart, echarts, Card, CardHeader, CardTitle, CardDescription, CardContent } from '@e412/rnui-react'
+import { EChart, echarts, chartConfig, Card, CardHeader, CardTitle, CardDescription, CardContent } from '@e412/rnui-react'
 import { GaugeChart } from 'echarts/charts'
 
 echarts.use([GaugeChart])
@@ -148,4 +148,127 @@ export const MixedChart: StoryObj = {
       </CardContent>
     </Card>
   ),
+}
+
+/* ------------------------------------------------------------------ */
+/*  chartConfig() Builder Examples                                     */
+/* ------------------------------------------------------------------ */
+
+export const ConfigBuilderBar: StoryObj = {
+  render: () => {
+    const option = chartConfig()
+      .bar({ data: [18500, 22300, 31200, 27800, 35600, 42100], categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'] })
+      .tooltip()
+      .build()
+
+    return (
+      <Card className="w-[672px]">
+        <CardHeader>
+          <CardTitle>Config Builder — Bar Chart</CardTitle>
+          <CardDescription>Built with chartConfig().bar().tooltip().build()</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <EChart option={option} height={350} />
+        </CardContent>
+      </Card>
+    )
+  },
+}
+
+export const ConfigBuilderMultiLine: StoryObj = {
+  render: () => {
+    const option = chartConfig()
+      .line({ data: [4200, 3800, 5100, 4600, 5800, 6200], categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], name: 'Revenue', smooth: true })
+      .line({ data: [2800, 3200, 2900, 3100, 2700, 3500], name: 'Expenses', smooth: true })
+      .line({ data: [1400, 600, 2200, 1500, 3100, 2700], name: 'Profit', smooth: true })
+      .legend()
+      .tooltip()
+      .build()
+
+    return (
+      <Card className="w-[672px]">
+        <CardHeader>
+          <CardTitle>Config Builder — Multi-Line</CardTitle>
+          <CardDescription>Built with chartConfig().line().line().line().legend().tooltip().build()</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <EChart option={option} height={350} />
+        </CardContent>
+      </Card>
+    )
+  },
+}
+
+export const ConfigBuilderDonut: StoryObj = {
+  render: () => {
+    const option = chartConfig()
+      .pie({
+        data: [
+          { name: 'Design', value: 35 },
+          { name: 'Engineering', value: 40 },
+          { name: 'Marketing', value: 15 },
+          { name: 'Sales', value: 10 },
+        ],
+        donut: true,
+      })
+      .tooltip('item')
+      .legend()
+      .build()
+
+    return (
+      <Card className="w-[672px]">
+        <CardHeader>
+          <CardTitle>Config Builder — Donut</CardTitle>
+          <CardDescription>Built with chartConfig().pie({'{ donut: true }'}).tooltip('item').legend().build()</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <EChart option={option} height={300} />
+        </CardContent>
+      </Card>
+    )
+  },
+}
+
+export const ConfigBuilderAreaWithZoom: StoryObj = {
+  render: () => {
+    const option = chartConfig()
+      .line({ data: [820, 932, 901, 1234, 1290, 1530, 1320, 1450, 1680, 1590, 1820, 2010], categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], name: 'Users', smooth: true, area: true, areaOpacity: 0.3 })
+      .tooltip()
+      .dataZoom(0, 60)
+      .build()
+
+    return (
+      <Card className="w-[672px]">
+        <CardHeader>
+          <CardTitle>Config Builder — Area with Zoom</CardTitle>
+          <CardDescription>Built with chartConfig().line({'{ area: true }'}).dataZoom(0, 60).build()</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <EChart option={option} height={380} />
+        </CardContent>
+      </Card>
+    )
+  },
+}
+
+export const ConfigBuilderCustomColors: StoryObj = {
+  render: () => {
+    const option = chartConfig()
+      .bar({ data: [320, 280, 250, 210, 180], categories: ['React', 'Vue', 'Angular', 'Svelte', 'Solid'], horizontal: true })
+      .colors(['#6366f1', '#ec4899', '#f59e0b', '#14b8a6', '#8b5cf6'])
+      .tooltip()
+      .build()
+
+    return (
+      <Card className="w-[672px]">
+        <CardHeader>
+          <CardTitle>Config Builder — Custom Colors</CardTitle>
+          <CardDescription>Built with chartConfig().bar().colors([...]).build()</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <EChart option={option} height={300} />
+        </CardContent>
+      </Card>
+    )
+  },
 }

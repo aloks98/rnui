@@ -26,7 +26,7 @@ export default meta
 
 export const ScatterChartDefault: StoryObj = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>Height vs Weight</CardTitle>
         <CardDescription>Body measurements across two sample groups</CardDescription>

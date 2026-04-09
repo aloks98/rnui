@@ -34,7 +34,7 @@ export default meta
 
 export const AreaChartDefault: StoryObj = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>User Growth</CardTitle>
         <CardDescription>Active users and sessions over the past 6 months</CardDescription>
@@ -55,7 +55,7 @@ export const AreaChartDefault: StoryObj = {
 
 export const AreaChartStacked: StoryObj = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>Traffic Sources</CardTitle>
         <CardDescription>Breakdown of traffic by source over time</CardDescription>

@@ -26,7 +26,7 @@ export default meta
 
 export const RadarChartDefault: StoryObj = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>Skills Comparison</CardTitle>
         <CardDescription>Product A vs Product B across key metrics</CardDescription>

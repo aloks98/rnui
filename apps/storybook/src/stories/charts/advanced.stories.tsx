@@ -33,7 +33,7 @@ export default meta
 
 export const BaseEChart: StoryObj = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>System Performance</CardTitle>
         <CardDescription>Current CPU utilization</CardDescription>
@@ -74,7 +74,7 @@ export const DataZoom: StoryObj = {
     const data = [12.0, 18.9, 27.0, 53.2, 65.6, 96.7, 135.6, 162.2, 82.6, 50.0, 26.4, 13.3]
 
     return (
-      <Card className="w-full max-w-2xl">
+      <Card className="w-[672px]">
         <CardHeader>
           <CardTitle>Annual Precipitation</CardTitle>
           <CardDescription>Monthly rainfall in millimeters with interactive zoom</CardDescription>
@@ -109,7 +109,7 @@ export const DataZoom: StoryObj = {
 
 export const MixedChart: StoryObj = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>Revenue & Growth Rate</CardTitle>
         <CardDescription>Monthly revenue with year-over-year growth percentage</CardDescription>

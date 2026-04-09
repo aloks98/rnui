@@ -31,7 +31,7 @@ type Story = StoryObj<typeof meta>
 
 export const BarChartDefault: Story = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>Monthly Revenue</CardTitle>
         <CardDescription>Revenue performance over the past 6 months</CardDescription>
@@ -55,7 +55,7 @@ export const BarChartDefault: Story = {
 
 export const BarChartHorizontal: Story = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>Top Products by Sales</CardTitle>
         <CardDescription>Best-selling products this quarter</CardDescription>
@@ -79,7 +79,7 @@ export const BarChartHorizontal: Story = {
 
 export const BarChartStacked: Story = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>Revenue vs Expenses</CardTitle>
         <CardDescription>Monthly financial breakdown for H1 2025</CardDescription>
@@ -118,7 +118,7 @@ export const NegativeValues: StoryObj = {
   render: () => {
     const profitData = [4200, -1800, 6500, -2400, 3100, -3200]
     return (
-      <Card className="w-full max-w-2xl">
+      <Card className="w-[672px]">
         <CardHeader>
           <CardTitle>Profit & Loss</CardTitle>
           <CardDescription>Monthly profit and loss statement</CardDescription>
@@ -161,7 +161,7 @@ export const NegativeValues: StoryObj = {
 
 export const CustomTooltip: StoryObj = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>Sales Performance</CardTitle>
         <CardDescription>Monthly sales with formatted tooltips</CardDescription>
@@ -198,7 +198,7 @@ export const CustomTooltip: StoryObj = {
 
 export const LoadingState: StoryObj = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>Loading Chart</CardTitle>
       </CardHeader>
@@ -219,7 +219,7 @@ export const LoadingState: StoryObj = {
 
 export const CustomHeight: StoryObj = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>Compact View</CardTitle>
         <CardDescription>A smaller chart for tight layouts</CardDescription>

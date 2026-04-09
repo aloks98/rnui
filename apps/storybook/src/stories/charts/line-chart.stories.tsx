@@ -34,7 +34,7 @@ export default meta
 
 export const LineChartDefault: StoryObj = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>Weekly Page Views</CardTitle>
         <CardDescription>Daily page views for the current week</CardDescription>
@@ -59,7 +59,7 @@ export const LineChartDefault: StoryObj = {
 
 export const LineChartMultiSeries: StoryObj = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>Revenue Trends</CardTitle>
         <CardDescription>Revenue, expenses, and profit over the past 12 months</CardDescription>
@@ -85,7 +85,7 @@ export const Annotations: StoryObj = {
   render: () => {
     const pageViews = [8200, 9320, 9010, 12340, 12900, 15300, 13200]
     return (
-      <Card className="w-full max-w-2xl">
+      <Card className="w-[672px]">
         <CardHeader>
           <CardTitle>Traffic Analysis</CardTitle>
           <CardDescription>Page views with min, max, and average annotations</CardDescription>
@@ -149,7 +149,7 @@ export const Annotations: StoryObj = {
 
 export const NoAnimation: StoryObj = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>Static Chart</CardTitle>
       </CardHeader>

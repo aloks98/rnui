@@ -34,7 +34,7 @@ export default meta
 
 export const PieChartDefault: StoryObj = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>Market Share</CardTitle>
         <CardDescription>Browser market share distribution</CardDescription>
@@ -57,7 +57,7 @@ export const PieChartDefault: StoryObj = {
 
 export const DonutChart: StoryObj = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>Revenue by Category</CardTitle>
         <CardDescription>Revenue distribution across product categories</CardDescription>
@@ -81,7 +81,7 @@ export const DonutChart: StoryObj = {
 
 export const CustomColors: StoryObj = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>Team Allocation</CardTitle>
         <CardDescription>Headcount distribution across departments</CardDescription>
@@ -106,7 +106,7 @@ export const CustomColors: StoryObj = {
 
 export const DonutWithCenterLabel: StoryObj = {
   render: () => (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-[672px]">
       <CardHeader>
         <CardTitle>Storage Usage</CardTitle>
         <CardDescription>Cloud storage consumption</CardDescription>

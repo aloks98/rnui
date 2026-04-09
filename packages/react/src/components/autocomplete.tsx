@@ -253,7 +253,7 @@ function AutocompleteEmpty({
     <AutocompletePrimitive.Empty
       data-slot="autocomplete-empty"
       className={cn(
-        "text-muted-foreground px-2 py-1.5 text-sm text-center empty:hidden",
+        "text-muted-foreground px-2 py-1.5 text-sm text-center empty:m-0 empty:p-0",
         className
       )}
       {...props}

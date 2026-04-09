@@ -21,26 +21,20 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const fruits = [
-  { value: 'apple', label: 'Apple' },
-  { value: 'banana', label: 'Banana' },
-  { value: 'blueberry', label: 'Blueberry' },
-  { value: 'grapes', label: 'Grapes' },
-  { value: 'pineapple', label: 'Pineapple' },
-]
+const fruits = ['Apple', 'Banana', 'Blueberry', 'Grapes', 'Pineapple']
 
 export const Default: Story = {
   render: () => (
-    <Combobox>
+    <Combobox items={fruits}>
       <ComboboxInput placeholder="Search fruits..." />
       <ComboboxContent>
         <ComboboxEmpty>No results found.</ComboboxEmpty>
         <ComboboxList>
-          {fruits.map((fruit) => (
-            <ComboboxItem key={fruit.value} value={fruit.value}>
-              {fruit.label}
+          {(item) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
             </ComboboxItem>
-          ))}
+          )}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
@@ -49,25 +43,32 @@ export const Default: Story = {
 
 export const WithClearButton: Story = {
   render: () => (
-    <Combobox>
+    <Combobox items={fruits}>
       <ComboboxInput placeholder="Search fruits..." showClear />
       <ComboboxContent>
         <ComboboxEmpty>No results found.</ComboboxEmpty>
         <ComboboxList>
-          {fruits.map((fruit) => (
-            <ComboboxItem key={fruit.value} value={fruit.value}>
-              {fruit.label}
+          {(item) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
             </ComboboxItem>
-          ))}
+          )}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
   ),
 }
 
+const allItems = [
+  { value: 'apple', group: 'Fruits' },
+  { value: 'banana', group: 'Fruits' },
+  { value: 'carrot', group: 'Vegetables' },
+  { value: 'broccoli', group: 'Vegetables' },
+]
+
 export const WithGroups: Story = {
   render: () => (
-    <Combobox>
+    <Combobox items={allItems.map((i) => i.value)}>
       <ComboboxInput placeholder="Search..." />
       <ComboboxContent>
         <ComboboxEmpty>No results found.</ComboboxEmpty>
@@ -91,15 +92,15 @@ export const WithGroups: Story = {
 
 export const Disabled: Story = {
   render: () => (
-    <Combobox>
+    <Combobox items={fruits}>
       <ComboboxInput placeholder="Disabled combobox" disabled />
       <ComboboxContent>
         <ComboboxList>
-          {fruits.map((fruit) => (
-            <ComboboxItem key={fruit.value} value={fruit.value}>
-              {fruit.label}
+          {(item) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
             </ComboboxItem>
-          ))}
+          )}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>

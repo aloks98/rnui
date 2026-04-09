@@ -272,10 +272,6 @@ class ChartConfigBuilder {
     this.option.tooltip = {
       trigger,
       ...(formatter ? { formatter } : {}),
-      borderWidth: 1,
-      padding: [8, 12],
-      extraCssText:
-        "border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);",
     }
     return this
   }

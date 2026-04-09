@@ -38,8 +38,20 @@ const preview: Preview = {
   decorators: [
     (Story, context) => {
       const theme = context.globals.theme
+
+      // Apply dark mode to the iframe document
       document.documentElement.classList.toggle('dark', theme === 'dark')
       document.body.style.backgroundColor = theme === 'dark' ? '#0a0a0a' : '#ffffff'
+      document.body.style.color = theme === 'dark' ? '#fafafa' : ''
+
+      // Also try to apply to the parent docs page
+      try {
+        const docsRoot = document.querySelector('.docs-story')
+        if (docsRoot) {
+          (docsRoot as HTMLElement).style.backgroundColor = theme === 'dark' ? '#0a0a0a' : ''
+        }
+      } catch {}
+
       return Story()
     },
   ],

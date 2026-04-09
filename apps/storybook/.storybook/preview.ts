@@ -22,7 +22,7 @@ const preview: Preview = {
       dark: { ...themes.dark },
       light: { ...themes.light },
       darkClass: 'dark',
-      lightClass: '',
+      lightClass: 'light',
       classTarget: 'html',
       stylePreview: true,
     },

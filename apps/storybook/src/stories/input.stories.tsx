@@ -144,9 +144,7 @@ export const WithInputGroup: Story = {
     <div className="grid w-full max-w-sm gap-1.5">
       <Label>Website</Label>
       <InputGroup>
-        <InputGroupAddon>
-          <InputGroupText>https://</InputGroupText>
-        </InputGroupAddon>
+        <InputGroupAddon>https://</InputGroupAddon>
         <InputGroupInput placeholder="example.com" />
       </InputGroup>
     </div>
@@ -172,11 +170,9 @@ export const WithIconAddon: Story = {
             <LockIcon className="size-4 text-muted-foreground" />
           </InputGroupAddon>
           <InputGroupInput type="password" placeholder="Enter password" />
-          <InputGroupAddon align="inline-end">
-            <InputGroupButton variant="ghost" size="icon-sm">
-              <EyeIcon className="size-4" />
-            </InputGroupButton>
-          </InputGroupAddon>
+          <InputGroupButton variant="ghost" size="icon-sm">
+            <EyeIcon className="size-4" />
+          </InputGroupButton>
         </InputGroup>
       </div>
     </div>

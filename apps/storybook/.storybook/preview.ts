@@ -11,6 +11,12 @@ const preview: Preview = {
       },
     },
     backgrounds: { disable: true },
+    layout: 'centered',
+    docs: {
+      canvas: {
+        sourceState: 'shown',
+      },
+    },
   },
   globalTypes: {
     theme: {

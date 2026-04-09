@@ -11,10 +11,7 @@ const meta = {
   component: Accordion,
   tags: ['autodocs'],
   argTypes: {
-    type: {
-      control: 'select',
-      options: ['single', 'multiple'],
-    },
+    multiple: { control: 'boolean' },
     disabled: { control: 'boolean' },
   },
   parameters: { layout: 'padded' },
@@ -25,7 +22,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: () => (
-    <Accordion type="single" collapsible className="w-full max-w-md">
+    <Accordion className="w-full max-w-md">
       <AccordionItem value="item-1">
         <AccordionTrigger>Is it accessible?</AccordionTrigger>
         <AccordionContent>
@@ -50,7 +47,7 @@ export const Default: Story = {
 
 export const Multiple: Story = {
   render: () => (
-    <Accordion type="multiple" className="w-full max-w-md">
+    <Accordion multiple className="w-full max-w-md">
       <AccordionItem value="item-1">
         <AccordionTrigger>First section</AccordionTrigger>
         <AccordionContent>
@@ -75,7 +72,7 @@ export const Multiple: Story = {
 
 export const DefaultOpen: Story = {
   render: () => (
-    <Accordion type="single" collapsible defaultValue="item-2" className="w-full max-w-md">
+    <Accordion defaultValue={["item-2"]} className="w-full max-w-md">
       <AccordionItem value="item-1">
         <AccordionTrigger>First item</AccordionTrigger>
         <AccordionContent>Content for the first item.</AccordionContent>
@@ -84,13 +81,36 @@ export const DefaultOpen: Story = {
         <AccordionTrigger>Second item (default open)</AccordionTrigger>
         <AccordionContent>This item is open by default.</AccordionContent>
       </AccordionItem>
+      <AccordionItem value="item-3">
+        <AccordionTrigger>Third item</AccordionTrigger>
+        <AccordionContent>Content for the third item.</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  ),
+}
+
+export const MultipleDefaultOpen: Story = {
+  render: () => (
+    <Accordion multiple defaultValue={["item-1", "item-3"]} className="w-full max-w-md">
+      <AccordionItem value="item-1">
+        <AccordionTrigger>First item (default open)</AccordionTrigger>
+        <AccordionContent>This item is open by default.</AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Second item</AccordionTrigger>
+        <AccordionContent>This item starts closed.</AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-3">
+        <AccordionTrigger>Third item (default open)</AccordionTrigger>
+        <AccordionContent>This item is also open by default.</AccordionContent>
+      </AccordionItem>
     </Accordion>
   ),
 }
 
 export const Disabled: Story = {
   render: () => (
-    <Accordion type="single" collapsible className="w-full max-w-md">
+    <Accordion className="w-full max-w-md">
       <AccordionItem value="item-1">
         <AccordionTrigger>Enabled item</AccordionTrigger>
         <AccordionContent>This item can be toggled.</AccordionContent>

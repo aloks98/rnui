@@ -26,6 +26,7 @@ const preview: Preview = {
         dark: 'dark',
       },
       defaultTheme: 'light',
+      parentSelector: 'html',
     }),
   ],
 }

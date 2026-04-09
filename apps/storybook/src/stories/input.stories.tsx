@@ -144,7 +144,7 @@ export const WithInputGroup: Story = {
     <div className="grid w-full max-w-sm gap-1.5">
       <Label>Website</Label>
       <InputGroup>
-        <InputGroupAddon>https://</InputGroupAddon>
+        <InputGroupAddon className="border-r border-input bg-muted/50 pr-2.5">https://</InputGroupAddon>
         <InputGroupInput placeholder="example.com" />
       </InputGroup>
     </div>

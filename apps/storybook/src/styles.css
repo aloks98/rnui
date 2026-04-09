@@ -3,9 +3,18 @@
 @import "tw-animate-css";
 @source "../node_modules/@e412/rnui-react/dist";
 
-/* Ensure body bg/color follows theme in all storybook iframes */
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  transition: background-color 0.2s, color 0.2s;
+/*
+ * Storybook docs page iframes: ensure body bg/color follows .dark class.
+ * The rnui-themes base.css uses var(--background) but the Tailwind build
+ * in storybook context may not process it correctly for body.
+ * These rules use the actual oklch values directly.
+ */
+:root body {
+  background-color: oklch(1 0 0);
+  color: oklch(0.145 0 0);
+}
+
+:root.dark body {
+  background-color: oklch(0.145 0 0);
+  color: oklch(0.985 0 0);
 }

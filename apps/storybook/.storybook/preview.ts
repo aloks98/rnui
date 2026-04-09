@@ -1,5 +1,5 @@
-import type { Preview, Renderer } from '@storybook/react'
-import { withThemeByClassName } from '@storybook/addon-themes'
+import type { Preview } from '@storybook/react'
+import { themes } from 'storybook/theming'
 import '../src/styles.css'
 
 const preview: Preview = {
@@ -18,16 +18,15 @@ const preview: Preview = {
         sourceState: 'shown',
       },
     },
+    darkMode: {
+      dark: { ...themes.dark },
+      light: { ...themes.light },
+      darkClass: 'dark',
+      lightClass: '',
+      classTarget: 'html',
+      stylePreview: true,
+    },
   },
-  decorators: [
-    withThemeByClassName<Renderer>({
-      themes: {
-        light: '',
-        dark: 'dark',
-      },
-      defaultTheme: 'light',
-    }),
-  ],
 }
 
 export default preview

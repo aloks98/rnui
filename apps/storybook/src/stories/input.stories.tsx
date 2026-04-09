@@ -3,6 +3,7 @@ import {
   Input,
   Label,
   Button,
+  ButtonGroup,
   Badge,
   InputGroup,
   InputGroupAddon,
@@ -201,15 +202,12 @@ export const WithIconAddon: Story = {
 export const SearchWithButton: Story = {
   render: () => (
     <div className="w-full max-w-sm">
-      <InputGroup>
-        <InputGroupAddon>
-          <SearchIcon className="size-4 text-muted-foreground" />
-        </InputGroupAddon>
-        <InputGroupInput placeholder="Search components..." />
-        <InputGroupAddon align="inline-end">
-          <InputGroupButton size="sm">Search</InputGroupButton>
-        </InputGroupAddon>
-      </InputGroup>
+      <ButtonGroup>
+        <Input placeholder="Search components..." />
+        <Button variant="outline" aria-label="Search">
+          <SearchIcon />
+        </Button>
+      </ButtonGroup>
     </div>
   ),
 }

@@ -5,3 +5,4 @@ dist/
 storybook-static/
 .next/
 .source/
+.superpowers/

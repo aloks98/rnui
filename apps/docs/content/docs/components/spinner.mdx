@@ -1,0 +1,77 @@
+---
+title: Spinner
+description: A loading indicator that signals an ongoing process.
+---
+
+import { Spinner, Button } from '@e412/rnui-react';
+
+The `Spinner` component provides a visual loading indicator. Use it to communicate that content or an action is in progress.
+
+## Import
+
+```tsx
+import { Spinner } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <Spinner />
+</Preview>
+
+## Sizes
+
+Control the size using Tailwind's `size-*` utility classes.
+
+<Preview>
+  <div className="flex gap-4 items-center">
+    <Spinner className="size-3" />
+    <Spinner />
+    <Spinner className="size-6" />
+    <Spinner className="size-8" />
+  </div>
+</Preview>
+
+## Examples
+
+### Loading Button
+
+<Preview>
+  <Button disabled>
+    <Spinner />
+    Loading...
+  </Button>
+</Preview>
+
+### Loading State with Text
+
+<Preview>
+  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+    <Spinner />
+    <span>Loading data...</span>
+  </div>
+</Preview>
+
+### Full Page Loading
+
+<Preview>
+  <div className="flex flex-col items-center justify-center gap-3 py-12">
+    <Spinner className="size-8" />
+    <p className="text-sm text-muted-foreground">Fetching your dashboard...</p>
+  </div>
+</Preview>
+
+### Inline Loading
+
+<Preview>
+  <div className="flex items-center gap-4">
+    <Button variant="outline" disabled>
+      <Spinner className="size-3" />
+      Saving...
+    </Button>
+    <Button variant="outline" disabled>
+      <Spinner className="size-3" />
+      Uploading...
+    </Button>
+  </div>
+</Preview>

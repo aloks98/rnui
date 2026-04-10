@@ -1,0 +1,178 @@
+---
+title: NumberField
+description: A numeric input with increment and decrement controls.
+---
+
+import { NumberField, NumberFieldGroup, NumberFieldDecrement, NumberFieldIncrement, NumberFieldInput, NumberFieldScrubArea, Label } from '@e412/rnui-react';
+
+The `NumberField` component provides a structured numeric input with built-in increment/decrement buttons, keyboard support, min/max constraints, and configurable step values. It is composed of several sub-components for flexible layout.
+
+## Import
+
+```tsx
+import {
+  NumberField,
+  NumberFieldGroup,
+  NumberFieldDecrement,
+  NumberFieldIncrement,
+  NumberFieldInput,
+  NumberFieldScrubArea,
+  Label,
+} from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <NumberField defaultValue={5} className="w-36">
+    <NumberFieldGroup>
+      <NumberFieldDecrement />
+      <NumberFieldInput />
+      <NumberFieldIncrement />
+    </NumberFieldGroup>
+  </NumberField>
+</Preview>
+
+## Variants
+
+### With Label
+
+<Preview>
+  <NumberField defaultValue={1} className="w-36">
+    <Label>Quantity</Label>
+    <NumberFieldGroup>
+      <NumberFieldDecrement />
+      <NumberFieldInput />
+      <NumberFieldIncrement />
+    </NumberFieldGroup>
+  </NumberField>
+</Preview>
+
+### With Min and Max
+
+<Preview>
+  <NumberField defaultValue={5} min={0} max={10} className="w-36">
+    <Label>Rating (0-10)</Label>
+    <NumberFieldGroup>
+      <NumberFieldDecrement />
+      <NumberFieldInput />
+      <NumberFieldIncrement />
+    </NumberFieldGroup>
+  </NumberField>
+</Preview>
+
+### With Step
+
+<Preview>
+  <NumberField defaultValue={0} step={0.25} className="w-36">
+    <Label>Amount</Label>
+    <NumberFieldGroup>
+      <NumberFieldDecrement />
+      <NumberFieldInput />
+      <NumberFieldIncrement />
+    </NumberFieldGroup>
+  </NumberField>
+</Preview>
+
+### Sizes
+
+The component supports `sm`, `default`, and `lg` sizes.
+
+<Preview>
+  <div className="flex flex-col items-start gap-4">
+    <NumberField defaultValue={1} size="sm" className="w-32">
+      <Label>Small</Label>
+      <NumberFieldGroup>
+        <NumberFieldDecrement />
+        <NumberFieldInput />
+        <NumberFieldIncrement />
+      </NumberFieldGroup>
+    </NumberField>
+    <NumberField defaultValue={2} size="default" className="w-36">
+      <Label>Default</Label>
+      <NumberFieldGroup>
+        <NumberFieldDecrement />
+        <NumberFieldInput />
+        <NumberFieldIncrement />
+      </NumberFieldGroup>
+    </NumberField>
+    <NumberField defaultValue={3} size="lg" className="w-40">
+      <Label>Large</Label>
+      <NumberFieldGroup>
+        <NumberFieldDecrement />
+        <NumberFieldInput />
+        <NumberFieldIncrement />
+      </NumberFieldGroup>
+    </NumberField>
+  </div>
+</Preview>
+
+### Disabled
+
+<Preview>
+  <NumberField defaultValue={5} disabled className="w-36">
+    <NumberFieldGroup>
+      <NumberFieldDecrement />
+      <NumberFieldInput />
+      <NumberFieldIncrement />
+    </NumberFieldGroup>
+  </NumberField>
+</Preview>
+
+### With Scrub Area
+
+The `NumberFieldScrubArea` allows users to click and drag horizontally to adjust the value.
+
+<Preview>
+  <NumberField defaultValue={50} className="w-36">
+    <NumberFieldScrubArea label="Opacity" />
+    <NumberFieldGroup>
+      <NumberFieldDecrement />
+      <NumberFieldInput />
+      <NumberFieldIncrement />
+    </NumberFieldGroup>
+  </NumberField>
+</Preview>
+
+## Examples
+
+### Quantity Selector
+
+<Preview>
+  <div className="flex items-end gap-4">
+    <NumberField defaultValue={1} min={1} max={99} className="w-36">
+      <Label>Quantity</Label>
+      <NumberFieldGroup>
+        <NumberFieldDecrement />
+        <NumberFieldInput />
+        <NumberFieldIncrement />
+      </NumberFieldGroup>
+    </NumberField>
+  </div>
+</Preview>
+
+### Temperature Setting
+
+<Preview>
+  <NumberField defaultValue={72} min={60} max={85} step={1} className="w-36">
+    <Label>Temperature (F)</Label>
+    <NumberFieldGroup>
+      <NumberFieldDecrement />
+      <NumberFieldInput />
+      <NumberFieldIncrement />
+    </NumberFieldGroup>
+  </NumberField>
+</Preview>
+
+### Currency Input
+
+<Preview>
+  <NumberField defaultValue={9.99} min={0} step={0.01} className="w-40">
+    <Label>Price ($)</Label>
+    <NumberFieldGroup>
+      <NumberFieldDecrement />
+      <NumberFieldInput />
+      <NumberFieldIncrement />
+    </NumberFieldGroup>
+  </NumberField>
+</Preview>

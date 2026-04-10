@@ -1,0 +1,90 @@
+---
+title: Slider
+description: A draggable slider input for selecting numeric values within a range.
+---
+
+import { Slider } from '@e412/rnui-react';
+
+The `Slider` component lets users select a value or range of values along a track by dragging a thumb. It supports single and dual-thumb modes, custom steps, min/max boundaries, and disabled state.
+
+## Import
+
+```tsx
+import { Slider } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <Slider defaultValue={[50]} max={100} step={1} className="w-[60%]" />
+</Preview>
+
+## Variants
+
+### Range
+
+Use an array with two values to create a range slider with two thumbs.
+
+<Preview>
+  <Slider defaultValue={[25, 75]} max={100} step={1} className="w-[60%]" />
+</Preview>
+
+### With Steps
+
+Set `step` to control the increment between selectable values.
+
+<Preview>
+  <Slider defaultValue={[20]} max={100} step={10} className="w-[60%]" />
+</Preview>
+
+### Custom Min and Max
+
+<Preview>
+  <Slider defaultValue={[500]} min={100} max={1000} step={50} className="w-[60%]" />
+</Preview>
+
+### Disabled
+
+<Preview>
+  <Slider defaultValue={[50]} max={100} step={1} disabled className="w-[60%]" />
+</Preview>
+
+## Examples
+
+### Volume Control
+
+<Preview>
+  <div className="flex w-[60%] items-center gap-3">
+    <span className="text-sm text-muted-foreground">0%</span>
+    <Slider defaultValue={[70]} max={100} step={1} className="flex-1" />
+    <span className="text-sm text-muted-foreground">100%</span>
+  </div>
+</Preview>
+
+### Price Range Filter
+
+<Preview>
+  <div className="w-[60%] space-y-2">
+    <div className="flex justify-between text-sm text-muted-foreground">
+      <span>$0</span>
+      <span>$500</span>
+    </div>
+    <Slider defaultValue={[50, 350]} min={0} max={500} step={10} />
+  </div>
+</Preview>
+
+### Rating Selector
+
+<Preview>
+  <div className="w-[60%] space-y-2">
+    <p className="text-sm font-medium">Rating</p>
+    <Slider defaultValue={[3]} min={1} max={5} step={1} />
+    <div className="flex justify-between text-xs text-muted-foreground">
+      <span>1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+      <span>5</span>
+    </div>
+  </div>
+</Preview>

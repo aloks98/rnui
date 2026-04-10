@@ -1,0 +1,106 @@
+---
+title: ColorPicker
+description: A color picker with visual selector, format switching, and preset swatches.
+---
+
+import { ColorPicker } from '@e412/rnui-react';
+
+The `ColorPicker` component provides a visual interface for selecting colors. It supports hex, RGB, and HSL formats, an optional alpha channel slider, and preset color swatches for quick selection.
+
+## Import
+
+```tsx
+import { ColorPicker } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <ColorPicker value="#3b82f6" />
+</Preview>
+
+## Variants
+
+### With Presets
+
+Provide a `presets` array of hex colors to display quick-pick swatches.
+
+<Preview>
+  <ColorPicker
+    value="#3b82f6"
+    presets={[
+      '#ef4444', '#f97316', '#eab308', '#22c55e',
+      '#3b82f6', '#8b5cf6', '#ec4899', '#000000',
+      '#6b7280', '#14b8a6', '#f43f5e', '#ffffff',
+    ]}
+  />
+</Preview>
+
+### RGB Format
+
+Set `defaultFormat="rgb"` to display the color value in RGB notation.
+
+<Preview>
+  <ColorPicker value="#8b5cf6" defaultFormat="rgb" />
+</Preview>
+
+### HSL Format
+
+Set `defaultFormat="hsl"` to display the color value in HSL notation.
+
+<Preview>
+  <ColorPicker value="#22c55e" defaultFormat="hsl" />
+</Preview>
+
+### With Alpha
+
+Enable `showAlpha` to display an alpha transparency slider.
+
+<Preview>
+  <ColorPicker value="#3b82f6" showAlpha defaultFormat="rgb" />
+</Preview>
+
+## Examples
+
+### Brand Color Picker
+
+<Preview>
+  <div className="flex flex-col gap-3">
+    <p className="text-sm font-medium">Brand Colors</p>
+    <ColorPicker
+      value="#6366f1"
+      presets={[
+        '#6366f1', '#8b5cf6', '#a855f7', '#d946ef',
+        '#ec4899', '#f43f5e', '#ef4444', '#f97316',
+      ]}
+    />
+  </div>
+</Preview>
+
+### Theme Color Selection
+
+<Preview>
+  <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
+      <p className="text-sm font-medium">Primary</p>
+      <ColorPicker value="#3b82f6" />
+    </div>
+    <div className="flex flex-col gap-2">
+      <p className="text-sm font-medium">Secondary</p>
+      <ColorPicker value="#64748b" />
+    </div>
+    <div className="flex flex-col gap-2">
+      <p className="text-sm font-medium">Accent</p>
+      <ColorPicker value="#f59e0b" />
+    </div>
+  </div>
+</Preview>
+
+### Background Color with Alpha
+
+<Preview>
+  <div className="flex flex-col gap-3">
+    <p className="text-sm font-medium">Background Overlay</p>
+    <ColorPicker value="#000000" showAlpha defaultFormat="rgb" />
+  </div>
+</Preview>

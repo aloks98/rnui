@@ -1,0 +1,194 @@
+---
+title: Filters
+description: A composable filter bar for building dynamic query conditions.
+---
+
+import { Filters, Button } from '@e412/rnui-react';
+import { FilterIcon } from 'lucide-react';
+
+The `Filters` component provides a dynamic filter bar where users can add, modify, and remove filter conditions. It supports text, select, and multiselect field types, preset filter values, and size variants. Filter state is managed externally for full control.
+
+## Import
+
+```tsx
+import { Filters, Filter, FilterFieldConfig, createFilter } from '@e412/rnui-react';
+```
+
+## Usage
+
+export const fields = [
+  {
+    key: 'status',
+    label: 'Status',
+    type: 'select',
+    options: [
+      { value: 'active', label: 'Active' },
+      { value: 'inactive', label: 'Inactive' },
+    ],
+  },
+  {
+    key: 'role',
+    label: 'Role',
+    type: 'multiselect',
+    options: [
+      { value: 'ceo', label: 'CEO' },
+      { value: 'cto', label: 'CTO' },
+      { value: 'designer', label: 'Designer' },
+      { value: 'developer', label: 'Developer' },
+      { value: 'engineer', label: 'Engineer' },
+    ],
+  },
+  {
+    key: 'name',
+    label: 'Name',
+    type: 'text',
+  },
+  {
+    key: 'company',
+    label: 'Company',
+    type: 'text',
+  },
+];
+
+export function DefaultFiltersDemo() {
+  const [filters, setFilters] = React.useState([]);
+  return (
+    <Filters
+      filters={filters}
+      fields={fields}
+      onChange={setFilters}
+      trigger={
+        <Button variant="outline" size="sm">
+          <FilterIcon className="size-4" />
+          Filter
+        </Button>
+      }
+    />
+  );
+}
+
+import * as React from 'react';
+
+<Preview>
+  <DefaultFiltersDemo />
+</Preview>
+
+## Variants
+
+### Small Size
+
+Use `size="sm"` for a more compact filter bar.
+
+export function SmallFiltersDemo() {
+  const [filters, setFilters] = React.useState([]);
+  return (
+    <Filters
+      filters={filters}
+      fields={fields}
+      onChange={setFilters}
+      size="sm"
+      trigger={
+        <Button variant="outline" size="sm">
+          <FilterIcon className="size-4" />
+          Filter
+        </Button>
+      }
+    />
+  );
+}
+
+<Preview>
+  <SmallFiltersDemo />
+</Preview>
+
+## Examples
+
+### With Preset Filters
+
+export function PresetFiltersDemo() {
+  const [filters, setFilters] = React.useState([
+    { field: 'status', operator: 'is', value: ['active'] },
+    { field: 'role', operator: 'is_any_of', value: ['developer', 'engineer'] },
+  ]);
+  return (
+    <Filters
+      filters={filters}
+      fields={fields}
+      onChange={setFilters}
+      trigger={
+        <Button variant="outline" size="sm">
+          <FilterIcon className="size-4" />
+          Filter
+        </Button>
+      }
+    />
+  );
+}
+
+<Preview>
+  <PresetFiltersDemo />
+</Preview>
+
+### Task Board Filters
+
+export const taskFields = [
+  {
+    key: 'priority',
+    label: 'Priority',
+    type: 'select',
+    options: [
+      { value: 'low', label: 'Low' },
+      { value: 'medium', label: 'Medium' },
+      { value: 'high', label: 'High' },
+      { value: 'urgent', label: 'Urgent' },
+    ],
+  },
+  {
+    key: 'assignee',
+    label: 'Assignee',
+    type: 'text',
+  },
+  {
+    key: 'label',
+    label: 'Label',
+    type: 'multiselect',
+    options: [
+      { value: 'bug', label: 'Bug' },
+      { value: 'feature', label: 'Feature' },
+      { value: 'improvement', label: 'Improvement' },
+      { value: 'docs', label: 'Documentation' },
+    ],
+  },
+];
+
+export function TaskFiltersDemo() {
+  const [filters, setFilters] = React.useState([]);
+  return (
+    <Filters
+      filters={filters}
+      fields={taskFields}
+      onChange={setFilters}
+      trigger={
+        <Button variant="outline" size="sm">
+          <FilterIcon className="size-4" />
+          Filter Tasks
+        </Button>
+      }
+    />
+  );
+}
+
+<Preview>
+  <TaskFiltersDemo />
+</Preview>
+
+## Field Configuration
+
+Each field in the `fields` array accepts the following shape:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `key` | `string` | Unique identifier for the filter field. |
+| `label` | `string` | Display label shown in the filter UI. |
+| `type` | `'text' \| 'select' \| 'multiselect'` | The type of filter input. |
+| `options` | `{ value: string; label: string }[]` | Options for select and multiselect types. |

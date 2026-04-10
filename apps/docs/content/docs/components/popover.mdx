@@ -1,0 +1,131 @@
+---
+title: Popover
+description: A floating panel that appears next to a trigger element.
+---
+
+import { Popover, PopoverContent, PopoverTrigger, Button, Input, Label } from '@e412/rnui-react';
+import { Settings, HelpCircle } from 'lucide-react';
+
+The `Popover` component displays rich content in a floating panel anchored to a trigger element. Use it for settings, filters, or any contextual information.
+
+## Import
+
+```tsx
+import { Popover, PopoverContent, PopoverTrigger } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <Popover>
+    <PopoverTrigger render={<Button variant="outline" />}>
+      Open Popover
+    </PopoverTrigger>
+    <PopoverContent className="w-80">
+      <div className="grid gap-4">
+        <div className="space-y-2">
+          <h4 className="font-medium leading-none">Dimensions</h4>
+          <p className="text-sm text-muted-foreground">
+            Set the dimensions for the layer.
+          </p>
+        </div>
+        <div className="grid gap-2">
+          <div className="grid grid-cols-3 items-center gap-4">
+            <Label htmlFor="width">Width</Label>
+            <Input id="width" defaultValue="100%" className="col-span-2 h-8" />
+          </div>
+          <div className="grid grid-cols-3 items-center gap-4">
+            <Label htmlFor="height">Height</Label>
+            <Input id="height" defaultValue="25px" className="col-span-2 h-8" />
+          </div>
+        </div>
+      </div>
+    </PopoverContent>
+  </Popover>
+</Preview>
+
+## Examples
+
+### Quick Settings
+
+<Preview>
+  <Popover>
+    <PopoverTrigger render={<Button variant="outline" />}>
+      <Settings className="mr-2 h-4 w-4" />
+      Settings
+    </PopoverTrigger>
+    <PopoverContent className="w-80">
+      <div className="grid gap-4">
+        <div className="space-y-2">
+          <h4 className="font-medium leading-none">Display Settings</h4>
+          <p className="text-sm text-muted-foreground">
+            Customize the appearance of the component.
+          </p>
+        </div>
+        <div className="grid gap-2">
+          <div className="grid grid-cols-3 items-center gap-4">
+            <Label htmlFor="opacity">Opacity</Label>
+            <Input id="opacity" defaultValue="100%" className="col-span-2 h-8" />
+          </div>
+          <div className="grid grid-cols-3 items-center gap-4">
+            <Label htmlFor="radius">Radius</Label>
+            <Input id="radius" defaultValue="8px" className="col-span-2 h-8" />
+          </div>
+        </div>
+      </div>
+    </PopoverContent>
+  </Popover>
+</Preview>
+
+### Help Tooltip
+
+<Preview>
+  <Popover>
+    <PopoverTrigger render={<Button variant="ghost" size="icon" />}>
+      <HelpCircle className="h-4 w-4" />
+    </PopoverTrigger>
+    <PopoverContent className="w-72">
+      <div className="space-y-2">
+        <h4 className="font-medium leading-none">Need help?</h4>
+        <p className="text-sm text-muted-foreground">
+          This field accepts a percentage or pixel value. Use "auto" to let the browser determine the size automatically.
+        </p>
+      </div>
+    </PopoverContent>
+  </Popover>
+</Preview>
+
+### Filter Panel
+
+<Preview>
+  <Popover>
+    <PopoverTrigger render={<Button variant="outline" />}>
+      Filters
+    </PopoverTrigger>
+    <PopoverContent className="w-80">
+      <div className="grid gap-4">
+        <div className="space-y-2">
+          <h4 className="font-medium leading-none">Filter Results</h4>
+          <p className="text-sm text-muted-foreground">
+            Narrow down the displayed items.
+          </p>
+        </div>
+        <div className="grid gap-2">
+          <div className="grid grid-cols-3 items-center gap-4">
+            <Label htmlFor="status">Status</Label>
+            <Input id="status" defaultValue="Active" className="col-span-2 h-8" />
+          </div>
+          <div className="grid grid-cols-3 items-center gap-4">
+            <Label htmlFor="category">Category</Label>
+            <Input id="category" defaultValue="All" className="col-span-2 h-8" />
+          </div>
+          <div className="grid grid-cols-3 items-center gap-4">
+            <Label htmlFor="sort">Sort by</Label>
+            <Input id="sort" defaultValue="Date" className="col-span-2 h-8" />
+          </div>
+        </div>
+        <Button size="sm">Apply Filters</Button>
+      </div>
+    </PopoverContent>
+  </Popover>
+</Preview>

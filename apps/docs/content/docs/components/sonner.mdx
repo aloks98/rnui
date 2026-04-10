@@ -1,0 +1,156 @@
+---
+title: Sonner
+description: Toast notifications powered by Sonner.
+---
+
+import { Toaster, Button } from '@e412/rnui-react';
+import { toast } from 'sonner';
+
+The `Toaster` component provides toast notifications via Sonner. Add `<Toaster />` to your layout, then call `toast()` to show notifications from anywhere in your app.
+
+## Import
+
+```tsx
+import { Toaster } from '@e412/rnui-react';
+import { toast } from 'sonner';
+```
+
+## Usage
+
+Place the `<Toaster />` component in your root layout. Then use the `toast()` function to trigger notifications.
+
+<Preview>
+  <div>
+    <Toaster />
+    <Button
+      variant="outline"
+      onClick={() =>
+        toast('Event has been created', {
+          description: 'Sunday, December 03, 2023 at 9:00 AM',
+        })
+      }
+    >
+      Show Toast
+    </Button>
+  </div>
+</Preview>
+
+## Variants
+
+<Preview>
+  <div className="flex gap-3 flex-wrap">
+    <Toaster />
+    <Button
+      variant="outline"
+      onClick={() => toast('Default notification')}
+    >
+      Default
+    </Button>
+    <Button
+      variant="outline"
+      onClick={() => toast.success('Changes saved successfully')}
+    >
+      Success
+    </Button>
+    <Button
+      variant="outline"
+      onClick={() => toast.error('Something went wrong')}
+    >
+      Error
+    </Button>
+    <Button
+      variant="outline"
+      onClick={() => toast.info('New version available')}
+    >
+      Info
+    </Button>
+    <Button
+      variant="outline"
+      onClick={() => toast.warning('Storage almost full')}
+    >
+      Warning
+    </Button>
+  </div>
+</Preview>
+
+## Examples
+
+### With Description
+
+<Preview>
+  <div>
+    <Toaster />
+    <Button
+      variant="outline"
+      onClick={() =>
+        toast.success('Profile updated', {
+          description: 'Your changes have been saved and will take effect immediately.',
+        })
+      }
+    >
+      Toast with Description
+    </Button>
+  </div>
+</Preview>
+
+### With Action
+
+<Preview>
+  <div>
+    <Toaster />
+    <Button
+      variant="outline"
+      onClick={() =>
+        toast('File deleted', {
+          action: {
+            label: 'Undo',
+            onClick: () => toast('File restored'),
+          },
+        })
+      }
+    >
+      Toast with Action
+    </Button>
+  </div>
+</Preview>
+
+### Promise Toast
+
+<Preview>
+  <div>
+    <Toaster />
+    <Button
+      variant="outline"
+      onClick={() =>
+        toast.promise(
+          new Promise((resolve) => setTimeout(resolve, 2000)),
+          {
+            loading: 'Saving changes...',
+            success: 'Changes saved!',
+            error: 'Failed to save changes',
+          }
+        )
+      }
+    >
+      Promise Toast
+    </Button>
+  </div>
+</Preview>
+
+### Error with Description
+
+<Preview>
+  <div>
+    <Toaster />
+    <Button
+      variant="outline"
+      onClick={() =>
+        toast.error('Upload failed', {
+          description: 'The file exceeds the maximum size of 10MB. Please try a smaller file.',
+        })
+      }
+    >
+      Error Toast
+    </Button>
+  </div>
+</Preview>

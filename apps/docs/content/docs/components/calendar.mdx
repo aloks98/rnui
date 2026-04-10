@@ -1,0 +1,76 @@
+---
+title: Calendar
+description: A month-view calendar widget for selecting dates.
+---
+
+import { Calendar } from '@e412/rnui-react';
+
+The `Calendar` component renders an interactive month-view calendar. It supports single date selection with keyboard navigation and is based on `react-day-picker`.
+
+## Import
+
+```tsx
+import { Calendar } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <Calendar
+    mode="single"
+    className="rounded-md border"
+  />
+</Preview>
+
+## Examples
+
+### Date Picker
+
+A standalone calendar for picking a single date.
+
+<Preview>
+  <Calendar
+    mode="single"
+    className="rounded-md border"
+  />
+</Preview>
+
+### Constrained Date Range
+
+Limit selectable dates with `fromDate` and `toDate`.
+
+<Preview>
+  <Calendar
+    mode="single"
+    fromDate={new Date(2026, 0, 1)}
+    toDate={new Date(2026, 11, 31)}
+    className="rounded-md border"
+  />
+</Preview>
+
+### Disabled Weekends
+
+Use the `disabled` prop with a matcher function to disable specific days.
+
+<Preview>
+  <Calendar
+    mode="single"
+    disabled={(date) => date.getDay() === 0 || date.getDay() === 6}
+    className="rounded-md border"
+  />
+</Preview>
+
+### Multiple Calendars Side by Side
+
+<Preview>
+  <div className="flex gap-4">
+    <Calendar
+      mode="single"
+      className="rounded-md border"
+    />
+    <Calendar
+      mode="single"
+      className="rounded-md border"
+    />
+  </div>
+</Preview>

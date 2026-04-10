@@ -1,0 +1,87 @@
+---
+title: Progress
+description: A horizontal bar that indicates the completion status of a task.
+---
+
+import { Progress, ProgressLabel, ProgressValue } from '@e412/rnui-react';
+
+The `Progress` component displays a horizontal bar that fills to represent completion percentage. Use it for uploads, downloads, multi-step flows, or any measurable process.
+
+## Import
+
+```tsx
+import { Progress, ProgressLabel, ProgressValue } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <Progress value={60} className="w-[60%]" />
+</Preview>
+
+## Values
+
+<Preview>
+  <div className="flex flex-col gap-4 w-[60%]">
+    <Progress value={0} />
+    <Progress value={25} />
+    <Progress value={50} />
+    <Progress value={75} />
+    <Progress value={100} />
+  </div>
+</Preview>
+
+## With Label and Value
+
+Use `ProgressLabel` and `ProgressValue` to display text alongside the progress bar.
+
+<Preview>
+  <Progress value={60} className="w-[60%]">
+    <ProgressLabel>Uploading...</ProgressLabel>
+    <ProgressValue />
+  </Progress>
+</Preview>
+
+## Examples
+
+### File Upload
+
+<Preview>
+  <Progress value={73} className="w-[60%]">
+    <ProgressLabel>Uploading document.pdf</ProgressLabel>
+    <ProgressValue />
+  </Progress>
+</Preview>
+
+### Step Progress
+
+<Preview>
+  <div className="w-[60%] space-y-2">
+    <Progress value={66}>
+      <ProgressLabel>Step 2 of 3</ProgressLabel>
+      <ProgressValue />
+    </Progress>
+  </div>
+</Preview>
+
+### Storage Usage
+
+<Preview>
+  <div className="w-[60%] space-y-2">
+    <Progress value={85}>
+      <ProgressLabel>Storage used</ProgressLabel>
+      <ProgressValue />
+    </Progress>
+  </div>
+</Preview>
+
+### Download Progress
+
+<Preview>
+  <div className="w-[60%] space-y-2">
+    <Progress value={42}>
+      <ProgressLabel>Downloading update...</ProgressLabel>
+      <ProgressValue />
+    </Progress>
+  </div>
+</Preview>

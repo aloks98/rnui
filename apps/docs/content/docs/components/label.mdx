@@ -1,0 +1,71 @@
+---
+title: Label
+description: An accessible label for form controls.
+---
+
+import { Label, Input, Slider } from '@e412/rnui-react';
+
+The `Label` component renders an accessible `<label>` element that associates with a form control via the `htmlFor` attribute. It is used alongside inputs, selects, and other form elements.
+
+## Import
+
+```tsx
+import { Label } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-1.5">
+    <Label htmlFor="email">Email address</Label>
+    <Input type="email" id="email" placeholder="you@example.com" />
+  </div>
+</Preview>
+
+## Examples
+
+### With Text Input
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-1.5">
+    <Label htmlFor="username">Username</Label>
+    <Input type="text" id="username" placeholder="Enter your username" />
+  </div>
+</Preview>
+
+### With Password Input
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-1.5">
+    <Label htmlFor="password">Password</Label>
+    <Input type="password" id="password" placeholder="Enter your password" />
+  </div>
+</Preview>
+
+### Multiple Fields
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-4">
+    <div className="grid gap-1.5">
+      <Label htmlFor="first-name">First name</Label>
+      <Input type="text" id="first-name" placeholder="Jane" />
+    </div>
+    <div className="grid gap-1.5">
+      <Label htmlFor="last-name">Last name</Label>
+      <Input type="text" id="last-name" placeholder="Doe" />
+    </div>
+    <div className="grid gap-1.5">
+      <Label htmlFor="email-field">Email</Label>
+      <Input type="email" id="email-field" placeholder="jane@example.com" />
+    </div>
+  </div>
+</Preview>
+
+### With Slider
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-3">
+    <Label>Volume</Label>
+    <Slider defaultValue={[50]} max={100} step={1} />
+  </div>
+</Preview>

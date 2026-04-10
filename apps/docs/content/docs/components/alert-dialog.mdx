@@ -1,0 +1,172 @@
+---
+title: AlertDialog
+description: A modal dialog that requires user acknowledgement before proceeding.
+---
+
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle, AlertDialogTrigger, Button } from '@e412/rnui-react';
+import { AlertTriangle, Trash2, Info } from 'lucide-react';
+
+The `AlertDialog` component interrupts the user with a modal that requires confirmation or cancellation. Use it for destructive actions or important decisions that cannot be undone.
+
+## Import
+
+```tsx
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogMedia,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <AlertDialog>
+    <AlertDialogTrigger render={<Button variant="outline" />}>
+      Delete Account
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+        <AlertDialogDescription>
+          This action cannot be undone. This will permanently delete your
+          account and remove your data from our servers.
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogAction>Continue</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+</Preview>
+
+## Sizes
+
+### Small
+
+<Preview>
+  <AlertDialog>
+    <AlertDialogTrigger render={<Button variant="outline" />}>
+      Small Dialog
+    </AlertDialogTrigger>
+    <AlertDialogContent size="sm">
+      <AlertDialogHeader>
+        <AlertDialogTitle>Confirm action</AlertDialogTitle>
+        <AlertDialogDescription>
+          Are you sure you want to proceed?
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>No</AlertDialogCancel>
+        <AlertDialogAction>Yes</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+</Preview>
+
+## Examples
+
+### With Media Icon
+
+<Preview>
+  <AlertDialog>
+    <AlertDialogTrigger render={<Button variant="outline" />}>
+      With Media
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogMedia>
+          <Info />
+        </AlertDialogMedia>
+        <AlertDialogTitle>Important notice</AlertDialogTitle>
+        <AlertDialogDescription>
+          This dialog includes a media icon for visual emphasis.
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Dismiss</AlertDialogCancel>
+        <AlertDialogAction>Acknowledge</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+</Preview>
+
+### Destructive Confirmation
+
+<Preview>
+  <AlertDialog>
+    <AlertDialogTrigger render={<Button variant="destructive" />}>
+      <Trash2 className="mr-2 h-4 w-4" />
+      Delete Project
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogMedia>
+          <AlertTriangle />
+        </AlertDialogMedia>
+        <AlertDialogTitle>Delete this project?</AlertDialogTitle>
+        <AlertDialogDescription>
+          All files, settings, and collaborator access will be permanently removed.
+          This action cannot be reversed.
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Keep Project</AlertDialogCancel>
+        <AlertDialogAction>Delete Permanently</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+</Preview>
+
+### Logout Confirmation
+
+<Preview>
+  <AlertDialog>
+    <AlertDialogTrigger render={<Button variant="outline" />}>
+      Log Out
+    </AlertDialogTrigger>
+    <AlertDialogContent size="sm">
+      <AlertDialogHeader>
+        <AlertDialogTitle>Log out?</AlertDialogTitle>
+        <AlertDialogDescription>
+          You will need to sign in again to access your account.
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Stay Signed In</AlertDialogCancel>
+        <AlertDialogAction>Log Out</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+</Preview>
+
+### Discard Changes
+
+<Preview>
+  <AlertDialog>
+    <AlertDialogTrigger render={<Button variant="outline" />}>
+      Discard Changes
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogTitle>Unsaved changes</AlertDialogTitle>
+        <AlertDialogDescription>
+          You have unsaved changes. Are you sure you want to discard them?
+          This cannot be undone.
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Keep Editing</AlertDialogCancel>
+        <AlertDialogAction>Discard</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+</Preview>

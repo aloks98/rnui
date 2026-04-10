@@ -1,0 +1,97 @@
+---
+title: ScrollArea
+description: A custom scrollbar component that provides consistent cross-browser styling.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import { ScrollArea, ScrollBar } from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<ScrollArea className="h-[200px] w-[350px] rounded-md border p-4">
+  <p>Scrollable content goes here...</p>
+</ScrollArea>
+```
+
+## Examples
+
+### Vertical Scroll
+
+```tsx
+<ScrollArea className="h-72 w-48 rounded-md border">
+  <div className="p-4">
+    <h4 className="mb-4 text-sm font-medium">Tags</h4>
+    {tags.map((tag) => (
+      <div key={tag} className="text-sm">
+        {tag}
+      </div>
+    ))}
+  </div>
+</ScrollArea>
+```
+
+### Horizontal Scroll
+
+```tsx
+<ScrollArea className="w-96 whitespace-nowrap rounded-md border">
+  <div className="flex w-max space-x-4 p-4">
+    {items.map((item) => (
+      <figure key={item.id} className="shrink-0">
+        <div className="overflow-hidden rounded-md">
+          <img src={item.src} alt={item.alt} className="h-40 w-56 object-cover" />
+        </div>
+        <figcaption className="pt-2 text-xs text-muted-foreground">
+          {item.caption}
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+  <ScrollBar orientation="horizontal" />
+</ScrollArea>
+```
+
+### Both Directions
+
+```tsx
+<ScrollArea className="h-72 w-72 rounded-md border p-4">
+  <div className="w-[500px]">
+    <p>Content wider and taller than the container...</p>
+  </div>
+  <ScrollBar orientation="horizontal" />
+</ScrollArea>
+```
+
+## Props
+
+### ScrollArea
+
+Extends `@base-ui/react` `ScrollArea.Root.Props`.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | -- | Additional CSS classes |
+| `children` | `ReactNode` | -- | Scrollable content |
+
+### ScrollBar
+
+Extends `@base-ui/react` `ScrollArea.Scrollbar.Props`.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `orientation` | `"vertical" \| "horizontal"` | `"vertical"` | The scrollbar axis direction |
+| `className` | `string` | -- | Additional CSS classes |
+
+## Related
+
+- [Resizable](/components/resizable)
+- [Card](/components/card)

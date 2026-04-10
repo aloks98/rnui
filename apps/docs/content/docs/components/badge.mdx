@@ -1,0 +1,116 @@
+---
+title: Badge
+description: Compact label component with solid, light, and outline variants across multiple colors and sizes.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import { Badge } from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<Badge>Badge</Badge>
+```
+
+## Examples
+
+### Solid Variants
+
+```tsx
+<Badge variant="default">Default</Badge>
+<Badge variant="secondary">Secondary</Badge>
+<Badge variant="info">Info</Badge>
+<Badge variant="success">Success</Badge>
+<Badge variant="warning">Warning</Badge>
+<Badge variant="destructive">Destructive</Badge>
+<Badge variant="focus">Focus</Badge>
+<Badge variant="invert">Invert</Badge>
+```
+
+### Light Variants
+
+```tsx
+<Badge variant="primary-light">Primary</Badge>
+<Badge variant="info-light">Info</Badge>
+<Badge variant="success-light">Success</Badge>
+<Badge variant="warning-light">Warning</Badge>
+<Badge variant="destructive-light">Destructive</Badge>
+<Badge variant="focus-light">Focus</Badge>
+<Badge variant="invert-light">Invert</Badge>
+```
+
+### Outline Variants
+
+```tsx
+<Badge variant="outline">Outline</Badge>
+<Badge variant="primary-outline">Primary</Badge>
+<Badge variant="info-outline">Info</Badge>
+<Badge variant="success-outline">Success</Badge>
+<Badge variant="warning-outline">Warning</Badge>
+<Badge variant="destructive-outline">Destructive</Badge>
+<Badge variant="focus-outline">Focus</Badge>
+<Badge variant="invert-outline">Invert</Badge>
+```
+
+### Sizes
+
+```tsx
+<Badge size="xs">Extra Small</Badge>
+<Badge size="sm">Small</Badge>
+<Badge size="default">Default</Badge>
+<Badge size="lg">Large</Badge>
+<Badge size="xl">Extra Large</Badge>
+```
+
+### Radius
+
+```tsx
+<Badge radius="default">Rounded</Badge>
+<Badge radius="full">Pill</Badge>
+```
+
+### With Icon
+
+```tsx
+import { CheckIcon } from 'lucide-react'
+
+<Badge variant="success">
+  <CheckIcon />
+  Verified
+</Badge>
+```
+
+### As Link
+
+Use the `render` prop to render the badge as a different element.
+
+```tsx
+<Badge render={<a href="/status" />} variant="info">
+  View Status
+</Badge>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "outline" \| "secondary" \| "info" \| "success" \| "warning" \| "destructive" \| "focus" \| "invert" \| "primary-light" \| "info-light" \| "success-light" \| "warning-light" \| "destructive-light" \| "focus-light" \| "invert-light" \| "primary-outline" \| "info-outline" \| "success-outline" \| "warning-outline" \| "destructive-outline" \| "focus-outline" \| "invert-outline"` | `"default"` | Visual style variant |
+| `size` | `"xs" \| "sm" \| "default" \| "lg" \| "xl"` | `"default"` | Badge size |
+| `radius` | `"default" \| "full"` | `"default"` | Border radius style |
+| `render` | `React.ReactElement` | — | Custom render element (e.g. `<a>`) via Base UI |
+| `className` | `string` | — | Additional CSS classes |
+
+## Related
+
+- [Avatar](/components/avatar) — User avatars with badge support
+- [Alert](/components/alert) — Callout messages with severity variants
+- [Button](/components/button) — Interactive action element

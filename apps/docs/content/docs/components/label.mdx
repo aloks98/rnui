@@ -1,0 +1,77 @@
+---
+title: Label
+description: A styled form label with automatic disabled and peer-disabled state handling.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import { Label } from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<Label htmlFor="email">Email</Label>
+```
+
+## Examples
+
+### Default
+
+```tsx
+<Label htmlFor="name">Name</Label>
+```
+
+### With Input
+
+```tsx
+import { Input } from '@e412/rnui-react'
+
+<div className="grid gap-2">
+  <Label htmlFor="email">Email</Label>
+  <Input id="email" type="email" placeholder="you@example.com" />
+</div>
+```
+
+### With Icon
+
+```tsx
+import { MailIcon } from 'lucide-react'
+
+<Label htmlFor="email">
+  <MailIcon className="size-4" />
+  Email
+</Label>
+```
+
+### Disabled State
+
+The label automatically reduces opacity when its associated input is disabled (via `peer-disabled`) or when inside a disabled group (via `group-data-[disabled=true]`).
+
+```tsx
+<div className="grid gap-2">
+  <Label htmlFor="disabled-input">Disabled Field</Label>
+  <Input id="disabled-input" disabled placeholder="Cannot edit" />
+</div>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `htmlFor` | `string` | - | ID of the associated form element |
+| `className` | `string` | - | Additional CSS class |
+
+The `Label` component forwards all standard HTML `<label>` props.
+
+## Related
+
+- [Input](/docs/components/input)
+- [Form](/docs/components/form)

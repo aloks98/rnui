@@ -1,0 +1,179 @@
+---
+title: Dialog
+description: A modal dialog component for focused interactions, built on Base UI Dialog.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogClose,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<Dialog>
+  <DialogTrigger render={<Button variant="outline" />}>
+    Open Dialog
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Dialog Title</DialogTitle>
+      <DialogDescription>
+        This is a description of the dialog content.
+      </DialogDescription>
+    </DialogHeader>
+    <div className="py-4">
+      <p>Dialog body content goes here.</p>
+    </div>
+    <DialogFooter>
+      <Button variant="outline">Cancel</Button>
+      <Button>Confirm</Button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
+```
+
+## Examples
+
+### With Close Button in Footer
+
+```tsx
+<Dialog>
+  <DialogTrigger render={<Button variant="outline" />}>
+    Open Dialog
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Terms of Service</DialogTitle>
+      <DialogDescription>
+        Please read and accept the terms of service.
+      </DialogDescription>
+    </DialogHeader>
+    <div className="py-4">
+      <p>Terms content here...</p>
+    </div>
+    <DialogFooter showCloseButton>
+      <Button>Accept</Button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
+```
+
+### Without Close Button
+
+```tsx
+<Dialog>
+  <DialogTrigger render={<Button variant="outline" />}>
+    Open Dialog
+  </DialogTrigger>
+  <DialogContent showCloseButton={false}>
+    <DialogHeader>
+      <DialogTitle>Important Notice</DialogTitle>
+      <DialogDescription>
+        This dialog has no close button in the corner.
+      </DialogDescription>
+    </DialogHeader>
+    <DialogFooter>
+      <DialogClose render={<Button variant="outline" />}>
+        Dismiss
+      </DialogClose>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
+```
+
+### Controlled
+
+```tsx
+const [open, setOpen] = React.useState(false)
+
+<Dialog open={open} onOpenChange={setOpen}>
+  <DialogTrigger render={<Button variant="outline" />}>
+    Open Dialog
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Controlled Dialog</DialogTitle>
+      <DialogDescription>
+        This dialog is controlled via state.
+      </DialogDescription>
+    </DialogHeader>
+  </DialogContent>
+</Dialog>
+```
+
+## Props
+
+### Dialog
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Callback when open state changes |
+| `defaultOpen` | `boolean` | `false` | Initial open state (uncontrolled) |
+
+### DialogTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement` | — | Custom render element for composition (Base UI pattern) |
+| `className` | `string` | — | Additional CSS classes |
+
+### DialogContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `showCloseButton` | `boolean` | `true` | Whether to show the close button in the top-right corner |
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Dialog contents |
+
+### DialogFooter
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `showCloseButton` | `boolean` | `false` | Whether to render a Close button inside the footer |
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Footer contents |
+
+### DialogClose
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement` | — | Custom render element for composition |
+| `className` | `string` | — | Additional CSS classes |
+
+### DialogHeader
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `className` | `string` | Additional CSS classes |
+| `children` | `ReactNode` | Section contents |
+
+### DialogTitle, DialogDescription
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `className` | `string` | Additional CSS classes |
+| `children` | `ReactNode` | Text content |
+
+## Related
+
+- [Alert Dialog](/components/alert-dialog) — Confirmation dialog requiring user action
+- [Sheet](/components/sheet) — Side panel overlay built on Base UI Dialog
+- [Drawer](/components/drawer) — Slide-out drawer panel

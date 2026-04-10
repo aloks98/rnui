@@ -1,0 +1,165 @@
+---
+title: useFileUpload
+description: A React hook for managing file uploads with drag-and-drop support, validation, and previews.
+---
+
+## Import
+
+```tsx
+import { useFileUpload } from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+import { useFileUpload } from '@e412/rnui-react'
+
+function FileUploadDemo() {
+  const [{ files, isDragging, errors }, {
+    handleDragEnter,
+    handleDragLeave,
+    handleDragOver,
+    handleDrop,
+    openFileDialog,
+    getInputProps,
+    removeFile,
+  }] = useFileUpload({
+    maxFiles: 5,
+    maxSize: 5 * 1024 * 1024, // 5MB
+    accept: 'image/*',
+    multiple: true,
+  })
+
+  return (
+    <div
+      onDragEnter={handleDragEnter}
+      onDragLeave={handleDragLeave}
+      onDragOver={handleDragOver}
+      onDrop={handleDrop}
+      className={`border-2 border-dashed rounded-lg p-8 text-center ${
+        isDragging ? 'border-primary bg-primary/5' : 'border-border'
+      }`}
+    >
+      <input {...getInputProps()} className="hidden" />
+      <p>Drag files here or <button onClick={openFileDialog}>browse</button></p>
+
+      {errors.map((error, i) => (
+        <p key={i} className="text-sm text-destructive">{error}</p>
+      ))}
+
+      {files.map((file) => (
+        <div key={file.id} className="flex items-center gap-2">
+          <span>{file.file.name}</span>
+          <button onClick={() => removeFile(file.id)}>Remove</button>
+        </div>
+      ))}
+    </div>
+  )
+}
+```
+
+## Examples
+
+### Single File Upload
+
+```tsx
+const [{ files }, { openFileDialog, getInputProps }] = useFileUpload({
+  accept: '.pdf,.doc,.docx',
+})
+```
+
+### With Initial Files
+
+```tsx
+const [{ files }, actions] = useFileUpload({
+  initialFiles: [
+    { id: '1', name: 'report.pdf', size: 1024, type: 'application/pdf', url: '/files/report.pdf' },
+  ],
+})
+```
+
+### With Callbacks
+
+```tsx
+const [state, actions] = useFileUpload({
+  onFilesChange: (files) => console.log('Files changed:', files),
+  onFilesAdded: (added) => console.log('Files added:', added),
+  onError: (errors) => console.error('Upload errors:', errors),
+})
+```
+
+## Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `maxFiles` | `number` | `Infinity` | Maximum number of files allowed |
+| `maxSize` | `number` | `Infinity` | Maximum file size in bytes |
+| `accept` | `string` | `'*'` | Accepted file types (MIME types or extensions, comma-separated) |
+| `multiple` | `boolean` | `false` | Allow multiple file selection |
+| `initialFiles` | `FileMetadata[]` | `[]` | Pre-populated files |
+| `onFilesChange` | `(files: FileWithPreview[]) => void` | — | Called when the file list changes |
+| `onFilesAdded` | `(files: FileWithPreview[]) => void` | — | Called when new files are added |
+| `onError` | `(errors: string[]) => void` | — | Called when validation errors occur |
+
+## Return Value
+
+The hook returns a tuple of `[state, actions]`.
+
+### State
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `files` | `FileWithPreview[]` | Current file list with preview URLs |
+| `isDragging` | `boolean` | Whether a drag operation is active over the drop zone |
+| `errors` | `string[]` | Current validation error messages |
+
+### Actions
+
+| Method | Type | Description |
+|--------|------|-------------|
+| `addFiles` | `(files: FileList \| File[]) => void` | Add files programmatically |
+| `removeFile` | `(id: string) => void` | Remove a file by ID |
+| `clearFiles` | `() => void` | Remove all files |
+| `clearErrors` | `() => void` | Clear all error messages |
+| `handleDragEnter` | `DragEventHandler` | Attach to drop zone `onDragEnter` |
+| `handleDragLeave` | `DragEventHandler` | Attach to drop zone `onDragLeave` |
+| `handleDragOver` | `DragEventHandler` | Attach to drop zone `onDragOver` |
+| `handleDrop` | `DragEventHandler` | Attach to drop zone `onDrop` |
+| `handleFileChange` | `ChangeEventHandler` | Attach to file input `onChange` |
+| `openFileDialog` | `() => void` | Open the native file picker |
+| `getInputProps` | `(props?) => InputProps` | Get props to spread on a hidden `<input type="file">` |
+
+## Types
+
+```tsx
+type FileMetadata = {
+  name: string
+  size: number
+  type: string
+  url: string
+  id: string
+}
+
+type FileWithPreview = {
+  file: File | FileMetadata
+  id: string
+  preview?: string
+}
+```
+
+## Utility
+
+The `formatBytes` helper is also exported:
+
+```tsx
+import { formatBytes } from '@e412/rnui-react'
+
+formatBytes(1024)       // "1KB"
+formatBytes(1048576)    // "1MB"
+formatBytes(0)          // "0 Bytes"
+```
+
+## Related
+
+- [Input](/components/input) — Text input component
+- [Button](/components/button) — Button component

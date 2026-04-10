@@ -1,0 +1,71 @@
+---
+title: Switch
+description: A toggle switch component for toggling between on and off states.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import { Switch } from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<div className="flex items-center gap-2">
+  <Switch id="airplane-mode" />
+  <label htmlFor="airplane-mode">Airplane Mode</label>
+</div>
+```
+
+## Examples
+
+### Small Size
+
+```tsx
+<Switch size="sm" />
+```
+
+### Checked by Default
+
+```tsx
+<Switch defaultChecked />
+```
+
+### Disabled
+
+```tsx
+<Switch disabled />
+<Switch disabled defaultChecked />
+```
+
+### Controlled
+
+```tsx
+const [checked, setChecked] = React.useState(false)
+
+<Switch checked={checked} onCheckedChange={setChecked} />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `"sm" \| "default"` | `"default"` | Switch size |
+| `defaultChecked` | `boolean` | `false` | Default checked state |
+| `checked` | `boolean` | - | Controlled checked state |
+| `onCheckedChange` | `(checked: boolean) => void` | - | Callback when checked state changes |
+| `disabled` | `boolean` | `false` | Disable the switch |
+| `className` | `string` | - | Additional CSS classes |
+
+## Related
+
+- [Checkbox](/docs/components/checkbox)
+- [Toggle](/docs/components/toggle)
+- [Radio Group](/docs/components/radio-group)

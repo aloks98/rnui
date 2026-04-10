@@ -1,0 +1,115 @@
+---
+title: Toggle Group
+description: A group of toggle buttons where one or multiple items can be active.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import { ToggleGroup, ToggleGroupItem } from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<ToggleGroup>
+  <ToggleGroupItem value="bold" aria-label="Toggle bold">
+    <BoldIcon className="size-4" />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="italic" aria-label="Toggle italic">
+    <ItalicIcon className="size-4" />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="underline" aria-label="Toggle underline">
+    <UnderlineIcon className="size-4" />
+  </ToggleGroupItem>
+</ToggleGroup>
+```
+
+## Examples
+
+### Outline Variant
+
+```tsx
+<ToggleGroup variant="outline">
+  <ToggleGroupItem value="bold" aria-label="Toggle bold">
+    <BoldIcon className="size-4" />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="italic" aria-label="Toggle italic">
+    <ItalicIcon className="size-4" />
+  </ToggleGroupItem>
+</ToggleGroup>
+```
+
+### Sizes
+
+```tsx
+<ToggleGroup size="sm">
+  <ToggleGroupItem value="a">A</ToggleGroupItem>
+  <ToggleGroupItem value="b">B</ToggleGroupItem>
+</ToggleGroup>
+
+<ToggleGroup size="lg">
+  <ToggleGroupItem value="a">A</ToggleGroupItem>
+  <ToggleGroupItem value="b">B</ToggleGroupItem>
+</ToggleGroup>
+```
+
+### With Spacing
+
+```tsx
+<ToggleGroup spacing={1}>
+  <ToggleGroupItem value="left" aria-label="Align left">
+    <AlignLeftIcon className="size-4" />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="center" aria-label="Align center">
+    <AlignCenterIcon className="size-4" />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="right" aria-label="Align right">
+    <AlignRightIcon className="size-4" />
+  </ToggleGroupItem>
+</ToggleGroup>
+```
+
+### Vertical Orientation
+
+```tsx
+<ToggleGroup orientation="vertical">
+  <ToggleGroupItem value="top">Top</ToggleGroupItem>
+  <ToggleGroupItem value="middle">Middle</ToggleGroupItem>
+  <ToggleGroupItem value="bottom">Bottom</ToggleGroupItem>
+</ToggleGroup>
+```
+
+## Props
+
+### ToggleGroup
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "outline"` | `"default"` | Visual style variant applied to all items |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Size applied to all items |
+| `spacing` | `number` | `0` | Gap between items (0 for seamless) |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Layout direction |
+| `className` | `string` | - | Additional CSS classes |
+
+### ToggleGroupItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | - | Unique value for the toggle item |
+| `variant` | `"default" \| "outline"` | `"default"` | Visual style (overridden by group) |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Item size (overridden by group) |
+| `disabled` | `boolean` | `false` | Disable the item |
+| `className` | `string` | - | Additional CSS classes |
+
+## Related
+
+- [Toggle](/docs/components/toggle)
+- [Button Group](/docs/components/button-group)
+- [Radio Group](/docs/components/radio-group)

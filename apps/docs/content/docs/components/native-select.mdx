@@ -1,0 +1,134 @@
+---
+title: Native Select
+description: A styled native HTML select element with chevron icon and size variants.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import {
+  NativeSelect,
+  NativeSelectOption,
+  NativeSelectOptGroup,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<NativeSelect>
+  <NativeSelectOption value="apple">Apple</NativeSelectOption>
+  <NativeSelectOption value="banana">Banana</NativeSelectOption>
+  <NativeSelectOption value="cherry">Cherry</NativeSelectOption>
+</NativeSelect>
+```
+
+## Examples
+
+### Default
+
+```tsx
+<NativeSelect>
+  <NativeSelectOption value="">Select a fruit...</NativeSelectOption>
+  <NativeSelectOption value="apple">Apple</NativeSelectOption>
+  <NativeSelectOption value="banana">Banana</NativeSelectOption>
+  <NativeSelectOption value="cherry">Cherry</NativeSelectOption>
+</NativeSelect>
+```
+
+### Small Size
+
+```tsx
+<NativeSelect size="sm">
+  <NativeSelectOption value="sm">Small</NativeSelectOption>
+  <NativeSelectOption value="md">Medium</NativeSelectOption>
+  <NativeSelectOption value="lg">Large</NativeSelectOption>
+</NativeSelect>
+```
+
+### With Option Groups
+
+```tsx
+<NativeSelect>
+  <NativeSelectOptGroup label="Fruits">
+    <NativeSelectOption value="apple">Apple</NativeSelectOption>
+    <NativeSelectOption value="banana">Banana</NativeSelectOption>
+  </NativeSelectOptGroup>
+  <NativeSelectOptGroup label="Vegetables">
+    <NativeSelectOption value="carrot">Carrot</NativeSelectOption>
+    <NativeSelectOption value="broccoli">Broccoli</NativeSelectOption>
+  </NativeSelectOptGroup>
+</NativeSelect>
+```
+
+### Disabled
+
+```tsx
+<NativeSelect disabled>
+  <NativeSelectOption value="disabled">Cannot select</NativeSelectOption>
+</NativeSelect>
+```
+
+### Invalid State
+
+```tsx
+<NativeSelect aria-invalid="true">
+  <NativeSelectOption value="">Required field</NativeSelectOption>
+</NativeSelect>
+```
+
+### With Label
+
+```tsx
+import { Label } from '@e412/rnui-react'
+
+<div className="grid gap-2">
+  <Label htmlFor="country">Country</Label>
+  <NativeSelect id="country">
+    <NativeSelectOption value="">Select country...</NativeSelectOption>
+    <NativeSelectOption value="us">United States</NativeSelectOption>
+    <NativeSelectOption value="uk">United Kingdom</NativeSelectOption>
+  </NativeSelect>
+</div>
+```
+
+## Props
+
+### NativeSelect
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `"sm" \| "default"` | `"default"` | Select size variant |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `className` | `string` | - | Additional CSS class (applied to wrapper) |
+
+Accepts all standard HTML `<select>` props except the native `size` attribute.
+
+### NativeSelectOption
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | - | Option value |
+| `className` | `string` | - | Additional CSS class |
+
+Accepts all standard HTML `<option>` props.
+
+### NativeSelectOptGroup
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | - | Group label |
+| `className` | `string` | - | Additional CSS class |
+
+Accepts all standard HTML `<optgroup>` props.
+
+## Related
+
+- [Label](/docs/components/label)
+- [Form](/docs/components/form)

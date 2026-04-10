@@ -1,0 +1,147 @@
+---
+title: Tooltip
+description: A lightweight informational popup displayed on hover, built on Base UI Tooltip.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+Wrap your app (or a subtree) with `TooltipProvider` to share delay settings across tooltips.
+
+```tsx
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger render={<Button variant="outline" />}>
+      Hover me
+    </TooltipTrigger>
+    <TooltipContent>
+      This is a tooltip
+    </TooltipContent>
+  </Tooltip>
+</TooltipProvider>
+```
+
+## Examples
+
+### Basic
+
+```tsx
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger render={<Button variant="outline" size="icon" />}>
+      <PlusIcon />
+    </TooltipTrigger>
+    <TooltipContent>Add item</TooltipContent>
+  </Tooltip>
+</TooltipProvider>
+```
+
+### Custom Side
+
+```tsx
+<TooltipProvider>
+  <Tooltip>
+    <TooltipTrigger render={<Button variant="outline" />}>
+      Right Tooltip
+    </TooltipTrigger>
+    <TooltipContent side="right">
+      This tooltip appears on the right
+    </TooltipContent>
+  </Tooltip>
+</TooltipProvider>
+```
+
+### All Sides
+
+```tsx
+<TooltipProvider>
+  <div className="flex gap-4">
+    <Tooltip>
+      <TooltipTrigger render={<Button variant="outline" />}>Top</TooltipTrigger>
+      <TooltipContent side="top">Top tooltip</TooltipContent>
+    </Tooltip>
+    <Tooltip>
+      <TooltipTrigger render={<Button variant="outline" />}>Right</TooltipTrigger>
+      <TooltipContent side="right">Right tooltip</TooltipContent>
+    </Tooltip>
+    <Tooltip>
+      <TooltipTrigger render={<Button variant="outline" />}>Bottom</TooltipTrigger>
+      <TooltipContent side="bottom">Bottom tooltip</TooltipContent>
+    </Tooltip>
+    <Tooltip>
+      <TooltipTrigger render={<Button variant="outline" />}>Left</TooltipTrigger>
+      <TooltipContent side="left">Left tooltip</TooltipContent>
+    </Tooltip>
+  </div>
+</TooltipProvider>
+```
+
+### With Delay
+
+```tsx
+<TooltipProvider delay={500}>
+  <Tooltip>
+    <TooltipTrigger render={<Button variant="outline" />}>
+      Delayed
+    </TooltipTrigger>
+    <TooltipContent>
+      This tooltip appears after 500ms
+    </TooltipContent>
+  </Tooltip>
+</TooltipProvider>
+```
+
+## Props
+
+### TooltipProvider
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `delay` | `number` | `0` | Delay before showing tooltips (ms) |
+
+### Tooltip
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Callback when open state changes |
+| `defaultOpen` | `boolean` | `false` | Initial open state (uncontrolled) |
+
+### TooltipTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement` | — | Custom render element for composition (Base UI pattern) |
+| `className` | `string` | — | Additional CSS classes |
+
+### TooltipContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `side` | `"top" \| "right" \| "bottom" \| "left"` | `"top"` | Side relative to trigger |
+| `sideOffset` | `number` | `4` | Offset from trigger |
+| `align` | `"start" \| "center" \| "end"` | `"center"` | Alignment relative to trigger |
+| `alignOffset` | `number` | `0` | Offset from alignment |
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Tooltip contents |
+
+## Related
+
+- [Hover Card](/components/hover-card) — Rich content card on hover
+- [Popover](/components/popover) — Floating content panel triggered by click

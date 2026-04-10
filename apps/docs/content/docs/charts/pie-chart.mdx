@@ -1,0 +1,85 @@
+---
+title: Pie Chart
+description: Pie and donut charts with labels and legend support. Built on ECharts.
+---
+
+## Import
+
+```tsx
+import { PieChart } from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<PieChart
+  data={[
+    { name: 'Chrome', value: 61 },
+    { name: 'Firefox', value: 15 },
+    { name: 'Safari', value: 12 },
+    { name: 'Edge', value: 8 },
+    { name: 'Other', value: 4 },
+  ]}
+  height={350}
+/>
+```
+
+## Examples
+
+### Donut
+
+```tsx
+<PieChart
+  data={[
+    { name: 'Desktop', value: 65 },
+    { name: 'Mobile', value: 30 },
+    { name: 'Tablet', value: 5 },
+  ]}
+  donut
+/>
+```
+
+### Without Labels
+
+```tsx
+<PieChart
+  data={[
+    { name: 'A', value: 40 },
+    { name: 'B', value: 35 },
+    { name: 'C', value: 25 },
+  ]}
+  showLabels={false}
+  showLegend
+/>
+```
+
+### Without Legend
+
+```tsx
+<PieChart
+  data={[
+    { name: 'React', value: 420 },
+    { name: 'Vue', value: 310 },
+    { name: 'Svelte', value: 180 },
+  ]}
+  showLegend={false}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `data` | `PieChartDataItem[]` | — | Array of `{ name, value }` objects |
+| `donut` | `boolean` | `false` | Render as a donut chart (hollow center) |
+| `showLegend` | `boolean` | `true` | Show the chart legend |
+| `showLabels` | `boolean` | `true` | Show slice labels |
+| `option` | `Partial<EChartsOption>` | — | Override any ECharts option |
+
+Inherits all [EChart](/charts/) base props (`height`, `width`, `theme`, `preset`, `loading`, etc.).
+
+## Related
+
+- [Charts Overview](/charts/) — Base EChart component and theme integration
+- [RadarChart](/charts/radar-chart) — Radar chart component
+- [chartConfig()](/charts/chart-config) — Builder API

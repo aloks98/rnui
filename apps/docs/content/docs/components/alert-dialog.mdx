@@ -1,0 +1,169 @@
+---
+title: Alert Dialog
+description: A confirmation dialog that requires user acknowledgement before proceeding, built on Base UI AlertDialog.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogAction,
+  AlertDialogCancel,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<AlertDialog>
+  <AlertDialogTrigger render={<Button variant="outline" />}>
+    Delete Account
+  </AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action cannot be undone. This will permanently delete your
+        account and remove your data from our servers.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction variant="destructive">
+        Delete Account
+      </AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+## Examples
+
+### Small Size
+
+```tsx
+<AlertDialog>
+  <AlertDialogTrigger render={<Button variant="outline" />}>
+    Discard Changes
+  </AlertDialogTrigger>
+  <AlertDialogContent size="sm">
+    <AlertDialogHeader>
+      <AlertDialogTitle>Discard changes?</AlertDialogTitle>
+      <AlertDialogDescription>
+        Your unsaved changes will be lost.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Keep Editing</AlertDialogCancel>
+      <AlertDialogAction variant="destructive">Discard</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+### With Media Icon
+
+```tsx
+import { TrashIcon } from 'lucide-react'
+
+<AlertDialog>
+  <AlertDialogTrigger render={<Button variant="destructive" />}>
+    Delete Item
+  </AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogMedia>
+        <TrashIcon />
+      </AlertDialogMedia>
+      <AlertDialogTitle>Delete this item?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action is permanent and cannot be reversed.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction variant="destructive">Delete</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+## Props
+
+### AlertDialog
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Callback when open state changes |
+| `defaultOpen` | `boolean` | `false` | Initial open state (uncontrolled) |
+
+### AlertDialogTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement` | — | Custom render element for composition (Base UI pattern) |
+| `className` | `string` | — | Additional CSS classes |
+
+### AlertDialogContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `"default" \| "sm"` | `"default"` | Content size variant |
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Dialog contents |
+
+### AlertDialogAction
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link"` | `"default"` | Button variant |
+| `size` | `"default" \| "sm" \| "lg"` | `"default"` | Button size |
+| `className` | `string` | — | Additional CSS classes |
+
+### AlertDialogCancel
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link"` | `"outline"` | Button variant |
+| `size` | `"default" \| "sm" \| "lg"` | `"default"` | Button size |
+| `className` | `string` | — | Additional CSS classes |
+
+### AlertDialogHeader, AlertDialogFooter
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `className` | `string` | Additional CSS classes |
+| `children` | `ReactNode` | Section contents |
+
+### AlertDialogMedia
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `className` | `string` | Additional CSS classes |
+| `children` | `ReactNode` | Icon or media content |
+
+### AlertDialogTitle, AlertDialogDescription
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `className` | `string` | Additional CSS classes |
+| `children` | `ReactNode` | Text content |
+
+## Related
+
+- [Dialog](/components/dialog) — General-purpose modal dialog
+- [Drawer](/components/drawer) — Slide-out drawer panel

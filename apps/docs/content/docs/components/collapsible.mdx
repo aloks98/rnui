@@ -1,0 +1,120 @@
+---
+title: Collapsible
+description: A collapsible content section with a trigger to toggle visibility. Built on Base UI Collapsible primitive.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<Collapsible>
+  <CollapsibleTrigger>Toggle content</CollapsibleTrigger>
+  <CollapsibleContent>
+    This content can be shown or hidden.
+  </CollapsibleContent>
+</Collapsible>
+```
+
+## Examples
+
+### With State
+
+Control the open state externally.
+
+```tsx
+import { useState } from 'react'
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@e412/rnui-react'
+import { Button } from '@e412/rnui-react'
+
+function CollapsibleDemo() {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <Collapsible open={open} onOpenChange={setOpen}>
+      <CollapsibleTrigger render={<Button variant="outline" />}>
+        {open ? 'Hide' : 'Show'} details
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Here are the additional details that were hidden.
+        </p>
+      </CollapsibleContent>
+    </Collapsible>
+  )
+}
+```
+
+### With Custom Trigger
+
+Use the `render` prop on the trigger to render a custom element (Base UI uses `render` instead of `asChild`).
+
+```tsx
+<Collapsible>
+  <CollapsibleTrigger render={<button className="text-sm underline" />}>
+    Click to expand
+  </CollapsibleTrigger>
+  <CollapsibleContent>
+    <div className="mt-2 rounded-md border p-4">
+      Expandable content goes here.
+    </div>
+  </CollapsibleContent>
+</Collapsible>
+```
+
+### Default Open
+
+```tsx
+<Collapsible defaultOpen>
+  <CollapsibleTrigger>Toggle</CollapsibleTrigger>
+  <CollapsibleContent>
+    This content is visible by default.
+  </CollapsibleContent>
+</Collapsible>
+```
+
+## Props
+
+### Collapsible
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Controlled open state |
+| `defaultOpen` | `boolean` | `false` | Whether the content is open by default |
+| `onOpenChange` | `(open: boolean) => void` | — | Callback when open state changes |
+| `disabled` | `boolean` | `false` | Disable the collapsible |
+| `className` | `string` | — | Additional CSS classes |
+
+### CollapsibleTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `ReactElement` | — | Custom element to render as the trigger (Base UI `render` prop) |
+| `children` | `ReactNode` | — | Trigger content |
+| `className` | `string` | — | Additional CSS classes |
+
+### CollapsibleContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | — | Collapsible content |
+| `className` | `string` | — | Additional CSS classes |
+
+## Related
+
+- [Accordion](/components/accordion) — Multiple collapsible sections
+- [Dialog](/components/dialog) — Modal overlay for focused content

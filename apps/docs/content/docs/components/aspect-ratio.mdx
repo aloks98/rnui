@@ -1,0 +1,80 @@
+---
+title: AspectRatio
+description: Maintains a consistent width-to-height ratio for its content.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import { AspectRatio } from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<AspectRatio ratio={16 / 9}>
+  <img src="/image.jpg" alt="Landscape" className="size-full object-cover" />
+</AspectRatio>
+```
+
+## Examples
+
+### 16:9 Video Embed
+
+```tsx
+<div className="w-[450px]">
+  <AspectRatio ratio={16 / 9}>
+    <iframe
+      src="https://www.youtube.com/embed/example"
+      className="size-full"
+      allowFullScreen
+    />
+  </AspectRatio>
+</div>
+```
+
+### Square Image
+
+```tsx
+<div className="w-[200px]">
+  <AspectRatio ratio={1}>
+    <img
+      src="/avatar.jpg"
+      alt="Avatar"
+      className="size-full rounded-full object-cover"
+    />
+  </AspectRatio>
+</div>
+```
+
+### 4:3 Card Image
+
+```tsx
+<Card className="w-[300px]">
+  <AspectRatio ratio={4 / 3}>
+    <img src="/photo.jpg" alt="Photo" className="size-full object-cover" />
+  </AspectRatio>
+  <CardContent>
+    <p>A card with a fixed aspect ratio image.</p>
+  </CardContent>
+</Card>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `ratio` | `number` | -- | The desired width-to-height ratio (e.g. `16 / 9`) |
+| `className` | `string` | -- | Additional CSS classes |
+| `children` | `ReactNode` | -- | Content to render within the aspect ratio container |
+
+## Related
+
+- [Card](/components/card)
+- [Skeleton](/components/skeleton)

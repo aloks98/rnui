@@ -1,0 +1,187 @@
+---
+title: Number Field
+description: A number input with increment and decrement buttons, scrub area support, and size variants.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import {
+  NumberField,
+  NumberFieldGroup,
+  NumberFieldInput,
+  NumberFieldIncrement,
+  NumberFieldDecrement,
+  NumberFieldScrubArea,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<NumberField defaultValue={0}>
+  <NumberFieldGroup>
+    <NumberFieldDecrement />
+    <NumberFieldInput />
+    <NumberFieldIncrement />
+  </NumberFieldGroup>
+</NumberField>
+```
+
+## Examples
+
+### Default
+
+```tsx
+<NumberField defaultValue={5}>
+  <NumberFieldGroup>
+    <NumberFieldDecrement />
+    <NumberFieldInput />
+    <NumberFieldIncrement />
+  </NumberFieldGroup>
+</NumberField>
+```
+
+### Small Size
+
+```tsx
+<NumberField defaultValue={0} size="sm">
+  <NumberFieldGroup>
+    <NumberFieldDecrement />
+    <NumberFieldInput />
+    <NumberFieldIncrement />
+  </NumberFieldGroup>
+</NumberField>
+```
+
+### Large Size
+
+```tsx
+<NumberField defaultValue={0} size="lg">
+  <NumberFieldGroup>
+    <NumberFieldDecrement />
+    <NumberFieldInput />
+    <NumberFieldIncrement />
+  </NumberFieldGroup>
+</NumberField>
+```
+
+### With Min and Max
+
+```tsx
+<NumberField defaultValue={5} min={0} max={10}>
+  <NumberFieldGroup>
+    <NumberFieldDecrement />
+    <NumberFieldInput />
+    <NumberFieldIncrement />
+  </NumberFieldGroup>
+</NumberField>
+```
+
+### With Step
+
+```tsx
+<NumberField defaultValue={0} step={5}>
+  <NumberFieldGroup>
+    <NumberFieldDecrement />
+    <NumberFieldInput />
+    <NumberFieldIncrement />
+  </NumberFieldGroup>
+</NumberField>
+```
+
+### With Scrub Area Label
+
+```tsx
+<NumberField defaultValue={50}>
+  <NumberFieldScrubArea label="Amount" />
+  <NumberFieldGroup>
+    <NumberFieldDecrement />
+    <NumberFieldInput />
+    <NumberFieldIncrement />
+  </NumberFieldGroup>
+</NumberField>
+```
+
+### Disabled
+
+```tsx
+<NumberField defaultValue={0} disabled>
+  <NumberFieldGroup>
+    <NumberFieldDecrement />
+    <NumberFieldInput />
+    <NumberFieldIncrement />
+  </NumberFieldGroup>
+</NumberField>
+```
+
+### Controlled
+
+```tsx
+const [value, setValue] = useState(10)
+
+<NumberField value={value} onValueChange={setValue}>
+  <NumberFieldGroup>
+    <NumberFieldDecrement />
+    <NumberFieldInput />
+    <NumberFieldIncrement />
+  </NumberFieldGroup>
+</NumberField>
+```
+
+## Props
+
+### NumberField
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `defaultValue` | `number` | - | Initial uncontrolled value |
+| `value` | `number` | - | Controlled value |
+| `onValueChange` | `(value: number) => void` | - | Called when value changes |
+| `min` | `number` | - | Minimum allowed value |
+| `max` | `number` | - | Maximum allowed value |
+| `step` | `number` | `1` | Step increment |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Size variant |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `className` | `string` | - | Additional CSS class |
+
+### NumberFieldGroup
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `"sm" \| "default" \| "lg"` | Inherited | Override size from parent |
+| `className` | `string` | - | Additional CSS class |
+
+### NumberFieldInput
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `"sm" \| "default" \| "lg"` | Inherited | Override size from parent |
+| `className` | `string` | - | Additional CSS class |
+
+### NumberFieldIncrement / NumberFieldDecrement
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `"sm" \| "default" \| "lg"` | Inherited | Override size from parent |
+| `children` | `React.ReactNode` | Plus/Minus icon | Custom button content |
+| `className` | `string` | - | Additional CSS class |
+
+### NumberFieldScrubArea
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | - | Label text (required for accessibility) |
+| `className` | `string` | - | Additional CSS class |
+
+## Related
+
+- [Input](/docs/components/input)
+- [Input Group](/docs/components/input-group)
+- [Label](/docs/components/label)

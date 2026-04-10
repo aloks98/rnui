@@ -1,0 +1,74 @@
+---
+title: CopyButton
+description: A button that copies a value to the clipboard with tooltip feedback showing a success checkmark.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import { CopyButton } from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<CopyButton value="npm install @e412/rnui-react" />
+```
+
+## Examples
+
+### Basic
+
+```tsx
+<CopyButton value="Hello, world!" />
+```
+
+### Custom Labels
+
+Customize the tooltip text for the default and copied states.
+
+```tsx
+<CopyButton
+  value="some-api-key-12345"
+  label="Copy API Key"
+  copiedLabel="API Key Copied!"
+/>
+```
+
+### Inline with Text
+
+```tsx
+<div className="flex items-center gap-2 rounded-md border px-3 py-2">
+  <code className="text-sm">npm install @e412/rnui-react @e412/rnui-themes
+  <CopyButton value="npm install @e412/rnui-react @e412/rnui-themes
+</div>
+```
+
+### Custom Styling
+
+```tsx
+<CopyButton
+  value="styled copy"
+  className="text-primary hover:text-primary/80"
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | The text to copy to the clipboard |
+| `label` | `string` | `"Copy"` | Tooltip label in the default state |
+| `copiedLabel` | `string` | `"Copied!"` | Tooltip label after copying |
+| `className` | `string` | — | Additional CSS classes |
+
+## Related
+
+- [CodeBlock](/components/code-block) — Code block with built-in copy support
+- [Button](/components/button) — General purpose button component

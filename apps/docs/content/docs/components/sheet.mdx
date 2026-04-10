@@ -1,0 +1,201 @@
+---
+title: Sheet
+description: A side panel overlay that slides in from any edge, built on Base UI Dialog.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+  SheetFooter,
+  SheetClose,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<Sheet>
+  <SheetTrigger render={<Button variant="outline" />}>
+    Open Sheet
+  </SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Edit Profile</SheetTitle>
+      <SheetDescription>
+        Make changes to your profile here. Click save when you're done.
+      </SheetDescription>
+    </SheetHeader>
+    <div className="grid gap-4 p-4">
+      <div className="grid grid-cols-4 items-center gap-4">
+        <label className="text-right text-sm">Name</label>
+        <input className="col-span-3 h-9 rounded-md border px-3" />
+      </div>
+      <div className="grid grid-cols-4 items-center gap-4">
+        <label className="text-right text-sm">Username</label>
+        <input className="col-span-3 h-9 rounded-md border px-3" />
+      </div>
+    </div>
+    <SheetFooter>
+      <Button>Save Changes</Button>
+    </SheetFooter>
+  </SheetContent>
+</Sheet>
+```
+
+## Examples
+
+### Right Side (Default)
+
+```tsx
+<Sheet>
+  <SheetTrigger render={<Button variant="outline" />}>
+    Open Right Sheet
+  </SheetTrigger>
+  <SheetContent side="right">
+    <SheetHeader>
+      <SheetTitle>Settings</SheetTitle>
+      <SheetDescription>
+        Configure your application settings.
+      </SheetDescription>
+    </SheetHeader>
+  </SheetContent>
+</Sheet>
+```
+
+### Left Side
+
+```tsx
+<Sheet>
+  <SheetTrigger render={<Button variant="outline" />}>
+    Open Left Sheet
+  </SheetTrigger>
+  <SheetContent side="left">
+    <SheetHeader>
+      <SheetTitle>Navigation</SheetTitle>
+      <SheetDescription>
+        Browse through the application.
+      </SheetDescription>
+    </SheetHeader>
+  </SheetContent>
+</Sheet>
+```
+
+### Top and Bottom
+
+```tsx
+<Sheet>
+  <SheetTrigger render={<Button variant="outline" />}>
+    Open Top Sheet
+  </SheetTrigger>
+  <SheetContent side="top">
+    <SheetHeader>
+      <SheetTitle>Notifications</SheetTitle>
+      <SheetDescription>
+        Your recent notifications.
+      </SheetDescription>
+    </SheetHeader>
+  </SheetContent>
+</Sheet>
+
+<Sheet>
+  <SheetTrigger render={<Button variant="outline" />}>
+    Open Bottom Sheet
+  </SheetTrigger>
+  <SheetContent side="bottom">
+    <SheetHeader>
+      <SheetTitle>Actions</SheetTitle>
+      <SheetDescription>
+        Choose an action to perform.
+      </SheetDescription>
+    </SheetHeader>
+  </SheetContent>
+</Sheet>
+```
+
+### Without Close Button
+
+```tsx
+<Sheet>
+  <SheetTrigger render={<Button variant="outline" />}>
+    Open Sheet
+  </SheetTrigger>
+  <SheetContent showCloseButton={false}>
+    <SheetHeader>
+      <SheetTitle>Custom Sheet</SheetTitle>
+      <SheetDescription>
+        This sheet has no close button in the corner.
+      </SheetDescription>
+    </SheetHeader>
+    <SheetFooter>
+      <SheetClose render={<Button variant="outline" />}>
+        Close
+      </SheetClose>
+    </SheetFooter>
+  </SheetContent>
+</Sheet>
+```
+
+## Props
+
+### Sheet
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Callback when open state changes |
+| `defaultOpen` | `boolean` | `false` | Initial open state (uncontrolled) |
+
+### SheetTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement` | — | Custom render element for composition (Base UI pattern) |
+| `className` | `string` | — | Additional CSS classes |
+
+### SheetContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `side` | `"top" \| "right" \| "bottom" \| "left"` | `"right"` | Side the sheet slides in from |
+| `showCloseButton` | `boolean` | `true` | Whether to show the close button |
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Sheet contents |
+
+### SheetClose
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement` | — | Custom render element for composition (Base UI pattern) |
+| `className` | `string` | — | Additional CSS classes |
+
+### SheetHeader, SheetFooter
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `className` | `string` | Additional CSS classes |
+| `children` | `ReactNode` | Section contents |
+
+### SheetTitle, SheetDescription
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `className` | `string` | Additional CSS classes |
+| `children` | `ReactNode` | Text content |
+
+## Related
+
+- [Dialog](/components/dialog) — Modal dialog for focused interactions
+- [Drawer](/components/drawer) — Slide-out drawer panel built on Vaul

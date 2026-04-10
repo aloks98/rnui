@@ -1,0 +1,160 @@
+---
+title: Sortable
+description: A drag-and-drop sortable list component built on dnd-kit.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import {
+  Sortable,
+  SortableItem,
+  SortableItemHandle,
+  SortableOverlay,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+const [items, setItems] = React.useState([
+  { id: "1", label: "Item 1" },
+  { id: "2", label: "Item 2" },
+  { id: "3", label: "Item 3" },
+])
+
+<Sortable
+  value={items}
+  onValueChange={setItems}
+  getItemValue={(item) => item.id}
+>
+  {items.map((item) => (
+    <SortableItem key={item.id} value={item.id}>
+      {item.label}
+    </SortableItem>
+  ))}
+</Sortable>
+```
+
+## Examples
+
+### With Drag Handle
+
+```tsx
+<Sortable
+  value={items}
+  onValueChange={setItems}
+  getItemValue={(item) => item.id}
+>
+  {items.map((item) => (
+    <SortableItem key={item.id} value={item.id} className="flex items-center gap-2">
+      <SortableItemHandle>
+        <GripVerticalIcon className="size-4" />
+      </SortableItemHandle>
+      {item.label}
+    </SortableItem>
+  ))}
+</Sortable>
+```
+
+### Horizontal Layout
+
+```tsx
+<Sortable
+  value={items}
+  onValueChange={setItems}
+  getItemValue={(item) => item.id}
+  strategy="horizontal"
+  className="flex flex-row gap-2"
+>
+  {items.map((item) => (
+    <SortableItem key={item.id} value={item.id}>
+      {item.label}
+    </SortableItem>
+  ))}
+</Sortable>
+```
+
+### Grid Layout
+
+```tsx
+<Sortable
+  value={items}
+  onValueChange={setItems}
+  getItemValue={(item) => item.id}
+  strategy="grid"
+  className="grid grid-cols-3 gap-2"
+>
+  {items.map((item) => (
+    <SortableItem key={item.id} value={item.id}>
+      {item.label}
+    </SortableItem>
+  ))}
+</Sortable>
+```
+
+### Custom Overlay
+
+```tsx
+<Sortable
+  value={items}
+  onValueChange={setItems}
+  getItemValue={(item) => item.id}
+>
+  {items.map((item) => (
+    <SortableItem key={item.id} value={item.id}>
+      {item.label}
+    </SortableItem>
+  ))}
+  <SortableOverlay>
+    {({ value }) => <div className="rounded border p-2 bg-background shadow-lg">{value}</div>}
+  </SortableOverlay>
+</Sortable>
+```
+
+## Props
+
+### Sortable
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `T[]` | - | Array of sortable items |
+| `onValueChange` | `(value: T[]) => void` | - | Callback when items are reordered |
+| `getItemValue` | `(item: T) => string` | - | Function to extract a unique ID from each item |
+| `strategy` | `"horizontal" \| "vertical" \| "grid"` | `"vertical"` | Sorting strategy / layout direction |
+| `onMove` | `(event: { event, activeIndex, overIndex }) => void` | - | Custom move handler (overrides default reorder) |
+| `onDragStart` | `(event: DragStartEvent) => void` | - | Callback when dragging starts |
+| `onDragEnd` | `(event: DragEndEvent) => void` | - | Callback when dragging ends |
+| `modifiers` | `Modifiers` | - | dnd-kit modifiers for constraining drag behavior |
+
+### SortableItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | - | Unique identifier for the item |
+| `disabled` | `boolean` | `false` | Disable dragging for this item |
+| `className` | `string` | - | Additional CSS classes |
+
+### SortableItemHandle
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `cursor` | `boolean` | `true` | Show grab/grabbing cursor |
+| `className` | `string` | - | Additional CSS classes |
+
+### SortableOverlay
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode \| ((params: { value: UniqueIdentifier }) => ReactNode)` | - | Content rendered in the drag overlay |
+
+## Related
+
+- [Table](/docs/components/table)
+- [Data Grid](/docs/components/data-grid)

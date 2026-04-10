@@ -1,0 +1,93 @@
+---
+title: Radio Group
+description: A set of radio buttons where only one can be selected at a time.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import { RadioGroup, RadioGroupItem } from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<RadioGroup defaultValue="option-1">
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="option-1" id="option-1" />
+    <label htmlFor="option-1">Option 1</label>
+  </div>
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="option-2" id="option-2" />
+    <label htmlFor="option-2">Option 2</label>
+  </div>
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="option-3" id="option-3" />
+    <label htmlFor="option-3">Option 3</label>
+  </div>
+</RadioGroup>
+```
+
+## Examples
+
+### Horizontal Layout
+
+```tsx
+<RadioGroup defaultValue="a" className="flex flex-row gap-4">
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="a" id="a" />
+    <label htmlFor="a">Option A</label>
+  </div>
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="b" id="b" />
+    <label htmlFor="b">Option B</label>
+  </div>
+</RadioGroup>
+```
+
+### Disabled
+
+```tsx
+<RadioGroup defaultValue="option-1" disabled>
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="option-1" id="d1" />
+    <label htmlFor="d1">Disabled option</label>
+  </div>
+  <div className="flex items-center gap-2">
+    <RadioGroupItem value="option-2" id="d2" />
+    <label htmlFor="d2">Disabled option</label>
+  </div>
+</RadioGroup>
+```
+
+## Props
+
+### RadioGroup
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `defaultValue` | `string` | - | The default selected value |
+| `value` | `string` | - | Controlled selected value |
+| `onValueChange` | `(value: string) => void` | - | Callback when the value changes |
+| `disabled` | `boolean` | `false` | Disable all radio items |
+| `className` | `string` | - | Additional CSS classes |
+
+### RadioGroupItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | - | The value of the radio item |
+| `disabled` | `boolean` | `false` | Disable the radio item |
+| `className` | `string` | - | Additional CSS classes |
+
+## Related
+
+- [Checkbox](/docs/components/checkbox)
+- [Select](/docs/components/select)
+- [Switch](/docs/components/switch)

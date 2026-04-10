@@ -1,0 +1,134 @@
+---
+title: Popover
+description: A floating panel anchored to a trigger element, built on Base UI Popover.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverDescription,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<Popover>
+  <PopoverTrigger render={<Button variant="outline" />}>
+    Open Popover
+  </PopoverTrigger>
+  <PopoverContent>
+    <PopoverHeader>
+      <PopoverTitle>Dimensions</PopoverTitle>
+      <PopoverDescription>
+        Set the dimensions for the layer.
+      </PopoverDescription>
+    </PopoverHeader>
+    <div className="grid gap-2">
+      <div className="grid grid-cols-3 items-center gap-4">
+        <label className="text-sm">Width</label>
+        <input className="col-span-2 h-8 rounded-md border px-2" defaultValue="100%" />
+      </div>
+      <div className="grid grid-cols-3 items-center gap-4">
+        <label className="text-sm">Height</label>
+        <input className="col-span-2 h-8 rounded-md border px-2" defaultValue="25px" />
+      </div>
+    </div>
+  </PopoverContent>
+</Popover>
+```
+
+## Examples
+
+### Custom Positioning
+
+```tsx
+<Popover>
+  <PopoverTrigger render={<Button variant="outline" />}>
+    Right Side
+  </PopoverTrigger>
+  <PopoverContent side="right" align="start" sideOffset={8}>
+    <PopoverHeader>
+      <PopoverTitle>Help</PopoverTitle>
+      <PopoverDescription>
+        This popover appears to the right of the trigger.
+      </PopoverDescription>
+    </PopoverHeader>
+  </PopoverContent>
+</Popover>
+```
+
+### Simple Content
+
+```tsx
+<Popover>
+  <PopoverTrigger render={<Button variant="outline" />}>
+    Info
+  </PopoverTrigger>
+  <PopoverContent>
+    <p className="text-sm text-muted-foreground">
+      This is a simple popover with plain text content.
+    </p>
+  </PopoverContent>
+</Popover>
+```
+
+## Props
+
+### Popover
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Callback when open state changes |
+| `defaultOpen` | `boolean` | `false` | Initial open state (uncontrolled) |
+
+### PopoverTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement` | — | Custom render element for composition (Base UI pattern) |
+| `className` | `string` | — | Additional CSS classes |
+
+### PopoverContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `side` | `"top" \| "right" \| "bottom" \| "left"` | `"bottom"` | Side relative to trigger |
+| `sideOffset` | `number` | `4` | Offset from trigger |
+| `align` | `"start" \| "center" \| "end"` | `"center"` | Alignment relative to trigger |
+| `alignOffset` | `number` | `0` | Offset from alignment |
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Popover contents |
+
+### PopoverHeader
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `className` | `string` | Additional CSS classes |
+| `children` | `ReactNode` | Header contents |
+
+### PopoverTitle, PopoverDescription
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `className` | `string` | Additional CSS classes |
+| `children` | `ReactNode` | Text content |
+
+## Related
+
+- [Hover Card](/components/hover-card) — Card shown on hover
+- [Tooltip](/components/tooltip) — Lightweight tooltip on hover
+- [Dropdown Menu](/components/dropdown-menu) — Menu of actions

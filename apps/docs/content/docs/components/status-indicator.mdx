@@ -1,0 +1,77 @@
+---
+title: Status Indicator
+description: An animated status dot that visually communicates system state with color and a ping animation.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import { StatusIndicator } from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<StatusIndicator state="active" label="Online" />
+```
+
+## Examples
+
+### All States
+
+```tsx
+<div className="flex flex-col gap-3">
+  <StatusIndicator state="active" label="Active" />
+  <StatusIndicator state="down" label="Down" />
+  <StatusIndicator state="fixing" label="Fixing" />
+  <StatusIndicator state="idle" label="Idle" />
+</div>
+```
+
+### Sizes
+
+```tsx
+<div className="flex items-center gap-4">
+  <StatusIndicator state="active" size="sm" label="Small" />
+  <StatusIndicator state="active" size="md" label="Medium" />
+  <StatusIndicator state="active" size="lg" label="Large" />
+</div>
+```
+
+### Without Label
+
+```tsx
+<StatusIndicator state="active" />
+```
+
+### In a List
+
+```tsx
+<div className="flex flex-col gap-2">
+  <StatusIndicator state="active" label="API Server" />
+  <StatusIndicator state="fixing" label="Database" />
+  <StatusIndicator state="down" label="CDN" />
+  <StatusIndicator state="idle" label="Backup" />
+</div>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `state` | `"active" \| "down" \| "fixing" \| "idle"` | `"idle"` | Current status state. `active`, `down`, and `fixing` animate with a ping effect. |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Size of the status dot. |
+| `label` | `string` | -- | Text label displayed beside the dot. |
+| `className` | `string` | -- | Additional CSS classes for the container. |
+| `labelClassName` | `string` | -- | Additional CSS classes for the label text. |
+
+## Related
+
+- [Badge](/components/badge)
+- [Spinner](/components/spinner)

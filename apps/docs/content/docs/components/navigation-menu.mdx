@@ -1,0 +1,195 @@
+---
+title: NavigationMenu
+description: A site navigation component with dropdown content panels, built on Base UI's NavigationMenu primitive.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+  NavigationMenuIndicator,
+  navigationMenuTriggerStyle,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <div className="grid gap-3 p-4 w-[400px]">
+          <NavigationMenuLink href="/docs">Documentation</NavigationMenuLink>
+          <NavigationMenuLink href="/docs/installation">Installation</NavigationMenuLink>
+        </div>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuLink href="/about">About</NavigationMenuLink>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>
+```
+
+## Examples
+
+### With Multiple Sections
+
+```tsx
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+          <li>
+            <NavigationMenuLink href="/products/analytics">
+              Analytics
+            </NavigationMenuLink>
+          </li>
+          <li>
+            <NavigationMenuLink href="/products/engagement">
+              Engagement
+            </NavigationMenuLink>
+          </li>
+        </ul>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <ul className="grid w-[400px] gap-3 p-4">
+          <li>
+            <NavigationMenuLink href="/blog">Blog</NavigationMenuLink>
+          </li>
+          <li>
+            <NavigationMenuLink href="/docs">Documentation</NavigationMenuLink>
+          </li>
+        </ul>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+      <NavigationMenuLink href="/pricing">Pricing</NavigationMenuLink>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>
+```
+
+### With Indicator
+
+```tsx
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Features</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <div className="p-4 w-[300px]">
+          <NavigationMenuLink href="/features">All Features</NavigationMenuLink>
+        </div>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    <NavigationMenuIndicator />
+  </NavigationMenuList>
+</NavigationMenu>
+```
+
+### Using Trigger Style on Links
+
+Use the `navigationMenuTriggerStyle` utility to style standalone links consistently with triggers.
+
+```tsx
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuLink href="/docs" className={navigationMenuTriggerStyle()}>
+        Documentation
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>
+```
+
+### Custom Alignment
+
+```tsx
+<NavigationMenu align="center">
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Menu</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <div className="p-4 w-[300px]">Content aligned to center</div>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>
+```
+
+## Props
+
+### NavigationMenu
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `align` | `"start" \| "center" \| "end"` | `"start"` | Alignment of the dropdown positioner |
+| `className` | `string` | — | Additional CSS classes |
+
+Accepts all props from Base UI `NavigationMenu.Root`.
+
+### NavigationMenuTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Trigger label; a chevron icon is appended automatically |
+
+### NavigationMenuContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes |
+
+### NavigationMenuLink
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes |
+
+Accepts all props from Base UI `NavigationMenu.Link`.
+
+### NavigationMenuList
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes |
+
+### NavigationMenuItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes |
+
+### NavigationMenuIndicator
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes |
+
+## Related
+
+- [Menubar](/components/menubar) — Horizontal menu bar for application menus
+- [Tabs](/components/tabs) — Tabbed interface for switching between views
+- [Sidebar](/components/sidebar) — Application sidebar navigation

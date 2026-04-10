@@ -1,0 +1,111 @@
+---
+title: ButtonGroup
+description: Group buttons together with shared borders and consistent spacing.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import {
+  ButtonGroup,
+  ButtonGroupSeparator,
+  ButtonGroupText,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+import { Button } from '@e412/rnui-react'
+
+<ButtonGroup>
+  <Button variant="outline">Left</Button>
+  <Button variant="outline">Center</Button>
+  <Button variant="outline">Right</Button>
+</ButtonGroup>
+```
+
+## Examples
+
+### With Separator
+
+```tsx
+<ButtonGroup>
+  <Button variant="outline">Copy</Button>
+  <ButtonGroupSeparator />
+  <Button variant="outline">Cut</Button>
+  <ButtonGroupSeparator />
+  <Button variant="outline">Paste</Button>
+</ButtonGroup>
+```
+
+### Vertical Orientation
+
+```tsx
+<ButtonGroup orientation="vertical">
+  <Button variant="outline">Top</Button>
+  <Button variant="outline">Middle</Button>
+  <Button variant="outline">Bottom</Button>
+</ButtonGroup>
+```
+
+### With Text Segment
+
+```tsx
+import { CopyIcon } from 'lucide-react'
+
+<ButtonGroup>
+  <ButtonGroupText>
+    <CopyIcon />
+    https://example.com/invite/abc123
+  </ButtonGroupText>
+  <Button variant="outline">Copy</Button>
+</ButtonGroup>
+```
+
+### Mixed Elements
+
+```tsx
+import { Input } from '@e412/rnui-react'
+
+<ButtonGroup>
+  <Input placeholder="Search..." />
+  <Button>Search</Button>
+</ButtonGroup>
+```
+
+## Props
+
+### ButtonGroup
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Layout direction |
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Grouped elements |
+
+### ButtonGroupSeparator
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `orientation` | `"horizontal" \| "vertical"` | `"vertical"` | Separator direction |
+| `className` | `string` | — | Additional CSS classes |
+
+### ButtonGroupText
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `render` | `React.ReactElement` | — | Custom render element |
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Text content |
+
+## Related
+
+- [Button](/components/button) — Individual button component
+- [Toggle Group](/components/toggle-group) — Group of toggle buttons

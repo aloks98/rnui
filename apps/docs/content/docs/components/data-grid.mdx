@@ -1,0 +1,271 @@
+---
+title: DataGrid
+description: A powerful data table built on TanStack Table with sorting, filtering, pagination, column visibility, row selection, and drag-and-drop.
+---
+
+import { DataGrid, DataGridContainer, DataGridTable, DataGridPagination, DataGridScrollArea, DataGridColumnHeader, DataGridColumnVisibility, DataGridTableRowSelect, DataGridTableRowSelectAll, Badge, Button, Skeleton } from '@e412/rnui-react';
+
+The `DataGrid` component is a full-featured data table that wraps `@tanstack/react-table`. You create a table instance with `useReactTable` and pass it to `DataGrid`, then compose the layout from sub-components.
+
+## Import
+
+```tsx
+import {
+  DataGrid,
+  DataGridContainer,
+  DataGridTable,
+  DataGridPagination,
+  DataGridScrollArea,
+  DataGridColumnHeader,
+  DataGridColumnVisibility,
+  DataGridTableRowSelect,
+  DataGridTableRowSelectAll,
+} from '@e412/rnui-react';
+```
+
+You also need TanStack Table:
+
+```tsx
+import {
+  useReactTable,
+  getCoreRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  getFilteredRowModel,
+} from '@tanstack/react-table';
+```
+
+## Basic Usage
+
+Set up a table instance and compose the grid layout:
+
+```tsx
+const columns = [
+  { accessorKey: 'name', header: 'Name', size: 180 },
+  { accessorKey: 'email', header: 'Email', size: 220 },
+  { accessorKey: 'role', header: 'Role', size: 150 },
+  { accessorKey: 'status', header: 'Status', size: 100 },
+];
+
+const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 5 });
+
+const table = useReactTable({
+  columns,
+  data,
+  getRowId: (row) => row.id,
+  state: { pagination },
+  onPaginationChange: setPagination,
+  getCoreRowModel: getCoreRowModel(),
+  getPaginationRowModel: getPaginationRowModel(),
+});
+
+return (
+  <DataGrid table={table} recordCount={data.length}>
+    <div className="w-full space-y-2.5">
+      <DataGridContainer>
+        <DataGridScrollArea>
+          <DataGridTable />
+        </DataGridScrollArea>
+      </DataGridContainer>
+      <DataGridPagination />
+    </div>
+  </DataGrid>
+);
+```
+
+## Table Layout Options
+
+The `tableLayout` prop on `DataGrid` controls visual variations:
+
+### Cell Border
+
+```tsx
+<DataGrid table={table} recordCount={data.length} tableLayout={{ cellBorder: true }}>
+```
+
+### Dense Mode
+
+```tsx
+<DataGrid table={table} recordCount={data.length} tableLayout={{ dense: true }}>
+```
+
+### Light Table
+
+Remove header background and row borders, add rounded rows:
+
+```tsx
+<DataGrid
+  table={table}
+  recordCount={data.length}
+  tableLayout={{ headerBackground: false, rowBorder: false, rowRounded: true }}
+>
+```
+
+### Striped Rows
+
+```tsx
+<DataGrid
+  table={table}
+  recordCount={data.length}
+  tableLayout={{ stripped: true, rowRounded: true }}
+>
+  <DataGridContainer border={false}>
+    <DataGridScrollArea>
+      <DataGridTable />
+    </DataGridScrollArea>
+  </DataGridContainer>
+</DataGrid>
+```
+
+### Auto Width
+
+```tsx
+<DataGrid table={table} recordCount={data.length} tableLayout={{ width: 'auto' }}>
+```
+
+### Sticky Header
+
+```tsx
+<DataGrid table={table} recordCount={data.length} tableLayout={{ headerSticky: true }}>
+  <DataGridContainer>
+    <DataGridScrollArea className="h-[300px]">
+      <DataGridTable />
+    </DataGridScrollArea>
+  </DataGridContainer>
+</DataGrid>
+```
+
+## Sorting
+
+Use `DataGridColumnHeader` in column definitions for sortable headers:
+
+```tsx
+const columns = [
+  {
+    accessorKey: 'name',
+    header: ({ column }) => <DataGridColumnHeader title="Name" column={column} />,
+    enableSorting: true,
+  },
+  // ...
+];
+
+const [sorting, setSorting] = useState([{ id: 'name', desc: false }]);
+
+const table = useReactTable({
+  columns,
+  data,
+  state: { pagination, sorting },
+  onSortingChange: setSorting,
+  getCoreRowModel: getCoreRowModel(),
+  getSortedRowModel: getSortedRowModel(),
+  getPaginationRowModel: getPaginationRowModel(),
+});
+```
+
+## Column Visibility
+
+Use `DataGridColumnVisibility` to let users toggle columns:
+
+```tsx
+const [columnVisibility, setColumnVisibility] = useState({});
+
+const table = useReactTable({
+  columns,
+  data,
+  state: { pagination, columnVisibility },
+  onColumnVisibilityChange: setColumnVisibility,
+  getCoreRowModel: getCoreRowModel(),
+  getPaginationRowModel: getPaginationRowModel(),
+});
+
+return (
+  <DataGrid table={table} recordCount={data.length}>
+    <div className="w-full space-y-2.5">
+      <div className="flex justify-end">
+        <DataGridColumnVisibility
+          table={table}
+          trigger={<Button variant="outline" size="sm">Toggle Columns</Button>}
+        />
+      </div>
+      <DataGridContainer>
+        <DataGridScrollArea>
+          <DataGridTable />
+        </DataGridScrollArea>
+      </DataGridContainer>
+      <DataGridPagination />
+    </div>
+  </DataGrid>
+);
+```
+
+## Row Selection
+
+Add a checkbox column using `DataGridTableRowSelectAll` and `DataGridTableRowSelect`:
+
+```tsx
+const [rowSelection, setRowSelection] = useState({});
+
+const columns = [
+  {
+    id: 'select',
+    header: () => <DataGridTableRowSelectAll />,
+    cell: ({ row }) => <DataGridTableRowSelect row={row} />,
+    enableSorting: false,
+    size: 40,
+  },
+  // ...other columns
+];
+
+const table = useReactTable({
+  columns,
+  data,
+  state: { pagination, rowSelection },
+  enableRowSelection: true,
+  onRowSelectionChange: setRowSelection,
+  getCoreRowModel: getCoreRowModel(),
+  getFilteredRowModel: getFilteredRowModel(),
+  getPaginationRowModel: getPaginationRowModel(),
+});
+```
+
+## Loading State
+
+Show skeleton placeholders while data is loading:
+
+```tsx
+<DataGrid
+  table={table}
+  recordCount={isLoading ? 0 : data.length}
+  isLoading={isLoading}
+  loadingMode="skeleton"
+>
+```
+
+Add `skeleton` metadata to column definitions:
+
+```tsx
+const columns = baseColumns.map((col) => ({
+  ...col,
+  meta: { skeleton: <Skeleton className="h-4 w-full" /> },
+}));
+```
+
+## Sub-Components Reference
+
+| Component | Purpose |
+|---|---|
+| `DataGrid` | Root provider -- accepts `table`, `recordCount`, `tableLayout`, `isLoading`, `loadingMode` |
+| `DataGridContainer` | Wrapper with optional `border` prop |
+| `DataGridScrollArea` | Horizontal/vertical scroll area |
+| `DataGridTable` | Renders the `<table>` element |
+| `DataGridPagination` | Page controls and record info |
+| `DataGridColumnHeader` | Sortable column header |
+| `DataGridColumnVisibility` | Column toggle dropdown |
+| `DataGridTableRowSelect` | Per-row checkbox |
+| `DataGridTableRowSelectAll` | Header select-all checkbox |
+| `DataGridColumnFilter` | Column filter input |
+| `DataGridTableDnd` | Drag-and-drop table variant |
+| `DataGridTableDndRows` | Sortable rows container |
+| `DataGridTableDndRowHandle` | Drag handle for rows |
+| `DataGridTableFootRow` | Footer row for aggregates |
+| `DataGridTableFootRowCell` | Footer cell |

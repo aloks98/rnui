@@ -1,0 +1,91 @@
+---
+title: Kbd
+description: Displays a keyboard key or shortcut in a styled inline element.
+---
+
+import { Kbd, KbdGroup } from '@e412/rnui-react';
+
+The `Kbd` component renders a styled keyboard key indicator. Use `KbdGroup` to combine multiple keys into a shortcut sequence.
+
+## Import
+
+```tsx
+import { Kbd, KbdGroup } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <Kbd>K</Kbd>
+</Preview>
+
+## Key Group
+
+Use `KbdGroup` to display multi-key shortcuts.
+
+<Preview>
+  <KbdGroup>
+    <Kbd>Ctrl</Kbd>
+    <Kbd>K</Kbd>
+  </KbdGroup>
+</Preview>
+
+## Examples
+
+### Common Shortcuts
+
+<Preview>
+  <div className="flex flex-col gap-3">
+    <div className="flex items-center justify-between text-sm max-w-xs">
+      <span>Copy</span>
+      <KbdGroup>
+        <Kbd>Ctrl</Kbd>
+        <Kbd>C</Kbd>
+      </KbdGroup>
+    </div>
+    <div className="flex items-center justify-between text-sm max-w-xs">
+      <span>Paste</span>
+      <KbdGroup>
+        <Kbd>Ctrl</Kbd>
+        <Kbd>V</Kbd>
+      </KbdGroup>
+    </div>
+    <div className="flex items-center justify-between text-sm max-w-xs">
+      <span>Undo</span>
+      <KbdGroup>
+        <Kbd>Ctrl</Kbd>
+        <Kbd>Z</Kbd>
+      </KbdGroup>
+    </div>
+    <div className="flex items-center justify-between text-sm max-w-xs">
+      <span>Save</span>
+      <KbdGroup>
+        <Kbd>Ctrl</Kbd>
+        <Kbd>S</Kbd>
+      </KbdGroup>
+    </div>
+  </div>
+</Preview>
+
+### Single Keys
+
+<Preview>
+  <div className="flex gap-2">
+    <Kbd>Esc</Kbd>
+    <Kbd>Tab</Kbd>
+    <Kbd>Enter</Kbd>
+    <Kbd>Space</Kbd>
+  </div>
+</Preview>
+
+### Search Prompt
+
+<Preview>
+  <div className="flex items-center gap-2 rounded-md border px-3 py-2 text-sm text-muted-foreground max-w-xs">
+    <span>Search...</span>
+    <KbdGroup className="ml-auto">
+      <Kbd>Ctrl</Kbd>
+      <Kbd>K</Kbd>
+    </KbdGroup>
+  </div>
+</Preview>

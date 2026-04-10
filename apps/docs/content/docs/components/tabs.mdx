@@ -1,0 +1,177 @@
+---
+title: Tabs
+description: Organise content into switchable panels triggered by a tab list.
+---
+
+import { Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent } from '@e412/rnui-react';
+import { Settings, User, Lock } from 'lucide-react';
+
+The `Tabs` component lets users switch between views within a shared context. It supports horizontal and vertical orientations and two visual variants.
+
+## Import
+
+```tsx
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <Tabs defaultValue="account" className="w-[400px]">
+    <TabsList>
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="password">Password</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account">
+      <p className="text-sm text-muted-foreground">Make changes to your account here.</p>
+    </TabsContent>
+    <TabsContent value="password">
+      <p className="text-sm text-muted-foreground">Change your password here.</p>
+    </TabsContent>
+  </Tabs>
+</Preview>
+
+## Variants
+
+### Line Variant
+
+<Preview>
+  <Tabs defaultValue="account" className="w-[400px]">
+    <TabsList variant="line">
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="password">Password</TabsTrigger>
+      <TabsTrigger value="settings">Settings</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account">
+      <p className="text-sm text-muted-foreground">Account settings.</p>
+    </TabsContent>
+    <TabsContent value="password">
+      <p className="text-sm text-muted-foreground">Password settings.</p>
+    </TabsContent>
+    <TabsContent value="settings">
+      <p className="text-sm text-muted-foreground">General settings.</p>
+    </TabsContent>
+  </Tabs>
+</Preview>
+
+### Vertical
+
+<Preview>
+  <Tabs defaultValue="account" orientation="vertical" className="w-[400px]">
+    <TabsList>
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="password">Password</TabsTrigger>
+      <TabsTrigger value="settings">Settings</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account">
+      <p className="text-sm text-muted-foreground">Account settings.</p>
+    </TabsContent>
+    <TabsContent value="password">
+      <p className="text-sm text-muted-foreground">Password settings.</p>
+    </TabsContent>
+    <TabsContent value="settings">
+      <p className="text-sm text-muted-foreground">General settings.</p>
+    </TabsContent>
+  </Tabs>
+</Preview>
+
+### Vertical Line Variant
+
+<Preview>
+  <Tabs defaultValue="account" orientation="vertical" className="w-[400px]">
+    <TabsList variant="line">
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="password">Password</TabsTrigger>
+      <TabsTrigger value="settings">Settings</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account">
+      <p className="text-sm text-muted-foreground">Account settings with line variant.</p>
+    </TabsContent>
+    <TabsContent value="password">
+      <p className="text-sm text-muted-foreground">Password settings with line variant.</p>
+    </TabsContent>
+    <TabsContent value="settings">
+      <p className="text-sm text-muted-foreground">General settings with line variant.</p>
+    </TabsContent>
+  </Tabs>
+</Preview>
+
+## Examples
+
+### Disabled Tab
+
+<Preview>
+  <Tabs defaultValue="account" className="w-[400px]">
+    <TabsList>
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="password" disabled>Password</TabsTrigger>
+      <TabsTrigger value="settings">Settings</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account">
+      <p className="text-sm text-muted-foreground">Account content.</p>
+    </TabsContent>
+    <TabsContent value="settings">
+      <p className="text-sm text-muted-foreground">Settings content.</p>
+    </TabsContent>
+  </Tabs>
+</Preview>
+
+### With Icons
+
+<Preview>
+  <Tabs defaultValue="profile" className="w-[400px]">
+    <TabsList>
+      <TabsTrigger value="profile" className="flex items-center gap-2">
+        <User className="h-4 w-4" />
+        Profile
+      </TabsTrigger>
+      <TabsTrigger value="security" className="flex items-center gap-2">
+        <Lock className="h-4 w-4" />
+        Security
+      </TabsTrigger>
+      <TabsTrigger value="settings" className="flex items-center gap-2">
+        <Settings className="h-4 w-4" />
+        Settings
+      </TabsTrigger>
+    </TabsList>
+    <TabsContent value="profile">
+      <p className="text-sm text-muted-foreground">Manage your profile information.</p>
+    </TabsContent>
+    <TabsContent value="security">
+      <p className="text-sm text-muted-foreground">Configure security options.</p>
+    </TabsContent>
+    <TabsContent value="settings">
+      <p className="text-sm text-muted-foreground">Adjust your preferences.</p>
+    </TabsContent>
+  </Tabs>
+</Preview>
+
+### Settings Page Layout
+
+<Preview>
+  <Tabs defaultValue="general" orientation="vertical" className="w-full max-w-lg">
+    <TabsList variant="line">
+      <TabsTrigger value="general">General</TabsTrigger>
+      <TabsTrigger value="notifications">Notifications</TabsTrigger>
+      <TabsTrigger value="billing">Billing</TabsTrigger>
+    </TabsList>
+    <TabsContent value="general" className="flex-1">
+      <div className="space-y-2">
+        <h3 className="text-sm font-medium">General Settings</h3>
+        <p className="text-sm text-muted-foreground">Configure your workspace preferences and display options.</p>
+      </div>
+    </TabsContent>
+    <TabsContent value="notifications" className="flex-1">
+      <div className="space-y-2">
+        <h3 className="text-sm font-medium">Notification Preferences</h3>
+        <p className="text-sm text-muted-foreground">Choose how and when you want to be notified.</p>
+      </div>
+    </TabsContent>
+    <TabsContent value="billing" className="flex-1">
+      <div className="space-y-2">
+        <h3 className="text-sm font-medium">Billing Information</h3>
+        <p className="text-sm text-muted-foreground">Manage your subscription and payment methods.</p>
+      </div>
+    </TabsContent>
+  </Tabs>
+</Preview>

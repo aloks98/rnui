@@ -1,0 +1,180 @@
+---
+title: JsonViewer
+description: An interactive viewer for exploring JSON data with collapsible nodes.
+---
+
+import { JsonViewer } from '@e412/rnui-react';
+
+The `JsonViewer` component renders JSON data in an expandable tree with syntax highlighting. It supports controlling default expansion depth, line numbers, colored indent guides, and array truncation.
+
+## Import
+
+```tsx
+import { JsonViewer } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <JsonViewer
+    title="User Data"
+    data={{
+      name: "John Doe",
+      age: 30,
+      active: true,
+      email: "john@example.com",
+      tags: ["developer", "designer"],
+    }}
+  />
+</Preview>
+
+## Expanded by Default
+
+Pass `defaultExpanded={true}` to expand all nodes on mount.
+
+<Preview>
+  <JsonViewer
+    title="Fully Expanded"
+    defaultExpanded={true}
+    data={{
+      name: "John Doe",
+      age: 30,
+      address: {
+        street: "123 Main St",
+        city: "Springfield",
+        country: "US",
+      },
+      tags: ["developer", "designer", "writer"],
+    }}
+  />
+</Preview>
+
+## Expand to Depth
+
+Control the default expansion depth with a number value.
+
+<Preview>
+  <JsonViewer
+    title="Expanded to Level 1"
+    defaultExpanded={1}
+    data={{
+      name: "John Doe",
+      address: {
+        street: "123 Main St",
+        city: "Springfield",
+      },
+      projects: [
+        { id: 1, name: "Project Alpha", status: "active" },
+        { id: 2, name: "Project Beta", status: "completed" },
+      ],
+    }}
+  />
+</Preview>
+
+## Color Indent Lines
+
+<Preview>
+  <JsonViewer
+    title="Color Indent Lines"
+    defaultExpanded={true}
+    showColorIndent={true}
+    data={{
+      name: "John Doe",
+      address: {
+        street: "123 Main St",
+        city: "Springfield",
+      },
+      tags: ["developer", "designer"],
+    }}
+  />
+</Preview>
+
+## Without Line Numbers
+
+<Preview>
+  <JsonViewer
+    title="No Line Numbers"
+    defaultExpanded={true}
+    showLineNumbers={false}
+    data={{
+      name: "John Doe",
+      active: true,
+      email: "john@example.com",
+    }}
+  />
+</Preview>
+
+## Examples
+
+### API Response
+
+<Preview>
+  <JsonViewer
+    title="API Response"
+    defaultExpanded={2}
+    data={{
+      status: 200,
+      ok: true,
+      url: "https://api.example.com/v1/users?page=1&limit=10",
+      headers: {
+        "content-type": "application/json",
+        "x-request-id": "abc-123-def",
+      },
+      body: {
+        data: [
+          { id: 1, name: "Alice", role: "admin" },
+          { id: 2, name: "Bob", role: "user" },
+        ],
+        pagination: {
+          page: 1,
+          limit: 10,
+          total: 42,
+          hasMore: true,
+        },
+      },
+    }}
+  />
+</Preview>
+
+### Configuration Object
+
+<Preview>
+  <JsonViewer
+    title="App Config"
+    defaultExpanded={1}
+    data={{
+      app: {
+        name: "My Application",
+        version: "2.1.0",
+        debug: false,
+      },
+      database: {
+        host: "localhost",
+        port: 5432,
+        name: "mydb",
+      },
+      features: {
+        darkMode: true,
+        notifications: true,
+        analytics: false,
+      },
+    }}
+  />
+</Preview>
+
+### Truncated Array
+
+<Preview>
+  <JsonViewer
+    title="Truncated Array (5 items shown)"
+    defaultExpanded={1}
+    truncation={{ enabled: true, itemsPerArray: 5 }}
+    data={{
+      users: Array.from({ length: 20 }, (_, i) => ({
+        id: i + 1,
+        name: `User ${i + 1}`,
+        email: `user${i + 1}@example.com`,
+      })),
+    }}
+  />
+</Preview>

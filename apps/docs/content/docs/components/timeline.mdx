@@ -1,0 +1,189 @@
+---
+title: Timeline
+description: A vertical or horizontal sequence of events with indicators and content.
+---
+
+import { Timeline, TimelineItem, TimelineIndicator, TimelineSeparator, TimelineTitle, TimelineContent, TimelineDate, TimelineHeader, Badge } from '@e412/rnui-react';
+import { CheckIcon, GitForkIcon, GitMergeIcon } from 'lucide-react';
+
+The `Timeline` component displays a chronological list of events. It supports vertical and horizontal orientations, custom indicators, and flexible content slots.
+
+## Import
+
+```tsx
+import {
+  Timeline,
+  TimelineItem,
+  TimelineIndicator,
+  TimelineSeparator,
+  TimelineTitle,
+  TimelineContent,
+  TimelineDate,
+  TimelineHeader,
+} from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <Timeline defaultValue={2} className="w-full max-w-md">
+    <TimelineItem step={1}>
+      <TimelineHeader>
+        <TimelineDate>March 2024</TimelineDate>
+        <TimelineTitle>Project Initialized</TimelineTitle>
+      </TimelineHeader>
+      <TimelineIndicator />
+      <TimelineSeparator />
+      <TimelineContent>
+        Successfully set up the project repository and initial architecture.
+      </TimelineContent>
+    </TimelineItem>
+    <TimelineItem step={2}>
+      <TimelineHeader>
+        <TimelineDate>April 2024</TimelineDate>
+        <TimelineTitle>Beta Release</TimelineTitle>
+      </TimelineHeader>
+      <TimelineIndicator />
+      <TimelineSeparator />
+      <TimelineContent>
+        Launched the beta version for early testers and feedback.
+      </TimelineContent>
+    </TimelineItem>
+    <TimelineItem step={3}>
+      <TimelineHeader>
+        <TimelineDate>June 2024</TimelineDate>
+        <TimelineTitle>Official Launch</TimelineTitle>
+      </TimelineHeader>
+      <TimelineIndicator />
+      <TimelineSeparator />
+      <TimelineContent>
+        The platform is now live for all users worldwide.
+      </TimelineContent>
+    </TimelineItem>
+  </Timeline>
+</Preview>
+
+## Horizontal
+
+<Preview>
+  <Timeline defaultValue={2} orientation="horizontal" className="w-full max-w-xl">
+    <TimelineItem step={1}>
+      <TimelineHeader>
+        <TimelineSeparator />
+        <TimelineDate>Week 1</TimelineDate>
+        <TimelineTitle>Planning</TimelineTitle>
+        <TimelineIndicator />
+      </TimelineHeader>
+      <TimelineContent>Scope definition and resource planning.</TimelineContent>
+    </TimelineItem>
+    <TimelineItem step={2}>
+      <TimelineHeader>
+        <TimelineSeparator />
+        <TimelineDate>Week 2</TimelineDate>
+        <TimelineTitle>Design</TimelineTitle>
+        <TimelineIndicator />
+      </TimelineHeader>
+      <TimelineContent>UI/UX design and prototyping.</TimelineContent>
+    </TimelineItem>
+    <TimelineItem step={3}>
+      <TimelineHeader>
+        <TimelineSeparator />
+        <TimelineDate>Week 4</TimelineDate>
+        <TimelineTitle>Development</TimelineTitle>
+        <TimelineIndicator />
+      </TimelineHeader>
+      <TimelineContent>Core features implementation.</TimelineContent>
+    </TimelineItem>
+  </Timeline>
+</Preview>
+
+## Examples
+
+### Order Status
+
+<Preview>
+  <Timeline defaultValue={3} className="w-full max-w-md">
+    {[
+      { id: 1, date: "Mar 15, 2024", title: "Order Placed", description: "Your order has been received and is being processed." },
+      { id: 2, date: "Mar 16, 2024", title: "Payment Confirmed", description: "Transaction successful. Preparing for shipment." },
+      { id: 3, date: "Mar 18, 2024", title: "Shipped", description: "Your package is on its way." },
+      { id: 4, date: "Mar 20, 2024", title: "Delivered", description: "Package successfully delivered." },
+    ].map((item) => (
+      <TimelineItem
+        key={item.id}
+        step={item.id}
+        className="group-data-[orientation=vertical]/timeline:ms-10"
+      >
+        <TimelineHeader>
+          <TimelineSeparator className="group-data-[orientation=vertical]/timeline:-left-7 group-data-[orientation=vertical]/timeline:h-[calc(100%-1.5rem-0.25rem)] group-data-[orientation=vertical]/timeline:translate-y-6.5" />
+          <TimelineDate>{item.date}</TimelineDate>
+          <TimelineTitle>{item.title}</TimelineTitle>
+          <TimelineIndicator className="group-data-completed/timeline-item:bg-primary group-data-completed/timeline-item:text-primary-foreground flex size-6 items-center justify-center group-data-completed/timeline-item:border-none group-data-[orientation=vertical]/timeline:-left-7">
+            <CheckIcon className="size-4 group-not-data-completed/timeline-item:hidden" />
+          </TimelineIndicator>
+        </TimelineHeader>
+        <TimelineContent>{item.description}</TimelineContent>
+      </TimelineItem>
+    ))}
+  </Timeline>
+</Preview>
+
+### Product Roadmap
+
+<Preview>
+  <Timeline defaultValue={2} className="w-full max-w-md">
+    {[
+      { id: 1, date: "Jan 2025", title: "AI Engine Integration", description: "Deep integration of advanced LLMs for real-time suggestions." },
+      { id: 2, date: "Feb 2025", title: "Collaborative Editing", description: "Multi-user real-time collaboration with shared cursors." },
+      { id: 3, date: "Mar 2025", title: "Visual Theme Builder", description: "Interactive interface for custom design systems." },
+      { id: 4, date: "Apr 2025", title: "Enterprise Security", description: "Role-based access control and SOC2 compliance." },
+    ].map((item) => (
+      <TimelineItem key={item.id} step={item.id}>
+        <TimelineHeader>
+          <TimelineSeparator />
+          <TimelineDate>{item.date}</TimelineDate>
+          <TimelineTitle>{item.title}</TimelineTitle>
+          <TimelineIndicator />
+        </TimelineHeader>
+        <TimelineContent>{item.description}</TimelineContent>
+      </TimelineItem>
+    ))}
+  </Timeline>
+</Preview>
+
+### Activity Feed
+
+<Preview>
+  <div className="w-full max-w-md">
+    <Timeline defaultValue={4}>
+      {[
+        { id: 1, user: "Alex Johnson", initials: "AJ", action: "pushed 3 commits to", target: "main", date: "5 minutes ago" },
+        { id: 2, user: "Sarah Chen", initials: "SC", action: "opened pull request", target: "#284", date: "20 minutes ago" },
+        { id: 3, user: "David Kim", initials: "DK", action: "commented on", target: "Issue #142", date: "1 hour ago" },
+      ].map((activity) => (
+        <TimelineItem
+          key={activity.id}
+          step={activity.id}
+          className="group-data-[orientation=vertical]/timeline:ms-10"
+        >
+          <TimelineHeader>
+            <TimelineSeparator className="group-data-[orientation=vertical]/timeline:-left-8 group-data-[orientation=vertical]/timeline:h-[calc(100%-2.5rem)] group-data-[orientation=vertical]/timeline:translate-y-7" />
+            <TimelineIndicator className="size-8 overflow-hidden rounded-full border-none group-data-[orientation=vertical]/timeline:-left-8">
+              <div className="bg-muted text-muted-foreground flex size-8 items-center justify-center rounded-full text-[10px] font-medium">
+                {activity.initials}
+              </div>
+            </TimelineIndicator>
+          </TimelineHeader>
+          <TimelineContent>
+            <p className="text-sm">
+              <span className="font-medium">{activity.user}</span>{" "}
+              <span className="text-muted-foreground">{activity.action}</span>{" "}
+              <span className="font-medium">{activity.target}</span>
+            </p>
+            <TimelineDate className="mt-0.5 mb-0">{activity.date}</TimelineDate>
+          </TimelineContent>
+        </TimelineItem>
+      ))}
+    </Timeline>
+  </div>
+</Preview>

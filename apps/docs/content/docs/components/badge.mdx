@@ -1,0 +1,127 @@
+---
+title: Badge
+description: A small label used to highlight status, category, or count.
+---
+
+import { Badge } from '@e412/rnui-react';
+
+The `Badge` component renders a compact label. It supports solid, light, and outline variant families, five sizes, and two border-radius options.
+
+## Import
+
+```tsx
+import { Badge } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <Badge>Badge</Badge>
+</Preview>
+
+## Solid Variants
+
+<Preview>
+  <div className="flex gap-2 flex-wrap">
+    <Badge>Default</Badge>
+    <Badge variant="secondary">Secondary</Badge>
+    <Badge variant="outline">Outline</Badge>
+    <Badge variant="info">Info</Badge>
+    <Badge variant="success">Success</Badge>
+    <Badge variant="warning">Warning</Badge>
+    <Badge variant="destructive">Destructive</Badge>
+    <Badge variant="focus">Focus</Badge>
+    <Badge variant="invert">Invert</Badge>
+  </div>
+</Preview>
+
+## Light Variants
+
+<Preview>
+  <div className="flex gap-2 flex-wrap">
+    <Badge variant="primary-light">Primary</Badge>
+    <Badge variant="info-light">Info</Badge>
+    <Badge variant="success-light">Success</Badge>
+    <Badge variant="warning-light">Warning</Badge>
+    <Badge variant="destructive-light">Destructive</Badge>
+    <Badge variant="invert-light">Invert</Badge>
+    <Badge variant="focus-light">Focus</Badge>
+  </div>
+</Preview>
+
+## Outline Variants
+
+<Preview>
+  <div className="flex gap-2 flex-wrap">
+    <Badge variant="primary-outline">Primary</Badge>
+    <Badge variant="info-outline">Info</Badge>
+    <Badge variant="success-outline">Success</Badge>
+    <Badge variant="warning-outline">Warning</Badge>
+    <Badge variant="destructive-outline">Destructive</Badge>
+    <Badge variant="invert-outline">Invert</Badge>
+    <Badge variant="focus-outline">Focus</Badge>
+  </div>
+</Preview>
+
+## Sizes
+
+<Preview>
+  <div className="flex gap-2 items-center">
+    <Badge size="xs">XS</Badge>
+    <Badge size="sm">SM</Badge>
+    <Badge size="default">Default</Badge>
+    <Badge size="lg">LG</Badge>
+    <Badge size="xl">XL</Badge>
+  </div>
+</Preview>
+
+## Full Radius
+
+<Preview>
+  <div className="flex gap-2 flex-wrap">
+    <Badge radius="full">Default</Badge>
+    <Badge radius="full" variant="info">Info</Badge>
+    <Badge radius="full" variant="success">Success</Badge>
+    <Badge radius="full" variant="warning">Warning</Badge>
+    <Badge radius="full" variant="destructive">Destructive</Badge>
+  </div>
+</Preview>
+
+## Examples
+
+### Status Labels
+
+<Preview>
+  <div className="flex gap-2 flex-wrap">
+    <Badge variant="success-light" radius="full">Active</Badge>
+    <Badge variant="warning-light" radius="full">Pending</Badge>
+    <Badge variant="destructive-light" radius="full">Expired</Badge>
+    <Badge variant="secondary" radius="full">Draft</Badge>
+  </div>
+</Preview>
+
+### Notification Counts
+
+<Preview>
+  <div className="flex gap-3 items-center">
+    <div className="relative">
+      <span className="text-sm font-medium">Inbox</span>
+      <Badge size="xs" className="absolute -top-2 -right-5">3</Badge>
+    </div>
+    <div className="relative">
+      <span className="text-sm font-medium">Alerts</span>
+      <Badge size="xs" variant="destructive" className="absolute -top-2 -right-5">9</Badge>
+    </div>
+  </div>
+</Preview>
+
+### Technology Tags
+
+<Preview>
+  <div className="flex gap-2 flex-wrap">
+    <Badge variant="info-outline">React</Badge>
+    <Badge variant="success-outline">Node.js</Badge>
+    <Badge variant="warning-outline">TypeScript</Badge>
+    <Badge variant="focus-outline">Tailwind CSS</Badge>
+  </div>
+</Preview>

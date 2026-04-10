@@ -1,0 +1,162 @@
+---
+title: Avatar
+description: A circular image or fallback representing a user or entity.
+---
+
+import { Avatar, AvatarImage, AvatarFallback, AvatarBadge, AvatarGroup, AvatarGroupCount } from '@e412/rnui-react';
+
+The `Avatar` component displays a user image with a fallback for when the image is unavailable. It supports three sizes, an online-status badge, and grouping.
+
+## Import
+
+```tsx
+import {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+  AvatarBadge,
+  AvatarGroup,
+  AvatarGroupCount,
+} from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <Avatar>
+    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+    <AvatarFallback>CN</AvatarFallback>
+  </Avatar>
+</Preview>
+
+## Fallback
+
+When no image is provided, the fallback content (typically initials) is shown.
+
+<Preview>
+  <Avatar>
+    <AvatarFallback>AB</AvatarFallback>
+  </Avatar>
+</Preview>
+
+## Sizes
+
+<Preview>
+  <div className="flex gap-4 items-center">
+    <Avatar size="sm">
+      <AvatarFallback>SM</AvatarFallback>
+    </Avatar>
+    <Avatar size="default">
+      <AvatarFallback>MD</AvatarFallback>
+    </Avatar>
+    <Avatar size="lg">
+      <AvatarFallback>LG</AvatarFallback>
+    </Avatar>
+  </div>
+</Preview>
+
+## With Badge
+
+Add `AvatarBadge` to indicate online status or notifications.
+
+<Preview>
+  <div className="flex gap-4 items-center">
+    <Avatar size="sm">
+      <AvatarFallback>SM</AvatarFallback>
+      <AvatarBadge />
+    </Avatar>
+    <Avatar>
+      <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+      <AvatarBadge />
+    </Avatar>
+    <Avatar size="lg">
+      <AvatarFallback>LG</AvatarFallback>
+      <AvatarBadge />
+    </Avatar>
+  </div>
+</Preview>
+
+## Avatar Group
+
+Stack multiple avatars together using `AvatarGroup` and show an overflow count with `AvatarGroupCount`.
+
+<Preview>
+  <AvatarGroup>
+    <Avatar>
+      <AvatarFallback>A</AvatarFallback>
+    </Avatar>
+    <Avatar>
+      <AvatarFallback>B</AvatarFallback>
+    </Avatar>
+    <Avatar>
+      <AvatarFallback>C</AvatarFallback>
+    </Avatar>
+    <AvatarGroupCount>+3</AvatarGroupCount>
+  </AvatarGroup>
+</Preview>
+
+## Examples
+
+### User Profile Card
+
+<Preview>
+  <div className="flex items-center gap-3">
+    <Avatar>
+      <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+      <AvatarFallback>CN</AvatarFallback>
+      <AvatarBadge />
+    </Avatar>
+    <div>
+      <p className="text-sm font-medium">shadcn</p>
+      <p className="text-xs text-muted-foreground">Online</p>
+    </div>
+  </div>
+</Preview>
+
+### Team Members
+
+<Preview>
+  <div className="flex items-center gap-4">
+    <AvatarGroup>
+      <Avatar size="sm">
+        <AvatarFallback>AJ</AvatarFallback>
+      </Avatar>
+      <Avatar size="sm">
+        <AvatarFallback>SC</AvatarFallback>
+      </Avatar>
+      <Avatar size="sm">
+        <AvatarFallback>DK</AvatarFallback>
+      </Avatar>
+      <Avatar size="sm">
+        <AvatarFallback>EW</AvatarFallback>
+      </Avatar>
+      <AvatarGroupCount>+8</AvatarGroupCount>
+    </AvatarGroup>
+    <span className="text-sm text-muted-foreground">12 members</span>
+  </div>
+</Preview>
+
+### Comment Thread
+
+<Preview>
+  <div className="space-y-3 max-w-sm">
+    <div className="flex items-start gap-3">
+      <Avatar size="sm">
+        <AvatarFallback>AJ</AvatarFallback>
+      </Avatar>
+      <div>
+        <p className="text-sm font-medium">Alex Johnson</p>
+        <p className="text-xs text-muted-foreground">Looks great! Ship it.</p>
+      </div>
+    </div>
+    <div className="flex items-start gap-3">
+      <Avatar size="sm">
+        <AvatarFallback>SC</AvatarFallback>
+      </Avatar>
+      <div>
+        <p className="text-sm font-medium">Sarah Chen</p>
+        <p className="text-xs text-muted-foreground">One small nit on line 42.</p>
+      </div>
+    </div>
+  </div>
+</Preview>

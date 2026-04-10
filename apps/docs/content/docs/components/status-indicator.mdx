@@ -1,0 +1,112 @@
+---
+title: StatusIndicator
+description: A colored dot with optional label indicating the current state of a service or entity.
+---
+
+import { StatusIndicator } from '@e412/rnui-react';
+
+The `StatusIndicator` component displays a colored dot representing one of four states: active, down, fixing, or idle. It supports three sizes and an optional text label.
+
+## Import
+
+```tsx
+import { StatusIndicator } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <StatusIndicator state="active" label="Online" />
+</Preview>
+
+## All States
+
+<Preview>
+  <div className="flex flex-col gap-3">
+    <StatusIndicator state="active" label="Active -- System operational" />
+    <StatusIndicator state="down" label="Down -- Service unavailable" />
+    <StatusIndicator state="fixing" label="Fixing -- Under maintenance" />
+    <StatusIndicator state="idle" label="Idle -- No activity" />
+  </div>
+</Preview>
+
+## Sizes
+
+<Preview>
+  <div className="flex flex-col gap-3">
+    <StatusIndicator state="active" size="sm" label="Small" />
+    <StatusIndicator state="active" size="md" label="Medium (default)" />
+    <StatusIndicator state="active" size="lg" label="Large" />
+  </div>
+</Preview>
+
+## Without Label
+
+<Preview>
+  <div className="flex gap-4 items-center">
+    <StatusIndicator state="active" size="sm" />
+    <StatusIndicator state="down" size="md" />
+    <StatusIndicator state="fixing" size="lg" />
+    <StatusIndicator state="idle" size="md" />
+  </div>
+</Preview>
+
+## Examples
+
+### Service Dashboard
+
+<Preview>
+  <div className="w-full max-w-sm space-y-3 rounded-lg border p-4">
+    <h3 className="text-sm font-medium">Service Status</h3>
+    <div className="space-y-2">
+      <div className="flex items-center justify-between">
+        <span className="text-sm">API Gateway</span>
+        <StatusIndicator state="active" size="sm" label="Operational" />
+      </div>
+      <div className="flex items-center justify-between">
+        <span className="text-sm">Database</span>
+        <StatusIndicator state="active" size="sm" label="Operational" />
+      </div>
+      <div className="flex items-center justify-between">
+        <span className="text-sm">CDN</span>
+        <StatusIndicator state="fixing" size="sm" label="Degraded" />
+      </div>
+      <div className="flex items-center justify-between">
+        <span className="text-sm">Email Service</span>
+        <StatusIndicator state="down" size="sm" label="Outage" />
+      </div>
+      <div className="flex items-center justify-between">
+        <span className="text-sm">Background Jobs</span>
+        <StatusIndicator state="idle" size="sm" label="Idle" />
+      </div>
+    </div>
+  </div>
+</Preview>
+
+### Inline with Text
+
+<Preview>
+  <div className="flex items-center gap-2 text-sm">
+    <span>Server status:</span>
+    <StatusIndicator state="active" size="sm" label="Running" />
+  </div>
+</Preview>
+
+### User Presence
+
+<Preview>
+  <div className="flex flex-col gap-2 max-w-xs">
+    <div className="flex items-center justify-between text-sm">
+      <span>Alex Johnson</span>
+      <StatusIndicator state="active" size="sm" label="Online" />
+    </div>
+    <div className="flex items-center justify-between text-sm">
+      <span>Sarah Chen</span>
+      <StatusIndicator state="idle" size="sm" label="Away" />
+    </div>
+    <div className="flex items-center justify-between text-sm">
+      <span>David Kim</span>
+      <StatusIndicator state="down" size="sm" label="Offline" />
+    </div>
+  </div>
+</Preview>

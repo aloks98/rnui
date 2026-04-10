@@ -1,0 +1,79 @@
+---
+title: EmptyState
+description: A pre-composed empty state with icon, title, description, and optional action.
+---
+
+import { EmptyState, Button } from '@e412/rnui-react';
+import { Inbox, Plus, Search, FileText } from 'lucide-react';
+
+The `EmptyState` component provides a ready-made empty state pattern with an icon, title, description, and optional action button. Use it when a list, table, or section has no data to show.
+
+## Import
+
+```tsx
+import { EmptyState } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <EmptyState
+    icon={<Inbox />}
+    title="No messages"
+    description="You have no messages in your inbox. New messages will appear here."
+  />
+</Preview>
+
+## With Action
+
+<Preview>
+  <EmptyState
+    icon={<Inbox />}
+    title="No projects yet"
+    description="Get started by creating your first project."
+    action={
+      <Button size="sm">
+        <Plus className="mr-2 h-4 w-4" />
+        Create Project
+      </Button>
+    }
+  />
+</Preview>
+
+## Examples
+
+### No Search Results
+
+<Preview>
+  <EmptyState
+    icon={<Search />}
+    title="No results found"
+    description="Try adjusting your search terms or filters to find what you're looking for."
+  />
+</Preview>
+
+### No Documents
+
+<Preview>
+  <EmptyState
+    icon={<FileText />}
+    title="No documents"
+    description="Upload or create your first document to get started."
+    action={
+      <Button size="sm" variant="outline">
+        <Plus className="mr-2 h-4 w-4" />
+        New Document
+      </Button>
+    }
+  />
+</Preview>
+
+### Empty Inbox
+
+<Preview>
+  <EmptyState
+    icon={<Inbox />}
+    title="All caught up!"
+    description="You have no new notifications. We'll let you know when something arrives."
+  />
+</Preview>

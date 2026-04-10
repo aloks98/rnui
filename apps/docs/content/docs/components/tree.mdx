@@ -1,0 +1,110 @@
+---
+title: Tree
+description: A hierarchical tree view for displaying nested data structures.
+---
+
+import { Tree, TreeItem, TreeItemLabel } from '@e412/rnui-react';
+
+The `Tree` component renders a hierarchical, expandable tree view powered by `@headless-tree/react`. It supports keyboard navigation, custom indent levels, toggle icon styles (chevron or plus-minus), and fully customisable item rendering with icons or checkboxes.
+
+## Import
+
+```tsx
+import { Tree, TreeItem, TreeItemLabel } from '@e412/rnui-react';
+```
+
+## Usage
+
+The Tree component requires setting up a headless tree instance using `useTree` from `@headless-tree/react` and providing a data loader.
+
+```tsx
+import { Tree, TreeItem, TreeItemLabel } from '@e412/rnui-react';
+import { hotkeysCoreFeature, syncDataLoaderFeature } from '@headless-tree/core';
+import { useTree } from '@headless-tree/react';
+
+const items = {
+  root: { name: 'Root', children: ['child-1', 'child-2'] },
+  'child-1': { name: 'Child 1', children: ['grandchild-1'] },
+  'child-2': { name: 'Child 2' },
+  'grandchild-1': { name: 'Grandchild 1' },
+};
+
+function MyTree() {
+  const tree = useTree({
+    rootItemId: 'root',
+    getItemName: (item) => item.getItemData().name,
+    isItemFolder: (item) => (item.getItemData()?.children?.length ?? 0) > 0,
+    dataLoader: {
+      getItem: (id) => items[id],
+      getChildren: (id) => items[id].children ?? [],
+    },
+    features: [syncDataLoaderFeature, hotkeysCoreFeature],
+  });
+
+  return (
+    <Tree tree={tree}>
+      {tree.getItems().map((item) => (
+        <TreeItem key={item.getId()} item={item}>
+          <TreeItemLabel />
+        </TreeItem>
+      ))}
+    </Tree>
+  );
+}
+```
+
+## Props
+
+- **`indent`** -- Indentation in pixels per nesting level (default varies).
+- **`toggleIconType`** -- `"chevron"` (default) or `"plus-minus"` for the expand/collapse icon.
+
+## Examples
+
+### With Custom Icons
+
+You can render custom icons (folders, files) inside `TreeItemLabel` by passing children.
+
+```tsx
+<TreeItemLabel>
+  <span className="flex items-center gap-2">
+    {item.isFolder() ? (
+      item.isExpanded() ? <FolderOpenIcon className="size-4" /> : <FolderIcon className="size-4" />
+    ) : (
+      <FileIcon className="size-4" />
+    )}
+    {item.getItemName()}
+  </span>
+</TreeItemLabel>
+```
+
+### With Indented Guide Lines
+
+Add vertical indent lines using a repeating gradient on the Tree container:
+
+```tsx
+<Tree
+  className="relative before:absolute before:inset-0 before:-ms-1 before:bg-[repeating-linear-gradient(to_right,transparent_0,transparent_calc(var(--tree-indent)-1px),var(--border)_calc(var(--tree-indent)-1px),var(--border)_calc(var(--tree-indent)))]"
+  indent={20}
+  tree={tree}
+>
+  {/* items */}
+</Tree>
+```
+
+### Plus-Minus Toggle
+
+Use `toggleIconType="plus-minus"` for an alternative expand/collapse indicator style, common in permission or settings trees.
+
+```tsx
+<Tree indent={24} tree={tree} toggleIconType="plus-minus">
+  {/* items */}
+</Tree>
+```
+
+### File Explorer
+
+A file explorer tree with type-specific icons (TypeScript, CSS, JSON, Markdown) can be built by mapping file extensions to icon components inside `TreeItemLabel`.
+
+### Permissions Tree with Checkboxes
+
+Combine the Tree with `Checkbox` components for leaf nodes to build a permission selector. Use `toggleIconType="plus-minus"` for category folders and checkboxes for individual permissions.

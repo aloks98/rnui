@@ -1,0 +1,116 @@
+---
+title: Skeleton
+description: A placeholder animation indicating content is loading.
+---
+
+import { Skeleton } from '@e412/rnui-react';
+
+The `Skeleton` component shows a pulsing placeholder while content is loading. Shape it with Tailwind utility classes to match the layout of the content it replaces.
+
+## Import
+
+```tsx
+import { Skeleton } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <div className="flex items-center space-x-4">
+    <Skeleton className="h-12 w-12 rounded-full" />
+    <div className="space-y-2">
+      <Skeleton className="h-4 w-[250px]" />
+      <Skeleton className="h-4 w-[200px]" />
+    </div>
+  </div>
+</Preview>
+
+## Shapes
+
+### Line
+
+<Preview>
+  <Skeleton className="h-4 w-[250px]" />
+</Preview>
+
+### Circle
+
+<Preview>
+  <Skeleton className="h-12 w-12 rounded-full" />
+</Preview>
+
+### Card
+
+<Preview>
+  <div className="flex flex-col space-y-3">
+    <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+    <div className="space-y-2">
+      <Skeleton className="h-4 w-[250px]" />
+      <Skeleton className="h-4 w-[200px]" />
+    </div>
+  </div>
+</Preview>
+
+## Examples
+
+### Profile Loading State
+
+<Preview>
+  <div className="flex items-center space-x-4">
+    <Skeleton className="h-10 w-10 rounded-full" />
+    <div className="space-y-2">
+      <Skeleton className="h-4 w-[150px]" />
+      <Skeleton className="h-3 w-[100px]" />
+    </div>
+  </div>
+</Preview>
+
+### Article Loading State
+
+<Preview>
+  <div className="space-y-4 max-w-md">
+    <Skeleton className="h-6 w-3/4" />
+    <Skeleton className="h-4 w-full" />
+    <Skeleton className="h-4 w-full" />
+    <Skeleton className="h-4 w-2/3" />
+    <Skeleton className="h-[200px] w-full rounded-lg" />
+  </div>
+</Preview>
+
+### Dashboard Cards Loading
+
+<Preview>
+  <div className="grid grid-cols-3 gap-4">
+    <div className="space-y-2 rounded-lg border p-4">
+      <Skeleton className="h-3 w-20" />
+      <Skeleton className="h-8 w-24" />
+      <Skeleton className="h-3 w-32" />
+    </div>
+    <div className="space-y-2 rounded-lg border p-4">
+      <Skeleton className="h-3 w-20" />
+      <Skeleton className="h-8 w-24" />
+      <Skeleton className="h-3 w-32" />
+    </div>
+    <div className="space-y-2 rounded-lg border p-4">
+      <Skeleton className="h-3 w-20" />
+      <Skeleton className="h-8 w-24" />
+      <Skeleton className="h-3 w-32" />
+    </div>
+  </div>
+</Preview>
+
+### List Loading State
+
+<Preview>
+  <div className="space-y-3 max-w-sm">
+    {[1, 2, 3, 4].map((i) => (
+      <div key={i} className="flex items-center gap-3">
+        <Skeleton className="h-8 w-8 rounded-full" />
+        <div className="flex-1 space-y-1.5">
+          <Skeleton className="h-3 w-3/4" />
+          <Skeleton className="h-3 w-1/2" />
+        </div>
+      </div>
+    ))}
+  </div>
+</Preview>

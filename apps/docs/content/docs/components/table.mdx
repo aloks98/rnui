@@ -1,0 +1,153 @@
+---
+title: Table
+description: A semantic HTML table for displaying structured data in rows and columns.
+---
+
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableCaption, Badge } from '@e412/rnui-react';
+
+The `Table` component renders a semantic HTML `<table>` with consistent styling. Use it for static, read-only tabular data. For interactive tables with sorting, filtering, and pagination, see [DataGrid](/docs/components/data-grid).
+
+## Import
+
+```tsx
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+  TableCaption,
+} from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <Table>
+    <TableCaption>A list of your recent invoices.</TableCaption>
+    <TableHeader>
+      <TableRow>
+        <TableHead className="w-[100px]">Invoice</TableHead>
+        <TableHead>Status</TableHead>
+        <TableHead>Method</TableHead>
+        <TableHead className="text-right">Amount</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell className="font-medium">INV001</TableCell>
+        <TableCell>Paid</TableCell>
+        <TableCell>Credit Card</TableCell>
+        <TableCell className="text-right">$250.00</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell className="font-medium">INV002</TableCell>
+        <TableCell>Pending</TableCell>
+        <TableCell>PayPal</TableCell>
+        <TableCell className="text-right">$150.00</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell className="font-medium">INV003</TableCell>
+        <TableCell>Unpaid</TableCell>
+        <TableCell>Bank Transfer</TableCell>
+        <TableCell className="text-right">$350.00</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Preview>
+
+## Examples
+
+### With Status Badges
+
+<Preview>
+  <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Name</TableHead>
+        <TableHead>Status</TableHead>
+        <TableHead className="text-right">Amount</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell className="font-medium">Alex Johnson</TableCell>
+        <TableCell><Badge variant="success-light" radius="full">Active</Badge></TableCell>
+        <TableCell className="text-right">$5,143.03</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell className="font-medium">Sarah Chen</TableCell>
+        <TableCell><Badge variant="secondary" radius="full">Inactive</Badge></TableCell>
+        <TableCell className="text-right">$4,321.87</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell className="font-medium">Michael Rodriguez</TableCell>
+        <TableCell><Badge variant="success-light" radius="full">Active</Badge></TableCell>
+        <TableCell className="text-right">$7,654.98</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Preview>
+
+### Striped Rows
+
+<Preview>
+  <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Product</TableHead>
+        <TableHead>Category</TableHead>
+        <TableHead className="text-right">Price</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow className="bg-muted/50">
+        <TableCell className="font-medium">Widget A</TableCell>
+        <TableCell>Hardware</TableCell>
+        <TableCell className="text-right">$29.99</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell className="font-medium">Service B</TableCell>
+        <TableCell>Software</TableCell>
+        <TableCell className="text-right">$99.00</TableCell>
+      </TableRow>
+      <TableRow className="bg-muted/50">
+        <TableCell className="font-medium">Bundle C</TableCell>
+        <TableCell>Package</TableCell>
+        <TableCell className="text-right">$149.99</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Preview>
+
+### Compact Table
+
+<Preview>
+  <Table className="text-xs">
+    <TableHeader>
+      <TableRow>
+        <TableHead>ID</TableHead>
+        <TableHead>Event</TableHead>
+        <TableHead>Timestamp</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell className="font-mono">evt_001</TableCell>
+        <TableCell>user.login</TableCell>
+        <TableCell className="text-muted-foreground">2025-03-15 08:30:00</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell className="font-mono">evt_002</TableCell>
+        <TableCell>user.update</TableCell>
+        <TableCell className="text-muted-foreground">2025-03-15 09:12:34</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell className="font-mono">evt_003</TableCell>
+        <TableCell>user.logout</TableCell>
+        <TableCell className="text-muted-foreground">2025-03-15 17:45:00</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Preview>

@@ -1,0 +1,203 @@
+---
+title: CodeBlock
+description: Syntax-highlighted code blocks powered by Shiki with copy support, line numbers, and line highlighting.
+---
+
+import { CodeBlock, InlineCode } from '@e412/rnui-react';
+
+CodeBlock renders syntax-highlighted code using Shiki. It supports multiple languages, line numbers, line highlighting, custom themes, and a built-in copy button.
+
+## Import
+
+```tsx
+import { CodeBlock, InlineCode } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <CodeBlock
+    code={`import { Button } from '@e412/rnui-react'
+
+export function App() {
+  return <Button>Click me</Button>
+}`}
+    language="tsx"
+  />
+</Preview>
+
+## With Title
+
+Add a title bar to label the code block, useful for filenames or descriptions.
+
+<Preview>
+  <CodeBlock
+    code={`npm install @e412/rnui-react @e412/rnui-themes`}
+    title="Terminal"
+    language="bash"
+  />
+</Preview>
+
+## With Line Numbers
+
+Enable `showLineNumbers` to display line numbers alongside the code.
+
+<Preview>
+  <CodeBlock
+    code={`import { Card, CardHeader, CardTitle, CardContent } from '@e412/rnui-react'
+
+export function UserCard({ name, email }) {
+  return (
+    <Card className="w-[350px]">
+      <CardHeader>
+        <CardTitle>{name}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p>{email}</p>
+      </CardContent>
+    </Card>
+  )
+}`}
+    language="tsx"
+    showLineNumbers
+  />
+</Preview>
+
+## With Highlighted Lines
+
+Use `highlightLines` to draw attention to specific lines of code.
+
+<Preview>
+  <CodeBlock
+    code={`import { useState } from 'react'
+import { Button } from '@e412/rnui-react'
+
+export function Counter() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <Button onClick={() => setCount(c => c + 1)}>
+        Increment
+      </Button>
+    </div>
+  )
+}`}
+    language="tsx"
+    showLineNumbers
+    highlightLines={[5, 10, 11, 12]}
+  />
+</Preview>
+
+## Without Copy Button
+
+Set `showCopy` to `false` to hide the copy-to-clipboard button.
+
+<Preview>
+  <CodeBlock
+    code={`// This block has no copy button
+const x = 42`}
+    language="ts"
+    showCopy={false}
+  />
+</Preview>
+
+## Different Languages
+
+### CSS
+
+<Preview>
+  <CodeBlock
+    code={`@import "tailwindcss";
+@import "@e412/rnui-themes";
+@source "../node_modules/@e412/rnui-react/dist";`}
+    language="css"
+    title="globals.css"
+  />
+</Preview>
+
+### JSON
+
+<Preview>
+  <CodeBlock
+    code={`{
+  "name": "@e412/rnui-react",
+  "version": "0.0.1",
+  "dependencies": {
+    "react": ">=18",
+    "tailwindcss": ">=4"
+  }
+}`}
+    language="json"
+    showLineNumbers
+  />
+</Preview>
+
+## Inline Code
+
+Use `InlineCode` for short code snippets within paragraphs.
+
+<Preview>
+  <p className="text-sm text-foreground">
+    Install the package with <InlineCode>npm install @e412/rnui-react</InlineCode> and
+    import components like <InlineCode>{'<Button />'}</InlineCode>.
+  </p>
+</Preview>
+
+## Examples
+
+### Installation Instructions
+
+<Preview>
+  <div className="flex flex-col gap-4">
+    <CodeBlock
+      code={`npm install @e412/rnui-react @e412/rnui-themes`}
+      title="npm"
+      language="bash"
+    />
+    <CodeBlock
+      code={`pnpm add @e412/rnui-react @e412/rnui-themes`}
+      title="pnpm"
+      language="bash"
+    />
+  </div>
+</Preview>
+
+### Config File with Highlights
+
+<Preview>
+  <CodeBlock
+    code={`import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [
+    react(),
+    tailwindcss(),
+  ],
+})`}
+    language="tsx"
+    title="vite.config.ts"
+    showLineNumbers
+    highlightLines={[3, 8]}
+  />
+</Preview>
+
+### Component Example with Line Numbers
+
+<Preview>
+  <CodeBlock
+    code={`function Greeting({ name }: { name: string }) {
+  return (
+    <div className="rounded-lg border p-4">
+      <h2 className="text-lg font-bold">Hello, {name}!</h2>
+      <p className="text-muted-foreground">Welcome back.</p>
+    </div>
+  )
+}`}
+    language="tsx"
+    showLineNumbers
+  />
+</Preview>

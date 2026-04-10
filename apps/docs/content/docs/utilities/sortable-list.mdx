@@ -1,0 +1,197 @@
+---
+title: Sortable
+description: A drag-and-drop sortable list built on @dnd-kit for reordering items.
+---
+
+import { useState } from 'react';
+import { Sortable, SortableItem, SortableItemHandle } from '@e412/rnui-react';
+import { GripVertical } from 'lucide-react';
+
+Sortable provides drag-and-drop reordering for lists of items. It uses `@dnd-kit` under the hood and exposes a controlled `value` / `onValueChange` API. Compose it with `SortableItem` for draggable rows and `SortableItemHandle` for dedicated drag handles.
+
+## Import
+
+```tsx
+import { Sortable, SortableItem, SortableItemHandle } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  {() => {
+    const [items, setItems] = useState([
+      { id: '1', label: 'Item 1' },
+      { id: '2', label: 'Item 2' },
+      { id: '3', label: 'Item 3' },
+      { id: '4', label: 'Item 4' },
+      { id: '5', label: 'Item 5' },
+    ]);
+    return (
+      <Sortable
+        value={items}
+        onValueChange={setItems}
+        getItemValue={(item) => item.id}
+        className="flex flex-col gap-2 w-72"
+      >
+        {items.map((item) => (
+          <SortableItem key={item.id} value={item.id}>
+            <SortableItemHandle className="flex items-center gap-2 rounded-lg border bg-card p-3 cursor-grab">
+              <GripVertical className="h-4 w-4 text-muted-foreground" />
+              <span className="text-sm text-foreground">{item.label}</span>
+            </SortableItemHandle>
+          </SortableItem>
+        ))}
+      </Sortable>
+    );
+  }}
+</Preview>
+
+## With Separate Handles
+
+Use `SortableItemHandle` as a child of `SortableItem` to restrict the drag interaction to just the handle icon, allowing the rest of the row to remain interactive.
+
+<Preview>
+  {() => {
+    const [items, setItems] = useState([
+      { id: '1', label: 'Item 1' },
+      { id: '2', label: 'Item 2' },
+      { id: '3', label: 'Item 3' },
+      { id: '4', label: 'Item 4' },
+      { id: '5', label: 'Item 5' },
+    ]);
+    return (
+      <Sortable
+        value={items}
+        onValueChange={setItems}
+        getItemValue={(item) => item.id}
+        className="flex flex-col gap-2 w-72"
+      >
+        {items.map((item) => (
+          <SortableItem
+            key={item.id}
+            value={item.id}
+            className="flex items-center gap-2 rounded-lg border bg-card p-3"
+          >
+            <SortableItemHandle>
+              <GripVertical className="h-4 w-4 text-muted-foreground cursor-grab" />
+            </SortableItemHandle>
+            <span className="text-sm text-foreground">{item.label}</span>
+          </SortableItem>
+        ))}
+      </Sortable>
+    );
+  }}
+</Preview>
+
+## Examples
+
+### Task List
+
+<Preview>
+  {() => {
+    const [tasks, setTasks] = useState([
+      { id: 'a', label: 'Review pull request' },
+      { id: 'b', label: 'Update documentation' },
+      { id: 'c', label: 'Fix failing tests' },
+      { id: 'd', label: 'Deploy to staging' },
+    ]);
+    return (
+      <Sortable
+        value={tasks}
+        onValueChange={setTasks}
+        getItemValue={(t) => t.id}
+        className="flex flex-col gap-2 w-80"
+      >
+        {tasks.map((task, i) => (
+          <SortableItem
+            key={task.id}
+            value={task.id}
+            className="flex items-center gap-3 rounded-lg border bg-card p-3"
+          >
+            <SortableItemHandle>
+              <GripVertical className="h-4 w-4 text-muted-foreground cursor-grab" />
+            </SortableItemHandle>
+            <span className="text-xs font-mono text-muted-foreground w-5">{i + 1}.</span>
+            <span className="text-sm text-foreground">{task.label}</span>
+          </SortableItem>
+        ))}
+      </Sortable>
+    );
+  }}
+</Preview>
+
+### Navigation Reorder
+
+<Preview>
+  {() => {
+    const [links, setLinks] = useState([
+      { id: 'home', label: 'Home', href: '/' },
+      { id: 'docs', label: 'Documentation', href: '/docs' },
+      { id: 'blog', label: 'Blog', href: '/blog' },
+      { id: 'about', label: 'About', href: '/about' },
+    ]);
+    return (
+      <div className="w-72">
+        <p className="text-xs text-muted-foreground mb-2 font-medium">Drag to reorder navigation</p>
+        <Sortable
+          value={links}
+          onValueChange={setLinks}
+          getItemValue={(l) => l.id}
+          className="flex flex-col gap-1"
+        >
+          {links.map((link) => (
+            <SortableItem
+              key={link.id}
+              value={link.id}
+              className="flex items-center gap-2 rounded-md border bg-card px-3 py-2"
+            >
+              <SortableItemHandle>
+                <GripVertical className="h-4 w-4 text-muted-foreground cursor-grab" />
+              </SortableItemHandle>
+              <span className="text-sm text-foreground flex-1">{link.label}</span>
+              <span className="text-xs text-muted-foreground font-mono">{link.href}</span>
+            </SortableItem>
+          ))}
+        </Sortable>
+      </div>
+    );
+  }}
+</Preview>
+
+### Layer Stack
+
+<Preview>
+  {() => {
+    const [layers, setLayers] = useState([
+      { id: 'text', label: 'Text Layer', color: 'bg-blue-500' },
+      { id: 'image', label: 'Image Layer', color: 'bg-green-500' },
+      { id: 'shape', label: 'Shape Layer', color: 'bg-purple-500' },
+      { id: 'bg', label: 'Background', color: 'bg-neutral-400' },
+    ]);
+    return (
+      <div className="w-64">
+        <p className="text-xs text-muted-foreground mb-2 font-medium">Layers</p>
+        <Sortable
+          value={layers}
+          onValueChange={setLayers}
+          getItemValue={(l) => l.id}
+          className="flex flex-col gap-1"
+        >
+          {layers.map((layer) => (
+            <SortableItem
+              key={layer.id}
+              value={layer.id}
+              className="flex items-center gap-2 rounded-md border bg-card px-3 py-2"
+            >
+              <SortableItemHandle>
+                <GripVertical className="h-4 w-4 text-muted-foreground cursor-grab" />
+              </SortableItemHandle>
+              <div className={`h-3 w-3 rounded-sm ${layer.color}`} />
+              <span className="text-sm text-foreground">{layer.label}</span>
+            </SortableItem>
+          ))}
+        </Sortable>
+      </div>
+    );
+  }}
+</Preview>

@@ -3,6 +3,14 @@ title: Getting Started
 description: Install and set up @e412/rnui in your project.
 ---
 
+## Packages
+
+| Package | Description |
+|---------|-------------|
+| `@e412/rnui-react` | React components, hooks, and utilities |
+| `@e412/rnui-themes` | CSS theme with design tokens and Tailwind v4 integration |
+| `@e412/rnui-cli` | CLI tool for scaffolding individual components |
+
 ## Installation
 
 Install the React components and themes packages:
@@ -15,6 +23,14 @@ Or with pnpm:
 
 ```bash
 pnpm add @e412/rnui-react @e412/rnui-themes
+```
+
+### Charts (Optional)
+
+If you plan to use chart components, install ECharts as a peer dependency:
+
+```bash
+npm install echarts
 ```
 
 ## CSS Setup
@@ -58,4 +74,48 @@ export function MyApp() {
 }
 ```
 
-That's it — your components are ready to use.
+### Importing Multiple Components
+
+```tsx
+import {
+  Button,
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  Input,
+  Label,
+} from '@e412/rnui-react'
+```
+
+### Using Hooks
+
+```tsx
+import { useIsMobile, useFileUpload } from '@e412/rnui-react'
+```
+
+### Using Charts
+
+```tsx
+import { BarChart, LineChart, PieChart, chartConfig } from '@e412/rnui-react'
+```
+
+### Using Utilities
+
+```tsx
+import { cn } from '@e412/rnui-react'
+
+cn('px-4 py-2', isActive && 'bg-primary', className)
+```
+
+## CLI Tool
+
+Use the CLI to scaffold individual components into your project:
+
+```bash
+npx @e412/rnui-cli add button
+npx @e412/rnui-cli add card
+npx @e412/rnui-cli add accordion
+```
+
+That's it -- your components are ready to use.

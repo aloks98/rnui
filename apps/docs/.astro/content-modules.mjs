@@ -67,5 +67,14 @@ export default new Map([
 ["src/content/docs/components/toggle.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fcomponents%2Ftoggle.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/components/toggle-group.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fcomponents%2Ftoggle-group.mdx&astroContentModuleFlag=true")],
 ["src/content/docs/components/tooltip.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fcomponents%2Ftooltip.mdx&astroContentModuleFlag=true")],
-["src/content/docs/components/tree.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fcomponents%2Ftree.mdx&astroContentModuleFlag=true")]]);
+["src/content/docs/components/tree.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fcomponents%2Ftree.mdx&astroContentModuleFlag=true")],
+["src/content/docs/components/collapsible.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fcomponents%2Fcollapsible.mdx&astroContentModuleFlag=true")],
+["src/content/docs/charts/index.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fcharts%2Findex.mdx&astroContentModuleFlag=true")],
+["src/content/docs/charts/bar-chart.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fcharts%2Fbar-chart.mdx&astroContentModuleFlag=true")],
+["src/content/docs/charts/line-chart.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fcharts%2Fline-chart.mdx&astroContentModuleFlag=true")],
+["src/content/docs/charts/area-chart.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fcharts%2Farea-chart.mdx&astroContentModuleFlag=true")],
+["src/content/docs/charts/pie-chart.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fcharts%2Fpie-chart.mdx&astroContentModuleFlag=true")],
+["src/content/docs/charts/radar-chart.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fcharts%2Fradar-chart.mdx&astroContentModuleFlag=true")],
+["src/content/docs/charts/scatter-chart.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fcharts%2Fscatter-chart.mdx&astroContentModuleFlag=true")],
+["src/content/docs/charts/chart-config.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Fdocs%2Fcharts%2Fchart-config.mdx&astroContentModuleFlag=true")]]);
 		

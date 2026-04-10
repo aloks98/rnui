@@ -1,0 +1,83 @@
+---
+title: Radar Chart
+description: Radar (spider) charts for multi-dimensional data comparison. Built on ECharts.
+---
+
+## Import
+
+```tsx
+import { RadarChart } from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<RadarChart
+  indicators={[
+    { name: 'Sales', max: 100 },
+    { name: 'Marketing', max: 100 },
+    { name: 'Technology', max: 100 },
+    { name: 'Support', max: 100 },
+    { name: 'Development', max: 100 },
+  ]}
+  series={[
+    { name: 'Budget', value: [80, 60, 90, 70, 85] },
+  ]}
+  height={350}
+/>
+```
+
+## Examples
+
+### Multi-Series Comparison
+
+```tsx
+<RadarChart
+  indicators={[
+    { name: 'Speed', max: 100 },
+    { name: 'Reliability', max: 100 },
+    { name: 'Cost', max: 100 },
+    { name: 'Flexibility', max: 100 },
+    { name: 'Support', max: 100 },
+  ]}
+  series={[
+    { name: 'Product A', value: [90, 70, 60, 80, 75] },
+    { name: 'Product B', value: [60, 85, 90, 55, 90] },
+  ]}
+  showLegend
+/>
+```
+
+### Without Legend
+
+```tsx
+<RadarChart
+  indicators={[
+    { name: 'Attack', max: 100 },
+    { name: 'Defense', max: 100 },
+    { name: 'Speed', max: 100 },
+    { name: 'HP', max: 100 },
+  ]}
+  series={[
+    { name: 'Stats', value: [80, 60, 90, 70] },
+  ]}
+  showLegend={false}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `indicators` | `RadarChartIndicator[]` | — | Axis indicators: `{ name, max }` |
+| `series` | `RadarChartSeries[]` | — | Series data: `{ name, value }` |
+| `showLegend` | `boolean` | `true` | Show the chart legend |
+| `option` | `Partial<EChartsOption>` | — | Override any ECharts option |
+
+Inherits all [EChart](/charts/) base props (`height`, `width`, `theme`, `preset`, `loading`, etc.).
+
+## Related
+
+- [Charts Overview](/charts/) — Base EChart component and theme integration
+- [PieChart](/charts/pie-chart) — Pie chart component
+- [ScatterChart](/charts/scatter-chart) — Scatter plot component

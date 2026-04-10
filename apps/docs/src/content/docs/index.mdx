@@ -10,3 +10,43 @@ hero:
       link: /getting-started/
       icon: right-arrow
 ---
+
+## What You Get
+
+- **65+ components** -- buttons, forms, data display, navigation, overlays, feedback, and more
+- **6 chart components** -- BarChart, LineChart, AreaChart, PieChart, RadarChart, ScatterChart powered by ECharts
+- **Theme system** -- CSS custom properties in oklch with automatic light/dark mode and Tailwind v4 integration
+- **DataGrid** -- full-featured data table with sorting, filtering, pagination, column DnD, and virtualization
+- **CLI tool** -- `npx @e412/rnui-cli add <component>` to scaffold individual components
+- **Hooks** -- useFileUpload (drag-and-drop file uploads), useIsMobile (viewport detection)
+- **Utilities** -- cn (Tailwind class merging), formatBytes, chartConfig builder API
+
+## Packages
+
+| Package | Description |
+|---------|-------------|
+| `@e412/rnui-react` | React components, hooks, and utilities |
+| `@e412/rnui-themes` | CSS theme with design tokens and Tailwind v4 integration |
+| `@e412/rnui-cli` | CLI tool for adding components to your project |
+
+## Quick Start
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+```css
+@import '@e412/rnui-themes';
+@import 'tw-animate-css';
+@source "../node_modules/@e412/rnui-react/dist";
+```
+
+```tsx
+import { Button } from '@e412/rnui-react'
+
+export function App() {
+  return <Button>Click me</Button>
+}
+```
+
+[Full setup guide](/getting-started/) | [API Reference](/api-reference/) | [Changelog](/changelog/)

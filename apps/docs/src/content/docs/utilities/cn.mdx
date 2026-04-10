@@ -1,0 +1,95 @@
+---
+title: cn
+description: Utility function for conditionally merging Tailwind CSS class names with proper precedence.
+---
+
+## Import
+
+```tsx
+import { cn } from '@e412/rnui-react'
+```
+
+## Usage
+
+The `cn` function combines [clsx](https://github.com/lukeed/clsx) for conditional class joining with [tailwind-merge](https://github.com/dcastil/tailwind-merge) for resolving Tailwind class conflicts. This ensures that later classes properly override earlier ones.
+
+```tsx
+import { cn } from '@e412/rnui-react'
+
+// Basic merging
+cn('px-4 py-2', 'px-8')
+// => "py-2 px-8"  (px-8 overrides px-4)
+
+// Conditional classes
+cn('base-class', isActive && 'bg-primary', isDisabled && 'opacity-50')
+
+// Merging with objects
+cn('text-sm', { 'font-bold': isBold, 'text-red-500': hasError })
+
+// Arrays
+cn(['px-4', 'py-2'], className)
+```
+
+## Why Use This
+
+Without `tailwind-merge`, conflicting Tailwind classes can produce unpredictable results because CSS specificity depends on source order in the stylesheet, not the order in your class attribute. `cn` resolves this by removing conflicting classes and keeping only the last one:
+
+```tsx
+// Without cn — result depends on stylesheet order, not class order
+className="p-4 p-2"  // unpredictable
+
+// With cn — always correct
+cn('p-4', 'p-2')  // => "p-2"
+```
+
+## Implementation
+
+```tsx
+import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
+
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
+
+## Examples
+
+### Component Styling
+
+```tsx
+function Card({ className, ...props }: React.ComponentProps<'div'>) {
+  return (
+    <div
+      className={cn('rounded-lg border bg-card p-6', className)}
+      {...props}
+    />
+  )
+}
+
+// Consumer can override defaults:
+<Card className="p-2 bg-muted" />
+// => "rounded-lg border p-2 bg-muted"
+```
+
+### Variant Classes
+
+```tsx
+function Badge({ variant = 'default', className }: BadgeProps) {
+  return (
+    <span
+      className={cn(
+        'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold',
+        variant === 'default' && 'bg-primary text-primary-foreground',
+        variant === 'destructive' && 'bg-destructive text-destructive-foreground',
+        className,
+      )}
+    />
+  )
+}
+```
+
+## Related
+
+- [Getting Started](/getting-started) — Setup and installation
+- [Theming](/theming) — Design tokens and theme system

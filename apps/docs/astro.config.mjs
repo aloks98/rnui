@@ -6,7 +6,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: '@e412/rnui',
-      plugins: [ion()],
+      plugins: [ion({ icons: { iconDir: './src/icons' } })],
       sidebar: [
         { label: '[lucide:rocket] Getting Started', slug: 'getting-started' },
         { label: '[lucide:palette] Theming', slug: 'theming' },

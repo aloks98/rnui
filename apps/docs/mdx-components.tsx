@@ -1,6 +1,19 @@
 import defaultMdxComponents from 'fumadocs-ui/mdx'
 import type { MDXComponents } from 'mdx/types'
 import { Preview } from '@/components/preview'
+import { AutocompleteDemo } from '@/components/demos/autocomplete-demo'
+import { CarouselDemo } from '@/components/demos/carousel-demo'
+import { CodeBlockDemo } from '@/components/demos/code-block-demo'
+import { ColorPickerDemo } from '@/components/demos/color-picker-demo'
+import { ComboboxDemo } from '@/components/demos/combobox-demo'
+import { CommandDemo } from '@/components/demos/command-demo'
+import { DataGridDemo } from '@/components/demos/data-grid-demo'
+import { DateSelectorDemo } from '@/components/demos/date-selector-demo'
+import { DrawerDemo } from '@/components/demos/drawer-demo'
+import { MenubarDemo } from '@/components/demos/menubar-demo'
+import { SheetDemo } from '@/components/demos/sheet-demo'
+import { SonnerDemo } from '@/components/demos/sonner-demo'
+import { StepperDemo } from '@/components/demos/stepper-demo'
 import {
   Accordion,
   AccordionItem,
@@ -268,6 +281,19 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     TimelineContent,
     InfoIcon,
     BoldIcon,
+    AutocompleteDemo,
+    CarouselDemo,
+    CodeBlockDemo,
+    ColorPickerDemo,
+    ComboboxDemo,
+    CommandDemo,
+    DataGridDemo,
+    DateSelectorDemo,
+    DrawerDemo,
+    MenubarDemo,
+    SheetDemo,
+    SonnerDemo,
+    StepperDemo,
     ...components,
   }
 }

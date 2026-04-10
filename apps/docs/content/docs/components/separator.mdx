@@ -1,0 +1,124 @@
+---
+title: Separator
+description: A visual divider between content sections.
+---
+
+import { Separator } from '@e412/rnui-react';
+
+The `Separator` component renders a horizontal or vertical line to visually divide content. It supports both orientations and can be marked as decorative for accessibility.
+
+## Import
+
+```tsx
+import { Separator } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <div>
+    <div className="space-y-1">
+      <h4 className="text-sm font-medium leading-none">Radix Primitives</h4>
+      <p className="text-sm text-muted-foreground">
+        An open-source UI component library.
+      </p>
+    </div>
+    <Separator className="my-4" />
+    <div className="flex h-5 items-center space-x-4 text-sm">
+      <div>Blog</div>
+      <Separator orientation="vertical" />
+      <div>Docs</div>
+      <Separator orientation="vertical" />
+      <div>Source</div>
+    </div>
+  </div>
+</Preview>
+
+## Orientation
+
+### Horizontal
+
+<Preview>
+  <div className="w-[300px] space-y-4">
+    <p className="text-sm">Above the separator</p>
+    <Separator />
+    <p className="text-sm">Below the separator</p>
+  </div>
+</Preview>
+
+### Vertical
+
+<Preview>
+  <div className="flex h-5 items-center space-x-4 text-sm">
+    <div>Blog</div>
+    <Separator orientation="vertical" />
+    <div>Docs</div>
+    <Separator orientation="vertical" />
+    <div>Source</div>
+  </div>
+</Preview>
+
+## Examples
+
+### Section Divider
+
+<Preview>
+  <div className="w-[400px] space-y-6">
+    <div>
+      <h3 className="text-lg font-semibold">Account Settings</h3>
+      <p className="text-sm text-muted-foreground">Manage your account preferences.</p>
+    </div>
+    <Separator />
+    <div>
+      <h3 className="text-lg font-semibold">Notifications</h3>
+      <p className="text-sm text-muted-foreground">Configure how you receive alerts.</p>
+    </div>
+    <Separator />
+    <div>
+      <h3 className="text-lg font-semibold">Privacy</h3>
+      <p className="text-sm text-muted-foreground">Control your data and visibility.</p>
+    </div>
+  </div>
+</Preview>
+
+### Toolbar Divider
+
+<Preview>
+  <div className="flex h-9 items-center gap-2">
+    <button className="inline-flex items-center justify-center rounded-md px-3 py-1 text-sm font-medium hover:bg-muted">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 4h8a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z" /><path d="M6 12h9a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z" /></svg>
+    </button>
+    <button className="inline-flex items-center justify-center rounded-md px-3 py-1 text-sm font-medium hover:bg-muted">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" x2="10" y1="4" y2="4" /><line x1="14" x2="5" y1="20" y2="20" /><line x1="15" x2="9" y1="4" y2="20" /></svg>
+    </button>
+    <Separator orientation="vertical" className="h-5" />
+    <button className="inline-flex items-center justify-center rounded-md px-3 py-1 text-sm font-medium hover:bg-muted">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="21" x2="3" y1="6" y2="6" /><line x1="21" x2="3" y1="12" y2="12" /><line x1="21" x2="3" y1="18" y2="18" /></svg>
+    </button>
+    <button className="inline-flex items-center justify-center rounded-md px-3 py-1 text-sm font-medium hover:bg-muted">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="21" x2="3" y1="6" y2="6" /><line x1="17" x2="3" y1="12" y2="12" /><line x1="21" x2="3" y1="18" y2="18" /></svg>
+    </button>
+  </div>
+</Preview>
+
+### List with Separators
+
+<Preview>
+  <div className="w-[300px] rounded-md border">
+    <div className="px-4 py-3">
+      <p className="text-sm font-medium">Profile</p>
+    </div>
+    <Separator />
+    <div className="px-4 py-3">
+      <p className="text-sm font-medium">Settings</p>
+    </div>
+    <Separator />
+    <div className="px-4 py-3">
+      <p className="text-sm font-medium">Help</p>
+    </div>
+    <Separator />
+    <div className="px-4 py-3">
+      <p className="text-sm font-medium text-destructive">Sign Out</p>
+    </div>
+  </div>
+</Preview>

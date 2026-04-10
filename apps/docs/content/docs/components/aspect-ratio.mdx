@@ -1,0 +1,105 @@
+---
+title: AspectRatio
+description: Displays content within a desired ratio.
+---
+
+import { AspectRatio } from '@e412/rnui-react';
+
+The `AspectRatio` component enforces a consistent width-to-height ratio on its child content. Use it to maintain proportional dimensions for images, videos, maps, or any embedded media.
+
+## Import
+
+```tsx
+import { AspectRatio } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <div className="w-[450px]">
+    <AspectRatio ratio={16 / 9}>
+      <div className="flex h-full w-full items-center justify-center rounded-md bg-muted text-muted-foreground">
+        16:9 Aspect Ratio
+      </div>
+    </AspectRatio>
+  </div>
+</Preview>
+
+## Ratios
+
+<Preview>
+  <div className="flex gap-6 flex-wrap items-start">
+    <div className="w-[200px]">
+      <p className="text-sm font-medium mb-2">16:9</p>
+      <AspectRatio ratio={16 / 9}>
+        <div className="flex h-full w-full items-center justify-center rounded-md bg-muted text-muted-foreground text-sm">
+          16:9
+        </div>
+      </AspectRatio>
+    </div>
+    <div className="w-[200px]">
+      <p className="text-sm font-medium mb-2">4:3</p>
+      <AspectRatio ratio={4 / 3}>
+        <div className="flex h-full w-full items-center justify-center rounded-md bg-muted text-muted-foreground text-sm">
+          4:3
+        </div>
+      </AspectRatio>
+    </div>
+    <div className="w-[200px]">
+      <p className="text-sm font-medium mb-2">1:1</p>
+      <AspectRatio ratio={1}>
+        <div className="flex h-full w-full items-center justify-center rounded-md bg-muted text-muted-foreground text-sm">
+          1:1
+        </div>
+      </AspectRatio>
+    </div>
+    <div className="w-[200px]">
+      <p className="text-sm font-medium mb-2">21:9</p>
+      <AspectRatio ratio={21 / 9}>
+        <div className="flex h-full w-full items-center justify-center rounded-md bg-muted text-muted-foreground text-sm">
+          21:9
+        </div>
+      </AspectRatio>
+    </div>
+  </div>
+</Preview>
+
+## Examples
+
+### Image Container
+
+<Preview>
+  <div className="w-[450px]">
+    <AspectRatio ratio={16 / 9}>
+      <img
+        src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+        alt="Placeholder"
+        className="h-full w-full rounded-md object-cover"
+      />
+    </AspectRatio>
+  </div>
+</Preview>
+
+### Video Placeholder
+
+<Preview>
+  <div className="w-[500px]">
+    <AspectRatio ratio={16 / 9}>
+      <div className="flex h-full w-full items-center justify-center rounded-md bg-black text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="6 3 20 12 6 21 6 3" /></svg>
+      </div>
+    </AspectRatio>
+  </div>
+</Preview>
+
+### Responsive Map Embed
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <AspectRatio ratio={4 / 3}>
+      <div className="flex h-full w-full items-center justify-center rounded-md bg-muted text-muted-foreground border border-dashed">
+        Map embed area (4:3)
+      </div>
+    </AspectRatio>
+  </div>
+</Preview>

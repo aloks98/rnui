@@ -1,0 +1,24 @@
+/* rnui theme scoped to preview containers only */
+@import '@e412/rnui-themes/light';
+@import '@e412/rnui-themes/dark';
+@import 'tw-animate-css';
+
+.rnui-preview {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --border: oklch(0.922 0 0);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.rnui-preview *,
+.rnui-preview *::before,
+.rnui-preview *::after {
+  border-color: var(--border);
+}
+
+:is(.dark) .rnui-preview {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+}

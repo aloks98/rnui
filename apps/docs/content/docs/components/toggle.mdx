@@ -1,0 +1,82 @@
+---
+title: Toggle
+description: A two-state button that can be toggled on or off.
+---
+
+import { Toggle } from '@e412/rnui-react';
+import { Bold, Italic, Underline } from 'lucide-react';
+
+The `Toggle` component is a pressable button that toggles between on and off states. It supports `default` and `outline` variants and three sizes.
+
+## Import
+
+```tsx
+import { Toggle } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <Toggle aria-label="Toggle bold">
+    <Bold className="h-4 w-4" />
+  </Toggle>
+</Preview>
+
+## Variants
+
+<Preview>
+  <div className="flex gap-3 items-center">
+    <Toggle aria-label="Default">Default</Toggle>
+    <Toggle variant="outline" aria-label="Outline">Outline</Toggle>
+  </div>
+</Preview>
+
+## Sizes
+
+<Preview>
+  <div className="flex gap-3 items-center">
+    <Toggle size="sm" aria-label="Small">SM</Toggle>
+    <Toggle size="default" aria-label="Default">Default</Toggle>
+    <Toggle size="lg" aria-label="Large">LG</Toggle>
+  </div>
+</Preview>
+
+## Disabled
+
+<Preview>
+  <Toggle disabled aria-label="Toggle disabled">Disabled</Toggle>
+</Preview>
+
+## Examples
+
+### Text Formatting Toolbar
+
+<Preview>
+  <div className="flex gap-1 items-center">
+    <Toggle aria-label="Toggle bold">
+      <Bold className="h-4 w-4" />
+    </Toggle>
+    <Toggle aria-label="Toggle italic">
+      <Italic className="h-4 w-4" />
+    </Toggle>
+    <Toggle aria-label="Toggle underline">
+      <Underline className="h-4 w-4" />
+    </Toggle>
+  </div>
+</Preview>
+
+### Outline Toolbar
+
+<Preview>
+  <div className="flex gap-1 items-center">
+    <Toggle variant="outline" aria-label="Toggle bold">
+      <Bold className="h-4 w-4" />
+    </Toggle>
+    <Toggle variant="outline" aria-label="Toggle italic">
+      <Italic className="h-4 w-4" />
+    </Toggle>
+    <Toggle variant="outline" aria-label="Toggle underline">
+      <Underline className="h-4 w-4" />
+    </Toggle>
+  </div>
+</Preview>

@@ -1,0 +1,106 @@
+---
+title: ButtonGroup
+description: Groups related buttons together with shared borders and spacing.
+---
+
+import { ButtonGroup, ButtonGroupSeparator, Button } from '@e412/rnui-react';
+import { Plus, Minus, ArrowLeft, ArrowRight, Search } from 'lucide-react';
+
+The `ButtonGroup` component visually groups related buttons together, merging their borders for a cohesive look. Supports horizontal and vertical orientations.
+
+## Import
+
+```tsx
+import { ButtonGroup, ButtonGroupSeparator, Button } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <ButtonGroup>
+    <Button variant="outline">Archive</Button>
+    <Button variant="outline">Report</Button>
+    <Button variant="outline">Snooze</Button>
+  </ButtonGroup>
+</Preview>
+
+## With Separator
+
+<Preview>
+  <ButtonGroup>
+    <Button variant="secondary" size="sm">Copy</Button>
+    <ButtonGroupSeparator />
+    <Button variant="secondary" size="sm">Paste</Button>
+  </ButtonGroup>
+</Preview>
+
+## Vertical
+
+<Preview>
+  <ButtonGroup orientation="vertical" className="h-fit">
+    <Button variant="outline" size="icon">
+      <Plus />
+    </Button>
+    <Button variant="outline" size="icon">
+      <Minus />
+    </Button>
+  </ButtonGroup>
+</Preview>
+
+## Examples
+
+### Split Button
+
+<Preview>
+  <ButtonGroup>
+    <Button variant="secondary">Button</Button>
+    <ButtonGroupSeparator />
+    <Button size="icon" variant="secondary">
+      <Plus />
+    </Button>
+  </ButtonGroup>
+</Preview>
+
+### Pagination Controls
+
+<Preview>
+  <ButtonGroup>
+    <ButtonGroup>
+      <Button variant="outline" size="sm">1</Button>
+      <Button variant="outline" size="sm">2</Button>
+      <Button variant="outline" size="sm">3</Button>
+      <Button variant="outline" size="sm">4</Button>
+      <Button variant="outline" size="sm">5</Button>
+    </ButtonGroup>
+    <ButtonGroup>
+      <Button variant="outline" size="icon-sm" aria-label="Previous">
+        <ArrowLeft />
+      </Button>
+      <Button variant="outline" size="icon-sm" aria-label="Next">
+        <ArrowRight />
+      </Button>
+    </ButtonGroup>
+  </ButtonGroup>
+</Preview>
+
+### Sizes
+
+<Preview>
+  <div className="flex flex-col items-start gap-6">
+    <ButtonGroup>
+      <Button variant="outline" size="sm">Small</Button>
+      <Button variant="outline" size="sm">Button</Button>
+      <Button variant="outline" size="sm">Group</Button>
+    </ButtonGroup>
+    <ButtonGroup>
+      <Button variant="outline">Default</Button>
+      <Button variant="outline">Button</Button>
+      <Button variant="outline">Group</Button>
+    </ButtonGroup>
+    <ButtonGroup>
+      <Button variant="outline" size="lg">Large</Button>
+      <Button variant="outline" size="lg">Button</Button>
+      <Button variant="outline" size="lg">Group</Button>
+    </ButtonGroup>
+  </div>
+</Preview>

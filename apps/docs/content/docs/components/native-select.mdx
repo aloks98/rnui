@@ -1,0 +1,91 @@
+---
+title: NativeSelect
+description: A styled wrapper around the native HTML select element.
+---
+
+import { NativeSelect, NativeSelectOption, NativeSelectOptGroup, Label } from '@e412/rnui-react';
+
+The `NativeSelect` component provides a styled native HTML select. It uses the browser's built-in dropdown, making it ideal for mobile devices and simple forms.
+
+## Import
+
+```tsx
+import {
+  NativeSelect,
+  NativeSelectOption,
+  NativeSelectOptGroup,
+} from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-1.5">
+    <Label>Fruit</Label>
+    <NativeSelect>
+      <NativeSelectOption value="">Select a fruit</NativeSelectOption>
+      <NativeSelectOption value="apple">Apple</NativeSelectOption>
+      <NativeSelectOption value="banana">Banana</NativeSelectOption>
+      <NativeSelectOption value="blueberry">Blueberry</NativeSelectOption>
+      <NativeSelectOption value="grapes">Grapes</NativeSelectOption>
+      <NativeSelectOption value="pineapple">Pineapple</NativeSelectOption>
+    </NativeSelect>
+  </div>
+</Preview>
+
+## Sizes
+
+<Preview>
+  <div className="flex gap-4 items-center">
+    <NativeSelect size="sm">
+      <NativeSelectOption value="sm">Small</NativeSelectOption>
+    </NativeSelect>
+    <NativeSelect size="default">
+      <NativeSelectOption value="default">Default</NativeSelectOption>
+    </NativeSelect>
+  </div>
+</Preview>
+
+## Disabled
+
+<Preview>
+  <NativeSelect disabled>
+    <NativeSelectOption value="">Disabled</NativeSelectOption>
+    <NativeSelectOption value="apple">Apple</NativeSelectOption>
+  </NativeSelect>
+</Preview>
+
+## Examples
+
+### With Option Groups
+
+<Preview>
+  <NativeSelect className="max-w-sm">
+    <NativeSelectOption value="">Select...</NativeSelectOption>
+    <NativeSelectOptGroup label="Fruits">
+      <NativeSelectOption value="apple">Apple</NativeSelectOption>
+      <NativeSelectOption value="banana">Banana</NativeSelectOption>
+    </NativeSelectOptGroup>
+    <NativeSelectOptGroup label="Vegetables">
+      <NativeSelectOption value="carrot">Carrot</NativeSelectOption>
+      <NativeSelectOption value="broccoli">Broccoli</NativeSelectOption>
+    </NativeSelectOptGroup>
+  </NativeSelect>
+</Preview>
+
+### Country Selector
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-1.5">
+    <Label>Country</Label>
+    <NativeSelect>
+      <NativeSelectOption value="">Select your country</NativeSelectOption>
+      <NativeSelectOption value="us">United States</NativeSelectOption>
+      <NativeSelectOption value="uk">United Kingdom</NativeSelectOption>
+      <NativeSelectOption value="ca">Canada</NativeSelectOption>
+      <NativeSelectOption value="au">Australia</NativeSelectOption>
+      <NativeSelectOption value="de">Germany</NativeSelectOption>
+      <NativeSelectOption value="fr">France</NativeSelectOption>
+    </NativeSelect>
+  </div>
+</Preview>

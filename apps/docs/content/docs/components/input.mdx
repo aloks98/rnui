@@ -1,0 +1,90 @@
+---
+title: Input
+description: A text input field for capturing user data.
+---
+
+import { Input, Label, Button } from '@e412/rnui-react';
+
+The `Input` component renders a styled text input. It supports all standard HTML input types and can be combined with `Label` for accessible forms.
+
+## Import
+
+```tsx
+import { Input } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <Input type="email" placeholder="Email" className="max-w-sm" />
+</Preview>
+
+## With Label
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-1.5">
+    <Label htmlFor="email">Email</Label>
+    <Input type="email" id="email" placeholder="you@example.com" />
+  </div>
+</Preview>
+
+## Disabled
+
+<Preview>
+  <Input disabled placeholder="Disabled input" className="max-w-sm" />
+</Preview>
+
+## File Input
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-1.5">
+    <Label htmlFor="picture">Picture</Label>
+    <Input id="picture" type="file" />
+  </div>
+</Preview>
+
+## Examples
+
+### With Description
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-1.5">
+    <Label htmlFor="email-desc">Email</Label>
+    <Input type="email" id="email-desc" placeholder="you@example.com" />
+    <p className="text-sm text-muted-foreground">We'll never share your email.</p>
+  </div>
+</Preview>
+
+### Invalid State
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-1.5">
+    <Label htmlFor="email-invalid">Email</Label>
+    <Input type="email" id="email-invalid" placeholder="you@example.com" aria-invalid="true" />
+    <p className="text-sm text-destructive">Please enter a valid email address.</p>
+  </div>
+</Preview>
+
+### Inline with Button
+
+<Preview>
+  <div className="flex w-full max-w-sm items-center gap-2">
+    <Input type="search" placeholder="Search..." />
+    <Button>Search</Button>
+  </div>
+</Preview>
+
+### Form Grid
+
+<Preview>
+  <div className="grid w-full max-w-lg grid-cols-2 gap-4">
+    <div className="grid gap-1.5">
+      <Label htmlFor="first-name">First Name</Label>
+      <Input id="first-name" placeholder="John" />
+    </div>
+    <div className="grid gap-1.5">
+      <Label htmlFor="last-name">Last Name</Label>
+      <Input id="last-name" placeholder="Doe" />
+    </div>
+  </div>
+</Preview>

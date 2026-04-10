@@ -1,0 +1,92 @@
+---
+title: Switch
+description: A toggle control for switching between on and off states.
+---
+
+import { Switch, Label } from '@e412/rnui-react';
+
+The `Switch` component provides a toggle between two states. It supports two sizes and can be disabled.
+
+## Import
+
+```tsx
+import { Switch } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <div className="flex items-center space-x-2">
+    <Switch id="airplane-mode" />
+    <Label htmlFor="airplane-mode">Airplane Mode</Label>
+  </div>
+</Preview>
+
+## Sizes
+
+<Preview>
+  <div className="flex gap-6 items-center">
+    <div className="flex items-center space-x-2">
+      <Switch id="size-sm" size="sm" />
+      <Label htmlFor="size-sm">Small</Label>
+    </div>
+    <div className="flex items-center space-x-2">
+      <Switch id="size-default" />
+      <Label htmlFor="size-default">Default</Label>
+    </div>
+  </div>
+</Preview>
+
+## Disabled
+
+<Preview>
+  <div className="flex gap-6 items-center">
+    <div className="flex items-center space-x-2">
+      <Switch id="disabled-switch" disabled />
+      <Label htmlFor="disabled-switch">Disabled</Label>
+    </div>
+    <div className="flex items-center space-x-2">
+      <Switch id="disabled-checked-switch" disabled defaultChecked />
+      <Label htmlFor="disabled-checked-switch">Disabled and checked</Label>
+    </div>
+  </div>
+</Preview>
+
+## Examples
+
+### Settings Panel
+
+<Preview>
+  <div className="grid max-w-sm gap-4">
+    <div className="flex items-center justify-between">
+      <div>
+        <p className="text-sm font-medium">Dark Mode</p>
+        <p className="text-xs text-muted-foreground">Toggle dark theme</p>
+      </div>
+      <Switch id="dark-mode" />
+    </div>
+    <div className="flex items-center justify-between">
+      <div>
+        <p className="text-sm font-medium">Notifications</p>
+        <p className="text-xs text-muted-foreground">Receive push notifications</p>
+      </div>
+      <Switch id="notifications" defaultChecked />
+    </div>
+    <div className="flex items-center justify-between">
+      <div>
+        <p className="text-sm font-medium">Auto-save</p>
+        <p className="text-xs text-muted-foreground">Save changes automatically</p>
+      </div>
+      <Switch id="auto-save" defaultChecked />
+    </div>
+  </div>
+</Preview>
+
+### Feature Toggle
+
+<Preview>
+  <div className="flex items-center space-x-2">
+    <Switch id="beta-features" />
+    <Label htmlFor="beta-features">Enable beta features</Label>
+  </div>
+</Preview>

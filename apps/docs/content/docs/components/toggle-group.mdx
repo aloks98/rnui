@@ -1,0 +1,136 @@
+---
+title: ToggleGroup
+description: A group of toggle buttons where one or multiple can be selected.
+---
+
+import { ToggleGroup, ToggleGroupItem } from '@e412/rnui-react';
+import { AlignLeft, AlignCenter, AlignRight, Bold, Italic, Underline } from 'lucide-react';
+
+The `ToggleGroup` component groups toggle buttons together. It supports `single` selection (radio-like) and `multiple` selection (checkbox-like) modes, along with horizontal and vertical orientations.
+
+## Import
+
+```tsx
+import { ToggleGroup, ToggleGroupItem } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <ToggleGroup type="multiple">
+    <ToggleGroupItem value="bold" aria-label="Toggle bold">
+      <Bold className="h-4 w-4" />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="italic" aria-label="Toggle italic">
+      <Italic className="h-4 w-4" />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="underline" aria-label="Toggle underline">
+      <Underline className="h-4 w-4" />
+    </ToggleGroupItem>
+  </ToggleGroup>
+</Preview>
+
+## Single Selection
+
+<Preview>
+  <ToggleGroup type="single">
+    <ToggleGroupItem value="left" aria-label="Left align">
+      <AlignLeft className="h-4 w-4" />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="center" aria-label="Center align">
+      <AlignCenter className="h-4 w-4" />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="right" aria-label="Right align">
+      <AlignRight className="h-4 w-4" />
+    </ToggleGroupItem>
+  </ToggleGroup>
+</Preview>
+
+## Outline Variant
+
+<Preview>
+  <ToggleGroup type="multiple" variant="outline">
+    <ToggleGroupItem value="bold" aria-label="Toggle bold">
+      <Bold className="h-4 w-4" />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="italic" aria-label="Toggle italic">
+      <Italic className="h-4 w-4" />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="underline" aria-label="Toggle underline">
+      <Underline className="h-4 w-4" />
+    </ToggleGroupItem>
+  </ToggleGroup>
+</Preview>
+
+## Sizes
+
+<Preview>
+  <div className="flex flex-col gap-4 items-start">
+    <ToggleGroup type="multiple" size="sm">
+      <ToggleGroupItem value="bold" aria-label="Toggle bold">B</ToggleGroupItem>
+      <ToggleGroupItem value="italic" aria-label="Toggle italic">I</ToggleGroupItem>
+      <ToggleGroupItem value="underline" aria-label="Toggle underline">U</ToggleGroupItem>
+    </ToggleGroup>
+    <ToggleGroup type="multiple" size="default">
+      <ToggleGroupItem value="bold" aria-label="Toggle bold">Bold</ToggleGroupItem>
+      <ToggleGroupItem value="italic" aria-label="Toggle italic">Italic</ToggleGroupItem>
+      <ToggleGroupItem value="underline" aria-label="Toggle underline">Underline</ToggleGroupItem>
+    </ToggleGroup>
+    <ToggleGroup type="multiple" size="lg">
+      <ToggleGroupItem value="bold" aria-label="Toggle bold">Bold</ToggleGroupItem>
+      <ToggleGroupItem value="italic" aria-label="Toggle italic">Italic</ToggleGroupItem>
+      <ToggleGroupItem value="underline" aria-label="Toggle underline">Underline</ToggleGroupItem>
+    </ToggleGroup>
+  </div>
+</Preview>
+
+## Vertical
+
+<Preview>
+  <ToggleGroup type="single" orientation="vertical">
+    <ToggleGroupItem value="top" aria-label="Top">Top</ToggleGroupItem>
+    <ToggleGroupItem value="middle" aria-label="Middle">Middle</ToggleGroupItem>
+    <ToggleGroupItem value="bottom" aria-label="Bottom">Bottom</ToggleGroupItem>
+  </ToggleGroup>
+</Preview>
+
+## Disabled
+
+<Preview>
+  <ToggleGroup type="multiple" disabled>
+    <ToggleGroupItem value="bold" aria-label="Toggle bold">Bold</ToggleGroupItem>
+    <ToggleGroupItem value="italic" aria-label="Toggle italic">Italic</ToggleGroupItem>
+    <ToggleGroupItem value="underline" aria-label="Toggle underline">Underline</ToggleGroupItem>
+  </ToggleGroup>
+</Preview>
+
+## Examples
+
+### Text Editor Toolbar
+
+<Preview>
+  <div className="flex gap-2 items-center">
+    <ToggleGroup type="single" variant="outline">
+      <ToggleGroupItem value="left" aria-label="Left align">
+        <AlignLeft className="h-4 w-4" />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="center" aria-label="Center align">
+        <AlignCenter className="h-4 w-4" />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="right" aria-label="Right align">
+        <AlignRight className="h-4 w-4" />
+      </ToggleGroupItem>
+    </ToggleGroup>
+    <ToggleGroup type="multiple" variant="outline">
+      <ToggleGroupItem value="bold" aria-label="Toggle bold">
+        <Bold className="h-4 w-4" />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="italic" aria-label="Toggle italic">
+        <Italic className="h-4 w-4" />
+      </ToggleGroupItem>
+      <ToggleGroupItem value="underline" aria-label="Toggle underline">
+        <Underline className="h-4 w-4" />
+      </ToggleGroupItem>
+    </ToggleGroup>
+  </div>
+</Preview>

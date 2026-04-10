@@ -1,0 +1,76 @@
+---
+title: Textarea
+description: A multi-line text input for longer form content.
+---
+
+import { Textarea, Label, Button } from '@e412/rnui-react';
+
+The `Textarea` component renders a styled multi-line text input. Use it for comments, messages, descriptions, and other long-form content.
+
+## Import
+
+```tsx
+import { Textarea } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <Textarea placeholder="Type your message here." className="max-w-sm" />
+</Preview>
+
+## With Label
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-1.5">
+    <Label htmlFor="message">Your message</Label>
+    <Textarea placeholder="Type your message here." id="message" />
+  </div>
+</Preview>
+
+## Disabled
+
+<Preview>
+  <Textarea placeholder="Disabled" disabled className="max-w-sm" />
+</Preview>
+
+## Examples
+
+### Contact Form
+
+<Preview>
+  <form className="grid w-full max-w-sm gap-4">
+    <div className="grid gap-1.5">
+      <Label htmlFor="contact-message">Message</Label>
+      <Textarea id="contact-message" placeholder="How can we help you?" rows={5} />
+    </div>
+    <div className="flex justify-end">
+      <Button type="submit">Send Message</Button>
+    </div>
+  </form>
+</Preview>
+
+### Bio Field
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-1.5">
+    <Label htmlFor="bio">Bio</Label>
+    <Textarea id="bio" placeholder="Tell us about yourself..." />
+    <p className="text-sm text-muted-foreground">Write a short bio for your profile. Max 160 characters.</p>
+  </div>
+</Preview>
+
+### Feedback Form
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-4">
+    <div className="grid gap-1.5">
+      <Label htmlFor="feedback">Feedback</Label>
+      <Textarea id="feedback" placeholder="What did you think of our service?" rows={4} />
+    </div>
+    <div className="flex justify-between items-center">
+      <p className="text-xs text-muted-foreground">Your feedback is anonymous.</p>
+      <Button size="sm">Submit</Button>
+    </div>
+  </div>
+</Preview>

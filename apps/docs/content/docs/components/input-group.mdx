@@ -1,0 +1,102 @@
+---
+title: InputGroup
+description: Combines an input with addons, icons, or buttons for enhanced form fields.
+---
+
+import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText, InputGroupButton, Label } from '@e412/rnui-react';
+import { Mail, Lock, Eye } from 'lucide-react';
+
+The `InputGroup` component wraps an input with prefix or suffix addons such as text labels, icons, or buttons. Useful for currency fields, URL inputs, and more.
+
+## Import
+
+```tsx
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupButton,
+} from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <div className="w-full max-w-sm">
+    <InputGroup>
+      <InputGroupAddon>
+        <InputGroupText>https://</InputGroupText>
+      </InputGroupAddon>
+      <InputGroupInput placeholder="example.com" />
+    </InputGroup>
+  </div>
+</Preview>
+
+## With Prefix and Suffix
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-4">
+    <InputGroup>
+      <InputGroupAddon>
+        <InputGroupText>$</InputGroupText>
+      </InputGroupAddon>
+      <InputGroupInput placeholder="0.00" />
+      <InputGroupAddon align="inline-end">
+        <InputGroupText>USD</InputGroupText>
+      </InputGroupAddon>
+    </InputGroup>
+    <InputGroup>
+      <InputGroupInput placeholder="Enter your username" />
+      <InputGroupAddon align="inline-end">
+        <InputGroupText>@company.com</InputGroupText>
+      </InputGroupAddon>
+    </InputGroup>
+  </div>
+</Preview>
+
+## Examples
+
+### Icon Addons
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-4">
+    <div className="grid gap-1.5">
+      <Label>Email</Label>
+      <InputGroup>
+        <InputGroupAddon>
+          <Mail className="size-4 text-muted-foreground" />
+        </InputGroupAddon>
+        <InputGroupInput placeholder="you@example.com" />
+      </InputGroup>
+    </div>
+    <div className="grid gap-1.5">
+      <Label>Password</Label>
+      <InputGroup>
+        <InputGroupAddon>
+          <Lock className="size-4 text-muted-foreground" />
+        </InputGroupAddon>
+        <InputGroupInput type="password" placeholder="Enter password" />
+        <InputGroupButton variant="ghost" size="icon-sm">
+          <Eye className="size-4" />
+        </InputGroupButton>
+      </InputGroup>
+    </div>
+  </div>
+</Preview>
+
+### Currency Input
+
+<Preview>
+  <div className="w-full max-w-sm">
+    <InputGroup>
+      <InputGroupAddon>
+        <InputGroupText>$</InputGroupText>
+      </InputGroupAddon>
+      <InputGroupInput placeholder="0.00" type="number" />
+      <InputGroupAddon align="inline-end">
+        <InputGroupText>USD</InputGroupText>
+      </InputGroupAddon>
+    </InputGroup>
+  </div>
+</Preview>

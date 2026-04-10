@@ -1,0 +1,137 @@
+---
+title: Select
+description: A dropdown select component for choosing a value from a list of options.
+---
+
+## Installation
+
+```bash
+npx @e412/rnui-react add select
+```
+
+## Import
+
+```tsx
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<Select defaultValue="apple">
+  <SelectTrigger>
+    <SelectValue placeholder="Select a fruit" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectLabel>Fruits</SelectLabel>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+      <SelectItem value="orange">Orange</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>
+```
+
+## Examples
+
+### With Groups and Separator
+
+```tsx
+<Select>
+  <SelectTrigger>
+    <SelectValue placeholder="Select a food" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectLabel>Fruits</SelectLabel>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+    </SelectGroup>
+    <SelectSeparator />
+    <SelectGroup>
+      <SelectLabel>Vegetables</SelectLabel>
+      <SelectItem value="carrot">Carrot</SelectItem>
+      <SelectItem value="potato">Potato</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>
+```
+
+### Small Size
+
+```tsx
+<Select>
+  <SelectTrigger size="sm">
+    <SelectValue placeholder="Small trigger" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="one">Option One</SelectItem>
+    <SelectItem value="two">Option Two</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+### Disabled Item
+
+```tsx
+<Select>
+  <SelectTrigger>
+    <SelectValue placeholder="Pick one" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="enabled">Enabled</SelectItem>
+    <SelectItem value="disabled" disabled>Disabled</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+## Props
+
+### Select
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `defaultValue` | `string` | - | The default selected value |
+| `value` | `string` | - | Controlled selected value |
+| `onValueChange` | `(value: string) => void` | - | Callback when the value changes |
+
+### SelectTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `"sm" \| "default"` | `"default"` | Trigger size |
+| `className` | `string` | - | Additional CSS classes |
+
+### SelectContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `side` | `"top" \| "bottom"` | `"bottom"` | Preferred side of the trigger |
+| `sideOffset` | `number` | `4` | Distance from the trigger |
+| `align` | `"start" \| "center" \| "end"` | `"center"` | Alignment relative to trigger |
+| `alignOffset` | `number` | `0` | Offset from alignment |
+| `alignItemWithTrigger` | `boolean` | `true` | Align selected item with trigger |
+| `className` | `string` | - | Additional CSS classes |
+
+### SelectItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | - | The value of the item |
+| `disabled` | `boolean` | `false` | Disable the item |
+| `className` | `string` | - | Additional CSS classes |
+
+## Related
+
+- [Radio Group](/docs/components/radio-group)
+- [Combobox](/docs/components/combobox)

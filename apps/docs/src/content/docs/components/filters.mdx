@@ -1,0 +1,219 @@
+---
+title: Filters
+description: A composable filter system with operators, field types, and search support for building data filtering interfaces.
+---
+
+## Installation
+
+```bash
+npx @e412/rnui-cli add filters
+```
+
+## Import
+
+```tsx
+import {
+  Filters,
+  createFilter,
+  createFilterGroup,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+import { Filters, createFilter, type Filter, type FilterFieldConfig } from '@e412/rnui-react'
+
+const fields: FilterFieldConfig[] = [
+  {
+    key: 'status',
+    label: 'Status',
+    type: 'select',
+    options: [
+      { value: 'active', label: 'Active' },
+      { value: 'inactive', label: 'Inactive' },
+    ],
+  },
+  {
+    key: 'name',
+    label: 'Name',
+    type: 'text',
+  },
+]
+
+export function FiltersDemo() {
+  const [filters, setFilters] = useState<Filter[]>([])
+
+  return (
+    <Filters
+      filters={filters}
+      fields={fields}
+      onChange={setFilters}
+    />
+  )
+}
+```
+
+## Examples
+
+### Select Filter
+
+```tsx
+const fields: FilterFieldConfig[] = [
+  {
+    key: 'status',
+    label: 'Status',
+    type: 'select',
+    options: [
+      { value: 'active', label: 'Active' },
+      { value: 'pending', label: 'Pending' },
+      { value: 'closed', label: 'Closed' },
+    ],
+  },
+]
+
+<Filters filters={filters} fields={fields} onChange={setFilters} />
+```
+
+### Multi-Select Filter
+
+```tsx
+const fields: FilterFieldConfig[] = [
+  {
+    key: 'tags',
+    label: 'Tags',
+    type: 'multiselect',
+    options: [
+      { value: 'bug', label: 'Bug' },
+      { value: 'feature', label: 'Feature' },
+      { value: 'docs', label: 'Documentation' },
+    ],
+  },
+]
+
+<Filters filters={filters} fields={fields} onChange={setFilters} />
+```
+
+### Text Filter
+
+```tsx
+const fields: FilterFieldConfig[] = [
+  {
+    key: 'email',
+    label: 'Email',
+    type: 'text',
+    placeholder: 'Enter email...',
+  },
+]
+
+<Filters filters={filters} fields={fields} onChange={setFilters} />
+```
+
+### Solid Variant
+
+```tsx
+<Filters
+  filters={filters}
+  fields={fields}
+  onChange={setFilters}
+  variant="solid"
+/>
+```
+
+### Small Size with Full Radius
+
+```tsx
+<Filters
+  filters={filters}
+  fields={fields}
+  onChange={setFilters}
+  size="sm"
+  radius="full"
+/>
+```
+
+### With Keyboard Shortcut
+
+```tsx
+<Filters
+  filters={filters}
+  fields={fields}
+  onChange={setFilters}
+  enableShortcut
+  shortcutKey="f"
+/>
+```
+
+### Grouped Fields
+
+```tsx
+const fields: FilterFieldConfig[] = [
+  {
+    group: 'User',
+    fields: [
+      { key: 'name', label: 'Name', type: 'text' },
+      { key: 'email', label: 'Email', type: 'text' },
+    ],
+  },
+  {
+    group: 'Status',
+    fields: [
+      { key: 'active', label: 'Active', type: 'select', options: [...] },
+    ],
+  },
+]
+
+<Filters filters={filters} fields={fields} onChange={setFilters} />
+```
+
+### Custom Trigger
+
+```tsx
+<Filters
+  filters={filters}
+  fields={fields}
+  onChange={setFilters}
+  trigger={<Button variant="outline">Custom Filter Button</Button>}
+/>
+```
+
+## Props
+
+### Filters
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `filters` | `Filter<T>[]` | - | Array of active filters |
+| `fields` | `FilterFieldsConfig<T>` | - | Field configuration (flat or grouped) |
+| `onChange` | `(filters: Filter<T>[]) => void` | - | Called when filters change |
+| `className` | `string` | - | Additional CSS class |
+| `variant` | `"solid" \| "default"` | `"default"` | Visual style variant |
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Filter chip size |
+| `radius` | `"default" \| "full"` | `"default"` | Border radius style |
+| `i18n` | `Partial<FilterI18nConfig>` | English defaults | Internationalization overrides |
+| `showSearchInput` | `boolean` | `true` | Show search input in the filter menu |
+| `trigger` | `React.ReactNode` | - | Custom trigger element |
+| `allowMultiple` | `boolean` | `true` | Allow multiple filters at once |
+| `menuPopupClassName` | `string` | - | CSS class for the menu popup |
+| `enableShortcut` | `boolean` | `false` | Enable keyboard shortcut to open |
+| `shortcutKey` | `string` | `"f"` | Keyboard shortcut key |
+| `shortcutLabel` | `string` | `"F"` | Label shown for the shortcut |
+
+### FilterFieldConfig
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `key` | `string` | - | Unique field identifier |
+| `label` | `string` | - | Display label |
+| `icon` | `React.ReactNode` | - | Icon element |
+| `type` | `"select" \| "multiselect" \| "text" \| "custom" \| "separator"` | - | Field type |
+| `options` | `FilterOption<T>[]` | - | Options for select/multiselect |
+| `operators` | `FilterOperator[]` | - | Custom operators for this field |
+| `searchable` | `boolean` | - | Enable search within options |
+| `placeholder` | `string` | - | Input placeholder text |
+| `customRenderer` | `(props: CustomRendererProps<T>) => ReactNode` | - | Custom value renderer |
+
+## Related
+
+- [Date Selector](/docs/components/date-selector)
+- [Input](/docs/components/input)

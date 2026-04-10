@@ -1,9 +1,15 @@
 ---
 title: Card
-description: A container component for grouping related content.
+description: A container component for grouping related content with header, body, and footer sections.
 ---
 
-## Usage
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
 
 ```tsx
 import {
@@ -13,13 +19,14 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
+  CardAction,
 } from '@e412/rnui-react'
 ```
 
-## Default
+## Usage
 
 ```tsx
-<Card className="w-[350px]">
+<Card>
   <CardHeader>
     <CardTitle>Card Title</CardTitle>
     <CardDescription>Card description goes here.</CardDescription>
@@ -33,12 +40,63 @@ import {
 </Card>
 ```
 
-## Simple Card
+## Examples
+
+### Simple Card
 
 ```tsx
 <Card className="w-[350px]">
-  <CardContent className="pt-6">
+  <CardContent>
     <p>A simple card with just content.</p>
+  </CardContent>
+</Card>
+```
+
+### Small Size
+
+```tsx
+<Card size="sm" className="w-[350px]">
+  <CardHeader>
+    <CardTitle>Compact Card</CardTitle>
+    <CardDescription>Uses smaller padding and gaps.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Content with tighter spacing.</p>
+  </CardContent>
+</Card>
+```
+
+### With Card Action
+
+```tsx
+<Card className="w-[350px]">
+  <CardHeader>
+    <CardTitle>Notifications</CardTitle>
+    <CardDescription>Manage your notification preferences.</CardDescription>
+    <CardAction>
+      <Button variant="outline" size="sm">Settings</Button>
+    </CardAction>
+  </CardHeader>
+  <CardContent>
+    <p>You have 3 unread notifications.</p>
+  </CardContent>
+  <CardFooter>
+    <Button>Mark all as read</Button>
+  </CardFooter>
+</Card>
+```
+
+### With Image
+
+```tsx
+<Card className="w-[350px]">
+  <img src="/landscape.jpg" alt="Landscape" className="w-full" />
+  <CardHeader>
+    <CardTitle>Beautiful Scenery</CardTitle>
+    <CardDescription>A card with a top image.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Images placed as the first child are automatically rounded at the top.</p>
   </CardContent>
 </Card>
 ```
@@ -47,28 +105,56 @@ import {
 
 ### Card
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `className` | `string` | Additional CSS classes |
-| `children` | `ReactNode` | Card contents |
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `"default" \| "sm"` | `"default"` | Controls padding and gap sizing |
+| `className` | `string` | -- | Additional CSS classes |
+| `children` | `ReactNode` | -- | Card contents |
 
-### CardHeader, CardContent, CardFooter
+### CardHeader
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `className` | `string` | Additional CSS classes |
-| `children` | `ReactNode` | Section contents |
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | -- | Additional CSS classes |
+| `children` | `ReactNode` | -- | Header contents (typically CardTitle, CardDescription, CardAction) |
 
 ### CardTitle
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `className` | `string` | Additional CSS classes |
-| `children` | `ReactNode` | Title text |
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | -- | Additional CSS classes |
+| `children` | `ReactNode` | -- | Title text |
 
 ### CardDescription
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `className` | `string` | Additional CSS classes |
-| `children` | `ReactNode` | Description text |
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | -- | Additional CSS classes |
+| `children` | `ReactNode` | -- | Description text |
+
+### CardAction
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | -- | Additional CSS classes |
+| `children` | `ReactNode` | -- | Action content, positioned at the top-right of CardHeader |
+
+### CardContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | -- | Additional CSS classes |
+| `children` | `ReactNode` | -- | Main body content |
+
+### CardFooter
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | -- | Additional CSS classes |
+| `children` | `ReactNode` | -- | Footer content, rendered with a top border and muted background |
+
+## Related
+
+- [Button](/components/button)
+- [Separator](/components/separator)
+- [Skeleton](/components/skeleton)

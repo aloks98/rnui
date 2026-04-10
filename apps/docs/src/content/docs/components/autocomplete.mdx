@@ -1,0 +1,168 @@
+---
+title: Autocomplete
+description: A searchable dropdown input with filtering, built on Base UI's Autocomplete primitive.
+---
+
+## Installation
+
+```bash
+npx @e412/rnui-cli add autocomplete
+```
+
+## Import
+
+```tsx
+import {
+  Autocomplete,
+  AutocompleteInput,
+  AutocompleteContent,
+  AutocompleteList,
+  AutocompleteItem,
+  AutocompleteEmpty,
+  AutocompleteGroup,
+  AutocompleteGroupLabel,
+  AutocompleteSeparator,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<Autocomplete>
+  <AutocompleteInput placeholder="Search fruits..." showTrigger />
+  <AutocompleteContent>
+    <AutocompleteList>
+      <AutocompleteItem value="apple">Apple</AutocompleteItem>
+      <AutocompleteItem value="banana">Banana</AutocompleteItem>
+      <AutocompleteItem value="cherry">Cherry</AutocompleteItem>
+    </AutocompleteList>
+    <AutocompleteEmpty>No results found.</AutocompleteEmpty>
+  </AutocompleteContent>
+</Autocomplete>
+```
+
+## Examples
+
+### With Clear Button
+
+```tsx
+<Autocomplete>
+  <AutocompleteInput placeholder="Select a language..." showClear />
+  <AutocompleteContent>
+    <AutocompleteList>
+      <AutocompleteItem value="typescript">TypeScript</AutocompleteItem>
+      <AutocompleteItem value="javascript">JavaScript</AutocompleteItem>
+      <AutocompleteItem value="python">Python</AutocompleteItem>
+      <AutocompleteItem value="rust">Rust</AutocompleteItem>
+    </AutocompleteList>
+  </AutocompleteContent>
+</Autocomplete>
+```
+
+### With Groups
+
+```tsx
+<Autocomplete>
+  <AutocompleteInput placeholder="Search..." showTrigger />
+  <AutocompleteContent>
+    <AutocompleteList>
+      <AutocompleteGroup>
+        <AutocompleteGroupLabel>Fruits</AutocompleteGroupLabel>
+        <AutocompleteItem value="apple">Apple</AutocompleteItem>
+        <AutocompleteItem value="banana">Banana</AutocompleteItem>
+      </AutocompleteGroup>
+      <AutocompleteSeparator />
+      <AutocompleteGroup>
+        <AutocompleteGroupLabel>Vegetables</AutocompleteGroupLabel>
+        <AutocompleteItem value="carrot">Carrot</AutocompleteItem>
+        <AutocompleteItem value="broccoli">Broccoli</AutocompleteItem>
+      </AutocompleteGroup>
+    </AutocompleteList>
+    <AutocompleteEmpty>No results found.</AutocompleteEmpty>
+  </AutocompleteContent>
+</Autocomplete>
+```
+
+### Input Sizes
+
+```tsx
+<Autocomplete>
+  <AutocompleteInput size="sm" placeholder="Small" showTrigger />
+  <AutocompleteContent>
+    <AutocompleteList>
+      <AutocompleteItem value="item">Item</AutocompleteItem>
+    </AutocompleteList>
+  </AutocompleteContent>
+</Autocomplete>
+
+<Autocomplete>
+  <AutocompleteInput size="default" placeholder="Default" showTrigger />
+  <AutocompleteContent>
+    <AutocompleteList>
+      <AutocompleteItem value="item">Item</AutocompleteItem>
+    </AutocompleteList>
+  </AutocompleteContent>
+</Autocomplete>
+
+<Autocomplete>
+  <AutocompleteInput size="lg" placeholder="Large" showTrigger />
+  <AutocompleteContent>
+    <AutocompleteList>
+      <AutocompleteItem value="item">Item</AutocompleteItem>
+    </AutocompleteList>
+  </AutocompleteContent>
+</Autocomplete>
+```
+
+## Props
+
+### Autocomplete
+
+The root component. Accepts all `Base UI Autocomplete.Root` props.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Controlled selected value |
+| `onValueChange` | `(value: string) => void` | — | Callback when value changes |
+| `defaultValue` | `string` | — | Initial value (uncontrolled) |
+
+### AutocompleteInput
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `"sm" \| "default" \| "lg"` | `"default"` | Input height |
+| `showClear` | `boolean` | `false` | Show clear button |
+| `showTrigger` | `boolean` | `false` | Show dropdown trigger icon |
+| `placeholder` | `string` | — | Placeholder text |
+| `className` | `string` | — | Additional CSS classes |
+
+### AutocompleteContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `align` | `"start" \| "center" \| "end"` | `"start"` | Popup alignment |
+| `side` | `"top" \| "bottom"` | `"bottom"` | Popup side |
+| `sideOffset` | `number` | `4` | Distance from anchor |
+| `alignOffset` | `number` | `0` | Alignment offset |
+| `showBackdrop` | `boolean` | `false` | Show backdrop overlay |
+| `className` | `string` | — | Additional CSS classes |
+
+### AutocompleteItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Item value |
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Item content |
+
+### AutocompleteEmpty
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Empty state content |
+
+## Related
+
+- [Combobox](/components/combobox) — Searchable select with item indicators
+- [Command](/components/command) — Command palette for keyboard-driven search

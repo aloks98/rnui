@@ -1,0 +1,75 @@
+---
+title: Separator
+description: A visual divider for separating content into distinct sections.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import { Separator } from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<Separator />
+```
+
+## Examples
+
+### Horizontal
+
+```tsx
+<div>
+  <h4 className="text-sm font-medium">Section Title</h4>
+  <Separator className="my-4" />
+  <p className="text-sm text-muted-foreground">Content below the separator.</p>
+</div>
+```
+
+### Vertical
+
+```tsx
+<div className="flex h-5 items-center space-x-4 text-sm">
+  <span>Home</span>
+  <Separator orientation="vertical" />
+  <span>About</span>
+  <Separator orientation="vertical" />
+  <span>Contact</span>
+</div>
+```
+
+### In a Card
+
+```tsx
+<Card className="w-[350px]">
+  <CardHeader>
+    <CardTitle>Account</CardTitle>
+    <CardDescription>Manage your account settings.</CardDescription>
+  </CardHeader>
+  <Separator />
+  <CardContent>
+    <p>Profile details and preferences.</p>
+  </CardContent>
+</Card>
+```
+
+## Props
+
+Extends `@base-ui/react` `Separator.Props`.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | The direction of the separator line |
+| `className` | `string` | -- | Additional CSS classes |
+
+## Related
+
+- [Card](/components/card)
+- [Resizable](/components/resizable)

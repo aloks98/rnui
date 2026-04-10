@@ -1,0 +1,139 @@
+---
+title: Date Selector
+description: A multi-period date selector supporting day, month, quarter, half-year, and year selection with filter operators.
+---
+
+## Installation
+
+```bash
+npx @e412/rnui-cli add date-selector
+```
+
+## Import
+
+```tsx
+import {
+  DateSelector,
+  formatDateValue,
+  useDateSelector,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+import { DateSelector } from '@e412/rnui-react'
+
+export function DateSelectorDemo() {
+  const [value, setValue] = useState<DateSelectorValue | undefined>()
+
+  return <DateSelector value={value} onChange={setValue} />
+}
+```
+
+## Examples
+
+### Default (Day Picker)
+
+```tsx
+<DateSelector value={value} onChange={setValue} />
+```
+
+### Month Period
+
+```tsx
+<DateSelector
+  value={value}
+  onChange={setValue}
+  defaultPeriodType="month"
+/>
+```
+
+### Quarter and Year Only
+
+```tsx
+<DateSelector
+  value={value}
+  onChange={setValue}
+  periodTypes={['quarter', 'year']}
+  defaultPeriodType="quarter"
+/>
+```
+
+### Range Selection Disabled
+
+```tsx
+<DateSelector
+  value={value}
+  onChange={setValue}
+  allowRange={false}
+/>
+```
+
+### Preset Filter Mode
+
+```tsx
+<DateSelector
+  value={value}
+  onChange={setValue}
+  presetMode="between"
+/>
+```
+
+### Custom Year Range
+
+```tsx
+<DateSelector
+  value={value}
+  onChange={setValue}
+  minYear={2020}
+  maxYear={2030}
+/>
+```
+
+### Without Input
+
+```tsx
+<DateSelector
+  value={value}
+  onChange={setValue}
+  showInput={false}
+/>
+```
+
+### Custom Date Format
+
+```tsx
+<DateSelector
+  value={value}
+  onChange={setValue}
+  dayDateFormat="dd/MM/yyyy"
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `DateSelectorValue` | - | Controlled value |
+| `onChange` | `(value: DateSelectorValue) => void` | - | Change handler |
+| `allowRange` | `boolean` | `true` | Allow range selection (between operator) |
+| `periodTypes` | `DateSelectorPeriodType[]` | All periods | Which period tabs to show |
+| `defaultPeriodType` | `"day" \| "month" \| "quarter" \| "half-year" \| "year"` | `"day"` | Initial period type |
+| `defaultFilterType` | `"is" \| "before" \| "after" \| "between"` | `"is"` | Initial filter operator |
+| `presetMode` | `DateSelectorFilterType` | - | Lock to a specific filter operator |
+| `showInput` | `boolean` | `true` | Show the date text input |
+| `showTwoMonths` | `boolean` | `true` | Show two calendar months side by side |
+| `label` | `string` | - | Label text above the selector |
+| `className` | `string` | - | Additional CSS class |
+| `yearRange` | `number` | `10` | Number of years to display |
+| `minYear` | `number` | `2015` | Earliest selectable year |
+| `maxYear` | `number` | `2026` | Latest selectable year |
+| `i18n` | `Partial<DateSelectorI18nConfig>` | English defaults | Internationalization overrides |
+| `dayDateFormat` | `string` | `"MM/dd/yyyy"` | Date format string for day mode |
+| `weekStartsOn` | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6` | - | First day of the week (0 = Sunday) |
+
+## Related
+
+- [Calendar](/docs/components/calendar)
+- [Filters](/docs/components/filters)

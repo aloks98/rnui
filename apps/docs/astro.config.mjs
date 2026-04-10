@@ -102,7 +102,7 @@ export default defineConfig({
         {
           label: 'Charts',
           items: [
-            { label: 'Overview', slug: 'charts/index' },
+            { label: 'Overview', slug: 'charts/overview' },
             { label: 'Bar Chart', slug: 'charts/bar-chart' },
             { label: 'Line Chart', slug: 'charts/line-chart' },
             { label: 'Area Chart', slug: 'charts/area-chart' },

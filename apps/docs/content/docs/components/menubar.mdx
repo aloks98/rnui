@@ -1,0 +1,274 @@
+---
+title: Menubar
+description: A horizontal menu bar with multiple dropdown menus, commonly used in desktop application interfaces.
+---
+
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+  MenubarCheckboxItem,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarLabel,
+  MenubarSub,
+  MenubarSubTrigger,
+  MenubarSubContent,
+} from '@e412/rnui-react';
+
+The `Menubar` component provides a horizontal bar of dropdown menus, similar to the menu bars found in desktop applications. Each menu can contain items, shortcuts, separators, checkbox items, radio groups, and nested sub-menus.
+
+## Import
+
+```tsx
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+  MenubarCheckboxItem,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarLabel,
+  MenubarSub,
+  MenubarSubTrigger,
+  MenubarSubContent,
+} from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <Menubar>
+    <MenubarMenu>
+      <MenubarTrigger>File</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          New Tab <MenubarShortcut>Ctrl+T</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>New Window</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>Print</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>Edit</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          Undo <MenubarShortcut>Ctrl+Z</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Redo <MenubarShortcut>Ctrl+Y</MenubarShortcut>
+        </MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>Cut</MenubarItem>
+        <MenubarItem>Copy</MenubarItem>
+        <MenubarItem>Paste</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>View</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>Zoom In</MenubarItem>
+        <MenubarItem>Zoom Out</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+</Preview>
+
+## With Sub-menus
+
+<Preview>
+  <Menubar>
+    <MenubarMenu>
+      <MenubarTrigger>File</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          New File <MenubarShortcut>Ctrl+N</MenubarShortcut>
+        </MenubarItem>
+        <MenubarSub>
+          <MenubarSubTrigger>Open Recent</MenubarSubTrigger>
+          <MenubarSubContent>
+            <MenubarItem>project-alpha.ts</MenubarItem>
+            <MenubarItem>dashboard.tsx</MenubarItem>
+            <MenubarItem>settings.json</MenubarItem>
+            <MenubarSeparator />
+            <MenubarItem>Clear Recent</MenubarItem>
+          </MenubarSubContent>
+        </MenubarSub>
+        <MenubarSeparator />
+        <MenubarItem>
+          Save <MenubarShortcut>Ctrl+S</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>Save As...</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>Exit</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+</Preview>
+
+## Examples
+
+### Code Editor Menubar
+
+<Preview>
+  <Menubar>
+    <MenubarMenu>
+      <MenubarTrigger>File</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          New File <MenubarShortcut>Ctrl+N</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Open File <MenubarShortcut>Ctrl+O</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Save <MenubarShortcut>Ctrl+S</MenubarShortcut>
+        </MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>
+          Close Tab <MenubarShortcut>Ctrl+W</MenubarShortcut>
+        </MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>Edit</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          Undo <MenubarShortcut>Ctrl+Z</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Redo <MenubarShortcut>Ctrl+Shift+Z</MenubarShortcut>
+        </MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>
+          Find <MenubarShortcut>Ctrl+F</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Replace <MenubarShortcut>Ctrl+H</MenubarShortcut>
+        </MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>View</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          Command Palette <MenubarShortcut>Ctrl+Shift+P</MenubarShortcut>
+        </MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>Minimap</MenubarItem>
+        <MenubarItem>Word Wrap</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>
+          Zoom In <MenubarShortcut>Ctrl+=</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Zoom Out <MenubarShortcut>Ctrl+-</MenubarShortcut>
+        </MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>Terminal</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          New Terminal <MenubarShortcut>Ctrl+`</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>Split Terminal</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>Run Task</MenubarItem>
+        <MenubarItem>Run Build Task</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+</Preview>
+
+### Browser Menubar
+
+<Preview>
+  <Menubar>
+    <MenubarMenu>
+      <MenubarTrigger>File</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          New Tab <MenubarShortcut>Ctrl+T</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          New Window <MenubarShortcut>Ctrl+N</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>New Incognito Window</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>
+          Print <MenubarShortcut>Ctrl+P</MenubarShortcut>
+        </MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>Edit</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          Undo <MenubarShortcut>Ctrl+Z</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Redo <MenubarShortcut>Ctrl+Y</MenubarShortcut>
+        </MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>
+          Cut <MenubarShortcut>Ctrl+X</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Copy <MenubarShortcut>Ctrl+C</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Paste <MenubarShortcut>Ctrl+V</MenubarShortcut>
+        </MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>Bookmarks</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          Bookmark This Page <MenubarShortcut>Ctrl+D</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>Show All Bookmarks</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>Bookmarks Bar</MenubarItem>
+        <MenubarItem>Other Bookmarks</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+</Preview>
+
+### Minimal Menubar
+
+<Preview>
+  <Menubar>
+    <MenubarMenu>
+      <MenubarTrigger>Account</MenubarTrigger>
+      <MenubarContent>
+        <MenubarLabel>Signed in as user@email.com</MenubarLabel>
+        <MenubarSeparator />
+        <MenubarItem>Profile</MenubarItem>
+        <MenubarItem>Settings</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>Sign out</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>Help</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>Documentation</MenubarItem>
+        <MenubarItem>Release Notes</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>About</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+</Preview>

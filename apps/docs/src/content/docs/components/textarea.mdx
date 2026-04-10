@@ -1,0 +1,68 @@
+---
+title: Textarea
+description: A multi-line text input component with automatic field sizing.
+---
+
+## Installation
+
+```bash
+npx @e412/rnui-react add textarea
+```
+
+## Import
+
+```tsx
+import { Textarea } from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<Textarea placeholder="Type your message here." />
+```
+
+## Examples
+
+### With Label
+
+```tsx
+<div className="grid gap-1.5">
+  <label htmlFor="message">Your message</label>
+  <Textarea id="message" placeholder="Type your message here." />
+</div>
+```
+
+### Disabled
+
+```tsx
+<Textarea placeholder="Disabled textarea" disabled />
+```
+
+### With Default Value
+
+```tsx
+<Textarea defaultValue="This is some pre-filled text content." />
+```
+
+### Custom Rows
+
+```tsx
+<Textarea placeholder="Fixed height textarea" rows={6} />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `placeholder` | `string` | - | Placeholder text |
+| `defaultValue` | `string` | - | Default text content |
+| `value` | `string` | - | Controlled text content |
+| `onChange` | `(e: ChangeEvent) => void` | - | Callback when text changes |
+| `rows` | `number` | - | Number of visible text rows |
+| `disabled` | `boolean` | `false` | Disable the textarea |
+| `className` | `string` | - | Additional CSS classes |
+
+## Related
+
+- [Input](/docs/components/input)
+- [Label](/docs/components/label)

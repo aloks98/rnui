@@ -1,0 +1,222 @@
+---
+title: Command
+description: A command palette component for keyboard-driven search and actions, built on cmdk.
+---
+
+## Installation
+
+```bash
+npx @e412/rnui-cli add command
+```
+
+## Import
+
+```tsx
+import {
+  Command,
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandShortcut,
+  CommandSeparator,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<Command>
+  <CommandInput placeholder="Type a command or search..." />
+  <CommandList>
+    <CommandEmpty>No results found.</CommandEmpty>
+    <CommandGroup heading="Suggestions">
+      <CommandItem>Calendar</CommandItem>
+      <CommandItem>Search Emoji</CommandItem>
+      <CommandItem>Calculator</CommandItem>
+    </CommandGroup>
+  </CommandList>
+</Command>
+```
+
+## Examples
+
+### With Groups and Shortcuts
+
+```tsx
+<Command>
+  <CommandInput placeholder="Search..." />
+  <CommandList>
+    <CommandEmpty>No results found.</CommandEmpty>
+    <CommandGroup heading="Suggestions">
+      <CommandItem>
+        Calendar
+        <CommandShortcut>Ctrl+C</CommandShortcut>
+      </CommandItem>
+      <CommandItem>
+        Search
+        <CommandShortcut>Ctrl+S</CommandShortcut>
+      </CommandItem>
+    </CommandGroup>
+    <CommandSeparator />
+    <CommandGroup heading="Settings">
+      <CommandItem>Profile</CommandItem>
+      <CommandItem>Billing</CommandItem>
+      <CommandItem>Settings</CommandItem>
+    </CommandGroup>
+  </CommandList>
+</Command>
+```
+
+### With Icons
+
+```tsx
+import { CalendarIcon, SmileIcon, CalculatorIcon } from 'lucide-react'
+
+<Command>
+  <CommandInput placeholder="Type a command..." />
+  <CommandList>
+    <CommandEmpty>No results found.</CommandEmpty>
+    <CommandGroup heading="Suggestions">
+      <CommandItem>
+        <CalendarIcon />
+        Calendar
+      </CommandItem>
+      <CommandItem>
+        <SmileIcon />
+        Search Emoji
+      </CommandItem>
+      <CommandItem>
+        <CalculatorIcon />
+        Calculator
+      </CommandItem>
+    </CommandGroup>
+  </CommandList>
+</Command>
+```
+
+### Command Dialog
+
+Use `CommandDialog` to render the command palette in a centered modal dialog.
+
+```tsx
+const [open, setOpen] = React.useState(false)
+
+React.useEffect(() => {
+  const down = (e: KeyboardEvent) => {
+    if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault()
+      setOpen((open) => !open)
+    }
+  }
+  document.addEventListener('keydown', down)
+  return () => document.removeEventListener('keydown', down)
+}, [])
+
+<CommandDialog open={open} onOpenChange={setOpen}>
+  <Command>
+    <CommandInput placeholder="Type a command or search..." />
+    <CommandList>
+      <CommandEmpty>No results found.</CommandEmpty>
+      <CommandGroup heading="Actions">
+        <CommandItem>New File</CommandItem>
+        <CommandItem>New Folder</CommandItem>
+      </CommandGroup>
+      <CommandSeparator />
+      <CommandGroup heading="Navigation">
+        <CommandItem>Home</CommandItem>
+        <CommandItem>Settings</CommandItem>
+      </CommandGroup>
+    </CommandList>
+  </Command>
+</CommandDialog>
+```
+
+### Disabled Items
+
+```tsx
+<Command>
+  <CommandInput placeholder="Search..." />
+  <CommandList>
+    <CommandGroup heading="Actions">
+      <CommandItem>Available Action</CommandItem>
+      <CommandItem disabled>Disabled Action</CommandItem>
+      <CommandItem>Another Action</CommandItem>
+    </CommandGroup>
+  </CommandList>
+</Command>
+```
+
+## Props
+
+### Command
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Command contents |
+
+### CommandDialog
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | — | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Callback when open state changes |
+| `title` | `string` | `"Command Palette"` | Accessible dialog title (sr-only) |
+| `description` | `string` | `"Search for a command to run..."` | Accessible dialog description (sr-only) |
+| `showCloseButton` | `boolean` | `false` | Show close button in dialog |
+| `className` | `string` | — | Additional CSS classes |
+
+### CommandInput
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `placeholder` | `string` | — | Placeholder text |
+| `className` | `string` | — | Additional CSS classes |
+
+### CommandList
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | List contents |
+
+### CommandItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `disabled` | `boolean` | `false` | Disabled state |
+| `onSelect` | `(value: string) => void` | — | Callback when item is selected |
+| `value` | `string` | — | Item value for filtering |
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Item content |
+
+### CommandGroup
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `heading` | `string` | — | Group heading text |
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Group contents |
+
+### CommandShortcut
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Shortcut text |
+
+### CommandEmpty
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Empty state content |
+
+## Related
+
+- [Dialog](/components/dialog) — Used internally by CommandDialog
+- [Combobox](/components/combobox) — Searchable select for form fields
+- [Autocomplete](/components/autocomplete) — Searchable dropdown input

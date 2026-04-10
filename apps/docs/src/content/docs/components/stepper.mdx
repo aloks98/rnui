@@ -1,0 +1,329 @@
+---
+title: Stepper
+description: A multi-step wizard component for guiding users through sequential processes, with horizontal and vertical orientations.
+---
+
+## Installation
+
+```bash
+npx @e412/rnui-cli add stepper
+```
+
+## Import
+
+```tsx
+import {
+  Stepper,
+  StepperItem,
+  StepperTrigger,
+  StepperIndicator,
+  StepperSeparator,
+  StepperTitle,
+  StepperDescription,
+  StepperNav,
+  StepperPanel,
+  StepperContent,
+  useStepper,
+  useStepItem,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<Stepper defaultValue={1}>
+  <StepperNav>
+    <StepperItem step={1}>
+      <StepperTrigger>
+        <StepperIndicator>1</StepperIndicator>
+        <StepperTitle>Account</StepperTitle>
+      </StepperTrigger>
+      <StepperSeparator />
+    </StepperItem>
+    <StepperItem step={2}>
+      <StepperTrigger>
+        <StepperIndicator>2</StepperIndicator>
+        <StepperTitle>Profile</StepperTitle>
+      </StepperTrigger>
+      <StepperSeparator />
+    </StepperItem>
+    <StepperItem step={3}>
+      <StepperTrigger>
+        <StepperIndicator>3</StepperIndicator>
+        <StepperTitle>Complete</StepperTitle>
+      </StepperTrigger>
+    </StepperItem>
+  </StepperNav>
+  <StepperPanel>
+    <StepperContent value={1}>Step 1 content</StepperContent>
+    <StepperContent value={2}>Step 2 content</StepperContent>
+    <StepperContent value={3}>Step 3 content</StepperContent>
+  </StepperPanel>
+</Stepper>
+```
+
+## Examples
+
+### With Descriptions
+
+```tsx
+<Stepper defaultValue={1}>
+  <StepperNav>
+    <StepperItem step={1}>
+      <StepperTrigger>
+        <StepperIndicator>1</StepperIndicator>
+        <div>
+          <StepperTitle>Account</StepperTitle>
+          <StepperDescription>Create your account</StepperDescription>
+        </div>
+      </StepperTrigger>
+      <StepperSeparator />
+    </StepperItem>
+    <StepperItem step={2}>
+      <StepperTrigger>
+        <StepperIndicator>2</StepperIndicator>
+        <div>
+          <StepperTitle>Profile</StepperTitle>
+          <StepperDescription>Set up your profile</StepperDescription>
+        </div>
+      </StepperTrigger>
+      <StepperSeparator />
+    </StepperItem>
+    <StepperItem step={3}>
+      <StepperTrigger>
+        <StepperIndicator>3</StepperIndicator>
+        <div>
+          <StepperTitle>Review</StepperTitle>
+          <StepperDescription>Confirm details</StepperDescription>
+        </div>
+      </StepperTrigger>
+    </StepperItem>
+  </StepperNav>
+</Stepper>
+```
+
+### Vertical Orientation
+
+```tsx
+<Stepper defaultValue={2} orientation="vertical">
+  <StepperNav>
+    <StepperItem step={1}>
+      <StepperTrigger>
+        <StepperIndicator>1</StepperIndicator>
+        <StepperTitle>Step One</StepperTitle>
+      </StepperTrigger>
+      <StepperSeparator />
+    </StepperItem>
+    <StepperItem step={2}>
+      <StepperTrigger>
+        <StepperIndicator>2</StepperIndicator>
+        <StepperTitle>Step Two</StepperTitle>
+      </StepperTrigger>
+      <StepperSeparator />
+    </StepperItem>
+    <StepperItem step={3}>
+      <StepperTrigger>
+        <StepperIndicator>3</StepperIndicator>
+        <StepperTitle>Step Three</StepperTitle>
+      </StepperTrigger>
+    </StepperItem>
+  </StepperNav>
+</Stepper>
+```
+
+### With Custom Indicators
+
+```tsx
+import { CheckIcon, LoaderCircleIcon } from 'lucide-react'
+
+<Stepper
+  defaultValue={2}
+  indicators={{
+    completed: <CheckIcon className="size-4" />,
+    loading: <LoaderCircleIcon className="size-4 animate-spin" />,
+  }}
+>
+  <StepperNav>
+    <StepperItem step={1}>
+      <StepperTrigger>
+        <StepperIndicator>1</StepperIndicator>
+        <StepperTitle>Done</StepperTitle>
+      </StepperTrigger>
+      <StepperSeparator />
+    </StepperItem>
+    <StepperItem step={2} loading>
+      <StepperTrigger>
+        <StepperIndicator>2</StepperIndicator>
+        <StepperTitle>Loading</StepperTitle>
+      </StepperTrigger>
+      <StepperSeparator />
+    </StepperItem>
+    <StepperItem step={3}>
+      <StepperTrigger>
+        <StepperIndicator>3</StepperIndicator>
+        <StepperTitle>Pending</StepperTitle>
+      </StepperTrigger>
+    </StepperItem>
+  </StepperNav>
+</Stepper>
+```
+
+### Controlled
+
+```tsx
+import { useState } from 'react'
+
+function WizardForm() {
+  const [step, setStep] = useState(1)
+
+  return (
+    <Stepper value={step} onValueChange={setStep}>
+      <StepperNav>
+        <StepperItem step={1}>
+          <StepperTrigger>
+            <StepperIndicator>1</StepperIndicator>
+            <StepperTitle>Details</StepperTitle>
+          </StepperTrigger>
+          <StepperSeparator />
+        </StepperItem>
+        <StepperItem step={2}>
+          <StepperTrigger>
+            <StepperIndicator>2</StepperIndicator>
+            <StepperTitle>Confirm</StepperTitle>
+          </StepperTrigger>
+        </StepperItem>
+      </StepperNav>
+      <StepperPanel>
+        <StepperContent value={1}>
+          <p>Enter your details</p>
+          <button onClick={() => setStep(2)}>Next</button>
+        </StepperContent>
+        <StepperContent value={2}>
+          <p>Review and confirm</p>
+          <button onClick={() => setStep(1)}>Back</button>
+        </StepperContent>
+      </StepperPanel>
+    </Stepper>
+  )
+}
+```
+
+### Disabled Steps
+
+```tsx
+<Stepper defaultValue={1}>
+  <StepperNav>
+    <StepperItem step={1}>
+      <StepperTrigger>
+        <StepperIndicator>1</StepperIndicator>
+        <StepperTitle>Current</StepperTitle>
+      </StepperTrigger>
+      <StepperSeparator />
+    </StepperItem>
+    <StepperItem step={2} disabled>
+      <StepperTrigger>
+        <StepperIndicator>2</StepperIndicator>
+        <StepperTitle>Locked</StepperTitle>
+      </StepperTrigger>
+      <StepperSeparator />
+    </StepperItem>
+    <StepperItem step={3} disabled>
+      <StepperTrigger>
+        <StepperIndicator>3</StepperIndicator>
+        <StepperTitle>Locked</StepperTitle>
+      </StepperTrigger>
+    </StepperItem>
+  </StepperNav>
+</Stepper>
+```
+
+## Props
+
+### Stepper
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `defaultValue` | `number` | `1` | Initial active step (uncontrolled) |
+| `value` | `number` | — | Controlled active step |
+| `onValueChange` | `(value: number) => void` | — | Callback when active step changes |
+| `orientation` | `"horizontal" \| "vertical"` | `"horizontal"` | Layout orientation |
+| `indicators` | `StepIndicators` | `{}` | Custom indicator nodes for each state |
+| `className` | `string` | — | Additional CSS classes |
+
+### StepperItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `step` | `number` | — | The step number (required) |
+| `completed` | `boolean` | `false` | Force completed state |
+| `disabled` | `boolean` | `false` | Disable interaction |
+| `loading` | `boolean` | `false` | Show loading state when active |
+| `className` | `string` | — | Additional CSS classes |
+
+### StepperTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `asChild` | `boolean` | `false` | Render as a span instead of a button |
+| `className` | `string` | — | Additional CSS classes |
+
+### StepperIndicator
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | — | Default indicator content (e.g. step number) |
+| `className` | `string` | — | Additional CSS classes |
+
+### StepperContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number` | — | The step number this content belongs to (required) |
+| `forceMount` | `boolean` | — | Keep content mounted when inactive (hidden with CSS) |
+| `className` | `string` | — | Additional CSS classes |
+
+### StepIndicators
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `active` | `ReactNode` | Indicator shown for the active step |
+| `completed` | `ReactNode` | Indicator shown for completed steps |
+| `inactive` | `ReactNode` | Indicator shown for inactive steps |
+| `loading` | `ReactNode` | Indicator shown when a step is loading |
+
+### useStepper
+
+Returns the stepper context:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `activeStep` | `number` | Current active step |
+| `setActiveStep` | `(step: number) => void` | Set the active step |
+| `stepsCount` | `number` | Total number of steps |
+| `orientation` | `"horizontal" \| "vertical"` | Current orientation |
+
+### useStepItem
+
+Returns the step item context (must be used inside a `StepperItem`):
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `step` | `number` | The step number |
+| `state` | `"active" \| "completed" \| "inactive" \| "loading"` | Current step state |
+| `isDisabled` | `boolean` | Whether the step is disabled |
+| `isLoading` | `boolean` | Whether the step is loading |
+
+## Keyboard Navigation
+
+| Key | Action |
+|-----|--------|
+| `ArrowRight` / `ArrowDown` | Focus next step |
+| `ArrowLeft` / `ArrowUp` | Focus previous step |
+| `Home` | Focus first step |
+| `End` | Focus last step |
+| `Enter` / `Space` | Activate focused step |
+
+## Related
+
+- [Tabs](/components/tabs) — Tabbed interface for non-sequential content
+- [NavigationMenu](/components/navigation-menu) — Site navigation with dropdowns

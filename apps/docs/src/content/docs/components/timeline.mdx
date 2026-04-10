@@ -1,0 +1,163 @@
+---
+title: Timeline
+description: An event timeline with step indicators, separators, dates, and content sections. Supports vertical and horizontal orientations.
+---
+
+## Installation
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+## Import
+
+```tsx
+import {
+  Timeline,
+  TimelineItem,
+  TimelineIndicator,
+  TimelineSeparator,
+  TimelineHeader,
+  TimelineTitle,
+  TimelineDate,
+  TimelineContent,
+} from '@e412/rnui-react'
+```
+
+## Usage
+
+```tsx
+<Timeline defaultValue={2}>
+  <TimelineItem step={1}>
+    <TimelineIndicator />
+    <TimelineSeparator />
+    <TimelineHeader>
+      <TimelineDate>Jan 1, 2025</TimelineDate>
+      <TimelineTitle>Project Started</TimelineTitle>
+    </TimelineHeader>
+    <TimelineContent>Initial commit and project setup.</TimelineContent>
+  </TimelineItem>
+  <TimelineItem step={2}>
+    <TimelineIndicator />
+    <TimelineSeparator />
+    <TimelineHeader>
+      <TimelineDate>Feb 15, 2025</TimelineDate>
+      <TimelineTitle>Beta Release</TimelineTitle>
+    </TimelineHeader>
+    <TimelineContent>Launched the first beta version.</TimelineContent>
+  </TimelineItem>
+  <TimelineItem step={3}>
+    <TimelineIndicator />
+    <TimelineSeparator />
+    <TimelineHeader>
+      <TimelineDate>Mar 1, 2025</TimelineDate>
+      <TimelineTitle>General Availability</TimelineTitle>
+    </TimelineHeader>
+    <TimelineContent>Public launch to all users.</TimelineContent>
+  </TimelineItem>
+</Timeline>
+```
+
+## Examples
+
+### Horizontal
+
+```tsx
+<Timeline defaultValue={2} orientation="horizontal">
+  <TimelineItem step={1}>
+    <TimelineIndicator />
+    <TimelineSeparator />
+    <TimelineHeader>
+      <TimelineTitle>Step 1</TimelineTitle>
+    </TimelineHeader>
+  </TimelineItem>
+  <TimelineItem step={2}>
+    <TimelineIndicator />
+    <TimelineSeparator />
+    <TimelineHeader>
+      <TimelineTitle>Step 2</TimelineTitle>
+    </TimelineHeader>
+  </TimelineItem>
+  <TimelineItem step={3}>
+    <TimelineIndicator />
+    <TimelineSeparator />
+    <TimelineHeader>
+      <TimelineTitle>Step 3</TimelineTitle>
+    </TimelineHeader>
+  </TimelineItem>
+</Timeline>
+```
+
+### Controlled
+
+```tsx
+const [step, setStep] = useState(1)
+
+<Timeline value={step} onValueChange={setStep}>
+  <TimelineItem step={1}>
+    <TimelineIndicator />
+    <TimelineSeparator />
+    <TimelineHeader>
+      <TimelineTitle>Order Placed</TimelineTitle>
+    </TimelineHeader>
+  </TimelineItem>
+  <TimelineItem step={2}>
+    <TimelineIndicator />
+    <TimelineSeparator />
+    <TimelineHeader>
+      <TimelineTitle>Shipped</TimelineTitle>
+    </TimelineHeader>
+  </TimelineItem>
+  <TimelineItem step={3}>
+    <TimelineIndicator />
+    <TimelineSeparator />
+    <TimelineHeader>
+      <TimelineTitle>Delivered</TimelineTitle>
+    </TimelineHeader>
+  </TimelineItem>
+</Timeline>
+```
+
+## Props
+
+### Timeline
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `defaultValue` | `number` | `1` | Initial active step (uncontrolled). |
+| `value` | `number` | -- | Active step (controlled). |
+| `onValueChange` | `(value: number) => void` | -- | Callback when the active step changes. |
+| `orientation` | `"vertical" \| "horizontal"` | `"vertical"` | Layout direction. |
+| `className` | `string` | -- | Additional CSS classes. |
+
+### TimelineItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `step` | `number` | -- | **Required.** Step index for this item. Items with `step <= activeStep` are marked as completed. |
+| `className` | `string` | -- | Additional CSS classes. |
+
+### TimelineIndicator
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | -- | Additional CSS classes. Completed items receive a filled border. |
+| `children` | `ReactNode` | -- | Custom content inside the indicator circle. |
+
+### TimelineSeparator
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | -- | Additional CSS classes. Hidden on the last item. |
+
+### TimelineHeader, TimelineTitle, TimelineDate, TimelineContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | -- | Additional CSS classes. |
+| `children` | `ReactNode` | -- | Content to render. |
+
+## Related
+
+- [Card](/components/card)
+- [Separator](/components/separator)

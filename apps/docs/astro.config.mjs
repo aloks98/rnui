@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config'
 import starlight from '@astrojs/starlight'
 import { ion } from 'starlight-ion-theme'
-import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   integrations: [
@@ -125,10 +124,6 @@ export default defineConfig({
         { label: 'API Reference', slug: 'api-reference' },
         { label: 'Changelog', slug: 'changelog' },
       ],
-      customCss: ['./src/styles/global.css'],
     }),
   ],
-  vite: {
-    plugins: [tailwindcss()],
-  },
 })

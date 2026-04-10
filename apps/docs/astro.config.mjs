@@ -8,10 +8,10 @@ export default defineConfig({
       title: '@e412/rnui',
       plugins: [ion()],
       sidebar: [
-        { label: 'Getting Started', slug: 'getting-started' },
-        { label: 'Theming', slug: 'theming' },
+        { label: '[lucide:rocket] Getting Started', slug: 'getting-started' },
+        { label: '[lucide:palette] Theming', slug: 'theming' },
         {
-          label: 'Layout',
+          label: '[lucide:layout-grid] Layout',
           items: [
             { label: 'Aspect Ratio', slug: 'components/aspect-ratio' },
             { label: 'Card', slug: 'components/card' },
@@ -22,7 +22,7 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Forms',
+          label: '[lucide:text-cursor-input] Forms',
           items: [
             { label: 'Autocomplete', slug: 'components/autocomplete' },
             { label: 'Button', slug: 'components/button' },
@@ -52,7 +52,7 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Data Display',
+          label: '[lucide:table-2] Data Display',
           items: [
             { label: 'Accordion', slug: 'components/accordion' },
             { label: 'Alert', slug: 'components/alert' },
@@ -77,7 +77,7 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Feedback',
+          label: '[lucide:message-square] Feedback',
           items: [
             { label: 'Alert Dialog', slug: 'components/alert-dialog' },
             { label: 'Dialog', slug: 'components/dialog' },
@@ -91,7 +91,7 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Navigation',
+          label: '[lucide:compass] Navigation',
           items: [
             { label: 'Menubar', slug: 'components/menubar' },
             { label: 'Navigation Menu', slug: 'components/navigation-menu' },
@@ -101,7 +101,7 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Charts',
+          label: '[lucide:chart-bar] Charts',
           items: [
             { label: 'Overview', slug: 'charts/overview' },
             { label: 'Bar Chart', slug: 'charts/bar-chart' },
@@ -114,15 +114,15 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Utilities',
+          label: '[lucide:wrench] Utilities',
           items: [
             { label: 'useFileUpload', slug: 'utilities/use-file-upload' },
             { label: 'useMobile', slug: 'utilities/use-mobile' },
             { label: 'cn', slug: 'utilities/cn' },
           ],
         },
-        { label: 'API Reference', slug: 'api-reference' },
-        { label: 'Changelog', slug: 'changelog' },
+        { label: '[lucide:book-open] API Reference', slug: 'api-reference' },
+        { label: '[lucide:history] Changelog', slug: 'changelog' },
       ],
     }),
   ],

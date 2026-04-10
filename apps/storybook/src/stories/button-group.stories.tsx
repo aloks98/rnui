@@ -74,10 +74,10 @@ export const WithDropdown: Story = {
     <ButtonGroup>
       <Button variant="outline">Follow</Button>
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline" className="pl-2!">
-            <ChevronDownIcon />
-          </Button>
+        <DropdownMenuTrigger
+          render={<Button variant="outline" className="pl-2!" />}
+        >
+          <ChevronDownIcon />
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuItem>

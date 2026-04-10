@@ -1,11 +1,13 @@
 import { defineConfig } from 'astro/config'
 import starlight from '@astrojs/starlight'
+import { ion } from 'starlight-ion-theme'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   integrations: [
     starlight({
       title: '@e412/rnui',
+      plugins: [ion()],
       sidebar: [
         { label: 'Getting Started', slug: 'getting-started' },
         { label: 'Theming', slug: 'theming' },

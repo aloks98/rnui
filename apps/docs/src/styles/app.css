@@ -1,9 +1,10 @@
 @import 'tailwindcss';
-@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/catppuccin.css';
 @import 'fumadocs-ui/css/preset.css';
-@import '@e412/rnui-themes';
-@import 'tw-animate-css';
+@import '@e412/rnui-themes' layer(components);
+@import 'tw-animate-css' layer(components);
 
+@source "../../node_modules/fumadocs-ui/dist";
 @source "../../node_modules/@e412/rnui-react/dist";
 
 html {

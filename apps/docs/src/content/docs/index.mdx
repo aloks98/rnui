@@ -1,25 +1,109 @@
 ---
 title: '@e412/rnui'
-description: A shared UI component library built on shadcn/ui.
+description: A production-ready UI component library built on shadcn/ui and Base UI.
 template: splash
 hero:
-  title: '@e412/rnui'
-  tagline: A shared UI component library built on shadcn/ui. Ships React components and prebuilt themes.
+  title: Build faster with <br/> production-ready components
+  tagline: 65+ React components, 6 chart types, a full theme system, and everything you need to ship polished interfaces — built on shadcn/ui and Base UI.
   actions:
     - text: Get Started
       link: /getting-started/
       icon: right-arrow
+      variant: primary
+    - text: Browse Components
+      link: /components/button/
+      icon: external
 ---
 
-## What You Get
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-- **65+ components** -- buttons, forms, data display, navigation, overlays, feedback, and more
-- **6 chart components** -- BarChart, LineChart, AreaChart, PieChart, RadarChart, ScatterChart powered by ECharts
-- **Theme system** -- CSS custom properties in oklch with automatic light/dark mode and Tailwind v4 integration
-- **DataGrid** -- full-featured data table with sorting, filtering, pagination, column DnD, and virtualization
-- **Tree-shakeable** -- import only what you use, all dependencies externalized
-- **Hooks** -- useFileUpload (drag-and-drop file uploads), useIsMobile (viewport detection)
-- **Utilities** -- cn (Tailwind class merging), formatBytes, chartConfig builder API
+## Why @e412/rnui?
+
+<CardGrid>
+  <Card title="65+ Components" icon="puzzle">
+    Buttons, forms, data tables, charts, overlays, navigation — everything you need, ready to use.
+  </Card>
+  <Card title="shadcn/ui + Base UI" icon="rocket">
+    Built on the same foundations as shadcn/ui, using Base UI primitives for accessibility and composability.
+  </Card>
+  <Card title="Dark Mode" icon="moon">
+    Every component supports light and dark mode out of the box via CSS custom properties in oklch.
+  </Card>
+  <Card title="Tailwind v4" icon="pencil">
+    First-class Tailwind v4 integration with `@theme inline` — all design tokens available as utility classes.
+  </Card>
+</CardGrid>
+
+---
+
+## Component Categories
+
+<CardGrid>
+  <LinkCard title="Layout" description="Card, Resizable, ScrollArea, Separator, Skeleton, AspectRatio" href="/components/card/" />
+  <LinkCard title="Forms" description="Button, Input, Select, Checkbox, Switch, Slider, DateSelector, ColorPicker, and 17 more" href="/components/button/" />
+  <LinkCard title="Data Display" description="DataGrid, Table, Accordion, Badge, Avatar, Timeline, Tree, CodeBlock, JsonViewer, and 11 more" href="/components/accordion/" />
+  <LinkCard title="Feedback" description="Dialog, Drawer, Sheet, Tooltip, Popover, DropdownMenu, Sonner, AlertDialog, HoverCard" href="/components/dialog/" />
+  <LinkCard title="Navigation" description="Tabs, Stepper, Menubar, NavigationMenu, Sidebar" href="/components/tabs/" />
+  <LinkCard title="Charts" description="Bar, Line, Area, Pie, Radar, Scatter — powered by ECharts with auto-theming" href="/charts/overview/" />
+</CardGrid>
+
+---
+
+## Quick Start
+
+### 1. Install
+
+```bash
+npm install @e412/rnui-react @e412/rnui-themes
+```
+
+### 2. Add CSS
+
+```css
+@import '@e412/rnui-themes';
+@import 'tw-animate-css';
+@source "../node_modules/@e412/rnui-react/dist";
+```
+
+### 3. Use Components
+
+```tsx
+import { Button, Card, CardHeader, CardTitle, CardContent } from '@e412/rnui-react'
+
+export function App() {
+  return (
+    <Card className="w-[350px]">
+      <CardHeader>
+        <CardTitle>Welcome</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Button>Get Started</Button>
+      </CardContent>
+    </Card>
+  )
+}
+```
+
+---
+
+## Built for Real Apps
+
+<CardGrid>
+  <Card title="DataGrid" icon="list-format">
+    Full-featured data table with sorting, filtering, pagination, column DnD, row selection, virtual scrolling, and loading skeletons.
+  </Card>
+  <Card title="ECharts" icon="bar-chart">
+    6 pre-composed chart components with auto-theming, plus a `chartConfig()` builder for custom charts. Light/dark mode just works.
+  </Card>
+  <Card title="DateSelector" icon="calendar">
+    Multi-period date picker supporting day, month, quarter, half-year, and year selection with range support and i18n.
+  </Card>
+  <Card title="Filters" icon="funnel">
+    Composable filter system with operators, multi-select, text input, and keyboard navigation — ready for dashboard UIs.
+  </Card>
+</CardGrid>
+
+---
 
 ## Packages
 
@@ -28,24 +112,11 @@ hero:
 | `@e412/rnui-react` | React components, hooks, and utilities |
 | `@e412/rnui-themes` | CSS theme with design tokens and Tailwind v4 integration |
 
-## Quick Start
+---
 
-```bash
-npm install @e412/rnui-react @e412/rnui-themes
-```
-
-```css
-@import '@e412/rnui-themes';
-@import 'tw-animate-css';
-@source "../node_modules/@e412/rnui-react/dist";
-```
-
-```tsx
-import { Button } from '@e412/rnui-react'
-
-export function App() {
-  return <Button>Click me</Button>
-}
-```
-
-[Full setup guide](/getting-started/) | [API Reference](/api-reference/) | [Changelog](/changelog/)
+<CardGrid>
+  <LinkCard title="Full Setup Guide" href="/getting-started/" description="Installation, CSS setup, Tailwind v4, dark mode" />
+  <LinkCard title="API Reference" href="/api-reference/" description="All exports organized by category" />
+  <LinkCard title="Theming" href="/theming/" description="Customize colors, radius, and create custom themes" />
+  <LinkCard title="Changelog" href="/changelog/" description="What's new in the latest release" />
+</CardGrid>

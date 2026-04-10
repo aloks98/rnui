@@ -1,19 +1,19 @@
-import defaultMdxComponents from 'fumadocs-ui/mdx'
-import type { MDXComponents } from 'mdx/types'
-import { Preview } from '@/components/preview'
-import { AutocompleteDemo } from '@/components/demos/autocomplete-demo'
-import { CarouselDemo } from '@/components/demos/carousel-demo'
-import { CodeBlockDemo } from '@/components/demos/code-block-demo'
-import { ColorPickerDemo } from '@/components/demos/color-picker-demo'
-import { ComboboxDemo } from '@/components/demos/combobox-demo'
-import { CommandDemo } from '@/components/demos/command-demo'
-import { DataGridDemo } from '@/components/demos/data-grid-demo'
-import { DateSelectorDemo } from '@/components/demos/date-selector-demo'
-import { DrawerDemo } from '@/components/demos/drawer-demo'
-import { MenubarDemo } from '@/components/demos/menubar-demo'
-import { SheetDemo } from '@/components/demos/sheet-demo'
-import { SonnerDemo } from '@/components/demos/sonner-demo'
-import { StepperDemo } from '@/components/demos/stepper-demo'
+import defaultMdxComponents from 'fumadocs-ui/mdx';
+import type { MDXComponents } from 'mdx/types';
+import { Preview } from '@/components/preview';
+import { AutocompleteDemo } from '@/components/demos/autocomplete-demo';
+import { CarouselDemo } from '@/components/demos/carousel-demo';
+import { CodeBlockDemo } from '@/components/demos/code-block-demo';
+import { ColorPickerDemo } from '@/components/demos/color-picker-demo';
+import { ComboboxDemo } from '@/components/demos/combobox-demo';
+import { CommandDemo } from '@/components/demos/command-demo';
+import { DataGridDemo } from '@/components/demos/data-grid-demo';
+import { DateSelectorDemo } from '@/components/demos/date-selector-demo';
+import { DrawerDemo } from '@/components/demos/drawer-demo';
+import { MenubarDemo } from '@/components/demos/menubar-demo';
+import { SheetDemo } from '@/components/demos/sheet-demo';
+import { SonnerDemo } from '@/components/demos/sonner-demo';
+import { StepperDemo } from '@/components/demos/stepper-demo';
 import {
   Accordion,
   AccordionItem,
@@ -145,9 +145,9 @@ import {
   TimelineContent,
   InfoIcon,
   BoldIcon,
-} from '@/components/mdx-previews'
+} from '@/components/mdx-previews';
 
-export function getMDXComponents(components?: MDXComponents): MDXComponents {
+export function getMDXComponents(components?: MDXComponents) {
   return {
     ...defaultMdxComponents,
     Preview,
@@ -295,5 +295,11 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     SonnerDemo,
     StepperDemo,
     ...components,
-  }
+  } satisfies MDXComponents;
+}
+
+export const useMDXComponents = getMDXComponents;
+
+declare global {
+  type MDXProvidedComponents = ReturnType<typeof getMDXComponents>;
 }

@@ -1,0 +1,95 @@
+---
+title: Theming
+description: Customize colors, radius, and more with CSS variables.
+icon: Palette
+---
+
+## How It Works
+
+`@e412/rnui-themes` defines design tokens as CSS custom properties using the [OKLch color space](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch) — a perceptually uniform color model that produces more vibrant and consistent palettes than HSL.
+
+Tokens are registered with Tailwind v4 via `@theme inline`, so you can use them as utility classes: `bg-primary`, `text-muted-foreground`, `border-border`, etc.
+
+## Available Tokens
+
+### Colors
+
+| Token | Usage |
+| --- | --- |
+| `--background` / `--foreground` | Page background and default text |
+| `--primary` / `--primary-foreground` | Primary actions and buttons |
+| `--secondary` / `--secondary-foreground` | Secondary actions |
+| `--destructive` / `--destructive-foreground` | Destructive/danger actions |
+| `--muted` / `--muted-foreground` | Muted backgrounds and text |
+| `--accent` / `--accent-foreground` | Accent highlights |
+| `--info` / `--success` / `--warning` | Semantic status colors |
+| `--border` | Default border color |
+| `--input` | Input border color |
+| `--ring` | Focus ring color |
+| `--chart-1` through `--chart-5` | Chart palette |
+
+### Sidebar
+
+Sidebar-specific tokens: `--sidebar-background`, `--sidebar-foreground`, `--sidebar-primary`, `--sidebar-accent`, `--sidebar-border`, `--sidebar-ring`.
+
+### Shape
+
+| Token | Usage |
+| --- | --- |
+| `--radius` | Base border radius (default: `0.625rem`) |
+
+## Light and Dark Themes
+
+The library ships with light and dark themes. Light is the default; dark activates when `.dark` is on the `<html>` element.
+
+You can import them individually if needed:
+
+```css
+@import '@e412/rnui-themes/base';   /* Reset and base styles */
+@import '@e412/rnui-themes/light';  /* Light theme variables */
+@import '@e412/rnui-themes/dark';   /* Dark theme variables */
+```
+
+Or all at once:
+
+```css
+@import '@e412/rnui-themes';        /* Everything */
+```
+
+## Creating a Custom Theme
+
+Override any CSS variable to create your own theme:
+
+```css title="custom-theme.css"
+@import '@e412/rnui-themes';
+
+:root {
+  --primary: oklch(0.55 0.2 260);
+  --primary-foreground: oklch(0.98 0 0);
+  --radius: 0.75rem;
+}
+
+.dark {
+  --primary: oklch(0.7 0.18 260);
+  --primary-foreground: oklch(0.1 0 0);
+}
+```
+
+## Using Tokens in Your Code
+
+Since tokens are Tailwind classes, use them anywhere:
+
+```tsx
+<div className="bg-primary text-primary-foreground rounded-lg p-4">
+  Custom themed box
+</div>
+```
+
+Or access CSS variables directly:
+
+```css
+.my-element {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+```

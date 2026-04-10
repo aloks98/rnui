@@ -1,0 +1,53 @@
+---
+title: Quick Start
+description: Get up and running with @e412/rnui in under 5 minutes.
+icon: Rocket
+---
+
+## Installation
+
+Install the core packages:
+
+```bash
+pnpm add @e412/rnui-react @e412/rnui-themes
+```
+
+## CSS Setup
+
+Import the theme and animation CSS in your main stylesheet:
+
+```css title="app.css"
+@import 'tailwindcss';
+@import '@e412/rnui-themes';
+@import 'tw-animate-css';
+```
+
+## Tailwind v4
+
+`@e412/rnui-themes` automatically registers design tokens with Tailwind v4 via `@theme inline`. No additional Tailwind configuration is needed.
+
+## Dark Mode
+
+The theme system uses CSS variables that respond to the `.dark` class on the `<html>` element. Use any dark mode toggle library — we recommend [next-themes](https://github.com/pacocoursey/next-themes).
+
+```tsx
+<html className="dark">
+  {/* Dark theme is now active */}
+</html>
+```
+
+## Your First Component
+
+```tsx
+import { Button } from '@e412/rnui-react';
+
+export function App() {
+  return (
+    <Button variant="default">
+      Hello, rnui!
+    </Button>
+  );
+}
+```
+
+That's it — you're ready to build.

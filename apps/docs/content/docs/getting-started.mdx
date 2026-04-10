@@ -1,0 +1,106 @@
+---
+title: Getting Started
+description: A detailed guide to setting up @e412/rnui in your project.
+icon: BookOpen
+---
+
+## Prerequisites
+
+- **React** 18 or later
+- **Tailwind CSS** v4
+- **Node.js** 20 or later
+
+## Installation
+
+<Tabs items={["pnpm", "npm", "yarn", "bun"]}>
+  <Tab value="pnpm">
+    ```bash
+    pnpm add @e412/rnui-react @e412/rnui-themes tw-animate-css
+    ```
+  </Tab>
+  <Tab value="npm">
+    ```bash
+    npm install @e412/rnui-react @e412/rnui-themes tw-animate-css
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn add @e412/rnui-react @e412/rnui-themes tw-animate-css
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    bun add @e412/rnui-react @e412/rnui-themes tw-animate-css
+    ```
+  </Tab>
+</Tabs>
+
+## CSS Setup
+
+Import the theme and animation utilities in your global CSS file:
+
+```css title="globals.css"
+@import 'tailwindcss';
+@import '@e412/rnui-themes';
+@import 'tw-animate-css';
+```
+
+### What each import does
+
+| Import | Purpose |
+| --- | --- |
+| `@e412/rnui-themes` | CSS variables for colors, radius, and spacing — registers as Tailwind v4 `@theme inline` tokens |
+| `tw-animate-css` | Animation utilities used by components (fade, slide, zoom) |
+
+## Dark Mode
+
+Components automatically adapt to dark mode via CSS variables. Add the `.dark` class to your `<html>` element to activate:
+
+```tsx
+import { ThemeProvider } from 'next-themes';
+
+export function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <ThemeProvider attribute="class" defaultTheme="system">
+      {children}
+    </ThemeProvider>
+  );
+}
+```
+
+## Using Components
+
+All components are exported from `@e412/rnui-react`:
+
+```tsx
+import { Button, Card, CardHeader, CardTitle, CardContent } from '@e412/rnui-react';
+
+export function Example() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Welcome</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Button>Get started</Button>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+## Peer Dependencies
+
+Some components rely on optional peer dependencies. Install them as needed:
+
+| Component | Peer Dependency |
+| --- | --- |
+| Calendar, DateSelector | `react-day-picker`, `date-fns` |
+| Charts | `recharts` |
+| EChart | `echarts` |
+| DataGrid | `@tanstack/react-table` |
+| Tree | `@headless-tree/react` |
+| SortableList | `@dnd-kit/core`, `@dnd-kit/sortable` |
+| CodeBlock | `shiki` |
+| Toast | `sonner` |
+| Form | `react-hook-form`, `@hookform/resolvers`, `zod` |

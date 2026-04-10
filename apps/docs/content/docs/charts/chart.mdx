@@ -1,0 +1,134 @@
+---
+title: Chart
+description: Overview of the chart system built on Apache ECharts with automatic shadcn/ui theming.
+---
+
+import { EChart, chartConfig, BarChart, LineChart, PieChart } from '@e412/rnui-react';
+
+The chart system provides a set of high-level chart components (`BarChart`, `LineChart`, `AreaChart`, `PieChart`, `RadarChart`, `ScatterChart`) built on top of the base `EChart` component, which wraps Apache ECharts. All charts automatically adopt your shadcn/ui theme colors and support dark mode out of the box.
+
+## Import
+
+```tsx
+import {
+  EChart,
+  BarChart,
+  LineChart,
+  AreaChart,
+  PieChart,
+  RadarChart,
+  ScatterChart,
+  chartConfig,
+  echarts,
+} from '@e412/rnui-react';
+```
+
+## Architecture
+
+The chart system has three layers:
+
+1. **High-level components** -- `BarChart`, `LineChart`, `AreaChart`, `PieChart`, `RadarChart`, `ScatterChart`. These accept simple `data`/`series` props and build the ECharts option internally.
+2. **Base `EChart` component** -- Takes a raw ECharts `option` object. Use this when you need full control or chart types not covered by the high-level components.
+3. **`chartConfig()` builder** -- A fluent API for constructing ECharts options without writing raw config objects.
+
+## Quick Start
+
+The simplest way to render a chart is with a high-level component:
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <BarChart
+      data={[
+        { name: 'Jan', value: 18500 },
+        { name: 'Feb', value: 22300 },
+        { name: 'Mar', value: 31200 },
+        { name: 'Apr', value: 27800 },
+        { name: 'May', value: 35600 },
+        { name: 'Jun', value: 42100 },
+      ]}
+      height={300}
+    />
+  </div>
+</Preview>
+
+## Common Props
+
+All chart components share these base props:
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `height` | `number \| string` | `350` | Chart height in pixels or CSS value |
+| `width` | `number \| string` | `"100%"` | Chart width |
+| `loading` | `boolean` | `false` | Show loading overlay |
+| `theme` | `string` | auto | Theme name (auto-detects light/dark) |
+| `preset` | `boolean` | `true` | Apply shadcn-style minimal defaults |
+| `renderer` | `"canvas" \| "svg"` | `"canvas"` | Rendering engine |
+| `autoResize` | `boolean` | `true` | Auto-resize on container change |
+| `animateOnMount` | `boolean` | `true` | Animate on first render |
+| `option` | `object` | -- | Override or extend the ECharts option |
+| `onEvents` | `Record<string, Function>` | -- | ECharts event handlers |
+
+## The `chartConfig()` Builder
+
+For a middle ground between high-level components and raw ECharts options, use the `chartConfig()` fluent builder:
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <EChart
+      option={chartConfig()
+        .bar({
+          data: [18500, 22300, 31200, 27800, 35600, 42100],
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        })
+        .tooltip()
+        .build()}
+      height={300}
+    />
+  </div>
+</Preview>
+
+```tsx
+import { EChart, chartConfig } from '@e412/rnui-react';
+
+const option = chartConfig()
+  .bar({ data: [18500, 22300, 31200], categories: ['Jan', 'Feb', 'Mar'] })
+  .tooltip()
+  .build();
+
+<EChart option={option} height={300} />
+```
+
+### Builder Methods
+
+| Method | Description |
+|--------|-------------|
+| `.bar({ data, categories, horizontal?, name? })` | Add a bar series |
+| `.line({ data, categories?, name?, smooth?, area?, areaOpacity? })` | Add a line series |
+| `.pie({ data, donut? })` | Add a pie series |
+| `.tooltip(trigger?)` | Add tooltip (`'axis'` or `'item'`) |
+| `.legend()` | Show legend |
+| `.dataZoom(start?, end?)` | Add interactive data zoom |
+| `.colors(palette)` | Set custom color palette |
+| `.build()` | Return the final ECharts option object |
+
+## Theming
+
+Charts automatically read your shadcn/ui CSS variables (`--chart-1` through `--chart-5`, `--background`, `--foreground`, `--border`, etc.) and build an ECharts theme from them. Dark mode is detected via the `.dark` class on the document and the chart theme updates accordingly.
+
+## Loading State
+
+All charts accept a `loading` prop to show a built-in loading overlay:
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <LineChart
+      data={[
+        { name: 'Mon', value: 820 },
+        { name: 'Tue', value: 932 },
+        { name: 'Wed', value: 901 },
+      ]}
+      loading={true}
+      height={250}
+    />
+  </div>
+</Preview>

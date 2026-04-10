@@ -1,0 +1,157 @@
+---
+title: Line Chart
+description: Line charts for visualizing trends and time series data.
+---
+
+import { LineChart } from '@e412/rnui-react';
+
+The `LineChart` component renders single or multi-line charts. It supports smooth curves, custom tooltips, and annotations via the `option` prop.
+
+## Import
+
+```tsx
+import { LineChart } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <LineChart
+      data={[
+        { name: 'Mon', value: 12400 },
+        { name: 'Tue', value: 14800 },
+        { name: 'Wed', value: 13200 },
+        { name: 'Thu', value: 16900 },
+        { name: 'Fri', value: 18200 },
+        { name: 'Sat', value: 21500 },
+        { name: 'Sun', value: 19800 },
+      ]}
+      height={350}
+    />
+  </div>
+</Preview>
+
+## Multi-Series
+
+Use `categories` and `series` to render multiple lines.
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <LineChart
+      categories={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
+      series={[
+        { name: 'Revenue', data: [42000, 38000, 51000, 46000, 58000, 62000, 55000, 67000, 71000, 64000, 73000, 81000] },
+        { name: 'Expenses', data: [28000, 32000, 29000, 31000, 27000, 35000, 33000, 36000, 34000, 38000, 37000, 41000] },
+        { name: 'Profit', data: [14000, 6000, 22000, 15000, 31000, 27000, 22000, 31000, 37000, 26000, 36000, 40000] },
+      ]}
+      smooth={true}
+      showLegend={true}
+      height={350}
+    />
+  </div>
+</Preview>
+
+## Smooth Curves
+
+Set `smooth` for bezier-interpolated lines.
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <LineChart
+      data={[
+        { name: 'Mon', value: 8200 },
+        { name: 'Tue', value: 9320 },
+        { name: 'Wed', value: 9010 },
+        { name: 'Thu', value: 12340 },
+        { name: 'Fri', value: 12900 },
+        { name: 'Sat', value: 15300 },
+        { name: 'Sun', value: 13200 },
+      ]}
+      smooth
+      height={300}
+    />
+  </div>
+</Preview>
+
+## Annotations
+
+Use the `option` prop to add mark points and mark lines for min, max, and average annotations.
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <LineChart
+      data={[
+        { name: 'Mon', value: 8200 },
+        { name: 'Tue', value: 9320 },
+        { name: 'Wed', value: 9010 },
+        { name: 'Thu', value: 12340 },
+        { name: 'Fri', value: 12900 },
+        { name: 'Sat', value: 15300 },
+        { name: 'Sun', value: 13200 },
+      ]}
+      smooth
+      height={350}
+      option={{
+        series: [
+          {
+            type: 'line',
+            data: [8200, 9320, 9010, 12340, 12900, 15300, 13200],
+            smooth: true,
+            symbolSize: 6,
+            markPoint: {
+              data: [
+                { type: 'max', name: 'Max' },
+                { type: 'min', name: 'Min' },
+              ],
+              label: { fontSize: 10 },
+            },
+            markLine: {
+              data: [{ type: 'average', name: 'Average' }],
+              label: { formatter: 'Avg: {c}', fontSize: 11 },
+              lineStyle: { type: 'dashed' },
+            },
+          },
+        ],
+        xAxis: { type: 'category', data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], axisTick: { show: false } },
+        yAxis: { type: 'value', splitLine: { lineStyle: { type: 'dashed', opacity: 0.5 } } },
+        grid: { containLabel: true, left: 16, right: 16, top: 40, bottom: 8 },
+      }}
+    />
+  </div>
+</Preview>
+
+## No Animation
+
+Disable mount animation with `animateOnMount={false}`.
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <LineChart
+      data={[
+        { name: 'Mon', value: 820 },
+        { name: 'Tue', value: 932 },
+        { name: 'Wed', value: 901 },
+        { name: 'Thu', value: 1234 },
+        { name: 'Fri', value: 1290 },
+      ]}
+      animateOnMount={false}
+      option={{ animation: false }}
+      height={300}
+    />
+  </div>
+</Preview>
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `data` | `{ name: string; value: number }[]` | -- | Data items for single-line charts |
+| `categories` | `string[]` | -- | X-axis category labels (for multi-series) |
+| `series` | `{ name: string; data: number[] }[]` | -- | Series data for multi-line charts |
+| `smooth` | `boolean` | `false` | Use smooth bezier curves |
+| `showLegend` | `boolean` | `false` | Show chart legend |
+| `height` | `number` | `350` | Chart height in pixels |
+| `loading` | `boolean` | `false` | Show loading state |
+| `animateOnMount` | `boolean` | `true` | Animate on first render |
+| `option` | `object` | -- | Override or extend the ECharts option |

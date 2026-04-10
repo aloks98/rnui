@@ -1,0 +1,134 @@
+---
+title: Pie Chart
+description: Pie and donut charts for showing proportional data.
+---
+
+import { PieChart } from '@e412/rnui-react';
+
+The `PieChart` component renders pie and donut charts from a simple data array. It supports labels, legends, and custom colors.
+
+## Import
+
+```tsx
+import { PieChart } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <PieChart
+      data={[
+        { name: 'Chrome', value: 63 },
+        { name: 'Safari', value: 18 },
+        { name: 'Firefox', value: 10 },
+        { name: 'Edge', value: 6 },
+        { name: 'Other', value: 3 },
+      ]}
+      height={300}
+    />
+  </div>
+</Preview>
+
+## Donut
+
+Set `donut` to render a donut chart with a hollow center.
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <PieChart
+      data={[
+        { name: 'Electronics', value: 42000 },
+        { name: 'Clothing', value: 28000 },
+        { name: 'Home & Garden', value: 18000 },
+        { name: 'Sports', value: 12000 },
+        { name: 'Books', value: 8000 },
+      ]}
+      donut={true}
+      height={300}
+    />
+  </div>
+</Preview>
+
+## Custom Colors
+
+Use the `option` prop to set a custom color palette.
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <PieChart
+      data={[
+        { name: 'Design', value: 35 },
+        { name: 'Development', value: 40 },
+        { name: 'Marketing', value: 15 },
+        { name: 'Sales', value: 10 },
+      ]}
+      height={300}
+      option={{
+        color: ['#6366f1', '#ec4899', '#14b8a6', '#f59e0b'],
+      }}
+    />
+  </div>
+</Preview>
+
+## Donut with Center Label
+
+Combine `donut` with the `option` prop's `graphic` property to add a center label.
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <PieChart
+      data={[
+        { name: 'Used', value: 72 },
+        { name: 'Free', value: 28 },
+      ]}
+      donut
+      showLegend={false}
+      showLabels={false}
+      height={300}
+      option={{
+        color: ['#3b82f6', '#e5e7eb'],
+        series: [
+          {
+            type: 'pie',
+            radius: ['55%', '75%'],
+            center: ['50%', '50%'],
+            data: [
+              { name: 'Used', value: 72 },
+              { name: 'Free', value: 28, itemStyle: { color: '#e5e7eb' } },
+            ],
+            label: { show: false },
+            emphasis: { scale: false },
+            itemStyle: { borderRadius: 6, borderWidth: 3, borderColor: 'transparent' },
+          },
+        ],
+        graphic: [
+          {
+            type: 'text',
+            left: 'center',
+            top: '42%',
+            style: { text: '72%', fontSize: 28, fontWeight: 'bold', textAlign: 'center' },
+          },
+          {
+            type: 'text',
+            left: 'center',
+            top: '55%',
+            style: { text: 'Storage Used', fontSize: 12, textAlign: 'center', fill: '#6b7280' },
+          },
+        ],
+      }}
+    />
+  </div>
+</Preview>
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `data` | `{ name: string; value: number }[]` | required | Slice data |
+| `donut` | `boolean` | `false` | Render as a donut chart |
+| `showLegend` | `boolean` | `false` | Show chart legend |
+| `showLabels` | `boolean` | `true` | Show slice labels |
+| `height` | `number` | `350` | Chart height in pixels |
+| `loading` | `boolean` | `false` | Show loading state |
+| `option` | `object` | -- | Override or extend the ECharts option |

@@ -1,0 +1,154 @@
+---
+title: Bar Chart
+description: Vertical and horizontal bar charts for comparing categorical data.
+---
+
+import { BarChart } from '@e412/rnui-react';
+
+The `BarChart` component renders vertical or horizontal bar charts. It accepts a simple `data` array for single-series charts, or `categories` and `series` for multi-series and stacked layouts.
+
+## Import
+
+```tsx
+import { BarChart } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <BarChart
+      data={[
+        { name: 'Jan', value: 18500 },
+        { name: 'Feb', value: 22300 },
+        { name: 'Mar', value: 31200 },
+        { name: 'Apr', value: 27800 },
+        { name: 'May', value: 35600 },
+        { name: 'Jun', value: 42100 },
+      ]}
+      height={350}
+    />
+  </div>
+</Preview>
+
+## Horizontal
+
+Set `horizontal` to render bars horizontally.
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <BarChart
+      data={[
+        { name: 'Wireless Headphones', value: 4520 },
+        { name: 'Smart Watch', value: 3890 },
+        { name: 'USB-C Hub', value: 3210 },
+        { name: 'Keyboard', value: 2870 },
+        { name: 'Webcam', value: 2140 },
+      ]}
+      horizontal={true}
+      height={350}
+    />
+  </div>
+</Preview>
+
+## Stacked
+
+Use `categories` and `series` with a `stack` property for stacked bars.
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <BarChart
+      data={[]}
+      categories={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']}
+      series={[
+        {
+          type: 'bar',
+          name: 'Revenue',
+          data: [18500, 22300, 31200, 27800, 35600, 42100],
+          stack: 'total',
+          barMaxWidth: 40,
+          itemStyle: { borderRadius: [0, 0, 0, 0] },
+        },
+        {
+          type: 'bar',
+          name: 'Expenses',
+          data: [12400, 14100, 16800, 15200, 18900, 21300],
+          stack: 'total',
+          barMaxWidth: 40,
+          itemStyle: { borderRadius: [4, 4, 0, 0] },
+        },
+      ]}
+      showLegend={true}
+      height={350}
+    />
+  </div>
+</Preview>
+
+## Negative Values
+
+Bars automatically handle negative values. Use the `option` prop to customize colors per value.
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <BarChart
+      data={[
+        { name: 'Jan', value: 4200 },
+        { name: 'Feb', value: -1800 },
+        { name: 'Mar', value: 6500 },
+        { name: 'Apr', value: -2400 },
+        { name: 'May', value: 3100 },
+        { name: 'Jun', value: -3200 },
+      ]}
+      height={350}
+      option={{
+        series: [
+          {
+            type: 'bar',
+            data: [4200, -1800, 6500, -2400, 3100, -3200].map((v) => ({
+              value: v,
+              itemStyle: {
+                borderRadius: v >= 0 ? [4, 4, 0, 0] : [0, 0, 4, 4],
+                color: v >= 0 ? '#22c55e' : '#ef4444',
+              },
+            })),
+            barMaxWidth: 40,
+          },
+        ],
+        xAxis: { type: 'category', data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], axisTick: { show: false } },
+        yAxis: { type: 'value', splitLine: { lineStyle: { type: 'dashed', opacity: 0.5 } } },
+        grid: { containLabel: true, left: 16, right: 16, top: 24, bottom: 8 },
+      }}
+    />
+  </div>
+</Preview>
+
+## Compact Height
+
+Adjust chart size with the `height` prop.
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <BarChart
+      data={[
+        { name: 'Q1', value: 48200 },
+        { name: 'Q2', value: 61500 },
+        { name: 'Q3', value: 55300 },
+        { name: 'Q4', value: 72100 },
+      ]}
+      height={200}
+    />
+  </div>
+</Preview>
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `data` | `{ name: string; value: number }[]` | required | Data items for single-series charts |
+| `categories` | `string[]` | -- | X-axis category labels (for multi-series) |
+| `series` | `object[]` | -- | ECharts series config (for multi-series/stacked) |
+| `horizontal` | `boolean` | `false` | Render bars horizontally |
+| `showLegend` | `boolean` | `false` | Show chart legend |
+| `height` | `number` | `350` | Chart height in pixels |
+| `loading` | `boolean` | `false` | Show loading state |
+| `option` | `object` | -- | Override or extend the ECharts option |

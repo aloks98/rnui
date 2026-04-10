@@ -1,0 +1,93 @@
+---
+title: Radar Chart
+description: Radar charts for comparing multivariate data across categories.
+---
+
+import { RadarChart } from '@e412/rnui-react';
+
+The `RadarChart` component renders radar (spider) charts. It takes `indicators` to define the axes and `series` to plot one or more datasets.
+
+## Import
+
+```tsx
+import { RadarChart } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <RadarChart
+      indicators={[
+        { name: 'Sales', max: 100 },
+        { name: 'Admin', max: 100 },
+        { name: 'IT', max: 100 },
+        { name: 'Support', max: 100 },
+        { name: 'Dev', max: 100 },
+      ]}
+      series={[
+        { name: 'Product A', value: [85, 60, 90, 70, 95] },
+        { name: 'Product B', value: [65, 80, 55, 85, 70] },
+      ]}
+      height={300}
+    />
+  </div>
+</Preview>
+
+## Single Dataset
+
+A single series highlights one entity's profile across dimensions.
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <RadarChart
+      indicators={[
+        { name: 'Speed', max: 100 },
+        { name: 'Reliability', max: 100 },
+        { name: 'Comfort', max: 100 },
+        { name: 'Safety', max: 100 },
+        { name: 'Fuel Efficiency', max: 100 },
+      ]}
+      series={[
+        { name: 'Model X', value: [90, 78, 85, 92, 65] },
+      ]}
+      height={300}
+    />
+  </div>
+</Preview>
+
+## With Legend
+
+Enable `showLegend` when comparing multiple datasets.
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <RadarChart
+      indicators={[
+        { name: 'Attack', max: 100 },
+        { name: 'Defense', max: 100 },
+        { name: 'Speed', max: 100 },
+        { name: 'HP', max: 100 },
+        { name: 'Magic', max: 100 },
+        { name: 'Stamina', max: 100 },
+      ]}
+      series={[
+        { name: 'Warrior', value: [90, 85, 50, 80, 20, 70] },
+        { name: 'Mage', value: [40, 30, 60, 50, 95, 45] },
+      ]}
+      showLegend={true}
+      height={350}
+    />
+  </div>
+</Preview>
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `indicators` | `{ name: string; max: number }[]` | required | Axis definitions |
+| `series` | `{ name: string; value: number[] }[]` | required | Data series |
+| `showLegend` | `boolean` | `false` | Show chart legend |
+| `height` | `number` | `350` | Chart height in pixels |
+| `loading` | `boolean` | `false` | Show loading state |
+| `option` | `object` | -- | Override or extend the ECharts option |

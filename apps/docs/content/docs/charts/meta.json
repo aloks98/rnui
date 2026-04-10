@@ -1,0 +1,13 @@
+{
+  "title": "Charts",
+  "pages": [
+    "chart",
+    "bar-chart",
+    "line-chart",
+    "area-chart",
+    "pie-chart",
+    "radar-chart",
+    "scatter-chart",
+    "echart"
+  ]
+}

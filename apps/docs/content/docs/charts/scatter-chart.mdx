@@ -1,0 +1,103 @@
+---
+title: Scatter Chart
+description: Scatter plots for visualizing correlations between two variables.
+---
+
+import { ScatterChart } from '@e412/rnui-react';
+
+The `ScatterChart` component renders scatter plots. It accepts one or more `series`, each containing an array of `[x, y]` data points.
+
+## Import
+
+```tsx
+import { ScatterChart } from '@e412/rnui-react';
+```
+
+## Usage
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <ScatterChart
+      series={[
+        {
+          name: 'Group A',
+          data: [
+            [161, 51], [167, 59], [159, 49], [157, 63], [155, 53],
+            [170, 59], [159, 47], [166, 69], [176, 66], [160, 75],
+            [172, 55], [164, 51], [169, 77], [175, 67], [163, 58],
+          ],
+        },
+        {
+          name: 'Group B',
+          data: [
+            [174, 65], [175, 71], [193, 80], [186, 72], [187, 78],
+            [181, 74], [184, 86], [178, 68], [191, 77], [180, 76],
+            [177, 70], [183, 84], [189, 82], [185, 79], [192, 85],
+          ],
+        },
+      ]}
+      height={350}
+    />
+  </div>
+</Preview>
+
+## Single Series
+
+A single series for exploring one dataset.
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <ScatterChart
+      series={[
+        {
+          name: 'Measurements',
+          data: [
+            [10, 8.04], [8, 6.95], [13, 7.58], [9, 8.81], [11, 8.33],
+            [14, 9.96], [6, 7.24], [4, 4.26], [12, 10.84], [7, 4.82],
+            [5, 5.68],
+          ],
+        },
+      ]}
+      height={300}
+    />
+  </div>
+</Preview>
+
+## With Legend
+
+Enable `showLegend` when comparing groups.
+
+<Preview>
+  <div className="w-full max-w-lg">
+    <ScatterChart
+      series={[
+        {
+          name: 'Morning',
+          data: [
+            [6, 12], [7, 18], [8, 25], [9, 30], [10, 28],
+            [6.5, 15], [7.5, 20], [8.5, 27], [9.5, 32],
+          ],
+        },
+        {
+          name: 'Evening',
+          data: [
+            [16, 22], [17, 35], [18, 42], [19, 38], [20, 30],
+            [16.5, 28], [17.5, 37], [18.5, 40], [19.5, 34],
+          ],
+        },
+      ]}
+      showLegend={true}
+      height={350}
+    />
+  </div>
+</Preview>
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `series` | `{ name: string; data: [number, number][] }[]` | required | Data series |
+| `showLegend` | `boolean` | `false` | Show chart legend |
+| `height` | `number` | `350` | Chart height in pixels |
+| `loading` | `boolean` | `false` | Show loading state |
+| `option` | `object` | -- | Override or extend the ECharts option |

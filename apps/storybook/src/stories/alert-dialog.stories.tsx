@@ -25,8 +25,8 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: () => (
     <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button variant="outline">Delete Account</Button>
+      <AlertDialogTrigger render={<Button variant="outline" />}>
+        Delete Account
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
@@ -48,8 +48,8 @@ export const Default: Story = {
 export const SmallSize: Story = {
   render: () => (
     <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button variant="outline">Small Dialog</Button>
+      <AlertDialogTrigger render={<Button variant="outline" />}>
+        Small Dialog
       </AlertDialogTrigger>
       <AlertDialogContent size="sm">
         <AlertDialogHeader>
@@ -70,8 +70,8 @@ export const SmallSize: Story = {
 export const WithMedia: Story = {
   render: () => (
     <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button variant="outline">With Media</Button>
+      <AlertDialogTrigger render={<Button variant="outline" />}>
+        With Media
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

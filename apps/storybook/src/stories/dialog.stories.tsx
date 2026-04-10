@@ -22,8 +22,8 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: () => (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Open Dialog</Button>
+      <DialogTrigger render={<Button variant="outline" />}>
+        Open Dialog
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
@@ -47,8 +47,8 @@ export const Default: Story = {
 export const WithoutCloseButton: Story = {
   render: () => (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">No Close Button</Button>
+      <DialogTrigger render={<Button variant="outline" />}>
+        No Close Button
       </DialogTrigger>
       <DialogContent showCloseButton={false}>
         <DialogHeader>
@@ -68,8 +68,8 @@ export const WithoutCloseButton: Story = {
 export const FooterWithCloseButton: Story = {
   render: () => (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Footer Close</Button>
+      <DialogTrigger render={<Button variant="outline" />}>
+        Footer Close
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

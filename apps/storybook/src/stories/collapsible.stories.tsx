@@ -18,10 +18,8 @@ export const Default: Story = {
     <Collapsible className="w-[350px] space-y-2">
       <div className="flex items-center justify-between space-x-4">
         <h4 className="text-sm font-semibold">Toggle content</h4>
-        <CollapsibleTrigger asChild>
-          <Button variant="ghost" size="sm">
-            Toggle
-          </Button>
+        <CollapsibleTrigger render={<Button variant="ghost" size="sm" />}>
+          Toggle
         </CollapsibleTrigger>
       </div>
       <div className="rounded-md border px-4 py-2 text-sm">Always visible</div>

@@ -1,0 +1,180 @@
+---
+title: Sonner
+description: Toast notification system using the Sonner library, themed to match your design system.
+---
+
+## Installation
+
+```bash
+npx @e412/rnui-cli add sonner
+```
+
+## Import
+
+```tsx
+import { Toaster } from '@e412/rnui-react'
+import { toast } from 'sonner'
+```
+
+## Usage
+
+Add the `Toaster` component to your root layout, then call `toast()` from anywhere in your app.
+
+### Setup
+
+```tsx
+// In your root layout (e.g., layout.tsx)
+import { Toaster } from '@e412/rnui-react'
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  )
+}
+```
+
+### Triggering Toasts
+
+```tsx
+import { toast } from 'sonner'
+
+<Button onClick={() => toast("Event has been created")}>
+  Show Toast
+</Button>
+```
+
+## Examples
+
+### Success
+
+```tsx
+<Button
+  onClick={() => toast.success("Changes saved successfully")}
+>
+  Save
+</Button>
+```
+
+### Error
+
+```tsx
+<Button
+  variant="destructive"
+  onClick={() => toast.error("Something went wrong")}
+>
+  Delete
+</Button>
+```
+
+### Warning
+
+```tsx
+<Button
+  onClick={() => toast.warning("Please check your input")}
+>
+  Validate
+</Button>
+```
+
+### Info
+
+```tsx
+<Button
+  onClick={() => toast.info("A new version is available")}
+>
+  Check Update
+</Button>
+```
+
+### With Description
+
+```tsx
+<Button
+  onClick={() =>
+    toast("Event Created", {
+      description: "Your event has been scheduled for tomorrow at 10am.",
+    })
+  }
+>
+  Create Event
+</Button>
+```
+
+### With Action
+
+```tsx
+<Button
+  onClick={() =>
+    toast("File deleted", {
+      action: {
+        label: "Undo",
+        onClick: () => console.log("Undo delete"),
+      },
+    })
+  }
+>
+  Delete File
+</Button>
+```
+
+### Loading / Promise
+
+```tsx
+<Button
+  onClick={() =>
+    toast.promise(
+      fetch("/api/data").then((res) => res.json()),
+      {
+        loading: "Loading data...",
+        success: "Data loaded!",
+        error: "Failed to load data",
+      }
+    )
+  }
+>
+  Fetch Data
+</Button>
+```
+
+### Custom Position
+
+```tsx
+// Place the Toaster at the top-center
+<Toaster position="top-center" />
+```
+
+## Props
+
+### Toaster
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `position` | `"top-left" \| "top-center" \| "top-right" \| "bottom-left" \| "bottom-center" \| "bottom-right"` | `"bottom-right"` | Toast position on screen |
+| `expand` | `boolean` | `false` | Expand toasts by default |
+| `richColors` | `boolean` | `false` | Use rich colors for toast types |
+| `closeButton` | `boolean` | `false` | Show close button on toasts |
+| `duration` | `number` | `4000` | Auto-dismiss duration in ms |
+| `theme` | `"light" \| "dark" \| "system"` | `"system"` | Theme (auto-detected from next-themes) |
+
+### toast() Function
+
+| Method | Description |
+|--------|-------------|
+| `toast(message)` | Show a default toast |
+| `toast.success(message)` | Show a success toast |
+| `toast.error(message)` | Show an error toast |
+| `toast.warning(message)` | Show a warning toast |
+| `toast.info(message)` | Show an info toast |
+| `toast.loading(message)` | Show a loading toast |
+| `toast.promise(promise, options)` | Show loading/success/error based on promise |
+| `toast.dismiss(id?)` | Dismiss a specific or all toasts |
+
+## Related
+
+- [Alert Dialog](/components/alert-dialog) — Confirmation dialog requiring user action
+- [Dialog](/components/dialog) — Modal dialog for focused interactions

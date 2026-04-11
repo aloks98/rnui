@@ -119,6 +119,12 @@ html > body[data-scroll-locked] {
   }
 }
 
+/* Code block — match background to our theme */
+figure.shiki {
+  --shiki-light-bg: oklch(0.95 0.008 30) !important;
+  --shiki-dark-bg: oklch(0.12 0.004 15) !important;
+}
+
 /* Code block copy button — satisfying feedback */
 figure [data-slot="copy-button"] {
   transition: transform 0.1s ease-out, opacity 0.15s ease-out;

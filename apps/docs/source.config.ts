@@ -9,4 +9,13 @@ export const docs = defineDocs({
   },
 });
 
-export default defineConfig();
+export default defineConfig({
+  mdxOptions: {
+    rehypeCodeOptions: {
+      themes: {
+        light: 'rose-pine-dawn',
+        dark: 'rose-pine',
+      },
+    },
+  },
+});

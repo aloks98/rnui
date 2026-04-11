@@ -56,8 +56,42 @@
   --color-fd-muted-foreground: oklch(0.60 0.006 20);
 }
 
+/*
+ * Typography — DM Sans body, Instrument Serif display
+ */
+
 html {
   scrollbar-gutter: stable;
+}
+
+body {
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tighter tracking on docs headings */
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+/* Docs page title */
+[data-slot="docs-title"] {
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+/* Tabular numbers for data/tables */
+.prose table {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Sidebar text refinement */
+#nd-sidebar {
+  font-size: 0.875rem;
+  letter-spacing: -0.01em;
 }
 
 html > body[data-scroll-locked] {

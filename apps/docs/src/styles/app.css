@@ -98,3 +98,63 @@ html > body[data-scroll-locked] {
   margin-right: 0px !important;
   --removed-body-scroll-bar-size: 0px !important;
 }
+
+/*
+ * Delight — subtle animations and interaction polish
+ */
+
+/* Docs content entrance */
+[data-slot="docs-body"] {
+  animation: content-enter 0.3s ease-out;
+}
+
+@keyframes content-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sidebar link hover — subtle slide */
+#nd-sidebar a {
+  transition: padding-left 0.15s ease-out, color 0.15s ease-out;
+}
+
+#nd-sidebar a:hover {
+  padding-left: 4px;
+}
+
+/* Code block copy button — satisfying feedback */
+figure [data-slot="copy-button"] {
+  transition: transform 0.1s ease-out, opacity 0.15s ease-out;
+}
+
+figure [data-slot="copy-button"]:active {
+  transform: scale(0.9);
+}
+
+/* Smooth link underlines */
+.prose a {
+  text-decoration-color: var(--color-fd-primary) / 0.3;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s ease-out;
+}
+
+.prose a:hover {
+  text-decoration-color: var(--color-fd-primary);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-slot="docs-body"] {
+    animation: none;
+  }
+
+  #nd-sidebar a {
+    transition: none;
+  }
+}

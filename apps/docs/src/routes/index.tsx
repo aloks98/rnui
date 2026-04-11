@@ -10,7 +10,7 @@ function ComponentShowcase() {
   return (
     <div className="relative grid grid-cols-2 gap-3 p-1">
       {/* Fake component cards that hint at the library */}
-      <div className="rounded-xl border bg-fd-card p-4 space-y-2 shadow-sm">
+      <div className="rounded-xl border bg-fd-card p-4 space-y-2 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
         <div className="flex gap-2">
           <div className="h-8 px-4 rounded-lg bg-fd-primary text-fd-primary-foreground text-xs font-medium flex items-center">Button</div>
           <div className="h-8 px-4 rounded-lg border border-fd-border text-fd-foreground text-xs font-medium flex items-center">Outline</div>
@@ -21,7 +21,7 @@ function ComponentShowcase() {
         </div>
       </div>
 
-      <div className="rounded-xl border bg-fd-card p-4 space-y-2 shadow-sm">
+      <div className="rounded-xl border bg-fd-card p-4 space-y-2 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
         <div className="h-2.5 w-full rounded-full bg-fd-secondary overflow-hidden">
           <div className="h-full w-3/4 rounded-full bg-fd-primary" />
         </div>
@@ -32,7 +32,7 @@ function ComponentShowcase() {
         </div>
       </div>
 
-      <div className="rounded-xl border bg-fd-card p-4 shadow-sm col-span-2">
+      <div className="rounded-xl border bg-fd-card p-4 shadow-sm col-span-2 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
         <div className="flex items-center gap-3 mb-3">
           <div className="size-8 rounded-full bg-fd-primary/15 flex items-center justify-center text-fd-primary text-xs font-bold">A</div>
           <div className="flex-1 space-y-1">

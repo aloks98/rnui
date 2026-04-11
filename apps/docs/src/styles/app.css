@@ -30,30 +30,30 @@
   --color-fd-ring: oklch(0.45 0.13 15);
 }
 
-/* Dark mode — matched to mockup */
+/* Dark mode — near-neutral surfaces, brick accent pops */
 .dark {
-  --color-fd-background: oklch(0.14 0.015 15);
-  --color-fd-foreground: oklch(0.90 0.006 20);
-  --color-fd-muted: oklch(0.22 0.015 15);
-  --color-fd-muted-foreground: oklch(0.60 0.01 20);
-  --color-fd-popover: oklch(0.18 0.015 15);
-  --color-fd-popover-foreground: oklch(0.88 0.006 20);
-  --color-fd-card: oklch(0.18 0.015 15);
-  --color-fd-card-foreground: oklch(0.96 0.006 20);
-  --color-fd-border: oklch(0.32 0.02 15 / 0.35);
+  --color-fd-background: oklch(0.14 0.003 15);
+  --color-fd-foreground: oklch(0.90 0.004 20);
+  --color-fd-muted: oklch(0.19 0.004 15);
+  --color-fd-muted-foreground: oklch(0.60 0.006 20);
+  --color-fd-popover: oklch(0.16 0.003 15);
+  --color-fd-popover-foreground: oklch(0.88 0.004 20);
+  --color-fd-card: oklch(0.16 0.003 15);
+  --color-fd-card-foreground: oklch(0.96 0.004 20);
+  --color-fd-border: oklch(0.30 0.006 15 / 0.35);
   --color-fd-primary: oklch(0.58 0.10 15);
   --color-fd-primary-foreground: oklch(0.97 0.006 15);
-  --color-fd-secondary: oklch(0.22 0.015 15);
-  --color-fd-secondary-foreground: oklch(0.90 0.006 20);
-  --color-fd-accent: oklch(0.45 0.13 15 / 0.15);
-  --color-fd-accent-foreground: oklch(0.90 0.006 20);
+  --color-fd-secondary: oklch(0.20 0.004 15);
+  --color-fd-secondary-foreground: oklch(0.90 0.004 20);
+  --color-fd-accent: oklch(0.45 0.13 15 / 0.12);
+  --color-fd-accent-foreground: oklch(0.90 0.004 20);
   --color-fd-ring: oklch(0.58 0.10 15);
 }
 
 .dark #nd-sidebar {
-  --color-fd-muted: oklch(0.18 0.015 15);
-  --color-fd-secondary: oklch(0.22 0.015 15);
-  --color-fd-muted-foreground: oklch(0.60 0.01 20);
+  --color-fd-muted: oklch(0.16 0.003 15);
+  --color-fd-secondary: oklch(0.20 0.004 15);
+  --color-fd-muted-foreground: oklch(0.60 0.006 20);
 }
 
 html {

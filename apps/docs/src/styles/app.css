@@ -182,8 +182,4 @@ figure [data-slot="copy-button"]:active {
     opacity: 1;
     transform: none;
   }
-
-  #nd-sidebar a {
-    transition: none;
-  }
 }

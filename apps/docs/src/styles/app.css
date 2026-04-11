@@ -119,15 +119,6 @@ html > body[data-scroll-locked] {
   }
 }
 
-/* Sidebar link hover — subtle slide */
-#nd-sidebar a {
-  transition: padding-left 0.15s ease-out, color 0.15s ease-out;
-}
-
-#nd-sidebar a:hover {
-  padding-left: 4px;
-}
-
 /* Code block copy button — satisfying feedback */
 figure [data-slot="copy-button"] {
   transition: transform 0.1s ease-out, opacity 0.15s ease-out;

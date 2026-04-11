@@ -15,13 +15,16 @@ import { Input } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview>
+<Preview code={`<Input type="email" placeholder="Email" className="max-w-sm" />`}>
   <Input type="email" placeholder="Email" className="max-w-sm" />
 </Preview>
 
 ## With Label
 
-<Preview>
+<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
+  <Label htmlFor="email">Email</Label>
+  <Input type="email" id="email" placeholder="you@example.com" />
+</div>`}>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label htmlFor="email">Email</Label>
     <Input type="email" id="email" placeholder="you@example.com" />
@@ -30,13 +33,16 @@ import { Input } from '@e412/rnui-react';
 
 ## Disabled
 
-<Preview>
+<Preview code={`<Input disabled placeholder="Disabled input" className="max-w-sm" />`}>
   <Input disabled placeholder="Disabled input" className="max-w-sm" />
 </Preview>
 
 ## File Input
 
-<Preview>
+<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
+  <Label htmlFor="picture">Picture</Label>
+  <Input id="picture" type="file" />
+</div>`}>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label htmlFor="picture">Picture</Label>
     <Input id="picture" type="file" />
@@ -47,7 +53,11 @@ import { Input } from '@e412/rnui-react';
 
 ### With Description
 
-<Preview>
+<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
+  <Label htmlFor="email-desc">Email</Label>
+  <Input type="email" id="email-desc" placeholder="you@example.com" />
+  <p className="text-sm text-muted-foreground">We'll never share your email.</p>
+</div>`}>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label htmlFor="email-desc">Email</Label>
     <Input type="email" id="email-desc" placeholder="you@example.com" />
@@ -57,7 +67,11 @@ import { Input } from '@e412/rnui-react';
 
 ### Invalid State
 
-<Preview>
+<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
+  <Label htmlFor="email-invalid">Email</Label>
+  <Input type="email" id="email-invalid" placeholder="you@example.com" aria-invalid="true" />
+  <p className="text-sm text-destructive">Please enter a valid email address.</p>
+</div>`}>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label htmlFor="email-invalid">Email</Label>
     <Input type="email" id="email-invalid" placeholder="you@example.com" aria-invalid="true" />
@@ -67,7 +81,10 @@ import { Input } from '@e412/rnui-react';
 
 ### Inline with Button
 
-<Preview>
+<Preview code={`<div className="flex w-full max-w-sm items-center gap-2">
+  <Input type="search" placeholder="Search..." />
+  <Button>Search</Button>
+</div>`}>
   <div className="flex w-full max-w-sm items-center gap-2">
     <Input type="search" placeholder="Search..." />
     <Button>Search</Button>
@@ -76,7 +93,16 @@ import { Input } from '@e412/rnui-react';
 
 ### Form Grid
 
-<Preview>
+<Preview code={`<div className="grid w-full max-w-lg grid-cols-2 gap-4">
+  <div className="grid gap-1.5">
+    <Label htmlFor="first-name">First Name</Label>
+    <Input id="first-name" placeholder="John" />
+  </div>
+  <div className="grid gap-1.5">
+    <Label htmlFor="last-name">Last Name</Label>
+    <Input id="last-name" placeholder="Doe" />
+  </div>
+</div>`}>
   <div className="grid w-full max-w-lg grid-cols-2 gap-4">
     <div className="grid gap-1.5">
       <Label htmlFor="first-name">First Name</Label>

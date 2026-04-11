@@ -20,7 +20,19 @@ import {
 
 ## Usage
 
-<Preview>
+<Preview code={`<InputOTP maxLength={6}>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    <InputOTPSlot index={1} />
+    <InputOTPSlot index={2} />
+  </InputOTPGroup>
+  <InputOTPSeparator />
+  <InputOTPGroup>
+    <InputOTPSlot index={3} />
+    <InputOTPSlot index={4} />
+    <InputOTPSlot index={5} />
+  </InputOTPGroup>
+</InputOTP>`}>
   <InputOTP maxLength={6}>
     <InputOTPGroup>
       <InputOTPSlot index={0} />
@@ -40,7 +52,14 @@ import {
 
 ### Four Digit Code
 
-<Preview>
+<Preview code={`<InputOTP maxLength={4}>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    <InputOTPSlot index={1} />
+    <InputOTPSlot index={2} />
+    <InputOTPSlot index={3} />
+  </InputOTPGroup>
+</InputOTP>`}>
   <InputOTP maxLength={4}>
     <InputOTPGroup>
       <InputOTPSlot index={0} />
@@ -53,7 +72,25 @@ import {
 
 ### Verification Form
 
-<Preview>
+<Preview code={`<div className="flex flex-col items-center gap-4">
+  <div className="text-center">
+    <h3 className="text-lg font-semibold">Enter verification code</h3>
+    <p className="text-sm text-muted-foreground">We sent a 6-digit code to your email.</p>
+  </div>
+  <InputOTP maxLength={6}>
+    <InputOTPGroup>
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+    </InputOTPGroup>
+    <InputOTPSeparator />
+    <InputOTPGroup>
+      <InputOTPSlot index={3} />
+      <InputOTPSlot index={4} />
+      <InputOTPSlot index={5} />
+    </InputOTPGroup>
+  </InputOTP>
+</div>`}>
   <div className="flex flex-col items-center gap-4">
     <div className="text-center">
       <h3 className="text-lg font-semibold">Enter verification code</h3>
@@ -77,7 +114,16 @@ import {
 
 ### Single Group
 
-<Preview>
+<Preview code={`<InputOTP maxLength={6}>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    <InputOTPSlot index={1} />
+    <InputOTPSlot index={2} />
+    <InputOTPSlot index={3} />
+    <InputOTPSlot index={4} />
+    <InputOTPSlot index={5} />
+  </InputOTPGroup>
+</InputOTP>`}>
   <InputOTP maxLength={6}>
     <InputOTPGroup>
       <InputOTPSlot index={0} />

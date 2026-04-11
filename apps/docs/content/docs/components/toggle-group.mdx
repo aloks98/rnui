@@ -16,7 +16,17 @@ import { ToggleGroup, ToggleGroupItem } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview>
+<Preview code={`<ToggleGroup type="multiple">
+  <ToggleGroupItem value="bold" aria-label="Toggle bold">
+    <Bold className="h-4 w-4" />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="italic" aria-label="Toggle italic">
+    <Italic className="h-4 w-4" />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="underline" aria-label="Toggle underline">
+    <Underline className="h-4 w-4" />
+  </ToggleGroupItem>
+</ToggleGroup>`}>
   <ToggleGroup type="multiple">
     <ToggleGroupItem value="bold" aria-label="Toggle bold">
       <Bold className="h-4 w-4" />
@@ -32,7 +42,17 @@ import { ToggleGroup, ToggleGroupItem } from '@e412/rnui-react';
 
 ## Single Selection
 
-<Preview>
+<Preview code={`<ToggleGroup type="single">
+  <ToggleGroupItem value="left" aria-label="Left align">
+    <AlignLeft className="h-4 w-4" />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="center" aria-label="Center align">
+    <AlignCenter className="h-4 w-4" />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="right" aria-label="Right align">
+    <AlignRight className="h-4 w-4" />
+  </ToggleGroupItem>
+</ToggleGroup>`}>
   <ToggleGroup type="single">
     <ToggleGroupItem value="left" aria-label="Left align">
       <AlignLeft className="h-4 w-4" />
@@ -48,7 +68,17 @@ import { ToggleGroup, ToggleGroupItem } from '@e412/rnui-react';
 
 ## Outline Variant
 
-<Preview>
+<Preview code={`<ToggleGroup type="multiple" variant="outline">
+  <ToggleGroupItem value="bold" aria-label="Toggle bold">
+    <Bold className="h-4 w-4" />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="italic" aria-label="Toggle italic">
+    <Italic className="h-4 w-4" />
+  </ToggleGroupItem>
+  <ToggleGroupItem value="underline" aria-label="Toggle underline">
+    <Underline className="h-4 w-4" />
+  </ToggleGroupItem>
+</ToggleGroup>`}>
   <ToggleGroup type="multiple" variant="outline">
     <ToggleGroupItem value="bold" aria-label="Toggle bold">
       <Bold className="h-4 w-4" />
@@ -64,7 +94,23 @@ import { ToggleGroup, ToggleGroupItem } from '@e412/rnui-react';
 
 ## Sizes
 
-<Preview>
+<Preview code={`<div className="flex flex-col gap-4 items-start">
+  <ToggleGroup type="multiple" size="sm">
+    <ToggleGroupItem value="bold" aria-label="Toggle bold">B</ToggleGroupItem>
+    <ToggleGroupItem value="italic" aria-label="Toggle italic">I</ToggleGroupItem>
+    <ToggleGroupItem value="underline" aria-label="Toggle underline">U</ToggleGroupItem>
+  </ToggleGroup>
+  <ToggleGroup type="multiple" size="default">
+    <ToggleGroupItem value="bold" aria-label="Toggle bold">Bold</ToggleGroupItem>
+    <ToggleGroupItem value="italic" aria-label="Toggle italic">Italic</ToggleGroupItem>
+    <ToggleGroupItem value="underline" aria-label="Toggle underline">Underline</ToggleGroupItem>
+  </ToggleGroup>
+  <ToggleGroup type="multiple" size="lg">
+    <ToggleGroupItem value="bold" aria-label="Toggle bold">Bold</ToggleGroupItem>
+    <ToggleGroupItem value="italic" aria-label="Toggle italic">Italic</ToggleGroupItem>
+    <ToggleGroupItem value="underline" aria-label="Toggle underline">Underline</ToggleGroupItem>
+  </ToggleGroup>
+</div>`}>
   <div className="flex flex-col gap-4 items-start">
     <ToggleGroup type="multiple" size="sm">
       <ToggleGroupItem value="bold" aria-label="Toggle bold">B</ToggleGroupItem>
@@ -86,7 +132,11 @@ import { ToggleGroup, ToggleGroupItem } from '@e412/rnui-react';
 
 ## Vertical
 
-<Preview>
+<Preview code={`<ToggleGroup type="single" orientation="vertical">
+  <ToggleGroupItem value="top" aria-label="Top">Top</ToggleGroupItem>
+  <ToggleGroupItem value="middle" aria-label="Middle">Middle</ToggleGroupItem>
+  <ToggleGroupItem value="bottom" aria-label="Bottom">Bottom</ToggleGroupItem>
+</ToggleGroup>`}>
   <ToggleGroup type="single" orientation="vertical">
     <ToggleGroupItem value="top" aria-label="Top">Top</ToggleGroupItem>
     <ToggleGroupItem value="middle" aria-label="Middle">Middle</ToggleGroupItem>
@@ -96,7 +146,11 @@ import { ToggleGroup, ToggleGroupItem } from '@e412/rnui-react';
 
 ## Disabled
 
-<Preview>
+<Preview code={`<ToggleGroup type="multiple" disabled>
+  <ToggleGroupItem value="bold" aria-label="Toggle bold">Bold</ToggleGroupItem>
+  <ToggleGroupItem value="italic" aria-label="Toggle italic">Italic</ToggleGroupItem>
+  <ToggleGroupItem value="underline" aria-label="Toggle underline">Underline</ToggleGroupItem>
+</ToggleGroup>`}>
   <ToggleGroup type="multiple" disabled>
     <ToggleGroupItem value="bold" aria-label="Toggle bold">Bold</ToggleGroupItem>
     <ToggleGroupItem value="italic" aria-label="Toggle italic">Italic</ToggleGroupItem>
@@ -108,7 +162,30 @@ import { ToggleGroup, ToggleGroupItem } from '@e412/rnui-react';
 
 ### Text Editor Toolbar
 
-<Preview>
+<Preview code={`<div className="flex gap-2 items-center">
+  <ToggleGroup type="single" variant="outline">
+    <ToggleGroupItem value="left" aria-label="Left align">
+      <AlignLeft className="h-4 w-4" />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="center" aria-label="Center align">
+      <AlignCenter className="h-4 w-4" />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="right" aria-label="Right align">
+      <AlignRight className="h-4 w-4" />
+    </ToggleGroupItem>
+  </ToggleGroup>
+  <ToggleGroup type="multiple" variant="outline">
+    <ToggleGroupItem value="bold" aria-label="Toggle bold">
+      <Bold className="h-4 w-4" />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="italic" aria-label="Toggle italic">
+      <Italic className="h-4 w-4" />
+    </ToggleGroupItem>
+    <ToggleGroupItem value="underline" aria-label="Toggle underline">
+      <Underline className="h-4 w-4" />
+    </ToggleGroupItem>
+  </ToggleGroup>
+</div>`}>
   <div className="flex gap-2 items-center">
     <ToggleGroup type="single" variant="outline">
       <ToggleGroupItem value="left" aria-label="Left align">

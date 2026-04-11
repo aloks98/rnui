@@ -23,7 +23,21 @@ import {
 
 ## Usage
 
-<Preview>
+<Preview code={`<Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Select a fruit" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectLabel>Fruits</SelectLabel>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+      <SelectItem value="blueberry">Blueberry</SelectItem>
+      <SelectItem value="grapes">Grapes</SelectItem>
+      <SelectItem value="pineapple">Pineapple</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>`}>
   <Select>
     <SelectTrigger className="w-[180px]">
       <SelectValue placeholder="Select a fruit" />
@@ -43,7 +57,18 @@ import {
 
 ## Small Size
 
-<Preview>
+<Preview code={`<Select>
+  <SelectTrigger size="sm" className="w-[180px]">
+    <SelectValue placeholder="Small trigger" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+      <SelectItem value="grapes">Grapes</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>`}>
   <Select>
     <SelectTrigger size="sm" className="w-[180px]">
       <SelectValue placeholder="Small trigger" />
@@ -60,7 +85,16 @@ import {
 
 ## Disabled
 
-<Preview>
+<Preview code={`<Select>
+  <SelectTrigger className="w-[180px]" disabled>
+    <SelectValue placeholder="Disabled" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectItem value="apple">Apple</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>`}>
   <Select>
     <SelectTrigger className="w-[180px]" disabled>
       <SelectValue placeholder="Disabled" />
@@ -77,7 +111,24 @@ import {
 
 ### With Label
 
-<Preview>
+<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
+  <Label>Fruit</Label>
+  <Select>
+    <SelectTrigger className="w-[180px]">
+      <SelectValue placeholder="Select a fruit" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectGroup>
+        <SelectLabel>Fruits</SelectLabel>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Grapes</SelectItem>
+        <SelectItem value="pineapple">Pineapple</SelectItem>
+      </SelectGroup>
+    </SelectContent>
+  </Select>
+</div>`}>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label>Fruit</Label>
     <Select>
@@ -100,7 +151,19 @@ import {
 
 ### With Disabled Items
 
-<Preview>
+<Preview code={`<Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Select an option" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectLabel>Options</SelectLabel>
+      <SelectItem value="option-1">Option 1</SelectItem>
+      <SelectItem value="option-2" disabled>Option 2 (disabled)</SelectItem>
+      <SelectItem value="option-3">Option 3</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>`}>
   <Select>
     <SelectTrigger className="w-[180px]">
       <SelectValue placeholder="Select an option" />
@@ -118,7 +181,23 @@ import {
 
 ### Multiple Groups
 
-<Preview>
+<Preview code={`<Select>
+  <SelectTrigger className="w-[200px]">
+    <SelectValue placeholder="Select a food" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectGroup>
+      <SelectLabel>Fruits</SelectLabel>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
+    </SelectGroup>
+    <SelectGroup>
+      <SelectLabel>Vegetables</SelectLabel>
+      <SelectItem value="carrot">Carrot</SelectItem>
+      <SelectItem value="broccoli">Broccoli</SelectItem>
+    </SelectGroup>
+  </SelectContent>
+</Select>`}>
   <Select>
     <SelectTrigger className="w-[200px]">
       <SelectValue placeholder="Select a food" />

@@ -16,13 +16,20 @@ import { Button } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview>
+<Preview code={`<Button>Button</Button>`}>
   <Button>Button</Button>
 </Preview>
 
 ## Variants
 
-<Preview>
+<Preview code={`<div className="flex gap-3 flex-wrap items-center">
+  <Button>Default</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="destructive">Destructive</Button>
+  <Button variant="outline">Outline</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button variant="link">Link</Button>
+</div>`}>
   <div className="flex gap-3 flex-wrap items-center">
     <Button>Default</Button>
     <Button variant="secondary">Secondary</Button>
@@ -35,7 +42,12 @@ import { Button } from '@e412/rnui-react';
 
 ## Sizes
 
-<Preview>
+<Preview code={`<div className="flex gap-3 items-center">
+  <Button size="xs">Extra Small</Button>
+  <Button size="sm">Small</Button>
+  <Button size="default">Default</Button>
+  <Button size="lg">Large</Button>
+</div>`}>
   <div className="flex gap-3 items-center">
     <Button size="xs">Extra Small</Button>
     <Button size="sm">Small</Button>
@@ -46,7 +58,20 @@ import { Button } from '@e412/rnui-react';
 
 ### Icon Sizes
 
-<Preview>
+<Preview code={`<div className="flex gap-3 items-center">
+  <Button size="icon-xs" aria-label="Extra small icon">
+    <Plus />
+  </Button>
+  <Button size="icon-sm" aria-label="Small icon">
+    <Plus />
+  </Button>
+  <Button size="icon" aria-label="Default icon">
+    <Plus />
+  </Button>
+  <Button size="icon-lg" aria-label="Large icon">
+    <Plus />
+  </Button>
+</div>`}>
   <div className="flex gap-3 items-center">
     <Button size="icon-xs" aria-label="Extra small icon">
       <Plus />
@@ -65,7 +90,7 @@ import { Button } from '@e412/rnui-react';
 
 ## Disabled
 
-<Preview>
+<Preview code={`<Button disabled>Disabled</Button>`}>
   <Button disabled>Disabled</Button>
 </Preview>
 
@@ -73,7 +98,16 @@ import { Button } from '@e412/rnui-react';
 
 ### Button with Icon
 
-<Preview>
+<Preview code={`<div className="flex gap-3 items-center">
+  <Button>
+    <Mail className="mr-2 h-4 w-4" />
+    Login with Email
+  </Button>
+  <Button variant="outline">
+    <Settings className="mr-2 h-4 w-4" />
+    Settings
+  </Button>
+</div>`}>
   <div className="flex gap-3 items-center">
     <Button>
       <Mail className="mr-2 h-4 w-4" />
@@ -88,7 +122,10 @@ import { Button } from '@e412/rnui-react';
 
 ### Loading Button
 
-<Preview>
+<Preview code={`<Button disabled>
+  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+  Please wait
+</Button>`}>
   <Button disabled>
     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
     Please wait
@@ -97,7 +134,10 @@ import { Button } from '@e412/rnui-react';
 
 ### Button as Link
 
-<Preview>
+<Preview code={`<Button variant="link">
+  <ExternalLink className="mr-2 h-4 w-4" />
+  View documentation
+</Button>`}>
   <Button variant="link">
     <ExternalLink className="mr-2 h-4 w-4" />
     View documentation
@@ -106,7 +146,10 @@ import { Button } from '@e412/rnui-react';
 
 ### Destructive Actions
 
-<Preview>
+<Preview code={`<div className="flex gap-3 items-center">
+  <Button variant="destructive">Delete Account</Button>
+  <Button variant="destructive" size="sm">Remove</Button>
+</div>`}>
   <div className="flex gap-3 items-center">
     <Button variant="destructive">Delete Account</Button>
     <Button variant="destructive" size="sm">Remove</Button>

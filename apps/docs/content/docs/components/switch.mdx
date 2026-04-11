@@ -15,7 +15,10 @@ import { Switch } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview>
+<Preview code={`<div className="flex items-center space-x-2">
+  <Switch id="airplane-mode" />
+  <Label htmlFor="airplane-mode">Airplane Mode</Label>
+</div>`}>
   <div className="flex items-center space-x-2">
     <Switch id="airplane-mode" />
     <Label htmlFor="airplane-mode">Airplane Mode</Label>
@@ -24,7 +27,16 @@ import { Switch } from '@e412/rnui-react';
 
 ## Sizes
 
-<Preview>
+<Preview code={`<div className="flex gap-6 items-center">
+  <div className="flex items-center space-x-2">
+    <Switch id="size-sm" size="sm" />
+    <Label htmlFor="size-sm">Small</Label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <Switch id="size-default" />
+    <Label htmlFor="size-default">Default</Label>
+  </div>
+</div>`}>
   <div className="flex gap-6 items-center">
     <div className="flex items-center space-x-2">
       <Switch id="size-sm" size="sm" />
@@ -39,7 +51,16 @@ import { Switch } from '@e412/rnui-react';
 
 ## Disabled
 
-<Preview>
+<Preview code={`<div className="flex gap-6 items-center">
+  <div className="flex items-center space-x-2">
+    <Switch id="disabled-switch" disabled />
+    <Label htmlFor="disabled-switch">Disabled</Label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <Switch id="disabled-checked-switch" disabled defaultChecked />
+    <Label htmlFor="disabled-checked-switch">Disabled and checked</Label>
+  </div>
+</div>`}>
   <div className="flex gap-6 items-center">
     <div className="flex items-center space-x-2">
       <Switch id="disabled-switch" disabled />
@@ -56,7 +77,29 @@ import { Switch } from '@e412/rnui-react';
 
 ### Settings Panel
 
-<Preview>
+<Preview code={`<div className="grid max-w-sm gap-4">
+  <div className="flex items-center justify-between">
+    <div>
+      <p className="text-sm font-medium">Dark Mode</p>
+      <p className="text-xs text-muted-foreground">Toggle dark theme</p>
+    </div>
+    <Switch id="dark-mode" />
+  </div>
+  <div className="flex items-center justify-between">
+    <div>
+      <p className="text-sm font-medium">Notifications</p>
+      <p className="text-xs text-muted-foreground">Receive push notifications</p>
+    </div>
+    <Switch id="notifications" defaultChecked />
+  </div>
+  <div className="flex items-center justify-between">
+    <div>
+      <p className="text-sm font-medium">Auto-save</p>
+      <p className="text-xs text-muted-foreground">Save changes automatically</p>
+    </div>
+    <Switch id="auto-save" defaultChecked />
+  </div>
+</div>`}>
   <div className="grid max-w-sm gap-4">
     <div className="flex items-center justify-between">
       <div>
@@ -84,7 +127,10 @@ import { Switch } from '@e412/rnui-react';
 
 ### Feature Toggle
 
-<Preview>
+<Preview code={`<div className="flex items-center space-x-2">
+  <Switch id="beta-features" />
+  <Label htmlFor="beta-features">Enable beta features</Label>
+</div>`}>
   <div className="flex items-center space-x-2">
     <Switch id="beta-features" />
     <Label htmlFor="beta-features">Enable beta features</Label>

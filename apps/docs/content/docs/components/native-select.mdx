@@ -19,7 +19,17 @@ import {
 
 ## Usage
 
-<Preview>
+<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
+  <Label>Fruit</Label>
+  <NativeSelect>
+    <NativeSelectOption value="">Select a fruit</NativeSelectOption>
+    <NativeSelectOption value="apple">Apple</NativeSelectOption>
+    <NativeSelectOption value="banana">Banana</NativeSelectOption>
+    <NativeSelectOption value="blueberry">Blueberry</NativeSelectOption>
+    <NativeSelectOption value="grapes">Grapes</NativeSelectOption>
+    <NativeSelectOption value="pineapple">Pineapple</NativeSelectOption>
+  </NativeSelect>
+</div>`}>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label>Fruit</Label>
     <NativeSelect>
@@ -35,7 +45,14 @@ import {
 
 ## Sizes
 
-<Preview>
+<Preview code={`<div className="flex gap-4 items-center">
+  <NativeSelect size="sm">
+    <NativeSelectOption value="sm">Small</NativeSelectOption>
+  </NativeSelect>
+  <NativeSelect size="default">
+    <NativeSelectOption value="default">Default</NativeSelectOption>
+  </NativeSelect>
+</div>`}>
   <div className="flex gap-4 items-center">
     <NativeSelect size="sm">
       <NativeSelectOption value="sm">Small</NativeSelectOption>
@@ -48,7 +65,10 @@ import {
 
 ## Disabled
 
-<Preview>
+<Preview code={`<NativeSelect disabled>
+  <NativeSelectOption value="">Disabled</NativeSelectOption>
+  <NativeSelectOption value="apple">Apple</NativeSelectOption>
+</NativeSelect>`}>
   <NativeSelect disabled>
     <NativeSelectOption value="">Disabled</NativeSelectOption>
     <NativeSelectOption value="apple">Apple</NativeSelectOption>
@@ -59,7 +79,17 @@ import {
 
 ### With Option Groups
 
-<Preview>
+<Preview code={`<NativeSelect className="max-w-sm">
+  <NativeSelectOption value="">Select...</NativeSelectOption>
+  <NativeSelectOptGroup label="Fruits">
+    <NativeSelectOption value="apple">Apple</NativeSelectOption>
+    <NativeSelectOption value="banana">Banana</NativeSelectOption>
+  </NativeSelectOptGroup>
+  <NativeSelectOptGroup label="Vegetables">
+    <NativeSelectOption value="carrot">Carrot</NativeSelectOption>
+    <NativeSelectOption value="broccoli">Broccoli</NativeSelectOption>
+  </NativeSelectOptGroup>
+</NativeSelect>`}>
   <NativeSelect className="max-w-sm">
     <NativeSelectOption value="">Select...</NativeSelectOption>
     <NativeSelectOptGroup label="Fruits">
@@ -75,7 +105,18 @@ import {
 
 ### Country Selector
 
-<Preview>
+<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
+  <Label>Country</Label>
+  <NativeSelect>
+    <NativeSelectOption value="">Select your country</NativeSelectOption>
+    <NativeSelectOption value="us">United States</NativeSelectOption>
+    <NativeSelectOption value="uk">United Kingdom</NativeSelectOption>
+    <NativeSelectOption value="ca">Canada</NativeSelectOption>
+    <NativeSelectOption value="au">Australia</NativeSelectOption>
+    <NativeSelectOption value="de">Germany</NativeSelectOption>
+    <NativeSelectOption value="fr">France</NativeSelectOption>
+  </NativeSelect>
+</div>`}>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label>Country</Label>
     <NativeSelect>

@@ -1,6 +1,7 @@
 'use client';
 
 import { type ReactNode, useState } from 'react';
+import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
 
 export function Preview({
   children,
@@ -28,10 +29,8 @@ export function Preview({
             </button>
           </div>
           {open && (
-            <div className="border-t bg-fd-secondary/50 overflow-x-auto">
-              <pre className="p-4 text-sm">
-                <code>{code}</code>
-              </pre>
+            <div className="border-t [&_figure]:my-0 [&_figure]:rounded-none [&_figure]:border-0">
+              <DynamicCodeBlock lang="tsx" code={code} />
             </div>
           )}
         </>

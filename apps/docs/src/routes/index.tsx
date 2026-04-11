@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import { baseOptions } from '@/lib/layout.shared';
+import { Button, Badge, Progress, Avatar, AvatarFallback, Input } from '@e412/rnui-react';
 
 export const Route = createFileRoute('/')({
   component: Home,
@@ -9,21 +10,19 @@ export const Route = createFileRoute('/')({
 function ComponentShowcase() {
   return (
     <div className="relative grid grid-cols-2 gap-3 p-1">
-      <div className="animate-hero-card rounded-xl border bg-fd-card p-4 space-y-2 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md" style={{ animationDelay: '400ms' }}>
+      <div className="animate-hero-card rounded-xl border bg-fd-card p-4 space-y-3 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md" style={{ animationDelay: '400ms' }}>
         <div className="flex gap-2">
-          <div className="h-8 px-4 rounded-lg bg-fd-primary text-fd-primary-foreground text-xs font-medium flex items-center">Button</div>
-          <div className="h-8 px-4 rounded-lg border border-fd-border text-fd-foreground text-xs font-medium flex items-center">Outline</div>
+          <Button size="sm">Button</Button>
+          <Button size="sm" variant="outline">Outline</Button>
         </div>
         <div className="flex gap-1.5">
-          <div className="h-6 px-3 rounded-md bg-fd-secondary text-fd-secondary-foreground text-[10px] font-medium flex items-center">Badge</div>
-          <div className="h-6 px-3 rounded-md bg-fd-primary/10 text-fd-primary text-[10px] font-medium flex items-center">Status</div>
+          <Badge>Default</Badge>
+          <Badge variant="secondary">Status</Badge>
         </div>
       </div>
 
-      <div className="animate-hero-card rounded-xl border bg-fd-card p-4 space-y-2 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md" style={{ animationDelay: '500ms' }}>
-        <div className="h-2.5 w-full rounded-full bg-fd-secondary overflow-hidden">
-          <div className="h-full w-3/4 rounded-full bg-fd-primary" />
-        </div>
+      <div className="animate-hero-card rounded-xl border bg-fd-card p-4 space-y-3 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md" style={{ animationDelay: '500ms' }}>
+        <Progress value={75} />
         <div className="space-y-1.5">
           <div className="h-2 w-full rounded bg-fd-secondary" />
           <div className="h-2 w-4/5 rounded bg-fd-secondary" />
@@ -33,16 +32,17 @@ function ComponentShowcase() {
 
       <div className="animate-hero-card rounded-xl border bg-fd-card p-4 shadow-sm col-span-2 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md" style={{ animationDelay: '600ms' }}>
         <div className="flex items-center gap-3 mb-3">
-          <div className="size-8 rounded-full bg-fd-primary/15 flex items-center justify-center text-fd-primary text-xs font-bold">A</div>
+          <Avatar>
+            <AvatarFallback>A</AvatarFallback>
+          </Avatar>
           <div className="flex-1 space-y-1">
             <div className="h-2 w-24 rounded bg-fd-foreground/80" />
             <div className="h-1.5 w-16 rounded bg-fd-muted-foreground/40" />
           </div>
-          <div className="h-7 px-3 rounded-lg bg-fd-primary text-fd-primary-foreground text-[10px] font-medium flex items-center">Follow</div>
+          <Button size="sm">Follow</Button>
         </div>
         <div className="flex gap-2">
-          <div className="flex-1 h-8 rounded-lg border border-fd-input bg-transparent px-3 flex items-center text-fd-muted-foreground text-[10px]">Search components...</div>
-          <div className="h-8 w-8 rounded-lg bg-fd-secondary flex items-center justify-center text-fd-muted-foreground text-xs">⌘</div>
+          <Input placeholder="Search components..." className="h-8 text-xs" />
         </div>
       </div>
     </div>

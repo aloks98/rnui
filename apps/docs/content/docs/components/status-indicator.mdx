@@ -15,13 +15,18 @@ import { StatusIndicator } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview>
+<Preview code={`<StatusIndicator state="active" label="Online" />`}>
   <StatusIndicator state="active" label="Online" />
 </Preview>
 
 ## All States
 
-<Preview>
+<Preview code={`<div className="flex flex-col gap-3">
+    <StatusIndicator state="active" label="Active -- System operational" />
+    <StatusIndicator state="down" label="Down -- Service unavailable" />
+    <StatusIndicator state="fixing" label="Fixing -- Under maintenance" />
+    <StatusIndicator state="idle" label="Idle -- No activity" />
+  </div>`}>
   <div className="flex flex-col gap-3">
     <StatusIndicator state="active" label="Active -- System operational" />
     <StatusIndicator state="down" label="Down -- Service unavailable" />
@@ -32,7 +37,11 @@ import { StatusIndicator } from '@e412/rnui-react';
 
 ## Sizes
 
-<Preview>
+<Preview code={`<div className="flex flex-col gap-3">
+    <StatusIndicator state="active" size="sm" label="Small" />
+    <StatusIndicator state="active" size="md" label="Medium (default)" />
+    <StatusIndicator state="active" size="lg" label="Large" />
+  </div>`}>
   <div className="flex flex-col gap-3">
     <StatusIndicator state="active" size="sm" label="Small" />
     <StatusIndicator state="active" size="md" label="Medium (default)" />
@@ -42,7 +51,12 @@ import { StatusIndicator } from '@e412/rnui-react';
 
 ## Without Label
 
-<Preview>
+<Preview code={`<div className="flex gap-4 items-center">
+    <StatusIndicator state="active" size="sm" />
+    <StatusIndicator state="down" size="md" />
+    <StatusIndicator state="fixing" size="lg" />
+    <StatusIndicator state="idle" size="md" />
+  </div>`}>
   <div className="flex gap-4 items-center">
     <StatusIndicator state="active" size="sm" />
     <StatusIndicator state="down" size="md" />
@@ -55,7 +69,31 @@ import { StatusIndicator } from '@e412/rnui-react';
 
 ### Service Dashboard
 
-<Preview>
+<Preview code={`<div className="w-full max-w-sm space-y-3 rounded-lg border p-4">
+    <h3 className="text-sm font-medium">Service Status</h3>
+    <div className="space-y-2">
+      <div className="flex items-center justify-between">
+        <span className="text-sm">API Gateway</span>
+        <StatusIndicator state="active" size="sm" label="Operational" />
+      </div>
+      <div className="flex items-center justify-between">
+        <span className="text-sm">Database</span>
+        <StatusIndicator state="active" size="sm" label="Operational" />
+      </div>
+      <div className="flex items-center justify-between">
+        <span className="text-sm">CDN</span>
+        <StatusIndicator state="fixing" size="sm" label="Degraded" />
+      </div>
+      <div className="flex items-center justify-between">
+        <span className="text-sm">Email Service</span>
+        <StatusIndicator state="down" size="sm" label="Outage" />
+      </div>
+      <div className="flex items-center justify-between">
+        <span className="text-sm">Background Jobs</span>
+        <StatusIndicator state="idle" size="sm" label="Idle" />
+      </div>
+    </div>
+  </div>`}>
   <div className="w-full max-w-sm space-y-3 rounded-lg border p-4">
     <h3 className="text-sm font-medium">Service Status</h3>
     <div className="space-y-2">
@@ -85,7 +123,10 @@ import { StatusIndicator } from '@e412/rnui-react';
 
 ### Inline with Text
 
-<Preview>
+<Preview code={`<div className="flex items-center gap-2 text-sm">
+    <span>Server status:</span>
+    <StatusIndicator state="active" size="sm" label="Running" />
+  </div>`}>
   <div className="flex items-center gap-2 text-sm">
     <span>Server status:</span>
     <StatusIndicator state="active" size="sm" label="Running" />
@@ -94,7 +135,20 @@ import { StatusIndicator } from '@e412/rnui-react';
 
 ### User Presence
 
-<Preview>
+<Preview code={`<div className="flex flex-col gap-2 max-w-xs">
+    <div className="flex items-center justify-between text-sm">
+      <span>Alex Johnson</span>
+      <StatusIndicator state="active" size="sm" label="Online" />
+    </div>
+    <div className="flex items-center justify-between text-sm">
+      <span>Sarah Chen</span>
+      <StatusIndicator state="idle" size="sm" label="Away" />
+    </div>
+    <div className="flex items-center justify-between text-sm">
+      <span>David Kim</span>
+      <StatusIndicator state="down" size="sm" label="Offline" />
+    </div>
+  </div>`}>
   <div className="flex flex-col gap-2 max-w-xs">
     <div className="flex items-center justify-between text-sm">
       <span>Alex Johnson</span>

@@ -27,7 +27,27 @@ import {
 
 ## Usage
 
-<Preview>
+<Preview code={`<Stepper defaultValue={2} className="w-full max-w-md space-y-8">
+    <StepperNav>
+      {[1, 2, 3, 4].map((step) => (
+        <StepperItem key={step} step={step}>
+          <StepperTrigger>
+            <StepperIndicator>{step}</StepperIndicator>
+          </StepperTrigger>
+          {step < 4 && (
+            <StepperSeparator className="group-data-[state=completed]/step:bg-primary" />
+          )}
+        </StepperItem>
+      ))}
+    </StepperNav>
+    <StepperPanel className="text-sm">
+      {[1, 2, 3, 4].map((step) => (
+        <StepperContent key={step} value={step} className="flex items-center justify-center">
+          Step {step} content
+        </StepperContent>
+      ))}
+    </StepperPanel>
+  </Stepper>`}>
   <Stepper defaultValue={2} className="w-full max-w-md space-y-8">
     <StepperNav>
       {[1, 2, 3, 4].map((step) => (
@@ -53,7 +73,35 @@ import {
 
 ## With Titles
 
-<Preview>
+<Preview code={`<Stepper
+    className="w-full max-w-md space-y-8"
+    defaultValue={2}
+    indicators={{
+      completed: <CheckIcon className="size-3.5" />,
+      loading: <LoaderCircleIcon className="size-3.5 animate-spin" />,
+    }}
+  >
+    <StepperNav>
+      {["Step 1", "Step 2", "Step 3"].map((title, index) => (
+        <StepperItem key={index} step={index + 1} className="relative flex-1 items-start">
+          <StepperTrigger className="flex flex-col gap-2.5">
+            <StepperIndicator>{index + 1}</StepperIndicator>
+            <StepperTitle>{title}</StepperTitle>
+          </StepperTrigger>
+          {index < 2 && (
+            <StepperSeparator className="group-data-[state=completed]/step:bg-primary absolute inset-x-0 top-3 left-[calc(50%+0.875rem)] m-0 group-data-[orientation=horizontal]/stepper-nav:w-[calc(100%-2rem+0.225rem)] group-data-[orientation=horizontal]/stepper-nav:flex-none" />
+          )}
+        </StepperItem>
+      ))}
+    </StepperNav>
+    <StepperPanel className="text-sm">
+      {["Step 1", "Step 2", "Step 3"].map((title, index) => (
+        <StepperContent key={index} value={index + 1} className="flex items-center justify-center">
+          {title} content
+        </StepperContent>
+      ))}
+    </StepperPanel>
+  </Stepper>`}>
   <Stepper
     className="w-full max-w-md space-y-8"
     defaultValue={2}
@@ -87,7 +135,39 @@ import {
 
 ## With Descriptions
 
-<Preview>
+<Preview code={`<Stepper
+    defaultValue={2}
+    indicators={{
+      completed: <CheckIcon className="size-3.5" />,
+    }}
+    className="w-full max-w-md space-y-8"
+  >
+    <StepperNav>
+      {[
+        { title: "Account", description: "Create your account" },
+        { title: "Profile", description: "Set up your profile" },
+        { title: "Complete", description: "Review and finish" },
+      ].map((step, index) => (
+        <StepperItem key={index} step={index + 1} className="relative flex-1 items-start">
+          <StepperTrigger className="flex flex-col gap-2.5">
+            <StepperIndicator>{index + 1}</StepperIndicator>
+            <StepperTitle>{step.title}</StepperTitle>
+            <StepperDescription>{step.description}</StepperDescription>
+          </StepperTrigger>
+          {index < 2 && (
+            <StepperSeparator className="group-data-[state=completed]/step:bg-primary absolute inset-x-0 top-2.5 left-[calc(50%+0.875rem)] m-0 group-data-[orientation=horizontal]/stepper-nav:w-[calc(100%-2rem+0.225rem)] group-data-[orientation=horizontal]/stepper-nav:flex-none" />
+          )}
+        </StepperItem>
+      ))}
+    </StepperNav>
+    <StepperPanel className="text-sm">
+      {["Account", "Profile", "Complete"].map((title, index) => (
+        <StepperContent key={index} value={index + 1} className="flex items-center justify-center">
+          {title} content
+        </StepperContent>
+      ))}
+    </StepperPanel>
+  </Stepper>`}>
   <Stepper
     defaultValue={2}
     indicators={{
@@ -125,7 +205,39 @@ import {
 
 ## Vertical Orientation
 
-<Preview>
+<Preview code={`<div className="flex items-center justify-center">
+    <Stepper
+      className="flex flex-col items-center justify-center gap-10"
+      defaultValue={2}
+      orientation="vertical"
+      indicators={{
+        completed: <CheckIcon className="size-3.5" />,
+        loading: <LoaderCircleIcon className="size-3.5 animate-spin" />,
+      }}
+    >
+      <StepperNav>
+        {[1, 2, 3].map((step) => (
+          <StepperItem key={step} step={step} loading={step === 2}>
+            <StepperTrigger>
+              <StepperIndicator className="data-[state=completed]:bg-green-500 data-[state=completed]:text-white">
+                {step}
+              </StepperIndicator>
+            </StepperTrigger>
+            {step < 3 && (
+              <StepperSeparator className="group-data-[state=completed]/step:bg-green-500" />
+            )}
+          </StepperItem>
+        ))}
+      </StepperNav>
+      <StepperPanel className="w-56 text-center text-sm">
+        {[1, 2, 3].map((step) => (
+          <StepperContent key={step} value={step}>
+            Step {step} content
+          </StepperContent>
+        ))}
+      </StepperPanel>
+    </Stepper>
+  </div>`}>
   <div className="flex items-center justify-center">
     <Stepper
       className="flex flex-col items-center justify-center gap-10"
@@ -165,7 +277,33 @@ import {
 
 ### Checkout Flow
 
-<Preview>
+<Preview code={`<Stepper
+    defaultValue={2}
+    indicators={{
+      completed: <CheckIcon className="size-3.5" />,
+    }}
+    className="w-full max-w-lg space-y-8"
+  >
+    <StepperNav className="gap-3">
+      {["Cart Review", "Shipping", "Payment", "Confirmation"].map((title, index) => (
+        <StepperItem key={index} step={index + 1} className="relative flex-1 items-start">
+          <StepperTrigger className="flex grow flex-col items-start justify-center gap-3">
+            <StepperIndicator>{index + 1}</StepperIndicator>
+            <StepperTitle className="group-data-[state=inactive]/step:text-muted-foreground text-start font-semibold">
+              {title}
+            </StepperTitle>
+          </StepperTrigger>
+        </StepperItem>
+      ))}
+    </StepperNav>
+    <StepperPanel className="text-sm">
+      {["Cart Review", "Shipping", "Payment", "Confirmation"].map((title, index) => (
+        <StepperContent key={index} value={index + 1} className="flex items-center justify-center">
+          {title} content
+        </StepperContent>
+      ))}
+    </StepperPanel>
+  </Stepper>`}>
   <Stepper
     defaultValue={2}
     indicators={{
@@ -197,7 +335,34 @@ import {
 
 ### Loading State
 
-<Preview>
+<Preview code={`<Stepper
+    className="w-full max-w-md"
+    defaultValue={2}
+    indicators={{
+      completed: <CheckIcon className="size-3.5" />,
+      loading: <LoaderCircleIcon className="size-3.5 animate-spin" />,
+    }}
+  >
+    <StepperNav className="mb-5">
+      {[1, 2, 3].map((step) => (
+        <StepperItem key={step} step={step} loading={step === 2}>
+          <StepperTrigger>
+            <StepperIndicator>{step}</StepperIndicator>
+          </StepperTrigger>
+          {step < 3 && (
+            <StepperSeparator className="group-data-[state=completed]/step:bg-green-500" />
+          )}
+        </StepperItem>
+      ))}
+    </StepperNav>
+    <StepperPanel className="text-sm">
+      {[1, 2, 3].map((step) => (
+        <StepperContent key={step} value={step} className="flex w-full items-center justify-center">
+          Step {step} content
+        </StepperContent>
+      ))}
+    </StepperPanel>
+  </Stepper>`}>
   <Stepper
     className="w-full max-w-md"
     defaultValue={2}

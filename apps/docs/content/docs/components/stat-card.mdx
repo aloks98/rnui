@@ -16,7 +16,11 @@ import { StatCard } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview>
+<Preview code={`<StatCard
+    title="Total Revenue"
+    value="$45,231.89"
+    description="Monthly revenue"
+  />`}>
   <StatCard
     title="Total Revenue"
     value="$45,231.89"
@@ -26,7 +30,12 @@ import { StatCard } from '@e412/rnui-react';
 
 ## With Trend
 
-<Preview>
+<Preview code={`<StatCard
+    title="Total Revenue"
+    value="$45,231.89"
+    description="+20.1% from last month"
+    trend={{ value: 20.1, isPositive: true }}
+  />`}>
   <StatCard
     title="Total Revenue"
     value="$45,231.89"
@@ -37,7 +46,12 @@ import { StatCard } from '@e412/rnui-react';
 
 ## Negative Trend
 
-<Preview>
+<Preview code={`<StatCard
+    title="Bounce Rate"
+    value="42.5%"
+    description="Increased from last week"
+    trend={{ value: 5.2, isPositive: false }}
+  />`}>
   <StatCard
     title="Bounce Rate"
     value="42.5%"
@@ -48,7 +62,13 @@ import { StatCard } from '@e412/rnui-react';
 
 ## With Icon
 
-<Preview>
+<Preview code={`<StatCard
+    title="Total Revenue"
+    value="$45,231.89"
+    description="+20.1% from last month"
+    icon={<DollarSign />}
+    trend={{ value: 20.1, isPositive: true }}
+  />`}>
   <StatCard
     title="Total Revenue"
     value="$45,231.89"
@@ -62,7 +82,36 @@ import { StatCard } from '@e412/rnui-react';
 
 ### Dashboard Grid
 
-<Preview>
+<Preview code={`<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <StatCard
+      title="Total Revenue"
+      value="$45,231.89"
+      icon={<DollarSign />}
+      trend={{ value: 20.1, isPositive: true }}
+      description="+20.1% from last month"
+    />
+    <StatCard
+      title="Subscribers"
+      value="+2,350"
+      icon={<Users />}
+      trend={{ value: 180.1, isPositive: true }}
+      description="+180.1% from last month"
+    />
+    <StatCard
+      title="Sales"
+      value="+12,234"
+      icon={<ShoppingCart />}
+      trend={{ value: 19, isPositive: true }}
+      description="+19% from last month"
+    />
+    <StatCard
+      title="Active Now"
+      value="+573"
+      icon={<TrendingUp />}
+      trend={{ value: 4.3, isPositive: false }}
+      description="-4.3% from last hour"
+    />
+  </div>`}>
   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
     <StatCard
       title="Total Revenue"
@@ -97,7 +146,11 @@ import { StatCard } from '@e412/rnui-react';
 
 ### Simple Metrics Row
 
-<Preview>
+<Preview code={`<div className="grid grid-cols-3 gap-4">
+    <StatCard title="Uptime" value="99.9%" description="Last 30 days" />
+    <StatCard title="Latency" value="45ms" description="Average response" />
+    <StatCard title="Requests" value="1.2M" description="This month" />
+  </div>`}>
   <div className="grid grid-cols-3 gap-4">
     <StatCard title="Uptime" value="99.9%" description="Last 30 days" />
     <StatCard title="Latency" value="45ms" description="Average response" />
@@ -107,7 +160,20 @@ import { StatCard } from '@e412/rnui-react';
 
 ### With Mixed Trends
 
-<Preview>
+<Preview code={`<div className="grid grid-cols-2 gap-4 max-w-lg">
+    <StatCard
+      title="Conversion Rate"
+      value="3.2%"
+      trend={{ value: 0.5, isPositive: true }}
+      description="Up from 2.7%"
+    />
+    <StatCard
+      title="Churn Rate"
+      value="1.8%"
+      trend={{ value: 0.3, isPositive: false }}
+      description="Up from 1.5%"
+    />
+  </div>`}>
   <div className="grid grid-cols-2 gap-4 max-w-lg">
     <StatCard
       title="Conversion Rate"

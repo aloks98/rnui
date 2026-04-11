@@ -15,13 +15,23 @@ import { Badge } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview>
+<Preview code={`<Badge>Badge</Badge>`}>
   <Badge>Badge</Badge>
 </Preview>
 
 ## Solid Variants
 
-<Preview>
+<Preview code={`<div className="flex gap-2 flex-wrap">
+    <Badge>Default</Badge>
+    <Badge variant="secondary">Secondary</Badge>
+    <Badge variant="outline">Outline</Badge>
+    <Badge variant="info">Info</Badge>
+    <Badge variant="success">Success</Badge>
+    <Badge variant="warning">Warning</Badge>
+    <Badge variant="destructive">Destructive</Badge>
+    <Badge variant="focus">Focus</Badge>
+    <Badge variant="invert">Invert</Badge>
+  </div>`}>
   <div className="flex gap-2 flex-wrap">
     <Badge>Default</Badge>
     <Badge variant="secondary">Secondary</Badge>
@@ -37,7 +47,15 @@ import { Badge } from '@e412/rnui-react';
 
 ## Light Variants
 
-<Preview>
+<Preview code={`<div className="flex gap-2 flex-wrap">
+    <Badge variant="primary-light">Primary</Badge>
+    <Badge variant="info-light">Info</Badge>
+    <Badge variant="success-light">Success</Badge>
+    <Badge variant="warning-light">Warning</Badge>
+    <Badge variant="destructive-light">Destructive</Badge>
+    <Badge variant="invert-light">Invert</Badge>
+    <Badge variant="focus-light">Focus</Badge>
+  </div>`}>
   <div className="flex gap-2 flex-wrap">
     <Badge variant="primary-light">Primary</Badge>
     <Badge variant="info-light">Info</Badge>
@@ -51,7 +69,15 @@ import { Badge } from '@e412/rnui-react';
 
 ## Outline Variants
 
-<Preview>
+<Preview code={`<div className="flex gap-2 flex-wrap">
+    <Badge variant="primary-outline">Primary</Badge>
+    <Badge variant="info-outline">Info</Badge>
+    <Badge variant="success-outline">Success</Badge>
+    <Badge variant="warning-outline">Warning</Badge>
+    <Badge variant="destructive-outline">Destructive</Badge>
+    <Badge variant="invert-outline">Invert</Badge>
+    <Badge variant="focus-outline">Focus</Badge>
+  </div>`}>
   <div className="flex gap-2 flex-wrap">
     <Badge variant="primary-outline">Primary</Badge>
     <Badge variant="info-outline">Info</Badge>
@@ -65,7 +91,13 @@ import { Badge } from '@e412/rnui-react';
 
 ## Sizes
 
-<Preview>
+<Preview code={`<div className="flex gap-2 items-center">
+    <Badge size="xs">XS</Badge>
+    <Badge size="sm">SM</Badge>
+    <Badge size="default">Default</Badge>
+    <Badge size="lg">LG</Badge>
+    <Badge size="xl">XL</Badge>
+  </div>`}>
   <div className="flex gap-2 items-center">
     <Badge size="xs">XS</Badge>
     <Badge size="sm">SM</Badge>
@@ -77,7 +109,13 @@ import { Badge } from '@e412/rnui-react';
 
 ## Full Radius
 
-<Preview>
+<Preview code={`<div className="flex gap-2 flex-wrap">
+    <Badge radius="full">Default</Badge>
+    <Badge radius="full" variant="info">Info</Badge>
+    <Badge radius="full" variant="success">Success</Badge>
+    <Badge radius="full" variant="warning">Warning</Badge>
+    <Badge radius="full" variant="destructive">Destructive</Badge>
+  </div>`}>
   <div className="flex gap-2 flex-wrap">
     <Badge radius="full">Default</Badge>
     <Badge radius="full" variant="info">Info</Badge>
@@ -91,7 +129,12 @@ import { Badge } from '@e412/rnui-react';
 
 ### Status Labels
 
-<Preview>
+<Preview code={`<div className="flex gap-2 flex-wrap">
+    <Badge variant="success-light" radius="full">Active</Badge>
+    <Badge variant="warning-light" radius="full">Pending</Badge>
+    <Badge variant="destructive-light" radius="full">Expired</Badge>
+    <Badge variant="secondary" radius="full">Draft</Badge>
+  </div>`}>
   <div className="flex gap-2 flex-wrap">
     <Badge variant="success-light" radius="full">Active</Badge>
     <Badge variant="warning-light" radius="full">Pending</Badge>
@@ -102,7 +145,16 @@ import { Badge } from '@e412/rnui-react';
 
 ### Notification Counts
 
-<Preview>
+<Preview code={`<div className="flex gap-3 items-center">
+    <div className="relative">
+      <span className="text-sm font-medium">Inbox</span>
+      <Badge size="xs" className="absolute -top-2 -right-5">3</Badge>
+    </div>
+    <div className="relative">
+      <span className="text-sm font-medium">Alerts</span>
+      <Badge size="xs" variant="destructive" className="absolute -top-2 -right-5">9</Badge>
+    </div>
+  </div>`}>
   <div className="flex gap-3 items-center">
     <div className="relative">
       <span className="text-sm font-medium">Inbox</span>
@@ -117,7 +169,12 @@ import { Badge } from '@e412/rnui-react';
 
 ### Technology Tags
 
-<Preview>
+<Preview code={`<div className="flex gap-2 flex-wrap">
+    <Badge variant="info-outline">React</Badge>
+    <Badge variant="success-outline">Node.js</Badge>
+    <Badge variant="warning-outline">TypeScript</Badge>
+    <Badge variant="focus-outline">Tailwind CSS</Badge>
+  </div>`}>
   <div className="flex gap-2 flex-wrap">
     <Badge variant="info-outline">React</Badge>
     <Badge variant="success-outline">Node.js</Badge>

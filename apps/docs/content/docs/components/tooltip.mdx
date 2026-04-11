@@ -21,7 +21,16 @@ import {
 
 ## Usage
 
-<Preview>
+<Preview code={`<TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger render={<Button variant="outline" />}>
+        Hover me
+      </TooltipTrigger>
+      <TooltipContent>
+        <p>Add to library</p>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>`}>
   <TooltipProvider>
     <Tooltip>
       <TooltipTrigger render={<Button variant="outline" />}>
@@ -36,7 +45,42 @@ import {
 
 ## Positions
 
-<Preview>
+<Preview code={`<TooltipProvider>
+    <div className="flex gap-4 items-center">
+      <Tooltip>
+        <TooltipTrigger render={<Button variant="outline" size="sm" />}>
+          Top
+        </TooltipTrigger>
+        <TooltipContent side="top">
+          <p>Tooltip on top</p>
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger render={<Button variant="outline" size="sm" />}>
+          Right
+        </TooltipTrigger>
+        <TooltipContent side="right">
+          <p>Tooltip on right</p>
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger render={<Button variant="outline" size="sm" />}>
+          Bottom
+        </TooltipTrigger>
+        <TooltipContent side="bottom">
+          <p>Tooltip on bottom</p>
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger render={<Button variant="outline" size="sm" />}>
+          Left
+        </TooltipTrigger>
+        <TooltipContent side="left">
+          <p>Tooltip on left</p>
+        </TooltipContent>
+      </Tooltip>
+    </div>
+  </TooltipProvider>`}>
   <TooltipProvider>
     <div className="flex gap-4 items-center">
       <Tooltip>
@@ -79,7 +123,42 @@ import {
 
 ### Icon Button Tooltips
 
-<Preview>
+<Preview code={`<TooltipProvider>
+    <div className="flex gap-2">
+      <Tooltip>
+        <TooltipTrigger render={<Button variant="outline" size="icon" />}>
+          <Plus className="h-4 w-4" />
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Add new item</p>
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger render={<Button variant="outline" size="icon" />}>
+          <Copy className="h-4 w-4" />
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Copy to clipboard</p>
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger render={<Button variant="outline" size="icon" />}>
+          <Settings className="h-4 w-4" />
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Settings</p>
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger render={<Button variant="destructive" size="icon" />}>
+          <Trash2 className="h-4 w-4" />
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Delete item</p>
+        </TooltipContent>
+      </Tooltip>
+    </div>
+  </TooltipProvider>`}>
   <TooltipProvider>
     <div className="flex gap-2">
       <Tooltip>
@@ -120,7 +199,21 @@ import {
 
 ### Keyboard Shortcut Hint
 
-<Preview>
+<Preview code={`<TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger render={<Button variant="outline" />}>
+        Save
+      </TooltipTrigger>
+      <TooltipContent>
+        <div className="flex items-center gap-1.5">
+          <span>Save document</span>
+          <kbd className="pointer-events-none ml-1 inline-flex h-5 items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
+            <span className="text-xs">Ctrl</span>S
+          </kbd>
+        </div>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>`}>
   <TooltipProvider>
     <Tooltip>
       <TooltipTrigger render={<Button variant="outline" />}>
@@ -140,7 +233,18 @@ import {
 
 ### Disabled Button with Tooltip
 
-<Preview>
+<Preview code={`<TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <span tabIndex={0}>
+          <Button disabled>Submit</Button>
+        </span>
+      </TooltipTrigger>
+      <TooltipContent>
+        <p>Please fill out all required fields first</p>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>`}>
   <TooltipProvider>
     <Tooltip>
       <TooltipTrigger asChild>

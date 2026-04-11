@@ -15,7 +15,16 @@ import { JsonViewer } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview>
+<Preview code={`<JsonViewer
+    title="User Data"
+    data={{
+      name: "John Doe",
+      age: 30,
+      active: true,
+      email: "john@example.com",
+      tags: ["developer", "designer"],
+    }}
+  />`}>
   <JsonViewer
     title="User Data"
     data={{
@@ -32,7 +41,20 @@ import { JsonViewer } from '@e412/rnui-react';
 
 Pass `defaultExpanded={true}` to expand all nodes on mount.
 
-<Preview>
+<Preview code={`<JsonViewer
+    title="Fully Expanded"
+    defaultExpanded={true}
+    data={{
+      name: "John Doe",
+      age: 30,
+      address: {
+        street: "123 Main St",
+        city: "Springfield",
+        country: "US",
+      },
+      tags: ["developer", "designer", "writer"],
+    }}
+  />`}>
   <JsonViewer
     title="Fully Expanded"
     defaultExpanded={true}
@@ -53,7 +75,21 @@ Pass `defaultExpanded={true}` to expand all nodes on mount.
 
 Control the default expansion depth with a number value.
 
-<Preview>
+<Preview code={`<JsonViewer
+    title="Expanded to Level 1"
+    defaultExpanded={1}
+    data={{
+      name: "John Doe",
+      address: {
+        street: "123 Main St",
+        city: "Springfield",
+      },
+      projects: [
+        { id: 1, name: "Project Alpha", status: "active" },
+        { id: 2, name: "Project Beta", status: "completed" },
+      ],
+    }}
+  />`}>
   <JsonViewer
     title="Expanded to Level 1"
     defaultExpanded={1}
@@ -73,7 +109,19 @@ Control the default expansion depth with a number value.
 
 ## Color Indent Lines
 
-<Preview>
+<Preview code={`<JsonViewer
+    title="Color Indent Lines"
+    defaultExpanded={true}
+    showColorIndent={true}
+    data={{
+      name: "John Doe",
+      address: {
+        street: "123 Main St",
+        city: "Springfield",
+      },
+      tags: ["developer", "designer"],
+    }}
+  />`}>
   <JsonViewer
     title="Color Indent Lines"
     defaultExpanded={true}
@@ -91,7 +139,16 @@ Control the default expansion depth with a number value.
 
 ## Without Line Numbers
 
-<Preview>
+<Preview code={`<JsonViewer
+    title="No Line Numbers"
+    defaultExpanded={true}
+    showLineNumbers={false}
+    data={{
+      name: "John Doe",
+      active: true,
+      email: "john@example.com",
+    }}
+  />`}>
   <JsonViewer
     title="No Line Numbers"
     defaultExpanded={true}
@@ -108,7 +165,31 @@ Control the default expansion depth with a number value.
 
 ### API Response
 
-<Preview>
+<Preview code={`<JsonViewer
+    title="API Response"
+    defaultExpanded={2}
+    data={{
+      status: 200,
+      ok: true,
+      url: "https://api.example.com/v1/users?page=1&limit=10",
+      headers: {
+        "content-type": "application/json",
+        "x-request-id": "abc-123-def",
+      },
+      body: {
+        data: [
+          { id: 1, name: "Alice", role: "admin" },
+          { id: 2, name: "Bob", role: "user" },
+        ],
+        pagination: {
+          page: 1,
+          limit: 10,
+          total: 42,
+          hasMore: true,
+        },
+      },
+    }}
+  />`}>
   <JsonViewer
     title="API Response"
     defaultExpanded={2}
@@ -138,7 +219,27 @@ Control the default expansion depth with a number value.
 
 ### Configuration Object
 
-<Preview>
+<Preview code={`<JsonViewer
+    title="App Config"
+    defaultExpanded={1}
+    data={{
+      app: {
+        name: "My Application",
+        version: "2.1.0",
+        debug: false,
+      },
+      database: {
+        host: "localhost",
+        port: 5432,
+        name: "mydb",
+      },
+      features: {
+        darkMode: true,
+        notifications: true,
+        analytics: false,
+      },
+    }}
+  />`}>
   <JsonViewer
     title="App Config"
     defaultExpanded={1}
@@ -164,7 +265,18 @@ Control the default expansion depth with a number value.
 
 ### Truncated Array
 
-<Preview>
+<Preview code={`<JsonViewer
+    title="Truncated Array (5 items shown)"
+    defaultExpanded={1}
+    truncation={{ enabled: true, itemsPerArray: 5 }}
+    data={{
+      users: Array.from({ length: 20 }, (_, i) => ({
+        id: i + 1,
+        name: \`User \${i + 1}\`,
+        email: \`user\${i + 1}@example.com\`,
+      })),
+    }}
+  />`}>
   <JsonViewer
     title="Truncated Array (5 items shown)"
     defaultExpanded={1}

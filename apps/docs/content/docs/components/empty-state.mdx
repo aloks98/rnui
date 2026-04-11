@@ -16,7 +16,11 @@ import { EmptyState } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview>
+<Preview code={`<EmptyState
+    icon={<Inbox />}
+    title="No messages"
+    description="You have no messages in your inbox. New messages will appear here."
+  />`}>
   <EmptyState
     icon={<Inbox />}
     title="No messages"
@@ -26,7 +30,17 @@ import { EmptyState } from '@e412/rnui-react';
 
 ## With Action
 
-<Preview>
+<Preview code={`<EmptyState
+    icon={<Inbox />}
+    title="No projects yet"
+    description="Get started by creating your first project."
+    action={
+      <Button size="sm">
+        <Plus className="mr-2 h-4 w-4" />
+        Create Project
+      </Button>
+    }
+  />`}>
   <EmptyState
     icon={<Inbox />}
     title="No projects yet"
@@ -44,7 +58,11 @@ import { EmptyState } from '@e412/rnui-react';
 
 ### No Search Results
 
-<Preview>
+<Preview code={`<EmptyState
+    icon={<Search />}
+    title="No results found"
+    description="Try adjusting your search terms or filters to find what you're looking for."
+  />`}>
   <EmptyState
     icon={<Search />}
     title="No results found"
@@ -54,7 +72,17 @@ import { EmptyState } from '@e412/rnui-react';
 
 ### No Documents
 
-<Preview>
+<Preview code={`<EmptyState
+    icon={<FileText />}
+    title="No documents"
+    description="Upload or create your first document to get started."
+    action={
+      <Button size="sm" variant="outline">
+        <Plus className="mr-2 h-4 w-4" />
+        New Document
+      </Button>
+    }
+  />`}>
   <EmptyState
     icon={<FileText />}
     title="No documents"
@@ -70,7 +98,11 @@ import { EmptyState } from '@e412/rnui-react';
 
 ### Empty Inbox
 
-<Preview>
+<Preview code={`<EmptyState
+    icon={<Inbox />}
+    title="All caught up!"
+    description="You have no new notifications. We'll let you know when something arrives."
+  />`}>
   <EmptyState
     icon={<Inbox />}
     title="All caught up!"

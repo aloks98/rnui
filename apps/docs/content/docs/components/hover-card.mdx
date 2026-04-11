@@ -20,7 +20,20 @@ import {
 
 ## Usage
 
-<Preview>
+<Preview code={`<HoverCard>
+    <HoverCardTrigger render={<Button variant="link" />}>
+      @nextjs
+    </HoverCardTrigger>
+    <HoverCardContent className="w-80">
+      <div className="space-y-1">
+        <h4 className="text-sm font-semibold">@nextjs</h4>
+        <p className="text-sm text-muted-foreground">
+          The React Framework for the Web. Created and maintained by @vercel.
+        </p>
+        <p className="text-xs text-muted-foreground">Joined December 2021</p>
+      </div>
+    </HoverCardContent>
+  </HoverCard>`}>
   <HoverCard>
     <HoverCardTrigger render={<Button variant="link" />}>
       @nextjs
@@ -41,7 +54,29 @@ import {
 
 ### User Profile Preview
 
-<Preview>
+<Preview code={`<HoverCard>
+    <HoverCardTrigger render={<Button variant="link" />}>
+      @shadcn
+    </HoverCardTrigger>
+    <HoverCardContent className="w-80">
+      <div className="flex gap-4">
+        <Avatar>
+          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarFallback>SC</AvatarFallback>
+        </Avatar>
+        <div className="space-y-1">
+          <h4 className="text-sm font-semibold">@shadcn</h4>
+          <p className="text-sm text-muted-foreground">
+            Creator of shadcn/ui. Building open-source tools for developers.
+          </p>
+          <div className="flex items-center gap-1 pt-1">
+            <CalendarDays className="h-3 w-3 text-muted-foreground" />
+            <span className="text-xs text-muted-foreground">Joined March 2020</span>
+          </div>
+        </div>
+      </div>
+    </HoverCardContent>
+  </HoverCard>`}>
   <HoverCard>
     <HoverCardTrigger render={<Button variant="link" />}>
       @shadcn
@@ -69,7 +104,24 @@ import {
 
 ### Link Preview
 
-<Preview>
+<Preview code={`<p className="text-sm text-muted-foreground">
+    Read more about the project on{' '}
+    <HoverCard>
+      <HoverCardTrigger render={<Button variant="link" className="h-auto p-0" />}>
+        our documentation
+      </HoverCardTrigger>
+      <HoverCardContent className="w-72">
+        <div className="space-y-2">
+          <h4 className="text-sm font-semibold">Documentation</h4>
+          <p className="text-sm text-muted-foreground">
+            Comprehensive guides and API references for all components.
+          </p>
+          <p className="text-xs text-muted-foreground">docs.example.com</p>
+        </div>
+      </HoverCardContent>
+    </HoverCard>
+    .
+  </p>`}>
   <p className="text-sm text-muted-foreground">
     Read more about the project on{' '}
     <HoverCard>
@@ -92,7 +144,26 @@ import {
 
 ### Repository Card
 
-<Preview>
+<Preview code={`<HoverCard>
+    <HoverCardTrigger render={<Button variant="link" />}>
+      rnui-react
+    </HoverCardTrigger>
+    <HoverCardContent className="w-80">
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
+          <h4 className="text-sm font-semibold">@e412/rnui-react</h4>
+          <span className="rounded-full border px-2 py-0.5 text-xs text-muted-foreground">Public</span>
+        </div>
+        <p className="text-sm text-muted-foreground">
+          A modern React component library with Tailwind CSS.
+        </p>
+        <div className="flex gap-4 text-xs text-muted-foreground">
+          <span>TypeScript</span>
+          <span>MIT License</span>
+        </div>
+      </div>
+    </HoverCardContent>
+  </HoverCard>`}>
   <HoverCard>
     <HoverCardTrigger render={<Button variant="link" />}>
       rnui-react

@@ -23,7 +23,21 @@ import {
 
 ## Usage
 
-<Preview>
+<Preview code={`<Breadcrumb>
+    <BreadcrumbList>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">Home</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">Components</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+      </BreadcrumbItem>
+    </BreadcrumbList>
+  </Breadcrumb>`}>
   <Breadcrumb>
     <BreadcrumbList>
       <BreadcrumbItem>
@@ -45,7 +59,21 @@ import {
 
 Use `BreadcrumbEllipsis` to collapse intermediate levels when the hierarchy is deep.
 
-<Preview>
+<Preview code={`<Breadcrumb>
+    <BreadcrumbList>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">Home</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbEllipsis />
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbPage>Current Page</BreadcrumbPage>
+      </BreadcrumbItem>
+    </BreadcrumbList>
+  </Breadcrumb>`}>
   <Breadcrumb>
     <BreadcrumbList>
       <BreadcrumbItem>
@@ -67,7 +95,25 @@ Use `BreadcrumbEllipsis` to collapse intermediate levels when the hierarchy is d
 
 ### E-commerce Navigation
 
-<Preview>
+<Preview code={`<Breadcrumb>
+    <BreadcrumbList>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">Shop</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">Electronics</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">Laptops</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbPage>MacBook Pro 16"</BreadcrumbPage>
+      </BreadcrumbItem>
+    </BreadcrumbList>
+  </Breadcrumb>`}>
   <Breadcrumb>
     <BreadcrumbList>
       <BreadcrumbItem>
@@ -91,7 +137,21 @@ Use `BreadcrumbEllipsis` to collapse intermediate levels when the hierarchy is d
 
 ### Documentation Navigation
 
-<Preview>
+<Preview code={`<Breadcrumb>
+    <BreadcrumbList>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">Docs</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">Getting Started</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbPage>Installation</BreadcrumbPage>
+      </BreadcrumbItem>
+    </BreadcrumbList>
+  </Breadcrumb>`}>
   <Breadcrumb>
     <BreadcrumbList>
       <BreadcrumbItem>
@@ -111,7 +171,25 @@ Use `BreadcrumbEllipsis` to collapse intermediate levels when the hierarchy is d
 
 ### Deep Hierarchy with Ellipsis
 
-<Preview>
+<Preview code={`<Breadcrumb>
+    <BreadcrumbList>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">Dashboard</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbEllipsis />
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#">Projects</BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbSeparator />
+      <BreadcrumbItem>
+        <BreadcrumbPage>Settings</BreadcrumbPage>
+      </BreadcrumbItem>
+    </BreadcrumbList>
+  </Breadcrumb>`}>
   <Breadcrumb>
     <BreadcrumbList>
       <BreadcrumbItem>

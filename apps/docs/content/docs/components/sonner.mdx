@@ -19,19 +19,7 @@ import { toast } from 'sonner';
 
 Place the `<Toaster />` component in your root layout. Then use the `toast()` function to trigger notifications.
 
-<Preview code={`<div>
-    <Toaster />
-    <Button
-      variant="outline"
-      onClick={() =>
-        toast('Event has been created', {
-          description: 'Sunday, December 03, 2023 at 9:00 AM',
-        })
-      }
-    >
-      Show Toast
-    </Button>
-  </div>`}>
+<Preview>
   <div>
     <Toaster />
     <Button
@@ -47,41 +35,25 @@ Place the `<Toaster />` component in your root layout. Then use the `toast()` fu
   </div>
 </Preview>
 
-## Variants
-
-<Preview code={`<div className="flex gap-3 flex-wrap">
+```tsx
+<div>
     <Toaster />
     <Button
       variant="outline"
-      onClick={() => toast('Default notification')}
+      onClick={() =>
+        toast('Event has been created', {
+          description: 'Sunday, December 03, 2023 at 9:00 AM',
+        })
+      }
     >
-      Default
+      Show Toast
     </Button>
-    <Button
-      variant="outline"
-      onClick={() => toast.success('Changes saved successfully')}
-    >
-      Success
-    </Button>
-    <Button
-      variant="outline"
-      onClick={() => toast.error('Something went wrong')}
-    >
-      Error
-    </Button>
-    <Button
-      variant="outline"
-      onClick={() => toast.info('New version available')}
-    >
-      Info
-    </Button>
-    <Button
-      variant="outline"
-      onClick={() => toast.warning('Storage almost full')}
-    >
-      Warning
-    </Button>
-  </div>`}>
+  </div>
+```
+
+## Variants
+
+<Preview>
   <div className="flex gap-3 flex-wrap">
     <Toaster />
     <Button
@@ -117,23 +89,47 @@ Place the `<Toaster />` component in your root layout. Then use the `toast()` fu
   </div>
 </Preview>
 
+```tsx
+<div className="flex gap-3 flex-wrap">
+    <Toaster />
+    <Button
+      variant="outline"
+      onClick={() => toast('Default notification')}
+    >
+      Default
+    </Button>
+    <Button
+      variant="outline"
+      onClick={() => toast.success('Changes saved successfully')}
+    >
+      Success
+    </Button>
+    <Button
+      variant="outline"
+      onClick={() => toast.error('Something went wrong')}
+    >
+      Error
+    </Button>
+    <Button
+      variant="outline"
+      onClick={() => toast.info('New version available')}
+    >
+      Info
+    </Button>
+    <Button
+      variant="outline"
+      onClick={() => toast.warning('Storage almost full')}
+    >
+      Warning
+    </Button>
+  </div>
+```
+
 ## Examples
 
 ### With Description
 
-<Preview code={`<div>
-    <Toaster />
-    <Button
-      variant="outline"
-      onClick={() =>
-        toast.success('Profile updated', {
-          description: 'Your changes have been saved and will take effect immediately.',
-        })
-      }
-    >
-      Toast with Description
-    </Button>
-  </div>`}>
+<Preview>
   <div>
     <Toaster />
     <Button
@@ -148,25 +144,26 @@ Place the `<Toaster />` component in your root layout. Then use the `toast()` fu
     </Button>
   </div>
 </Preview>
+
+```tsx
+<div>
+    <Toaster />
+    <Button
+      variant="outline"
+      onClick={() =>
+        toast.success('Profile updated', {
+          description: 'Your changes have been saved and will take effect immediately.',
+        })
+      }
+    >
+      Toast with Description
+    </Button>
+  </div>
+```
 
 ### With Action
 
-<Preview code={`<div>
-    <Toaster />
-    <Button
-      variant="outline"
-      onClick={() =>
-        toast('File deleted', {
-          action: {
-            label: 'Undo',
-            onClick: () => toast('File restored'),
-          },
-        })
-      }
-    >
-      Toast with Action
-    </Button>
-  </div>`}>
+<Preview>
   <div>
     <Toaster />
     <Button
@@ -184,27 +181,29 @@ Place the `<Toaster />` component in your root layout. Then use the `toast()` fu
     </Button>
   </div>
 </Preview>
+
+```tsx
+<div>
+    <Toaster />
+    <Button
+      variant="outline"
+      onClick={() =>
+        toast('File deleted', {
+          action: {
+            label: 'Undo',
+            onClick: () => toast('File restored'),
+          },
+        })
+      }
+    >
+      Toast with Action
+    </Button>
+  </div>
+```
 
 ### Promise Toast
 
-<Preview code={`<div>
-    <Toaster />
-    <Button
-      variant="outline"
-      onClick={() =>
-        toast.promise(
-          new Promise((resolve) => setTimeout(resolve, 2000)),
-          {
-            loading: 'Saving changes...',
-            success: 'Changes saved!',
-            error: 'Failed to save changes',
-          }
-        )
-      }
-    >
-      Promise Toast
-    </Button>
-  </div>`}>
+<Preview>
   <div>
     <Toaster />
     <Button
@@ -224,22 +223,31 @@ Place the `<Toaster />` component in your root layout. Then use the `toast()` fu
     </Button>
   </div>
 </Preview>
+
+```tsx
+<div>
+    <Toaster />
+    <Button
+      variant="outline"
+      onClick={() =>
+        toast.promise(
+          new Promise((resolve) => setTimeout(resolve, 2000)),
+          {
+            loading: 'Saving changes...',
+            success: 'Changes saved!',
+            error: 'Failed to save changes',
+          }
+        )
+      }
+    >
+      Promise Toast
+    </Button>
+  </div>
+```
 
 ### Error with Description
 
-<Preview code={`<div>
-    <Toaster />
-    <Button
-      variant="outline"
-      onClick={() =>
-        toast.error('Upload failed', {
-          description: 'The file exceeds the maximum size of 10MB. Please try a smaller file.',
-        })
-      }
-    >
-      Error Toast
-    </Button>
-  </div>`}>
+<Preview>
   <div>
     <Toaster />
     <Button
@@ -254,3 +262,19 @@ Place the `<Toaster />` component in your root layout. Then use the `toast()` fu
     </Button>
   </div>
 </Preview>
+
+```tsx
+<div>
+    <Toaster />
+    <Button
+      variant="outline"
+      onClick={() =>
+        toast.error('Upload failed', {
+          description: 'The file exceeds the maximum size of 10MB. Please try a smaller file.',
+        })
+      }
+    >
+      Error Toast
+    </Button>
+  </div>
+```

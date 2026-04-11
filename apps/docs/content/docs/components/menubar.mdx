@@ -45,41 +45,7 @@ import {
 
 ## Usage
 
-<Preview code={`<Menubar>
-    <MenubarMenu>
-      <MenubarTrigger>File</MenubarTrigger>
-      <MenubarContent>
-        <MenubarItem>
-          New Tab <MenubarShortcut>Ctrl+T</MenubarShortcut>
-        </MenubarItem>
-        <MenubarItem>New Window</MenubarItem>
-        <MenubarSeparator />
-        <MenubarItem>Print</MenubarItem>
-      </MenubarContent>
-    </MenubarMenu>
-    <MenubarMenu>
-      <MenubarTrigger>Edit</MenubarTrigger>
-      <MenubarContent>
-        <MenubarItem>
-          Undo <MenubarShortcut>Ctrl+Z</MenubarShortcut>
-        </MenubarItem>
-        <MenubarItem>
-          Redo <MenubarShortcut>Ctrl+Y</MenubarShortcut>
-        </MenubarItem>
-        <MenubarSeparator />
-        <MenubarItem>Cut</MenubarItem>
-        <MenubarItem>Copy</MenubarItem>
-        <MenubarItem>Paste</MenubarItem>
-      </MenubarContent>
-    </MenubarMenu>
-    <MenubarMenu>
-      <MenubarTrigger>View</MenubarTrigger>
-      <MenubarContent>
-        <MenubarItem>Zoom In</MenubarItem>
-        <MenubarItem>Zoom Out</MenubarItem>
-      </MenubarContent>
-    </MenubarMenu>
-  </Menubar>`}>
+<Preview>
   <Menubar>
     <MenubarMenu>
       <MenubarTrigger>File</MenubarTrigger>
@@ -116,36 +82,48 @@ import {
     </MenubarMenu>
   </Menubar>
 </Preview>
+
+```tsx
+<Menubar>
+    <MenubarMenu>
+      <MenubarTrigger>File</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          New Tab <MenubarShortcut>Ctrl+T</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>New Window</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>Print</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>Edit</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          Undo <MenubarShortcut>Ctrl+Z</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Redo <MenubarShortcut>Ctrl+Y</MenubarShortcut>
+        </MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>Cut</MenubarItem>
+        <MenubarItem>Copy</MenubarItem>
+        <MenubarItem>Paste</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>View</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>Zoom In</MenubarItem>
+        <MenubarItem>Zoom Out</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+```
 
 ## With Sub-menus
 
-<Preview code={`<Menubar>
-    <MenubarMenu>
-      <MenubarTrigger>File</MenubarTrigger>
-      <MenubarContent>
-        <MenubarItem>
-          New File <MenubarShortcut>Ctrl+N</MenubarShortcut>
-        </MenubarItem>
-        <MenubarSub>
-          <MenubarSubTrigger>Open Recent</MenubarSubTrigger>
-          <MenubarSubContent>
-            <MenubarItem>project-alpha.ts</MenubarItem>
-            <MenubarItem>dashboard.tsx</MenubarItem>
-            <MenubarItem>settings.json</MenubarItem>
-            <MenubarSeparator />
-            <MenubarItem>Clear Recent</MenubarItem>
-          </MenubarSubContent>
-        </MenubarSub>
-        <MenubarSeparator />
-        <MenubarItem>
-          Save <MenubarShortcut>Ctrl+S</MenubarShortcut>
-        </MenubarItem>
-        <MenubarItem>Save As...</MenubarItem>
-        <MenubarSeparator />
-        <MenubarItem>Exit</MenubarItem>
-      </MenubarContent>
-    </MenubarMenu>
-  </Menubar>`}>
+<Preview>
   <Menubar>
     <MenubarMenu>
       <MenubarTrigger>File</MenubarTrigger>
@@ -174,79 +152,42 @@ import {
     </MenubarMenu>
   </Menubar>
 </Preview>
+
+```tsx
+<Menubar>
+    <MenubarMenu>
+      <MenubarTrigger>File</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          New File <MenubarShortcut>Ctrl+N</MenubarShortcut>
+        </MenubarItem>
+        <MenubarSub>
+          <MenubarSubTrigger>Open Recent</MenubarSubTrigger>
+          <MenubarSubContent>
+            <MenubarItem>project-alpha.ts</MenubarItem>
+            <MenubarItem>dashboard.tsx</MenubarItem>
+            <MenubarItem>settings.json</MenubarItem>
+            <MenubarSeparator />
+            <MenubarItem>Clear Recent</MenubarItem>
+          </MenubarSubContent>
+        </MenubarSub>
+        <MenubarSeparator />
+        <MenubarItem>
+          Save <MenubarShortcut>Ctrl+S</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>Save As...</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>Exit</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+```
 
 ## Examples
 
 ### Code Editor Menubar
 
-<Preview code={`<Menubar>
-    <MenubarMenu>
-      <MenubarTrigger>File</MenubarTrigger>
-      <MenubarContent>
-        <MenubarItem>
-          New File <MenubarShortcut>Ctrl+N</MenubarShortcut>
-        </MenubarItem>
-        <MenubarItem>
-          Open File <MenubarShortcut>Ctrl+O</MenubarShortcut>
-        </MenubarItem>
-        <MenubarItem>
-          Save <MenubarShortcut>Ctrl+S</MenubarShortcut>
-        </MenubarItem>
-        <MenubarSeparator />
-        <MenubarItem>
-          Close Tab <MenubarShortcut>Ctrl+W</MenubarShortcut>
-        </MenubarItem>
-      </MenubarContent>
-    </MenubarMenu>
-    <MenubarMenu>
-      <MenubarTrigger>Edit</MenubarTrigger>
-      <MenubarContent>
-        <MenubarItem>
-          Undo <MenubarShortcut>Ctrl+Z</MenubarShortcut>
-        </MenubarItem>
-        <MenubarItem>
-          Redo <MenubarShortcut>Ctrl+Shift+Z</MenubarShortcut>
-        </MenubarItem>
-        <MenubarSeparator />
-        <MenubarItem>
-          Find <MenubarShortcut>Ctrl+F</MenubarShortcut>
-        </MenubarItem>
-        <MenubarItem>
-          Replace <MenubarShortcut>Ctrl+H</MenubarShortcut>
-        </MenubarItem>
-      </MenubarContent>
-    </MenubarMenu>
-    <MenubarMenu>
-      <MenubarTrigger>View</MenubarTrigger>
-      <MenubarContent>
-        <MenubarItem>
-          Command Palette <MenubarShortcut>Ctrl+Shift+P</MenubarShortcut>
-        </MenubarItem>
-        <MenubarSeparator />
-        <MenubarItem>Minimap</MenubarItem>
-        <MenubarItem>Word Wrap</MenubarItem>
-        <MenubarSeparator />
-        <MenubarItem>
-          Zoom In <MenubarShortcut>Ctrl+=</MenubarShortcut>
-        </MenubarItem>
-        <MenubarItem>
-          Zoom Out <MenubarShortcut>Ctrl+-</MenubarShortcut>
-        </MenubarItem>
-      </MenubarContent>
-    </MenubarMenu>
-    <MenubarMenu>
-      <MenubarTrigger>Terminal</MenubarTrigger>
-      <MenubarContent>
-        <MenubarItem>
-          New Terminal <MenubarShortcut>Ctrl+\`</MenubarShortcut>
-        </MenubarItem>
-        <MenubarItem>Split Terminal</MenubarItem>
-        <MenubarSeparator />
-        <MenubarItem>Run Task</MenubarItem>
-        <MenubarItem>Run Build Task</MenubarItem>
-      </MenubarContent>
-    </MenubarMenu>
-  </Menubar>`}>
+<Preview>
   <Menubar>
     <MenubarMenu>
       <MenubarTrigger>File</MenubarTrigger>
@@ -317,22 +258,23 @@ import {
   </Menubar>
 </Preview>
 
-### Browser Menubar
-
-<Preview code={`<Menubar>
+```tsx
+<Menubar>
     <MenubarMenu>
       <MenubarTrigger>File</MenubarTrigger>
       <MenubarContent>
         <MenubarItem>
-          New Tab <MenubarShortcut>Ctrl+T</MenubarShortcut>
+          New File <MenubarShortcut>Ctrl+N</MenubarShortcut>
         </MenubarItem>
         <MenubarItem>
-          New Window <MenubarShortcut>Ctrl+N</MenubarShortcut>
+          Open File <MenubarShortcut>Ctrl+O</MenubarShortcut>
         </MenubarItem>
-        <MenubarItem>New Incognito Window</MenubarItem>
+        <MenubarItem>
+          Save <MenubarShortcut>Ctrl+S</MenubarShortcut>
+        </MenubarItem>
         <MenubarSeparator />
         <MenubarItem>
-          Print <MenubarShortcut>Ctrl+P</MenubarShortcut>
+          Close Tab <MenubarShortcut>Ctrl+W</MenubarShortcut>
         </MenubarItem>
       </MenubarContent>
     </MenubarMenu>
@@ -343,33 +285,53 @@ import {
           Undo <MenubarShortcut>Ctrl+Z</MenubarShortcut>
         </MenubarItem>
         <MenubarItem>
-          Redo <MenubarShortcut>Ctrl+Y</MenubarShortcut>
+          Redo <MenubarShortcut>Ctrl+Shift+Z</MenubarShortcut>
         </MenubarItem>
         <MenubarSeparator />
         <MenubarItem>
-          Cut <MenubarShortcut>Ctrl+X</MenubarShortcut>
+          Find <MenubarShortcut>Ctrl+F</MenubarShortcut>
         </MenubarItem>
         <MenubarItem>
-          Copy <MenubarShortcut>Ctrl+C</MenubarShortcut>
-        </MenubarItem>
-        <MenubarItem>
-          Paste <MenubarShortcut>Ctrl+V</MenubarShortcut>
+          Replace <MenubarShortcut>Ctrl+H</MenubarShortcut>
         </MenubarItem>
       </MenubarContent>
     </MenubarMenu>
     <MenubarMenu>
-      <MenubarTrigger>Bookmarks</MenubarTrigger>
+      <MenubarTrigger>View</MenubarTrigger>
       <MenubarContent>
         <MenubarItem>
-          Bookmark This Page <MenubarShortcut>Ctrl+D</MenubarShortcut>
+          Command Palette <MenubarShortcut>Ctrl+Shift+P</MenubarShortcut>
         </MenubarItem>
-        <MenubarItem>Show All Bookmarks</MenubarItem>
         <MenubarSeparator />
-        <MenubarItem>Bookmarks Bar</MenubarItem>
-        <MenubarItem>Other Bookmarks</MenubarItem>
+        <MenubarItem>Minimap</MenubarItem>
+        <MenubarItem>Word Wrap</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>
+          Zoom In <MenubarShortcut>Ctrl+=</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Zoom Out <MenubarShortcut>Ctrl+-</MenubarShortcut>
+        </MenubarItem>
       </MenubarContent>
     </MenubarMenu>
-  </Menubar>`}>
+    <MenubarMenu>
+      <MenubarTrigger>Terminal</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          New Terminal <MenubarShortcut>Ctrl+\`</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>Split Terminal</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>Run Task</MenubarItem>
+        <MenubarItem>Run Build Task</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+```
+
+### Browser Menubar
+
+<Preview>
   <Menubar>
     <MenubarMenu>
       <MenubarTrigger>File</MenubarTrigger>
@@ -422,31 +384,64 @@ import {
     </MenubarMenu>
   </Menubar>
 </Preview>
+
+```tsx
+<Menubar>
+    <MenubarMenu>
+      <MenubarTrigger>File</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          New Tab <MenubarShortcut>Ctrl+T</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          New Window <MenubarShortcut>Ctrl+N</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>New Incognito Window</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>
+          Print <MenubarShortcut>Ctrl+P</MenubarShortcut>
+        </MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>Edit</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          Undo <MenubarShortcut>Ctrl+Z</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Redo <MenubarShortcut>Ctrl+Y</MenubarShortcut>
+        </MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>
+          Cut <MenubarShortcut>Ctrl+X</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Copy <MenubarShortcut>Ctrl+C</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Paste <MenubarShortcut>Ctrl+V</MenubarShortcut>
+        </MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>Bookmarks</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          Bookmark This Page <MenubarShortcut>Ctrl+D</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>Show All Bookmarks</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>Bookmarks Bar</MenubarItem>
+        <MenubarItem>Other Bookmarks</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+```
 
 ### Minimal Menubar
 
-<Preview code={`<Menubar>
-    <MenubarMenu>
-      <MenubarTrigger>Account</MenubarTrigger>
-      <MenubarContent>
-        <MenubarLabel>Signed in as user@email.com</MenubarLabel>
-        <MenubarSeparator />
-        <MenubarItem>Profile</MenubarItem>
-        <MenubarItem>Settings</MenubarItem>
-        <MenubarSeparator />
-        <MenubarItem>Sign out</MenubarItem>
-      </MenubarContent>
-    </MenubarMenu>
-    <MenubarMenu>
-      <MenubarTrigger>Help</MenubarTrigger>
-      <MenubarContent>
-        <MenubarItem>Documentation</MenubarItem>
-        <MenubarItem>Release Notes</MenubarItem>
-        <MenubarSeparator />
-        <MenubarItem>About</MenubarItem>
-      </MenubarContent>
-    </MenubarMenu>
-  </Menubar>`}>
+<Preview>
   <Menubar>
     <MenubarMenu>
       <MenubarTrigger>Account</MenubarTrigger>
@@ -470,3 +465,28 @@ import {
     </MenubarMenu>
   </Menubar>
 </Preview>
+
+```tsx
+<Menubar>
+    <MenubarMenu>
+      <MenubarTrigger>Account</MenubarTrigger>
+      <MenubarContent>
+        <MenubarLabel>Signed in as user@email.com</MenubarLabel>
+        <MenubarSeparator />
+        <MenubarItem>Profile</MenubarItem>
+        <MenubarItem>Settings</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>Sign out</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>Help</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>Documentation</MenubarItem>
+        <MenubarItem>Release Notes</MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem>About</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+```

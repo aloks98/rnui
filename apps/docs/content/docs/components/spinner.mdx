@@ -15,20 +15,19 @@ import { Spinner } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview code={`<Spinner />`}>
+<Preview>
   <Spinner />
 </Preview>
+
+```tsx
+<Spinner />
+```
 
 ## Sizes
 
 Control the size using Tailwind's `size-*` utility classes.
 
-<Preview code={`<div className="flex gap-4 items-center">
-    <Spinner className="size-3" />
-    <Spinner />
-    <Spinner className="size-6" />
-    <Spinner className="size-8" />
-  </div>`}>
+<Preview>
   <div className="flex gap-4 items-center">
     <Spinner className="size-3" />
     <Spinner />
@@ -37,56 +36,68 @@ Control the size using Tailwind's `size-*` utility classes.
   </div>
 </Preview>
 
+```tsx
+<div className="flex gap-4 items-center">
+    <Spinner className="size-3" />
+    <Spinner />
+    <Spinner className="size-6" />
+    <Spinner className="size-8" />
+  </div>
+```
+
 ## Examples
 
 ### Loading Button
 
-<Preview code={`<Button disabled>
-    <Spinner />
-    Loading...
-  </Button>`}>
+<Preview>
   <Button disabled>
     <Spinner />
     Loading...
   </Button>
 </Preview>
 
+```tsx
+<Button disabled>
+    <Spinner />
+    Loading...
+  </Button>
+```
+
 ### Loading State with Text
 
-<Preview code={`<div className="flex items-center gap-2 text-sm text-muted-foreground">
-    <Spinner />
-    <span>Loading data...</span>
-  </div>`}>
+<Preview>
   <div className="flex items-center gap-2 text-sm text-muted-foreground">
     <Spinner />
     <span>Loading data...</span>
   </div>
 </Preview>
 
+```tsx
+<div className="flex items-center gap-2 text-sm text-muted-foreground">
+    <Spinner />
+    <span>Loading data...</span>
+  </div>
+```
+
 ### Full Page Loading
 
-<Preview code={`<div className="flex flex-col items-center justify-center gap-3 py-12">
-    <Spinner className="size-8" />
-    <p className="text-sm text-muted-foreground">Fetching your dashboard...</p>
-  </div>`}>
+<Preview>
   <div className="flex flex-col items-center justify-center gap-3 py-12">
     <Spinner className="size-8" />
     <p className="text-sm text-muted-foreground">Fetching your dashboard...</p>
   </div>
 </Preview>
 
+```tsx
+<div className="flex flex-col items-center justify-center gap-3 py-12">
+    <Spinner className="size-8" />
+    <p className="text-sm text-muted-foreground">Fetching your dashboard...</p>
+  </div>
+```
+
 ### Inline Loading
 
-<Preview code={`<div className="flex items-center gap-4">
-    <Button variant="outline" disabled>
-      <Spinner className="size-3" />
-      Saving...
-    </Button>
-    <Button variant="outline" disabled>
-      <Spinner className="size-3" />
-      Uploading...
-    </Button>
-  </div>`}>
+<Preview>
   <div className="flex items-center gap-4">
     <Button variant="outline" disabled>
       <Spinner className="size-3" />
@@ -98,3 +109,16 @@ Control the size using Tailwind's `size-*` utility classes.
     </Button>
   </div>
 </Preview>
+
+```tsx
+<div className="flex items-center gap-4">
+    <Button variant="outline" disabled>
+      <Spinner className="size-3" />
+      Saving...
+    </Button>
+    <Button variant="outline" disabled>
+      <Spinner className="size-3" />
+      Uploading...
+    </Button>
+  </div>
+```

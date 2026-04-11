@@ -22,18 +22,7 @@ import {
 
 ## Usage
 
-<Preview code={`<Card className="w-[350px]">
-  <CardHeader>
-    <CardTitle>Card Title</CardTitle>
-    <CardDescription>Card description goes here.</CardDescription>
-  </CardHeader>
-  <CardContent>
-    <p>Card content goes here.</p>
-  </CardContent>
-  <CardFooter>
-    <Button>Action</Button>
-  </CardFooter>
-</Card>`}>
+<Preview>
   <Card className="w-[350px]">
     <CardHeader>
       <CardTitle>Card Title</CardTitle>
@@ -48,17 +37,28 @@ import {
   </Card>
 </Preview>
 
+```tsx
+<Card className="w-[350px]">
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card description goes here.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Card content goes here.</p>
+  </CardContent>
+  <CardFooter>
+    <Button>Action</Button>
+  </CardFooter>
+</Card>
+```
+
 ## Variants
 
 ### Simple
 
 A card with content only, no header or footer.
 
-<Preview code={`<Card className="w-[350px]">
-  <CardContent className="pt-6">
-    <p>A simple card with just content.</p>
-  </CardContent>
-</Card>`}>
+<Preview>
   <Card className="w-[350px]">
     <CardContent className="pt-6">
       <p>A simple card with just content.</p>
@@ -66,16 +66,19 @@ A card with content only, no header or footer.
   </Card>
 </Preview>
 
+```tsx
+<Card className="w-[350px]">
+  <CardContent className="pt-6">
+    <p>A simple card with just content.</p>
+  </CardContent>
+</Card>
+```
+
 ### Header Only
 
 A card with only a header section.
 
-<Preview code={`<Card className="w-[350px]">
-  <CardHeader>
-    <CardTitle>Notifications</CardTitle>
-    <CardDescription>You have 3 unread messages.</CardDescription>
-  </CardHeader>
-</Card>`}>
+<Preview>
   <Card className="w-[350px]">
     <CardHeader>
       <CardTitle>Notifications</CardTitle>
@@ -84,32 +87,20 @@ A card with only a header section.
   </Card>
 </Preview>
 
+```tsx
+<Card className="w-[350px]">
+  <CardHeader>
+    <CardTitle>Notifications</CardTitle>
+    <CardDescription>You have 3 unread messages.</CardDescription>
+  </CardHeader>
+</Card>
+```
+
 ## Examples
 
 ### Profile Card
 
-<Preview code={`<Card className="w-[350px]">
-  <CardHeader>
-    <div className="flex items-center gap-4">
-      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted text-lg font-semibold">
-        JD
-      </div>
-      <div>
-        <CardTitle>Jane Doe</CardTitle>
-        <CardDescription>Software Engineer</CardDescription>
-      </div>
-    </div>
-  </CardHeader>
-  <CardContent>
-    <p className="text-sm text-muted-foreground">
-      Full-stack developer with 5 years of experience building web applications with React and Node.js.
-    </p>
-  </CardContent>
-  <CardFooter className="flex justify-between">
-    <Button variant="outline">Message</Button>
-    <Button>View Profile</Button>
-  </CardFooter>
-</Card>`}>
+<Preview>
   <Card className="w-[350px]">
     <CardHeader>
       <div className="flex items-center gap-4">
@@ -134,36 +125,34 @@ A card with only a header section.
   </Card>
 </Preview>
 
+```tsx
+<Card className="w-[350px]">
+  <CardHeader>
+    <div className="flex items-center gap-4">
+      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted text-lg font-semibold">
+        JD
+      </div>
+      <div>
+        <CardTitle>Jane Doe</CardTitle>
+        <CardDescription>Software Engineer</CardDescription>
+      </div>
+    </div>
+  </CardHeader>
+  <CardContent>
+    <p className="text-sm text-muted-foreground">
+      Full-stack developer with 5 years of experience building web applications with React and Node.js.
+    </p>
+  </CardContent>
+  <CardFooter className="flex justify-between">
+    <Button variant="outline">Message</Button>
+    <Button>View Profile</Button>
+  </CardFooter>
+</Card>
+```
+
 ### Pricing Card
 
-<Preview code={`<Card className="w-[300px]">
-  <CardHeader>
-    <CardTitle>Pro Plan</CardTitle>
-    <CardDescription>For growing teams</CardDescription>
-  </CardHeader>
-  <CardContent className="space-y-4">
-    <div className="text-3xl font-bold">
-      $29<span className="text-sm font-normal text-muted-foreground">/month</span>
-    </div>
-    <ul className="space-y-2 text-sm">
-      <li className="flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
-        Unlimited projects
-      </li>
-      <li className="flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
-        Priority support
-      </li>
-      <li className="flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
-        Advanced analytics
-      </li>
-    </ul>
-  </CardContent>
-  <CardFooter>
-    <Button className="w-full">Get Started</Button>
-  </CardFooter>
-</Card>`}>
+<Preview>
   <Card className="w-[300px]">
     <CardHeader>
       <CardTitle>Pro Plan</CardTitle>
@@ -194,40 +183,40 @@ A card with only a header section.
   </Card>
 </Preview>
 
-### Notification Card
-
-<Preview code={`<Card className="w-[380px]">
+```tsx
+<Card className="w-[300px]">
   <CardHeader>
-    <CardTitle>Notifications</CardTitle>
-    <CardDescription>You have 3 unread messages.</CardDescription>
+    <CardTitle>Pro Plan</CardTitle>
+    <CardDescription>For growing teams</CardDescription>
   </CardHeader>
   <CardContent className="space-y-4">
-    <div className="flex items-start gap-3">
-      <div className="mt-0.5 h-2 w-2 rounded-full bg-blue-500" />
-      <div>
-        <p className="text-sm font-medium">New comment on your post</p>
-        <p className="text-xs text-muted-foreground">2 minutes ago</p>
-      </div>
+    <div className="text-3xl font-bold">
+      $29<span className="text-sm font-normal text-muted-foreground">/month</span>
     </div>
-    <div className="flex items-start gap-3">
-      <div className="mt-0.5 h-2 w-2 rounded-full bg-blue-500" />
-      <div>
-        <p className="text-sm font-medium">You have a new follower</p>
-        <p className="text-xs text-muted-foreground">1 hour ago</p>
-      </div>
-    </div>
-    <div className="flex items-start gap-3">
-      <div className="mt-0.5 h-2 w-2 rounded-full bg-transparent" />
-      <div>
-        <p className="text-sm font-medium">Your report is ready</p>
-        <p className="text-xs text-muted-foreground">Yesterday</p>
-      </div>
-    </div>
+    <ul className="space-y-2 text-sm">
+      <li className="flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+        Unlimited projects
+      </li>
+      <li className="flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+        Priority support
+      </li>
+      <li className="flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+        Advanced analytics
+      </li>
+    </ul>
   </CardContent>
   <CardFooter>
-    <Button variant="outline" className="w-full">Mark all as read</Button>
+    <Button className="w-full">Get Started</Button>
   </CardFooter>
-</Card>`}>
+</Card>
+```
+
+### Notification Card
+
+<Preview>
   <Card className="w-[380px]">
     <CardHeader>
       <CardTitle>Notifications</CardTitle>
@@ -262,37 +251,44 @@ A card with only a header section.
   </Card>
 </Preview>
 
+```tsx
+<Card className="w-[380px]">
+  <CardHeader>
+    <CardTitle>Notifications</CardTitle>
+    <CardDescription>You have 3 unread messages.</CardDescription>
+  </CardHeader>
+  <CardContent className="space-y-4">
+    <div className="flex items-start gap-3">
+      <div className="mt-0.5 h-2 w-2 rounded-full bg-blue-500" />
+      <div>
+        <p className="text-sm font-medium">New comment on your post</p>
+        <p className="text-xs text-muted-foreground">2 minutes ago</p>
+      </div>
+    </div>
+    <div className="flex items-start gap-3">
+      <div className="mt-0.5 h-2 w-2 rounded-full bg-blue-500" />
+      <div>
+        <p className="text-sm font-medium">You have a new follower</p>
+        <p className="text-xs text-muted-foreground">1 hour ago</p>
+      </div>
+    </div>
+    <div className="flex items-start gap-3">
+      <div className="mt-0.5 h-2 w-2 rounded-full bg-transparent" />
+      <div>
+        <p className="text-sm font-medium">Your report is ready</p>
+        <p className="text-xs text-muted-foreground">Yesterday</p>
+      </div>
+    </div>
+  </CardContent>
+  <CardFooter>
+    <Button variant="outline" className="w-full">Mark all as read</Button>
+  </CardFooter>
+</Card>
+```
+
 ### Stats Card
 
-<Preview code={`<div className="flex gap-4 flex-wrap">
-  <Card className="w-[180px]">
-    <CardHeader className="pb-2">
-      <CardDescription>Total Revenue</CardDescription>
-      <CardTitle className="text-2xl">$45,231</CardTitle>
-    </CardHeader>
-    <CardContent>
-      <p className="text-xs text-muted-foreground">+20.1% from last month</p>
-    </CardContent>
-  </Card>
-  <Card className="w-[180px]">
-    <CardHeader className="pb-2">
-      <CardDescription>Active Users</CardDescription>
-      <CardTitle className="text-2xl">2,350</CardTitle>
-    </CardHeader>
-    <CardContent>
-      <p className="text-xs text-muted-foreground">+10.5% from last month</p>
-    </CardContent>
-  </Card>
-  <Card className="w-[180px]">
-    <CardHeader className="pb-2">
-      <CardDescription>Conversion Rate</CardDescription>
-      <CardTitle className="text-2xl">3.2%</CardTitle>
-    </CardHeader>
-    <CardContent>
-      <p className="text-xs text-muted-foreground">+1.2% from last month</p>
-    </CardContent>
-  </Card>
-</div>`}>
+<Preview>
   <div className="flex gap-4 flex-wrap">
     <Card className="w-[180px]">
       <CardHeader className="pb-2">
@@ -323,3 +319,35 @@ A card with only a header section.
     </Card>
   </div>
 </Preview>
+
+```tsx
+<div className="flex gap-4 flex-wrap">
+  <Card className="w-[180px]">
+    <CardHeader className="pb-2">
+      <CardDescription>Total Revenue</CardDescription>
+      <CardTitle className="text-2xl">$45,231</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <p className="text-xs text-muted-foreground">+20.1% from last month</p>
+    </CardContent>
+  </Card>
+  <Card className="w-[180px]">
+    <CardHeader className="pb-2">
+      <CardDescription>Active Users</CardDescription>
+      <CardTitle className="text-2xl">2,350</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <p className="text-xs text-muted-foreground">+10.5% from last month</p>
+    </CardContent>
+  </Card>
+  <Card className="w-[180px]">
+    <CardHeader className="pb-2">
+      <CardDescription>Conversion Rate</CardDescription>
+      <CardTitle className="text-2xl">3.2%</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <p className="text-xs text-muted-foreground">+1.2% from last month</p>
+    </CardContent>
+  </Card>
+</div>
+```

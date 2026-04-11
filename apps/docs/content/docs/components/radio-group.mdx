@@ -15,20 +15,7 @@ import { RadioGroup, RadioGroupItem } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview code={`<RadioGroup defaultValue="comfortable">
-  <div className="flex items-center space-x-2">
-    <RadioGroupItem value="default" id="r1" />
-    <Label htmlFor="r1">Default</Label>
-  </div>
-  <div className="flex items-center space-x-2">
-    <RadioGroupItem value="comfortable" id="r2" />
-    <Label htmlFor="r2">Comfortable</Label>
-  </div>
-  <div className="flex items-center space-x-2">
-    <RadioGroupItem value="compact" id="r3" />
-    <Label htmlFor="r3">Compact</Label>
-  </div>
-</RadioGroup>`}>
+<Preview>
   <RadioGroup defaultValue="comfortable">
     <div className="flex items-center space-x-2">
       <RadioGroupItem value="default" id="r1" />
@@ -45,22 +32,26 @@ import { RadioGroup, RadioGroupItem } from '@e412/rnui-react';
   </RadioGroup>
 </Preview>
 
+```tsx
+<RadioGroup defaultValue="comfortable">
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="default" id="r1" />
+    <Label htmlFor="r1">Default</Label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="comfortable" id="r2" />
+    <Label htmlFor="r2">Comfortable</Label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="compact" id="r3" />
+    <Label htmlFor="r3">Compact</Label>
+  </div>
+</RadioGroup>
+```
+
 ## Disabled
 
-<Preview code={`<RadioGroup defaultValue="comfortable" disabled>
-  <div className="flex items-center space-x-2">
-    <RadioGroupItem value="default" id="r4" />
-    <Label htmlFor="r4">Default</Label>
-  </div>
-  <div className="flex items-center space-x-2">
-    <RadioGroupItem value="comfortable" id="r5" />
-    <Label htmlFor="r5">Comfortable</Label>
-  </div>
-  <div className="flex items-center space-x-2">
-    <RadioGroupItem value="compact" id="r6" />
-    <Label htmlFor="r6">Compact</Label>
-  </div>
-</RadioGroup>`}>
+<Preview>
   <RadioGroup defaultValue="comfortable" disabled>
     <div className="flex items-center space-x-2">
       <RadioGroupItem value="default" id="r4" />
@@ -77,35 +68,28 @@ import { RadioGroup, RadioGroupItem } from '@e412/rnui-react';
   </RadioGroup>
 </Preview>
 
+```tsx
+<RadioGroup defaultValue="comfortable" disabled>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="default" id="r4" />
+    <Label htmlFor="r4">Default</Label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="comfortable" id="r5" />
+    <Label htmlFor="r5">Comfortable</Label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="compact" id="r6" />
+    <Label htmlFor="r6">Compact</Label>
+  </div>
+</RadioGroup>
+```
+
 ## Examples
 
 ### Plan Selection
 
-<Preview code={`<RadioGroup defaultValue="pro">
-  <div className="grid gap-3 max-w-sm">
-    <div className="flex items-center space-x-3 rounded-md border p-3">
-      <RadioGroupItem value="free" id="plan-free" />
-      <div>
-        <Label htmlFor="plan-free" className="font-medium">Free</Label>
-        <p className="text-xs text-muted-foreground">Up to 3 projects</p>
-      </div>
-    </div>
-    <div className="flex items-center space-x-3 rounded-md border p-3">
-      <RadioGroupItem value="pro" id="plan-pro" />
-      <div>
-        <Label htmlFor="plan-pro" className="font-medium">Pro</Label>
-        <p className="text-xs text-muted-foreground">Unlimited projects</p>
-      </div>
-    </div>
-    <div className="flex items-center space-x-3 rounded-md border p-3">
-      <RadioGroupItem value="enterprise" id="plan-enterprise" />
-      <div>
-        <Label htmlFor="plan-enterprise" className="font-medium">Enterprise</Label>
-        <p className="text-xs text-muted-foreground">Custom solutions</p>
-      </div>
-    </div>
-  </div>
-</RadioGroup>`}>
+<Preview>
   <RadioGroup defaultValue="pro">
     <div className="grid gap-3 max-w-sm">
       <div className="flex items-center space-x-3 rounded-md border p-3">
@@ -133,24 +117,37 @@ import { RadioGroup, RadioGroupItem } from '@e412/rnui-react';
   </RadioGroup>
 </Preview>
 
-### Shipping Method
-
-<Preview code={`<RadioGroup defaultValue="standard">
-  <div className="grid gap-2">
-    <div className="flex items-center space-x-2">
-      <RadioGroupItem value="standard" id="ship-standard" />
-      <Label htmlFor="ship-standard">Standard (5-7 days)</Label>
+```tsx
+<RadioGroup defaultValue="pro">
+  <div className="grid gap-3 max-w-sm">
+    <div className="flex items-center space-x-3 rounded-md border p-3">
+      <RadioGroupItem value="free" id="plan-free" />
+      <div>
+        <Label htmlFor="plan-free" className="font-medium">Free</Label>
+        <p className="text-xs text-muted-foreground">Up to 3 projects</p>
+      </div>
     </div>
-    <div className="flex items-center space-x-2">
-      <RadioGroupItem value="express" id="ship-express" />
-      <Label htmlFor="ship-express">Express (2-3 days)</Label>
+    <div className="flex items-center space-x-3 rounded-md border p-3">
+      <RadioGroupItem value="pro" id="plan-pro" />
+      <div>
+        <Label htmlFor="plan-pro" className="font-medium">Pro</Label>
+        <p className="text-xs text-muted-foreground">Unlimited projects</p>
+      </div>
     </div>
-    <div className="flex items-center space-x-2">
-      <RadioGroupItem value="overnight" id="ship-overnight" />
-      <Label htmlFor="ship-overnight">Overnight (next day)</Label>
+    <div className="flex items-center space-x-3 rounded-md border p-3">
+      <RadioGroupItem value="enterprise" id="plan-enterprise" />
+      <div>
+        <Label htmlFor="plan-enterprise" className="font-medium">Enterprise</Label>
+        <p className="text-xs text-muted-foreground">Custom solutions</p>
+      </div>
     </div>
   </div>
-</RadioGroup>`}>
+</RadioGroup>
+```
+
+### Shipping Method
+
+<Preview>
   <RadioGroup defaultValue="standard">
     <div className="grid gap-2">
       <div className="flex items-center space-x-2">
@@ -169,22 +166,28 @@ import { RadioGroup, RadioGroupItem } from '@e412/rnui-react';
   </RadioGroup>
 </Preview>
 
+```tsx
+<RadioGroup defaultValue="standard">
+  <div className="grid gap-2">
+    <div className="flex items-center space-x-2">
+      <RadioGroupItem value="standard" id="ship-standard" />
+      <Label htmlFor="ship-standard">Standard (5-7 days)</Label>
+    </div>
+    <div className="flex items-center space-x-2">
+      <RadioGroupItem value="express" id="ship-express" />
+      <Label htmlFor="ship-express">Express (2-3 days)</Label>
+    </div>
+    <div className="flex items-center space-x-2">
+      <RadioGroupItem value="overnight" id="ship-overnight" />
+      <Label htmlFor="ship-overnight">Overnight (next day)</Label>
+    </div>
+  </div>
+</RadioGroup>
+```
+
 ### Horizontal Layout
 
-<Preview code={`<RadioGroup defaultValue="medium" orientation="horizontal" className="flex gap-4">
-  <div className="flex items-center space-x-2">
-    <RadioGroupItem value="small" id="size-small" />
-    <Label htmlFor="size-small">Small</Label>
-  </div>
-  <div className="flex items-center space-x-2">
-    <RadioGroupItem value="medium" id="size-medium" />
-    <Label htmlFor="size-medium">Medium</Label>
-  </div>
-  <div className="flex items-center space-x-2">
-    <RadioGroupItem value="large" id="size-large" />
-    <Label htmlFor="size-large">Large</Label>
-  </div>
-</RadioGroup>`}>
+<Preview>
   <RadioGroup defaultValue="medium" orientation="horizontal" className="flex gap-4">
     <div className="flex items-center space-x-2">
       <RadioGroupItem value="small" id="size-small" />
@@ -200,3 +203,20 @@ import { RadioGroup, RadioGroupItem } from '@e412/rnui-react';
     </div>
   </RadioGroup>
 </Preview>
+
+```tsx
+<RadioGroup defaultValue="medium" orientation="horizontal" className="flex gap-4">
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="small" id="size-small" />
+    <Label htmlFor="size-small">Small</Label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="medium" id="size-medium" />
+    <Label htmlFor="size-medium">Medium</Label>
+  </div>
+  <div className="flex items-center space-x-2">
+    <RadioGroupItem value="large" id="size-large" />
+    <Label htmlFor="size-large">Large</Label>
+  </div>
+</RadioGroup>
+```

@@ -47,54 +47,7 @@ import {
 
 ## Usage
 
-<Preview code={`<SidebarProvider>
-    <div className="flex min-h-[400px] w-full">
-      <Sidebar>
-        <SidebarHeader>
-          <div className="flex items-center gap-2 px-2 py-1.5">
-            <div className="size-6 rounded-md bg-primary" />
-            <span className="font-semibold">My App</span>
-          </div>
-        </SidebarHeader>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel>Navigation</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <Home className="size-4" />
-                    Home
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <Inbox className="size-4" />
-                    Inbox
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <Settings className="size-4" />
-                    Settings
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-      </Sidebar>
-      <SidebarInset>
-        <div className="flex items-center gap-2 border-b px-4 py-2">
-          <SidebarTrigger />
-          <span className="text-sm text-muted-foreground">Dashboard</span>
-        </div>
-        <div className="p-4">
-          <p className="text-sm text-muted-foreground">Main content area</p>
-        </div>
-      </SidebarInset>
-    </div>
-  </SidebarProvider>`}>
+<Preview>
   <SidebarProvider>
     <div className="flex min-h-[400px] w-full">
       <Sidebar>
@@ -144,70 +97,61 @@ import {
     </div>
   </SidebarProvider>
 </Preview>
+
+```tsx
+<SidebarProvider>
+    <div className="flex min-h-[400px] w-full">
+      <Sidebar>
+        <SidebarHeader>
+          <div className="flex items-center gap-2 px-2 py-1.5">
+            <div className="size-6 rounded-md bg-primary" />
+            <span className="font-semibold">My App</span>
+          </div>
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <Home className="size-4" />
+                    Home
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <Inbox className="size-4" />
+                    Inbox
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <Settings className="size-4" />
+                    Settings
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
+      </Sidebar>
+      <SidebarInset>
+        <div className="flex items-center gap-2 border-b px-4 py-2">
+          <SidebarTrigger />
+          <span className="text-sm text-muted-foreground">Dashboard</span>
+        </div>
+        <div className="p-4">
+          <p className="text-sm text-muted-foreground">Main content area</p>
+        </div>
+      </SidebarInset>
+    </div>
+  </SidebarProvider>
+```
 
 ## With Multiple Groups
 
-<Preview code={`<SidebarProvider>
-    <div className="flex min-h-[450px] w-full">
-      <Sidebar>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel>Main</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <Home className="size-4" />
-                    Dashboard
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <BarChart3 className="size-4" />
-                    Analytics
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <Inbox className="size-4" />
-                    Inbox
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-          <SidebarSeparator />
-          <SidebarGroup>
-            <SidebarGroupLabel>Content</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <FileText className="size-4" />
-                    Documents
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <Search className="size-4" />
-                    Search
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-      </Sidebar>
-      <SidebarInset>
-        <div className="flex items-center gap-2 border-b px-4 py-2">
-          <SidebarTrigger />
-        </div>
-        <div className="p-4">
-          <p className="text-sm text-muted-foreground">Content area</p>
-        </div>
-      </SidebarInset>
-    </div>
-  </SidebarProvider>`}>
+<Preview>
   <SidebarProvider>
     <div className="flex min-h-[450px] w-full">
       <Sidebar>
@@ -270,78 +214,74 @@ import {
     </div>
   </SidebarProvider>
 </Preview>
+
+```tsx
+<SidebarProvider>
+    <div className="flex min-h-[450px] w-full">
+      <Sidebar>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel>Main</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <Home className="size-4" />
+                    Dashboard
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <BarChart3 className="size-4" />
+                    Analytics
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <Inbox className="size-4" />
+                    Inbox
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+          <SidebarSeparator />
+          <SidebarGroup>
+            <SidebarGroupLabel>Content</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <FileText className="size-4" />
+                    Documents
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <Search className="size-4" />
+                    Search
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
+      </Sidebar>
+      <SidebarInset>
+        <div className="flex items-center gap-2 border-b px-4 py-2">
+          <SidebarTrigger />
+        </div>
+        <div className="p-4">
+          <p className="text-sm text-muted-foreground">Content area</p>
+        </div>
+      </SidebarInset>
+    </div>
+  </SidebarProvider>
+```
 
 ## With Header and Footer
 
-<Preview code={`<SidebarProvider>
-    <div className="flex min-h-[500px] w-full">
-      <Sidebar>
-        <SidebarHeader>
-          <div className="flex items-center gap-2 px-2 py-1.5">
-            <div className="size-6 rounded-md bg-primary" />
-            <div>
-              <p className="text-sm font-semibold">Acme Inc.</p>
-              <p className="text-xs text-muted-foreground">Enterprise Plan</p>
-            </div>
-          </div>
-        </SidebarHeader>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <Home className="size-4" />
-                    Home
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <BarChart3 className="size-4" />
-                    Analytics
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <FileText className="size-4" />
-                    Documents
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <Settings className="size-4" />
-                    Settings
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-        <SidebarFooter>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton>
-                <User className="size-4" />
-                <div>
-                  <p className="text-sm">John Doe</p>
-                  <p className="text-xs text-muted-foreground">john@acme.com</p>
-                </div>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarFooter>
-      </Sidebar>
-      <SidebarInset>
-        <div className="flex items-center gap-2 border-b px-4 py-2">
-          <SidebarTrigger />
-          <span className="text-sm font-medium">Home</span>
-        </div>
-        <div className="p-4">
-          <p className="text-sm text-muted-foreground">Main content</p>
-        </div>
-      </SidebarInset>
-    </div>
-  </SidebarProvider>`}>
+<Preview>
   <SidebarProvider>
     <div className="flex min-h-[500px] w-full">
       <Sidebar>
@@ -412,115 +352,84 @@ import {
     </div>
   </SidebarProvider>
 </Preview>
+
+```tsx
+<SidebarProvider>
+    <div className="flex min-h-[500px] w-full">
+      <Sidebar>
+        <SidebarHeader>
+          <div className="flex items-center gap-2 px-2 py-1.5">
+            <div className="size-6 rounded-md bg-primary" />
+            <div>
+              <p className="text-sm font-semibold">Acme Inc.</p>
+              <p className="text-xs text-muted-foreground">Enterprise Plan</p>
+            </div>
+          </div>
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <Home className="size-4" />
+                    Home
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <BarChart3 className="size-4" />
+                    Analytics
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <FileText className="size-4" />
+                    Documents
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <Settings className="size-4" />
+                    Settings
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
+        <SidebarFooter>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton>
+                <User className="size-4" />
+                <div>
+                  <p className="text-sm">John Doe</p>
+                  <p className="text-xs text-muted-foreground">john@acme.com</p>
+                </div>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarFooter>
+      </Sidebar>
+      <SidebarInset>
+        <div className="flex items-center gap-2 border-b px-4 py-2">
+          <SidebarTrigger />
+          <span className="text-sm font-medium">Home</span>
+        </div>
+        <div className="p-4">
+          <p className="text-sm text-muted-foreground">Main content</p>
+        </div>
+      </SidebarInset>
+    </div>
+  </SidebarProvider>
+```
 
 ## Examples
 
 ### Application Sidebar
 
-<Preview code={`<SidebarProvider>
-    <div className="flex min-h-[500px] w-full">
-      <Sidebar>
-        <SidebarHeader>
-          <div className="flex items-center gap-2 px-2 py-1.5">
-            <div className="size-6 rounded-md bg-primary" />
-            <span className="font-semibold">WorkSpace</span>
-          </div>
-        </SidebarHeader>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel>Overview</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton isActive>
-                    <Home className="size-4" />
-                    Dashboard
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <Inbox className="size-4" />
-                    Inbox
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <Bell className="size-4" />
-                    Notifications
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-          <SidebarSeparator />
-          <SidebarGroup>
-            <SidebarGroupLabel>Workspace</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <FileText className="size-4" />
-                    Projects
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <BarChart3 className="size-4" />
-                    Reports
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <User className="size-4" />
-                    Team
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-          <SidebarSeparator />
-          <SidebarGroup>
-            <SidebarGroupLabel>Support</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <HelpCircle className="size-4" />
-                    Help Center
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <Settings className="size-4" />
-                    Settings
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-        <SidebarFooter>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton>
-                <LogOut className="size-4" />
-                Sign Out
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarFooter>
-      </Sidebar>
-      <SidebarInset>
-        <div className="flex items-center gap-2 border-b px-4 py-2">
-          <SidebarTrigger />
-          <span className="text-sm font-medium">Dashboard</span>
-        </div>
-        <div className="p-4">
-          <p className="text-sm text-muted-foreground">Welcome to your workspace dashboard.</p>
-        </div>
-      </SidebarInset>
-    </div>
-  </SidebarProvider>`}>
+<Preview>
   <SidebarProvider>
     <div className="flex min-h-[500px] w-full">
       <Sidebar>
@@ -626,67 +535,117 @@ import {
     </div>
   </SidebarProvider>
 </Preview>
+
+```tsx
+<SidebarProvider>
+    <div className="flex min-h-[500px] w-full">
+      <Sidebar>
+        <SidebarHeader>
+          <div className="flex items-center gap-2 px-2 py-1.5">
+            <div className="size-6 rounded-md bg-primary" />
+            <span className="font-semibold">WorkSpace</span>
+          </div>
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel>Overview</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton isActive>
+                    <Home className="size-4" />
+                    Dashboard
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <Inbox className="size-4" />
+                    Inbox
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <Bell className="size-4" />
+                    Notifications
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+          <SidebarSeparator />
+          <SidebarGroup>
+            <SidebarGroupLabel>Workspace</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <FileText className="size-4" />
+                    Projects
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <BarChart3 className="size-4" />
+                    Reports
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <User className="size-4" />
+                    Team
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+          <SidebarSeparator />
+          <SidebarGroup>
+            <SidebarGroupLabel>Support</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <HelpCircle className="size-4" />
+                    Help Center
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <Settings className="size-4" />
+                    Settings
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
+        <SidebarFooter>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton>
+                <LogOut className="size-4" />
+                Sign Out
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarFooter>
+      </Sidebar>
+      <SidebarInset>
+        <div className="flex items-center gap-2 border-b px-4 py-2">
+          <SidebarTrigger />
+          <span className="text-sm font-medium">Dashboard</span>
+        </div>
+        <div className="p-4">
+          <p className="text-sm text-muted-foreground">Welcome to your workspace dashboard.</p>
+        </div>
+      </SidebarInset>
+    </div>
+  </SidebarProvider>
+```
 
 ### Sidebar with Nested Navigation
 
-<Preview code={`<SidebarProvider>
-    <div className="flex min-h-[400px] w-full">
-      <Sidebar>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel>Documentation</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <Home className="size-4" />
-                    Getting Started
-                  </SidebarMenuButton>
-                  <SidebarMenuSub>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuSubButton>Introduction</SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuSubButton>Installation</SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuSubButton>Configuration</SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                  </SidebarMenuSub>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <FileText className="size-4" />
-                    Components
-                  </SidebarMenuButton>
-                  <SidebarMenuSub>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuSubButton isActive>Button</SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuSubButton>Input</SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuSubButton>Dialog</SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                  </SidebarMenuSub>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-      </Sidebar>
-      <SidebarInset>
-        <div className="flex items-center gap-2 border-b px-4 py-2">
-          <SidebarTrigger />
-          <span className="text-sm font-medium">Components / Button</span>
-        </div>
-        <div className="p-4">
-          <p className="text-sm text-muted-foreground">Component documentation content.</p>
-        </div>
-      </SidebarInset>
-    </div>
-  </SidebarProvider>`}>
+<Preview>
   <SidebarProvider>
     <div className="flex min-h-[400px] w-full">
       <Sidebar>
@@ -746,3 +705,64 @@ import {
     </div>
   </SidebarProvider>
 </Preview>
+
+```tsx
+<SidebarProvider>
+    <div className="flex min-h-[400px] w-full">
+      <Sidebar>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel>Documentation</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <Home className="size-4" />
+                    Getting Started
+                  </SidebarMenuButton>
+                  <SidebarMenuSub>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuSubButton>Introduction</SidebarMenuSubButton>
+                    </SidebarMenuSubItem>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuSubButton>Installation</SidebarMenuSubButton>
+                    </SidebarMenuSubItem>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuSubButton>Configuration</SidebarMenuSubButton>
+                    </SidebarMenuSubItem>
+                  </SidebarMenuSub>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <FileText className="size-4" />
+                    Components
+                  </SidebarMenuButton>
+                  <SidebarMenuSub>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuSubButton isActive>Button</SidebarMenuSubButton>
+                    </SidebarMenuSubItem>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuSubButton>Input</SidebarMenuSubButton>
+                    </SidebarMenuSubItem>
+                    <SidebarMenuSubItem>
+                      <SidebarMenuSubButton>Dialog</SidebarMenuSubButton>
+                    </SidebarMenuSubItem>
+                  </SidebarMenuSub>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
+      </Sidebar>
+      <SidebarInset>
+        <div className="flex items-center gap-2 border-b px-4 py-2">
+          <SidebarTrigger />
+          <span className="text-sm font-medium">Components / Button</span>
+        </div>
+        <div className="p-4">
+          <p className="text-sm text-muted-foreground">Component documentation content.</p>
+        </div>
+      </SidebarInset>
+    </div>
+  </SidebarProvider>
+```

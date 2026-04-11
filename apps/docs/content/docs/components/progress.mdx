@@ -15,19 +15,17 @@ import { Progress, ProgressLabel, ProgressValue } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview code={`<Progress value={60} className="w-[60%]" />`}>
+<Preview>
   <Progress value={60} className="w-[60%]" />
 </Preview>
 
+```tsx
+<Progress value={60} className="w-[60%]" />
+```
+
 ## Values
 
-<Preview code={`<div className="flex flex-col gap-4 w-[60%]">
-    <Progress value={0} />
-    <Progress value={25} />
-    <Progress value={50} />
-    <Progress value={75} />
-    <Progress value={100} />
-  </div>`}>
+<Preview>
   <div className="flex flex-col gap-4 w-[60%]">
     <Progress value={0} />
     <Progress value={25} />
@@ -37,42 +35,55 @@ import { Progress, ProgressLabel, ProgressValue } from '@e412/rnui-react';
   </div>
 </Preview>
 
+```tsx
+<div className="flex flex-col gap-4 w-[60%]">
+    <Progress value={0} />
+    <Progress value={25} />
+    <Progress value={50} />
+    <Progress value={75} />
+    <Progress value={100} />
+  </div>
+```
+
 ## With Label and Value
 
 Use `ProgressLabel` and `ProgressValue` to display text alongside the progress bar.
 
-<Preview code={`<Progress value={60} className="w-[60%]">
-    <ProgressLabel>Uploading...</ProgressLabel>
-    <ProgressValue />
-  </Progress>`}>
+<Preview>
   <Progress value={60} className="w-[60%]">
     <ProgressLabel>Uploading...</ProgressLabel>
     <ProgressValue />
   </Progress>
 </Preview>
 
+```tsx
+<Progress value={60} className="w-[60%]">
+    <ProgressLabel>Uploading...</ProgressLabel>
+    <ProgressValue />
+  </Progress>
+```
+
 ## Examples
 
 ### File Upload
 
-<Preview code={`<Progress value={73} className="w-[60%]">
-    <ProgressLabel>Uploading document.pdf</ProgressLabel>
-    <ProgressValue />
-  </Progress>`}>
+<Preview>
   <Progress value={73} className="w-[60%]">
     <ProgressLabel>Uploading document.pdf</ProgressLabel>
     <ProgressValue />
   </Progress>
 </Preview>
 
+```tsx
+<Progress value={73} className="w-[60%]">
+    <ProgressLabel>Uploading document.pdf</ProgressLabel>
+    <ProgressValue />
+  </Progress>
+```
+
 ### Step Progress
 
-<Preview code={`<div className="w-[60%] space-y-2">
-    <Progress value={66}>
-      <ProgressLabel>Step 2 of 3</ProgressLabel>
-      <ProgressValue />
-    </Progress>
-  </div>`}>
+<Preview>
   <div className="w-[60%] space-y-2">
     <Progress value={66}>
       <ProgressLabel>Step 2 of 3</ProgressLabel>
@@ -80,15 +91,19 @@ Use `ProgressLabel` and `ProgressValue` to display text alongside the progress b
     </Progress>
   </div>
 </Preview>
+
+```tsx
+<div className="w-[60%] space-y-2">
+    <Progress value={66}>
+      <ProgressLabel>Step 2 of 3</ProgressLabel>
+      <ProgressValue />
+    </Progress>
+  </div>
+```
 
 ### Storage Usage
 
-<Preview code={`<div className="w-[60%] space-y-2">
-    <Progress value={85}>
-      <ProgressLabel>Storage used</ProgressLabel>
-      <ProgressValue />
-    </Progress>
-  </div>`}>
+<Preview>
   <div className="w-[60%] space-y-2">
     <Progress value={85}>
       <ProgressLabel>Storage used</ProgressLabel>
@@ -96,15 +111,19 @@ Use `ProgressLabel` and `ProgressValue` to display text alongside the progress b
     </Progress>
   </div>
 </Preview>
+
+```tsx
+<div className="w-[60%] space-y-2">
+    <Progress value={85}>
+      <ProgressLabel>Storage used</ProgressLabel>
+      <ProgressValue />
+    </Progress>
+  </div>
+```
 
 ### Download Progress
 
-<Preview code={`<div className="w-[60%] space-y-2">
-    <Progress value={42}>
-      <ProgressLabel>Downloading update...</ProgressLabel>
-      <ProgressValue />
-    </Progress>
-  </div>`}>
+<Preview>
   <div className="w-[60%] space-y-2">
     <Progress value={42}>
       <ProgressLabel>Downloading update...</ProgressLabel>
@@ -112,3 +131,12 @@ Use `ProgressLabel` and `ProgressValue` to display text alongside the progress b
     </Progress>
   </div>
 </Preview>
+
+```tsx
+<div className="w-[60%] space-y-2">
+    <Progress value={42}>
+      <ProgressLabel>Downloading update...</ProgressLabel>
+      <ProgressValue />
+    </Progress>
+  </div>
+```

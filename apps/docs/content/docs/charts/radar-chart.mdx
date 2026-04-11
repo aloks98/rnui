@@ -15,22 +15,7 @@ import { RadarChart } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview code={`<div className="w-full max-w-lg">
-    <RadarChart
-      indicators={[
-        { name: 'Sales', max: 100 },
-        { name: 'Admin', max: 100 },
-        { name: 'IT', max: 100 },
-        { name: 'Support', max: 100 },
-        { name: 'Dev', max: 100 },
-      ]}
-      series={[
-        { name: 'Product A', value: [85, 60, 90, 70, 95] },
-        { name: 'Product B', value: [65, 80, 55, 85, 70] },
-      ]}
-      height={300}
-    />
-  </div>`}>
+<Preview>
   <div className="w-full max-w-lg">
     <RadarChart
       indicators={[
@@ -48,26 +33,31 @@ import { RadarChart } from '@e412/rnui-react';
     />
   </div>
 </Preview>
+
+```tsx
+<div className="w-full max-w-lg">
+    <RadarChart
+      indicators={[
+        { name: 'Sales', max: 100 },
+        { name: 'Admin', max: 100 },
+        { name: 'IT', max: 100 },
+        { name: 'Support', max: 100 },
+        { name: 'Dev', max: 100 },
+      ]}
+      series={[
+        { name: 'Product A', value: [85, 60, 90, 70, 95] },
+        { name: 'Product B', value: [65, 80, 55, 85, 70] },
+      ]}
+      height={300}
+    />
+  </div>
+```
 
 ## Single Dataset
 
 A single series highlights one entity's profile across dimensions.
 
-<Preview code={`<div className="w-full max-w-lg">
-    <RadarChart
-      indicators={[
-        { name: 'Speed', max: 100 },
-        { name: 'Reliability', max: 100 },
-        { name: 'Comfort', max: 100 },
-        { name: 'Safety', max: 100 },
-        { name: 'Fuel Efficiency', max: 100 },
-      ]}
-      series={[
-        { name: 'Model X', value: [90, 78, 85, 92, 65] },
-      ]}
-      height={300}
-    />
-  </div>`}>
+<Preview>
   <div className="w-full max-w-lg">
     <RadarChart
       indicators={[
@@ -84,29 +74,30 @@ A single series highlights one entity's profile across dimensions.
     />
   </div>
 </Preview>
+
+```tsx
+<div className="w-full max-w-lg">
+    <RadarChart
+      indicators={[
+        { name: 'Speed', max: 100 },
+        { name: 'Reliability', max: 100 },
+        { name: 'Comfort', max: 100 },
+        { name: 'Safety', max: 100 },
+        { name: 'Fuel Efficiency', max: 100 },
+      ]}
+      series={[
+        { name: 'Model X', value: [90, 78, 85, 92, 65] },
+      ]}
+      height={300}
+    />
+  </div>
+```
 
 ## With Legend
 
 Enable `showLegend` when comparing multiple datasets.
 
-<Preview code={`<div className="w-full max-w-lg">
-    <RadarChart
-      indicators={[
-        { name: 'Attack', max: 100 },
-        { name: 'Defense', max: 100 },
-        { name: 'Speed', max: 100 },
-        { name: 'HP', max: 100 },
-        { name: 'Magic', max: 100 },
-        { name: 'Stamina', max: 100 },
-      ]}
-      series={[
-        { name: 'Warrior', value: [90, 85, 50, 80, 20, 70] },
-        { name: 'Mage', value: [40, 30, 60, 50, 95, 45] },
-      ]}
-      showLegend={true}
-      height={350}
-    />
-  </div>`}>
+<Preview>
   <div className="w-full max-w-lg">
     <RadarChart
       indicators={[
@@ -126,6 +117,27 @@ Enable `showLegend` when comparing multiple datasets.
     />
   </div>
 </Preview>
+
+```tsx
+<div className="w-full max-w-lg">
+    <RadarChart
+      indicators={[
+        { name: 'Attack', max: 100 },
+        { name: 'Defense', max: 100 },
+        { name: 'Speed', max: 100 },
+        { name: 'HP', max: 100 },
+        { name: 'Magic', max: 100 },
+        { name: 'Stamina', max: 100 },
+      ]}
+      series={[
+        { name: 'Warrior', value: [90, 85, 50, 80, 20, 70] },
+        { name: 'Mage', value: [40, 30, 60, 50, 95, 45] },
+      ]}
+      showLegend={true}
+      height={350}
+    />
+  </div>
+```
 
 ## Props
 

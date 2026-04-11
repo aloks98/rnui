@@ -15,40 +15,39 @@ import { Checkbox } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview code={`<div className="flex items-center gap-2">
-  <Checkbox id="terms" />
-  <Label htmlFor="terms">Accept terms and conditions</Label>
-</div>`}>
+<Preview>
   <div className="flex items-center gap-2">
     <Checkbox id="terms" />
     <Label htmlFor="terms">Accept terms and conditions</Label>
   </div>
 </Preview>
 
+```tsx
+<div className="flex items-center gap-2">
+  <Checkbox id="terms" />
+  <Label htmlFor="terms">Accept terms and conditions</Label>
+</div>
+```
+
 ## Checked by Default
 
-<Preview code={`<div className="flex items-center gap-2">
-  <Checkbox id="checked" defaultChecked />
-  <Label htmlFor="checked">Checked by default</Label>
-</div>`}>
+<Preview>
   <div className="flex items-center gap-2">
     <Checkbox id="checked" defaultChecked />
     <Label htmlFor="checked">Checked by default</Label>
   </div>
 </Preview>
 
+```tsx
+<div className="flex items-center gap-2">
+  <Checkbox id="checked" defaultChecked />
+  <Label htmlFor="checked">Checked by default</Label>
+</div>
+```
+
 ## Disabled
 
-<Preview code={`<div className="flex gap-6">
-  <div className="flex items-center gap-2">
-    <Checkbox id="disabled" disabled />
-    <Label htmlFor="disabled">Disabled</Label>
-  </div>
-  <div className="flex items-center gap-2">
-    <Checkbox id="disabled-checked" disabled defaultChecked />
-    <Label htmlFor="disabled-checked">Disabled and checked</Label>
-  </div>
-</div>`}>
+<Preview>
   <div className="flex gap-6">
     <div className="flex items-center gap-2">
       <Checkbox id="disabled" disabled />
@@ -61,18 +60,24 @@ import { Checkbox } from '@e412/rnui-react';
   </div>
 </Preview>
 
+```tsx
+<div className="flex gap-6">
+  <div className="flex items-center gap-2">
+    <Checkbox id="disabled" disabled />
+    <Label htmlFor="disabled">Disabled</Label>
+  </div>
+  <div className="flex items-center gap-2">
+    <Checkbox id="disabled-checked" disabled defaultChecked />
+    <Label htmlFor="disabled-checked">Disabled and checked</Label>
+  </div>
+</div>
+```
+
 ## Examples
 
 ### Terms Agreement
 
-<Preview code={`<div className="grid max-w-sm gap-4">
-  <div className="flex items-start gap-2">
-    <Checkbox id="agree-terms" className="mt-1" />
-    <Label htmlFor="agree-terms" className="text-sm leading-relaxed">
-      I agree to the Terms of Service and Privacy Policy. By checking this box, you confirm that you have read and understood our policies.
-    </Label>
-  </div>
-</div>`}>
+<Preview>
   <div className="grid max-w-sm gap-4">
     <div className="flex items-start gap-2">
       <Checkbox id="agree-terms" className="mt-1" />
@@ -83,27 +88,20 @@ import { Checkbox } from '@e412/rnui-react';
   </div>
 </Preview>
 
+```tsx
+<div className="grid max-w-sm gap-4">
+  <div className="flex items-start gap-2">
+    <Checkbox id="agree-terms" className="mt-1" />
+    <Label htmlFor="agree-terms" className="text-sm leading-relaxed">
+      I agree to the Terms of Service and Privacy Policy. By checking this box, you confirm that you have read and understood our policies.
+    </Label>
+  </div>
+</div>
+```
+
 ### Multiple Checkboxes
 
-<Preview code={`<div className="grid gap-3">
-  <p className="text-sm font-medium">Select your interests:</p>
-  <div className="flex items-center gap-2">
-    <Checkbox id="interest-design" defaultChecked />
-    <Label htmlFor="interest-design">Design</Label>
-  </div>
-  <div className="flex items-center gap-2">
-    <Checkbox id="interest-dev" defaultChecked />
-    <Label htmlFor="interest-dev">Development</Label>
-  </div>
-  <div className="flex items-center gap-2">
-    <Checkbox id="interest-marketing" />
-    <Label htmlFor="interest-marketing">Marketing</Label>
-  </div>
-  <div className="flex items-center gap-2">
-    <Checkbox id="interest-sales" />
-    <Label htmlFor="interest-sales">Sales</Label>
-  </div>
-</div>`}>
+<Preview>
   <div className="grid gap-3">
     <p className="text-sm font-medium">Select your interests:</p>
     <div className="flex items-center gap-2">
@@ -125,25 +123,31 @@ import { Checkbox } from '@e412/rnui-react';
   </div>
 </Preview>
 
+```tsx
+<div className="grid gap-3">
+  <p className="text-sm font-medium">Select your interests:</p>
+  <div className="flex items-center gap-2">
+    <Checkbox id="interest-design" defaultChecked />
+    <Label htmlFor="interest-design">Design</Label>
+  </div>
+  <div className="flex items-center gap-2">
+    <Checkbox id="interest-dev" defaultChecked />
+    <Label htmlFor="interest-dev">Development</Label>
+  </div>
+  <div className="flex items-center gap-2">
+    <Checkbox id="interest-marketing" />
+    <Label htmlFor="interest-marketing">Marketing</Label>
+  </div>
+  <div className="flex items-center gap-2">
+    <Checkbox id="interest-sales" />
+    <Label htmlFor="interest-sales">Sales</Label>
+  </div>
+</div>
+```
+
 ### Notification Preferences
 
-<Preview code={`<div className="grid max-w-sm gap-4">
-  <p className="text-sm font-medium">Email notifications</p>
-  <div className="grid gap-3">
-    <div className="flex items-center justify-between">
-      <Label htmlFor="notif-marketing">Marketing emails</Label>
-      <Checkbox id="notif-marketing" />
-    </div>
-    <div className="flex items-center justify-between">
-      <Label htmlFor="notif-security">Security alerts</Label>
-      <Checkbox id="notif-security" defaultChecked />
-    </div>
-    <div className="flex items-center justify-between">
-      <Label htmlFor="notif-updates">Product updates</Label>
-      <Checkbox id="notif-updates" defaultChecked />
-    </div>
-  </div>
-</div>`}>
+<Preview>
   <div className="grid max-w-sm gap-4">
     <p className="text-sm font-medium">Email notifications</p>
     <div className="grid gap-3">
@@ -162,3 +166,23 @@ import { Checkbox } from '@e412/rnui-react';
     </div>
   </div>
 </Preview>
+
+```tsx
+<div className="grid max-w-sm gap-4">
+  <p className="text-sm font-medium">Email notifications</p>
+  <div className="grid gap-3">
+    <div className="flex items-center justify-between">
+      <Label htmlFor="notif-marketing">Marketing emails</Label>
+      <Checkbox id="notif-marketing" />
+    </div>
+    <div className="flex items-center justify-between">
+      <Label htmlFor="notif-security">Security alerts</Label>
+      <Checkbox id="notif-security" defaultChecked />
+    </div>
+    <div className="flex items-center justify-between">
+      <Label htmlFor="notif-updates">Product updates</Label>
+      <Checkbox id="notif-updates" defaultChecked />
+    </div>
+  </div>
+</div>
+```

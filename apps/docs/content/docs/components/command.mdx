@@ -25,44 +25,7 @@ import {
 
 ## Usage
 
-<Preview code={`<Command className="w-[450px] rounded-lg border shadow-md">
-  <CommandInput placeholder="Type a command or search..." />
-  <CommandList>
-    <CommandEmpty>No results found.</CommandEmpty>
-    <CommandGroup heading="Suggestions">
-      <CommandItem>
-        <CalendarIcon />
-        <span>Calendar</span>
-      </CommandItem>
-      <CommandItem>
-        <SmileIcon />
-        <span>Search Emoji</span>
-      </CommandItem>
-      <CommandItem>
-        <CalculatorIcon />
-        <span>Calculator</span>
-      </CommandItem>
-    </CommandGroup>
-    <CommandSeparator />
-    <CommandGroup heading="Settings">
-      <CommandItem>
-        <UserIcon />
-        <span>Profile</span>
-        <CommandShortcut>&#8984;P</CommandShortcut>
-      </CommandItem>
-      <CommandItem>
-        <CreditCardIcon />
-        <span>Billing</span>
-        <CommandShortcut>&#8984;B</CommandShortcut>
-      </CommandItem>
-      <CommandItem>
-        <SettingsIcon />
-        <span>Settings</span>
-        <CommandShortcut>&#8984;S</CommandShortcut>
-      </CommandItem>
-    </CommandGroup>
-  </CommandList>
-</Command>`}>
+<Preview>
   <Command className="w-[450px] rounded-lg border shadow-md">
     <CommandInput placeholder="Type a command or search..." />
     <CommandList>
@@ -103,41 +66,52 @@ import {
   </Command>
 </Preview>
 
-## Examples
-
-### Application Launcher
-
-<Preview code={`<Command className="w-[400px] rounded-lg border shadow-md">
-  <CommandInput placeholder="Search apps..." />
+```tsx
+<Command className="w-[450px] rounded-lg border shadow-md">
+  <CommandInput placeholder="Type a command or search..." />
   <CommandList>
-    <CommandEmpty>No apps found.</CommandEmpty>
-    <CommandGroup heading="Recent">
-      <CommandItem>
-        <FileTextIcon />
-        <span>Documents</span>
-      </CommandItem>
-      <CommandItem>
-        <MailIcon />
-        <span>Mail</span>
-      </CommandItem>
-    </CommandGroup>
-    <CommandSeparator />
-    <CommandGroup heading="Tools">
-      <CommandItem>
-        <CalculatorIcon />
-        <span>Calculator</span>
-      </CommandItem>
+    <CommandEmpty>No results found.</CommandEmpty>
+    <CommandGroup heading="Suggestions">
       <CommandItem>
         <CalendarIcon />
         <span>Calendar</span>
       </CommandItem>
       <CommandItem>
+        <SmileIcon />
+        <span>Search Emoji</span>
+      </CommandItem>
+      <CommandItem>
+        <CalculatorIcon />
+        <span>Calculator</span>
+      </CommandItem>
+    </CommandGroup>
+    <CommandSeparator />
+    <CommandGroup heading="Settings">
+      <CommandItem>
+        <UserIcon />
+        <span>Profile</span>
+        <CommandShortcut>&#8984;P</CommandShortcut>
+      </CommandItem>
+      <CommandItem>
+        <CreditCardIcon />
+        <span>Billing</span>
+        <CommandShortcut>&#8984;B</CommandShortcut>
+      </CommandItem>
+      <CommandItem>
         <SettingsIcon />
-        <span>System Preferences</span>
+        <span>Settings</span>
+        <CommandShortcut>&#8984;S</CommandShortcut>
       </CommandItem>
     </CommandGroup>
   </CommandList>
-</Command>`}>
+</Command>
+```
+
+## Examples
+
+### Application Launcher
+
+<Preview>
   <Command className="w-[400px] rounded-lg border shadow-md">
     <CommandInput placeholder="Search apps..." />
     <CommandList>
@@ -171,43 +145,43 @@ import {
   </Command>
 </Preview>
 
-### Navigation Menu
-
-<Preview code={`<Command className="w-[350px] rounded-lg border shadow-md">
-  <CommandInput placeholder="Go to..." />
+```tsx
+<Command className="w-[400px] rounded-lg border shadow-md">
+  <CommandInput placeholder="Search apps..." />
   <CommandList>
-    <CommandEmpty>No pages found.</CommandEmpty>
-    <CommandGroup heading="Pages">
+    <CommandEmpty>No apps found.</CommandEmpty>
+    <CommandGroup heading="Recent">
       <CommandItem>
-        <span>Dashboard</span>
-        <CommandShortcut>&#8984;D</CommandShortcut>
+        <FileTextIcon />
+        <span>Documents</span>
       </CommandItem>
       <CommandItem>
-        <span>Projects</span>
-        <CommandShortcut>&#8984;J</CommandShortcut>
-      </CommandItem>
-      <CommandItem>
-        <span>Team</span>
-        <CommandShortcut>&#8984;T</CommandShortcut>
+        <MailIcon />
+        <span>Mail</span>
       </CommandItem>
     </CommandGroup>
     <CommandSeparator />
-    <CommandGroup heading="Account">
+    <CommandGroup heading="Tools">
       <CommandItem>
-        <UserIcon />
-        <span>Profile</span>
+        <CalculatorIcon />
+        <span>Calculator</span>
       </CommandItem>
       <CommandItem>
-        <BellIcon />
-        <span>Notifications</span>
+        <CalendarIcon />
+        <span>Calendar</span>
       </CommandItem>
       <CommandItem>
         <SettingsIcon />
-        <span>Settings</span>
+        <span>System Preferences</span>
       </CommandItem>
     </CommandGroup>
   </CommandList>
-</Command>`}>
+</Command>
+```
+
+### Navigation Menu
+
+<Preview>
   <Command className="w-[350px] rounded-lg border shadow-md">
     <CommandInput placeholder="Go to..." />
     <CommandList>
@@ -245,32 +219,47 @@ import {
   </Command>
 </Preview>
 
-### Search-Only
-
-<Preview code={`<Command className="w-[400px] rounded-lg border shadow-md">
-  <CommandInput placeholder="Search documentation..." />
+```tsx
+<Command className="w-[350px] rounded-lg border shadow-md">
+  <CommandInput placeholder="Go to..." />
   <CommandList>
-    <CommandEmpty>No results found.</CommandEmpty>
-    <CommandGroup heading="Results">
+    <CommandEmpty>No pages found.</CommandEmpty>
+    <CommandGroup heading="Pages">
       <CommandItem>
-        <SearchIcon />
-        <span>Getting Started Guide</span>
+        <span>Dashboard</span>
+        <CommandShortcut>&#8984;D</CommandShortcut>
       </CommandItem>
       <CommandItem>
-        <SearchIcon />
-        <span>API Reference</span>
+        <span>Projects</span>
+        <CommandShortcut>&#8984;J</CommandShortcut>
       </CommandItem>
       <CommandItem>
-        <SearchIcon />
-        <span>Component Library</span>
+        <span>Team</span>
+        <CommandShortcut>&#8984;T</CommandShortcut>
+      </CommandItem>
+    </CommandGroup>
+    <CommandSeparator />
+    <CommandGroup heading="Account">
+      <CommandItem>
+        <UserIcon />
+        <span>Profile</span>
       </CommandItem>
       <CommandItem>
-        <SearchIcon />
-        <span>Theming Guide</span>
+        <BellIcon />
+        <span>Notifications</span>
+      </CommandItem>
+      <CommandItem>
+        <SettingsIcon />
+        <span>Settings</span>
       </CommandItem>
     </CommandGroup>
   </CommandList>
-</Command>`}>
+</Command>
+```
+
+### Search-Only
+
+<Preview>
   <Command className="w-[400px] rounded-lg border shadow-md">
     <CommandInput placeholder="Search documentation..." />
     <CommandList>
@@ -296,3 +285,30 @@ import {
     </CommandList>
   </Command>
 </Preview>
+
+```tsx
+<Command className="w-[400px] rounded-lg border shadow-md">
+  <CommandInput placeholder="Search documentation..." />
+  <CommandList>
+    <CommandEmpty>No results found.</CommandEmpty>
+    <CommandGroup heading="Results">
+      <CommandItem>
+        <SearchIcon />
+        <span>Getting Started Guide</span>
+      </CommandItem>
+      <CommandItem>
+        <SearchIcon />
+        <span>API Reference</span>
+      </CommandItem>
+      <CommandItem>
+        <SearchIcon />
+        <span>Component Library</span>
+      </CommandItem>
+      <CommandItem>
+        <SearchIcon />
+        <span>Theming Guide</span>
+      </CommandItem>
+    </CommandGroup>
+  </CommandList>
+</Command>
+```

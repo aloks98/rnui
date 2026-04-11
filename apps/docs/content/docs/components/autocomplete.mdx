@@ -22,22 +22,7 @@ import {
 
 ## Usage
 
-<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
-  <Label>Fruit</Label>
-  <Autocomplete items={['Apple', 'Banana', 'Blueberry', 'Cherry', 'Grapes', 'Mango', 'Orange', 'Pineapple', 'Strawberry']}>
-    <AutocompleteInput placeholder="Search a fruit..." />
-    <AutocompleteContent>
-      <AutocompleteEmpty>No results found.</AutocompleteEmpty>
-      <AutocompleteList>
-        {(item) => (
-          <AutocompleteItem key={item} value={item}>
-            {item}
-          </AutocompleteItem>
-        )}
-      </AutocompleteList>
-    </AutocompleteContent>
-  </Autocomplete>
-</div>`}>
+<Preview>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label>Fruit</Label>
     <Autocomplete items={['Apple', 'Banana', 'Blueberry', 'Cherry', 'Grapes', 'Mango', 'Orange', 'Pineapple', 'Strawberry']}>
@@ -56,21 +41,11 @@ import {
   </div>
 </Preview>
 
-## Variants
-
-### With Groups
-
-Pass an array of `{ label, items }` objects to create categorized suggestions.
-
-<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
-  <Label>Produce</Label>
-  <Autocomplete
-    items={[
-      { label: 'Fruits', items: ['Apple', 'Banana', 'Cherry', 'Mango'] },
-      { label: 'Vegetables', items: ['Broccoli', 'Carrot', 'Cucumber', 'Spinach'] },
-    ]}
-  >
-    <AutocompleteInput placeholder="Search produce..." />
+```tsx
+<div className="grid w-full max-w-sm gap-1.5">
+  <Label>Fruit</Label>
+  <Autocomplete items={['Apple', 'Banana', 'Blueberry', 'Cherry', 'Grapes', 'Mango', 'Orange', 'Pineapple', 'Strawberry']}>
+    <AutocompleteInput placeholder="Search a fruit..." />
     <AutocompleteContent>
       <AutocompleteEmpty>No results found.</AutocompleteEmpty>
       <AutocompleteList>
@@ -82,7 +57,16 @@ Pass an array of `{ label, items }` objects to create categorized suggestions.
       </AutocompleteList>
     </AutocompleteContent>
   </Autocomplete>
-</div>`}>
+</div>
+```
+
+## Variants
+
+### With Groups
+
+Pass an array of `{ label, items }` objects to create categorized suggestions.
+
+<Preview>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label>Produce</Label>
     <Autocomplete
@@ -106,14 +90,16 @@ Pass an array of `{ label, items }` objects to create categorized suggestions.
   </div>
 </Preview>
 
-### With Clear Button
-
-Add `showClear` to the input to allow users to reset their selection.
-
-<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
-  <Label>Fruit</Label>
-  <Autocomplete items={['Apple', 'Banana', 'Blueberry', 'Cherry', 'Grapes', 'Mango']}>
-    <AutocompleteInput placeholder="Search a fruit..." showClear />
+```tsx
+<div className="grid w-full max-w-sm gap-1.5">
+  <Label>Produce</Label>
+  <Autocomplete
+    items={[
+      { label: 'Fruits', items: ['Apple', 'Banana', 'Cherry', 'Mango'] },
+      { label: 'Vegetables', items: ['Broccoli', 'Carrot', 'Cucumber', 'Spinach'] },
+    ]}
+  >
+    <AutocompleteInput placeholder="Search produce..." />
     <AutocompleteContent>
       <AutocompleteEmpty>No results found.</AutocompleteEmpty>
       <AutocompleteList>
@@ -125,7 +111,14 @@ Add `showClear` to the input to allow users to reset their selection.
       </AutocompleteList>
     </AutocompleteContent>
   </Autocomplete>
-</div>`}>
+</div>
+```
+
+### With Clear Button
+
+Add `showClear` to the input to allow users to reset their selection.
+
+<Preview>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label>Fruit</Label>
     <Autocomplete items={['Apple', 'Banana', 'Blueberry', 'Cherry', 'Grapes', 'Mango']}>
@@ -144,16 +137,13 @@ Add `showClear` to the input to allow users to reset their selection.
   </div>
 </Preview>
 
-## Examples
-
-### City Search
-
-<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
-  <Label>City</Label>
-  <Autocomplete items={['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'San Francisco', 'Seattle', 'Miami', 'Boston', 'Denver']}>
-    <AutocompleteInput placeholder="Search city..." showClear />
+```tsx
+<div className="grid w-full max-w-sm gap-1.5">
+  <Label>Fruit</Label>
+  <Autocomplete items={['Apple', 'Banana', 'Blueberry', 'Cherry', 'Grapes', 'Mango']}>
+    <AutocompleteInput placeholder="Search a fruit..." showClear />
     <AutocompleteContent>
-      <AutocompleteEmpty>No city found.</AutocompleteEmpty>
+      <AutocompleteEmpty>No results found.</AutocompleteEmpty>
       <AutocompleteList>
         {(item) => (
           <AutocompleteItem key={item} value={item}>
@@ -163,7 +153,14 @@ Add `showClear` to the input to allow users to reset their selection.
       </AutocompleteList>
     </AutocompleteContent>
   </Autocomplete>
-</div>`}>
+</div>
+```
+
+## Examples
+
+### City Search
+
+<Preview>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label>City</Label>
     <Autocomplete items={['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'San Francisco', 'Seattle', 'Miami', 'Boston', 'Denver']}>
@@ -182,20 +179,13 @@ Add `showClear` to the input to allow users to reset their selection.
   </div>
 </Preview>
 
-### Job Title Suggestions
-
-<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
-  <Label>Job Title</Label>
-  <Autocomplete
-    items={[
-      { label: 'Engineering', items: ['Software Engineer', 'Frontend Developer', 'Backend Developer', 'DevOps Engineer'] },
-      { label: 'Design', items: ['Product Designer', 'UX Researcher', 'Visual Designer'] },
-      { label: 'Product', items: ['Product Manager', 'Program Manager', 'Technical Writer'] },
-    ]}
-  >
-    <AutocompleteInput placeholder="Search roles..." />
+```tsx
+<div className="grid w-full max-w-sm gap-1.5">
+  <Label>City</Label>
+  <Autocomplete items={['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'San Francisco', 'Seattle', 'Miami', 'Boston', 'Denver']}>
+    <AutocompleteInput placeholder="Search city..." showClear />
     <AutocompleteContent>
-      <AutocompleteEmpty>No role found.</AutocompleteEmpty>
+      <AutocompleteEmpty>No city found.</AutocompleteEmpty>
       <AutocompleteList>
         {(item) => (
           <AutocompleteItem key={item} value={item}>
@@ -205,7 +195,12 @@ Add `showClear` to the input to allow users to reset their selection.
       </AutocompleteList>
     </AutocompleteContent>
   </Autocomplete>
-</div>`}>
+</div>
+```
+
+### Job Title Suggestions
+
+<Preview>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label>Job Title</Label>
     <Autocomplete
@@ -230,14 +225,19 @@ Add `showClear` to the input to allow users to reset their selection.
   </div>
 </Preview>
 
-### Tag Input
-
-<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
-  <Label>Tags</Label>
-  <Autocomplete items={['React', 'TypeScript', 'Tailwind', 'Next.js', 'Node.js', 'GraphQL', 'Prisma', 'tRPC']}>
-    <AutocompleteInput placeholder="Add a tag..." />
+```tsx
+<div className="grid w-full max-w-sm gap-1.5">
+  <Label>Job Title</Label>
+  <Autocomplete
+    items={[
+      { label: 'Engineering', items: ['Software Engineer', 'Frontend Developer', 'Backend Developer', 'DevOps Engineer'] },
+      { label: 'Design', items: ['Product Designer', 'UX Researcher', 'Visual Designer'] },
+      { label: 'Product', items: ['Product Manager', 'Program Manager', 'Technical Writer'] },
+    ]}
+  >
+    <AutocompleteInput placeholder="Search roles..." />
     <AutocompleteContent>
-      <AutocompleteEmpty>No tags found.</AutocompleteEmpty>
+      <AutocompleteEmpty>No role found.</AutocompleteEmpty>
       <AutocompleteList>
         {(item) => (
           <AutocompleteItem key={item} value={item}>
@@ -247,7 +247,12 @@ Add `showClear` to the input to allow users to reset their selection.
       </AutocompleteList>
     </AutocompleteContent>
   </Autocomplete>
-</div>`}>
+</div>
+```
+
+### Tag Input
+
+<Preview>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label>Tags</Label>
     <Autocomplete items={['React', 'TypeScript', 'Tailwind', 'Next.js', 'Node.js', 'GraphQL', 'Prisma', 'tRPC']}>
@@ -265,3 +270,22 @@ Add `showClear` to the input to allow users to reset their selection.
     </Autocomplete>
   </div>
 </Preview>
+
+```tsx
+<div className="grid w-full max-w-sm gap-1.5">
+  <Label>Tags</Label>
+  <Autocomplete items={['React', 'TypeScript', 'Tailwind', 'Next.js', 'Node.js', 'GraphQL', 'Prisma', 'tRPC']}>
+    <AutocompleteInput placeholder="Add a tag..." />
+    <AutocompleteContent>
+      <AutocompleteEmpty>No tags found.</AutocompleteEmpty>
+      <AutocompleteList>
+        {(item) => (
+          <AutocompleteItem key={item} value={item}>
+            {item}
+          </AutocompleteItem>
+        )}
+      </AutocompleteList>
+    </AutocompleteContent>
+  </Autocomplete>
+</div>
+```

@@ -15,15 +15,19 @@ import { Calendar } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview code={`<Calendar
-  mode="single"
-  className="rounded-md border"
-/>`}>
+<Preview>
   <Calendar
     mode="single"
     className="rounded-md border"
   />
 </Preview>
+
+```tsx
+<Calendar
+  mode="single"
+  className="rounded-md border"
+/>
+```
 
 ## Examples
 
@@ -31,26 +35,25 @@ import { Calendar } from '@e412/rnui-react';
 
 A standalone calendar for picking a single date.
 
-<Preview code={`<Calendar
-  mode="single"
-  className="rounded-md border"
-/>`}>
+<Preview>
   <Calendar
     mode="single"
     className="rounded-md border"
   />
 </Preview>
 
+```tsx
+<Calendar
+  mode="single"
+  className="rounded-md border"
+/>
+```
+
 ### Constrained Date Range
 
 Limit selectable dates with `fromDate` and `toDate`.
 
-<Preview code={`<Calendar
-  mode="single"
-  fromDate={new Date(2026, 0, 1)}
-  toDate={new Date(2026, 11, 31)}
-  className="rounded-md border"
-/>`}>
+<Preview>
   <Calendar
     mode="single"
     fromDate={new Date(2026, 0, 1)}
@@ -59,15 +62,20 @@ Limit selectable dates with `fromDate` and `toDate`.
   />
 </Preview>
 
+```tsx
+<Calendar
+  mode="single"
+  fromDate={new Date(2026, 0, 1)}
+  toDate={new Date(2026, 11, 31)}
+  className="rounded-md border"
+/>
+```
+
 ### Disabled Weekends
 
 Use the `disabled` prop with a matcher function to disable specific days.
 
-<Preview code={`<Calendar
-  mode="single"
-  disabled={(date) => date.getDay() === 0 || date.getDay() === 6}
-  className="rounded-md border"
-/>`}>
+<Preview>
   <Calendar
     mode="single"
     disabled={(date) => date.getDay() === 0 || date.getDay() === 6}
@@ -75,18 +83,17 @@ Use the `disabled` prop with a matcher function to disable specific days.
   />
 </Preview>
 
+```tsx
+<Calendar
+  mode="single"
+  disabled={(date) => date.getDay() === 0 || date.getDay() === 6}
+  className="rounded-md border"
+/>
+```
+
 ### Multiple Calendars Side by Side
 
-<Preview code={`<div className="flex gap-4">
-  <Calendar
-    mode="single"
-    className="rounded-md border"
-  />
-  <Calendar
-    mode="single"
-    className="rounded-md border"
-  />
-</div>`}>
+<Preview>
   <div className="flex gap-4">
     <Calendar
       mode="single"
@@ -98,3 +105,16 @@ Use the `disabled` prop with a matcher function to disable specific days.
     />
   </div>
 </Preview>
+
+```tsx
+<div className="flex gap-4">
+  <Calendar
+    mode="single"
+    className="rounded-md border"
+  />
+  <Calendar
+    mode="single"
+    className="rounded-md border"
+  />
+</div>
+```

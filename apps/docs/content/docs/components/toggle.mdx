@@ -16,33 +16,37 @@ import { Toggle } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview code={`<Toggle aria-label="Toggle bold">
-  <Bold className="h-4 w-4" />
-</Toggle>`}>
+<Preview>
   <Toggle aria-label="Toggle bold">
     <Bold className="h-4 w-4" />
   </Toggle>
 </Preview>
 
+```tsx
+<Toggle aria-label="Toggle bold">
+  <Bold className="h-4 w-4" />
+</Toggle>
+```
+
 ## Variants
 
-<Preview code={`<div className="flex gap-3 items-center">
-  <Toggle aria-label="Default">Default</Toggle>
-  <Toggle variant="outline" aria-label="Outline">Outline</Toggle>
-</div>`}>
+<Preview>
   <div className="flex gap-3 items-center">
     <Toggle aria-label="Default">Default</Toggle>
     <Toggle variant="outline" aria-label="Outline">Outline</Toggle>
   </div>
 </Preview>
 
+```tsx
+<div className="flex gap-3 items-center">
+  <Toggle aria-label="Default">Default</Toggle>
+  <Toggle variant="outline" aria-label="Outline">Outline</Toggle>
+</div>
+```
+
 ## Sizes
 
-<Preview code={`<div className="flex gap-3 items-center">
-  <Toggle size="sm" aria-label="Small">SM</Toggle>
-  <Toggle size="default" aria-label="Default">Default</Toggle>
-  <Toggle size="lg" aria-label="Large">LG</Toggle>
-</div>`}>
+<Preview>
   <div className="flex gap-3 items-center">
     <Toggle size="sm" aria-label="Small">SM</Toggle>
     <Toggle size="default" aria-label="Default">Default</Toggle>
@@ -50,27 +54,29 @@ import { Toggle } from '@e412/rnui-react';
   </div>
 </Preview>
 
+```tsx
+<div className="flex gap-3 items-center">
+  <Toggle size="sm" aria-label="Small">SM</Toggle>
+  <Toggle size="default" aria-label="Default">Default</Toggle>
+  <Toggle size="lg" aria-label="Large">LG</Toggle>
+</div>
+```
+
 ## Disabled
 
-<Preview code={`<Toggle disabled aria-label="Toggle disabled">Disabled</Toggle>`}>
+<Preview>
   <Toggle disabled aria-label="Toggle disabled">Disabled</Toggle>
 </Preview>
+
+```tsx
+<Toggle disabled aria-label="Toggle disabled">Disabled</Toggle>
+```
 
 ## Examples
 
 ### Text Formatting Toolbar
 
-<Preview code={`<div className="flex gap-1 items-center">
-  <Toggle aria-label="Toggle bold">
-    <Bold className="h-4 w-4" />
-  </Toggle>
-  <Toggle aria-label="Toggle italic">
-    <Italic className="h-4 w-4" />
-  </Toggle>
-  <Toggle aria-label="Toggle underline">
-    <Underline className="h-4 w-4" />
-  </Toggle>
-</div>`}>
+<Preview>
   <div className="flex gap-1 items-center">
     <Toggle aria-label="Toggle bold">
       <Bold className="h-4 w-4" />
@@ -84,19 +90,23 @@ import { Toggle } from '@e412/rnui-react';
   </div>
 </Preview>
 
-### Outline Toolbar
-
-<Preview code={`<div className="flex gap-1 items-center">
-  <Toggle variant="outline" aria-label="Toggle bold">
+```tsx
+<div className="flex gap-1 items-center">
+  <Toggle aria-label="Toggle bold">
     <Bold className="h-4 w-4" />
   </Toggle>
-  <Toggle variant="outline" aria-label="Toggle italic">
+  <Toggle aria-label="Toggle italic">
     <Italic className="h-4 w-4" />
   </Toggle>
-  <Toggle variant="outline" aria-label="Toggle underline">
+  <Toggle aria-label="Toggle underline">
     <Underline className="h-4 w-4" />
   </Toggle>
-</div>`}>
+</div>
+```
+
+### Outline Toolbar
+
+<Preview>
   <div className="flex gap-1 items-center">
     <Toggle variant="outline" aria-label="Toggle bold">
       <Bold className="h-4 w-4" />
@@ -109,3 +119,17 @@ import { Toggle } from '@e412/rnui-react';
     </Toggle>
   </div>
 </Preview>
+
+```tsx
+<div className="flex gap-1 items-center">
+  <Toggle variant="outline" aria-label="Toggle bold">
+    <Bold className="h-4 w-4" />
+  </Toggle>
+  <Toggle variant="outline" aria-label="Toggle italic">
+    <Italic className="h-4 w-4" />
+  </Toggle>
+  <Toggle variant="outline" aria-label="Toggle underline">
+    <Underline className="h-4 w-4" />
+  </Toggle>
+</div>
+```

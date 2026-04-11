@@ -20,7 +20,24 @@ import {
 
 ## Usage
 
-<Preview code={`<InputOTP maxLength={6}>
+<Preview>
+  <InputOTP maxLength={6}>
+    <InputOTPGroup>
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+    </InputOTPGroup>
+    <InputOTPSeparator />
+    <InputOTPGroup>
+      <InputOTPSlot index={3} />
+      <InputOTPSlot index={4} />
+      <InputOTPSlot index={5} />
+    </InputOTPGroup>
+  </InputOTP>
+</Preview>
+
+```tsx
+<InputOTP maxLength={6}>
   <InputOTPGroup>
     <InputOTPSlot index={0} />
     <InputOTPSlot index={1} />
@@ -32,34 +49,14 @@ import {
     <InputOTPSlot index={4} />
     <InputOTPSlot index={5} />
   </InputOTPGroup>
-</InputOTP>`}>
-  <InputOTP maxLength={6}>
-    <InputOTPGroup>
-      <InputOTPSlot index={0} />
-      <InputOTPSlot index={1} />
-      <InputOTPSlot index={2} />
-    </InputOTPGroup>
-    <InputOTPSeparator />
-    <InputOTPGroup>
-      <InputOTPSlot index={3} />
-      <InputOTPSlot index={4} />
-      <InputOTPSlot index={5} />
-    </InputOTPGroup>
-  </InputOTP>
-</Preview>
+</InputOTP>
+```
 
 ## Examples
 
 ### Four Digit Code
 
-<Preview code={`<InputOTP maxLength={4}>
-  <InputOTPGroup>
-    <InputOTPSlot index={0} />
-    <InputOTPSlot index={1} />
-    <InputOTPSlot index={2} />
-    <InputOTPSlot index={3} />
-  </InputOTPGroup>
-</InputOTP>`}>
+<Preview>
   <InputOTP maxLength={4}>
     <InputOTPGroup>
       <InputOTPSlot index={0} />
@@ -70,27 +67,20 @@ import {
   </InputOTP>
 </Preview>
 
+```tsx
+<InputOTP maxLength={4}>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    <InputOTPSlot index={1} />
+    <InputOTPSlot index={2} />
+    <InputOTPSlot index={3} />
+  </InputOTPGroup>
+</InputOTP>
+```
+
 ### Verification Form
 
-<Preview code={`<div className="flex flex-col items-center gap-4">
-  <div className="text-center">
-    <h3 className="text-lg font-semibold">Enter verification code</h3>
-    <p className="text-sm text-muted-foreground">We sent a 6-digit code to your email.</p>
-  </div>
-  <InputOTP maxLength={6}>
-    <InputOTPGroup>
-      <InputOTPSlot index={0} />
-      <InputOTPSlot index={1} />
-      <InputOTPSlot index={2} />
-    </InputOTPGroup>
-    <InputOTPSeparator />
-    <InputOTPGroup>
-      <InputOTPSlot index={3} />
-      <InputOTPSlot index={4} />
-      <InputOTPSlot index={5} />
-    </InputOTPGroup>
-  </InputOTP>
-</div>`}>
+<Preview>
   <div className="flex flex-col items-center gap-4">
     <div className="text-center">
       <h3 className="text-lg font-semibold">Enter verification code</h3>
@@ -112,18 +102,31 @@ import {
   </div>
 </Preview>
 
+```tsx
+<div className="flex flex-col items-center gap-4">
+  <div className="text-center">
+    <h3 className="text-lg font-semibold">Enter verification code</h3>
+    <p className="text-sm text-muted-foreground">We sent a 6-digit code to your email.</p>
+  </div>
+  <InputOTP maxLength={6}>
+    <InputOTPGroup>
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+    </InputOTPGroup>
+    <InputOTPSeparator />
+    <InputOTPGroup>
+      <InputOTPSlot index={3} />
+      <InputOTPSlot index={4} />
+      <InputOTPSlot index={5} />
+    </InputOTPGroup>
+  </InputOTP>
+</div>
+```
+
 ### Single Group
 
-<Preview code={`<InputOTP maxLength={6}>
-  <InputOTPGroup>
-    <InputOTPSlot index={0} />
-    <InputOTPSlot index={1} />
-    <InputOTPSlot index={2} />
-    <InputOTPSlot index={3} />
-    <InputOTPSlot index={4} />
-    <InputOTPSlot index={5} />
-  </InputOTPGroup>
-</InputOTP>`}>
+<Preview>
   <InputOTP maxLength={6}>
     <InputOTPGroup>
       <InputOTPSlot index={0} />
@@ -135,3 +138,16 @@ import {
     </InputOTPGroup>
   </InputOTP>
 </Preview>
+
+```tsx
+<InputOTP maxLength={6}>
+  <InputOTPGroup>
+    <InputOTPSlot index={0} />
+    <InputOTPSlot index={1} />
+    <InputOTPSlot index={2} />
+    <InputOTPSlot index={3} />
+    <InputOTPSlot index={4} />
+    <InputOTPSlot index={5} />
+  </InputOTPGroup>
+</InputOTP>
+```

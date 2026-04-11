@@ -15,49 +15,61 @@ import { Input } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview code={`<Input type="email" placeholder="Email" className="max-w-sm" />`}>
+<Preview>
   <Input type="email" placeholder="Email" className="max-w-sm" />
 </Preview>
 
+```tsx
+<Input type="email" placeholder="Email" className="max-w-sm" />
+```
+
 ## With Label
 
-<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
-  <Label htmlFor="email">Email</Label>
-  <Input type="email" id="email" placeholder="you@example.com" />
-</div>`}>
+<Preview>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label htmlFor="email">Email</Label>
     <Input type="email" id="email" placeholder="you@example.com" />
   </div>
 </Preview>
 
+```tsx
+<div className="grid w-full max-w-sm gap-1.5">
+  <Label htmlFor="email">Email</Label>
+  <Input type="email" id="email" placeholder="you@example.com" />
+</div>
+```
+
 ## Disabled
 
-<Preview code={`<Input disabled placeholder="Disabled input" className="max-w-sm" />`}>
+<Preview>
   <Input disabled placeholder="Disabled input" className="max-w-sm" />
 </Preview>
 
+```tsx
+<Input disabled placeholder="Disabled input" className="max-w-sm" />
+```
+
 ## File Input
 
-<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
-  <Label htmlFor="picture">Picture</Label>
-  <Input id="picture" type="file" />
-</div>`}>
+<Preview>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label htmlFor="picture">Picture</Label>
     <Input id="picture" type="file" />
   </div>
 </Preview>
 
+```tsx
+<div className="grid w-full max-w-sm gap-1.5">
+  <Label htmlFor="picture">Picture</Label>
+  <Input id="picture" type="file" />
+</div>
+```
+
 ## Examples
 
 ### With Description
 
-<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
-  <Label htmlFor="email-desc">Email</Label>
-  <Input type="email" id="email-desc" placeholder="you@example.com" />
-  <p className="text-sm text-muted-foreground">We'll never share your email.</p>
-</div>`}>
+<Preview>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label htmlFor="email-desc">Email</Label>
     <Input type="email" id="email-desc" placeholder="you@example.com" />
@@ -65,13 +77,17 @@ import { Input } from '@e412/rnui-react';
   </div>
 </Preview>
 
+```tsx
+<div className="grid w-full max-w-sm gap-1.5">
+  <Label htmlFor="email-desc">Email</Label>
+  <Input type="email" id="email-desc" placeholder="you@example.com" />
+  <p className="text-sm text-muted-foreground">We'll never share your email.</p>
+</div>
+```
+
 ### Invalid State
 
-<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
-  <Label htmlFor="email-invalid">Email</Label>
-  <Input type="email" id="email-invalid" placeholder="you@example.com" aria-invalid="true" />
-  <p className="text-sm text-destructive">Please enter a valid email address.</p>
-</div>`}>
+<Preview>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label htmlFor="email-invalid">Email</Label>
     <Input type="email" id="email-invalid" placeholder="you@example.com" aria-invalid="true" />
@@ -79,30 +95,33 @@ import { Input } from '@e412/rnui-react';
   </div>
 </Preview>
 
+```tsx
+<div className="grid w-full max-w-sm gap-1.5">
+  <Label htmlFor="email-invalid">Email</Label>
+  <Input type="email" id="email-invalid" placeholder="you@example.com" aria-invalid="true" />
+  <p className="text-sm text-destructive">Please enter a valid email address.</p>
+</div>
+```
+
 ### Inline with Button
 
-<Preview code={`<div className="flex w-full max-w-sm items-center gap-2">
-  <Input type="search" placeholder="Search..." />
-  <Button>Search</Button>
-</div>`}>
+<Preview>
   <div className="flex w-full max-w-sm items-center gap-2">
     <Input type="search" placeholder="Search..." />
     <Button>Search</Button>
   </div>
 </Preview>
 
+```tsx
+<div className="flex w-full max-w-sm items-center gap-2">
+  <Input type="search" placeholder="Search..." />
+  <Button>Search</Button>
+</div>
+```
+
 ### Form Grid
 
-<Preview code={`<div className="grid w-full max-w-lg grid-cols-2 gap-4">
-  <div className="grid gap-1.5">
-    <Label htmlFor="first-name">First Name</Label>
-    <Input id="first-name" placeholder="John" />
-  </div>
-  <div className="grid gap-1.5">
-    <Label htmlFor="last-name">Last Name</Label>
-    <Input id="last-name" placeholder="Doe" />
-  </div>
-</div>`}>
+<Preview>
   <div className="grid w-full max-w-lg grid-cols-2 gap-4">
     <div className="grid gap-1.5">
       <Label htmlFor="first-name">First Name</Label>
@@ -114,3 +133,16 @@ import { Input } from '@e412/rnui-react';
     </div>
   </div>
 </Preview>
+
+```tsx
+<div className="grid w-full max-w-lg grid-cols-2 gap-4">
+  <div className="grid gap-1.5">
+    <Label htmlFor="first-name">First Name</Label>
+    <Input id="first-name" placeholder="John" />
+  </div>
+  <div className="grid gap-1.5">
+    <Label htmlFor="last-name">Last Name</Label>
+    <Input id="last-name" placeholder="Doe" />
+  </div>
+</div>
+```

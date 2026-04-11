@@ -15,14 +15,7 @@ import { CodeBlock, InlineCode } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview code={`<CodeBlock
-    code={\`import { Button } from '@e412/rnui-react'
-
-export function App() {
-  return <Button>Click me</Button>
-}\`}
-    language="tsx"
-  />`}>
+<Preview>
   <CodeBlock
     code={`import { Button } from '@e412/rnui-react'
 
@@ -33,15 +26,22 @@ export function App() {
   />
 </Preview>
 
+```tsx
+<CodeBlock
+    code={\`import { Button } from '@e412/rnui-react'
+
+export function App() {
+  return <Button>Click me</Button>
+}\`}
+    language="tsx"
+  />
+```
+
 ## With Title
 
 Add a title bar to label the code block, useful for filenames or descriptions.
 
-<Preview code={`<CodeBlock
-    code={\`npm install @e412/rnui-react @e412/rnui-themes\`}
-    title="Terminal"
-    language="bash"
-  />`}>
+<Preview>
   <CodeBlock
     code={`npm install @e412/rnui-react @e412/rnui-themes`}
     title="Terminal"
@@ -49,28 +49,19 @@ Add a title bar to label the code block, useful for filenames or descriptions.
   />
 </Preview>
 
+```tsx
+<CodeBlock
+    code={\`npm install @e412/rnui-react @e412/rnui-themes\`}
+    title="Terminal"
+    language="bash"
+  />
+```
+
 ## With Line Numbers
 
 Enable `showLineNumbers` to display line numbers alongside the code.
 
-<Preview code={`<CodeBlock
-    code={\`import { Card, CardHeader, CardTitle, CardContent } from '@e412/rnui-react'
-
-export function UserCard({ name, email }) {
-  return (
-    <Card className="w-[350px]">
-      <CardHeader>
-        <CardTitle>{name}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p>{email}</p>
-      </CardContent>
-    </Card>
-  )
-}\`}
-    language="tsx"
-    showLineNumbers
-  />`}>
+<Preview>
   <CodeBlock
     code={`import { Card, CardHeader, CardTitle, CardContent } from '@e412/rnui-react'
 
@@ -91,30 +82,32 @@ export function UserCard({ name, email }) {
   />
 </Preview>
 
-## With Highlighted Lines
+```tsx
+<CodeBlock
+    code={\`import { Card, CardHeader, CardTitle, CardContent } from '@e412/rnui-react'
 
-Use `highlightLines` to draw attention to specific lines of code.
-
-<Preview code={`<CodeBlock
-    code={\`import { useState } from 'react'
-import { Button } from '@e412/rnui-react'
-
-export function Counter() {
-  const [count, setCount] = useState(0)
-
+export function UserCard({ name, email }) {
   return (
-    <div>
-      <p>Count: {count}</p>
-      <Button onClick={() => setCount(c => c + 1)}>
-        Increment
-      </Button>
-    </div>
+    <Card className="w-[350px]">
+      <CardHeader>
+        <CardTitle>{name}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p>{email}</p>
+      </CardContent>
+    </Card>
   )
 }\`}
     language="tsx"
     showLineNumbers
-    highlightLines={[5, 10, 11, 12]}
-  />`}>
+  />
+```
+
+## With Highlighted Lines
+
+Use `highlightLines` to draw attention to specific lines of code.
+
+<Preview>
   <CodeBlock
     code={`import { useState } from 'react'
 import { Button } from '@e412/rnui-react'
@@ -137,16 +130,34 @@ export function Counter() {
   />
 </Preview>
 
+```tsx
+<CodeBlock
+    code={\`import { useState } from 'react'
+import { Button } from '@e412/rnui-react'
+
+export function Counter() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <Button onClick={() => setCount(c => c + 1)}>
+        Increment
+      </Button>
+    </div>
+  )
+}\`}
+    language="tsx"
+    showLineNumbers
+    highlightLines={[5, 10, 11, 12]}
+  />
+```
+
 ## Without Copy Button
 
 Set `showCopy` to `false` to hide the copy-to-clipboard button.
 
-<Preview code={`<CodeBlock
-    code={\`// This block has no copy button
-const x = 42\`}
-    language="ts"
-    showCopy={false}
-  />`}>
+<Preview>
   <CodeBlock
     code={`// This block has no copy button
 const x = 42`}
@@ -155,17 +166,20 @@ const x = 42`}
   />
 </Preview>
 
+```tsx
+<CodeBlock
+    code={\`// This block has no copy button
+const x = 42\`}
+    language="ts"
+    showCopy={false}
+  />
+```
+
 ## Different Languages
 
 ### CSS
 
-<Preview code={`<CodeBlock
-    code={\`@import "tailwindcss";
-@import "@e412/rnui-themes";
-@source "../node_modules/@e412/rnui-react/dist";\`}
-    language="css"
-    title="globals.css"
-  />`}>
+<Preview>
   <CodeBlock
     code={`@import "tailwindcss";
 @import "@e412/rnui-themes";
@@ -175,20 +189,19 @@ const x = 42`}
   />
 </Preview>
 
+```tsx
+<CodeBlock
+    code={\`@import "tailwindcss";
+@import "@e412/rnui-themes";
+@source "../node_modules/@e412/rnui-react/dist";\`}
+    language="css"
+    title="globals.css"
+  />
+```
+
 ### JSON
 
-<Preview code={`<CodeBlock
-    code={\`{
-  "name": "@e412/rnui-react",
-  "version": "0.0.1",
-  "dependencies": {
-    "react": ">=18",
-    "tailwindcss": ">=4"
-  }
-}\`}
-    language="json"
-    showLineNumbers
-  />`}>
+<Preview>
   <CodeBlock
     code={`{
   "name": "@e412/rnui-react",
@@ -203,36 +216,44 @@ const x = 42`}
   />
 </Preview>
 
+```tsx
+<CodeBlock
+    code={\`{
+  "name": "@e412/rnui-react",
+  "version": "0.0.1",
+  "dependencies": {
+    "react": ">=18",
+    "tailwindcss": ">=4"
+  }
+}\`}
+    language="json"
+    showLineNumbers
+  />
+```
+
 ## Inline Code
 
 Use `InlineCode` for short code snippets within paragraphs.
 
-<Preview code={`<p className="text-sm text-foreground">
-    Install the package with <InlineCode>npm install @e412/rnui-react</InlineCode> and
-    import components like <InlineCode>{'<Button />'}</InlineCode>.
-  </p>`}>
+<Preview>
   <p className="text-sm text-foreground">
     Install the package with <InlineCode>npm install @e412/rnui-react</InlineCode> and
     import components like <InlineCode>{'<Button />'}</InlineCode>.
   </p>
 </Preview>
 
+```tsx
+<p className="text-sm text-foreground">
+    Install the package with <InlineCode>npm install @e412/rnui-react</InlineCode> and
+    import components like <InlineCode>{'<Button />'}</InlineCode>.
+  </p>
+```
+
 ## Examples
 
 ### Installation Instructions
 
-<Preview code={`<div className="flex flex-col gap-4">
-    <CodeBlock
-      code={\`npm install @e412/rnui-react @e412/rnui-themes\`}
-      title="npm"
-      language="bash"
-    />
-    <CodeBlock
-      code={\`pnpm add @e412/rnui-react @e412/rnui-themes\`}
-      title="pnpm"
-      language="bash"
-    />
-  </div>`}>
+<Preview>
   <div className="flex flex-col gap-4">
     <CodeBlock
       code={`npm install @e412/rnui-react @e412/rnui-themes`}
@@ -247,24 +268,24 @@ Use `InlineCode` for short code snippets within paragraphs.
   </div>
 </Preview>
 
+```tsx
+<div className="flex flex-col gap-4">
+    <CodeBlock
+      code={\`npm install @e412/rnui-react @e412/rnui-themes\`}
+      title="npm"
+      language="bash"
+    />
+    <CodeBlock
+      code={\`pnpm add @e412/rnui-react @e412/rnui-themes\`}
+      title="pnpm"
+      language="bash"
+    />
+  </div>
+```
+
 ### Config File with Highlights
 
-<Preview code={`<CodeBlock
-    code={\`import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
-
-export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
-})\`}
-    language="tsx"
-    title="vite.config.ts"
-    showLineNumbers
-    highlightLines={[3, 8]}
-  />`}>
+<Preview>
   <CodeBlock
     code={`import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -283,20 +304,28 @@ export default defineConfig({
   />
 </Preview>
 
+```tsx
+<CodeBlock
+    code={\`import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [
+    react(),
+    tailwindcss(),
+  ],
+})\`}
+    language="tsx"
+    title="vite.config.ts"
+    showLineNumbers
+    highlightLines={[3, 8]}
+  />
+```
+
 ### Component Example with Line Numbers
 
-<Preview code={`<CodeBlock
-    code={\`function Greeting({ name }: { name: string }) {
-  return (
-    <div className="rounded-lg border p-4">
-      <h2 className="text-lg font-bold">Hello, {name}!</h2>
-      <p className="text-muted-foreground">Welcome back.</p>
-    </div>
-  )
-}\`}
-    language="tsx"
-    showLineNumbers
-  />`}>
+<Preview>
   <CodeBlock
     code={`function Greeting({ name }: { name: string }) {
   return (
@@ -310,3 +339,18 @@ export default defineConfig({
     showLineNumbers
   />
 </Preview>
+
+```tsx
+<CodeBlock
+    code={\`function Greeting({ name }: { name: string }) {
+  return (
+    <div className="rounded-lg border p-4">
+      <h2 className="text-lg font-bold">Hello, {name}!</h2>
+      <p className="text-muted-foreground">Welcome back.</p>
+    </div>
+  )
+}\`}
+    language="tsx"
+    showLineNumbers
+  />
+```

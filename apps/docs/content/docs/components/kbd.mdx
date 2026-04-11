@@ -15,58 +15,37 @@ import { Kbd, KbdGroup } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview code={`<Kbd>K</Kbd>`}>
+<Preview>
   <Kbd>K</Kbd>
 </Preview>
+
+```tsx
+<Kbd>K</Kbd>
+```
 
 ## Key Group
 
 Use `KbdGroup` to display multi-key shortcuts.
 
-<Preview code={`<KbdGroup>
-    <Kbd>Ctrl</Kbd>
-    <Kbd>K</Kbd>
-  </KbdGroup>`}>
+<Preview>
   <KbdGroup>
     <Kbd>Ctrl</Kbd>
     <Kbd>K</Kbd>
   </KbdGroup>
 </Preview>
 
+```tsx
+<KbdGroup>
+    <Kbd>Ctrl</Kbd>
+    <Kbd>K</Kbd>
+  </KbdGroup>
+```
+
 ## Examples
 
 ### Common Shortcuts
 
-<Preview code={`<div className="flex flex-col gap-3">
-    <div className="flex items-center justify-between text-sm max-w-xs">
-      <span>Copy</span>
-      <KbdGroup>
-        <Kbd>Ctrl</Kbd>
-        <Kbd>C</Kbd>
-      </KbdGroup>
-    </div>
-    <div className="flex items-center justify-between text-sm max-w-xs">
-      <span>Paste</span>
-      <KbdGroup>
-        <Kbd>Ctrl</Kbd>
-        <Kbd>V</Kbd>
-      </KbdGroup>
-    </div>
-    <div className="flex items-center justify-between text-sm max-w-xs">
-      <span>Undo</span>
-      <KbdGroup>
-        <Kbd>Ctrl</Kbd>
-        <Kbd>Z</Kbd>
-      </KbdGroup>
-    </div>
-    <div className="flex items-center justify-between text-sm max-w-xs">
-      <span>Save</span>
-      <KbdGroup>
-        <Kbd>Ctrl</Kbd>
-        <Kbd>S</Kbd>
-      </KbdGroup>
-    </div>
-  </div>`}>
+<Preview>
   <div className="flex flex-col gap-3">
     <div className="flex items-center justify-between text-sm max-w-xs">
       <span>Copy</span>
@@ -99,14 +78,42 @@ Use `KbdGroup` to display multi-key shortcuts.
   </div>
 </Preview>
 
+```tsx
+<div className="flex flex-col gap-3">
+    <div className="flex items-center justify-between text-sm max-w-xs">
+      <span>Copy</span>
+      <KbdGroup>
+        <Kbd>Ctrl</Kbd>
+        <Kbd>C</Kbd>
+      </KbdGroup>
+    </div>
+    <div className="flex items-center justify-between text-sm max-w-xs">
+      <span>Paste</span>
+      <KbdGroup>
+        <Kbd>Ctrl</Kbd>
+        <Kbd>V</Kbd>
+      </KbdGroup>
+    </div>
+    <div className="flex items-center justify-between text-sm max-w-xs">
+      <span>Undo</span>
+      <KbdGroup>
+        <Kbd>Ctrl</Kbd>
+        <Kbd>Z</Kbd>
+      </KbdGroup>
+    </div>
+    <div className="flex items-center justify-between text-sm max-w-xs">
+      <span>Save</span>
+      <KbdGroup>
+        <Kbd>Ctrl</Kbd>
+        <Kbd>S</Kbd>
+      </KbdGroup>
+    </div>
+  </div>
+```
+
 ### Single Keys
 
-<Preview code={`<div className="flex gap-2">
-    <Kbd>Esc</Kbd>
-    <Kbd>Tab</Kbd>
-    <Kbd>Enter</Kbd>
-    <Kbd>Space</Kbd>
-  </div>`}>
+<Preview>
   <div className="flex gap-2">
     <Kbd>Esc</Kbd>
     <Kbd>Tab</Kbd>
@@ -115,15 +122,18 @@ Use `KbdGroup` to display multi-key shortcuts.
   </div>
 </Preview>
 
+```tsx
+<div className="flex gap-2">
+    <Kbd>Esc</Kbd>
+    <Kbd>Tab</Kbd>
+    <Kbd>Enter</Kbd>
+    <Kbd>Space</Kbd>
+  </div>
+```
+
 ### Search Prompt
 
-<Preview code={`<div className="flex items-center gap-2 rounded-md border px-3 py-2 text-sm text-muted-foreground max-w-xs">
-    <span>Search...</span>
-    <KbdGroup className="ml-auto">
-      <Kbd>Ctrl</Kbd>
-      <Kbd>K</Kbd>
-    </KbdGroup>
-  </div>`}>
+<Preview>
   <div className="flex items-center gap-2 rounded-md border px-3 py-2 text-sm text-muted-foreground max-w-xs">
     <span>Search...</span>
     <KbdGroup className="ml-auto">
@@ -132,3 +142,13 @@ Use `KbdGroup` to display multi-key shortcuts.
     </KbdGroup>
   </div>
 </Preview>
+
+```tsx
+<div className="flex items-center gap-2 rounded-md border px-3 py-2 text-sm text-muted-foreground max-w-xs">
+    <span>Search...</span>
+    <KbdGroup className="ml-auto">
+      <Kbd>Ctrl</Kbd>
+      <Kbd>K</Kbd>
+    </KbdGroup>
+  </div>
+```

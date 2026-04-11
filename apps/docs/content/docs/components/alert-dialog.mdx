@@ -27,24 +27,7 @@ import {
 
 ## Usage
 
-<Preview code={`<AlertDialog>
-    <AlertDialogTrigger render={<Button variant="outline" />}>
-      Delete Account
-    </AlertDialogTrigger>
-    <AlertDialogContent>
-      <AlertDialogHeader>
-        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-        <AlertDialogDescription>
-          This action cannot be undone. This will permanently delete your
-          account and remove your data from our servers.
-        </AlertDialogDescription>
-      </AlertDialogHeader>
-      <AlertDialogFooter>
-        <AlertDialogCancel>Cancel</AlertDialogCancel>
-        <AlertDialogAction>Continue</AlertDialogAction>
-      </AlertDialogFooter>
-    </AlertDialogContent>
-  </AlertDialog>`}>
+<Preview>
   <AlertDialog>
     <AlertDialogTrigger render={<Button variant="outline" />}>
       Delete Account
@@ -64,28 +47,33 @@ import {
     </AlertDialogContent>
   </AlertDialog>
 </Preview>
+
+```tsx
+<AlertDialog>
+    <AlertDialogTrigger render={<Button variant="outline" />}>
+      Delete Account
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+        <AlertDialogDescription>
+          This action cannot be undone. This will permanently delete your
+          account and remove your data from our servers.
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogAction>Continue</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+```
 
 ## Sizes
 
 ### Small
 
-<Preview code={`<AlertDialog>
-    <AlertDialogTrigger render={<Button variant="outline" />}>
-      Small Dialog
-    </AlertDialogTrigger>
-    <AlertDialogContent size="sm">
-      <AlertDialogHeader>
-        <AlertDialogTitle>Confirm action</AlertDialogTitle>
-        <AlertDialogDescription>
-          Are you sure you want to proceed?
-        </AlertDialogDescription>
-      </AlertDialogHeader>
-      <AlertDialogFooter>
-        <AlertDialogCancel>No</AlertDialogCancel>
-        <AlertDialogAction>Yes</AlertDialogAction>
-      </AlertDialogFooter>
-    </AlertDialogContent>
-  </AlertDialog>`}>
+<Preview>
   <AlertDialog>
     <AlertDialogTrigger render={<Button variant="outline" />}>
       Small Dialog
@@ -104,31 +92,32 @@ import {
     </AlertDialogContent>
   </AlertDialog>
 </Preview>
+
+```tsx
+<AlertDialog>
+    <AlertDialogTrigger render={<Button variant="outline" />}>
+      Small Dialog
+    </AlertDialogTrigger>
+    <AlertDialogContent size="sm">
+      <AlertDialogHeader>
+        <AlertDialogTitle>Confirm action</AlertDialogTitle>
+        <AlertDialogDescription>
+          Are you sure you want to proceed?
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>No</AlertDialogCancel>
+        <AlertDialogAction>Yes</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+```
 
 ## Examples
 
 ### With Media Icon
 
-<Preview code={`<AlertDialog>
-    <AlertDialogTrigger render={<Button variant="outline" />}>
-      With Media
-    </AlertDialogTrigger>
-    <AlertDialogContent>
-      <AlertDialogHeader>
-        <AlertDialogMedia>
-          <Info />
-        </AlertDialogMedia>
-        <AlertDialogTitle>Important notice</AlertDialogTitle>
-        <AlertDialogDescription>
-          This dialog includes a media icon for visual emphasis.
-        </AlertDialogDescription>
-      </AlertDialogHeader>
-      <AlertDialogFooter>
-        <AlertDialogCancel>Dismiss</AlertDialogCancel>
-        <AlertDialogAction>Acknowledge</AlertDialogAction>
-      </AlertDialogFooter>
-    </AlertDialogContent>
-  </AlertDialog>`}>
+<Preview>
   <AlertDialog>
     <AlertDialogTrigger render={<Button variant="outline" />}>
       With Media
@@ -150,31 +139,33 @@ import {
     </AlertDialogContent>
   </AlertDialog>
 </Preview>
+
+```tsx
+<AlertDialog>
+    <AlertDialogTrigger render={<Button variant="outline" />}>
+      With Media
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogMedia>
+          <Info />
+        </AlertDialogMedia>
+        <AlertDialogTitle>Important notice</AlertDialogTitle>
+        <AlertDialogDescription>
+          This dialog includes a media icon for visual emphasis.
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Dismiss</AlertDialogCancel>
+        <AlertDialogAction>Acknowledge</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+```
 
 ### Destructive Confirmation
 
-<Preview code={`<AlertDialog>
-    <AlertDialogTrigger render={<Button variant="destructive" />}>
-      <Trash2 className="mr-2 h-4 w-4" />
-      Delete Project
-    </AlertDialogTrigger>
-    <AlertDialogContent>
-      <AlertDialogHeader>
-        <AlertDialogMedia>
-          <AlertTriangle />
-        </AlertDialogMedia>
-        <AlertDialogTitle>Delete this project?</AlertDialogTitle>
-        <AlertDialogDescription>
-          All files, settings, and collaborator access will be permanently removed.
-          This action cannot be reversed.
-        </AlertDialogDescription>
-      </AlertDialogHeader>
-      <AlertDialogFooter>
-        <AlertDialogCancel>Keep Project</AlertDialogCancel>
-        <AlertDialogAction>Delete Permanently</AlertDialogAction>
-      </AlertDialogFooter>
-    </AlertDialogContent>
-  </AlertDialog>`}>
+<Preview>
   <AlertDialog>
     <AlertDialogTrigger render={<Button variant="destructive" />}>
       <Trash2 className="mr-2 h-4 w-4" />
@@ -198,26 +189,35 @@ import {
     </AlertDialogContent>
   </AlertDialog>
 </Preview>
+
+```tsx
+<AlertDialog>
+    <AlertDialogTrigger render={<Button variant="destructive" />}>
+      <Trash2 className="mr-2 h-4 w-4" />
+      Delete Project
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogMedia>
+          <AlertTriangle />
+        </AlertDialogMedia>
+        <AlertDialogTitle>Delete this project?</AlertDialogTitle>
+        <AlertDialogDescription>
+          All files, settings, and collaborator access will be permanently removed.
+          This action cannot be reversed.
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Keep Project</AlertDialogCancel>
+        <AlertDialogAction>Delete Permanently</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+```
 
 ### Logout Confirmation
 
-<Preview code={`<AlertDialog>
-    <AlertDialogTrigger render={<Button variant="outline" />}>
-      Log Out
-    </AlertDialogTrigger>
-    <AlertDialogContent size="sm">
-      <AlertDialogHeader>
-        <AlertDialogTitle>Log out?</AlertDialogTitle>
-        <AlertDialogDescription>
-          You will need to sign in again to access your account.
-        </AlertDialogDescription>
-      </AlertDialogHeader>
-      <AlertDialogFooter>
-        <AlertDialogCancel>Stay Signed In</AlertDialogCancel>
-        <AlertDialogAction>Log Out</AlertDialogAction>
-      </AlertDialogFooter>
-    </AlertDialogContent>
-  </AlertDialog>`}>
+<Preview>
   <AlertDialog>
     <AlertDialogTrigger render={<Button variant="outline" />}>
       Log Out
@@ -236,27 +236,30 @@ import {
     </AlertDialogContent>
   </AlertDialog>
 </Preview>
+
+```tsx
+<AlertDialog>
+    <AlertDialogTrigger render={<Button variant="outline" />}>
+      Log Out
+    </AlertDialogTrigger>
+    <AlertDialogContent size="sm">
+      <AlertDialogHeader>
+        <AlertDialogTitle>Log out?</AlertDialogTitle>
+        <AlertDialogDescription>
+          You will need to sign in again to access your account.
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Stay Signed In</AlertDialogCancel>
+        <AlertDialogAction>Log Out</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+```
 
 ### Discard Changes
 
-<Preview code={`<AlertDialog>
-    <AlertDialogTrigger render={<Button variant="outline" />}>
-      Discard Changes
-    </AlertDialogTrigger>
-    <AlertDialogContent>
-      <AlertDialogHeader>
-        <AlertDialogTitle>Unsaved changes</AlertDialogTitle>
-        <AlertDialogDescription>
-          You have unsaved changes. Are you sure you want to discard them?
-          This cannot be undone.
-        </AlertDialogDescription>
-      </AlertDialogHeader>
-      <AlertDialogFooter>
-        <AlertDialogCancel>Keep Editing</AlertDialogCancel>
-        <AlertDialogAction>Discard</AlertDialogAction>
-      </AlertDialogFooter>
-    </AlertDialogContent>
-  </AlertDialog>`}>
+<Preview>
   <AlertDialog>
     <AlertDialogTrigger render={<Button variant="outline" />}>
       Discard Changes
@@ -276,3 +279,24 @@ import {
     </AlertDialogContent>
   </AlertDialog>
 </Preview>
+
+```tsx
+<AlertDialog>
+    <AlertDialogTrigger render={<Button variant="outline" />}>
+      Discard Changes
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogTitle>Unsaved changes</AlertDialogTitle>
+        <AlertDialogDescription>
+          You have unsaved changes. Are you sure you want to discard them?
+          This cannot be undone.
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Keep Editing</AlertDialogCancel>
+        <AlertDialogAction>Discard</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+```

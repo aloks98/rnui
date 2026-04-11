@@ -16,11 +16,7 @@ import { ButtonGroup, ButtonGroupSeparator, Button } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview code={`<ButtonGroup>
-  <Button variant="outline">Archive</Button>
-  <Button variant="outline">Report</Button>
-  <Button variant="outline">Snooze</Button>
-</ButtonGroup>`}>
+<Preview>
   <ButtonGroup>
     <Button variant="outline">Archive</Button>
     <Button variant="outline">Report</Button>
@@ -28,13 +24,17 @@ import { ButtonGroup, ButtonGroupSeparator, Button } from '@e412/rnui-react';
   </ButtonGroup>
 </Preview>
 
+```tsx
+<ButtonGroup>
+  <Button variant="outline">Archive</Button>
+  <Button variant="outline">Report</Button>
+  <Button variant="outline">Snooze</Button>
+</ButtonGroup>
+```
+
 ## With Separator
 
-<Preview code={`<ButtonGroup>
-  <Button variant="secondary" size="sm">Copy</Button>
-  <ButtonGroupSeparator />
-  <Button variant="secondary" size="sm">Paste</Button>
-</ButtonGroup>`}>
+<Preview>
   <ButtonGroup>
     <Button variant="secondary" size="sm">Copy</Button>
     <ButtonGroupSeparator />
@@ -42,16 +42,17 @@ import { ButtonGroup, ButtonGroupSeparator, Button } from '@e412/rnui-react';
   </ButtonGroup>
 </Preview>
 
+```tsx
+<ButtonGroup>
+  <Button variant="secondary" size="sm">Copy</Button>
+  <ButtonGroupSeparator />
+  <Button variant="secondary" size="sm">Paste</Button>
+</ButtonGroup>
+```
+
 ## Vertical
 
-<Preview code={`<ButtonGroup orientation="vertical" className="h-fit">
-  <Button variant="outline" size="icon">
-    <Plus />
-  </Button>
-  <Button variant="outline" size="icon">
-    <Minus />
-  </Button>
-</ButtonGroup>`}>
+<Preview>
   <ButtonGroup orientation="vertical" className="h-fit">
     <Button variant="outline" size="icon">
       <Plus />
@@ -62,17 +63,22 @@ import { ButtonGroup, ButtonGroupSeparator, Button } from '@e412/rnui-react';
   </ButtonGroup>
 </Preview>
 
+```tsx
+<ButtonGroup orientation="vertical" className="h-fit">
+  <Button variant="outline" size="icon">
+    <Plus />
+  </Button>
+  <Button variant="outline" size="icon">
+    <Minus />
+  </Button>
+</ButtonGroup>
+```
+
 ## Examples
 
 ### Split Button
 
-<Preview code={`<ButtonGroup>
-  <Button variant="secondary">Button</Button>
-  <ButtonGroupSeparator />
-  <Button size="icon" variant="secondary">
-    <Plus />
-  </Button>
-</ButtonGroup>`}>
+<Preview>
   <ButtonGroup>
     <Button variant="secondary">Button</Button>
     <ButtonGroupSeparator />
@@ -82,25 +88,19 @@ import { ButtonGroup, ButtonGroupSeparator, Button } from '@e412/rnui-react';
   </ButtonGroup>
 </Preview>
 
+```tsx
+<ButtonGroup>
+  <Button variant="secondary">Button</Button>
+  <ButtonGroupSeparator />
+  <Button size="icon" variant="secondary">
+    <Plus />
+  </Button>
+</ButtonGroup>
+```
+
 ### Pagination Controls
 
-<Preview code={`<ButtonGroup>
-  <ButtonGroup>
-    <Button variant="outline" size="sm">1</Button>
-    <Button variant="outline" size="sm">2</Button>
-    <Button variant="outline" size="sm">3</Button>
-    <Button variant="outline" size="sm">4</Button>
-    <Button variant="outline" size="sm">5</Button>
-  </ButtonGroup>
-  <ButtonGroup>
-    <Button variant="outline" size="icon-sm" aria-label="Previous">
-      <ArrowLeft />
-    </Button>
-    <Button variant="outline" size="icon-sm" aria-label="Next">
-      <ArrowRight />
-    </Button>
-  </ButtonGroup>
-</ButtonGroup>`}>
+<Preview>
   <ButtonGroup>
     <ButtonGroup>
       <Button variant="outline" size="sm">1</Button>
@@ -120,25 +120,29 @@ import { ButtonGroup, ButtonGroupSeparator, Button } from '@e412/rnui-react';
   </ButtonGroup>
 </Preview>
 
+```tsx
+<ButtonGroup>
+  <ButtonGroup>
+    <Button variant="outline" size="sm">1</Button>
+    <Button variant="outline" size="sm">2</Button>
+    <Button variant="outline" size="sm">3</Button>
+    <Button variant="outline" size="sm">4</Button>
+    <Button variant="outline" size="sm">5</Button>
+  </ButtonGroup>
+  <ButtonGroup>
+    <Button variant="outline" size="icon-sm" aria-label="Previous">
+      <ArrowLeft />
+    </Button>
+    <Button variant="outline" size="icon-sm" aria-label="Next">
+      <ArrowRight />
+    </Button>
+  </ButtonGroup>
+</ButtonGroup>
+```
+
 ### Sizes
 
-<Preview code={`<div className="flex flex-col items-start gap-6">
-  <ButtonGroup>
-    <Button variant="outline" size="sm">Small</Button>
-    <Button variant="outline" size="sm">Button</Button>
-    <Button variant="outline" size="sm">Group</Button>
-  </ButtonGroup>
-  <ButtonGroup>
-    <Button variant="outline">Default</Button>
-    <Button variant="outline">Button</Button>
-    <Button variant="outline">Group</Button>
-  </ButtonGroup>
-  <ButtonGroup>
-    <Button variant="outline" size="lg">Large</Button>
-    <Button variant="outline" size="lg">Button</Button>
-    <Button variant="outline" size="lg">Group</Button>
-  </ButtonGroup>
-</div>`}>
+<Preview>
   <div className="flex flex-col items-start gap-6">
     <ButtonGroup>
       <Button variant="outline" size="sm">Small</Button>
@@ -157,3 +161,23 @@ import { ButtonGroup, ButtonGroupSeparator, Button } from '@e412/rnui-react';
     </ButtonGroup>
   </div>
 </Preview>
+
+```tsx
+<div className="flex flex-col items-start gap-6">
+  <ButtonGroup>
+    <Button variant="outline" size="sm">Small</Button>
+    <Button variant="outline" size="sm">Button</Button>
+    <Button variant="outline" size="sm">Group</Button>
+  </ButtonGroup>
+  <ButtonGroup>
+    <Button variant="outline">Default</Button>
+    <Button variant="outline">Button</Button>
+    <Button variant="outline">Group</Button>
+  </ButtonGroup>
+  <ButtonGroup>
+    <Button variant="outline" size="lg">Large</Button>
+    <Button variant="outline" size="lg">Button</Button>
+    <Button variant="outline" size="lg">Group</Button>
+  </ButtonGroup>
+</div>
+```

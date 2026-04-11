@@ -22,14 +22,7 @@ import {
 
 ## Usage
 
-<Preview code={`<div className="w-full max-w-sm">
-  <InputGroup>
-    <InputGroupAddon>
-      <InputGroupText>https://</InputGroupText>
-    </InputGroupAddon>
-    <InputGroupInput placeholder="example.com" />
-  </InputGroup>
-</div>`}>
+<Preview>
   <div className="w-full max-w-sm">
     <InputGroup>
       <InputGroupAddon>
@@ -40,25 +33,20 @@ import {
   </div>
 </Preview>
 
-## With Prefix and Suffix
-
-<Preview code={`<div className="grid w-full max-w-sm gap-4">
+```tsx
+<div className="w-full max-w-sm">
   <InputGroup>
     <InputGroupAddon>
-      <InputGroupText>$</InputGroupText>
+      <InputGroupText>https://</InputGroupText>
     </InputGroupAddon>
-    <InputGroupInput placeholder="0.00" />
-    <InputGroupAddon align="inline-end">
-      <InputGroupText>USD</InputGroupText>
-    </InputGroupAddon>
+    <InputGroupInput placeholder="example.com" />
   </InputGroup>
-  <InputGroup>
-    <InputGroupInput placeholder="Enter your username" />
-    <InputGroupAddon align="inline-end">
-      <InputGroupText>@company.com</InputGroupText>
-    </InputGroupAddon>
-  </InputGroup>
-</div>`}>
+</div>
+```
+
+## With Prefix and Suffix
+
+<Preview>
   <div className="grid w-full max-w-sm gap-4">
     <InputGroup>
       <InputGroupAddon>
@@ -78,33 +66,31 @@ import {
   </div>
 </Preview>
 
+```tsx
+<div className="grid w-full max-w-sm gap-4">
+  <InputGroup>
+    <InputGroupAddon>
+      <InputGroupText>$</InputGroupText>
+    </InputGroupAddon>
+    <InputGroupInput placeholder="0.00" />
+    <InputGroupAddon align="inline-end">
+      <InputGroupText>USD</InputGroupText>
+    </InputGroupAddon>
+  </InputGroup>
+  <InputGroup>
+    <InputGroupInput placeholder="Enter your username" />
+    <InputGroupAddon align="inline-end">
+      <InputGroupText>@company.com</InputGroupText>
+    </InputGroupAddon>
+  </InputGroup>
+</div>
+```
+
 ## Examples
 
 ### Icon Addons
 
-<Preview code={`<div className="grid w-full max-w-sm gap-4">
-  <div className="grid gap-1.5">
-    <Label>Email</Label>
-    <InputGroup>
-      <InputGroupAddon>
-        <Mail className="size-4 text-muted-foreground" />
-      </InputGroupAddon>
-      <InputGroupInput placeholder="you@example.com" />
-    </InputGroup>
-  </div>
-  <div className="grid gap-1.5">
-    <Label>Password</Label>
-    <InputGroup>
-      <InputGroupAddon>
-        <Lock className="size-4 text-muted-foreground" />
-      </InputGroupAddon>
-      <InputGroupInput type="password" placeholder="Enter password" />
-      <InputGroupButton variant="ghost" size="icon-sm">
-        <Eye className="size-4" />
-      </InputGroupButton>
-    </InputGroup>
-  </div>
-</div>`}>
+<Preview>
   <div className="grid w-full max-w-sm gap-4">
     <div className="grid gap-1.5">
       <Label>Email</Label>
@@ -130,19 +116,35 @@ import {
   </div>
 </Preview>
 
+```tsx
+<div className="grid w-full max-w-sm gap-4">
+  <div className="grid gap-1.5">
+    <Label>Email</Label>
+    <InputGroup>
+      <InputGroupAddon>
+        <Mail className="size-4 text-muted-foreground" />
+      </InputGroupAddon>
+      <InputGroupInput placeholder="you@example.com" />
+    </InputGroup>
+  </div>
+  <div className="grid gap-1.5">
+    <Label>Password</Label>
+    <InputGroup>
+      <InputGroupAddon>
+        <Lock className="size-4 text-muted-foreground" />
+      </InputGroupAddon>
+      <InputGroupInput type="password" placeholder="Enter password" />
+      <InputGroupButton variant="ghost" size="icon-sm">
+        <Eye className="size-4" />
+      </InputGroupButton>
+    </InputGroup>
+  </div>
+</div>
+```
+
 ### Currency Input
 
-<Preview code={`<div className="w-full max-w-sm">
-  <InputGroup>
-    <InputGroupAddon>
-      <InputGroupText>$</InputGroupText>
-    </InputGroupAddon>
-    <InputGroupInput placeholder="0.00" type="number" />
-    <InputGroupAddon align="inline-end">
-      <InputGroupText>USD</InputGroupText>
-    </InputGroupAddon>
-  </InputGroup>
-</div>`}>
+<Preview>
   <div className="w-full max-w-sm">
     <InputGroup>
       <InputGroupAddon>
@@ -155,3 +157,17 @@ import {
     </InputGroup>
   </div>
 </Preview>
+
+```tsx
+<div className="w-full max-w-sm">
+  <InputGroup>
+    <InputGroupAddon>
+      <InputGroupText>$</InputGroupText>
+    </InputGroupAddon>
+    <InputGroupInput placeholder="0.00" type="number" />
+    <InputGroupAddon align="inline-end">
+      <InputGroupText>USD</InputGroupText>
+    </InputGroupAddon>
+  </InputGroup>
+</div>
+```

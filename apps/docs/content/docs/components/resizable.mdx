@@ -19,19 +19,7 @@ import {
 
 ## Usage
 
-<Preview code={`<ResizablePanelGroup direction="horizontal" className="max-w-md rounded-lg border">
-  <ResizablePanel defaultSize={50}>
-    <div className="flex h-[200px] items-center justify-center p-6">
-      <span className="font-semibold">One</span>
-    </div>
-  </ResizablePanel>
-  <ResizableHandle withHandle />
-  <ResizablePanel defaultSize={50}>
-    <div className="flex h-[200px] items-center justify-center p-6">
-      <span className="font-semibold">Two</span>
-    </div>
-  </ResizablePanel>
-</ResizablePanelGroup>`}>
+<Preview>
   <ResizablePanelGroup direction="horizontal" className="max-w-md rounded-lg border">
     <ResizablePanel defaultSize={50}>
       <div className="flex h-[200px] items-center justify-center p-6">
@@ -47,23 +35,27 @@ import {
   </ResizablePanelGroup>
 </Preview>
 
+```tsx
+<ResizablePanelGroup direction="horizontal" className="max-w-md rounded-lg border">
+  <ResizablePanel defaultSize={50}>
+    <div className="flex h-[200px] items-center justify-center p-6">
+      <span className="font-semibold">One</span>
+    </div>
+  </ResizablePanel>
+  <ResizableHandle withHandle />
+  <ResizablePanel defaultSize={50}>
+    <div className="flex h-[200px] items-center justify-center p-6">
+      <span className="font-semibold">Two</span>
+    </div>
+  </ResizablePanel>
+</ResizablePanelGroup>
+```
+
 ## Direction
 
 ### Horizontal
 
-<Preview code={`<ResizablePanelGroup direction="horizontal" className="max-w-md rounded-lg border">
-  <ResizablePanel defaultSize={30}>
-    <div className="flex h-[150px] items-center justify-center p-6">
-      <span className="font-semibold">Left</span>
-    </div>
-  </ResizablePanel>
-  <ResizableHandle withHandle />
-  <ResizablePanel defaultSize={70}>
-    <div className="flex h-[150px] items-center justify-center p-6">
-      <span className="font-semibold">Right</span>
-    </div>
-  </ResizablePanel>
-</ResizablePanelGroup>`}>
+<Preview>
   <ResizablePanelGroup direction="horizontal" className="max-w-md rounded-lg border">
     <ResizablePanel defaultSize={30}>
       <div className="flex h-[150px] items-center justify-center p-6">
@@ -79,21 +71,25 @@ import {
   </ResizablePanelGroup>
 </Preview>
 
-### Vertical
-
-<Preview code={`<ResizablePanelGroup direction="vertical" className="max-w-md rounded-lg border">
-  <ResizablePanel defaultSize={40}>
-    <div className="flex h-[100px] items-center justify-center p-6">
-      <span className="font-semibold">Top</span>
+```tsx
+<ResizablePanelGroup direction="horizontal" className="max-w-md rounded-lg border">
+  <ResizablePanel defaultSize={30}>
+    <div className="flex h-[150px] items-center justify-center p-6">
+      <span className="font-semibold">Left</span>
     </div>
   </ResizablePanel>
   <ResizableHandle withHandle />
-  <ResizablePanel defaultSize={60}>
-    <div className="flex h-[100px] items-center justify-center p-6">
-      <span className="font-semibold">Bottom</span>
+  <ResizablePanel defaultSize={70}>
+    <div className="flex h-[150px] items-center justify-center p-6">
+      <span className="font-semibold">Right</span>
     </div>
   </ResizablePanel>
-</ResizablePanelGroup>`}>
+</ResizablePanelGroup>
+```
+
+### Vertical
+
+<Preview>
   <ResizablePanelGroup direction="vertical" className="max-w-md rounded-lg border">
     <ResizablePanel defaultSize={40}>
       <div className="flex h-[100px] items-center justify-center p-6">
@@ -109,29 +105,27 @@ import {
   </ResizablePanelGroup>
 </Preview>
 
+```tsx
+<ResizablePanelGroup direction="vertical" className="max-w-md rounded-lg border">
+  <ResizablePanel defaultSize={40}>
+    <div className="flex h-[100px] items-center justify-center p-6">
+      <span className="font-semibold">Top</span>
+    </div>
+  </ResizablePanel>
+  <ResizableHandle withHandle />
+  <ResizablePanel defaultSize={60}>
+    <div className="flex h-[100px] items-center justify-center p-6">
+      <span className="font-semibold">Bottom</span>
+    </div>
+  </ResizablePanel>
+</ResizablePanelGroup>
+```
+
 ## Examples
 
 ### Three Panel Layout
 
-<Preview code={`<ResizablePanelGroup direction="horizontal" className="max-w-lg rounded-lg border">
-  <ResizablePanel defaultSize={25}>
-    <div className="flex h-[200px] items-center justify-center p-4">
-      <span className="text-sm font-semibold">Sidebar</span>
-    </div>
-  </ResizablePanel>
-  <ResizableHandle withHandle />
-  <ResizablePanel defaultSize={50}>
-    <div className="flex h-[200px] items-center justify-center p-4">
-      <span className="text-sm font-semibold">Content</span>
-    </div>
-  </ResizablePanel>
-  <ResizableHandle withHandle />
-  <ResizablePanel defaultSize={25}>
-    <div className="flex h-[200px] items-center justify-center p-4">
-      <span className="text-sm font-semibold">Inspector</span>
-    </div>
-  </ResizablePanel>
-</ResizablePanelGroup>`}>
+<Preview>
   <ResizablePanelGroup direction="horizontal" className="max-w-lg rounded-lg border">
     <ResizablePanel defaultSize={25}>
       <div className="flex h-[200px] items-center justify-center p-4">
@@ -153,31 +147,31 @@ import {
   </ResizablePanelGroup>
 </Preview>
 
-### Nested Panels
-
-<Preview code={`<ResizablePanelGroup direction="horizontal" className="max-w-lg rounded-lg border">
-  <ResizablePanel defaultSize={30}>
-    <div className="flex h-[300px] items-center justify-center p-4">
+```tsx
+<ResizablePanelGroup direction="horizontal" className="max-w-lg rounded-lg border">
+  <ResizablePanel defaultSize={25}>
+    <div className="flex h-[200px] items-center justify-center p-4">
       <span className="text-sm font-semibold">Sidebar</span>
     </div>
   </ResizablePanel>
   <ResizableHandle withHandle />
-  <ResizablePanel defaultSize={70}>
-    <ResizablePanelGroup direction="vertical">
-      <ResizablePanel defaultSize={60}>
-        <div className="flex h-full items-center justify-center p-4">
-          <span className="text-sm font-semibold">Editor</span>
-        </div>
-      </ResizablePanel>
-      <ResizableHandle withHandle />
-      <ResizablePanel defaultSize={40}>
-        <div className="flex h-full items-center justify-center p-4">
-          <span className="text-sm font-semibold">Terminal</span>
-        </div>
-      </ResizablePanel>
-    </ResizablePanelGroup>
+  <ResizablePanel defaultSize={50}>
+    <div className="flex h-[200px] items-center justify-center p-4">
+      <span className="text-sm font-semibold">Content</span>
+    </div>
   </ResizablePanel>
-</ResizablePanelGroup>`}>
+  <ResizableHandle withHandle />
+  <ResizablePanel defaultSize={25}>
+    <div className="flex h-[200px] items-center justify-center p-4">
+      <span className="text-sm font-semibold">Inspector</span>
+    </div>
+  </ResizablePanel>
+</ResizablePanelGroup>
+```
+
+### Nested Panels
+
+<Preview>
   <ResizablePanelGroup direction="horizontal" className="max-w-lg rounded-lg border">
     <ResizablePanel defaultSize={30}>
       <div className="flex h-[300px] items-center justify-center p-4">
@@ -203,21 +197,35 @@ import {
   </ResizablePanelGroup>
 </Preview>
 
+```tsx
+<ResizablePanelGroup direction="horizontal" className="max-w-lg rounded-lg border">
+  <ResizablePanel defaultSize={30}>
+    <div className="flex h-[300px] items-center justify-center p-4">
+      <span className="text-sm font-semibold">Sidebar</span>
+    </div>
+  </ResizablePanel>
+  <ResizableHandle withHandle />
+  <ResizablePanel defaultSize={70}>
+    <ResizablePanelGroup direction="vertical">
+      <ResizablePanel defaultSize={60}>
+        <div className="flex h-full items-center justify-center p-4">
+          <span className="text-sm font-semibold">Editor</span>
+        </div>
+      </ResizablePanel>
+      <ResizableHandle withHandle />
+      <ResizablePanel defaultSize={40}>
+        <div className="flex h-full items-center justify-center p-4">
+          <span className="text-sm font-semibold">Terminal</span>
+        </div>
+      </ResizablePanel>
+    </ResizablePanelGroup>
+  </ResizablePanel>
+</ResizablePanelGroup>
+```
+
 ### Without Handle Indicator
 
-<Preview code={`<ResizablePanelGroup direction="horizontal" className="max-w-md rounded-lg border">
-  <ResizablePanel defaultSize={50}>
-    <div className="flex h-[150px] items-center justify-center p-6">
-      <span className="font-semibold">Left</span>
-    </div>
-  </ResizablePanel>
-  <ResizableHandle />
-  <ResizablePanel defaultSize={50}>
-    <div className="flex h-[150px] items-center justify-center p-6">
-      <span className="font-semibold">Right</span>
-    </div>
-  </ResizablePanel>
-</ResizablePanelGroup>`}>
+<Preview>
   <ResizablePanelGroup direction="horizontal" className="max-w-md rounded-lg border">
     <ResizablePanel defaultSize={50}>
       <div className="flex h-[150px] items-center justify-center p-6">
@@ -232,3 +240,19 @@ import {
     </ResizablePanel>
   </ResizablePanelGroup>
 </Preview>
+
+```tsx
+<ResizablePanelGroup direction="horizontal" className="max-w-md rounded-lg border">
+  <ResizablePanel defaultSize={50}>
+    <div className="flex h-[150px] items-center justify-center p-6">
+      <span className="font-semibold">Left</span>
+    </div>
+  </ResizablePanel>
+  <ResizableHandle />
+  <ResizablePanel defaultSize={50}>
+    <div className="flex h-[150px] items-center justify-center p-6">
+      <span className="font-semibold">Right</span>
+    </div>
+  </ResizablePanel>
+</ResizablePanelGroup>
+```

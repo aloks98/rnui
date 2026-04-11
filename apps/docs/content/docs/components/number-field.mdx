@@ -23,13 +23,7 @@ import {
 
 ## Usage
 
-<Preview code={`<NumberField defaultValue={5} className="w-36">
-  <NumberFieldGroup>
-    <NumberFieldDecrement />
-    <NumberFieldInput />
-    <NumberFieldIncrement />
-  </NumberFieldGroup>
-</NumberField>`}>
+<Preview>
   <NumberField defaultValue={5} className="w-36">
     <NumberFieldGroup>
       <NumberFieldDecrement />
@@ -39,18 +33,21 @@ import {
   </NumberField>
 </Preview>
 
-## Variants
-
-### With Label
-
-<Preview code={`<NumberField defaultValue={1} className="w-36">
-  <Label>Quantity</Label>
+```tsx
+<NumberField defaultValue={5} className="w-36">
   <NumberFieldGroup>
     <NumberFieldDecrement />
     <NumberFieldInput />
     <NumberFieldIncrement />
   </NumberFieldGroup>
-</NumberField>`}>
+</NumberField>
+```
+
+## Variants
+
+### With Label
+
+<Preview>
   <NumberField defaultValue={1} className="w-36">
     <Label>Quantity</Label>
     <NumberFieldGroup>
@@ -61,16 +58,20 @@ import {
   </NumberField>
 </Preview>
 
-### With Min and Max
-
-<Preview code={`<NumberField defaultValue={5} min={0} max={10} className="w-36">
-  <Label>Rating (0-10)</Label>
+```tsx
+<NumberField defaultValue={1} className="w-36">
+  <Label>Quantity</Label>
   <NumberFieldGroup>
     <NumberFieldDecrement />
     <NumberFieldInput />
     <NumberFieldIncrement />
   </NumberFieldGroup>
-</NumberField>`}>
+</NumberField>
+```
+
+### With Min and Max
+
+<Preview>
   <NumberField defaultValue={5} min={0} max={10} className="w-36">
     <Label>Rating (0-10)</Label>
     <NumberFieldGroup>
@@ -81,16 +82,20 @@ import {
   </NumberField>
 </Preview>
 
-### With Step
-
-<Preview code={`<NumberField defaultValue={0} step={0.25} className="w-36">
-  <Label>Amount</Label>
+```tsx
+<NumberField defaultValue={5} min={0} max={10} className="w-36">
+  <Label>Rating (0-10)</Label>
   <NumberFieldGroup>
     <NumberFieldDecrement />
     <NumberFieldInput />
     <NumberFieldIncrement />
   </NumberFieldGroup>
-</NumberField>`}>
+</NumberField>
+```
+
+### With Step
+
+<Preview>
   <NumberField defaultValue={0} step={0.25} className="w-36">
     <Label>Amount</Label>
     <NumberFieldGroup>
@@ -101,36 +106,22 @@ import {
   </NumberField>
 </Preview>
 
+```tsx
+<NumberField defaultValue={0} step={0.25} className="w-36">
+  <Label>Amount</Label>
+  <NumberFieldGroup>
+    <NumberFieldDecrement />
+    <NumberFieldInput />
+    <NumberFieldIncrement />
+  </NumberFieldGroup>
+</NumberField>
+```
+
 ### Sizes
 
 The component supports `sm`, `default`, and `lg` sizes.
 
-<Preview code={`<div className="flex flex-col items-start gap-4">
-  <NumberField defaultValue={1} size="sm" className="w-32">
-    <Label>Small</Label>
-    <NumberFieldGroup>
-      <NumberFieldDecrement />
-      <NumberFieldInput />
-      <NumberFieldIncrement />
-    </NumberFieldGroup>
-  </NumberField>
-  <NumberField defaultValue={2} size="default" className="w-36">
-    <Label>Default</Label>
-    <NumberFieldGroup>
-      <NumberFieldDecrement />
-      <NumberFieldInput />
-      <NumberFieldIncrement />
-    </NumberFieldGroup>
-  </NumberField>
-  <NumberField defaultValue={3} size="lg" className="w-40">
-    <Label>Large</Label>
-    <NumberFieldGroup>
-      <NumberFieldDecrement />
-      <NumberFieldInput />
-      <NumberFieldIncrement />
-    </NumberFieldGroup>
-  </NumberField>
-</div>`}>
+<Preview>
   <div className="flex flex-col items-start gap-4">
     <NumberField defaultValue={1} size="sm" className="w-32">
       <Label>Small</Label>
@@ -159,15 +150,38 @@ The component supports `sm`, `default`, and `lg` sizes.
   </div>
 </Preview>
 
+```tsx
+<div className="flex flex-col items-start gap-4">
+  <NumberField defaultValue={1} size="sm" className="w-32">
+    <Label>Small</Label>
+    <NumberFieldGroup>
+      <NumberFieldDecrement />
+      <NumberFieldInput />
+      <NumberFieldIncrement />
+    </NumberFieldGroup>
+  </NumberField>
+  <NumberField defaultValue={2} size="default" className="w-36">
+    <Label>Default</Label>
+    <NumberFieldGroup>
+      <NumberFieldDecrement />
+      <NumberFieldInput />
+      <NumberFieldIncrement />
+    </NumberFieldGroup>
+  </NumberField>
+  <NumberField defaultValue={3} size="lg" className="w-40">
+    <Label>Large</Label>
+    <NumberFieldGroup>
+      <NumberFieldDecrement />
+      <NumberFieldInput />
+      <NumberFieldIncrement />
+    </NumberFieldGroup>
+  </NumberField>
+</div>
+```
+
 ### Disabled
 
-<Preview code={`<NumberField defaultValue={5} disabled className="w-36">
-  <NumberFieldGroup>
-    <NumberFieldDecrement />
-    <NumberFieldInput />
-    <NumberFieldIncrement />
-  </NumberFieldGroup>
-</NumberField>`}>
+<Preview>
   <NumberField defaultValue={5} disabled className="w-36">
     <NumberFieldGroup>
       <NumberFieldDecrement />
@@ -177,18 +191,21 @@ The component supports `sm`, `default`, and `lg` sizes.
   </NumberField>
 </Preview>
 
-### With Scrub Area
-
-The `NumberFieldScrubArea` allows users to click and drag horizontally to adjust the value.
-
-<Preview code={`<NumberField defaultValue={50} className="w-36">
-  <NumberFieldScrubArea label="Opacity" />
+```tsx
+<NumberField defaultValue={5} disabled className="w-36">
   <NumberFieldGroup>
     <NumberFieldDecrement />
     <NumberFieldInput />
     <NumberFieldIncrement />
   </NumberFieldGroup>
-</NumberField>`}>
+</NumberField>
+```
+
+### With Scrub Area
+
+The `NumberFieldScrubArea` allows users to click and drag horizontally to adjust the value.
+
+<Preview>
   <NumberField defaultValue={50} className="w-36">
     <NumberFieldScrubArea label="Opacity" />
     <NumberFieldGroup>
@@ -199,20 +216,22 @@ The `NumberFieldScrubArea` allows users to click and drag horizontally to adjust
   </NumberField>
 </Preview>
 
+```tsx
+<NumberField defaultValue={50} className="w-36">
+  <NumberFieldScrubArea label="Opacity" />
+  <NumberFieldGroup>
+    <NumberFieldDecrement />
+    <NumberFieldInput />
+    <NumberFieldIncrement />
+  </NumberFieldGroup>
+</NumberField>
+```
+
 ## Examples
 
 ### Quantity Selector
 
-<Preview code={`<div className="flex items-end gap-4">
-  <NumberField defaultValue={1} min={1} max={99} className="w-36">
-    <Label>Quantity</Label>
-    <NumberFieldGroup>
-      <NumberFieldDecrement />
-      <NumberFieldInput />
-      <NumberFieldIncrement />
-    </NumberFieldGroup>
-  </NumberField>
-</div>`}>
+<Preview>
   <div className="flex items-end gap-4">
     <NumberField defaultValue={1} min={1} max={99} className="w-36">
       <Label>Quantity</Label>
@@ -225,16 +244,22 @@ The `NumberFieldScrubArea` allows users to click and drag horizontally to adjust
   </div>
 </Preview>
 
+```tsx
+<div className="flex items-end gap-4">
+  <NumberField defaultValue={1} min={1} max={99} className="w-36">
+    <Label>Quantity</Label>
+    <NumberFieldGroup>
+      <NumberFieldDecrement />
+      <NumberFieldInput />
+      <NumberFieldIncrement />
+    </NumberFieldGroup>
+  </NumberField>
+</div>
+```
+
 ### Temperature Setting
 
-<Preview code={`<NumberField defaultValue={72} min={60} max={85} step={1} className="w-36">
-  <Label>Temperature (F)</Label>
-  <NumberFieldGroup>
-    <NumberFieldDecrement />
-    <NumberFieldInput />
-    <NumberFieldIncrement />
-  </NumberFieldGroup>
-</NumberField>`}>
+<Preview>
   <NumberField defaultValue={72} min={60} max={85} step={1} className="w-36">
     <Label>Temperature (F)</Label>
     <NumberFieldGroup>
@@ -245,16 +270,20 @@ The `NumberFieldScrubArea` allows users to click and drag horizontally to adjust
   </NumberField>
 </Preview>
 
-### Currency Input
-
-<Preview code={`<NumberField defaultValue={9.99} min={0} step={0.01} className="w-40">
-  <Label>Price ($)</Label>
+```tsx
+<NumberField defaultValue={72} min={60} max={85} step={1} className="w-36">
+  <Label>Temperature (F)</Label>
   <NumberFieldGroup>
     <NumberFieldDecrement />
     <NumberFieldInput />
     <NumberFieldIncrement />
   </NumberFieldGroup>
-</NumberField>`}>
+</NumberField>
+```
+
+### Currency Input
+
+<Preview>
   <NumberField defaultValue={9.99} min={0} step={0.01} className="w-40">
     <Label>Price ($)</Label>
     <NumberFieldGroup>
@@ -264,3 +293,14 @@ The `NumberFieldScrubArea` allows users to click and drag horizontally to adjust
     </NumberFieldGroup>
   </NumberField>
 </Preview>
+
+```tsx
+<NumberField defaultValue={9.99} min={0} step={0.01} className="w-40">
+  <Label>Price ($)</Label>
+  <NumberFieldGroup>
+    <NumberFieldDecrement />
+    <NumberFieldInput />
+    <NumberFieldIncrement />
+  </NumberFieldGroup>
+</NumberField>
+```

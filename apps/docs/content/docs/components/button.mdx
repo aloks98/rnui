@@ -16,20 +16,17 @@ import { Button } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview code={`<Button>Button</Button>`}>
+<Preview>
   <Button>Button</Button>
 </Preview>
 
+```tsx
+<Button>Button</Button>
+```
+
 ## Variants
 
-<Preview code={`<div className="flex gap-3 flex-wrap items-center">
-  <Button>Default</Button>
-  <Button variant="secondary">Secondary</Button>
-  <Button variant="destructive">Destructive</Button>
-  <Button variant="outline">Outline</Button>
-  <Button variant="ghost">Ghost</Button>
-  <Button variant="link">Link</Button>
-</div>`}>
+<Preview>
   <div className="flex gap-3 flex-wrap items-center">
     <Button>Default</Button>
     <Button variant="secondary">Secondary</Button>
@@ -40,14 +37,20 @@ import { Button } from '@e412/rnui-react';
   </div>
 </Preview>
 
+```tsx
+<div className="flex gap-3 flex-wrap items-center">
+  <Button>Default</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="destructive">Destructive</Button>
+  <Button variant="outline">Outline</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button variant="link">Link</Button>
+</div>
+```
+
 ## Sizes
 
-<Preview code={`<div className="flex gap-3 items-center">
-  <Button size="xs">Extra Small</Button>
-  <Button size="sm">Small</Button>
-  <Button size="default">Default</Button>
-  <Button size="lg">Large</Button>
-</div>`}>
+<Preview>
   <div className="flex gap-3 items-center">
     <Button size="xs">Extra Small</Button>
     <Button size="sm">Small</Button>
@@ -56,22 +59,18 @@ import { Button } from '@e412/rnui-react';
   </div>
 </Preview>
 
+```tsx
+<div className="flex gap-3 items-center">
+  <Button size="xs">Extra Small</Button>
+  <Button size="sm">Small</Button>
+  <Button size="default">Default</Button>
+  <Button size="lg">Large</Button>
+</div>
+```
+
 ### Icon Sizes
 
-<Preview code={`<div className="flex gap-3 items-center">
-  <Button size="icon-xs" aria-label="Extra small icon">
-    <Plus />
-  </Button>
-  <Button size="icon-sm" aria-label="Small icon">
-    <Plus />
-  </Button>
-  <Button size="icon" aria-label="Default icon">
-    <Plus />
-  </Button>
-  <Button size="icon-lg" aria-label="Large icon">
-    <Plus />
-  </Button>
-</div>`}>
+<Preview>
   <div className="flex gap-3 items-center">
     <Button size="icon-xs" aria-label="Extra small icon">
       <Plus />
@@ -88,26 +87,38 @@ import { Button } from '@e412/rnui-react';
   </div>
 </Preview>
 
+```tsx
+<div className="flex gap-3 items-center">
+  <Button size="icon-xs" aria-label="Extra small icon">
+    <Plus />
+  </Button>
+  <Button size="icon-sm" aria-label="Small icon">
+    <Plus />
+  </Button>
+  <Button size="icon" aria-label="Default icon">
+    <Plus />
+  </Button>
+  <Button size="icon-lg" aria-label="Large icon">
+    <Plus />
+  </Button>
+</div>
+```
+
 ## Disabled
 
-<Preview code={`<Button disabled>Disabled</Button>`}>
+<Preview>
   <Button disabled>Disabled</Button>
 </Preview>
+
+```tsx
+<Button disabled>Disabled</Button>
+```
 
 ## Examples
 
 ### Button with Icon
 
-<Preview code={`<div className="flex gap-3 items-center">
-  <Button>
-    <Mail className="mr-2 h-4 w-4" />
-    Login with Email
-  </Button>
-  <Button variant="outline">
-    <Settings className="mr-2 h-4 w-4" />
-    Settings
-  </Button>
-</div>`}>
+<Preview>
   <div className="flex gap-3 items-center">
     <Button>
       <Mail className="mr-2 h-4 w-4" />
@@ -120,38 +131,63 @@ import { Button } from '@e412/rnui-react';
   </div>
 </Preview>
 
+```tsx
+<div className="flex gap-3 items-center">
+  <Button>
+    <Mail className="mr-2 h-4 w-4" />
+    Login with Email
+  </Button>
+  <Button variant="outline">
+    <Settings className="mr-2 h-4 w-4" />
+    Settings
+  </Button>
+</div>
+```
+
 ### Loading Button
 
-<Preview code={`<Button disabled>
-  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-  Please wait
-</Button>`}>
+<Preview>
   <Button disabled>
     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
     Please wait
   </Button>
 </Preview>
 
+```tsx
+<Button disabled>
+  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+  Please wait
+</Button>
+```
+
 ### Button as Link
 
-<Preview code={`<Button variant="link">
-  <ExternalLink className="mr-2 h-4 w-4" />
-  View documentation
-</Button>`}>
+<Preview>
   <Button variant="link">
     <ExternalLink className="mr-2 h-4 w-4" />
     View documentation
   </Button>
 </Preview>
 
+```tsx
+<Button variant="link">
+  <ExternalLink className="mr-2 h-4 w-4" />
+  View documentation
+</Button>
+```
+
 ### Destructive Actions
 
-<Preview code={`<div className="flex gap-3 items-center">
-  <Button variant="destructive">Delete Account</Button>
-  <Button variant="destructive" size="sm">Remove</Button>
-</div>`}>
+<Preview>
   <div className="flex gap-3 items-center">
     <Button variant="destructive">Delete Account</Button>
     <Button variant="destructive" size="sm">Remove</Button>
   </div>
 </Preview>
+
+```tsx
+<div className="flex gap-3 items-center">
+  <Button variant="destructive">Delete Account</Button>
+  <Button variant="destructive" size="sm">Remove</Button>
+</div>
+```

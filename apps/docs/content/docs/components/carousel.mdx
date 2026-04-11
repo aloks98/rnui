@@ -28,21 +28,7 @@ import {
 
 ## Usage
 
-<Preview code={`<div className="mx-auto w-full max-w-xs">
-    <Carousel>
-      <CarouselContent>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem key={index}>
-            <div className="flex aspect-square items-center justify-center rounded-md border bg-muted p-6">
-              <span className="text-3xl font-semibold">{index + 1}</span>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
-  </div>`}>
+<Preview>
   <div className="mx-auto w-full max-w-xs">
     <Carousel>
       <CarouselContent>
@@ -59,26 +45,30 @@ import {
     </Carousel>
   </div>
 </Preview>
+
+```tsx
+<div className="mx-auto w-full max-w-xs">
+    <Carousel>
+      <CarouselContent>
+        {Array.from({ length: 5 }).map((_, index) => (
+          <CarouselItem key={index}>
+            <div className="flex aspect-square items-center justify-center rounded-md border bg-muted p-6">
+              <span className="text-3xl font-semibold">{index + 1}</span>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
+  </div>
+```
 
 ## Vertical
 
 Set `orientation="vertical"` to scroll items vertically.
 
-<Preview code={`<div className="mx-auto w-full max-w-xs">
-    <Carousel orientation="vertical" className="w-full">
-      <CarouselContent className="-mt-1 h-[200px]">
-        {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem key={index} className="pt-1">
-            <div className="flex items-center justify-center rounded-md border bg-muted p-6">
-              <span className="text-2xl font-semibold">{index + 1}</span>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
-  </div>`}>
+<Preview>
   <div className="mx-auto w-full max-w-xs">
     <Carousel orientation="vertical" className="w-full">
       <CarouselContent className="-mt-1 h-[200px]">
@@ -96,17 +86,14 @@ Set `orientation="vertical"` to scroll items vertically.
   </div>
 </Preview>
 
-## Multiple Items Per View
-
-Use Tailwind basis utilities on `CarouselItem` to show multiple items at once.
-
-<Preview code={`<div className="mx-auto w-full max-w-lg">
-    <Carousel>
-      <CarouselContent className="-ml-2">
-        {Array.from({ length: 8 }).map((_, index) => (
-          <CarouselItem key={index} className="basis-1/3 pl-2">
-            <div className="flex aspect-square items-center justify-center rounded-md border bg-muted">
-              <span className="text-xl font-semibold">{index + 1}</span>
+```tsx
+<div className="mx-auto w-full max-w-xs">
+    <Carousel orientation="vertical" className="w-full">
+      <CarouselContent className="-mt-1 h-[200px]">
+        {Array.from({ length: 5 }).map((_, index) => (
+          <CarouselItem key={index} className="pt-1">
+            <div className="flex items-center justify-center rounded-md border bg-muted p-6">
+              <span className="text-2xl font-semibold">{index + 1}</span>
             </div>
           </CarouselItem>
         ))}
@@ -114,7 +101,14 @@ Use Tailwind basis utilities on `CarouselItem` to show multiple items at once.
       <CarouselPrevious />
       <CarouselNext />
     </Carousel>
-  </div>`}>
+  </div>
+```
+
+## Multiple Items Per View
+
+Use Tailwind basis utilities on `CarouselItem` to show multiple items at once.
+
+<Preview>
   <div className="mx-auto w-full max-w-lg">
     <Carousel>
       <CarouselContent className="-ml-2">
@@ -132,16 +126,29 @@ Use Tailwind basis utilities on `CarouselItem` to show multiple items at once.
   </div>
 </Preview>
 
+```tsx
+<div className="mx-auto w-full max-w-lg">
+    <Carousel>
+      <CarouselContent className="-ml-2">
+        {Array.from({ length: 8 }).map((_, index) => (
+          <CarouselItem key={index} className="basis-1/3 pl-2">
+            <div className="flex aspect-square items-center justify-center rounded-md border bg-muted">
+              <span className="text-xl font-semibold">{index + 1}</span>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
+  </div>
+```
+
 ## Examples
 
 ### Image Gallery
 
-<Preview code={`<div className="mx-auto w-full max-w-sm">
-    <Carousel>
-      <CarouselContent>
-        {['bg-rose-100', 'bg-sky-100', 'bg-amber-100', 'bg-emerald-100'].map((color, index) => (
-          <CarouselItem key={index}>
-            <div className={\`flex aspect-video items-center justify-center rounded-lg \${color}\`}>
+<Preview>
               <Image className="size-10 text-muted-foreground" />
             </div>
           </CarouselItem>
@@ -168,33 +175,18 @@ Use Tailwind basis utilities on `CarouselItem` to show multiple items at once.
   </div>
 </Preview>
 
-### Testimonials Carousel
-
-<Preview code={`<div className="mx-auto w-full max-w-md">
+```tsx
+<div className="mx-auto w-full max-w-sm">
     <Carousel>
       <CarouselContent>
-        {[
-          { name: 'Alice', text: 'Absolutely love this product. It changed how I work.', rating: 5 },
-          { name: 'Bob', text: 'Great experience. The support team is incredibly responsive.', rating: 4 },
-          { name: 'Carol', text: 'Clean design and easy to integrate. Highly recommended.', rating: 5 },
-        ].map((testimonial, index) => (
+        {['bg-rose-100', 'bg-sky-100', 'bg-amber-100', 'bg-emerald-100'].map((color, index) => (
           <CarouselItem key={index}>
-            <div className="rounded-lg border p-6">
-              <div className="mb-2 flex gap-0.5">
-                {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <Star key={i} className="size-4 fill-amber-400 text-amber-400" />
-                ))}
-              </div>
-              <p className="mb-3 text-sm text-muted-foreground">"{testimonial.text}"</p>
-              <p className="text-sm font-medium">{testimonial.name}</p>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
-  </div>`}>
+            <div className={\`flex aspect-video items-center justify-center rounded-lg \${color}\
+```
+
+### Testimonials Carousel
+
+<Preview>
   <div className="mx-auto w-full max-w-md">
     <Carousel>
       <CarouselContent>
@@ -222,22 +214,24 @@ Use Tailwind basis utilities on `CarouselItem` to show multiple items at once.
   </div>
 </Preview>
 
-### Card Carousel
-
-<Preview code={`<div className="mx-auto w-full max-w-2xl">
+```tsx
+<div className="mx-auto w-full max-w-md">
     <Carousel>
-      <CarouselContent className="-ml-4">
+      <CarouselContent>
         {[
-          { title: 'Analytics', desc: 'Track user engagement and conversions.' },
-          { title: 'Automation', desc: 'Set up workflows that run on autopilot.' },
-          { title: 'Security', desc: 'Enterprise-grade protection for your data.' },
-          { title: 'Integrations', desc: 'Connect with your favorite tools.' },
-          { title: 'Reporting', desc: 'Generate insights from your data.' },
-        ].map((card, index) => (
-          <CarouselItem key={index} className="basis-1/2 pl-4 md:basis-1/3">
-            <div className="flex h-[140px] flex-col justify-between rounded-lg border p-4">
-              <h3 className="text-sm font-semibold">{card.title}</h3>
-              <p className="text-xs text-muted-foreground">{card.desc}</p>
+          { name: 'Alice', text: 'Absolutely love this product. It changed how I work.', rating: 5 },
+          { name: 'Bob', text: 'Great experience. The support team is incredibly responsive.', rating: 4 },
+          { name: 'Carol', text: 'Clean design and easy to integrate. Highly recommended.', rating: 5 },
+        ].map((testimonial, index) => (
+          <CarouselItem key={index}>
+            <div className="rounded-lg border p-6">
+              <div className="mb-2 flex gap-0.5">
+                {Array.from({ length: testimonial.rating }).map((_, i) => (
+                  <Star key={i} className="size-4 fill-amber-400 text-amber-400" />
+                ))}
+              </div>
+              <p className="mb-3 text-sm text-muted-foreground">"{testimonial.text}"</p>
+              <p className="text-sm font-medium">{testimonial.name}</p>
             </div>
           </CarouselItem>
         ))}
@@ -245,7 +239,12 @@ Use Tailwind basis utilities on `CarouselItem` to show multiple items at once.
       <CarouselPrevious />
       <CarouselNext />
     </Carousel>
-  </div>`}>
+  </div>
+```
+
+### Card Carousel
+
+<Preview>
   <div className="mx-auto w-full max-w-2xl">
     <Carousel>
       <CarouselContent className="-ml-4">
@@ -269,3 +268,28 @@ Use Tailwind basis utilities on `CarouselItem` to show multiple items at once.
     </Carousel>
   </div>
 </Preview>
+
+```tsx
+<div className="mx-auto w-full max-w-2xl">
+    <Carousel>
+      <CarouselContent className="-ml-4">
+        {[
+          { title: 'Analytics', desc: 'Track user engagement and conversions.' },
+          { title: 'Automation', desc: 'Set up workflows that run on autopilot.' },
+          { title: 'Security', desc: 'Enterprise-grade protection for your data.' },
+          { title: 'Integrations', desc: 'Connect with your favorite tools.' },
+          { title: 'Reporting', desc: 'Generate insights from your data.' },
+        ].map((card, index) => (
+          <CarouselItem key={index} className="basis-1/2 pl-4 md:basis-1/3">
+            <div className="flex h-[140px] flex-col justify-between rounded-lg border p-4">
+              <h3 className="text-sm font-semibold">{card.title}</h3>
+              <p className="text-xs text-muted-foreground">{card.desc}</p>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
+  </div>
+```

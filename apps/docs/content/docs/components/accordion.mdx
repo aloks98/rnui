@@ -20,20 +20,7 @@ import {
 
 ## Usage
 
-<Preview code={`<Accordion className="w-full max-w-md">
-    <AccordionItem value="item-1">
-      <AccordionTrigger>Is it accessible?</AccordionTrigger>
-      <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-2">
-      <AccordionTrigger>Is it styled?</AccordionTrigger>
-      <AccordionContent>Yes. It comes with default styles that match your design system.</AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-3">
-      <AccordionTrigger>Is it animated?</AccordionTrigger>
-      <AccordionContent>Yes. It uses CSS animations for smooth transitions.</AccordionContent>
-    </AccordionItem>
-  </Accordion>`}>
+<Preview>
   <Accordion className="w-full max-w-md">
     <AccordionItem value="item-1">
       <AccordionTrigger>Is it accessible?</AccordionTrigger>
@@ -50,24 +37,28 @@ import {
   </Accordion>
 </Preview>
 
+```tsx
+<Accordion className="w-full max-w-md">
+    <AccordionItem value="item-1">
+      <AccordionTrigger>Is it accessible?</AccordionTrigger>
+      <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-2">
+      <AccordionTrigger>Is it styled?</AccordionTrigger>
+      <AccordionContent>Yes. It comes with default styles that match your design system.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-3">
+      <AccordionTrigger>Is it animated?</AccordionTrigger>
+      <AccordionContent>Yes. It uses CSS animations for smooth transitions.</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+```
+
 ## Multiple Mode
 
 Allow multiple items to be expanded simultaneously by passing the `multiple` prop.
 
-<Preview code={`<Accordion multiple className="w-full max-w-md">
-    <AccordionItem value="item-1">
-      <AccordionTrigger>First section</AccordionTrigger>
-      <AccordionContent>Multiple items can be open at the same time.</AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-2">
-      <AccordionTrigger>Second section</AccordionTrigger>
-      <AccordionContent>Try opening this while the first one is still open.</AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-3">
-      <AccordionTrigger>Third section</AccordionTrigger>
-      <AccordionContent>All three can be expanded simultaneously.</AccordionContent>
-    </AccordionItem>
-  </Accordion>`}>
+<Preview>
   <Accordion multiple className="w-full max-w-md">
     <AccordionItem value="item-1">
       <AccordionTrigger>First section</AccordionTrigger>
@@ -84,24 +75,28 @@ Allow multiple items to be expanded simultaneously by passing the `multiple` pro
   </Accordion>
 </Preview>
 
+```tsx
+<Accordion multiple className="w-full max-w-md">
+    <AccordionItem value="item-1">
+      <AccordionTrigger>First section</AccordionTrigger>
+      <AccordionContent>Multiple items can be open at the same time.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-2">
+      <AccordionTrigger>Second section</AccordionTrigger>
+      <AccordionContent>Try opening this while the first one is still open.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-3">
+      <AccordionTrigger>Third section</AccordionTrigger>
+      <AccordionContent>All three can be expanded simultaneously.</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+```
+
 ## Default Open
 
 Use `defaultValue` to pre-expand one or more items on mount.
 
-<Preview code={`<Accordion defaultValue={["item-2"]} className="w-full max-w-md">
-    <AccordionItem value="item-1">
-      <AccordionTrigger>First item</AccordionTrigger>
-      <AccordionContent>Content for the first item.</AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-2">
-      <AccordionTrigger>Second item (default open)</AccordionTrigger>
-      <AccordionContent>This item is open by default.</AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-3">
-      <AccordionTrigger>Third item</AccordionTrigger>
-      <AccordionContent>Content for the third item.</AccordionContent>
-    </AccordionItem>
-  </Accordion>`}>
+<Preview>
   <Accordion defaultValue={["item-2"]} className="w-full max-w-md">
     <AccordionItem value="item-1">
       <AccordionTrigger>First item</AccordionTrigger>
@@ -118,18 +113,26 @@ Use `defaultValue` to pre-expand one or more items on mount.
   </Accordion>
 </Preview>
 
+```tsx
+<Accordion defaultValue={["item-2"]} className="w-full max-w-md">
+    <AccordionItem value="item-1">
+      <AccordionTrigger>First item</AccordionTrigger>
+      <AccordionContent>Content for the first item.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-2">
+      <AccordionTrigger>Second item (default open)</AccordionTrigger>
+      <AccordionContent>This item is open by default.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-3">
+      <AccordionTrigger>Third item</AccordionTrigger>
+      <AccordionContent>Content for the third item.</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+```
+
 ## Disabled Item
 
-<Preview code={`<Accordion className="w-full max-w-md">
-    <AccordionItem value="item-1">
-      <AccordionTrigger>Enabled item</AccordionTrigger>
-      <AccordionContent>This item can be toggled.</AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-2" disabled>
-      <AccordionTrigger>Disabled item</AccordionTrigger>
-      <AccordionContent>This content is not reachable.</AccordionContent>
-    </AccordionItem>
-  </Accordion>`}>
+<Preview>
   <Accordion className="w-full max-w-md">
     <AccordionItem value="item-1">
       <AccordionTrigger>Enabled item</AccordionTrigger>
@@ -142,30 +145,24 @@ Use `defaultValue` to pre-expand one or more items on mount.
   </Accordion>
 </Preview>
 
+```tsx
+<Accordion className="w-full max-w-md">
+    <AccordionItem value="item-1">
+      <AccordionTrigger>Enabled item</AccordionTrigger>
+      <AccordionContent>This item can be toggled.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-2" disabled>
+      <AccordionTrigger>Disabled item</AccordionTrigger>
+      <AccordionContent>This content is not reachable.</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+```
+
 ## Examples
 
 ### FAQ Section
 
-<Preview code={`<Accordion multiple defaultValue={["faq-1"]} className="w-full max-w-lg">
-    <AccordionItem value="faq-1">
-      <AccordionTrigger>How do I reset my password?</AccordionTrigger>
-      <AccordionContent>
-        Go to the login page and click "Forgot password". You will receive an email with a reset link.
-      </AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="faq-2">
-      <AccordionTrigger>Can I change my subscription plan?</AccordionTrigger>
-      <AccordionContent>
-        Yes, you can upgrade or downgrade your plan at any time from your account settings. Changes take effect at the start of the next billing cycle.
-      </AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="faq-3">
-      <AccordionTrigger>How do I contact support?</AccordionTrigger>
-      <AccordionContent>
-        You can reach our support team via the in-app chat widget or by emailing support@example.com. We typically respond within 24 hours.
-      </AccordionContent>
-    </AccordionItem>
-  </Accordion>`}>
+<Preview>
   <Accordion multiple defaultValue={["faq-1"]} className="w-full max-w-lg">
     <AccordionItem value="faq-1">
       <AccordionTrigger>How do I reset my password?</AccordionTrigger>
@@ -188,22 +185,32 @@ Use `defaultValue` to pre-expand one or more items on mount.
   </Accordion>
 </Preview>
 
+```tsx
+<Accordion multiple defaultValue={["faq-1"]} className="w-full max-w-lg">
+    <AccordionItem value="faq-1">
+      <AccordionTrigger>How do I reset my password?</AccordionTrigger>
+      <AccordionContent>
+        Go to the login page and click "Forgot password". You will receive an email with a reset link.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="faq-2">
+      <AccordionTrigger>Can I change my subscription plan?</AccordionTrigger>
+      <AccordionContent>
+        Yes, you can upgrade or downgrade your plan at any time from your account settings. Changes take effect at the start of the next billing cycle.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="faq-3">
+      <AccordionTrigger>How do I contact support?</AccordionTrigger>
+      <AccordionContent>
+        You can reach our support team via the in-app chat widget or by emailing support@example.com. We typically respond within 24 hours.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+```
+
 ### Multiple Default Open
 
-<Preview code={`<Accordion multiple defaultValue={["item-1", "item-3"]} className="w-full max-w-md">
-    <AccordionItem value="item-1">
-      <AccordionTrigger>First item (default open)</AccordionTrigger>
-      <AccordionContent>This item is open by default.</AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-2">
-      <AccordionTrigger>Second item</AccordionTrigger>
-      <AccordionContent>This item starts closed.</AccordionContent>
-    </AccordionItem>
-    <AccordionItem value="item-3">
-      <AccordionTrigger>Third item (default open)</AccordionTrigger>
-      <AccordionContent>This item is also open by default.</AccordionContent>
-    </AccordionItem>
-  </Accordion>`}>
+<Preview>
   <Accordion multiple defaultValue={["item-1", "item-3"]} className="w-full max-w-md">
     <AccordionItem value="item-1">
       <AccordionTrigger>First item (default open)</AccordionTrigger>
@@ -219,3 +226,20 @@ Use `defaultValue` to pre-expand one or more items on mount.
     </AccordionItem>
   </Accordion>
 </Preview>
+
+```tsx
+<Accordion multiple defaultValue={["item-1", "item-3"]} className="w-full max-w-md">
+    <AccordionItem value="item-1">
+      <AccordionTrigger>First item (default open)</AccordionTrigger>
+      <AccordionContent>This item is open by default.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-2">
+      <AccordionTrigger>Second item</AccordionTrigger>
+      <AccordionContent>This item starts closed.</AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="item-3">
+      <AccordionTrigger>Third item (default open)</AccordionTrigger>
+      <AccordionContent>This item is also open by default.</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+```

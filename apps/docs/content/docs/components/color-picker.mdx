@@ -15,9 +15,13 @@ import { ColorPicker } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview code={`<ColorPicker value="#3b82f6" />`}>
+<Preview>
   <ColorPicker value="#3b82f6" />
 </Preview>
+
+```tsx
+<ColorPicker value="#3b82f6" />
+```
 
 ## Variants
 
@@ -25,14 +29,7 @@ import { ColorPicker } from '@e412/rnui-react';
 
 Provide a `presets` array of hex colors to display quick-pick swatches.
 
-<Preview code={`<ColorPicker
-  value="#3b82f6"
-  presets={[
-    '#ef4444', '#f97316', '#eab308', '#22c55e',
-    '#3b82f6', '#8b5cf6', '#ec4899', '#000000',
-    '#6b7280', '#14b8a6', '#f43f5e', '#ffffff',
-  ]}
-/>`}>
+<Preview>
   <ColorPicker
     value="#3b82f6"
     presets={[
@@ -43,44 +40,58 @@ Provide a `presets` array of hex colors to display quick-pick swatches.
   />
 </Preview>
 
+```tsx
+<ColorPicker
+  value="#3b82f6"
+  presets={[
+    '#ef4444', '#f97316', '#eab308', '#22c55e',
+    '#3b82f6', '#8b5cf6', '#ec4899', '#000000',
+    '#6b7280', '#14b8a6', '#f43f5e', '#ffffff',
+  ]}
+/>
+```
+
 ### RGB Format
 
 Set `defaultFormat="rgb"` to display the color value in RGB notation.
 
-<Preview code={`<ColorPicker value="#8b5cf6" defaultFormat="rgb" />`}>
+<Preview>
   <ColorPicker value="#8b5cf6" defaultFormat="rgb" />
 </Preview>
+
+```tsx
+<ColorPicker value="#8b5cf6" defaultFormat="rgb" />
+```
 
 ### HSL Format
 
 Set `defaultFormat="hsl"` to display the color value in HSL notation.
 
-<Preview code={`<ColorPicker value="#22c55e" defaultFormat="hsl" />`}>
+<Preview>
   <ColorPicker value="#22c55e" defaultFormat="hsl" />
 </Preview>
+
+```tsx
+<ColorPicker value="#22c55e" defaultFormat="hsl" />
+```
 
 ### With Alpha
 
 Enable `showAlpha` to display an alpha transparency slider.
 
-<Preview code={`<ColorPicker value="#3b82f6" showAlpha defaultFormat="rgb" />`}>
+<Preview>
   <ColorPicker value="#3b82f6" showAlpha defaultFormat="rgb" />
 </Preview>
+
+```tsx
+<ColorPicker value="#3b82f6" showAlpha defaultFormat="rgb" />
+```
 
 ## Examples
 
 ### Brand Color Picker
 
-<Preview code={`<div className="flex flex-col gap-3">
-  <p className="text-sm font-medium">Brand Colors</p>
-  <ColorPicker
-    value="#6366f1"
-    presets={[
-      '#6366f1', '#8b5cf6', '#a855f7', '#d946ef',
-      '#ec4899', '#f43f5e', '#ef4444', '#f97316',
-    ]}
-  />
-</div>`}>
+<Preview>
   <div className="flex flex-col gap-3">
     <p className="text-sm font-medium">Brand Colors</p>
     <ColorPicker
@@ -93,22 +104,22 @@ Enable `showAlpha` to display an alpha transparency slider.
   </div>
 </Preview>
 
+```tsx
+<div className="flex flex-col gap-3">
+  <p className="text-sm font-medium">Brand Colors</p>
+  <ColorPicker
+    value="#6366f1"
+    presets={[
+      '#6366f1', '#8b5cf6', '#a855f7', '#d946ef',
+      '#ec4899', '#f43f5e', '#ef4444', '#f97316',
+    ]}
+  />
+</div>
+```
+
 ### Theme Color Selection
 
-<Preview code={`<div className="flex flex-col gap-4">
-  <div className="flex flex-col gap-2">
-    <p className="text-sm font-medium">Primary</p>
-    <ColorPicker value="#3b82f6" />
-  </div>
-  <div className="flex flex-col gap-2">
-    <p className="text-sm font-medium">Secondary</p>
-    <ColorPicker value="#64748b" />
-  </div>
-  <div className="flex flex-col gap-2">
-    <p className="text-sm font-medium">Accent</p>
-    <ColorPicker value="#f59e0b" />
-  </div>
-</div>`}>
+<Preview>
   <div className="flex flex-col gap-4">
     <div className="flex flex-col gap-2">
       <p className="text-sm font-medium">Primary</p>
@@ -125,14 +136,35 @@ Enable `showAlpha` to display an alpha transparency slider.
   </div>
 </Preview>
 
+```tsx
+<div className="flex flex-col gap-4">
+  <div className="flex flex-col gap-2">
+    <p className="text-sm font-medium">Primary</p>
+    <ColorPicker value="#3b82f6" />
+  </div>
+  <div className="flex flex-col gap-2">
+    <p className="text-sm font-medium">Secondary</p>
+    <ColorPicker value="#64748b" />
+  </div>
+  <div className="flex flex-col gap-2">
+    <p className="text-sm font-medium">Accent</p>
+    <ColorPicker value="#f59e0b" />
+  </div>
+</div>
+```
+
 ### Background Color with Alpha
 
-<Preview code={`<div className="flex flex-col gap-3">
-  <p className="text-sm font-medium">Background Overlay</p>
-  <ColorPicker value="#000000" showAlpha defaultFormat="rgb" />
-</div>`}>
+<Preview>
   <div className="flex flex-col gap-3">
     <p className="text-sm font-medium">Background Overlay</p>
     <ColorPicker value="#000000" showAlpha defaultFormat="rgb" />
   </div>
 </Preview>
+
+```tsx
+<div className="flex flex-col gap-3">
+  <p className="text-sm font-medium">Background Overlay</p>
+  <ColorPicker value="#000000" showAlpha defaultFormat="rgb" />
+</div>
+```

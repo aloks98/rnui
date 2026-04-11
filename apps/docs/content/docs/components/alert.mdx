@@ -16,12 +16,7 @@ import { Alert, AlertTitle, AlertDescription, AlertAction } from '@e412/rnui-rea
 
 ## Usage
 
-<Preview code={`<Alert className="max-w-lg">
-    <AlertTitle>Heads up!</AlertTitle>
-    <AlertDescription>
-      You can add components to your app using the cli.
-    </AlertDescription>
-  </Alert>`}>
+<Preview>
   <Alert className="max-w-lg">
     <AlertTitle>Heads up!</AlertTitle>
     <AlertDescription>
@@ -30,38 +25,18 @@ import { Alert, AlertTitle, AlertDescription, AlertAction } from '@e412/rnui-rea
   </Alert>
 </Preview>
 
+```tsx
+<Alert className="max-w-lg">
+    <AlertTitle>Heads up!</AlertTitle>
+    <AlertDescription>
+      You can add components to your app using the cli.
+    </AlertDescription>
+  </Alert>
+```
+
 ## Variants
 
-<Preview code={`<div className="flex flex-col gap-4 max-w-lg">
-    <Alert>
-      <AlertTitle>Default</AlertTitle>
-      <AlertDescription>This is the default alert variant.</AlertDescription>
-    </Alert>
-    <Alert variant="destructive">
-      <OctagonXIcon />
-      <AlertTitle>Destructive</AlertTitle>
-      <AlertDescription>This is the destructive alert variant.</AlertDescription>
-    </Alert>
-    <Alert variant="info">
-      <InfoIcon />
-      <AlertTitle>Info</AlertTitle>
-      <AlertDescription>This is the info alert variant.</AlertDescription>
-    </Alert>
-    <Alert variant="success">
-      <CircleCheckIcon />
-      <AlertTitle>Success</AlertTitle>
-      <AlertDescription>This is the success alert variant.</AlertDescription>
-    </Alert>
-    <Alert variant="warning">
-      <TriangleAlertIcon />
-      <AlertTitle>Warning</AlertTitle>
-      <AlertDescription>This is the warning alert variant.</AlertDescription>
-    </Alert>
-    <Alert variant="invert">
-      <AlertTitle>Invert</AlertTitle>
-      <AlertDescription>This is the invert alert variant.</AlertDescription>
-    </Alert>
-  </div>`}>
+<Preview>
   <div className="flex flex-col gap-4 max-w-lg">
     <Alert>
       <AlertTitle>Default</AlertTitle>
@@ -93,27 +68,45 @@ import { Alert, AlertTitle, AlertDescription, AlertAction } from '@e412/rnui-rea
     </Alert>
   </div>
 </Preview>
+
+```tsx
+<div className="flex flex-col gap-4 max-w-lg">
+    <Alert>
+      <AlertTitle>Default</AlertTitle>
+      <AlertDescription>This is the default alert variant.</AlertDescription>
+    </Alert>
+    <Alert variant="destructive">
+      <OctagonXIcon />
+      <AlertTitle>Destructive</AlertTitle>
+      <AlertDescription>This is the destructive alert variant.</AlertDescription>
+    </Alert>
+    <Alert variant="info">
+      <InfoIcon />
+      <AlertTitle>Info</AlertTitle>
+      <AlertDescription>This is the info alert variant.</AlertDescription>
+    </Alert>
+    <Alert variant="success">
+      <CircleCheckIcon />
+      <AlertTitle>Success</AlertTitle>
+      <AlertDescription>This is the success alert variant.</AlertDescription>
+    </Alert>
+    <Alert variant="warning">
+      <TriangleAlertIcon />
+      <AlertTitle>Warning</AlertTitle>
+      <AlertDescription>This is the warning alert variant.</AlertDescription>
+    </Alert>
+    <Alert variant="invert">
+      <AlertTitle>Invert</AlertTitle>
+      <AlertDescription>This is the invert alert variant.</AlertDescription>
+    </Alert>
+  </div>
+```
 
 ## Examples
 
 ### With Icons
 
-<Preview code={`<div className="flex flex-col gap-4 max-w-lg">
-    <Alert variant="info">
-      <InfoIcon />
-      <AlertTitle>Did you know?</AlertTitle>
-      <AlertDescription>
-        You can use keyboard shortcuts to navigate faster.
-      </AlertDescription>
-    </Alert>
-    <Alert variant="success">
-      <CircleCheckIcon />
-      <AlertTitle>Success!</AlertTitle>
-      <AlertDescription>
-        Your changes have been saved successfully.
-      </AlertDescription>
-    </Alert>
-  </div>`}>
+<Preview>
   <div className="flex flex-col gap-4 max-w-lg">
     <Alert variant="info">
       <InfoIcon />
@@ -132,20 +125,28 @@ import { Alert, AlertTitle, AlertDescription, AlertAction } from '@e412/rnui-rea
   </div>
 </Preview>
 
+```tsx
+<div className="flex flex-col gap-4 max-w-lg">
+    <Alert variant="info">
+      <InfoIcon />
+      <AlertTitle>Did you know?</AlertTitle>
+      <AlertDescription>
+        You can use keyboard shortcuts to navigate faster.
+      </AlertDescription>
+    </Alert>
+    <Alert variant="success">
+      <CircleCheckIcon />
+      <AlertTitle>Success!</AlertTitle>
+      <AlertDescription>
+        Your changes have been saved successfully.
+      </AlertDescription>
+    </Alert>
+  </div>
+```
+
 ### With Action
 
-<Preview code={`<Alert variant="info" className="max-w-lg">
-    <InfoIcon />
-    <AlertTitle>New update available</AlertTitle>
-    <AlertDescription>
-      A new version is available. Update now to get the latest features.
-    </AlertDescription>
-    <AlertAction>
-      <Button size="sm" variant="outline">
-        Update
-      </Button>
-    </AlertAction>
-  </Alert>`}>
+<Preview>
   <Alert variant="info" className="max-w-lg">
     <InfoIcon />
     <AlertTitle>New update available</AlertTitle>
@@ -160,15 +161,24 @@ import { Alert, AlertTitle, AlertDescription, AlertAction } from '@e412/rnui-rea
   </Alert>
 </Preview>
 
+```tsx
+<Alert variant="info" className="max-w-lg">
+    <InfoIcon />
+    <AlertTitle>New update available</AlertTitle>
+    <AlertDescription>
+      A new version is available. Update now to get the latest features.
+    </AlertDescription>
+    <AlertAction>
+      <Button size="sm" variant="outline">
+        Update
+      </Button>
+    </AlertAction>
+  </Alert>
+```
+
 ### Error Alert
 
-<Preview code={`<Alert variant="destructive" className="max-w-lg">
-    <OctagonXIcon />
-    <AlertTitle>Error</AlertTitle>
-    <AlertDescription>
-      Your session has expired. Please log in again.
-    </AlertDescription>
-  </Alert>`}>
+<Preview>
   <Alert variant="destructive" className="max-w-lg">
     <OctagonXIcon />
     <AlertTitle>Error</AlertTitle>
@@ -178,15 +188,19 @@ import { Alert, AlertTitle, AlertDescription, AlertAction } from '@e412/rnui-rea
   </Alert>
 </Preview>
 
+```tsx
+<Alert variant="destructive" className="max-w-lg">
+    <OctagonXIcon />
+    <AlertTitle>Error</AlertTitle>
+    <AlertDescription>
+      Your session has expired. Please log in again.
+    </AlertDescription>
+  </Alert>
+```
+
 ### Warning Alert
 
-<Preview code={`<Alert variant="warning" className="max-w-lg">
-    <TriangleAlertIcon />
-    <AlertTitle>Warning</AlertTitle>
-    <AlertDescription>
-      Your account is approaching its storage limit.
-    </AlertDescription>
-  </Alert>`}>
+<Preview>
   <Alert variant="warning" className="max-w-lg">
     <TriangleAlertIcon />
     <AlertTitle>Warning</AlertTitle>
@@ -195,3 +209,13 @@ import { Alert, AlertTitle, AlertDescription, AlertAction } from '@e412/rnui-rea
     </AlertDescription>
   </Alert>
 </Preview>
+
+```tsx
+<Alert variant="warning" className="max-w-lg">
+    <TriangleAlertIcon />
+    <AlertTitle>Warning</AlertTitle>
+    <AlertDescription>
+      Your account is approaching its storage limit.
+    </AlertDescription>
+  </Alert>
+```

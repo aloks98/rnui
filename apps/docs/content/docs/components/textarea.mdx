@@ -15,41 +15,45 @@ import { Textarea } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview code={`<Textarea placeholder="Type your message here." className="max-w-sm" />`}>
+<Preview>
   <Textarea placeholder="Type your message here." className="max-w-sm" />
 </Preview>
 
+```tsx
+<Textarea placeholder="Type your message here." className="max-w-sm" />
+```
+
 ## With Label
 
-<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
-  <Label htmlFor="message">Your message</Label>
-  <Textarea placeholder="Type your message here." id="message" />
-</div>`}>
+<Preview>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label htmlFor="message">Your message</Label>
     <Textarea placeholder="Type your message here." id="message" />
   </div>
 </Preview>
 
+```tsx
+<div className="grid w-full max-w-sm gap-1.5">
+  <Label htmlFor="message">Your message</Label>
+  <Textarea placeholder="Type your message here." id="message" />
+</div>
+```
+
 ## Disabled
 
-<Preview code={`<Textarea placeholder="Disabled" disabled className="max-w-sm" />`}>
+<Preview>
   <Textarea placeholder="Disabled" disabled className="max-w-sm" />
 </Preview>
+
+```tsx
+<Textarea placeholder="Disabled" disabled className="max-w-sm" />
+```
 
 ## Examples
 
 ### Contact Form
 
-<Preview code={`<form className="grid w-full max-w-sm gap-4">
-  <div className="grid gap-1.5">
-    <Label htmlFor="contact-message">Message</Label>
-    <Textarea id="contact-message" placeholder="How can we help you?" rows={5} />
-  </div>
-  <div className="flex justify-end">
-    <Button type="submit">Send Message</Button>
-  </div>
-</form>`}>
+<Preview>
   <form className="grid w-full max-w-sm gap-4">
     <div className="grid gap-1.5">
       <Label htmlFor="contact-message">Message</Label>
@@ -61,13 +65,21 @@ import { Textarea } from '@e412/rnui-react';
   </form>
 </Preview>
 
+```tsx
+<form className="grid w-full max-w-sm gap-4">
+  <div className="grid gap-1.5">
+    <Label htmlFor="contact-message">Message</Label>
+    <Textarea id="contact-message" placeholder="How can we help you?" rows={5} />
+  </div>
+  <div className="flex justify-end">
+    <Button type="submit">Send Message</Button>
+  </div>
+</form>
+```
+
 ### Bio Field
 
-<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
-  <Label htmlFor="bio">Bio</Label>
-  <Textarea id="bio" placeholder="Tell us about yourself..." />
-  <p className="text-sm text-muted-foreground">Write a short bio for your profile. Max 160 characters.</p>
-</div>`}>
+<Preview>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label htmlFor="bio">Bio</Label>
     <Textarea id="bio" placeholder="Tell us about yourself..." />
@@ -75,18 +87,17 @@ import { Textarea } from '@e412/rnui-react';
   </div>
 </Preview>
 
+```tsx
+<div className="grid w-full max-w-sm gap-1.5">
+  <Label htmlFor="bio">Bio</Label>
+  <Textarea id="bio" placeholder="Tell us about yourself..." />
+  <p className="text-sm text-muted-foreground">Write a short bio for your profile. Max 160 characters.</p>
+</div>
+```
+
 ### Feedback Form
 
-<Preview code={`<div className="grid w-full max-w-sm gap-4">
-  <div className="grid gap-1.5">
-    <Label htmlFor="feedback">Feedback</Label>
-    <Textarea id="feedback" placeholder="What did you think of our service?" rows={4} />
-  </div>
-  <div className="flex justify-between items-center">
-    <p className="text-xs text-muted-foreground">Your feedback is anonymous.</p>
-    <Button size="sm">Submit</Button>
-  </div>
-</div>`}>
+<Preview>
   <div className="grid w-full max-w-sm gap-4">
     <div className="grid gap-1.5">
       <Label htmlFor="feedback">Feedback</Label>
@@ -98,3 +109,16 @@ import { Textarea } from '@e412/rnui-react';
     </div>
   </div>
 </Preview>
+
+```tsx
+<div className="grid w-full max-w-sm gap-4">
+  <div className="grid gap-1.5">
+    <Label htmlFor="feedback">Feedback</Label>
+    <Textarea id="feedback" placeholder="What did you think of our service?" rows={4} />
+  </div>
+  <div className="flex justify-between items-center">
+    <p className="text-xs text-muted-foreground">Your feedback is anonymous.</p>
+    <Button size="sm">Submit</Button>
+  </div>
+</div>
+```

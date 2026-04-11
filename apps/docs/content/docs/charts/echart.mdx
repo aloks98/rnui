@@ -17,17 +17,7 @@ import { EChart, echarts } from '@e412/rnui-react';
 
 Pass any valid ECharts option object directly.
 
-<Preview code={`<div className="w-full max-w-lg">
-    <EChart
-      option={{
-        xAxis: { type: 'category', data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] },
-        yAxis: { type: 'value' },
-        series: [{ type: 'bar', data: [120, 200, 150, 80, 70, 110, 130] }],
-        tooltip: { trigger: 'axis' },
-      }}
-      height={300}
-    />
-  </div>`}>
+<Preview>
   <div className="w-full max-w-lg">
     <EChart
       option={{
@@ -40,43 +30,26 @@ Pass any valid ECharts option object directly.
     />
   </div>
 </Preview>
+
+```tsx
+<div className="w-full max-w-lg">
+    <EChart
+      option={{
+        xAxis: { type: 'category', data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] },
+        yAxis: { type: 'value' },
+        series: [{ type: 'bar', data: [120, 200, 150, 80, 70, 110, 130] }],
+        tooltip: { trigger: 'axis' },
+      }}
+      height={300}
+    />
+  </div>
+```
 
 ## Mixed Chart Types
 
 Combine bars and lines on a dual-axis layout.
 
-<Preview code={`<div className="w-full max-w-lg">
-    <EChart
-      option={{
-        xAxis: { type: 'category', data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], axisTick: { show: false } },
-        yAxis: [
-          { type: 'value', name: 'Revenue ($)', splitLine: { lineStyle: { type: 'dashed', opacity: 0.5 } } },
-          { type: 'value', name: 'Growth (%)', splitLine: { show: false } },
-        ],
-        grid: { containLabel: true, left: 16, right: 16, top: 40, bottom: 32 },
-        legend: { show: true, bottom: 0 },
-        tooltip: { trigger: 'axis' },
-        series: [
-          {
-            name: 'Revenue',
-            type: 'bar',
-            data: [42000, 38000, 51000, 46000, 58000, 62000],
-            barMaxWidth: 40,
-            itemStyle: { borderRadius: [4, 4, 0, 0] },
-          },
-          {
-            name: 'Growth',
-            type: 'line',
-            yAxisIndex: 1,
-            data: [12, -5, 18, 8, 22, 15],
-            smooth: true,
-            symbolSize: 6,
-          },
-        ],
-      }}
-      height={350}
-    />
-  </div>`}>
+<Preview>
   <div className="w-full max-w-lg">
     <EChart
       option={{
@@ -110,34 +83,47 @@ Combine bars and lines on a dual-axis layout.
     />
   </div>
 </Preview>
+
+```tsx
+<div className="w-full max-w-lg">
+    <EChart
+      option={{
+        xAxis: { type: 'category', data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], axisTick: { show: false } },
+        yAxis: [
+          { type: 'value', name: 'Revenue ($)', splitLine: { lineStyle: { type: 'dashed', opacity: 0.5 } } },
+          { type: 'value', name: 'Growth (%)', splitLine: { show: false } },
+        ],
+        grid: { containLabel: true, left: 16, right: 16, top: 40, bottom: 32 },
+        legend: { show: true, bottom: 0 },
+        tooltip: { trigger: 'axis' },
+        series: [
+          {
+            name: 'Revenue',
+            type: 'bar',
+            data: [42000, 38000, 51000, 46000, 58000, 62000],
+            barMaxWidth: 40,
+            itemStyle: { borderRadius: [4, 4, 0, 0] },
+          },
+          {
+            name: 'Growth',
+            type: 'line',
+            yAxisIndex: 1,
+            data: [12, -5, 18, 8, 22, 15],
+            smooth: true,
+            symbolSize: 6,
+          },
+        ],
+      }}
+      height={350}
+    />
+  </div>
+```
 
 ## Data Zoom
 
 Add interactive zoom controls to explore large datasets.
 
-<Preview code={`<div className="w-full max-w-lg">
-    <EChart
-      option={{
-        xAxis: { type: 'category', data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], axisTick: { show: false } },
-        yAxis: { type: 'value', splitLine: { lineStyle: { type: 'dashed', opacity: 0.5 } } },
-        grid: { containLabel: true, left: 16, right: 16, top: 24, bottom: 60 },
-        dataZoom: [
-          { type: 'slider', start: 0, end: 100, height: 20, bottom: 8 },
-          { type: 'inside', start: 0, end: 100 },
-        ],
-        series: [
-          {
-            type: 'bar',
-            data: [12.0, 18.9, 27.0, 53.2, 65.6, 96.7, 135.6, 162.2, 82.6, 50.0, 26.4, 13.3],
-            barMaxWidth: 40,
-            itemStyle: { borderRadius: [4, 4, 0, 0] },
-          },
-        ],
-        tooltip: { trigger: 'axis' },
-      }}
-      height={350}
-    />
-  </div>`}>
+<Preview>
   <div className="w-full max-w-lg">
     <EChart
       option={{
@@ -162,22 +148,38 @@ Add interactive zoom controls to explore large datasets.
     />
   </div>
 </Preview>
+
+```tsx
+<div className="w-full max-w-lg">
+    <EChart
+      option={{
+        xAxis: { type: 'category', data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], axisTick: { show: false } },
+        yAxis: { type: 'value', splitLine: { lineStyle: { type: 'dashed', opacity: 0.5 } } },
+        grid: { containLabel: true, left: 16, right: 16, top: 24, bottom: 60 },
+        dataZoom: [
+          { type: 'slider', start: 0, end: 100, height: 20, bottom: 8 },
+          { type: 'inside', start: 0, end: 100 },
+        ],
+        series: [
+          {
+            type: 'bar',
+            data: [12.0, 18.9, 27.0, 53.2, 65.6, 96.7, 135.6, 162.2, 82.6, 50.0, 26.4, 13.3],
+            barMaxWidth: 40,
+            itemStyle: { borderRadius: [4, 4, 0, 0] },
+          },
+        ],
+        tooltip: { trigger: 'axis' },
+      }}
+      height={350}
+    />
+  </div>
+```
 
 ## Using `chartConfig()` Builder
 
 The fluent builder API provides a convenient way to construct options.
 
-<Preview code={`<div className="w-full max-w-lg">
-    <EChart
-      option={chartConfig()
-        .line({ data: [4200, 3800, 5100, 4600, 5800, 6200], categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], name: 'Revenue', smooth: true })
-        .line({ data: [2800, 3200, 2900, 3100, 2700, 3500], name: 'Expenses', smooth: true })
-        .legend()
-        .tooltip()
-        .build()}
-      height={350}
-    />
-  </div>`}>
+<Preview>
   <div className="w-full max-w-lg">
     <EChart
       option={chartConfig()
@@ -190,6 +192,20 @@ The fluent builder API provides a convenient way to construct options.
     />
   </div>
 </Preview>
+
+```tsx
+<div className="w-full max-w-lg">
+    <EChart
+      option={chartConfig()
+        .line({ data: [4200, 3800, 5100, 4600, 5800, 6200], categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], name: 'Revenue', smooth: true })
+        .line({ data: [2800, 3200, 2900, 3100, 2700, 3500], name: 'Expenses', smooth: true })
+        .legend()
+        .tooltip()
+        .build()}
+      height={350}
+    />
+  </div>
+```
 
 ```tsx
 const option = chartConfig()
@@ -206,31 +222,7 @@ const option = chartConfig()
 
 Set `preset={false}` to use raw ECharts defaults without shadcn-style presets. Useful for sparklines or highly custom layouts.
 
-<Preview code={`<div className="flex items-center gap-4">
-    <span className="text-sm text-muted-foreground">Revenue</span>
-    <div className="w-32">
-      <EChart
-        option={{
-          grid: { left: 0, right: 0, top: 2, bottom: 2 },
-          xAxis: { show: false, type: 'category', data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] },
-          yAxis: { show: false, type: 'value' },
-          series: [{
-            type: 'line',
-            data: [820, 932, 901, 1234, 1290, 1530, 1320],
-            smooth: true,
-            symbol: 'none',
-            lineStyle: { width: 1.5 },
-            areaStyle: { opacity: 0.1 },
-          }],
-          tooltip: { show: false },
-        }}
-        height={32}
-        preset={false}
-        animateOnMount={false}
-      />
-    </div>
-    <span className="text-sm font-medium">$1,320</span>
-  </div>`}>
+<Preview>
   <div className="flex items-center gap-4">
     <span className="text-sm text-muted-foreground">Revenue</span>
     <div className="w-32">
@@ -257,6 +249,34 @@ Set `preset={false}` to use raw ECharts defaults without shadcn-style presets. U
     <span className="text-sm font-medium">$1,320</span>
   </div>
 </Preview>
+
+```tsx
+<div className="flex items-center gap-4">
+    <span className="text-sm text-muted-foreground">Revenue</span>
+    <div className="w-32">
+      <EChart
+        option={{
+          grid: { left: 0, right: 0, top: 2, bottom: 2 },
+          xAxis: { show: false, type: 'category', data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] },
+          yAxis: { show: false, type: 'value' },
+          series: [{
+            type: 'line',
+            data: [820, 932, 901, 1234, 1290, 1530, 1320],
+            smooth: true,
+            symbol: 'none',
+            lineStyle: { width: 1.5 },
+            areaStyle: { opacity: 0.1 },
+          }],
+          tooltip: { show: false },
+        }}
+        height={32}
+        preset={false}
+        animateOnMount={false}
+      />
+    </div>
+    <span className="text-sm font-medium">$1,320</span>
+  </div>
+```
 
 ## Extending with Custom Chart Types
 

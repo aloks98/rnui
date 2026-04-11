@@ -23,26 +23,7 @@ import {
 
 ## Usage
 
-<Preview code={`<Dialog>
-    <DialogTrigger render={<Button variant="outline" />}>
-      Open Dialog
-    </DialogTrigger>
-    <DialogContent>
-      <DialogHeader>
-        <DialogTitle>Dialog Title</DialogTitle>
-        <DialogDescription>
-          This is a description of the dialog content.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="py-4">
-        <p>Dialog body content goes here.</p>
-      </div>
-      <DialogFooter>
-        <Button variant="outline">Cancel</Button>
-        <Button>Confirm</Button>
-      </DialogFooter>
-    </DialogContent>
-  </Dialog>`}>
+<Preview>
   <Dialog>
     <DialogTrigger render={<Button variant="outline" />}>
       Open Dialog
@@ -64,6 +45,29 @@ import {
     </DialogContent>
   </Dialog>
 </Preview>
+
+```tsx
+<Dialog>
+    <DialogTrigger render={<Button variant="outline" />}>
+      Open Dialog
+    </DialogTrigger>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>Dialog Title</DialogTitle>
+        <DialogDescription>
+          This is a description of the dialog content.
+        </DialogDescription>
+      </DialogHeader>
+      <div className="py-4">
+        <p>Dialog body content goes here.</p>
+      </div>
+      <DialogFooter>
+        <Button variant="outline">Cancel</Button>
+        <Button>Confirm</Button>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
+```
 
 ## Options
 
@@ -71,22 +75,7 @@ import {
 
 Use `showCloseButton={false}` on `DialogContent` to hide the default close icon in the corner.
 
-<Preview code={`<Dialog>
-    <DialogTrigger render={<Button variant="outline" />}>
-      No Close Button
-    </DialogTrigger>
-    <DialogContent showCloseButton={false}>
-      <DialogHeader>
-        <DialogTitle>No close button</DialogTitle>
-        <DialogDescription>
-          This dialog has no close button in the corner.
-        </DialogDescription>
-      </DialogHeader>
-      <DialogFooter showCloseButton>
-        <Button>Save</Button>
-      </DialogFooter>
-    </DialogContent>
-  </Dialog>`}>
+<Preview>
   <Dialog>
     <DialogTrigger render={<Button variant="outline" />}>
       No Close Button
@@ -104,28 +93,31 @@ Use `showCloseButton={false}` on `DialogContent` to hide the default close icon 
     </DialogContent>
   </Dialog>
 </Preview>
+
+```tsx
+<Dialog>
+    <DialogTrigger render={<Button variant="outline" />}>
+      No Close Button
+    </DialogTrigger>
+    <DialogContent showCloseButton={false}>
+      <DialogHeader>
+        <DialogTitle>No close button</DialogTitle>
+        <DialogDescription>
+          This dialog has no close button in the corner.
+        </DialogDescription>
+      </DialogHeader>
+      <DialogFooter showCloseButton>
+        <Button>Save</Button>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
+```
 
 ### Footer with Close Button
 
 Pass `showCloseButton` to `DialogFooter` to add a close button in the footer area.
 
-<Preview code={`<Dialog>
-    <DialogTrigger render={<Button variant="outline" />}>
-      Footer Close
-    </DialogTrigger>
-    <DialogContent>
-      <DialogHeader>
-        <DialogTitle>Information</DialogTitle>
-        <DialogDescription>
-          This dialog footer includes an automatic close button.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="py-4">
-        <p>Some informational content here.</p>
-      </div>
-      <DialogFooter showCloseButton />
-    </DialogContent>
-  </Dialog>`}>
+<Preview>
   <Dialog>
     <DialogTrigger render={<Button variant="outline" />}>
       Footer Close
@@ -144,37 +136,32 @@ Pass `showCloseButton` to `DialogFooter` to add a close button in the footer are
     </DialogContent>
   </Dialog>
 </Preview>
+
+```tsx
+<Dialog>
+    <DialogTrigger render={<Button variant="outline" />}>
+      Footer Close
+    </DialogTrigger>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>Information</DialogTitle>
+        <DialogDescription>
+          This dialog footer includes an automatic close button.
+        </DialogDescription>
+      </DialogHeader>
+      <div className="py-4">
+        <p>Some informational content here.</p>
+      </div>
+      <DialogFooter showCloseButton />
+    </DialogContent>
+  </Dialog>
+```
 
 ## Examples
 
 ### Edit Profile Form
 
-<Preview code={`<Dialog>
-    <DialogTrigger render={<Button variant="outline" />}>
-      Edit Profile
-    </DialogTrigger>
-    <DialogContent>
-      <DialogHeader>
-        <DialogTitle>Edit Profile</DialogTitle>
-        <DialogDescription>
-          Make changes to your profile here. Click save when you're done.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="grid gap-4 py-4">
-        <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="name" className="text-right">Name</Label>
-          <Input id="name" defaultValue="John Doe" className="col-span-3" />
-        </div>
-        <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="email" className="text-right">Email</Label>
-          <Input id="email" defaultValue="john@example.com" className="col-span-3" />
-        </div>
-      </div>
-      <DialogFooter>
-        <Button>Save changes</Button>
-      </DialogFooter>
-    </DialogContent>
-  </Dialog>`}>
+<Preview>
   <Dialog>
     <DialogTrigger render={<Button variant="outline" />}>
       Edit Profile
@@ -202,26 +189,39 @@ Pass `showCloseButton` to `DialogFooter` to add a close button in the footer are
     </DialogContent>
   </Dialog>
 </Preview>
+
+```tsx
+<Dialog>
+    <DialogTrigger render={<Button variant="outline" />}>
+      Edit Profile
+    </DialogTrigger>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>Edit Profile</DialogTitle>
+        <DialogDescription>
+          Make changes to your profile here. Click save when you're done.
+        </DialogDescription>
+      </DialogHeader>
+      <div className="grid gap-4 py-4">
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="name" className="text-right">Name</Label>
+          <Input id="name" defaultValue="John Doe" className="col-span-3" />
+        </div>
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="email" className="text-right">Email</Label>
+          <Input id="email" defaultValue="john@example.com" className="col-span-3" />
+        </div>
+      </div>
+      <DialogFooter>
+        <Button>Save changes</Button>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
+```
 
 ### Confirmation Dialog
 
-<Preview code={`<Dialog>
-    <DialogTrigger render={<Button variant="outline" />}>
-      Publish Post
-    </DialogTrigger>
-    <DialogContent>
-      <DialogHeader>
-        <DialogTitle>Publish this post?</DialogTitle>
-        <DialogDescription>
-          Once published, the post will be visible to all users. You can unpublish it later.
-        </DialogDescription>
-      </DialogHeader>
-      <DialogFooter>
-        <Button variant="outline">Cancel</Button>
-        <Button>Publish</Button>
-      </DialogFooter>
-    </DialogContent>
-  </Dialog>`}>
+<Preview>
   <Dialog>
     <DialogTrigger render={<Button variant="outline" />}>
       Publish Post
@@ -240,36 +240,30 @@ Pass `showCloseButton` to `DialogFooter` to add a close button in the footer are
     </DialogContent>
   </Dialog>
 </Preview>
+
+```tsx
+<Dialog>
+    <DialogTrigger render={<Button variant="outline" />}>
+      Publish Post
+    </DialogTrigger>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>Publish this post?</DialogTitle>
+        <DialogDescription>
+          Once published, the post will be visible to all users. You can unpublish it later.
+        </DialogDescription>
+      </DialogHeader>
+      <DialogFooter>
+        <Button variant="outline">Cancel</Button>
+        <Button>Publish</Button>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
+```
 
 ### Settings Dialog
 
-<Preview code={`<Dialog>
-    <DialogTrigger render={<Button variant="outline" />}>
-      Notification Settings
-    </DialogTrigger>
-    <DialogContent>
-      <DialogHeader>
-        <DialogTitle>Notification Settings</DialogTitle>
-        <DialogDescription>
-          Configure how you receive notifications.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="grid gap-4 py-4">
-        <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="frequency" className="text-right">Frequency</Label>
-          <Input id="frequency" defaultValue="Daily" className="col-span-3" />
-        </div>
-        <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="channel" className="text-right">Channel</Label>
-          <Input id="channel" defaultValue="Email" className="col-span-3" />
-        </div>
-      </div>
-      <DialogFooter>
-        <Button variant="outline">Cancel</Button>
-        <Button>Save</Button>
-      </DialogFooter>
-    </DialogContent>
-  </Dialog>`}>
+<Preview>
   <Dialog>
     <DialogTrigger render={<Button variant="outline" />}>
       Notification Settings
@@ -298,3 +292,33 @@ Pass `showCloseButton` to `DialogFooter` to add a close button in the footer are
     </DialogContent>
   </Dialog>
 </Preview>
+
+```tsx
+<Dialog>
+    <DialogTrigger render={<Button variant="outline" />}>
+      Notification Settings
+    </DialogTrigger>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>Notification Settings</DialogTitle>
+        <DialogDescription>
+          Configure how you receive notifications.
+        </DialogDescription>
+      </DialogHeader>
+      <div className="grid gap-4 py-4">
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="frequency" className="text-right">Frequency</Label>
+          <Input id="frequency" defaultValue="Daily" className="col-span-3" />
+        </div>
+        <div className="grid grid-cols-4 items-center gap-4">
+          <Label htmlFor="channel" className="text-right">Channel</Label>
+          <Input id="channel" defaultValue="Email" className="col-span-3" />
+        </div>
+      </div>
+      <DialogFooter>
+        <Button variant="outline">Cancel</Button>
+        <Button>Save</Button>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
+```

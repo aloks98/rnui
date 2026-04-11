@@ -47,20 +47,7 @@ import {
 
 ## Usage
 
-<Preview code={`<DropdownMenu>
-    <DropdownMenuTrigger render={<Button variant="outline" />}>
-      Open Menu
-    </DropdownMenuTrigger>
-    <DropdownMenuContent className="w-56">
-      <DropdownMenuLabel>My Account</DropdownMenuLabel>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem>Profile</DropdownMenuItem>
-      <DropdownMenuItem>Billing</DropdownMenuItem>
-      <DropdownMenuItem>Settings</DropdownMenuItem>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem variant="destructive">Log out</DropdownMenuItem>
-    </DropdownMenuContent>
-  </DropdownMenu>`}>
+<Preview>
   <DropdownMenu>
     <DropdownMenuTrigger render={<Button variant="outline" />}>
       Open Menu
@@ -76,38 +63,27 @@ import {
     </DropdownMenuContent>
   </DropdownMenu>
 </Preview>
+
+```tsx
+<DropdownMenu>
+    <DropdownMenuTrigger render={<Button variant="outline" />}>
+      Open Menu
+    </DropdownMenuTrigger>
+    <DropdownMenuContent className="w-56">
+      <DropdownMenuLabel>My Account</DropdownMenuLabel>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem>Profile</DropdownMenuItem>
+      <DropdownMenuItem>Billing</DropdownMenuItem>
+      <DropdownMenuItem>Settings</DropdownMenuItem>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem variant="destructive">Log out</DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+```
 
 ## With Icons
 
-<Preview code={`<DropdownMenu>
-    <DropdownMenuTrigger render={<Button variant="outline" />}>
-      <Settings className="mr-2 size-4" />
-      Options
-    </DropdownMenuTrigger>
-    <DropdownMenuContent className="w-56">
-      <DropdownMenuLabel>My Account</DropdownMenuLabel>
-      <DropdownMenuSeparator />
-      <DropdownMenuGroup>
-        <DropdownMenuItem>
-          <User className="mr-2 size-4" />
-          Profile
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <CreditCard className="mr-2 size-4" />
-          Billing
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Settings className="mr-2 size-4" />
-          Settings
-        </DropdownMenuItem>
-      </DropdownMenuGroup>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem variant="destructive">
-        <LogOut className="mr-2 size-4" />
-        Log out
-      </DropdownMenuItem>
-    </DropdownMenuContent>
-  </DropdownMenu>`}>
+<Preview>
   <DropdownMenu>
     <DropdownMenuTrigger render={<Button variant="outline" />}>
       <Settings className="mr-2 size-4" />
@@ -138,37 +114,42 @@ import {
     </DropdownMenuContent>
   </DropdownMenu>
 </Preview>
+
+```tsx
+<DropdownMenu>
+    <DropdownMenuTrigger render={<Button variant="outline" />}>
+      <Settings className="mr-2 size-4" />
+      Options
+    </DropdownMenuTrigger>
+    <DropdownMenuContent className="w-56">
+      <DropdownMenuLabel>My Account</DropdownMenuLabel>
+      <DropdownMenuSeparator />
+      <DropdownMenuGroup>
+        <DropdownMenuItem>
+          <User className="mr-2 size-4" />
+          Profile
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <CreditCard className="mr-2 size-4" />
+          Billing
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Settings className="mr-2 size-4" />
+          Settings
+        </DropdownMenuItem>
+      </DropdownMenuGroup>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem variant="destructive">
+        <LogOut className="mr-2 size-4" />
+        Log out
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+```
 
 ## With Keyboard Shortcuts
 
-<Preview code={`<DropdownMenu>
-    <DropdownMenuTrigger render={<Button variant="outline" />}>
-      Edit
-    </DropdownMenuTrigger>
-    <DropdownMenuContent className="w-56">
-      <DropdownMenuItem>
-        Undo
-        <DropdownMenuShortcut>Ctrl+Z</DropdownMenuShortcut>
-      </DropdownMenuItem>
-      <DropdownMenuItem>
-        Redo
-        <DropdownMenuShortcut>Ctrl+Y</DropdownMenuShortcut>
-      </DropdownMenuItem>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem>
-        Cut
-        <DropdownMenuShortcut>Ctrl+X</DropdownMenuShortcut>
-      </DropdownMenuItem>
-      <DropdownMenuItem>
-        Copy
-        <DropdownMenuShortcut>Ctrl+C</DropdownMenuShortcut>
-      </DropdownMenuItem>
-      <DropdownMenuItem>
-        Paste
-        <DropdownMenuShortcut>Ctrl+V</DropdownMenuShortcut>
-      </DropdownMenuItem>
-    </DropdownMenuContent>
-  </DropdownMenu>`}>
+<Preview>
   <DropdownMenu>
     <DropdownMenuTrigger render={<Button variant="outline" />}>
       Edit
@@ -198,55 +179,41 @@ import {
     </DropdownMenuContent>
   </DropdownMenu>
 </Preview>
+
+```tsx
+<DropdownMenu>
+    <DropdownMenuTrigger render={<Button variant="outline" />}>
+      Edit
+    </DropdownMenuTrigger>
+    <DropdownMenuContent className="w-56">
+      <DropdownMenuItem>
+        Undo
+        <DropdownMenuShortcut>Ctrl+Z</DropdownMenuShortcut>
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        Redo
+        <DropdownMenuShortcut>Ctrl+Y</DropdownMenuShortcut>
+      </DropdownMenuItem>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem>
+        Cut
+        <DropdownMenuShortcut>Ctrl+X</DropdownMenuShortcut>
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        Copy
+        <DropdownMenuShortcut>Ctrl+C</DropdownMenuShortcut>
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        Paste
+        <DropdownMenuShortcut>Ctrl+V</DropdownMenuShortcut>
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+```
 
 ## With Sub-menus
 
-<Preview code={`<DropdownMenu>
-    <DropdownMenuTrigger render={<Button variant="outline" />}>
-      More Options
-    </DropdownMenuTrigger>
-    <DropdownMenuContent className="w-56">
-      <DropdownMenuItem>
-        <Mail className="mr-2 size-4" />
-        Email
-      </DropdownMenuItem>
-      <DropdownMenuItem>
-        <MessageSquare className="mr-2 size-4" />
-        Message
-      </DropdownMenuItem>
-      <DropdownMenuSeparator />
-      <DropdownMenuSub>
-        <DropdownMenuSubTrigger>
-          <UserPlus className="mr-2 size-4" />
-          Invite Users
-        </DropdownMenuSubTrigger>
-        <DropdownMenuSubContent>
-          <DropdownMenuItem>
-            <Mail className="mr-2 size-4" />
-            Email
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <MessageSquare className="mr-2 size-4" />
-            Message
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <PlusCircle className="mr-2 size-4" />
-            More...
-          </DropdownMenuItem>
-        </DropdownMenuSubContent>
-      </DropdownMenuSub>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem>
-        <Cloud className="mr-2 size-4" />
-        Cloud
-      </DropdownMenuItem>
-      <DropdownMenuItem>
-        <LifeBuoy className="mr-2 size-4" />
-        Support
-      </DropdownMenuItem>
-    </DropdownMenuContent>
-  </DropdownMenu>`}>
+<Preview>
   <DropdownMenu>
     <DropdownMenuTrigger render={<Button variant="outline" />}>
       More Options
@@ -294,48 +261,61 @@ import {
     </DropdownMenuContent>
   </DropdownMenu>
 </Preview>
+
+```tsx
+<DropdownMenu>
+    <DropdownMenuTrigger render={<Button variant="outline" />}>
+      More Options
+    </DropdownMenuTrigger>
+    <DropdownMenuContent className="w-56">
+      <DropdownMenuItem>
+        <Mail className="mr-2 size-4" />
+        Email
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        <MessageSquare className="mr-2 size-4" />
+        Message
+      </DropdownMenuItem>
+      <DropdownMenuSeparator />
+      <DropdownMenuSub>
+        <DropdownMenuSubTrigger>
+          <UserPlus className="mr-2 size-4" />
+          Invite Users
+        </DropdownMenuSubTrigger>
+        <DropdownMenuSubContent>
+          <DropdownMenuItem>
+            <Mail className="mr-2 size-4" />
+            Email
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <MessageSquare className="mr-2 size-4" />
+            Message
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem>
+            <PlusCircle className="mr-2 size-4" />
+            More...
+          </DropdownMenuItem>
+        </DropdownMenuSubContent>
+      </DropdownMenuSub>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem>
+        <Cloud className="mr-2 size-4" />
+        Cloud
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        <LifeBuoy className="mr-2 size-4" />
+        Support
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+```
 
 ## Examples
 
 ### User Account Menu
 
-<Preview code={`<DropdownMenu>
-    <DropdownMenuTrigger render={<Button variant="ghost" size="icon" />}>
-      <User className="size-4" />
-    </DropdownMenuTrigger>
-    <DropdownMenuContent className="w-56" align="end">
-      <DropdownMenuLabel>
-        <div className="flex flex-col space-y-1">
-          <p className="text-sm font-medium">John Doe</p>
-          <p className="text-xs text-muted-foreground">john@example.com</p>
-        </div>
-      </DropdownMenuLabel>
-      <DropdownMenuSeparator />
-      <DropdownMenuGroup>
-        <DropdownMenuItem>
-          <User className="mr-2 size-4" />
-          Profile
-          <DropdownMenuShortcut>Ctrl+P</DropdownMenuShortcut>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <CreditCard className="mr-2 size-4" />
-          Billing
-          <DropdownMenuShortcut>Ctrl+B</DropdownMenuShortcut>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Settings className="mr-2 size-4" />
-          Settings
-          <DropdownMenuShortcut>Ctrl+S</DropdownMenuShortcut>
-        </DropdownMenuItem>
-      </DropdownMenuGroup>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem variant="destructive">
-        <LogOut className="mr-2 size-4" />
-        Log out
-        <DropdownMenuShortcut>Ctrl+Q</DropdownMenuShortcut>
-      </DropdownMenuItem>
-    </DropdownMenuContent>
-  </DropdownMenu>`}>
+<Preview>
   <DropdownMenu>
     <DropdownMenuTrigger render={<Button variant="ghost" size="icon" />}>
       <User className="size-4" />
@@ -374,21 +354,50 @@ import {
     </DropdownMenuContent>
   </DropdownMenu>
 </Preview>
+
+```tsx
+<DropdownMenu>
+    <DropdownMenuTrigger render={<Button variant="ghost" size="icon" />}>
+      <User className="size-4" />
+    </DropdownMenuTrigger>
+    <DropdownMenuContent className="w-56" align="end">
+      <DropdownMenuLabel>
+        <div className="flex flex-col space-y-1">
+          <p className="text-sm font-medium">John Doe</p>
+          <p className="text-xs text-muted-foreground">john@example.com</p>
+        </div>
+      </DropdownMenuLabel>
+      <DropdownMenuSeparator />
+      <DropdownMenuGroup>
+        <DropdownMenuItem>
+          <User className="mr-2 size-4" />
+          Profile
+          <DropdownMenuShortcut>Ctrl+P</DropdownMenuShortcut>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <CreditCard className="mr-2 size-4" />
+          Billing
+          <DropdownMenuShortcut>Ctrl+B</DropdownMenuShortcut>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Settings className="mr-2 size-4" />
+          Settings
+          <DropdownMenuShortcut>Ctrl+S</DropdownMenuShortcut>
+        </DropdownMenuItem>
+      </DropdownMenuGroup>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem variant="destructive">
+        <LogOut className="mr-2 size-4" />
+        Log out
+        <DropdownMenuShortcut>Ctrl+Q</DropdownMenuShortcut>
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+```
 
 ### Actions Menu
 
-<Preview code={`<DropdownMenu>
-    <DropdownMenuTrigger render={<Button variant="outline" size="sm" />}>
-      Actions
-    </DropdownMenuTrigger>
-    <DropdownMenuContent className="w-48">
-      <DropdownMenuItem>Edit</DropdownMenuItem>
-      <DropdownMenuItem>Duplicate</DropdownMenuItem>
-      <DropdownMenuItem>Archive</DropdownMenuItem>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
-    </DropdownMenuContent>
-  </DropdownMenu>`}>
+<Preview>
   <DropdownMenu>
     <DropdownMenuTrigger render={<Button variant="outline" size="sm" />}>
       Actions
@@ -402,3 +411,18 @@ import {
     </DropdownMenuContent>
   </DropdownMenu>
 </Preview>
+
+```tsx
+<DropdownMenu>
+    <DropdownMenuTrigger render={<Button variant="outline" size="sm" />}>
+      Actions
+    </DropdownMenuTrigger>
+    <DropdownMenuContent className="w-48">
+      <DropdownMenuItem>Edit</DropdownMenuItem>
+      <DropdownMenuItem>Duplicate</DropdownMenuItem>
+      <DropdownMenuItem>Archive</DropdownMenuItem>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+```

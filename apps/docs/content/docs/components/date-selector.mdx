@@ -15,7 +15,9 @@ import { DateSelector } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview>
+<Preview code={`<div className="w-full max-w-xl">
+  <DateSelector />
+</div>`}>
   <div className="w-full max-w-xl">
     <DateSelector />
   </div>
@@ -25,7 +27,9 @@ import { DateSelector } from '@e412/rnui-react';
 
 ### With Label
 
-<Preview>
+<Preview code={`<div className="w-full max-w-xl">
+  <DateSelector label="Select Date" />
+</div>`}>
   <div className="w-full max-w-xl">
     <DateSelector label="Select Date" />
   </div>
@@ -35,7 +39,9 @@ import { DateSelector } from '@e412/rnui-react';
 
 Set `defaultFilterType="between"` to enable date range selection.
 
-<Preview>
+<Preview code={`<div className="w-full max-w-xl">
+  <DateSelector defaultFilterType="between" />
+</div>`}>
   <div className="w-full max-w-xl">
     <DateSelector defaultFilterType="between" />
   </div>
@@ -45,7 +51,9 @@ Set `defaultFilterType="between"` to enable date range selection.
 
 Restrict selection to months using the `periodTypes` prop.
 
-<Preview>
+<Preview code={`<div className="w-full max-w-xl">
+  <DateSelector periodTypes={["month"]} />
+</div>`}>
   <div className="w-full max-w-xl">
     <DateSelector periodTypes={["month"]} />
   </div>
@@ -53,7 +61,9 @@ Restrict selection to months using the `periodTypes` prop.
 
 ### Quarter and Year
 
-<Preview>
+<Preview code={`<div className="w-full max-w-xl">
+  <DateSelector periodTypes={["quarter", "year"]} />
+</div>`}>
   <div className="w-full max-w-xl">
     <DateSelector periodTypes={["quarter", "year"]} />
   </div>
@@ -63,7 +73,9 @@ Restrict selection to months using the `periodTypes` prop.
 
 Hide the text input with `showInput={false}`.
 
-<Preview>
+<Preview code={`<div className="w-full max-w-xl">
+  <DateSelector showInput={false} />
+</div>`}>
   <div className="w-full max-w-xl">
     <DateSelector showInput={false} />
   </div>
@@ -73,7 +85,9 @@ Hide the text input with `showInput={false}`.
 
 Show only one month at a time with `showTwoMonths={false}`.
 
-<Preview>
+<Preview code={`<div className="w-full max-w-xl">
+  <DateSelector showTwoMonths={false} />
+</div>`}>
   <div className="w-full max-w-xl">
     <DateSelector showTwoMonths={false} />
   </div>
@@ -83,7 +97,9 @@ Show only one month at a time with `showTwoMonths={false}`.
 
 ### Event Date Picker
 
-<Preview>
+<Preview code={`<div className="w-full max-w-xl">
+  <DateSelector label="Event Date" showTwoMonths={false} />
+</div>`}>
   <div className="w-full max-w-xl">
     <DateSelector label="Event Date" showTwoMonths={false} />
   </div>
@@ -91,7 +107,9 @@ Show only one month at a time with `showTwoMonths={false}`.
 
 ### Report Period
 
-<Preview>
+<Preview code={`<div className="w-full max-w-xl">
+  <DateSelector label="Report Period" defaultFilterType="between" />
+</div>`}>
   <div className="w-full max-w-xl">
     <DateSelector label="Report Period" defaultFilterType="between" />
   </div>
@@ -99,7 +117,9 @@ Show only one month at a time with `showTwoMonths={false}`.
 
 ### Fiscal Period Selector
 
-<Preview>
+<Preview code={`<div className="w-full max-w-xl">
+  <DateSelector label="Fiscal Period" periodTypes={["quarter", "year"]} />
+</div>`}>
   <div className="w-full max-w-xl">
     <DateSelector label="Fiscal Period" periodTypes={["quarter", "year"]} />
   </div>
@@ -107,7 +127,9 @@ Show only one month at a time with `showTwoMonths={false}`.
 
 ### Monthly Budget Period
 
-<Preview>
+<Preview code={`<div className="w-full max-w-xl">
+  <DateSelector label="Budget Month" periodTypes={["month"]} showInput={false} />
+</div>`}>
   <div className="w-full max-w-xl">
     <DateSelector label="Budget Month" periodTypes={["month"]} showInput={false} />
   </div>

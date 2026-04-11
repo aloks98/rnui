@@ -25,7 +25,19 @@ import {
 
 ## Usage
 
-<Preview>
+<Preview code={`<Combobox items={['Apple', 'Banana', 'Blueberry', 'Grapes', 'Pineapple']}>
+  <ComboboxInput placeholder="Search fruits..." />
+  <ComboboxContent>
+    <ComboboxEmpty>No results found.</ComboboxEmpty>
+    <ComboboxList>
+      {(item) => (
+        <ComboboxItem key={item} value={item}>
+          {item}
+        </ComboboxItem>
+      )}
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>`}>
   <Combobox items={['Apple', 'Banana', 'Blueberry', 'Grapes', 'Pineapple']}>
     <ComboboxInput placeholder="Search fruits..." />
     <ComboboxContent>
@@ -47,7 +59,19 @@ import {
 
 Add `showClear` to the input to let users clear their selection.
 
-<Preview>
+<Preview code={`<Combobox items={['Apple', 'Banana', 'Blueberry', 'Grapes', 'Pineapple']}>
+  <ComboboxInput placeholder="Search fruits..." showClear />
+  <ComboboxContent>
+    <ComboboxEmpty>No results found.</ComboboxEmpty>
+    <ComboboxList>
+      {(item) => (
+        <ComboboxItem key={item} value={item}>
+          {item}
+        </ComboboxItem>
+      )}
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>`}>
   <Combobox items={['Apple', 'Banana', 'Blueberry', 'Grapes', 'Pineapple']}>
     <ComboboxInput placeholder="Search fruits..." showClear />
     <ComboboxContent>
@@ -67,7 +91,25 @@ Add `showClear` to the input to let users clear their selection.
 
 Organize items into labeled groups with separators.
 
-<Preview>
+<Preview code={`<Combobox items={['apple', 'banana', 'carrot', 'broccoli']}>
+  <ComboboxInput placeholder="Search..." />
+  <ComboboxContent>
+    <ComboboxEmpty>No results found.</ComboboxEmpty>
+    <ComboboxList>
+      <ComboboxGroup>
+        <ComboboxLabel>Fruits</ComboboxLabel>
+        <ComboboxItem value="apple">Apple</ComboboxItem>
+        <ComboboxItem value="banana">Banana</ComboboxItem>
+      </ComboboxGroup>
+      <ComboboxSeparator />
+      <ComboboxGroup>
+        <ComboboxLabel>Vegetables</ComboboxLabel>
+        <ComboboxItem value="carrot">Carrot</ComboboxItem>
+        <ComboboxItem value="broccoli">Broccoli</ComboboxItem>
+      </ComboboxGroup>
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>`}>
   <Combobox items={['apple', 'banana', 'carrot', 'broccoli']}>
     <ComboboxInput placeholder="Search..." />
     <ComboboxContent>
@@ -91,7 +133,18 @@ Organize items into labeled groups with separators.
 
 ### Disabled
 
-<Preview>
+<Preview code={`<Combobox items={['Apple', 'Banana', 'Blueberry']}>
+  <ComboboxInput placeholder="Disabled combobox" disabled />
+  <ComboboxContent>
+    <ComboboxList>
+      {(item) => (
+        <ComboboxItem key={item} value={item}>
+          {item}
+        </ComboboxItem>
+      )}
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>`}>
   <Combobox items={['Apple', 'Banana', 'Blueberry']}>
     <ComboboxInput placeholder="Disabled combobox" disabled />
     <ComboboxContent>
@@ -110,7 +163,19 @@ Organize items into labeled groups with separators.
 
 ### Country Selector
 
-<Preview>
+<Preview code={`<Combobox items={['United States', 'United Kingdom', 'Canada', 'Australia', 'Germany', 'France', 'Japan', 'Brazil']}>
+  <ComboboxInput placeholder="Select country..." showClear />
+  <ComboboxContent>
+    <ComboboxEmpty>No country found.</ComboboxEmpty>
+    <ComboboxList>
+      {(item) => (
+        <ComboboxItem key={item} value={item}>
+          {item}
+        </ComboboxItem>
+      )}
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>`}>
   <Combobox items={['United States', 'United Kingdom', 'Canada', 'Australia', 'Germany', 'France', 'Japan', 'Brazil']}>
     <ComboboxInput placeholder="Select country..." showClear />
     <ComboboxContent>
@@ -128,7 +193,33 @@ Organize items into labeled groups with separators.
 
 ### Programming Language Picker
 
-<Preview>
+<Preview code={`<Combobox items={['typescript', 'javascript', 'python', 'rust', 'go', 'java', 'csharp', 'ruby']}>
+  <ComboboxInput placeholder="Pick a language..." />
+  <ComboboxContent>
+    <ComboboxEmpty>No language found.</ComboboxEmpty>
+    <ComboboxList>
+      <ComboboxGroup>
+        <ComboboxLabel>Popular</ComboboxLabel>
+        <ComboboxItem value="typescript">TypeScript</ComboboxItem>
+        <ComboboxItem value="javascript">JavaScript</ComboboxItem>
+        <ComboboxItem value="python">Python</ComboboxItem>
+      </ComboboxGroup>
+      <ComboboxSeparator />
+      <ComboboxGroup>
+        <ComboboxLabel>Systems</ComboboxLabel>
+        <ComboboxItem value="rust">Rust</ComboboxItem>
+        <ComboboxItem value="go">Go</ComboboxItem>
+      </ComboboxGroup>
+      <ComboboxSeparator />
+      <ComboboxGroup>
+        <ComboboxLabel>Enterprise</ComboboxLabel>
+        <ComboboxItem value="java">Java</ComboboxItem>
+        <ComboboxItem value="csharp">C#</ComboboxItem>
+        <ComboboxItem value="ruby">Ruby</ComboboxItem>
+      </ComboboxGroup>
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>`}>
   <Combobox items={['typescript', 'javascript', 'python', 'rust', 'go', 'java', 'csharp', 'ruby']}>
     <ComboboxInput placeholder="Pick a language..." />
     <ComboboxContent>
@@ -160,7 +251,19 @@ Organize items into labeled groups with separators.
 
 ### Timezone Selector
 
-<Preview>
+<Preview code={`<Combobox items={['America/New_York', 'America/Chicago', 'America/Denver', 'America/Los_Angeles', 'Europe/London', 'Europe/Paris', 'Asia/Tokyo', 'Asia/Shanghai']}>
+  <ComboboxInput placeholder="Select timezone..." showClear />
+  <ComboboxContent>
+    <ComboboxEmpty>No timezone found.</ComboboxEmpty>
+    <ComboboxList>
+      {(item) => (
+        <ComboboxItem key={item} value={item}>
+          {item}
+        </ComboboxItem>
+      )}
+    </ComboboxList>
+  </ComboboxContent>
+</Combobox>`}>
   <Combobox items={['America/New_York', 'America/Chicago', 'America/Denver', 'America/Los_Angeles', 'Europe/London', 'Europe/Paris', 'Asia/Tokyo', 'Asia/Shanghai']}>
     <ComboboxInput placeholder="Select timezone..." showClear />
     <ComboboxContent>

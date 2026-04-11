@@ -15,7 +15,10 @@ import { Label } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview>
+<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
+  <Label htmlFor="email">Email address</Label>
+  <Input type="email" id="email" placeholder="you@example.com" />
+</div>`}>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label htmlFor="email">Email address</Label>
     <Input type="email" id="email" placeholder="you@example.com" />
@@ -26,7 +29,10 @@ import { Label } from '@e412/rnui-react';
 
 ### With Text Input
 
-<Preview>
+<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
+  <Label htmlFor="username">Username</Label>
+  <Input type="text" id="username" placeholder="Enter your username" />
+</div>`}>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label htmlFor="username">Username</Label>
     <Input type="text" id="username" placeholder="Enter your username" />
@@ -35,7 +41,10 @@ import { Label } from '@e412/rnui-react';
 
 ### With Password Input
 
-<Preview>
+<Preview code={`<div className="grid w-full max-w-sm gap-1.5">
+  <Label htmlFor="password">Password</Label>
+  <Input type="password" id="password" placeholder="Enter your password" />
+</div>`}>
   <div className="grid w-full max-w-sm gap-1.5">
     <Label htmlFor="password">Password</Label>
     <Input type="password" id="password" placeholder="Enter your password" />
@@ -44,7 +53,20 @@ import { Label } from '@e412/rnui-react';
 
 ### Multiple Fields
 
-<Preview>
+<Preview code={`<div className="grid w-full max-w-sm gap-4">
+  <div className="grid gap-1.5">
+    <Label htmlFor="first-name">First name</Label>
+    <Input type="text" id="first-name" placeholder="Jane" />
+  </div>
+  <div className="grid gap-1.5">
+    <Label htmlFor="last-name">Last name</Label>
+    <Input type="text" id="last-name" placeholder="Doe" />
+  </div>
+  <div className="grid gap-1.5">
+    <Label htmlFor="email-field">Email</Label>
+    <Input type="email" id="email-field" placeholder="jane@example.com" />
+  </div>
+</div>`}>
   <div className="grid w-full max-w-sm gap-4">
     <div className="grid gap-1.5">
       <Label htmlFor="first-name">First name</Label>
@@ -63,7 +85,10 @@ import { Label } from '@e412/rnui-react';
 
 ### With Slider
 
-<Preview>
+<Preview code={`<div className="grid w-full max-w-sm gap-3">
+  <Label>Volume</Label>
+  <Slider defaultValue={[50]} max={100} step={1} />
+</div>`}>
   <div className="grid w-full max-w-sm gap-3">
     <Label>Volume</Label>
     <Slider defaultValue={[50]} max={100} step={1} />

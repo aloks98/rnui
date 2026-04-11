@@ -15,7 +15,10 @@ import { Calendar } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview>
+<Preview code={`<Calendar
+  mode="single"
+  className="rounded-md border"
+/>`}>
   <Calendar
     mode="single"
     className="rounded-md border"
@@ -28,7 +31,10 @@ import { Calendar } from '@e412/rnui-react';
 
 A standalone calendar for picking a single date.
 
-<Preview>
+<Preview code={`<Calendar
+  mode="single"
+  className="rounded-md border"
+/>`}>
   <Calendar
     mode="single"
     className="rounded-md border"
@@ -39,7 +45,12 @@ A standalone calendar for picking a single date.
 
 Limit selectable dates with `fromDate` and `toDate`.
 
-<Preview>
+<Preview code={`<Calendar
+  mode="single"
+  fromDate={new Date(2026, 0, 1)}
+  toDate={new Date(2026, 11, 31)}
+  className="rounded-md border"
+/>`}>
   <Calendar
     mode="single"
     fromDate={new Date(2026, 0, 1)}
@@ -52,7 +63,11 @@ Limit selectable dates with `fromDate` and `toDate`.
 
 Use the `disabled` prop with a matcher function to disable specific days.
 
-<Preview>
+<Preview code={`<Calendar
+  mode="single"
+  disabled={(date) => date.getDay() === 0 || date.getDay() === 6}
+  className="rounded-md border"
+/>`}>
   <Calendar
     mode="single"
     disabled={(date) => date.getDay() === 0 || date.getDay() === 6}
@@ -62,7 +77,16 @@ Use the `disabled` prop with a matcher function to disable specific days.
 
 ### Multiple Calendars Side by Side
 
-<Preview>
+<Preview code={`<div className="flex gap-4">
+  <Calendar
+    mode="single"
+    className="rounded-md border"
+  />
+  <Calendar
+    mode="single"
+    className="rounded-md border"
+  />
+</div>`}>
   <div className="flex gap-4">
     <Calendar
       mode="single"

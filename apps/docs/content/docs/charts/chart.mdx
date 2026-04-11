@@ -35,7 +35,19 @@ The chart system has three layers:
 
 The simplest way to render a chart is with a high-level component:
 
-<Preview>
+<Preview code={`<div className="w-full max-w-lg">
+    <BarChart
+      data={[
+        { name: 'Jan', value: 18500 },
+        { name: 'Feb', value: 22300 },
+        { name: 'Mar', value: 31200 },
+        { name: 'Apr', value: 27800 },
+        { name: 'May', value: 35600 },
+        { name: 'Jun', value: 42100 },
+      ]}
+      height={300}
+    />
+  </div>`}>
   <div className="w-full max-w-lg">
     <BarChart
       data={[
@@ -72,7 +84,18 @@ All chart components share these base props:
 
 For a middle ground between high-level components and raw ECharts options, use the `chartConfig()` fluent builder:
 
-<Preview>
+<Preview code={`<div className="w-full max-w-lg">
+    <EChart
+      option={chartConfig()
+        .bar({
+          data: [18500, 22300, 31200, 27800, 35600, 42100],
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        })
+        .tooltip()
+        .build()}
+      height={300}
+    />
+  </div>`}>
   <div className="w-full max-w-lg">
     <EChart
       option={chartConfig()
@@ -119,7 +142,17 @@ Charts automatically read your shadcn/ui CSS variables (`--chart-1` through `--c
 
 All charts accept a `loading` prop to show a built-in loading overlay:
 
-<Preview>
+<Preview code={`<div className="w-full max-w-lg">
+    <LineChart
+      data={[
+        { name: 'Mon', value: 820 },
+        { name: 'Tue', value: 932 },
+        { name: 'Wed', value: 901 },
+      ]}
+      loading={true}
+      height={250}
+    />
+  </div>`}>
   <div className="w-full max-w-lg">
     <LineChart
       data={[

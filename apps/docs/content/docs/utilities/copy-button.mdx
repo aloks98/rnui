@@ -15,7 +15,7 @@ import { CopyButton } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview>
+<Preview code={`<CopyButton value="npm install @e412/rnui-react" />`}>
   <CopyButton value="npm install @e412/rnui-react" />
 </Preview>
 
@@ -23,7 +23,10 @@ import { CopyButton } from '@e412/rnui-react';
 
 Pair CopyButton alongside text or code snippets to let users quickly copy values.
 
-<Preview>
+<Preview code={`<div className="flex items-center gap-2">
+    <code className="rounded bg-muted px-2 py-1 text-sm font-mono">npm install @e412/rnui-react</code>
+    <CopyButton value="npm install @e412/rnui-react" />
+  </div>`}>
   <div className="flex items-center gap-2">
     <code className="rounded bg-muted px-2 py-1 text-sm font-mono">npm install @e412/rnui-react</code>
     <CopyButton value="npm install @e412/rnui-react" />
@@ -34,7 +37,18 @@ Pair CopyButton alongside text or code snippets to let users quickly copy values
 
 ### API Credentials
 
-<Preview>
+<Preview code={`<div className="flex flex-col gap-3">
+    <div className="flex items-center gap-2">
+      <span className="text-sm text-foreground">API Key:</span>
+      <code className="rounded bg-muted px-2 py-1 text-sm font-mono">sk-1234567890abcdef</code>
+      <CopyButton value="sk-1234567890abcdef" />
+    </div>
+    <div className="flex items-center gap-2">
+      <span className="text-sm text-foreground">Endpoint:</span>
+      <code className="rounded bg-muted px-2 py-1 text-sm font-mono">https://api.example.com/v1</code>
+      <CopyButton value="https://api.example.com/v1" />
+    </div>
+  </div>`}>
   <div className="flex flex-col gap-3">
     <div className="flex items-center gap-2">
       <span className="text-sm text-foreground">API Key:</span>
@@ -51,7 +65,10 @@ Pair CopyButton alongside text or code snippets to let users quickly copy values
 
 ### Shareable Link
 
-<Preview>
+<Preview code={`<div className="flex items-center gap-2 rounded-lg border bg-card p-3">
+    <span className="text-sm text-muted-foreground truncate flex-1">https://rnui.dev/docs/utilities/copy-button</span>
+    <CopyButton value="https://rnui.dev/docs/utilities/copy-button" />
+  </div>`}>
   <div className="flex items-center gap-2 rounded-lg border bg-card p-3">
     <span className="text-sm text-muted-foreground truncate flex-1">https://rnui.dev/docs/utilities/copy-button</span>
     <CopyButton value="https://rnui.dev/docs/utilities/copy-button" />
@@ -60,7 +77,14 @@ Pair CopyButton alongside text or code snippets to let users quickly copy values
 
 ### Color Token
 
-<Preview>
+<Preview code={`<div className="flex items-center gap-3 rounded-lg border bg-card p-3">
+    <div className="h-8 w-8 rounded-md bg-primary" />
+    <div className="flex flex-col">
+      <span className="text-sm font-medium text-foreground">Primary</span>
+      <span className="text-xs text-muted-foreground font-mono">hsl(var(--primary))</span>
+    </div>
+    <CopyButton value="hsl(var(--primary))" />
+  </div>`}>
   <div className="flex items-center gap-3 rounded-lg border bg-card p-3">
     <div className="h-8 w-8 rounded-md bg-primary" />
     <div className="flex flex-col">

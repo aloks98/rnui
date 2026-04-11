@@ -353,7 +353,7 @@ Use `SortableItemHandle` as a child of `SortableItem` to restrict the drag inter
               <SortableItemHandle>
                 <GripVertical className="h-4 w-4 text-muted-foreground cursor-grab" />
               </SortableItemHandle>
-              <div className={\`h-3 w-3 rounded-sm \${layer.color}\`} />
+              <div className={`h-3 w-3 rounded-sm ${layer.color}`} />
               <span className="text-sm text-foreground">{layer.label}</span>
             </SortableItem>
           ))}

@@ -149,15 +149,6 @@ Use Tailwind basis utilities on `CarouselItem` to show multiple items at once.
 ### Image Gallery
 
 <Preview>
-              <Image className="size-10 text-muted-foreground" />
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
-  </div>`}>
   <div className="mx-auto w-full max-w-sm">
     <Carousel>
       <CarouselContent>
@@ -177,11 +168,20 @@ Use Tailwind basis utilities on `CarouselItem` to show multiple items at once.
 
 ```tsx
 <div className="mx-auto w-full max-w-sm">
-    <Carousel>
-      <CarouselContent>
-        {['bg-rose-100', 'bg-sky-100', 'bg-amber-100', 'bg-emerald-100'].map((color, index) => (
-          <CarouselItem key={index}>
-            <div className={\`flex aspect-video items-center justify-center rounded-lg \${color}\
+  <Carousel>
+    <CarouselContent>
+      {['bg-rose-100', 'bg-sky-100', 'bg-amber-100', 'bg-emerald-100'].map((color, index) => (
+        <CarouselItem key={index}>
+          <div className={`flex aspect-video items-center justify-center rounded-lg ${color}`}>
+            <Image className="size-10 text-muted-foreground" />
+          </div>
+        </CarouselItem>
+      ))}
+    </CarouselContent>
+    <CarouselPrevious />
+    <CarouselNext />
+  </Carousel>
+</div>
 ```
 
 ### Testimonials Carousel

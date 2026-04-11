@@ -25,7 +25,27 @@ import {
 
 ## Usage
 
-<Preview>
+<Preview code={`<Sheet>
+    <SheetTrigger render={<Button variant="outline" />}>
+      Open Sheet
+    </SheetTrigger>
+    <SheetContent>
+      <SheetHeader>
+        <SheetTitle>Edit Profile</SheetTitle>
+        <SheetDescription>
+          Make changes to your profile here. Click save when you are done.
+        </SheetDescription>
+      </SheetHeader>
+      <div className="p-4">
+        <p className="text-sm text-muted-foreground">Sheet body content.</p>
+      </div>
+      <SheetFooter>
+        <SheetClose render={<Button type="submit" />}>
+          Save changes
+        </SheetClose>
+      </SheetFooter>
+    </SheetContent>
+  </Sheet>`}>
   <Sheet>
     <SheetTrigger render={<Button variant="outline" />}>
       Open Sheet
@@ -53,7 +73,52 @@ import {
 
 The `side` prop controls which edge the sheet slides in from. Defaults to `"right"`.
 
-<Preview>
+<Preview code={`<div className="flex gap-3 flex-wrap">
+    <Sheet>
+      <SheetTrigger render={<Button variant="outline" />}>
+        Right (default)
+      </SheetTrigger>
+      <SheetContent>
+        <SheetHeader>
+          <SheetTitle>Right Sheet</SheetTitle>
+          <SheetDescription>This sheet opens from the right side.</SheetDescription>
+        </SheetHeader>
+      </SheetContent>
+    </Sheet>
+    <Sheet>
+      <SheetTrigger render={<Button variant="outline" />}>
+        Left
+      </SheetTrigger>
+      <SheetContent side="left">
+        <SheetHeader>
+          <SheetTitle>Left Sheet</SheetTitle>
+          <SheetDescription>This sheet opens from the left side.</SheetDescription>
+        </SheetHeader>
+      </SheetContent>
+    </Sheet>
+    <Sheet>
+      <SheetTrigger render={<Button variant="outline" />}>
+        Top
+      </SheetTrigger>
+      <SheetContent side="top">
+        <SheetHeader>
+          <SheetTitle>Top Sheet</SheetTitle>
+          <SheetDescription>This sheet opens from the top.</SheetDescription>
+        </SheetHeader>
+      </SheetContent>
+    </Sheet>
+    <Sheet>
+      <SheetTrigger render={<Button variant="outline" />}>
+        Bottom
+      </SheetTrigger>
+      <SheetContent side="bottom">
+        <SheetHeader>
+          <SheetTitle>Bottom Sheet</SheetTitle>
+          <SheetDescription>This sheet opens from the bottom.</SheetDescription>
+        </SheetHeader>
+      </SheetContent>
+    </Sheet>
+  </div>`}>
   <div className="flex gap-3 flex-wrap">
     <Sheet>
       <SheetTrigger render={<Button variant="outline" />}>
@@ -106,7 +171,32 @@ The `side` prop controls which edge the sheet slides in from. Defaults to `"righ
 
 ### Edit Profile
 
-<Preview>
+<Preview code={`<Sheet>
+    <SheetTrigger render={<Button variant="outline" />}>
+      Edit Profile
+    </SheetTrigger>
+    <SheetContent>
+      <SheetHeader>
+        <SheetTitle>Edit Profile</SheetTitle>
+        <SheetDescription>
+          Update your personal details below.
+        </SheetDescription>
+      </SheetHeader>
+      <div className="grid gap-4 p-4">
+        <div className="grid gap-2">
+          <Label htmlFor="sheet-name">Name</Label>
+          <Input id="sheet-name" defaultValue="John Doe" />
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="sheet-email">Email</Label>
+          <Input id="sheet-email" defaultValue="john@example.com" />
+        </div>
+      </div>
+      <SheetFooter>
+        <SheetClose render={<Button />}>Save changes</SheetClose>
+      </SheetFooter>
+    </SheetContent>
+  </Sheet>`}>
   <Sheet>
     <SheetTrigger render={<Button variant="outline" />}>
       Edit Profile
@@ -137,7 +227,33 @@ The `side` prop controls which edge the sheet slides in from. Defaults to `"righ
 
 ### Settings Panel
 
-<Preview>
+<Preview code={`<Sheet>
+    <SheetTrigger render={<Button variant="outline" />}>
+      <Settings className="mr-2 h-4 w-4" />
+      Settings
+    </SheetTrigger>
+    <SheetContent>
+      <SheetHeader>
+        <SheetTitle>Settings</SheetTitle>
+        <SheetDescription>
+          Manage your application preferences.
+        </SheetDescription>
+      </SheetHeader>
+      <div className="grid gap-4 p-4">
+        <div className="grid gap-2">
+          <Label htmlFor="sheet-theme">Theme</Label>
+          <Input id="sheet-theme" defaultValue="System" />
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="sheet-lang">Language</Label>
+          <Input id="sheet-lang" defaultValue="English" />
+        </div>
+      </div>
+      <SheetFooter>
+        <SheetClose render={<Button />}>Apply</SheetClose>
+      </SheetFooter>
+    </SheetContent>
+  </Sheet>`}>
   <Sheet>
     <SheetTrigger render={<Button variant="outline" />}>
       <Settings className="mr-2 h-4 w-4" />
@@ -169,7 +285,23 @@ The `side` prop controls which edge the sheet slides in from. Defaults to `"righ
 
 ### Navigation Sidebar
 
-<Preview>
+<Preview code={`<Sheet>
+    <SheetTrigger render={<Button variant="outline" />}>
+      Open Navigation
+    </SheetTrigger>
+    <SheetContent side="left">
+      <SheetHeader>
+        <SheetTitle>Navigation</SheetTitle>
+        <SheetDescription>Browse sections of the application.</SheetDescription>
+      </SheetHeader>
+      <div className="flex flex-col gap-2 p-4">
+        <Button variant="ghost" className="justify-start">Dashboard</Button>
+        <Button variant="ghost" className="justify-start">Projects</Button>
+        <Button variant="ghost" className="justify-start">Team</Button>
+        <Button variant="ghost" className="justify-start">Settings</Button>
+      </div>
+    </SheetContent>
+  </Sheet>`}>
   <Sheet>
     <SheetTrigger render={<Button variant="outline" />}>
       Open Navigation

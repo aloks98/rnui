@@ -29,7 +29,56 @@ import {
 
 ## Usage
 
-<Preview>
+<Preview code={`<NavigationMenu>
+    <NavigationMenuList>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <ul className="grid w-[400px] gap-3 p-4 md:grid-cols-2">
+            <li>
+              <NavigationMenuLink href="#">
+                <div className="font-medium">Introduction</div>
+                <p className="text-sm text-muted-foreground">
+                  Re-usable components built with Radix UI and Tailwind CSS.
+                </p>
+              </NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink href="#">
+                <div className="font-medium">Installation</div>
+                <p className="text-sm text-muted-foreground">
+                  How to install dependencies and structure your app.
+                </p>
+              </NavigationMenuLink>
+            </li>
+          </ul>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <ul className="grid w-[400px] gap-3 p-4 md:grid-cols-2">
+            <li>
+              <NavigationMenuLink href="#">
+                <div className="font-medium">Alert Dialog</div>
+                <p className="text-sm text-muted-foreground">
+                  A modal dialog that interrupts the user.
+                </p>
+              </NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink href="#">
+                <div className="font-medium">Hover Card</div>
+                <p className="text-sm text-muted-foreground">
+                  Preview content available behind a link.
+                </p>
+              </NavigationMenuLink>
+            </li>
+          </ul>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+    </NavigationMenuList>
+  </NavigationMenu>`}>
   <NavigationMenu>
     <NavigationMenuList>
       <NavigationMenuItem>
@@ -84,7 +133,43 @@ import {
 
 ## With Featured Item
 
-<Preview>
+<Preview code={`<NavigationMenu>
+    <NavigationMenuList>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <div className="grid w-[500px] gap-3 p-4 md:grid-cols-[1fr_2fr]">
+            <div className="flex flex-col justify-between rounded-md bg-gradient-to-b from-muted/50 to-muted p-4">
+              <div className="text-lg font-medium">Featured</div>
+              <p className="text-sm text-muted-foreground">
+                Our latest and greatest product offering.
+              </p>
+            </div>
+            <ul className="grid gap-3">
+              <li>
+                <NavigationMenuLink href="#">
+                  <div className="font-medium">Analytics</div>
+                  <p className="text-sm text-muted-foreground">Track and measure performance.</p>
+                </NavigationMenuLink>
+              </li>
+              <li>
+                <NavigationMenuLink href="#">
+                  <div className="font-medium">Automation</div>
+                  <p className="text-sm text-muted-foreground">Automate your workflows.</p>
+                </NavigationMenuLink>
+              </li>
+              <li>
+                <NavigationMenuLink href="#">
+                  <div className="font-medium">Integrations</div>
+                  <p className="text-sm text-muted-foreground">Connect with third-party tools.</p>
+                </NavigationMenuLink>
+              </li>
+            </ul>
+          </div>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+    </NavigationMenuList>
+  </NavigationMenu>`}>
   <NavigationMenu>
     <NavigationMenuList>
       <NavigationMenuItem>
@@ -128,7 +213,63 @@ import {
 
 ### Site Navigation
 
-<Preview>
+<Preview code={`<NavigationMenu>
+    <NavigationMenuList>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Documentation</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <ul className="grid w-[400px] gap-3 p-4 md:grid-cols-2">
+            <li>
+              <NavigationMenuLink href="#">
+                <div className="font-medium">Quick Start</div>
+                <p className="text-sm text-muted-foreground">Get up and running in minutes.</p>
+              </NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink href="#">
+                <div className="font-medium">API Reference</div>
+                <p className="text-sm text-muted-foreground">Complete API documentation.</p>
+              </NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink href="#">
+                <div className="font-medium">Guides</div>
+                <p className="text-sm text-muted-foreground">Step-by-step tutorials.</p>
+              </NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink href="#">
+                <div className="font-medium">Examples</div>
+                <p className="text-sm text-muted-foreground">Sample projects and demos.</p>
+              </NavigationMenuLink>
+            </li>
+          </ul>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <ul className="grid w-[300px] gap-3 p-4">
+            <li>
+              <NavigationMenuLink href="#">
+                <div className="font-medium">Blog</div>
+                <p className="text-sm text-muted-foreground">Latest news and updates.</p>
+              </NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink href="#">
+                <div className="font-medium">Community</div>
+                <p className="text-sm text-muted-foreground">Join the discussion.</p>
+              </NavigationMenuLink>
+            </li>
+          </ul>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuLink href="#">Pricing</NavigationMenuLink>
+      </NavigationMenuItem>
+    </NavigationMenuList>
+  </NavigationMenu>`}>
   <NavigationMenu>
     <NavigationMenuList>
       <NavigationMenuItem>
@@ -190,7 +331,47 @@ import {
 
 ### Developer Tools Navigation
 
-<Preview>
+<Preview code={`<NavigationMenu>
+    <NavigationMenuList>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Platform</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <ul className="grid w-[400px] gap-3 p-4 md:grid-cols-2">
+            <li>
+              <NavigationMenuLink href="#">
+                <div className="font-medium">Dashboard</div>
+                <p className="text-sm text-muted-foreground">Manage your projects.</p>
+              </NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink href="#">
+                <div className="font-medium">Deployments</div>
+                <p className="text-sm text-muted-foreground">Deploy with zero config.</p>
+              </NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink href="#">
+                <div className="font-medium">Storage</div>
+                <p className="text-sm text-muted-foreground">Scalable data storage.</p>
+              </NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink href="#">
+                <div className="font-medium">Functions</div>
+                <p className="text-sm text-muted-foreground">Serverless compute at the edge.</p>
+              </NavigationMenuLink>
+            </li>
+          </ul>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuLink href="#">Docs</NavigationMenuLink>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuLink href="#">Changelog</NavigationMenuLink>
+      </NavigationMenuItem>
+    </NavigationMenuList>
+  </NavigationMenu>`}>
   <NavigationMenu>
     <NavigationMenuList>
       <NavigationMenuItem>

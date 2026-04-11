@@ -44,7 +44,19 @@ import {
 
 ## Usage
 
-<Preview>
+<Preview code={`<ContextMenu>
+    <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+      Right click here
+    </ContextMenuTrigger>
+    <ContextMenuContent className="w-64">
+      <ContextMenuItem>Back</ContextMenuItem>
+      <ContextMenuItem>Forward</ContextMenuItem>
+      <ContextMenuItem>Reload</ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuItem>View Page Source</ContextMenuItem>
+      <ContextMenuItem>Inspect</ContextMenuItem>
+    </ContextMenuContent>
+  </ContextMenu>`}>
   <ContextMenu>
     <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
       Right click here
@@ -62,7 +74,34 @@ import {
 
 ## With Icons and Shortcuts
 
-<Preview>
+<Preview code={`<ContextMenu>
+    <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+      Right click here
+    </ContextMenuTrigger>
+    <ContextMenuContent className="w-64">
+      <ContextMenuItem>
+        <Scissors className="mr-2 size-4" />
+        Cut
+        <ContextMenuShortcut>Ctrl+X</ContextMenuShortcut>
+      </ContextMenuItem>
+      <ContextMenuItem>
+        <Copy className="mr-2 size-4" />
+        Copy
+        <ContextMenuShortcut>Ctrl+C</ContextMenuShortcut>
+      </ContextMenuItem>
+      <ContextMenuItem>
+        <Clipboard className="mr-2 size-4" />
+        Paste
+        <ContextMenuShortcut>Ctrl+V</ContextMenuShortcut>
+      </ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuItem>
+        <RotateCcw className="mr-2 size-4" />
+        Undo
+        <ContextMenuShortcut>Ctrl+Z</ContextMenuShortcut>
+      </ContextMenuItem>
+    </ContextMenuContent>
+  </ContextMenu>`}>
   <ContextMenu>
     <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
       Right click here
@@ -95,7 +134,37 @@ import {
 
 ## With Sub-menus
 
-<Preview>
+<Preview code={`<ContextMenu>
+    <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+      Right click here
+    </ContextMenuTrigger>
+    <ContextMenuContent className="w-64">
+      <ContextMenuItem>Open</ContextMenuItem>
+      <ContextMenuItem>Rename</ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuSub>
+        <ContextMenuSubTrigger>
+          <Share2 className="mr-2 size-4" />
+          Share
+        </ContextMenuSubTrigger>
+        <ContextMenuSubContent className="w-48">
+          <ContextMenuItem>
+            <Link className="mr-2 size-4" />
+            Copy Link
+          </ContextMenuItem>
+          <ContextMenuItem>
+            <Mail className="mr-2 size-4" />
+            Email
+          </ContextMenuItem>
+        </ContextMenuSubContent>
+      </ContextMenuSub>
+      <ContextMenuSeparator />
+      <ContextMenuItem variant="destructive">
+        <Trash2 className="mr-2 size-4" />
+        Delete
+      </ContextMenuItem>
+    </ContextMenuContent>
+  </ContextMenu>`}>
   <ContextMenu>
     <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
       Right click here
@@ -133,7 +202,49 @@ import {
 
 ### File Manager Context Menu
 
-<Preview>
+<Preview code={`<ContextMenu>
+    <ContextMenuTrigger className="flex h-[200px] w-[350px] items-center justify-center rounded-md border bg-muted/30 text-sm text-muted-foreground">
+      Right click to manage files
+    </ContextMenuTrigger>
+    <ContextMenuContent className="w-64">
+      <ContextMenuLabel>File Actions</ContextMenuLabel>
+      <ContextMenuSeparator />
+      <ContextMenuItem>
+        New File
+        <ContextMenuShortcut>Ctrl+N</ContextMenuShortcut>
+      </ContextMenuItem>
+      <ContextMenuItem>
+        New Folder
+        <ContextMenuShortcut>Ctrl+Shift+N</ContextMenuShortcut>
+      </ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuItem>
+        <Copy className="mr-2 size-4" />
+        Copy
+        <ContextMenuShortcut>Ctrl+C</ContextMenuShortcut>
+      </ContextMenuItem>
+      <ContextMenuItem>
+        <Clipboard className="mr-2 size-4" />
+        Paste
+        <ContextMenuShortcut>Ctrl+V</ContextMenuShortcut>
+      </ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuSub>
+        <ContextMenuSubTrigger>Sort By</ContextMenuSubTrigger>
+        <ContextMenuSubContent className="w-48">
+          <ContextMenuItem>Name</ContextMenuItem>
+          <ContextMenuItem>Date Modified</ContextMenuItem>
+          <ContextMenuItem>Size</ContextMenuItem>
+          <ContextMenuItem>Type</ContextMenuItem>
+        </ContextMenuSubContent>
+      </ContextMenuSub>
+      <ContextMenuSeparator />
+      <ContextMenuItem variant="destructive">
+        <Trash2 className="mr-2 size-4" />
+        Delete
+      </ContextMenuItem>
+    </ContextMenuContent>
+  </ContextMenu>`}>
   <ContextMenu>
     <ContextMenuTrigger className="flex h-[200px] w-[350px] items-center justify-center rounded-md border bg-muted/30 text-sm text-muted-foreground">
       Right click to manage files
@@ -181,7 +292,31 @@ import {
 
 ### Text Editor Context Menu
 
-<Preview>
+<Preview code={`<ContextMenu>
+    <ContextMenuTrigger className="flex h-[120px] w-[300px] items-center justify-center rounded-md border text-sm">
+      Right click for text options
+    </ContextMenuTrigger>
+    <ContextMenuContent className="w-56">
+      <ContextMenuItem>
+        <Scissors className="mr-2 size-4" />
+        Cut
+        <ContextMenuShortcut>Ctrl+X</ContextMenuShortcut>
+      </ContextMenuItem>
+      <ContextMenuItem>
+        <Copy className="mr-2 size-4" />
+        Copy
+        <ContextMenuShortcut>Ctrl+C</ContextMenuShortcut>
+      </ContextMenuItem>
+      <ContextMenuItem>
+        <Clipboard className="mr-2 size-4" />
+        Paste
+        <ContextMenuShortcut>Ctrl+V</ContextMenuShortcut>
+      </ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuItem>Select All</ContextMenuItem>
+      <ContextMenuItem>Find and Replace</ContextMenuItem>
+    </ContextMenuContent>
+  </ContextMenu>`}>
   <ContextMenu>
     <ContextMenuTrigger className="flex h-[120px] w-[300px] items-center justify-center rounded-md border text-sm">
       Right click for text options

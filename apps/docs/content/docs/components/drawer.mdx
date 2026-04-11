@@ -24,7 +24,28 @@ import {
 
 ## Usage
 
-<Preview>
+<Preview code={`<Drawer>
+    <DrawerTrigger asChild>
+      <Button variant="outline">Open Drawer</Button>
+    </DrawerTrigger>
+    <DrawerContent>
+      <DrawerHeader>
+        <DrawerTitle>Edit Profile</DrawerTitle>
+        <DrawerDescription>
+          Make changes to your profile here.
+        </DrawerDescription>
+      </DrawerHeader>
+      <div className="p-4">
+        <p className="text-sm text-muted-foreground">Drawer body content goes here.</p>
+      </div>
+      <DrawerFooter>
+        <Button>Submit</Button>
+        <DrawerClose asChild>
+          <Button variant="outline">Cancel</Button>
+        </DrawerClose>
+      </DrawerFooter>
+    </DrawerContent>
+  </Drawer>`}>
   <Drawer>
     <DrawerTrigger asChild>
       <Button variant="outline">Open Drawer</Button>
@@ -53,7 +74,64 @@ import {
 
 The `direction` prop controls which edge the drawer slides in from. Defaults to `"bottom"`.
 
-<Preview>
+<Preview code={`<div className="flex gap-3 flex-wrap">
+    <Drawer>
+      <DrawerTrigger asChild>
+        <Button variant="outline">Bottom (default)</Button>
+      </DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Bottom Drawer</DrawerTitle>
+          <DrawerDescription>This drawer slides in from the bottom.</DrawerDescription>
+        </DrawerHeader>
+        <div className="p-4">
+          <p className="text-sm text-muted-foreground">Content here.</p>
+        </div>
+      </DrawerContent>
+    </Drawer>
+    <Drawer direction="right">
+      <DrawerTrigger asChild>
+        <Button variant="outline">Right</Button>
+      </DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Right Drawer</DrawerTitle>
+          <DrawerDescription>This drawer slides in from the right.</DrawerDescription>
+        </DrawerHeader>
+        <div className="p-4">
+          <p className="text-sm text-muted-foreground">Content here.</p>
+        </div>
+      </DrawerContent>
+    </Drawer>
+    <Drawer direction="left">
+      <DrawerTrigger asChild>
+        <Button variant="outline">Left</Button>
+      </DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Left Drawer</DrawerTitle>
+          <DrawerDescription>This drawer slides in from the left.</DrawerDescription>
+        </DrawerHeader>
+        <div className="p-4">
+          <p className="text-sm text-muted-foreground">Content here.</p>
+        </div>
+      </DrawerContent>
+    </Drawer>
+    <Drawer direction="top">
+      <DrawerTrigger asChild>
+        <Button variant="outline">Top</Button>
+      </DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Top Drawer</DrawerTitle>
+          <DrawerDescription>This drawer slides in from the top.</DrawerDescription>
+        </DrawerHeader>
+        <div className="p-4">
+          <p className="text-sm text-muted-foreground">Content here.</p>
+        </div>
+      </DrawerContent>
+    </Drawer>
+  </div>`}>
   <div className="flex gap-3 flex-wrap">
     <Drawer>
       <DrawerTrigger asChild>
@@ -118,7 +196,33 @@ The `direction` prop controls which edge the drawer slides in from. Defaults to 
 
 ### Edit Profile
 
-<Preview>
+<Preview code={`<Drawer>
+    <DrawerTrigger asChild>
+      <Button variant="outline">Edit Profile</Button>
+    </DrawerTrigger>
+    <DrawerContent>
+      <DrawerHeader>
+        <DrawerTitle>Edit Profile</DrawerTitle>
+        <DrawerDescription>Update your personal information below.</DrawerDescription>
+      </DrawerHeader>
+      <div className="grid gap-4 p-4">
+        <div className="grid gap-2">
+          <Label htmlFor="drawer-name">Name</Label>
+          <Input id="drawer-name" defaultValue="John Doe" />
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="drawer-email">Email</Label>
+          <Input id="drawer-email" defaultValue="john@example.com" />
+        </div>
+      </div>
+      <DrawerFooter>
+        <Button>Save changes</Button>
+        <DrawerClose asChild>
+          <Button variant="outline">Cancel</Button>
+        </DrawerClose>
+      </DrawerFooter>
+    </DrawerContent>
+  </Drawer>`}>
   <Drawer>
     <DrawerTrigger asChild>
       <Button variant="outline">Edit Profile</Button>
@@ -150,7 +254,23 @@ The `direction` prop controls which edge the drawer slides in from. Defaults to 
 
 ### Navigation Sidebar
 
-<Preview>
+<Preview code={`<Drawer direction="left">
+    <DrawerTrigger asChild>
+      <Button variant="outline">Open Menu</Button>
+    </DrawerTrigger>
+    <DrawerContent>
+      <DrawerHeader>
+        <DrawerTitle>Navigation</DrawerTitle>
+        <DrawerDescription>Browse sections of the app.</DrawerDescription>
+      </DrawerHeader>
+      <div className="flex flex-col gap-2 p-4">
+        <Button variant="ghost" className="justify-start">Home</Button>
+        <Button variant="ghost" className="justify-start">Dashboard</Button>
+        <Button variant="ghost" className="justify-start">Settings</Button>
+        <Button variant="ghost" className="justify-start">Help</Button>
+      </div>
+    </DrawerContent>
+  </Drawer>`}>
   <Drawer direction="left">
     <DrawerTrigger asChild>
       <Button variant="outline">Open Menu</Button>
@@ -172,7 +292,25 @@ The `direction` prop controls which edge the drawer slides in from. Defaults to 
 
 ### Confirmation Drawer
 
-<Preview>
+<Preview code={`<Drawer>
+    <DrawerTrigger asChild>
+      <Button variant="destructive">Delete Item</Button>
+    </DrawerTrigger>
+    <DrawerContent>
+      <DrawerHeader>
+        <DrawerTitle>Confirm Deletion</DrawerTitle>
+        <DrawerDescription>
+          This action cannot be undone. Are you sure you want to proceed?
+        </DrawerDescription>
+      </DrawerHeader>
+      <DrawerFooter>
+        <Button variant="destructive">Delete</Button>
+        <DrawerClose asChild>
+          <Button variant="outline">Cancel</Button>
+        </DrawerClose>
+      </DrawerFooter>
+    </DrawerContent>
+  </Drawer>`}>
   <Drawer>
     <DrawerTrigger asChild>
       <Button variant="destructive">Delete Item</Button>

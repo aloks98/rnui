@@ -15,7 +15,7 @@ import { Spinner } from '@e412/rnui-react';
 
 ## Usage
 
-<Preview>
+<Preview code={`<Spinner />`}>
   <Spinner />
 </Preview>
 
@@ -23,7 +23,12 @@ import { Spinner } from '@e412/rnui-react';
 
 Control the size using Tailwind's `size-*` utility classes.
 
-<Preview>
+<Preview code={`<div className="flex gap-4 items-center">
+    <Spinner className="size-3" />
+    <Spinner />
+    <Spinner className="size-6" />
+    <Spinner className="size-8" />
+  </div>`}>
   <div className="flex gap-4 items-center">
     <Spinner className="size-3" />
     <Spinner />
@@ -36,7 +41,10 @@ Control the size using Tailwind's `size-*` utility classes.
 
 ### Loading Button
 
-<Preview>
+<Preview code={`<Button disabled>
+    <Spinner />
+    Loading...
+  </Button>`}>
   <Button disabled>
     <Spinner />
     Loading...
@@ -45,7 +53,10 @@ Control the size using Tailwind's `size-*` utility classes.
 
 ### Loading State with Text
 
-<Preview>
+<Preview code={`<div className="flex items-center gap-2 text-sm text-muted-foreground">
+    <Spinner />
+    <span>Loading data...</span>
+  </div>`}>
   <div className="flex items-center gap-2 text-sm text-muted-foreground">
     <Spinner />
     <span>Loading data...</span>
@@ -54,7 +65,10 @@ Control the size using Tailwind's `size-*` utility classes.
 
 ### Full Page Loading
 
-<Preview>
+<Preview code={`<div className="flex flex-col items-center justify-center gap-3 py-12">
+    <Spinner className="size-8" />
+    <p className="text-sm text-muted-foreground">Fetching your dashboard...</p>
+  </div>`}>
   <div className="flex flex-col items-center justify-center gap-3 py-12">
     <Spinner className="size-8" />
     <p className="text-sm text-muted-foreground">Fetching your dashboard...</p>
@@ -63,7 +77,16 @@ Control the size using Tailwind's `size-*` utility classes.
 
 ### Inline Loading
 
-<Preview>
+<Preview code={`<div className="flex items-center gap-4">
+    <Button variant="outline" disabled>
+      <Spinner className="size-3" />
+      Saving...
+    </Button>
+    <Button variant="outline" disabled>
+      <Spinner className="size-3" />
+      Uploading...
+    </Button>
+  </div>`}>
   <div className="flex items-center gap-4">
     <Button variant="outline" disabled>
       <Spinner className="size-3" />

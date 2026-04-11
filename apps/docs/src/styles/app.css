@@ -5,6 +5,57 @@
 @import 'tw-animate-css';
 @source "../../node_modules/@e412/rnui-react/dist";
 
+/*
+ * rnui docs theme — warm-tinted neutrals with indigo accent
+ * Overrides Fumadocs' stock gray palette with personality
+ */
+
+/* Light mode — warm cream tints */
+:root {
+  --color-fd-background: oklch(0.98 0.004 80);
+  --color-fd-foreground: oklch(0.15 0.01 280);
+  --color-fd-muted: oklch(0.96 0.005 80);
+  --color-fd-muted-foreground: oklch(0.50 0.01 260);
+  --color-fd-popover: oklch(0.99 0.003 80);
+  --color-fd-popover-foreground: oklch(0.18 0.01 280);
+  --color-fd-card: oklch(0.97 0.004 80);
+  --color-fd-card-foreground: oklch(0.15 0.01 280);
+  --color-fd-border: oklch(0.90 0.008 80 / 0.6);
+  --color-fd-primary: oklch(0.50 0.18 270);
+  --color-fd-primary-foreground: oklch(0.99 0.005 270);
+  --color-fd-secondary: oklch(0.94 0.008 270);
+  --color-fd-secondary-foreground: oklch(0.25 0.04 270);
+  --color-fd-accent: oklch(0.92 0.02 270 / 0.5);
+  --color-fd-accent-foreground: oklch(0.20 0.04 270);
+  --color-fd-ring: oklch(0.55 0.15 270);
+}
+
+/* Dark mode — cool deep tints */
+.dark {
+  --color-fd-background: oklch(0.14 0.01 270);
+  --color-fd-foreground: oklch(0.92 0.005 270);
+  --color-fd-muted: oklch(0.18 0.012 270);
+  --color-fd-muted-foreground: oklch(0.65 0.01 260 / 0.9);
+  --color-fd-popover: oklch(0.16 0.012 270);
+  --color-fd-popover-foreground: oklch(0.88 0.005 270);
+  --color-fd-card: oklch(0.16 0.012 270);
+  --color-fd-card-foreground: oklch(0.96 0.005 270);
+  --color-fd-border: oklch(0.35 0.015 270 / 0.25);
+  --color-fd-primary: oklch(0.72 0.15 270);
+  --color-fd-primary-foreground: oklch(0.13 0.02 270);
+  --color-fd-secondary: oklch(0.20 0.015 270);
+  --color-fd-secondary-foreground: oklch(0.90 0.005 270);
+  --color-fd-accent: oklch(0.30 0.03 270 / 0.4);
+  --color-fd-accent-foreground: oklch(0.92 0.005 270);
+  --color-fd-ring: oklch(0.65 0.13 270);
+}
+
+.dark #nd-sidebar {
+  --color-fd-muted: oklch(0.16 0.012 270);
+  --color-fd-secondary: oklch(0.19 0.015 270);
+  --color-fd-muted-foreground: oklch(0.68 0.01 260);
+}
+
 html {
   scrollbar-gutter: stable;
 }
@@ -13,4 +64,3 @@ html > body[data-scroll-locked] {
   margin-right: 0px !important;
   --removed-body-scroll-bar-size: 0px !important;
 }
-

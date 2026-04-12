@@ -132,11 +132,43 @@ pnpm playground:dev # run the theme playground standalone
 
 ## Releases
 
-Uses [Changesets](https://github.com/changesets/changesets) for versioning.
+Uses [Changesets](https://github.com/changesets/changesets) for versioning, with automated publishing via GitHub Actions.
+
+### Day-to-day flow
+
+When you make a change worth releasing, record it:
 
 ```bash
-pnpm changeset      # record a change
-pnpm release        # bump versions and publish
+pnpm changeset      # pick packages, bump type, write a summary
+git add .changeset/
+git commit -m "..."
+git push
+```
+
+### Automated release
+
+The [`release` workflow](.github/workflows/release.yml) watches `main`:
+
+1. If unreleased changesets exist → it opens/updates a **Version Packages** PR that bumps versions and generates changelogs
+2. When that PR is merged → the workflow publishes the changed packages to npm with [provenance](https://docs.npmjs.com/generating-provenance-statements) enabled
+
+No manual publish command needed on the main branch — merge the version PR, the bot handles the rest.
+
+### Setup (one-time)
+
+The release workflow requires an `NPM_TOKEN` secret:
+
+1. Generate an npm automation token at [npmjs.com → Access Tokens](https://www.npmjs.com/settings/~/tokens) (choose **Automation** type)
+2. Add it to GitHub at **Settings → Secrets and variables → Actions → New repository secret** as `NPM_TOKEN`
+
+Provenance works automatically — the workflow already requests the `id-token: write` permission.
+
+### Manual release (fallback)
+
+If you need to cut a release outside CI:
+
+```bash
+pnpm release        # builds, versions, publishes
 ```
 
 ## License

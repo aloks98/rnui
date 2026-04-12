@@ -1,0 +1,49 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+concurrency: release-${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Publish or open version PR
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write       # needed to push the "Version Packages" PR
+      pull-requests: write  # needed to open/update the PR
+      id-token: write       # needed for npm provenance
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Required by changesets to compute tags and generate changelogs
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm build
+
+      - name: Create release PR or publish
+        uses: changesets/action@v1
+        with:
+          # When a "Version Packages" PR is merged, this command runs to publish
+          publish: pnpm release:publish
+          # When changesets exist on main, this opens/updates a version PR
+          version: pnpm release:version
+          commit: "chore(release): version packages"
+          title: "chore(release): version packages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: "true"

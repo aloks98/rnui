@@ -19,6 +19,10 @@
     "./crimson": "./dist/crimson.css",
     "./presets": "./dist/presets.css"
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "scripts": {
     "generate": "node scripts/generate-presets.mjs",
     "build": "node scripts/generate-presets.mjs && vite build"

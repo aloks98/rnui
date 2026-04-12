@@ -14,7 +14,9 @@
     "playground:build": "pnpm --filter theme-playground build",
     "storybook": "pnpm --filter @e412/storybook dev",
     "storybook:build": "pnpm --filter @e412/storybook build",
-    "release": "pnpm build && changeset version && pnpm publish -r"
+    "release:version": "changeset version",
+    "release:publish": "pnpm publish -r --access public --no-git-checks",
+    "release": "pnpm build && pnpm release:version && pnpm release:publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.0",

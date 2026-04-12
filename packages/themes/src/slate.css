@@ -1,0 +1,105 @@
+/*
+ * Slate — Professional Tech
+ * Clean, functional, moderate radius, cool blue-gray.
+ * Feels like a developer tool, IDE, or SaaS dashboard.
+ *
+ * Font: Geist (clean, monospaced-inspired, techy)
+ * Load via Google Fonts, next/font, or self-host:
+ * https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&display=swap
+ *
+ * Radius: 0.5rem (moderate, precise)
+ * Hue: ~250 (cool blue-steel)
+ */
+
+:root {
+  --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --radius: 0.5rem;
+  --background: oklch(0.982 0.012 250);
+  --foreground: oklch(0.17 0.018 250);
+  --card: oklch(0.976 0.015 248);
+  --card-foreground: oklch(0.17 0.018 250);
+  --popover: oklch(0.982 0.012 250);
+  --popover-foreground: oklch(0.17 0.018 250);
+  --primary: oklch(0.48 0.1 250);
+  --primary-foreground: oklch(0.97 0.006 250);
+  --secondary: oklch(0.945 0.016 250);
+  --secondary-foreground: oklch(0.25 0.03 250);
+  --muted: oklch(0.94 0.014 250);
+  --muted-foreground: oklch(0.50 0.02 250);
+  --accent: oklch(0.93 0.018 248);
+  --accent-foreground: oklch(0.25 0.03 250);
+  --destructive: oklch(0.52 0.18 20);
+  --destructive-foreground: oklch(0.40 0.14 20);
+  --success: oklch(0.60 0.14 165);
+  --success-foreground: oklch(0.38 0.09 165);
+  --info: oklch(0.52 0.11 250);
+  --info-foreground: oklch(0.38 0.08 250);
+  --warning: oklch(0.76 0.14 75);
+  --warning-foreground: oklch(0.42 0.1 60);
+  --invert: oklch(0.21 0.018 250);
+  --invert-foreground: oklch(0.97 0.006 250);
+  --focus: oklch(0.52 0.12 255);
+  --focus-foreground: oklch(0.97 0.006 250);
+  --border: oklch(0.90 0.014 250);
+  --input: oklch(0.90 0.014 250);
+  --ring: oklch(0.58 0.05 250);
+  --chart-1: oklch(0.52 0.12 250);
+  --chart-2: oklch(0.58 0.13 220);
+  --chart-3: oklch(0.50 0.14 290);
+  --chart-4: oklch(0.62 0.10 200);
+  --chart-5: oklch(0.60 0.11 330);
+  --sidebar: oklch(0.97 0.014 250);
+  --sidebar-foreground: oklch(0.17 0.018 250);
+  --sidebar-primary: oklch(0.48 0.1 250);
+  --sidebar-primary-foreground: oklch(0.97 0.006 250);
+  --sidebar-accent: oklch(0.93 0.018 248);
+  --sidebar-accent-foreground: oklch(0.25 0.03 250);
+  --sidebar-border: oklch(0.90 0.014 250);
+  --sidebar-ring: oklch(0.58 0.05 250);
+}
+
+.dark {
+  /* Ice steel — very dark, desaturated, clinical precision, icy blue accents */
+  --background: oklch(0.11 0.018 252);
+  --foreground: oklch(0.93 0.008 250);
+  --card: oklch(0.16 0.02 252);
+  --card-foreground: oklch(0.93 0.008 250);
+  --popover: oklch(0.16 0.02 252);
+  --popover-foreground: oklch(0.93 0.008 250);
+  --primary: oklch(0.72 0.1 248);
+  --primary-foreground: oklch(0.11 0.025 250);
+  --secondary: oklch(0.22 0.02 252);
+  --secondary-foreground: oklch(0.93 0.008 250);
+  --muted: oklch(0.22 0.02 252);
+  --muted-foreground: oklch(0.62 0.022 250);
+  --accent: oklch(0.23 0.022 250);
+  --accent-foreground: oklch(0.93 0.008 250);
+  --destructive: oklch(0.65 0.16 20);
+  --destructive-foreground: oklch(0.52 0.18 20);
+  --success: oklch(0.66 0.14 165);
+  --success-foreground: oklch(0.54 0.12 165);
+  --info: oklch(0.60 0.11 250);
+  --info-foreground: oklch(0.50 0.13 250);
+  --warning: oklch(0.78 0.14 75);
+  --warning-foreground: oklch(0.66 0.12 68);
+  --invert: oklch(0.32 0.02 250);
+  --invert-foreground: oklch(0.97 0.006 250);
+  --focus: oklch(0.58 0.14 255);
+  --focus-foreground: oklch(0.97 0.006 250);
+  --border: oklch(1 0.008 250 / 9%);
+  --input: oklch(1 0.008 250 / 14%);
+  --ring: oklch(0.52 0.05 250);
+  --chart-1: oklch(0.68 0.12 250);
+  --chart-2: oklch(0.70 0.13 220);
+  --chart-3: oklch(0.65 0.14 290);
+  --chart-4: oklch(0.72 0.10 200);
+  --chart-5: oklch(0.70 0.11 330);
+  --sidebar: oklch(0.14 0.019 252);
+  --sidebar-foreground: oklch(0.93 0.008 250);
+  --sidebar-primary: oklch(0.72 0.1 248);
+  --sidebar-primary-foreground: oklch(0.97 0.006 250);
+  --sidebar-accent: oklch(0.23 0.022 250);
+  --sidebar-accent-foreground: oklch(0.93 0.008 250);
+  --sidebar-border: oklch(1 0.008 250 / 9%);
+  --sidebar-ring: oklch(0.52 0.05 250);
+}

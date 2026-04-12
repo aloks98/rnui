@@ -1,0 +1,105 @@
+/*
+ * Amber — Sharp & Energetic
+ * Angular, tight radius, golden tones with high contrast.
+ * Feels like a fintech dashboard or developer tool.
+ *
+ * Font: Sora (geometric, energetic, precise)
+ * Load via Google Fonts, next/font, or self-host:
+ * https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap
+ *
+ * Radius: 0.25rem (sharp, angular, decisive)
+ * Hue: ~75 (golden/amber)
+ */
+
+:root {
+  --font-sans: 'Sora', ui-sans-serif, system-ui, sans-serif;
+  --radius: 0.25rem;
+  --background: oklch(0.98 0.015 82);
+  --foreground: oklch(0.18 0.025 70);
+  --card: oklch(0.974 0.018 80);
+  --card-foreground: oklch(0.18 0.025 70);
+  --popover: oklch(0.98 0.015 82);
+  --popover-foreground: oklch(0.18 0.025 70);
+  --primary: oklch(0.62 0.17 75);
+  --primary-foreground: oklch(0.20 0.035 70);
+  --secondary: oklch(0.94 0.022 80);
+  --secondary-foreground: oklch(0.28 0.04 70);
+  --muted: oklch(0.935 0.02 80);
+  --muted-foreground: oklch(0.50 0.028 75);
+  --accent: oklch(0.92 0.026 78);
+  --accent-foreground: oklch(0.28 0.04 70);
+  --destructive: oklch(0.52 0.2 10);
+  --destructive-foreground: oklch(0.40 0.15 10);
+  --success: oklch(0.62 0.14 160);
+  --success-foreground: oklch(0.38 0.09 160);
+  --info: oklch(0.52 0.13 260);
+  --info-foreground: oklch(0.38 0.1 260);
+  --warning: oklch(0.72 0.17 70);
+  --warning-foreground: oklch(0.40 0.12 60);
+  --invert: oklch(0.21 0.025 70);
+  --invert-foreground: oklch(0.97 0.008 80);
+  --focus: oklch(0.60 0.17 75);
+  --focus-foreground: oklch(0.20 0.035 70);
+  --border: oklch(0.89 0.02 80);
+  --input: oklch(0.89 0.02 80);
+  --ring: oklch(0.62 0.08 75);
+  --chart-1: oklch(0.65 0.18 75);
+  --chart-2: oklch(0.55 0.17 45);
+  --chart-3: oklch(0.72 0.15 100);
+  --chart-4: oklch(0.50 0.14 20);
+  --chart-5: oklch(0.58 0.11 130);
+  --sidebar: oklch(0.968 0.018 80);
+  --sidebar-foreground: oklch(0.18 0.025 70);
+  --sidebar-primary: oklch(0.62 0.17 75);
+  --sidebar-primary-foreground: oklch(0.20 0.035 70);
+  --sidebar-accent: oklch(0.92 0.026 78);
+  --sidebar-accent-foreground: oklch(0.28 0.04 70);
+  --sidebar-border: oklch(0.89 0.02 80);
+  --sidebar-ring: oklch(0.62 0.08 75);
+}
+
+.dark {
+  /* Dark gold — deep, warm sepia, golden highlights pop with high contrast */
+  --background: oklch(0.13 0.02 72);
+  --foreground: oklch(0.93 0.012 80);
+  --card: oklch(0.18 0.025 72);
+  --card-foreground: oklch(0.93 0.012 80);
+  --popover: oklch(0.18 0.025 72);
+  --popover-foreground: oklch(0.93 0.012 80);
+  --primary: oklch(0.78 0.16 75);
+  --primary-foreground: oklch(0.13 0.035 70);
+  --secondary: oklch(0.24 0.022 72);
+  --secondary-foreground: oklch(0.93 0.012 80);
+  --muted: oklch(0.24 0.022 72);
+  --muted-foreground: oklch(0.62 0.028 75);
+  --accent: oklch(0.25 0.026 72);
+  --accent-foreground: oklch(0.93 0.012 80);
+  --destructive: oklch(0.65 0.17 10);
+  --destructive-foreground: oklch(0.52 0.2 10);
+  --success: oklch(0.68 0.14 160);
+  --success-foreground: oklch(0.56 0.12 160);
+  --info: oklch(0.60 0.13 260);
+  --info-foreground: oklch(0.50 0.15 260);
+  --warning: oklch(0.78 0.17 70);
+  --warning-foreground: oklch(0.65 0.15 65);
+  --invert: oklch(0.34 0.025 70);
+  --invert-foreground: oklch(0.97 0.008 80);
+  --focus: oklch(0.72 0.17 75);
+  --focus-foreground: oklch(0.20 0.035 70);
+  --border: oklch(1 0.01 80 / 11%);
+  --input: oklch(1 0.01 80 / 16%);
+  --ring: oklch(0.55 0.08 75);
+  --chart-1: oklch(0.75 0.18 75);
+  --chart-2: oklch(0.66 0.17 45);
+  --chart-3: oklch(0.80 0.15 100);
+  --chart-4: oklch(0.62 0.14 20);
+  --chart-5: oklch(0.70 0.11 130);
+  --sidebar: oklch(0.16 0.023 72);
+  --sidebar-foreground: oklch(0.93 0.012 80);
+  --sidebar-primary: oklch(0.78 0.16 75);
+  --sidebar-primary-foreground: oklch(0.20 0.035 70);
+  --sidebar-accent: oklch(0.25 0.026 72);
+  --sidebar-accent-foreground: oklch(0.93 0.012 80);
+  --sidebar-border: oklch(1 0.01 80 / 11%);
+  --sidebar-ring: oklch(0.55 0.08 75);
+}

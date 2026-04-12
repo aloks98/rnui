@@ -7,5 +7,20 @@ export function baseOptions(): BaseLayoutProps {
       title: appName,
     },
     githubUrl: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,
+    links: [
+      {
+        type: 'main',
+        text: 'Docs',
+        url: '/docs',
+        active: 'nested-url',
+      },
+      {
+        type: 'main',
+        text: 'Themes',
+        url: '/themes/',
+        external: true,
+        active: 'url',
+      },
+    ],
   };
 }

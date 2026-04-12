@@ -1,0 +1,106 @@
+/*
+ * Oxide — Editorial Craft
+ * Serif-forward, squared-off, warm copper tones.
+ * Feels like a well-made magazine or pottery studio.
+ *
+ * Fonts: Bitter (headings) + DM Sans (body)
+ * Load via Google Fonts, next/font, or self-host:
+ * https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap
+ *
+ * Radius: 0.375rem (modest, angular)
+ * Hue: ~35 (copper/terracotta)
+ */
+
+:root {
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Bitter', ui-serif, Georgia, serif;
+  --radius: 0.375rem;
+  --background: oklch(0.978 0.016 58);
+  --foreground: oklch(0.18 0.03 35);
+  --card: oklch(0.972 0.018 56);
+  --card-foreground: oklch(0.18 0.03 35);
+  --popover: oklch(0.978 0.016 58);
+  --popover-foreground: oklch(0.18 0.03 35);
+  --primary: oklch(0.48 0.145 35);
+  --primary-foreground: oklch(0.97 0.01 40);
+  --secondary: oklch(0.94 0.022 55);
+  --secondary-foreground: oklch(0.28 0.04 35);
+  --muted: oklch(0.935 0.02 55);
+  --muted-foreground: oklch(0.50 0.035 40);
+  --accent: oklch(0.92 0.028 50);
+  --accent-foreground: oklch(0.28 0.04 35);
+  --destructive: oklch(0.52 0.2 22);
+  --destructive-foreground: oklch(0.40 0.15 22);
+  --success: oklch(0.60 0.14 155);
+  --success-foreground: oklch(0.38 0.09 155);
+  --info: oklch(0.55 0.11 250);
+  --info-foreground: oklch(0.38 0.08 250);
+  --warning: oklch(0.74 0.15 65);
+  --warning-foreground: oklch(0.42 0.1 55);
+  --invert: oklch(0.21 0.025 35);
+  --invert-foreground: oklch(0.97 0.01 40);
+  --focus: oklch(0.55 0.14 35);
+  --focus-foreground: oklch(0.97 0.01 40);
+  --border: oklch(0.88 0.022 55);
+  --input: oklch(0.88 0.022 55);
+  --ring: oklch(0.58 0.08 38);
+  --chart-1: oklch(0.55 0.16 35);
+  --chart-2: oklch(0.48 0.14 15);
+  --chart-3: oklch(0.72 0.16 75);
+  --chart-4: oklch(0.45 0.08 55);
+  --chart-5: oklch(0.60 0.14 100);
+  --sidebar: oklch(0.965 0.02 55);
+  --sidebar-foreground: oklch(0.18 0.03 35);
+  --sidebar-primary: oklch(0.48 0.145 35);
+  --sidebar-primary-foreground: oklch(0.97 0.01 40);
+  --sidebar-accent: oklch(0.92 0.028 50);
+  --sidebar-accent-foreground: oklch(0.28 0.04 35);
+  --sidebar-border: oklch(0.88 0.022 55);
+  --sidebar-ring: oklch(0.58 0.08 38);
+}
+
+.dark {
+  /* Warm cave — highest surface lightness, amber glow, visible terracotta tint */
+  --background: oklch(0.17 0.025 35);
+  --foreground: oklch(0.92 0.016 50);
+  --card: oklch(0.22 0.03 35);
+  --card-foreground: oklch(0.92 0.016 50);
+  --popover: oklch(0.22 0.03 35);
+  --popover-foreground: oklch(0.92 0.016 50);
+  --primary: oklch(0.74 0.13 35);
+  --primary-foreground: oklch(0.18 0.03 35);
+  --secondary: oklch(0.28 0.03 35);
+  --secondary-foreground: oklch(0.92 0.016 50);
+  --muted: oklch(0.28 0.03 35);
+  --muted-foreground: oklch(0.62 0.04 42);
+  --accent: oklch(0.29 0.035 35);
+  --accent-foreground: oklch(0.92 0.016 50);
+  --destructive: oklch(0.65 0.17 22);
+  --destructive-foreground: oklch(0.52 0.2 22);
+  --success: oklch(0.66 0.14 155);
+  --success-foreground: oklch(0.55 0.12 155);
+  --info: oklch(0.60 0.11 250);
+  --info-foreground: oklch(0.50 0.13 250);
+  --warning: oklch(0.76 0.15 65);
+  --warning-foreground: oklch(0.64 0.13 60);
+  --invert: oklch(0.36 0.03 35);
+  --invert-foreground: oklch(0.97 0.01 40);
+  --focus: oklch(0.65 0.13 35);
+  --focus-foreground: oklch(0.97 0.01 40);
+  --border: oklch(1 0.012 50 / 11%);
+  --input: oklch(1 0.012 50 / 16%);
+  --ring: oklch(0.55 0.08 38);
+  --chart-1: oklch(0.68 0.16 35);
+  --chart-2: oklch(0.60 0.14 15);
+  --chart-3: oklch(0.80 0.16 75);
+  --chart-4: oklch(0.58 0.08 55);
+  --chart-5: oklch(0.70 0.14 100);
+  --sidebar: oklch(0.20 0.028 35);
+  --sidebar-foreground: oklch(0.92 0.016 50);
+  --sidebar-primary: oklch(0.74 0.13 35);
+  --sidebar-primary-foreground: oklch(0.97 0.01 40);
+  --sidebar-accent: oklch(0.29 0.035 35);
+  --sidebar-accent-foreground: oklch(0.92 0.016 50);
+  --sidebar-border: oklch(1 0.012 50 / 11%);
+  --sidebar-ring: oklch(0.55 0.08 38);
+}

@@ -1,0 +1,105 @@
+/*
+ * Ocean — Smooth Aquatic
+ * Rounded, generous spacing, deep teal tones.
+ * Feels like a modern wellness or travel app.
+ *
+ * Font: Plus Jakarta Sans (geometric, friendly)
+ * Load via Google Fonts, next/font, or self-host:
+ * https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap
+ *
+ * Radius: 0.875rem (generous, smooth)
+ * Hue: ~200 (deep teal/cyan)
+ */
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --radius: 0.875rem;
+  --background: oklch(0.982 0.015 210);
+  --foreground: oklch(0.17 0.025 220);
+  --card: oklch(0.976 0.018 208);
+  --card-foreground: oklch(0.17 0.025 220);
+  --popover: oklch(0.982 0.015 210);
+  --popover-foreground: oklch(0.17 0.025 220);
+  --primary: oklch(0.52 0.115 198);
+  --primary-foreground: oklch(0.97 0.008 200);
+  --secondary: oklch(0.94 0.02 210);
+  --secondary-foreground: oklch(0.25 0.04 210);
+  --muted: oklch(0.935 0.018 210);
+  --muted-foreground: oklch(0.50 0.03 215);
+  --accent: oklch(0.92 0.025 205);
+  --accent-foreground: oklch(0.25 0.04 210);
+  --destructive: oklch(0.55 0.2 15);
+  --destructive-foreground: oklch(0.42 0.15 15);
+  --success: oklch(0.62 0.14 170);
+  --success-foreground: oklch(0.38 0.09 170);
+  --info: oklch(0.52 0.13 230);
+  --info-foreground: oklch(0.38 0.1 230);
+  --warning: oklch(0.76 0.15 80);
+  --warning-foreground: oklch(0.42 0.1 65);
+  --invert: oklch(0.21 0.025 220);
+  --invert-foreground: oklch(0.97 0.008 200);
+  --focus: oklch(0.55 0.12 220);
+  --focus-foreground: oklch(0.97 0.008 200);
+  --border: oklch(0.89 0.02 210);
+  --input: oklch(0.89 0.02 210);
+  --ring: oklch(0.60 0.06 205);
+  --chart-1: oklch(0.55 0.13 200);
+  --chart-2: oklch(0.45 0.14 230);
+  --chart-3: oklch(0.68 0.13 175);
+  --chart-4: oklch(0.55 0.14 260);
+  --chart-5: oklch(0.72 0.10 170);
+  --sidebar: oklch(0.97 0.018 210);
+  --sidebar-foreground: oklch(0.17 0.025 220);
+  --sidebar-primary: oklch(0.52 0.115 198);
+  --sidebar-primary-foreground: oklch(0.97 0.008 200);
+  --sidebar-accent: oklch(0.92 0.025 205);
+  --sidebar-accent-foreground: oklch(0.25 0.04 210);
+  --sidebar-border: oklch(0.89 0.02 210);
+  --sidebar-ring: oklch(0.60 0.06 205);
+}
+
+.dark {
+  /* Deep abyss — very dark, high chroma surfaces, bioluminescent teal accents */
+  --background: oklch(0.13 0.03 218);
+  --foreground: oklch(0.93 0.012 205);
+  --card: oklch(0.18 0.035 218);
+  --card-foreground: oklch(0.93 0.012 205);
+  --popover: oklch(0.18 0.035 218);
+  --popover-foreground: oklch(0.93 0.012 205);
+  --primary: oklch(0.72 0.12 195);
+  --primary-foreground: oklch(0.13 0.03 210);
+  --secondary: oklch(0.24 0.03 218);
+  --secondary-foreground: oklch(0.93 0.012 205);
+  --muted: oklch(0.24 0.03 218);
+  --muted-foreground: oklch(0.62 0.03 210);
+  --accent: oklch(0.25 0.035 212);
+  --accent-foreground: oklch(0.93 0.012 205);
+  --destructive: oklch(0.68 0.17 15);
+  --destructive-foreground: oklch(0.55 0.2 15);
+  --success: oklch(0.68 0.14 170);
+  --success-foreground: oklch(0.56 0.12 170);
+  --info: oklch(0.60 0.13 230);
+  --info-foreground: oklch(0.50 0.15 230);
+  --warning: oklch(0.78 0.15 80);
+  --warning-foreground: oklch(0.66 0.13 72);
+  --invert: oklch(0.34 0.03 218);
+  --invert-foreground: oklch(0.97 0.008 200);
+  --focus: oklch(0.58 0.14 220);
+  --focus-foreground: oklch(0.97 0.008 200);
+  --border: oklch(1 0.01 210 / 10%);
+  --input: oklch(1 0.01 210 / 15%);
+  --ring: oklch(0.55 0.06 205);
+  --chart-1: oklch(0.68 0.13 200);
+  --chart-2: oklch(0.58 0.14 230);
+  --chart-3: oklch(0.75 0.13 175);
+  --chart-4: oklch(0.68 0.14 260);
+  --chart-5: oklch(0.80 0.10 170);
+  --sidebar: oklch(0.16 0.032 218);
+  --sidebar-foreground: oklch(0.93 0.012 205);
+  --sidebar-primary: oklch(0.72 0.12 195);
+  --sidebar-primary-foreground: oklch(0.97 0.008 200);
+  --sidebar-accent: oklch(0.25 0.035 212);
+  --sidebar-accent-foreground: oklch(0.93 0.012 205);
+  --sidebar-border: oklch(1 0.01 210 / 10%);
+  --sidebar-ring: oklch(0.55 0.06 205);
+}

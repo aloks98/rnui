@@ -1,6 +1,6 @@
 ---
 title: Theming
-description: Customize colors, radius, and more with CSS variables.
+description: Customize colors, fonts, radius, and more with CSS variables and built-in theme presets.
 icon: Palette
 ---
 
@@ -9,6 +9,81 @@ icon: Palette
 `@e412/rnui-themes` defines design tokens as CSS custom properties using the [OKLch color space](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch) — a perceptually uniform color model that produces more vibrant and consistent palettes than HSL.
 
 Tokens are registered with Tailwind v4 via `@theme inline`, so you can use them as utility classes: `bg-primary`, `text-muted-foreground`, `border-border`, etc.
+
+## Quick Start
+
+```css title="app.css"
+@import 'tailwindcss';
+@import '@e412/rnui-themes';
+```
+
+This gives you the default warm neutral theme with light and dark mode support.
+
+## Theme Presets
+
+The library ships with **8 built-in theme presets**, each with its own fonts, border radius, and color personality. [Try them live →](/themes)
+
+| Theme | Personality | Font | Radius |
+| --- | --- | --- | --- |
+| **Oxide** | Editorial Craft | Bitter + DM Sans | `0.375rem` |
+| **Ocean** | Smooth Aquatic | Plus Jakarta Sans | `0.875rem` |
+| **Violet** | Luxury Creative | Outfit | `1rem` |
+| **Forest** | Organic Natural | Fraunces + Source Sans 3 | `0.5rem` |
+| **Rose** | Soft & Bubbly | Nunito | `1.25rem` |
+| **Amber** | Sharp & Energetic | Sora | `0.25rem` |
+| **Slate** | Professional Tech | Geist | `0.5rem` |
+| **Crimson** | Brutalist Bold | Instrument Sans | `0` |
+
+### Using a Preset
+
+Import `presets` and set the `data-theme` attribute:
+
+```css title="app.css"
+@import 'tailwindcss';
+@import '@e412/rnui-themes';
+@import '@e412/rnui-themes/presets';
+```
+
+```html
+<html data-theme="ocean">
+```
+
+Dark mode works with the `.dark` class as usual:
+
+```html
+<html data-theme="ocean" class="dark">
+```
+
+### Loading Fonts
+
+Theme presets define `--font-sans` and optionally `--font-heading` variables, but **don't load the fonts automatically**. Load them via Google Fonts, `next/font`, or self-hosting. The font URL for each theme is documented in its CSS source file.
+
+For example, for the Ocean theme:
+
+```html
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+```
+
+### Switching Themes at Runtime
+
+Since themes are `data-theme` attributes, switching is one line of JS:
+
+```ts
+document.documentElement.dataset.theme = 'violet';
+```
+
+### Scoping Themes to a Container
+
+You can apply a theme to any element, not just `<html>`:
+
+```html
+<div data-theme="oxide">
+  <!-- This section uses the Oxide theme -->
+</div>
+<div data-theme="rose">
+  <!-- This section uses the Rose theme -->
+</div>
+```
 
 ## Available Tokens
 
@@ -20,17 +95,24 @@ Tokens are registered with Tailwind v4 via `@theme inline`, so you can use them 
 | `--primary` / `--primary-foreground` | Primary actions and buttons |
 | `--secondary` / `--secondary-foreground` | Secondary actions |
 | `--destructive` / `--destructive-foreground` | Destructive/danger actions |
+| `--success` / `--success-foreground` | Success states |
+| `--info` / `--info-foreground` | Informational states |
+| `--warning` / `--warning-foreground` | Warning states |
 | `--muted` / `--muted-foreground` | Muted backgrounds and text |
 | `--accent` / `--accent-foreground` | Accent highlights |
-| `--info` / `--success` / `--warning` | Semantic status colors |
 | `--border` | Default border color |
 | `--input` | Input border color |
 | `--ring` | Focus ring color |
+| `--focus` / `--focus-foreground` | Focus indicator color |
+| `--invert` / `--invert-foreground` | Inverted color pair |
 | `--chart-1` through `--chart-5` | Chart palette |
 
-### Sidebar
+### Typography
 
-Sidebar-specific tokens: `--sidebar-background`, `--sidebar-foreground`, `--sidebar-primary`, `--sidebar-accent`, `--sidebar-border`, `--sidebar-ring`.
+| Token | Usage |
+| --- | --- |
+| `--font-sans` | Body text font family |
+| `--font-heading` | Heading font family (falls back to `--font-sans`) |
 
 ### Shape
 
@@ -38,16 +120,20 @@ Sidebar-specific tokens: `--sidebar-background`, `--sidebar-foreground`, `--side
 | --- | --- |
 | `--radius` | Base border radius (default: `0.625rem`) |
 
-## Light and Dark Themes
+### Sidebar
 
-The library ships with light and dark themes. Light is the default; dark activates when `.dark` is on the `<html>` element.
+Sidebar-specific tokens: `--sidebar`, `--sidebar-foreground`, `--sidebar-primary`, `--sidebar-primary-foreground`, `--sidebar-accent`, `--sidebar-accent-foreground`, `--sidebar-border`, `--sidebar-ring`.
 
-You can import them individually if needed:
+## Light and Dark Mode
+
+Light is the default; dark activates when `.dark` is on the `<html>` element (or any ancestor of the themed container).
+
+You can import the base layers individually:
 
 ```css
 @import '@e412/rnui-themes/base';   /* Reset and base styles */
-@import '@e412/rnui-themes/light';  /* Light theme variables */
-@import '@e412/rnui-themes/dark';   /* Dark theme variables */
+@import '@e412/rnui-themes/light';  /* Light theme variables on :root */
+@import '@e412/rnui-themes/dark';   /* Dark theme variables on .dark */
 ```
 
 Or all at once:
@@ -58,9 +144,11 @@ Or all at once:
 
 ## Creating a Custom Theme
 
-Override any CSS variable to create your own theme:
+### Override the Default
 
-```css title="custom-theme.css"
+Override any CSS variable after importing the base theme:
+
+```css title="app.css"
 @import '@e412/rnui-themes';
 
 :root {
@@ -74,6 +162,50 @@ Override any CSS variable to create your own theme:
   --primary-foreground: oklch(0.1 0 0);
 }
 ```
+
+### Register a Custom Preset
+
+Create your own named theme that works with `data-theme`:
+
+```css title="app.css"
+@import '@e412/rnui-themes';
+@import '@e412/rnui-themes/presets';
+
+/* Custom theme — only override what you need */
+[data-theme="brand"] {
+  --font-sans: 'My Brand Font', sans-serif;
+  --radius: 0.75rem;
+  --primary: oklch(0.55 0.2 180);
+  --primary-foreground: oklch(0.97 0.01 180);
+  /* Anything not listed inherits from the :root defaults */
+}
+
+[data-theme="brand"].dark,
+.dark [data-theme="brand"] {
+  --primary: oklch(0.72 0.18 180);
+  --primary-foreground: oklch(0.15 0.03 180);
+}
+```
+
+```html
+<html data-theme="brand">
+```
+
+### Extend an Existing Preset
+
+Start from a preset and tweak specific values:
+
+```css title="app.css"
+@import '@e412/rnui-themes';
+@import '@e412/rnui-themes/presets';
+
+/* Start from Ocean, customize primary */
+[data-theme="ocean"] {
+  --primary: oklch(0.48 0.15 220);
+}
+```
+
+CSS specificity handles the cascade naturally — your override wins because it appears after the preset import.
 
 ## Using Tokens in Your Code
 
@@ -91,5 +223,6 @@ Or access CSS variables directly:
 .my-element {
   background: var(--primary);
   color: var(--primary-foreground);
+  font-family: var(--font-heading, var(--font-sans));
 }
 ```

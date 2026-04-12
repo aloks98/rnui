@@ -1,0 +1,106 @@
+/*
+ * Forest — Organic Natural
+ * Serif display, balanced radius, deep emerald tones.
+ * Feels like a sustainable brand or editorial nature publication.
+ *
+ * Fonts: Fraunces (headings, optical-size serif) + Source Sans 3 (body, clean humanist)
+ * Load via Google Fonts, next/font, or self-host:
+ * https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap
+ *
+ * Radius: 0.5rem (balanced, grounded)
+ * Hue: ~160 (emerald/jade)
+ */
+
+:root {
+  --font-sans: 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Fraunces', ui-serif, Georgia, serif;
+  --radius: 0.5rem;
+  --background: oklch(0.98 0.015 152);
+  --foreground: oklch(0.17 0.025 160);
+  --card: oklch(0.974 0.018 150);
+  --card-foreground: oklch(0.17 0.025 160);
+  --popover: oklch(0.98 0.015 152);
+  --popover-foreground: oklch(0.17 0.025 160);
+  --primary: oklch(0.48 0.14 160);
+  --primary-foreground: oklch(0.97 0.008 155);
+  --secondary: oklch(0.94 0.02 155);
+  --secondary-foreground: oklch(0.25 0.04 160);
+  --muted: oklch(0.935 0.018 155);
+  --muted-foreground: oklch(0.50 0.028 158);
+  --accent: oklch(0.92 0.025 150);
+  --accent-foreground: oklch(0.25 0.04 160);
+  --destructive: oklch(0.52 0.18 20);
+  --destructive-foreground: oklch(0.40 0.14 20);
+  --success: oklch(0.55 0.16 145);
+  --success-foreground: oklch(0.37 0.1 145);
+  --info: oklch(0.55 0.11 240);
+  --info-foreground: oklch(0.38 0.08 240);
+  --warning: oklch(0.74 0.15 90);
+  --warning-foreground: oklch(0.42 0.1 80);
+  --invert: oklch(0.21 0.025 160);
+  --invert-foreground: oklch(0.97 0.008 155);
+  --focus: oklch(0.52 0.14 165);
+  --focus-foreground: oklch(0.97 0.008 155);
+  --border: oklch(0.89 0.018 155);
+  --input: oklch(0.89 0.018 155);
+  --ring: oklch(0.58 0.06 158);
+  --chart-1: oklch(0.52 0.15 160);
+  --chart-2: oklch(0.45 0.12 130);
+  --chart-3: oklch(0.68 0.14 120);
+  --chart-4: oklch(0.55 0.10 190);
+  --chart-5: oklch(0.62 0.13 90);
+  --sidebar: oklch(0.968 0.017 152);
+  --sidebar-foreground: oklch(0.17 0.025 160);
+  --sidebar-primary: oklch(0.48 0.14 160);
+  --sidebar-primary-foreground: oklch(0.97 0.008 155);
+  --sidebar-accent: oklch(0.92 0.025 150);
+  --sidebar-accent-foreground: oklch(0.25 0.04 160);
+  --sidebar-border: oklch(0.89 0.018 155);
+  --sidebar-ring: oklch(0.58 0.06 158);
+}
+
+.dark {
+  /* Dense canopy — medium-dark, visible green tint, moonlit feel */
+  --background: oklch(0.14 0.025 162);
+  --foreground: oklch(0.93 0.012 152);
+  --card: oklch(0.19 0.03 162);
+  --card-foreground: oklch(0.93 0.012 152);
+  --popover: oklch(0.19 0.03 162);
+  --popover-foreground: oklch(0.93 0.012 152);
+  --primary: oklch(0.70 0.13 158);
+  --primary-foreground: oklch(0.14 0.03 160);
+  --secondary: oklch(0.25 0.025 162);
+  --secondary-foreground: oklch(0.93 0.012 152);
+  --muted: oklch(0.25 0.025 162);
+  --muted-foreground: oklch(0.62 0.028 157);
+  --accent: oklch(0.26 0.03 158);
+  --accent-foreground: oklch(0.93 0.012 152);
+  --destructive: oklch(0.65 0.16 20);
+  --destructive-foreground: oklch(0.52 0.18 20);
+  --success: oklch(0.62 0.15 145);
+  --success-foreground: oklch(0.52 0.13 145);
+  --info: oklch(0.62 0.11 240);
+  --info-foreground: oklch(0.50 0.13 240);
+  --warning: oklch(0.78 0.15 90);
+  --warning-foreground: oklch(0.66 0.13 85);
+  --invert: oklch(0.34 0.028 160);
+  --invert-foreground: oklch(0.97 0.008 155);
+  --focus: oklch(0.58 0.14 165);
+  --focus-foreground: oklch(0.97 0.008 155);
+  --border: oklch(1 0.01 155 / 10%);
+  --input: oklch(1 0.01 155 / 15%);
+  --ring: oklch(0.52 0.06 158);
+  --chart-1: oklch(0.65 0.15 160);
+  --chart-2: oklch(0.58 0.12 130);
+  --chart-3: oklch(0.76 0.14 120);
+  --chart-4: oklch(0.68 0.10 190);
+  --chart-5: oklch(0.72 0.13 90);
+  --sidebar: oklch(0.17 0.028 162);
+  --sidebar-foreground: oklch(0.93 0.012 152);
+  --sidebar-primary: oklch(0.70 0.13 158);
+  --sidebar-primary-foreground: oklch(0.97 0.008 155);
+  --sidebar-accent: oklch(0.26 0.03 158);
+  --sidebar-accent-foreground: oklch(0.93 0.012 152);
+  --sidebar-border: oklch(1 0.01 155 / 10%);
+  --sidebar-ring: oklch(0.52 0.06 158);
+}

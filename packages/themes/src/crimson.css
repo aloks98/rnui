@@ -1,0 +1,105 @@
+/*
+ * Crimson — Brutalist Bold
+ * Zero radius, stark, high contrast, bold red.
+ * Feels like a striking editorial site or brutalist web design.
+ *
+ * Font: Instrument Sans (sharp, contemporary, confident)
+ * Load via Google Fonts, next/font, or self-host:
+ * https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap
+ *
+ * Radius: 0 (completely square, brutalist)
+ * Hue: ~18 (scarlet/crimson)
+ */
+
+:root {
+  --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+  --radius: 0;
+  --background: oklch(0.982 0.012 15);
+  --foreground: oklch(0.14 0.025 15);
+  --card: oklch(0.976 0.015 14);
+  --card-foreground: oklch(0.14 0.025 15);
+  --popover: oklch(0.982 0.012 15);
+  --popover-foreground: oklch(0.14 0.025 15);
+  --primary: oklch(0.50 0.2 18);
+  --primary-foreground: oklch(0.97 0.008 15);
+  --secondary: oklch(0.94 0.018 15);
+  --secondary-foreground: oklch(0.22 0.04 15);
+  --muted: oklch(0.935 0.016 15);
+  --muted-foreground: oklch(0.48 0.028 15);
+  --accent: oklch(0.92 0.022 12);
+  --accent-foreground: oklch(0.22 0.04 15);
+  --destructive: oklch(0.48 0.22 5);
+  --destructive-foreground: oklch(0.36 0.16 5);
+  --success: oklch(0.60 0.14 155);
+  --success-foreground: oklch(0.38 0.09 155);
+  --info: oklch(0.52 0.13 245);
+  --info-foreground: oklch(0.38 0.1 245);
+  --warning: oklch(0.74 0.16 55);
+  --warning-foreground: oklch(0.40 0.1 45);
+  --invert: oklch(0.18 0.025 15);
+  --invert-foreground: oklch(0.97 0.008 15);
+  --focus: oklch(0.50 0.2 18);
+  --focus-foreground: oklch(0.97 0.008 15);
+  --border: oklch(0.88 0.018 15);
+  --input: oklch(0.88 0.018 15);
+  --ring: oklch(0.58 0.1 18);
+  --chart-1: oklch(0.52 0.20 18);
+  --chart-2: oklch(0.45 0.16 350);
+  --chart-3: oklch(0.65 0.17 45);
+  --chart-4: oklch(0.40 0.10 30);
+  --chart-5: oklch(0.58 0.14 75);
+  --sidebar: oklch(0.968 0.015 15);
+  --sidebar-foreground: oklch(0.14 0.025 15);
+  --sidebar-primary: oklch(0.50 0.2 18);
+  --sidebar-primary-foreground: oklch(0.97 0.008 15);
+  --sidebar-accent: oklch(0.92 0.022 12);
+  --sidebar-accent-foreground: oklch(0.22 0.04 15);
+  --sidebar-border: oklch(0.88 0.018 15);
+  --sidebar-ring: oklch(0.58 0.1 18);
+}
+
+.dark {
+  /* True black — deepest dark mode, stark contrast, bold red cuts through */
+  --background: oklch(0.08 0.015 15);
+  --foreground: oklch(0.94 0.01 15);
+  --card: oklch(0.13 0.02 15);
+  --card-foreground: oklch(0.94 0.01 15);
+  --popover: oklch(0.13 0.02 15);
+  --popover-foreground: oklch(0.94 0.01 15);
+  --primary: oklch(0.68 0.2 18);
+  --primary-foreground: oklch(0.97 0.008 15);
+  --secondary: oklch(0.18 0.02 15);
+  --secondary-foreground: oklch(0.94 0.01 15);
+  --muted: oklch(0.18 0.02 15);
+  --muted-foreground: oklch(0.58 0.025 15);
+  --accent: oklch(0.19 0.025 12);
+  --accent-foreground: oklch(0.94 0.01 15);
+  --destructive: oklch(0.60 0.2 5);
+  --destructive-foreground: oklch(0.48 0.22 5);
+  --success: oklch(0.66 0.14 155);
+  --success-foreground: oklch(0.54 0.12 155);
+  --info: oklch(0.60 0.13 245);
+  --info-foreground: oklch(0.50 0.15 245);
+  --warning: oklch(0.78 0.16 55);
+  --warning-foreground: oklch(0.66 0.14 50);
+  --invert: oklch(0.28 0.025 15);
+  --invert-foreground: oklch(0.97 0.008 15);
+  --focus: oklch(0.60 0.2 18);
+  --focus-foreground: oklch(0.97 0.008 15);
+  --border: oklch(1 0.008 15 / 14%);
+  --input: oklch(1 0.008 15 / 18%);
+  --ring: oklch(0.52 0.1 18);
+  --chart-1: oklch(0.65 0.20 18);
+  --chart-2: oklch(0.60 0.16 350);
+  --chart-3: oklch(0.75 0.17 45);
+  --chart-4: oklch(0.55 0.10 30);
+  --chart-5: oklch(0.70 0.14 75);
+  --sidebar: oklch(0.11 0.018 15);
+  --sidebar-foreground: oklch(0.94 0.01 15);
+  --sidebar-primary: oklch(0.68 0.2 18);
+  --sidebar-primary-foreground: oklch(0.97 0.008 15);
+  --sidebar-accent: oklch(0.19 0.025 12);
+  --sidebar-accent-foreground: oklch(0.94 0.01 15);
+  --sidebar-border: oklch(1 0.008 15 / 14%);
+  --sidebar-ring: oklch(0.52 0.1 18);
+}

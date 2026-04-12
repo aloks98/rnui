@@ -8,10 +8,20 @@
     ".": "./dist/index.css",
     "./base": "./dist/base.css",
     "./light": "./dist/light.css",
-    "./dark": "./dist/dark.css"
+    "./dark": "./dist/dark.css",
+    "./oxide": "./dist/oxide.css",
+    "./ocean": "./dist/ocean.css",
+    "./violet": "./dist/violet.css",
+    "./forest": "./dist/forest.css",
+    "./rose": "./dist/rose.css",
+    "./amber": "./dist/amber.css",
+    "./slate": "./dist/slate.css",
+    "./crimson": "./dist/crimson.css",
+    "./presets": "./dist/presets.css"
   },
   "scripts": {
-    "build": "vite build"
+    "generate": "node scripts/generate-presets.mjs",
+    "build": "node scripts/generate-presets.mjs && vite build"
   },
   "devDependencies": {
     "vite": "^8.0.0"

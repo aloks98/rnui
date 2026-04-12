@@ -9,7 +9,9 @@
     "format:check": "oxfmt --check packages/",
     "changeset": "changeset",
     "docs:dev": "pnpm --filter docs dev",
-    "docs:build": "pnpm --filter docs build",
+    "docs:build": "pnpm --filter theme-playground build && pnpm --filter docs build",
+    "playground:dev": "pnpm --filter theme-playground dev",
+    "playground:build": "pnpm --filter theme-playground build",
     "storybook": "pnpm --filter @e412/storybook dev",
     "storybook:build": "pnpm --filter @e412/storybook build",
     "release": "pnpm build && changeset version && pnpm publish -r"

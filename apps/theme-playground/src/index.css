@@ -1,0 +1,8 @@
+@import 'tailwindcss';
+@import '@e412/rnui-themes';
+@import '@e412/rnui-themes/presets';
+@source "../node_modules/@e412/rnui-react/dist";
+
+body {
+  margin: 0;
+}

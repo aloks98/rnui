@@ -1,0 +1,105 @@
+/*
+ * Violet — Luxury Creative
+ * Geometric, very rounded, rich purple tones.
+ * Feels like a premium design tool or creative platform.
+ *
+ * Font: Outfit (geometric, modern, clean)
+ * Load via Google Fonts, next/font, or self-host:
+ * https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap
+ *
+ * Radius: 1rem (very round, soft)
+ * Hue: ~285 (amethyst/purple)
+ */
+
+:root {
+  --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --radius: 1rem;
+  --background: oklch(0.98 0.016 292);
+  --foreground: oklch(0.18 0.03 285);
+  --card: oklch(0.974 0.02 290);
+  --card-foreground: oklch(0.18 0.03 285);
+  --popover: oklch(0.98 0.016 292);
+  --popover-foreground: oklch(0.18 0.03 285);
+  --primary: oklch(0.52 0.2 285);
+  --primary-foreground: oklch(0.97 0.01 285);
+  --secondary: oklch(0.94 0.025 290);
+  --secondary-foreground: oklch(0.28 0.05 285);
+  --muted: oklch(0.935 0.022 290);
+  --muted-foreground: oklch(0.50 0.035 288);
+  --accent: oklch(0.92 0.03 288);
+  --accent-foreground: oklch(0.28 0.05 285);
+  --destructive: oklch(0.55 0.2 355);
+  --destructive-foreground: oklch(0.40 0.15 355);
+  --success: oklch(0.62 0.14 155);
+  --success-foreground: oklch(0.38 0.09 155);
+  --info: oklch(0.52 0.18 275);
+  --info-foreground: oklch(0.38 0.14 275);
+  --warning: oklch(0.76 0.15 70);
+  --warning-foreground: oklch(0.42 0.1 60);
+  --invert: oklch(0.22 0.03 285);
+  --invert-foreground: oklch(0.97 0.01 285);
+  --focus: oklch(0.55 0.2 285);
+  --focus-foreground: oklch(0.97 0.01 285);
+  --border: oklch(0.89 0.022 290);
+  --input: oklch(0.89 0.022 290);
+  --ring: oklch(0.60 0.1 285);
+  --chart-1: oklch(0.55 0.20 285);
+  --chart-2: oklch(0.58 0.18 320);
+  --chart-3: oklch(0.48 0.16 260);
+  --chart-4: oklch(0.68 0.16 350);
+  --chart-5: oklch(0.65 0.12 240);
+  --sidebar: oklch(0.968 0.02 290);
+  --sidebar-foreground: oklch(0.18 0.03 285);
+  --sidebar-primary: oklch(0.52 0.2 285);
+  --sidebar-primary-foreground: oklch(0.97 0.01 285);
+  --sidebar-accent: oklch(0.92 0.03 288);
+  --sidebar-accent-foreground: oklch(0.28 0.05 285);
+  --sidebar-border: oklch(0.89 0.022 290);
+  --sidebar-ring: oklch(0.60 0.1 285);
+}
+
+.dark {
+  /* Midnight purple — deep, high chroma, vivid neon accents */
+  --background: oklch(0.12 0.035 285);
+  --foreground: oklch(0.93 0.014 290);
+  --card: oklch(0.17 0.04 285);
+  --card-foreground: oklch(0.93 0.014 290);
+  --popover: oklch(0.17 0.04 285);
+  --popover-foreground: oklch(0.93 0.014 290);
+  --primary: oklch(0.72 0.18 285);
+  --primary-foreground: oklch(0.12 0.04 285);
+  --secondary: oklch(0.24 0.035 285);
+  --secondary-foreground: oklch(0.93 0.014 290);
+  --muted: oklch(0.24 0.035 285);
+  --muted-foreground: oklch(0.62 0.04 288);
+  --accent: oklch(0.25 0.04 285);
+  --accent-foreground: oklch(0.93 0.014 290);
+  --destructive: oklch(0.68 0.17 355);
+  --destructive-foreground: oklch(0.55 0.2 355);
+  --success: oklch(0.68 0.14 155);
+  --success-foreground: oklch(0.56 0.12 155);
+  --info: oklch(0.60 0.18 275);
+  --info-foreground: oklch(0.50 0.2 275);
+  --warning: oklch(0.78 0.15 70);
+  --warning-foreground: oklch(0.66 0.13 65);
+  --invert: oklch(0.34 0.04 285);
+  --invert-foreground: oklch(0.97 0.01 285);
+  --focus: oklch(0.60 0.2 285);
+  --focus-foreground: oklch(0.97 0.01 285);
+  --border: oklch(1 0.012 290 / 10%);
+  --input: oklch(1 0.012 290 / 15%);
+  --ring: oklch(0.55 0.1 285);
+  --chart-1: oklch(0.68 0.20 285);
+  --chart-2: oklch(0.70 0.18 320);
+  --chart-3: oklch(0.60 0.18 260);
+  --chart-4: oklch(0.76 0.16 350);
+  --chart-5: oklch(0.75 0.12 240);
+  --sidebar: oklch(0.15 0.038 285);
+  --sidebar-foreground: oklch(0.93 0.014 290);
+  --sidebar-primary: oklch(0.72 0.18 285);
+  --sidebar-primary-foreground: oklch(0.97 0.01 285);
+  --sidebar-accent: oklch(0.25 0.04 285);
+  --sidebar-accent-foreground: oklch(0.93 0.014 290);
+  --sidebar-border: oklch(1 0.012 290 / 10%);
+  --sidebar-ring: oklch(0.55 0.1 285);
+}

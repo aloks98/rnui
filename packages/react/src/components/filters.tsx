@@ -883,7 +883,7 @@ function SelectOptionsPopover<T = unknown>({
                         if (!isMultiSelect) handleClose()
                       }}
                     >
-                      {option.icon && option.icon}
+                      {option.icon}
                       <span className="truncate">{option.label}</span>
                     </DropdownMenuCheckboxItem>
                   )
@@ -942,7 +942,7 @@ function SelectOptionsPopover<T = unknown>({
                         if (!isMultiSelect) handleClose()
                       }}
                     >
-                      {option.icon && option.icon}
+                      {option.icon}
                       <span className="truncate">{option.label}</span>
                     </DropdownMenuCheckboxItem>
                   )
@@ -1124,7 +1124,7 @@ export const FiltersContent = <T = unknown,>({
         return (
           <ButtonGroup key={filter.id}>
             <ButtonGroupText>
-              {field.icon && field.icon}
+              {field.icon}
               {field.label}
             </ButtonGroupText>
 
@@ -1387,7 +1387,7 @@ function FilterSubmenuContent<T = unknown>({
                         onToggle(option.value as T, isSelected)
                       }
                     >
-                      {option.icon && option.icon}
+                      {option.icon}
                       <span className="truncate">{option.label}</span>
                     </DropdownMenuCheckboxItem>
                   )
@@ -1886,7 +1886,7 @@ export function Filters<T = unknown>({
           return (
             <ButtonGroup key={filter.id}>
               <ButtonGroupText className="style-vega:bg-background style-vega:dark:bg-input/30 style-nova:bg-background style-nova:dark:bg-input/30 style-lyra:bg-background style-lyra:dark:bg-input/30 style-mira:bg-background style-mira:dark:bg-input/30">
-                {field.icon && field.icon}
+                {field.icon}
                 {field.label}
               </ButtonGroupText>
               <FilterOperatorDropdown<T>

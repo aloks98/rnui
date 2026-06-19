@@ -4,9 +4,9 @@
  * Adapted from shadcn-echarts minimal preset.
  */
 
-import type { EChartsCoreOption } from "echarts/core"
-import type { ThemeMode } from "./types"
-import { resolveColor } from "./theme-builder"
+import type { EChartsCoreOption } from 'echarts/core'
+import type { ThemeMode } from './types'
+import { resolveColor } from './theme-builder'
 
 type AnyRecord = Record<string, any>
 
@@ -15,7 +15,7 @@ export interface MinimalPresetContext {
 }
 
 function isPlainObject(value: unknown): value is AnyRecord {
-  return typeof value === "object" && value !== null && !Array.isArray(value)
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
 
 function mergeDefaults<T>(value: T, defaults: any): T {
@@ -40,13 +40,13 @@ function withAlpha(color: string, alpha: number): string {
   if (!match) return color
   const channels = match[1]
   if (!channels) return color
-  const parts = channels.split(",").map((p) => p.trim())
+  const parts = channels.split(',').map((p) => p.trim())
   if (parts.length < 3) return color
   return `rgba(${parts[0]}, ${parts[1]}, ${parts[2]}, ${alpha})`
 }
 
 function cssTokenColor(name: string, fallback: string): string {
-  if (typeof document === "undefined") return fallback
+  if (typeof document === 'undefined') return fallback
   const value = getComputedStyle(document.documentElement)
     .getPropertyValue(name)
     .trim()
@@ -67,13 +67,13 @@ function restoreArrayOrSingle<T>(
 }
 
 function escapeHtml(input: unknown): string {
-  const str = String(input ?? "")
+  const str = String(input ?? '')
   return str
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;")
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;')
 }
 
 function formatNumber(n: number): string {
@@ -85,13 +85,13 @@ function formatNumber(n: number): string {
 }
 
 function formatTooltipValue(value: unknown): string {
-  if (value == null) return ""
-  if (typeof value === "number") return formatNumber(value)
-  if (typeof value === "string") return value
+  if (value == null) return ''
+  if (typeof value === 'number') return formatNumber(value)
+  if (typeof value === 'string') return value
   if (Array.isArray(value)) {
     const last = value[value.length - 1]
-    if (typeof last === "number") return formatNumber(last)
-    return escapeHtml(value.join(", "))
+    if (typeof last === 'number') return formatNumber(last)
+    return escapeHtml(value.join(', '))
   }
   if (isPlainObject(value)) {
     const maybe = (value as AnyRecord).value
@@ -102,19 +102,19 @@ function formatTooltipValue(value: unknown): string {
 
 function getTooltipColor(param: any): string {
   const c = param?.color
-  if (typeof c === "string") return c
+  if (typeof c === 'string') return c
   const stops = c?.colorStops
   const firstStop = Array.isArray(stops) ? stops[0]?.color : undefined
-  if (typeof firstStop === "string") return firstStop
-  return "currentColor"
+  if (typeof firstStop === 'string') return firstStop
+  return 'currentColor'
 }
 
 function tooltipHeader(params: any): string {
   if (Array.isArray(params) && params.length > 0) {
     const first = params[0]
-    return first?.axisValueLabel ?? first?.name ?? first?.axisValue ?? ""
+    return first?.axisValueLabel ?? first?.name ?? first?.axisValue ?? ''
   }
-  return params?.name ?? params?.seriesName ?? ""
+  return params?.name ?? params?.seriesName ?? ''
 }
 
 function tooltipItems(
@@ -122,7 +122,7 @@ function tooltipItems(
 ): Array<{ label: string; value: string; color: string }> {
   const list = Array.isArray(params) ? params : [params]
   return list.filter(Boolean).map((p) => ({
-    label: p?.seriesName ?? p?.name ?? "Value",
+    label: p?.seriesName ?? p?.name ?? 'Value',
     value: formatTooltipValue(p?.value ?? p?.data?.value ?? p?.data),
     color: getTooltipColor(p),
   }))
@@ -130,16 +130,16 @@ function tooltipItems(
 
 function tooltipContainerStyle(): string {
   return [
-    "min-width: 8rem",
-    "border: 1px solid var(--border)",
-    "background: var(--popover)",
-    "color: var(--popover-foreground)",
-    "border-radius: 0.625rem",
-    "padding: 0.375rem 0.625rem",
-    "box-shadow: 0 10px 15px -3px rgba(0,0,0,0.10), 0 4px 6px -4px rgba(0,0,0,0.10)",
-    "font-size: 0.75rem",
-    "line-height: 1.2",
-  ].join(";")
+    'min-width: 8rem',
+    'border: 1px solid var(--border)',
+    'background: var(--popover)',
+    'color: var(--popover-foreground)',
+    'border-radius: 0.625rem',
+    'padding: 0.375rem 0.625rem',
+    'box-shadow: 0 10px 15px -3px rgba(0,0,0,0.10), 0 4px 6px -4px rgba(0,0,0,0.10)',
+    'font-size: 0.75rem',
+    'line-height: 1.2',
+  ].join(';')
 }
 
 function shadcnHtmlTooltipFormatter(params: any): string {
@@ -148,7 +148,7 @@ function shadcnHtmlTooltipFormatter(params: any): string {
 
   const headerHtml = header
     ? `<div style="font-weight: 500; margin-bottom: 0.375rem;">${header}</div>`
-    : ""
+    : ''
 
   const rows = items
     .map((item) => {
@@ -167,7 +167,7 @@ function shadcnHtmlTooltipFormatter(params: any): string {
         </div>
       `
     })
-    .join("")
+    .join('')
 
   return `<div style="${tooltipContainerStyle()}">${headerHtml}<div style="display:grid; gap: 0.375rem;">${rows}</div></div>`
 }
@@ -206,14 +206,11 @@ function applyAxisDefaults(axis: any): any {
   return restoreArrayOrSingle(axis, next)
 }
 
-function getAxisAtIndex(
-  axis: any,
-  axisIndex: unknown,
-): AnyRecord | undefined {
+function getAxisAtIndex(axis: any, axisIndex: unknown): AnyRecord | undefined {
   const axes = asArray<any>(axis)
   if (!axes || axes.length === 0) return undefined
   const index =
-    typeof axisIndex === "number" &&
+    typeof axisIndex === 'number' &&
     Number.isInteger(axisIndex) &&
     axisIndex >= 0
       ? axisIndex
@@ -224,20 +221,17 @@ function getAxisAtIndex(
 function inferBarOrientation(
   series: AnyRecord,
   option: AnyRecord,
-): "horizontal" | "vertical" | "polar" {
-  if (series.coordinateSystem === "polar") return "polar"
-  if (series.layout === "horizontal") return "horizontal"
-  if (series.layout === "vertical") return "vertical"
+): 'horizontal' | 'vertical' | 'polar' {
+  if (series.coordinateSystem === 'polar') return 'polar'
+  if (series.layout === 'horizontal') return 'horizontal'
+  if (series.layout === 'vertical') return 'vertical'
 
   const xAxis = getAxisAtIndex(option.xAxis, series.xAxisIndex)
   const yAxis = getAxisAtIndex(option.yAxis, series.yAxisIndex)
 
-  if (
-    (yAxis?.type ?? "") === "category" &&
-    (xAxis?.type ?? "") !== "category"
-  )
-    return "horizontal"
-  return "vertical"
+  if ((yAxis?.type ?? '') === 'category' && (xAxis?.type ?? '') !== 'category')
+    return 'horizontal'
+  return 'vertical'
 }
 
 function defaultBarBorderRadius(
@@ -245,7 +239,7 @@ function defaultBarBorderRadius(
   option: AnyRecord,
 ): number | [number, number, number, number] {
   const orientation = inferBarOrientation(series, option)
-  if (orientation === "polar") return 6
+  if (orientation === 'polar') return 6
   return [6, 6, 6, 6]
 }
 
@@ -263,18 +257,16 @@ function applySeriesDefaults(
   const list = asArray<any>(series)
   if (!list) return series
 
-  const borderColor =
-    visualDefaults?.borderColor ?? "rgba(100, 116, 139, 0.2)"
-  const emphasisBorderColor =
-    visualDefaults?.emphasisBorderColor ?? borderColor
+  const borderColor = visualDefaults?.borderColor ?? 'rgba(100, 116, 139, 0.2)'
+  const emphasisBorderColor = visualDefaults?.emphasisBorderColor ?? borderColor
   const boxplotFillColor =
-    visualDefaults?.boxplotFillColor ?? "rgba(99, 102, 241, 0.24)"
+    visualDefaults?.boxplotFillColor ?? 'rgba(99, 102, 241, 0.24)'
 
   const next = list.map((s) => {
     const type = s?.type
-    const base = mergeDefaults(s, { emphasis: { focus: "series" } })
+    const base = mergeDefaults(s, { emphasis: { focus: 'series' } })
 
-    if (type === "line") {
+    if (type === 'line') {
       const isArea = base?.areaStyle !== undefined
       return mergeDefaults(base, {
         showSymbol: false,
@@ -284,18 +276,18 @@ function applySeriesDefaults(
       })
     }
 
-    if (type === "bar") {
+    if (type === 'bar') {
       return mergeDefaults(base, {
         barMaxWidth: 48,
         itemStyle: { borderRadius: defaultBarBorderRadius(base, option) },
       })
     }
 
-    if (type === "scatter") {
+    if (type === 'scatter') {
       return mergeDefaults(base, { symbolSize: 8 })
     }
 
-    if (type === "pie") {
+    if (type === 'pie') {
       return mergeDefaults(base, {
         avoidLabelOverlap: true,
         label: { show: true, fontSize: 12 },
@@ -304,7 +296,7 @@ function applySeriesDefaults(
       })
     }
 
-    if (type === "radar") {
+    if (type === 'radar') {
       return mergeDefaults(base, {
         symbolSize: 4,
         lineStyle: { width: 2 },
@@ -312,9 +304,9 @@ function applySeriesDefaults(
       })
     }
 
-    if (type === "gauge") {
+    if (type === 'gauge') {
       return mergeDefaults(base, {
-        radius: "80%",
+        radius: '80%',
         startAngle: 200,
         endAngle: -20,
         progress: { show: true, width: 12, roundCap: true },
@@ -328,12 +320,12 @@ function applySeriesDefaults(
           valueAnimation: true,
           fontSize: 26,
           fontWeight: 600,
-          offsetCenter: [0, "4%"],
+          offsetCenter: [0, '4%'],
         },
       })
     }
 
-    if (type === "boxplot") {
+    if (type === 'boxplot') {
       return mergeDefaults(base, {
         itemStyle: {
           borderWidth: 1,
@@ -361,51 +353,50 @@ export function applyMinimalPreset(
 
   const cartesian = isCartesianOption(base)
   const borderColor = cssTokenColor(
-    "--border",
-    ctx.mode === "dark"
-      ? "rgba(148, 163, 184, 0.28)"
-      : "rgba(100, 116, 139, 0.2)",
+    '--border',
+    ctx.mode === 'dark'
+      ? 'rgba(148, 163, 184, 0.28)'
+      : 'rgba(100, 116, 139, 0.2)',
   )
   const emphasisBorderColor = cssTokenColor(
-    "--primary",
-    ctx.mode === "dark" ? "rgb(129, 140, 248)" : "rgb(99, 102, 241)",
+    '--primary',
+    ctx.mode === 'dark' ? 'rgb(129, 140, 248)' : 'rgb(99, 102, 241)',
   )
   const chartColor = cssTokenColor(
-    "--chart-1",
-    ctx.mode === "dark" ? "rgb(129, 140, 248)" : "rgb(99, 102, 241)",
+    '--chart-1',
+    ctx.mode === 'dark' ? 'rgb(129, 140, 248)' : 'rgb(99, 102, 241)',
   )
   const boxplotFillColor = withAlpha(
     chartColor,
-    ctx.mode === "dark" ? 0.42 : 0.24,
+    ctx.mode === 'dark' ? 0.42 : 0.24,
   )
   const tooltipBackgroundColor = cssTokenColor(
-    "--popover",
-    ctx.mode === "dark" ? "rgb(15, 23, 42)" : "rgb(255, 255, 255)",
+    '--popover',
+    ctx.mode === 'dark' ? 'rgb(15, 23, 42)' : 'rgb(255, 255, 255)',
   )
   const tooltipBorderColor = borderColor
   const tooltipTextColor = cssTokenColor(
-    "--popover-foreground",
-    ctx.mode === "dark" ? "rgb(241, 245, 249)" : "rgb(15, 23, 42)",
+    '--popover-foreground',
+    ctx.mode === 'dark' ? 'rgb(241, 245, 249)' : 'rgb(15, 23, 42)',
   )
   const tooltipBase = base.tooltip === null ? undefined : base.tooltip
 
   const userHasTooltipFormatting =
-    hasTooltipFormatting(tooltipBase) ||
-    hasSeriesTooltipFormatting(base.series)
+    hasTooltipFormatting(tooltipBase) || hasSeriesTooltipFormatting(base.series)
 
   const tooltipDefaults: AnyRecord = {
-    renderMode: "html",
+    renderMode: 'html',
     appendToBody: true,
     confine: true,
-    ...(cartesian ? { trigger: "axis" } : { trigger: "item" }),
+    ...(cartesian ? { trigger: 'axis' } : { trigger: 'item' }),
   }
 
   if (!userHasTooltipFormatting) {
     tooltipDefaults.padding = 0
     tooltipDefaults.borderWidth = 0
-    tooltipDefaults.backgroundColor = "transparent"
+    tooltipDefaults.backgroundColor = 'transparent'
     tooltipDefaults.extraCssText =
-      "padding:0;border:0;background:transparent;box-shadow:none;border-radius:0;"
+      'padding:0;border:0;background:transparent;box-shadow:none;border-radius:0;'
     tooltipDefaults.formatter = shadcnHtmlTooltipFormatter
   } else {
     tooltipDefaults.padding = [6, 10]
@@ -415,7 +406,7 @@ export function applyMinimalPreset(
     tooltipDefaults.borderColor = tooltipBorderColor
     tooltipDefaults.textStyle = { color: tooltipTextColor }
     tooltipDefaults.extraCssText =
-      "border-radius:0.625rem;box-shadow:0 10px 15px -3px rgba(0,0,0,0.10),0 4px 6px -4px rgba(0,0,0,0.10);"
+      'border-radius:0.625rem;box-shadow:0 10px 15px -3px rgba(0,0,0,0.10),0 4px 6px -4px rgba(0,0,0,0.10);'
   }
 
   const out: AnyRecord = {
@@ -439,7 +430,7 @@ export function applyMinimalPreset(
             mergeDefaults(a, { splitLine: { show: true } }),
           )
           for (const axis of next) {
-            if (isPlainObject(axis) && axis.type === "category") {
+            if (isPlainObject(axis) && axis.type === 'category') {
               axis.splitLine = mergeDefaults(axis.splitLine, { show: false })
             }
           }
@@ -456,7 +447,7 @@ export function applyMinimalPreset(
 
   if (base.radar !== undefined) {
     out.radar = mergeDefaults(base.radar, {
-      shape: "circle",
+      shape: 'circle',
       splitNumber: 4,
       axisName: { fontSize: 11 },
     })

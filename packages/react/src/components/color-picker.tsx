@@ -1,15 +1,15 @@
-"use client"
+'use client'
 
-import * as React from "react"
-import { parse, formatHex, formatRgb, formatHsl, converter } from "culori"
-import { Pipette } from "lucide-react"
+import * as React from 'react'
+import { parse, formatHex, formatRgb, formatHsl, converter } from 'culori'
+import { Pipette } from 'lucide-react'
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/button"
-import { Input } from "@/components/input"
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/popover"
+import { cn } from '@/lib/utils'
+import { Button } from '@/components/button'
+import { Input } from '@/components/input'
+import { Popover, PopoverTrigger, PopoverContent } from '@/components/popover'
 
-export type ColorFormat = "hex" | "rgb" | "hsl"
+export type ColorFormat = 'hex' | 'rgb' | 'hsl'
 
 export interface ColorPickerProps {
   value?: string
@@ -22,16 +22,16 @@ export interface ColorPickerProps {
 
 // --- Color conversion via culori ---
 
-const toHsv = converter("hsv")
-const toRgb = converter("rgb")
-const toHsl = converter("hsl")
+const toHsv = converter('hsv')
+const toRgb = converter('rgb')
+const toHsl = converter('hsl')
 
 function colorToHex(input: string): string {
   try {
     const parsed = parse(input)
-    return parsed ? formatHex(parsed) : "#000000"
+    return parsed ? formatHex(parsed) : '#000000'
   } catch {
-    return "#000000"
+    return '#000000'
   }
 }
 
@@ -42,7 +42,7 @@ function hexToHsv(input: string): { h: number; s: number; v: number } {
 }
 
 function hsvToHex(h: number, s: number, v: number): string {
-  return formatHex({ mode: "hsv", h, s, v }) ?? "#000000"
+  return formatHex({ mode: 'hsv', h, s, v }) ?? '#000000'
 }
 
 function hexToRgb(input: string): { r: number; g: number; b: number } {
@@ -56,7 +56,9 @@ function hexToRgb(input: string): { r: number; g: number; b: number } {
 }
 
 function rgbToHex(r: number, g: number, b: number): string {
-  return formatHex({ mode: "rgb", r: r / 255, g: g / 255, b: b / 255 }) ?? "#000000"
+  return (
+    formatHex({ mode: 'rgb', r: r / 255, g: g / 255, b: b / 255 }) ?? '#000000'
+  )
 }
 
 function hexToHsl(input: string): { h: number; s: number; l: number } {
@@ -70,9 +72,9 @@ function hexToHsl(input: string): { h: number; s: number; l: number } {
 }
 
 function formatColor(hex: string, format: ColorFormat): string {
-  if (format === "hex") return hex
+  if (format === 'hex') return hex
   const { r, g, b } = hexToRgb(hex)
-  if (format === "rgb") return `rgb(${r}, ${g}, ${b})`
+  if (format === 'rgb') return `rgb(${r}, ${g}, ${b})`
   const { h, s, l } = hexToHsl(hex)
   return `hsl(${h}, ${s}%, ${l}%)`
 }
@@ -81,7 +83,13 @@ function parseColorInput(input: string): string | null {
   const trimmed = input.trim()
   if (!trimmed) return null
   try {
-    const parsed = parse(trimmed.startsWith("#") ? trimmed : trimmed.match(/^[0-9a-fA-F]{6}$/) ? `#${trimmed}` : trimmed)
+    const parsed = parse(
+      trimmed.startsWith('#')
+        ? trimmed
+        : trimmed.match(/^[0-9a-fA-F]{6}$/)
+          ? `#${trimmed}`
+          : trimmed,
+    )
     return parsed ? formatHex(parsed) : null
   } catch {
     return null
@@ -112,7 +120,7 @@ function ColorArea({
       const v = Math.max(0, Math.min(1, 1 - (clientY - rect.top) / rect.height))
       onChange(s, v)
     },
-    [onChange]
+    [onChange],
   )
 
   const handlePointerDown = React.useCallback(
@@ -121,7 +129,7 @@ function ColorArea({
       areaRef.current?.setPointerCapture(e.pointerId)
       handleMove(e.clientX, e.clientY)
     },
-    [handleMove]
+    [handleMove],
   )
 
   const handlePointerMove = React.useCallback(
@@ -129,7 +137,7 @@ function ColorArea({
       if (!dragging.current) return
       handleMove(e.clientX, e.clientY)
     },
-    [handleMove]
+    [handleMove],
   )
 
   const handlePointerUp = React.useCallback(() => {
@@ -148,8 +156,14 @@ function ColorArea({
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
     >
-      <div className="absolute inset-0 rounded-md" style={{ background: "linear-gradient(to right, white, transparent)" }} />
-      <div className="absolute inset-0 rounded-md" style={{ background: "linear-gradient(to top, black, transparent)" }} />
+      <div
+        className="absolute inset-0 rounded-md"
+        style={{ background: 'linear-gradient(to right, white, transparent)' }}
+      />
+      <div
+        className="absolute inset-0 rounded-md"
+        style={{ background: 'linear-gradient(to top, black, transparent)' }}
+      />
       <div
         className="absolute size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white shadow-md"
         style={{
@@ -178,10 +192,13 @@ function HueSlider({
     (clientX: number) => {
       const rect = sliderRef.current?.getBoundingClientRect()
       if (!rect) return
-      const h = Math.max(0, Math.min(360, ((clientX - rect.left) / rect.width) * 360))
+      const h = Math.max(
+        0,
+        Math.min(360, ((clientX - rect.left) / rect.width) * 360),
+      )
       onChange(h)
     },
-    [onChange]
+    [onChange],
   )
 
   const handlePointerDown = React.useCallback(
@@ -190,7 +207,7 @@ function HueSlider({
       sliderRef.current?.setPointerCapture(e.pointerId)
       handleMove(e.clientX)
     },
-    [handleMove]
+    [handleMove],
   )
 
   const handlePointerMove = React.useCallback(
@@ -198,7 +215,7 @@ function HueSlider({
       if (!dragging.current) return
       handleMove(e.clientX)
     },
-    [handleMove]
+    [handleMove],
   )
 
   const handlePointerUp = React.useCallback(() => {
@@ -211,7 +228,8 @@ function HueSlider({
       data-slot="hue-slider"
       className="relative h-3 w-full cursor-pointer rounded-full border border-border"
       style={{
-        background: "linear-gradient(to right, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000)",
+        background:
+          'linear-gradient(to right, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000)',
       }}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
@@ -235,7 +253,13 @@ function HueSlider({
 function ChannelInputGroup({
   channels,
 }: {
-  channels: { value: number; min: number; max: number; suffix?: string; onChange: (v: number) => void }[]
+  channels: {
+    value: number
+    min: number
+    max: number
+    suffix?: string
+    onChange: (v: number) => void
+  }[]
 }) {
   return (
     <div className="flex flex-1">
@@ -243,10 +267,12 @@ function ChannelInputGroup({
         <div
           key={i}
           className={cn(
-            "relative flex-1",
-            i === 0 && "[&_input]:rounded-r-none [&_input]:border-r-0",
-            i === channels.length - 1 && "[&_input]:rounded-l-none",
-            i > 0 && i < channels.length - 1 && "[&_input]:rounded-none [&_input]:border-r-0",
+            'relative flex-1',
+            i === 0 && '[&_input]:rounded-r-none [&_input]:border-r-0',
+            i === channels.length - 1 && '[&_input]:rounded-l-none',
+            i > 0 &&
+              i < channels.length - 1 &&
+              '[&_input]:rounded-none [&_input]:border-r-0',
           )}
         >
           <Input
@@ -259,8 +285,8 @@ function ChannelInputGroup({
               if (!isNaN(v)) ch.onChange(Math.max(ch.min, Math.min(ch.max, v)))
             }}
             className={cn(
-              "h-7 w-full px-1 text-center font-mono text-xs [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none",
-              ch.suffix && "pr-4",
+              'h-7 w-full px-1 text-center font-mono text-xs [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
+              ch.suffix && 'pr-4',
             )}
           />
           {ch.suffix && (
@@ -277,9 +303,9 @@ function ChannelInputGroup({
 // --- Main Component ---
 
 function ColorPicker({
-  value = "#3b82f6",
+  value = '#3b82f6',
   onChange,
-  defaultFormat = "hex",
+  defaultFormat = 'hex',
   presets,
   showAlpha = false,
   className,
@@ -304,7 +330,7 @@ function ColorPicker({
       setHexInput(hex)
       onChange?.(formatColor(hex, format))
     },
-    [onChange, format]
+    [onChange, format],
   )
 
   const updateFromHsv = React.useCallback(
@@ -312,7 +338,7 @@ function ColorPicker({
       setHsv({ h, s, v })
       emitChange(hsvToHex(h, s, v))
     },
-    [emitChange]
+    [emitChange],
   )
 
   const updateFromRgb = React.useCallback(
@@ -321,23 +347,28 @@ function ColorPicker({
       setHsv(hexToHsv(hex))
       emitChange(hex)
     },
-    [emitChange]
+    [emitChange],
   )
 
   const updateFromHsl = React.useCallback(
     (h: number, s: number, l: number) => {
       // HSL to RGB
-      const ss = s / 100, ll = l / 100
+      const ss = s / 100,
+        ll = l / 100
       const a = ss * Math.min(ll, 1 - ll)
       const f = (n: number) => {
         const k = (n + h / 30) % 12
         return ll - a * Math.max(-1, Math.min(k - 3, 9 - k, 1))
       }
-      const hex = rgbToHex(Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255))
+      const hex = rgbToHex(
+        Math.round(f(0) * 255),
+        Math.round(f(8) * 255),
+        Math.round(f(4) * 255),
+      )
       setHsv(hexToHsv(hex))
       emitChange(hex)
     },
-    [emitChange]
+    [emitChange],
   )
 
   const handleHexInput = React.useCallback(
@@ -350,7 +381,7 @@ function ColorPicker({
         onChange?.(parsed)
       }
     },
-    [onChange]
+    [onChange],
   )
 
   const handlePresetClick = React.useCallback(
@@ -358,21 +389,23 @@ function ColorPicker({
       setHsv(hexToHsv(preset))
       emitChange(preset)
     },
-    [emitChange]
+    [emitChange],
   )
 
   const handleFormatChange = React.useCallback(() => {
-    const formats: ColorFormat[] = ["hex", "rgb", "hsl"]
+    const formats: ColorFormat[] = ['hex', 'rgb', 'hsl']
     const nextIdx = (formats.indexOf(format) + 1) % formats.length
     setFormat(formats[nextIdx])
   }, [format])
 
   const handleEyeDropper = React.useCallback(() => {
-    if ("EyeDropper" in window) {
+    if ('EyeDropper' in window) {
       const eyeDropper = new (window as any).EyeDropper()
       eyeDropper
         .open()
-        .then((result: { sRGBHex: string }) => handlePresetClick(result.sRGBHex))
+        .then((result: { sRGBHex: string }) =>
+          handlePresetClick(result.sRGBHex),
+        )
         .catch(() => {})
     }
   }, [handlePresetClick])
@@ -384,7 +417,7 @@ function ColorPicker({
           <Button
             variant="outline"
             data-slot="color-picker-trigger"
-            className={cn("h-9 gap-2 px-3", className)}
+            className={cn('h-9 gap-2 px-3', className)}
           />
         }
       >
@@ -392,7 +425,9 @@ function ColorPicker({
           className="size-4 rounded-sm border border-border"
           style={{ backgroundColor: currentHex, opacity: alpha }}
         />
-        <span className="font-mono text-xs">{formatColor(currentHex, format)}</span>
+        <span className="font-mono text-xs">
+          {formatColor(currentHex, format)}
+        </span>
       </PopoverTrigger>
       <PopoverContent data-slot="color-picker" className="w-64 p-3">
         <div className="flex flex-col gap-3">
@@ -447,34 +482,90 @@ function ColorPicker({
               {format}
             </Button>
 
-            {format === "hex" ? (
+            {format === 'hex' ? (
               <Input
                 value={hexInput}
                 onChange={handleHexInput}
                 className="h-7 flex-1 font-mono text-xs"
                 spellCheck={false}
               />
-            ) : format === "rgb" ? (
+            ) : format === 'rgb' ? (
               <ChannelInputGroup
                 channels={[
-                  { value: currentRgb.r, min: 0, max: 255, onChange: (r) => updateFromRgb(r, currentRgb.g, currentRgb.b) },
-                  { value: currentRgb.g, min: 0, max: 255, onChange: (g) => updateFromRgb(currentRgb.r, g, currentRgb.b) },
-                  { value: currentRgb.b, min: 0, max: 255, onChange: (b) => updateFromRgb(currentRgb.r, currentRgb.g, b) },
-                  ...(showAlpha ? [{ value: Math.round(alpha * 100), min: 0, max: 100, suffix: "%", onChange: (a: number) => setAlpha(a / 100) }] : []),
+                  {
+                    value: currentRgb.r,
+                    min: 0,
+                    max: 255,
+                    onChange: (r) =>
+                      updateFromRgb(r, currentRgb.g, currentRgb.b),
+                  },
+                  {
+                    value: currentRgb.g,
+                    min: 0,
+                    max: 255,
+                    onChange: (g) =>
+                      updateFromRgb(currentRgb.r, g, currentRgb.b),
+                  },
+                  {
+                    value: currentRgb.b,
+                    min: 0,
+                    max: 255,
+                    onChange: (b) =>
+                      updateFromRgb(currentRgb.r, currentRgb.g, b),
+                  },
+                  ...(showAlpha
+                    ? [
+                        {
+                          value: Math.round(alpha * 100),
+                          min: 0,
+                          max: 100,
+                          suffix: '%',
+                          onChange: (a: number) => setAlpha(a / 100),
+                        },
+                      ]
+                    : []),
                 ]}
               />
             ) : (
               <ChannelInputGroup
                 channels={[
-                  { value: currentHsl.h, min: 0, max: 360, onChange: (h) => updateFromHsl(h, currentHsl.s, currentHsl.l) },
-                  { value: currentHsl.s, min: 0, max: 100, onChange: (s) => updateFromHsl(currentHsl.h, s, currentHsl.l) },
-                  { value: currentHsl.l, min: 0, max: 100, onChange: (l) => updateFromHsl(currentHsl.h, currentHsl.s, l) },
-                  ...(showAlpha ? [{ value: Math.round(alpha * 100), min: 0, max: 100, suffix: "%", onChange: (a: number) => setAlpha(a / 100) }] : []),
+                  {
+                    value: currentHsl.h,
+                    min: 0,
+                    max: 360,
+                    onChange: (h) =>
+                      updateFromHsl(h, currentHsl.s, currentHsl.l),
+                  },
+                  {
+                    value: currentHsl.s,
+                    min: 0,
+                    max: 100,
+                    onChange: (s) =>
+                      updateFromHsl(currentHsl.h, s, currentHsl.l),
+                  },
+                  {
+                    value: currentHsl.l,
+                    min: 0,
+                    max: 100,
+                    onChange: (l) =>
+                      updateFromHsl(currentHsl.h, currentHsl.s, l),
+                  },
+                  ...(showAlpha
+                    ? [
+                        {
+                          value: Math.round(alpha * 100),
+                          min: 0,
+                          max: 100,
+                          suffix: '%',
+                          onChange: (a: number) => setAlpha(a / 100),
+                        },
+                      ]
+                    : []),
                 ]}
               />
             )}
 
-            {"EyeDropper" in globalThis && (
+            {'EyeDropper' in globalThis && (
               <Button
                 variant="ghost"
                 size="icon-sm"
@@ -496,9 +587,9 @@ function ColorPicker({
                   type="button"
                   onClick={() => handlePresetClick(color)}
                   className={cn(
-                    "size-6 rounded-md border border-border transition-transform hover:scale-110",
+                    'size-6 rounded-md border border-border transition-transform hover:scale-110',
                     currentHex.toLowerCase() === color.toLowerCase() &&
-                      "ring-2 ring-ring ring-offset-1 ring-offset-background"
+                      'ring-2 ring-ring ring-offset-1 ring-offset-background',
                   )}
                   style={{ backgroundColor: color }}
                   title={color}

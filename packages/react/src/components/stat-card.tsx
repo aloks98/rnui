@@ -1,8 +1,8 @@
-import * as React from "react"
-import { ArrowDown, ArrowUp } from "lucide-react"
+import * as React from 'react'
+import { ArrowDown, ArrowUp } from 'lucide-react'
 
-import { cn } from "@/lib/utils"
-import { Card, CardContent } from "@/components/card"
+import { cn } from '@/lib/utils'
+import { Card, CardContent } from '@/components/card'
 
 export interface StatCardProps {
   title: string
@@ -22,7 +22,7 @@ function StatCard({
   className,
 }: StatCardProps) {
   return (
-    <Card className={cn("relative", className)}>
+    <Card className={cn('relative', className)}>
       <CardContent className="flex items-start justify-between gap-4 px-4 pt-0">
         <div className="flex flex-col gap-1">
           <p className="text-sm font-medium text-muted-foreground">{title}</p>
@@ -30,8 +30,8 @@ function StatCard({
           {trend && (
             <div
               className={cn(
-                "flex items-center gap-1 text-xs font-medium",
-                trend.isPositive ? "text-success" : "text-destructive"
+                'flex items-center gap-1 text-xs font-medium',
+                trend.isPositive ? 'text-success' : 'text-destructive',
               )}
             >
               {trend.isPositive ? (

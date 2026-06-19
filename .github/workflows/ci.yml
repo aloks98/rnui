@@ -30,13 +30,12 @@ jobs:
       - name: Build packages
         run: pnpm build
 
-  # Lint and format checks are non-blocking for now — oxlint and oxfmt still
-  # report a handful of pre-existing issues across the codebase. Flip
-  # `continue-on-error` to `false` once the backlog is fixed.
+  # Lint and format checks are blocking: oxlint must report zero errors and
+  # oxfmt must find no formatting drift. Run `pnpm format` locally to fix
+  # formatting before pushing.
   quality:
     name: Lint & format
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
 

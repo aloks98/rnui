@@ -13,9 +13,9 @@
  *   <EChart option={option} />
  */
 
-import type { EChartsOption } from "echarts"
+import type { EChartsOption } from 'echarts'
 
-type SeriesType = "bar" | "line" | "pie" | "scatter" | "radar" | "gauge"
+type SeriesType = 'bar' | 'line' | 'pie' | 'scatter' | 'radar' | 'gauge'
 
 interface BarConfig {
   data: number[]
@@ -86,7 +86,7 @@ class ChartConfigBuilder {
     if (categories) this.xAxisData = categories
 
     this.seriesList.push({
-      type: "bar",
+      type: 'bar',
       name,
       data,
       stack,
@@ -117,7 +117,7 @@ class ChartConfigBuilder {
     if (categories) this.xAxisData = categories
 
     this.seriesList.push({
-      type: "line",
+      type: 'line',
       name,
       data,
       smooth,
@@ -135,29 +135,29 @@ class ChartConfigBuilder {
     const {
       data,
       donut = false,
-      innerRadius = "40%",
-      outerRadius = "70%",
+      innerRadius = '40%',
+      outerRadius = '70%',
     } = config
 
     this.hasGrid = false
 
     this.seriesList.push({
-      type: "pie",
+      type: 'pie',
       radius: donut ? [innerRadius, outerRadius] : outerRadius,
-      center: ["50%", "50%"],
+      center: ['50%', '50%'],
       data,
       label: { show: true, fontSize: 12 },
       emphasis: {
         itemStyle: {
           shadowBlur: 10,
           shadowOffsetX: 0,
-          shadowColor: "rgba(0, 0, 0, 0.2)",
+          shadowColor: 'rgba(0, 0, 0, 0.2)',
         },
       },
       itemStyle: {
         borderRadius: donut ? 6 : 4,
         borderWidth: 2,
-        borderColor: "transparent",
+        borderColor: 'transparent',
       },
     })
 
@@ -171,7 +171,7 @@ class ChartConfigBuilder {
     const { data, name, symbolSize = 8 } = config
 
     this.seriesList.push({
-      type: "scatter",
+      type: 'scatter',
       name,
       data,
       symbolSize,
@@ -188,11 +188,11 @@ class ChartConfigBuilder {
 
     this.option.radar = {
       indicator: config.indicators,
-      shape: "polygon",
+      shape: 'polygon',
     }
 
     this.seriesList.push({
-      type: "radar",
+      type: 'radar',
       data: config.series.map((s) => ({
         name: s.name,
         value: s.value,
@@ -207,12 +207,12 @@ class ChartConfigBuilder {
    * Add a gauge chart
    */
   gauge(config: GaugeConfig): this {
-    const { value, name = "", min = 0, max = 100 } = config
+    const { value, name = '', min = 0, max = 100 } = config
 
     this.hasGrid = false
 
     this.seriesList.push({
-      type: "gauge",
+      type: 'gauge',
       min,
       max,
       progress: { show: true, width: 18 },
@@ -221,12 +221,12 @@ class ChartConfigBuilder {
       splitLine: { length: 12, lineStyle: { width: 2 } },
       axisLabel: { distance: 25, fontSize: 12 },
       anchor: { show: true, size: 20, itemStyle: { borderWidth: 2 } },
-      title: { show: !!name, offsetCenter: [0, "70%"], fontSize: 16 },
+      title: { show: !!name, offsetCenter: [0, '70%'], fontSize: 16 },
       detail: {
         valueAnimation: true,
         fontSize: 28,
-        offsetCenter: [0, "90%"],
-        formatter: "{value}%",
+        offsetCenter: [0, '90%'],
+        formatter: '{value}%',
       },
       data: [{ value, name }],
     })
@@ -241,7 +241,7 @@ class ChartConfigBuilder {
     this.option.title = {
       text,
       subtext: subtitle,
-      left: "center",
+      left: 'center',
     }
     return this
   }
@@ -249,12 +249,12 @@ class ChartConfigBuilder {
   /**
    * Enable legend
    */
-  legend(position: "top" | "bottom" | "left" | "right" = "bottom"): this {
+  legend(position: 'top' | 'bottom' | 'left' | 'right' = 'bottom'): this {
     this.option.legend = {
       show: true,
-      [position === "left" || position === "right" ? "orient" : ""]:
-        position === "left" || position === "right" ? "vertical" : undefined,
-      [position]: position === "bottom" ? 0 : position === "top" ? 0 : "auto",
+      [position === 'left' || position === 'right' ? 'orient' : '']:
+        position === 'left' || position === 'right' ? 'vertical' : undefined,
+      [position]: position === 'bottom' ? 0 : position === 'top' ? 0 : 'auto',
       itemWidth: 12,
       itemHeight: 12,
       itemGap: 16,
@@ -266,8 +266,8 @@ class ChartConfigBuilder {
    * Enable tooltip
    */
   tooltip(
-    trigger: "axis" | "item" = "axis",
-    formatter?: string | ((params: any) => string)
+    trigger: 'axis' | 'item' = 'axis',
+    formatter?: string | ((params: any) => string),
   ): this {
     this.option.tooltip = {
       trigger,
@@ -281,8 +281,8 @@ class ChartConfigBuilder {
    */
   dataZoom(start = 0, end = 100): this {
     this.option.dataZoom = [
-      { type: "slider", start, end, height: 20, bottom: 8 },
-      { type: "inside", start, end },
+      { type: 'slider', start, end, height: 20, bottom: 8 },
+      { type: 'inside', start, end },
     ]
     // Adjust grid for slider
     if (this.hasGrid) {
@@ -340,7 +340,7 @@ class ChartConfigBuilder {
     if (this.hasGrid && this.seriesList.length > 0) {
       const firstType = this.seriesList[0]?.type
 
-      if (firstType === "bar" || firstType === "line") {
+      if (firstType === 'bar' || firstType === 'line') {
         if (!result.grid) {
           const hasLegend = !!(result.legend as any)?.show
           result.grid = {
@@ -355,15 +355,15 @@ class ChartConfigBuilder {
         if (!result.xAxis) {
           result.xAxis = this.isHorizontal
             ? {
-                type: "value",
+                type: 'value',
                 axisLine: { show: false },
                 axisTick: { show: false },
                 splitLine: {
-                  lineStyle: { type: "dashed" as const, opacity: 0.5 },
+                  lineStyle: { type: 'dashed' as const, opacity: 0.5 },
                 },
               }
             : {
-                type: "category",
+                type: 'category',
                 data: this.xAxisData,
                 axisTick: { show: false },
                 splitLine: { show: false },
@@ -373,44 +373,44 @@ class ChartConfigBuilder {
         if (!result.yAxis) {
           result.yAxis = this.isHorizontal
             ? {
-                type: "category",
+                type: 'category',
                 data: this.xAxisData,
                 axisTick: { show: false },
                 splitLine: { show: false },
               }
             : {
-                type: "value",
+                type: 'value',
                 axisLine: { show: false },
                 axisTick: { show: false },
                 splitLine: {
-                  lineStyle: { type: "dashed" as const, opacity: 0.5 },
+                  lineStyle: { type: 'dashed' as const, opacity: 0.5 },
                 },
               }
         }
       }
 
-      if (firstType === "scatter" && !result.xAxis) {
+      if (firstType === 'scatter' && !result.xAxis) {
         result.xAxis = {
-          type: "value",
+          type: 'value',
           axisLine: { show: false },
           axisTick: { show: false },
           splitLine: {
-            lineStyle: { type: "dashed" as const, opacity: 0.5 },
+            lineStyle: { type: 'dashed' as const, opacity: 0.5 },
           },
         }
         result.yAxis = {
-          type: "value",
+          type: 'value',
           axisLine: { show: false },
           axisTick: { show: false },
           splitLine: {
-            lineStyle: { type: "dashed" as const, opacity: 0.5 },
+            lineStyle: { type: 'dashed' as const, opacity: 0.5 },
           },
         }
       }
     }
 
     if (!result.tooltip) {
-      result.tooltip = { trigger: "axis" }
+      result.tooltip = { trigger: 'axis' }
     }
 
     return result

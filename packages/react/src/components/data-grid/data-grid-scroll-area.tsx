@@ -5,11 +5,11 @@ import {
   useEffect,
   useRef,
   useState,
-} from "react"
-import { useDataGrid } from "@/components/data-grid/data-grid"
-import { ScrollArea as ScrollAreaPrimitive } from "@base-ui/react/scroll-area"
+} from 'react'
+import { useDataGrid } from '@/components/data-grid/data-grid'
+import { ScrollArea as ScrollAreaPrimitive } from '@base-ui/react/scroll-area'
 
-import { cn } from "@/lib/utils"
+import { cn } from '@/lib/utils'
 
 const MIN_THUMB_SIZE = 24
 const FALLBACK_SCROLLBAR_SIZE = 12
@@ -23,7 +23,7 @@ const INITIAL_METRICS = {
   trackHeight: 0,
 } as const
 
-type DataGridScrollAreaOrientation = "horizontal" | "vertical" | "both"
+type DataGridScrollAreaOrientation = 'horizontal' | 'vertical' | 'both'
 
 type ScrollbarMetrics = {
   hasVerticalOverflow: boolean
@@ -43,7 +43,7 @@ type ObservedElements = {
 
 type DataGridScrollAreaProps = Omit<
   ScrollAreaPrimitive.Root.Props,
-  "children"
+  'children'
 > & {
   children: ReactNode
   orientation?: DataGridScrollAreaOrientation
@@ -66,27 +66,27 @@ function areMetricsEqual(next: ScrollbarMetrics, prev: ScrollbarMetrics) {
 
 function applyMetrics(element: HTMLElement, metrics: ScrollbarMetrics) {
   element.style.setProperty(
-    "--data-grid-scrollbar-header-height",
-    `${metrics.headerHeight}px`
+    '--data-grid-scrollbar-header-height',
+    `${metrics.headerHeight}px`,
   )
   element.style.setProperty(
-    "--data-grid-scrollbar-thumb-height",
-    `${metrics.thumbHeight}px`
+    '--data-grid-scrollbar-thumb-height',
+    `${metrics.thumbHeight}px`,
   )
   element.style.setProperty(
-    "--data-grid-scrollbar-thumb-top",
-    `${metrics.thumbTop}px`
+    '--data-grid-scrollbar-thumb-top',
+    `${metrics.thumbTop}px`,
   )
   element.style.setProperty(
-    "--data-grid-scrollbar-track-height",
-    `${metrics.trackHeight}px`
+    '--data-grid-scrollbar-track-height',
+    `${metrics.trackHeight}px`,
   )
 }
 
 function DataGridScrollArea({
   children,
   className,
-  orientation = "both",
+  orientation = 'both',
   ...props
 }: DataGridScrollAreaProps) {
   const { props: dataGridProps } = useDataGrid()
@@ -105,8 +105,8 @@ function DataGridScrollArea({
     tableViewport: null,
   })
 
-  const showHorizontal = orientation !== "vertical"
-  const showVertical = orientation !== "horizontal"
+  const showHorizontal = orientation !== 'vertical'
+  const showVertical = orientation !== 'horizontal'
   const usesCustomVerticalScrollbar =
     showVertical && !!dataGridProps.tableLayout?.headerSticky
   const [hasCustomVerticalOverflow, setHasCustomVerticalOverflow] =
@@ -114,8 +114,8 @@ function DataGridScrollArea({
 
   const clearDragState = useCallback(() => {
     dragRef.current = null
-    document.body.style.userSelect = ""
-    document.body.style.webkitUserSelect = ""
+    document.body.style.userSelect = ''
+    document.body.style.webkitUserSelect = ''
   }, [])
 
   const resetMetrics = useCallback(() => {
@@ -151,7 +151,7 @@ function DataGridScrollArea({
       : 0
     const trackHeight = Math.max(
       0,
-      viewportHeight - headerHeight - horizontalScrollbarSize
+      viewportHeight - headerHeight - horizontalScrollbarSize,
     )
     const maxScroll = Math.max(0, scrollHeight - viewportHeight)
 
@@ -169,12 +169,12 @@ function DataGridScrollArea({
     } else {
       const bodyContentHeight = Math.max(
         trackHeight,
-        scrollHeight - headerHeight
+        scrollHeight - headerHeight,
       )
       const thumbHeight = clamp(
         trackHeight * (trackHeight / bodyContentHeight),
         MIN_THUMB_SIZE,
-        trackHeight
+        trackHeight,
       )
       const maxThumbTop = Math.max(0, trackHeight - thumbHeight)
       const thumbTop =
@@ -198,7 +198,7 @@ function DataGridScrollArea({
     setHasCustomVerticalOverflow((prev) =>
       prev === nextMetrics.hasVerticalOverflow
         ? prev
-        : nextMetrics.hasVerticalOverflow
+        : nextMetrics.hasVerticalOverflow,
     )
   }, [resetMetrics, showHorizontal, usesCustomVerticalScrollbar])
 
@@ -215,16 +215,16 @@ function DataGridScrollArea({
 
     observedElementsRef.current = {
       header: container.querySelector(
-        '[data-slot="data-grid-table"] thead'
+        '[data-slot="data-grid-table"] thead',
       ) as HTMLElement | null,
       horizontalScrollbar: container.querySelector(
-        '[data-slot="data-grid-scrollbar"][data-orientation="horizontal"]'
+        '[data-slot="data-grid-scrollbar"][data-orientation="horizontal"]',
       ) as HTMLElement | null,
       table: container.querySelector(
-        '[data-slot="data-grid-table"]'
+        '[data-slot="data-grid-table"]',
       ) as HTMLElement | null,
       tableViewport: container.querySelector(
-        '[data-slot="data-grid-table-viewport"]'
+        '[data-slot="data-grid-table-viewport"]',
       ) as HTMLElement | null,
     }
 
@@ -236,10 +236,10 @@ function DataGridScrollArea({
     }
 
     scheduleSync()
-    viewport.addEventListener("scroll", scheduleSync, { passive: true })
+    viewport.addEventListener('scroll', scheduleSync, { passive: true })
 
     const observer =
-      typeof ResizeObserver === "undefined"
+      typeof ResizeObserver === 'undefined'
         ? null
         : new ResizeObserver(scheduleSync)
 
@@ -257,7 +257,7 @@ function DataGridScrollArea({
     return () => {
       cancelAnimationFrame(frame)
       observer?.disconnect()
-      viewport.removeEventListener("scroll", scheduleSync)
+      viewport.removeEventListener('scroll', scheduleSync)
       clearDragState()
     }
   }, [
@@ -300,8 +300,8 @@ function DataGridScrollArea({
       startY: event.clientY,
     }
 
-    document.body.style.userSelect = "none"
-    document.body.style.webkitUserSelect = "none"
+    document.body.style.userSelect = 'none'
+    document.body.style.webkitUserSelect = 'none'
   }
 
   const handleThumbPointerMove = (event: PointerEvent<HTMLDivElement>) => {
@@ -348,7 +348,7 @@ function DataGridScrollArea({
     <div ref={containerRef} className="relative">
       <ScrollAreaPrimitive.Root
         data-slot="data-grid-scroll-area"
-        className={cn("relative", className)}
+        className={cn('relative', className)}
         {...props}
       >
         <ScrollAreaPrimitive.Viewport
@@ -401,9 +401,9 @@ function DataGridScrollArea({
           >
             <div
               className={cn(
-                "bg-border absolute end-px w-2",
-                "top-(--data-grid-scrollbar-thumb-top) h-(--data-grid-scrollbar-thumb-height)",
-                "rounded-full"
+                'bg-border absolute end-px w-2',
+                'top-(--data-grid-scrollbar-thumb-top) h-(--data-grid-scrollbar-thumb-height)',
+                'rounded-full',
               )}
               onLostPointerCapture={clearDragState}
               onPointerCancel={handleThumbPointerUp}

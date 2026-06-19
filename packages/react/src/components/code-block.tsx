@@ -1,9 +1,9 @@
-"use client"
+'use client'
 
-import * as React from "react"
-import { codeToHtml, type BundledTheme } from "shiki"
-import { cn } from "@/lib/utils"
-import { CopyButton } from "@/components/copy-button"
+import * as React from 'react'
+import { codeToHtml, type BundledTheme } from 'shiki'
+import { cn } from '@/lib/utils'
+import { CopyButton } from '@/components/copy-button'
 
 export interface CodeBlockTheme {
   light: BundledTheme
@@ -22,23 +22,23 @@ export interface CodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const defaultThemes: CodeBlockTheme = {
-  light: "github-light-default",
-  dark: "github-dark-default",
+  light: 'github-light-default',
+  dark: 'github-dark-default',
 }
 
 function CodeBlock({
   code,
-  language = "text",
+  language = 'text',
   showLineNumbers = false,
   showCopy = true,
   title,
   highlightLines = [],
   themes = defaultThemes,
-  fontSize = "13px",
+  fontSize = '13px',
   className,
   ...props
 }: CodeBlockProps) {
-  const [highlightedHtml, setHighlightedHtml] = React.useState<string>("")
+  const [highlightedHtml, setHighlightedHtml] = React.useState<string>('')
   const [isLoading, setIsLoading] = React.useState(true)
 
   React.useEffect(() => {
@@ -57,10 +57,10 @@ function CodeBlock({
             {
               line(node, line) {
                 if (highlightLines.includes(line)) {
-                  this.addClassToHast(node, "highlighted-line")
+                  this.addClassToHast(node, 'highlighted-line')
                 }
                 if (showLineNumbers) {
-                  node.properties["data-line"] = line
+                  node.properties['data-line'] = line
                 }
               },
             },
@@ -72,22 +72,24 @@ function CodeBlock({
         }
       } catch {
         if (!cancelled) {
-          setHighlightedHtml("")
+          setHighlightedHtml('')
           setIsLoading(false)
         }
       }
     }
 
     highlight()
-    return () => { cancelled = true }
+    return () => {
+      cancelled = true
+    }
   }, [code, language, themes, highlightLines, showLineNumbers])
 
   return (
     <div
       data-slot="code-block"
       className={cn(
-        "group/code-block relative overflow-hidden rounded-lg border border-border",
-        className
+        'group/code-block relative overflow-hidden rounded-lg border border-border',
+        className,
       )}
       style={{ fontSize }}
       {...props}
@@ -102,7 +104,12 @@ function CodeBlock({
               </span>
             )}
             {language && (
-              <span className={cn("text-xs text-muted-foreground", title && "before:content-['·'] before:mr-2")}>
+              <span
+                className={cn(
+                  'text-xs text-muted-foreground',
+                  title && "before:content-['·'] before:mr-2",
+                )}
+              >
                 {language}
               </span>
             )}
@@ -125,16 +132,17 @@ function CodeBlock({
         ) : highlightedHtml ? (
           <div
             className={cn(
-              "code-block-content",
-              "[&_pre]:overflow-x-auto [&_pre]:p-4 [&_pre]:leading-relaxed",
-              "[&_code]:block",
+              'code-block-content',
+              '[&_pre]:overflow-x-auto [&_pre]:p-4 [&_pre]:leading-relaxed',
+              '[&_code]:block',
               // Dual theme: shiki outputs --shiki-light/--shiki-dark CSS variables
-              "[&_span]:text-[var(--shiki-light)] dark:[&_span]:text-[var(--shiki-dark)]",
-              "[&_pre]:bg-[var(--shiki-light-bg)] dark:[&_pre]:bg-[var(--shiki-dark-bg)]",
+              '[&_span]:text-[var(--shiki-light)] dark:[&_span]:text-[var(--shiki-dark)]',
+              '[&_pre]:bg-[var(--shiki-light-bg)] dark:[&_pre]:bg-[var(--shiki-dark-bg)]',
               // Line numbers
-              showLineNumbers && "[&_.line[data-line]]:before:content-[attr(data-line)] [&_.line[data-line]]:before:mr-4 [&_.line[data-line]]:before:inline-block [&_.line[data-line]]:before:w-6 [&_.line[data-line]]:before:text-right [&_.line[data-line]]:before:text-muted-foreground/40 [&_.line[data-line]]:before:select-none [&_.line[data-line]]:before:tabular-nums",
+              showLineNumbers &&
+                '[&_.line[data-line]]:before:content-[attr(data-line)] [&_.line[data-line]]:before:mr-4 [&_.line[data-line]]:before:inline-block [&_.line[data-line]]:before:w-6 [&_.line[data-line]]:before:text-right [&_.line[data-line]]:before:text-muted-foreground/40 [&_.line[data-line]]:before:select-none [&_.line[data-line]]:before:tabular-nums',
               // Highlighted lines
-              "[&_.highlighted-line]:bg-primary/5 [&_.highlighted-line]:border-l-2 [&_.highlighted-line]:border-primary [&_.highlighted-line]:-ml-4 [&_.highlighted-line]:pl-[14px] [&_.highlighted-line]:-mr-4 [&_.highlighted-line]:pr-4",
+              '[&_.highlighted-line]:bg-primary/5 [&_.highlighted-line]:border-l-2 [&_.highlighted-line]:border-primary [&_.highlighted-line]:-ml-4 [&_.highlighted-line]:pl-[14px] [&_.highlighted-line]:-mr-4 [&_.highlighted-line]:pr-4',
             )}
             dangerouslySetInnerHTML={{ __html: highlightedHtml }}
           />
@@ -157,8 +165,8 @@ function InlineCode({ className, ...props }: InlineCodeProps) {
     <code
       data-slot="inline-code"
       className={cn(
-        "rounded-md bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground",
-        className
+        'rounded-md bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground',
+        className,
       )}
       {...props}
     />

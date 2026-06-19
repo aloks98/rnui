@@ -1,10 +1,10 @@
 {
   "name": "@e412/rnui-react",
   "version": "0.0.1",
-  "type": "module",
   "files": [
     "dist"
   ],
+  "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -21,26 +21,10 @@
     }
   },
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   },
   "scripts": {
     "build": "vite build"
-  },
-  "peerDependencies": {
-    "@e412/rnui-themes": "workspace:*",
-    "react": ">=18",
-    "react-dom": ">=18",
-    "tailwindcss": ">=4"
-  },
-  "devDependencies": {
-    "@types/culori": "^4.0.1",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
-    "vite": "^8.0.0",
-    "vite-plugin-dts": "^4.5.0"
   },
   "dependencies": {
     "@base-ui/react": "^1.3.0",
@@ -74,5 +58,20 @@
     "tw-animate-css": "^1.0.0",
     "vaul": "^1.1.2",
     "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/culori": "^4.0.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "vite": "^8.0.0",
+    "vite-plugin-dts": "^4.5.0"
+  },
+  "peerDependencies": {
+    "@e412/rnui-themes": "workspace:*",
+    "react": ">=18",
+    "react-dom": ">=18",
+    "tailwindcss": ">=4"
   }
 }

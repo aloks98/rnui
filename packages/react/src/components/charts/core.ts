@@ -4,8 +4,8 @@
  * Provides tree-shakeable ECharts initialization and management.
  */
 
-import * as echarts from "echarts/core"
-import { CanvasRenderer } from "echarts/renderers"
+import * as echarts from 'echarts/core'
+import { CanvasRenderer } from 'echarts/renderers'
 import {
   BarChart,
   LineChart,
@@ -14,7 +14,7 @@ import {
   RadarChart,
   EffectScatterChart,
   GaugeChart,
-} from "echarts/charts"
+} from 'echarts/charts'
 import {
   AriaComponent,
   AxisPointerComponent,
@@ -36,9 +36,9 @@ import {
   TooltipComponent,
   TransformComponent,
   VisualMapComponent,
-} from "echarts/components"
-import { LabelLayout, UniversalTransition } from "echarts/features"
-import type { EChartsCoreOption, EChartsType } from "echarts/core"
+} from 'echarts/components'
+import { LabelLayout, UniversalTransition } from 'echarts/features'
+import type { EChartsCoreOption, EChartsType } from 'echarts/core'
 
 // Register renderer, all chart types, and shared components once
 let baseRegistered = false
@@ -87,7 +87,7 @@ if (!baseRegistered) {
 export interface InitOptions {
   container?: HTMLElement | string | null
   theme?: string | object
-  renderer?: "canvas" | "svg"
+  renderer?: 'canvas' | 'svg'
   width?: number
   height?: number
   devicePixelRatio?: number
@@ -103,7 +103,7 @@ export function initChart(
   opts?: InitOptions,
 ): EChartsType {
   const options = {
-    renderer: opts?.renderer || "canvas",
+    renderer: opts?.renderer || 'canvas',
     width: opts?.width,
     height: opts?.height,
     devicePixelRatio: opts?.devicePixelRatio,
@@ -111,13 +111,17 @@ export function initChart(
   }
 
   const containerElement =
-    typeof container === "string"
-      ? typeof document !== "undefined"
+    typeof container === 'string'
+      ? typeof document !== 'undefined'
         ? (document.querySelector(container) as HTMLElement)
         : null
       : container
 
-  return echarts.init(containerElement ?? undefined, theme ?? undefined, options)
+  return echarts.init(
+    containerElement ?? undefined,
+    theme ?? undefined,
+    options,
+  )
 }
 
 /**

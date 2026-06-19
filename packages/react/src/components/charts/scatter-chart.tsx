@@ -1,15 +1,15 @@
-"use client"
+'use client'
 
-import { useMemo } from "react"
-import type { EChartsOption } from "echarts"
-import { EChart, type EChartProps } from "./echart"
+import { useMemo } from 'react'
+import type { EChartsOption } from 'echarts'
+import { EChart, type EChartProps } from './echart'
 
 export interface ScatterChartSeries {
   name: string
   data: [number, number][]
 }
 
-export interface ScatterChartProps extends Omit<EChartProps, "option"> {
+export interface ScatterChartProps extends Omit<EChartProps, 'option'> {
   series: ScatterChartSeries[]
   showLegend?: boolean
   option?: Partial<EChartsOption>
@@ -23,7 +23,7 @@ function ScatterChart({
 }: ScatterChartProps) {
   const chartOption = useMemo<EChartsOption>(() => {
     const chartSeries = series.map((s) => ({
-      type: "scatter" as const,
+      type: 'scatter' as const,
       name: s.name,
       data: s.data,
       symbolSize: 8,
@@ -38,19 +38,19 @@ function ScatterChart({
         bottom: showLegend ? 32 : 8,
       },
       xAxis: {
-        type: "value" as const,
+        type: 'value' as const,
         axisLine: { show: false },
         axisTick: { show: false },
         splitLine: {
-          lineStyle: { type: "dashed" as const, opacity: 0.5 },
+          lineStyle: { type: 'dashed' as const, opacity: 0.5 },
         },
       },
       yAxis: {
-        type: "value" as const,
+        type: 'value' as const,
         axisLine: { show: false },
         axisTick: { show: false },
         splitLine: {
-          lineStyle: { type: "dashed" as const, opacity: 0.5 },
+          lineStyle: { type: 'dashed' as const, opacity: 0.5 },
         },
       },
       series: chartSeries,

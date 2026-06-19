@@ -1,0 +1,3 @@
+# Generated files — produced by scripts/build, not hand-edited.
+# (oxfmt honors .prettierignore in addition to .gitignore.)
+packages/themes/src/presets.css

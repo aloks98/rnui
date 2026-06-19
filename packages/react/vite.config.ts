@@ -4,7 +4,8 @@ import dts from 'vite-plugin-dts'
 import pkg from './package.json' with { type: 'json' }
 
 // Externalize everything that isn't a relative/absolute import (i.e. all node_modules)
-const external = (id: string) => !id.startsWith('.') && !id.startsWith('/') && !id.startsWith('@/')
+const external = (id: string) =>
+  !id.startsWith('.') && !id.startsWith('/') && !id.startsWith('@/')
 
 export default defineConfig({
   plugins: [

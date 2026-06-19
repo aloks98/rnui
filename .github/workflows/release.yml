@@ -1,32 +1,43 @@
 name: Release
 
+# Publishes to npm when a GitHub Release is published.
+# Typical flow:
+#   1. Merge changesets to main -> the Version workflow opens a "Version
+#      Packages" PR that bumps versions and updates changelogs. (Decline/close
+#      the PR if you're not ready to release.)
+#   2. Merge that PR when a feature set is complete.
+#   3. Create a GitHub Release whose tag matches the new version
+#      (e.g. `gh release create v0.1.0`).
+#   4. This workflow builds the bumped packages and publishes them to npm.
 on:
-  push:
-    branches: [main]
+  release:
+    types: [published]
 
 concurrency: release-${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  release:
-    name: Publish or open version PR
+  publish:
+    name: Publish to npm
     runs-on: ubuntu-latest
     permissions:
-      contents: write       # needed to push the "Version Packages" PR
-      pull-requests: write  # needed to open/update the PR
-      id-token: write       # needed for npm provenance
+      contents: read
     steps:
       - uses: actions/checkout@v4
         with:
-          # Required by changesets to compute tags and generate changelogs
-          fetch-depth: 0
+          # Check out the exact commit the release tag points at, so we publish
+          # the versions that were merged from the "Version Packages" PR.
+          ref: ${{ github.event.release.tag_name }}
 
       - uses: pnpm/action-setup@v4
 
+      # NOTE: registry-url is intentionally omitted. Setting it makes setup-node
+      # write an .npmrc that reads ${NODE_AUTH_TOKEN} and points npm at it via
+      # NPM_CONFIG_USERCONFIG — which previously left the publish unauthenticated
+      # (404). We configure auth explicitly below instead.
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
-          registry-url: https://registry.npmjs.org
 
       - name: Install
         run: pnpm install --frozen-lockfile
@@ -34,16 +45,10 @@ jobs:
       - name: Build packages
         run: pnpm build
 
-      - name: Create release PR or publish
-        uses: changesets/action@v1
-        with:
-          # When a "Version Packages" PR is merged, this command runs to publish
-          publish: pnpm release:publish
-          # When changesets exist on main, this opens/updates a version PR
-          version: pnpm release:version
-          commit: "chore(release): version packages"
-          title: "chore(release): version packages"
+      - name: Configure npm auth
+        run: pnpm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_PROVENANCE: "true"
+
+      - name: Publish to npm
+        run: pnpm release:publish

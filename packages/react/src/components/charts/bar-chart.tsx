@@ -1,8 +1,8 @@
-"use client"
+'use client'
 
-import { useMemo } from "react"
-import type { EChartsOption } from "echarts"
-import { EChart, type EChartProps } from "./echart"
+import { useMemo } from 'react'
+import type { EChartsOption } from 'echarts'
+import { EChart, type EChartProps } from './echart'
 
 export interface BarChartDataItem {
   name: string
@@ -10,10 +10,10 @@ export interface BarChartDataItem {
   [key: string]: any
 }
 
-export interface BarChartProps extends Omit<EChartProps, "option"> {
+export interface BarChartProps extends Omit<EChartProps, 'option'> {
   data: BarChartDataItem[]
   categories?: string[]
-  series?: EChartsOption["series"]
+  series?: EChartsOption['series']
   horizontal?: boolean
   stacked?: boolean
   showLegend?: boolean
@@ -35,9 +35,9 @@ function BarChart({
 
     const defaultSeries = series ?? [
       {
-        type: "bar" as const,
+        type: 'bar' as const,
         data: data.map((d) => d.value),
-        stack: stacked ? "total" : undefined,
+        stack: stacked ? 'total' : undefined,
         barMaxWidth: 40,
         itemStyle: {
           borderRadius: horizontal ? [0, 4, 4, 0] : [4, 4, 0, 0],
@@ -55,33 +55,33 @@ function BarChart({
       },
       xAxis: horizontal
         ? {
-            type: "value",
+            type: 'value',
             axisLine: { show: false },
             axisTick: { show: false },
             splitLine: {
-              lineStyle: { type: "dashed" as const, opacity: 0.5 },
+              lineStyle: { type: 'dashed' as const, opacity: 0.5 },
             },
           }
         : {
-            type: "category",
+            type: 'category',
             data: cats,
             axisTick: { show: false },
             splitLine: { show: false },
           },
       yAxis: horizontal
         ? {
-            type: "category",
+            type: 'category',
             data: cats,
             axisLine: { show: false },
             axisTick: { show: false },
             splitLine: { show: false },
           }
         : {
-            type: "value",
+            type: 'value',
             axisLine: { show: false },
             axisTick: { show: false },
             splitLine: {
-              lineStyle: { type: "dashed" as const, opacity: 0.5 },
+              lineStyle: { type: 'dashed' as const, opacity: 0.5 },
             },
           },
       series: defaultSeries,

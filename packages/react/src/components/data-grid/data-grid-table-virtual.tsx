@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import {
   memo,
@@ -7,8 +7,8 @@ import {
   useEffect,
   useMemo,
   useState,
-} from "react"
-import { useDataGrid } from "@/components/data-grid/data-grid"
+} from 'react'
+import { useDataGrid } from '@/components/data-grid/data-grid'
 import {
   DataGridTableBase,
   DataGridTableBody,
@@ -22,17 +22,17 @@ import {
   DataGridTableRowSpacer,
   DataGridTableViewport,
   getDataGridTableRowSections,
-} from "@/components/data-grid/data-grid-table"
-import { flexRender, HeaderGroup, Row, Table } from "@tanstack/react-table"
+} from '@/components/data-grid/data-grid-table'
+import { flexRender, HeaderGroup, Row, Table } from '@tanstack/react-table'
 import {
   useVirtualizer,
   VirtualItem,
   Virtualizer,
   VirtualizerOptions,
-} from "@tanstack/react-virtual"
+} from '@tanstack/react-virtual'
 
-import { cn } from "@/lib/utils"
-import { Spinner } from "@/components/spinner"
+import { cn } from '@/lib/utils'
+import { Spinner } from '@/components/spinner'
 
 type DataGridTableVirtualScrollElements = {
   containerElement: HTMLDivElement | null
@@ -46,12 +46,12 @@ type DataGridTableVirtualizerInstance = Virtualizer<
 
 type DataGridTableVirtualizerOptions<TData> = Omit<
   VirtualizerOptions<HTMLElement, HTMLTableRowElement>,
-  "count" | "estimateSize" | "getItemKey" | "getScrollElement"
+  'count' | 'estimateSize' | 'getItemKey' | 'getScrollElement'
 > & {
   estimateSize?: (index: number, row: Row<TData>) => number
   getItemKey?: (index: number, row: Row<TData>) => string | number
   getScrollElement?: (
-    elements: DataGridTableVirtualScrollElements
+    elements: DataGridTableVirtualScrollElements,
   ) => HTMLElement | null
 }
 
@@ -115,8 +115,8 @@ function DataGridTableVirtualStatusRow({
       <td
         colSpan={columnCount}
         className={cn(
-          "text-muted-foreground py-4 text-center text-sm",
-          className
+          'text-muted-foreground py-4 text-center text-sm',
+          className,
         )}
       >
         {children}
@@ -157,7 +157,7 @@ function DataGridTableVirtualBody<TData>({
     isVirtualizationEnabled && hasCenterRows && virtualItems.length > 0
       ? Math.max(
           0,
-          totalSize - (virtualItems[virtualItems.length - 1]?.end ?? 0)
+          totalSize - (virtualItems[virtualItems.length - 1]?.end ?? 0),
         )
       : 0
 
@@ -169,9 +169,9 @@ function DataGridTableVirtualBody<TData>({
         key={row.id}
         row={row}
         pinnedBoundary={
-          index === topRows.length - 1 && hasMiddleSection ? "top" : undefined
+          index === topRows.length - 1 && hasMiddleSection ? 'top' : undefined
         }
-      />
+      />,
     )
   })
 
@@ -182,7 +182,7 @@ function DataGridTableVirtualBody<TData>({
           key="virtual-spacer-start"
           columnCount={columnCount}
           height={leadingSpacerHeight}
-        />
+        />,
       )
     }
 
@@ -196,7 +196,7 @@ function DataGridTableVirtualBody<TData>({
           key={row.id}
           row={row}
           rowRef={measureRowRef}
-        />
+        />,
       )
     })
 
@@ -206,7 +206,7 @@ function DataGridTableVirtualBody<TData>({
           key="virtual-spacer-end"
           columnCount={columnCount}
           height={trailingSpacerHeight}
-        />
+        />,
       )
     }
   } else {
@@ -225,7 +225,7 @@ function DataGridTableVirtualBody<TData>({
           <Spinner className="size-4 opacity-60" />
           {loadingMoreMessage}
         </div>
-      </DataGridTableVirtualStatusRow>
+      </DataGridTableVirtualStatusRow>,
     )
   }
 
@@ -237,7 +237,7 @@ function DataGridTableVirtualBody<TData>({
         className="py-3 text-xs"
       >
         {allRowsLoadedMessage}
-      </DataGridTableVirtualStatusRow>
+      </DataGridTableVirtualStatusRow>,
     )
   }
 
@@ -248,10 +248,10 @@ function DataGridTableVirtualBody<TData>({
         row={row}
         pinnedBoundary={
           index === 0 && (topRows.length > 0 || hasMiddleSection)
-            ? "bottom"
+            ? 'bottom'
             : undefined
         }
-      />
+      />,
     )
   })
 
@@ -265,7 +265,7 @@ function DataGridTableVirtualBody<TData>({
  */
 const MemoizedVirtualBody = memo(
   DataGridTableVirtualBody,
-  (_prev, next) => !!next.table.getState().columnSizingInfo.isResizingColumn
+  (_prev, next) => !!next.table.getState().columnSizingInfo.isResizingColumn,
 ) as typeof DataGridTableVirtualBody
 
 function DataGridTableVirtual<TData>({
@@ -283,12 +283,12 @@ function DataGridTableVirtual<TData>({
   const { table, props } = useDataGrid()
   const { topRows, centerRows, bottomRows } = getDataGridTableRowSections(
     table,
-    props.tableLayout?.rowsPinnable
+    props.tableLayout?.rowsPinnable,
   )
   const columnCount =
     table.getVisibleFlatColumns().length +
     (props.tableLayout?.columnsResizable ? 1 : 0)
-  const isInfiniteMode = typeof onFetchMore === "function"
+  const isInfiniteMode = typeof onFetchMore === 'function'
   const [viewportElements, setViewportElements] =
     useState<DataGridTableVirtualScrollElements>({
       containerElement: null,
@@ -306,16 +306,16 @@ function DataGridTableVirtual<TData>({
 
   const isVirtualizationEnabled = virtualizerOptions?.enabled !== false
   const loadingMoreMessage =
-    props.fetchingMoreMessage || props.loadingMessage || "Loading..."
+    props.fetchingMoreMessage || props.loadingMessage || 'Loading...'
   const allRowsLoadedMessage =
-    props.allRowsLoadedMessage || "All records loaded"
+    props.allRowsLoadedMessage || 'All records loaded'
 
   const handleViewportRef = useCallback((node: HTMLDivElement | null) => {
     setViewportElements({
       containerElement: node,
       scrollElement:
         (node?.closest(
-          '[data-slot="scroll-area-viewport"]'
+          '[data-slot="scroll-area-viewport"]',
         ) as HTMLElement | null) ?? node,
     })
   }, [])
@@ -340,7 +340,7 @@ function DataGridTableVirtual<TData>({
 
       return customGetItemKey?.(index, row) ?? row.id ?? index
     },
-    [centerRows, customGetItemKey]
+    [centerRows, customGetItemKey],
   )
 
   const resolveEstimateSize = useCallback(
@@ -351,7 +351,7 @@ function DataGridTableVirtual<TData>({
         ? (customEstimateSize?.(index, row) ?? estimateSize)
         : estimateSize
     },
-    [centerRows, customEstimateSize, estimateSize]
+    [centerRows, customEstimateSize, estimateSize],
   )
 
   const virtualizer = useVirtualizer({
@@ -374,7 +374,7 @@ function DataGridTableVirtual<TData>({
       : undefined
   const resolvedFetchMoreOffset = useMemo(
     () => Math.max(0, fetchMoreOffset),
-    [fetchMoreOffset]
+    [fetchMoreOffset],
   )
 
   useEffect(() => {
@@ -407,11 +407,11 @@ function DataGridTableVirtual<TData>({
   return (
     <DataGridTableViewport
       viewportRef={handleViewportRef}
-      className={!usesExternalScrollArea ? "block" : undefined}
+      className={!usesExternalScrollArea ? 'block' : undefined}
       style={
         usesExternalScrollArea
           ? undefined
-          : { height, overflow: "auto", position: "relative" }
+          : { height, overflow: 'auto', position: 'relative' }
       }
     >
       <DataGridTableBase>
@@ -431,13 +431,13 @@ function DataGridTableVirtual<TData>({
                           <div className="truncate">
                             {flexRender(
                               header.column.columnDef.header,
-                              header.getContext()
+                              header.getContext(),
                             )}
                           </div>
                         ) : (
                           flexRender(
                             header.column.columnDef.header,
-                            header.getContext()
+                            header.getContext(),
                           )
                         )}
                         {props.tableLayout?.columnsResizable &&

@@ -1,6 +1,6 @@
-import { Slider as SliderPrimitive } from "@base-ui/react/slider"
+import { Slider as SliderPrimitive } from '@base-ui/react/slider'
 
-import { cn } from "@/lib/utils"
+import { cn } from '@/lib/utils'
 
 function Slider({
   className,
@@ -18,7 +18,10 @@ function Slider({
 
   return (
     <SliderPrimitive.Root
-      className={cn("data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full", className)}
+      className={cn(
+        'data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full',
+        className,
+      )}
       data-slot="slider"
       defaultValue={defaultValue}
       value={value}

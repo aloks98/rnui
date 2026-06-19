@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import type React from "react"
+import type React from 'react'
 import {
   createContext,
   useCallback,
@@ -10,16 +10,13 @@ import {
   useMemo,
   useRef,
   useState,
-} from "react"
-import { useRender } from "@base-ui/react/use-render"
-import { cva } from "class-variance-authority"
+} from 'react'
+import { useRender } from '@base-ui/react/use-render'
+import { cva } from 'class-variance-authority'
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/button"
-import {
-  ButtonGroup,
-  ButtonGroupText,
-} from "@/components/button-group"
+import { cn } from '@/lib/utils'
+import { Button } from '@/components/button'
+import { ButtonGroup, ButtonGroupText } from '@/components/button-group'
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -31,23 +28,19 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/components/dropdown-menu"
-import { Input } from "@/components/input"
+} from '@/components/dropdown-menu'
+import { Input } from '@/components/input'
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
   InputGroupText,
-} from "@/components/input-group"
-import { Kbd } from "@/components/kbd"
-import { ScrollArea } from "@/components/scroll-area"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/tooltip"
-import { AlertCircleIcon, CheckIcon, XIcon } from "lucide-react"
+} from '@/components/input-group'
+import { Kbd } from '@/components/kbd'
+import { ScrollArea } from '@/components/scroll-area'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
+import { AlertCircleIcon, CheckIcon, XIcon } from 'lucide-react'
 
 // i18n Configuration Interface
 export interface FilterI18nConfig {
@@ -126,82 +119,82 @@ export interface FilterI18nConfig {
 // Default English i18n configuration
 export const DEFAULT_I18N: FilterI18nConfig = {
   // UI Labels
-  addFilter: "Filter",
-  searchFields: "Filter...",
-  noFieldsFound: "No filters found.",
-  noResultsFound: "No results found.",
-  select: "Select...",
-  true: "True",
-  false: "False",
-  min: "Min",
-  max: "Max",
-  to: "to",
-  typeAndPressEnter: "Type and press Enter to add tag",
-  selected: "selected",
-  selectedCount: "selected",
-  percent: "%",
-  defaultCurrency: "$",
-  defaultColor: "#000000",
-  addFilterTitle: "Add filter",
+  addFilter: 'Filter',
+  searchFields: 'Filter...',
+  noFieldsFound: 'No filters found.',
+  noResultsFound: 'No results found.',
+  select: 'Select...',
+  true: 'True',
+  false: 'False',
+  min: 'Min',
+  max: 'Max',
+  to: 'to',
+  typeAndPressEnter: 'Type and press Enter to add tag',
+  selected: 'selected',
+  selectedCount: 'selected',
+  percent: '%',
+  defaultCurrency: '$',
+  defaultColor: '#000000',
+  addFilterTitle: 'Add filter',
 
   // Operators
   operators: {
-    is: "is",
-    isNot: "is not",
-    isAnyOf: "is any of",
-    isNotAnyOf: "is not any of",
-    includesAll: "includes all",
-    excludesAll: "excludes all",
-    before: "before",
-    after: "after",
-    between: "between",
-    notBetween: "not between",
-    contains: "contains",
-    notContains: "does not contain",
-    startsWith: "starts with",
-    endsWith: "ends with",
-    isExactly: "is exactly",
-    equals: "equals",
-    notEquals: "not equals",
-    greaterThan: "greater than",
-    lessThan: "less than",
-    overlaps: "overlaps",
-    includes: "includes",
-    excludes: "excludes",
-    includesAllOf: "includes all of",
-    includesAnyOf: "includes any of",
-    empty: "is empty",
-    notEmpty: "is not empty",
+    is: 'is',
+    isNot: 'is not',
+    isAnyOf: 'is any of',
+    isNotAnyOf: 'is not any of',
+    includesAll: 'includes all',
+    excludesAll: 'excludes all',
+    before: 'before',
+    after: 'after',
+    between: 'between',
+    notBetween: 'not between',
+    contains: 'contains',
+    notContains: 'does not contain',
+    startsWith: 'starts with',
+    endsWith: 'ends with',
+    isExactly: 'is exactly',
+    equals: 'equals',
+    notEquals: 'not equals',
+    greaterThan: 'greater than',
+    lessThan: 'less than',
+    overlaps: 'overlaps',
+    includes: 'includes',
+    excludes: 'excludes',
+    includesAllOf: 'includes all of',
+    includesAnyOf: 'includes any of',
+    empty: 'is empty',
+    notEmpty: 'is not empty',
   },
 
   // Placeholders
   placeholders: {
     enterField: (fieldType: string) => `Enter ${fieldType}...`,
-    selectField: "Select...",
+    selectField: 'Select...',
     searchField: (fieldName: string) => `Search ${fieldName.toLowerCase()}...`,
-    enterKey: "Enter key...",
-    enterValue: "Enter value...",
+    enterKey: 'Enter key...',
+    enterValue: 'Enter value...',
   },
 
   // Helper functions
   helpers: {
-    formatOperator: (operator: string) => operator.replace(/_/g, " "),
+    formatOperator: (operator: string) => operator.replace(/_/g, ' '),
   },
 
   // Validation
   validation: {
-    invalidEmail: "Invalid email format",
-    invalidUrl: "Invalid URL format",
-    invalidTel: "Invalid phone format",
-    invalid: "Invalid input format",
+    invalidEmail: 'Invalid email format',
+    invalidUrl: 'Invalid URL format',
+    invalidTel: 'Invalid phone format',
+    invalid: 'Invalid input format',
   },
 }
 
 // Context for all Filter component props
 interface FilterContextValue {
-  variant: "solid" | "default"
-  size: "sm" | "default" | "lg"
-  radius: "default" | "full"
+  variant: 'solid' | 'default'
+  size: 'sm' | 'default' | 'lg'
+  radius: 'default' | 'full'
   i18n: FilterI18nConfig
   className?: string
   showSearchInput?: boolean
@@ -210,9 +203,9 @@ interface FilterContextValue {
 }
 
 const FilterContext = createContext<FilterContextValue>({
-  variant: "default",
-  size: "default",
-  radius: "default",
+  variant: 'default',
+  size: 'default',
+  radius: 'default',
   i18n: DEFAULT_I18N,
   className: undefined,
   showSearchInput: true,
@@ -223,21 +216,21 @@ const FilterContext = createContext<FilterContextValue>({
 const useFilterContext = () => useContext(FilterContext)
 
 // Container variant for filters wrapper
-const filtersContainerVariants = cva("flex flex-wrap items-center", {
+const filtersContainerVariants = cva('flex flex-wrap items-center', {
   variants: {
     variant: {
-      solid: "gap-2",
-      default: "",
+      solid: 'gap-2',
+      default: '',
     },
     size: {
-      sm: "gap-1.5",
-      default: "gap-2.5",
-      lg: "gap-3.5",
+      sm: 'gap-1.5',
+      default: 'gap-2.5',
+      lg: 'gap-3.5',
     },
   },
   defaultVariants: {
-    variant: "default",
-    size: "default",
+    variant: 'default',
+    size: 'default',
   },
 })
 
@@ -253,7 +246,7 @@ function FilterInput<T = unknown>({
 }) {
   const context = useFilterContext()
   const [isValid, setIsValid] = useState(true)
-  const [validationMessage, setValidationMessage] = useState("")
+  const [validationMessage, setValidationMessage] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -285,17 +278,17 @@ function FilterInput<T = unknown>({
     // Only validate if there's a value and (pattern or validation function)
     if (value && (pattern || field?.validation)) {
       let valid = true
-      let customMessage = ""
+      let customMessage = ''
 
       // If there's a custom validation function, use it
       if (field?.validation) {
         const result = field.validation(value)
         // Handle both boolean and object return types
-        if (typeof result === "boolean") {
+        if (typeof result === 'boolean') {
           valid = result
         } else {
           valid = result.valid
-          customMessage = result.message || ""
+          customMessage = result.message || ''
         }
       } else if (pattern) {
         // Use pattern validation
@@ -303,11 +296,11 @@ function FilterInput<T = unknown>({
       }
 
       setIsValid(valid)
-      setValidationMessage(valid ? "" : customMessage || getValidationMessage())
+      setValidationMessage(valid ? '' : customMessage || getValidationMessage())
     } else {
       // Reset validation state for empty values or no validation
       setIsValid(true)
-      setValidationMessage("")
+      setValidationMessage('')
     }
 
     // Call the original onBlur if provided
@@ -320,17 +313,17 @@ function FilterInput<T = unknown>({
     if (
       !isValid &&
       ![
-        "Tab",
-        "Escape",
-        "Enter",
-        "ArrowUp",
-        "ArrowDown",
-        "ArrowLeft",
-        "ArrowRight",
+        'Tab',
+        'Escape',
+        'Enter',
+        'ArrowUp',
+        'ArrowDown',
+        'ArrowLeft',
+        'ArrowRight',
       ].includes(e.key)
     ) {
       setIsValid(true)
-      setValidationMessage("")
+      setValidationMessage('')
     }
 
     // Call the original onKeyDown if provided
@@ -340,14 +333,14 @@ function FilterInput<T = unknown>({
   return (
     <InputGroup
       className={cn(
-        "w-36",
-        context.size == "sm" &&
-          "style-vega:h-8! style-nova:h-7! style-maia:h-8! style-lyra:h-7! style-mira:h-6!",
-        context.size == "default" &&
-          "style-vega:h-9! style-nova:h-8! style-maia:h-9! style-lyra:h-8! style-mira:h-7!",
-        context.size == "lg" &&
-          "style-vega:h-10! style-nova:h-9! style-maia:h-10! style-lyra:h-9! style-mira:h-8!",
-        className
+        'w-36',
+        context.size == 'sm' &&
+          'style-vega:h-8! style-nova:h-7! style-maia:h-8! style-lyra:h-7! style-mira:h-6!',
+        context.size == 'default' &&
+          'style-vega:h-9! style-nova:h-8! style-maia:h-9! style-lyra:h-8! style-mira:h-7!',
+        context.size == 'lg' &&
+          'style-vega:h-10! style-nova:h-9! style-maia:h-10! style-lyra:h-9! style-mira:h-8!',
+        className,
       )}
     >
       {field?.prefix && (
@@ -360,18 +353,18 @@ function FilterInput<T = unknown>({
         aria-invalid={!isValid}
         aria-describedby={
           !isValid && validationMessage
-            ? `${field?.key || "input"}-error`
+            ? `${field?.key || 'input'}-error`
             : undefined
         }
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}
         className={cn(
-          context.size == "sm" &&
-            "style-vega:h-8! style-nova:h-7! style-maia:h-8! style-lyra:h-7! style-mira:h-6! text-xs",
-          context.size == "default" &&
-            "style-vega:h-9! style-nova:h-8! style-maia:h-9! style-lyra:h-8! style-mira:h-7!",
-          context.size == "lg" &&
-            "style-vega:h-10! style-nova:h-9! style-maia:h-10! style-lyra:h-9! style-mira:h-8!"
+          context.size == 'sm' &&
+            'style-vega:h-8! style-nova:h-7! style-maia:h-8! style-lyra:h-7! style-mira:h-6! text-xs',
+          context.size == 'default' &&
+            'style-vega:h-9! style-nova:h-8! style-maia:h-9! style-lyra:h-8! style-mira:h-7!',
+          context.size == 'lg' &&
+            'style-vega:h-10! style-nova:h-9! style-maia:h-10! style-lyra:h-9! style-mira:h-8!',
         )}
         {...props}
       />
@@ -403,28 +396,26 @@ interface FilterRemoveButtonProps extends React.ButtonHTMLAttributes<HTMLButtonE
 
 function FilterRemoveButton({
   className,
-  icon = (
-    <XIcon />
-  ),
+  icon = <XIcon />,
   ...props
 }: FilterRemoveButtonProps) {
   const context = useFilterContext()
 
   const sizeMap = {
-    sm: "sm" as const,
-    default: "sm" as const,
-    lg: "default" as const,
+    sm: 'sm' as const,
+    default: 'sm' as const,
+    lg: 'default' as const,
   }
 
   return (
     <Button
       variant="outline"
       size={
-        context.size === "sm"
-          ? "icon-sm"
-          : context.size === "lg"
-            ? "icon-lg"
-            : "icon"
+        context.size === 'sm'
+          ? 'icon-sm'
+          : context.size === 'lg'
+            ? 'icon-lg'
+            : 'icon'
       }
       {...props}
     >
@@ -471,7 +462,7 @@ export interface FilterFieldConfig<T = unknown> {
   key?: string
   label?: string
   icon?: React.ReactNode
-  type?: "select" | "multiselect" | "text" | "custom" | "separator"
+  type?: 'select' | 'multiselect' | 'text' | 'custom' | 'separator'
   // Group-level configuration
   group?: string
   fields?: FilterFieldConfig<T>[]
@@ -481,7 +472,7 @@ export interface FilterFieldConfig<T = unknown> {
   customRenderer?: (props: CustomRendererProps<T>) => React.ReactNode
   customValueRenderer?: (
     values: T[],
-    options: FilterOption<T>[]
+    options: FilterOption<T>[],
   ) => React.ReactNode
   placeholder?: string
   searchable?: boolean
@@ -493,7 +484,7 @@ export interface FilterFieldConfig<T = unknown> {
   suffix?: string | React.ReactNode
   pattern?: string
   validation?: (
-    value: unknown
+    value: unknown,
   ) => boolean | { valid: boolean; message?: string }
   allowCustomValues?: boolean
   className?: string
@@ -514,20 +505,20 @@ export interface FilterFieldConfig<T = unknown> {
 
 // Helper functions to handle both flat and grouped field configurations
 const isFieldGroup = <T = unknown,>(
-  item: FilterFieldConfig<T> | FilterFieldGroup<T>
+  item: FilterFieldConfig<T> | FilterFieldGroup<T>,
 ): item is FilterFieldGroup<T> => {
-  return "fields" in item && Array.isArray(item.fields)
+  return 'fields' in item && Array.isArray(item.fields)
 }
 
 // Helper function to check if a FilterFieldConfig is a group-level configuration
 const isGroupLevelField = <T = unknown,>(
-  field: FilterFieldConfig<T>
+  field: FilterFieldConfig<T>,
 ): boolean => {
   return Boolean(field.group && field.fields)
 }
 
 const flattenFields = <T = unknown,>(
-  fields: FilterFieldsConfig<T>
+  fields: FilterFieldsConfig<T>,
 ): FilterFieldConfig<T>[] => {
   return fields.reduce<FilterFieldConfig<T>[]>((acc, item) => {
     if (isFieldGroup(item)) {
@@ -542,7 +533,7 @@ const flattenFields = <T = unknown,>(
 }
 
 const getFieldsMap = <T = unknown,>(
-  fields: FilterFieldsConfig<T>
+  fields: FilterFieldsConfig<T>,
 ): Record<string, FilterFieldConfig<T>> => {
   const flatFields = flattenFields(fields)
   return flatFields.reduce(
@@ -553,44 +544,44 @@ const getFieldsMap = <T = unknown,>(
       }
       return acc
     },
-    {} as Record<string, FilterFieldConfig<T>>
+    {} as Record<string, FilterFieldConfig<T>>,
   )
 }
 
 // Helper function to create operators from i18n config
 const createOperatorsFromI18n = (
-  i18n: FilterI18nConfig
+  i18n: FilterI18nConfig,
 ): Record<string, FilterOperator[]> => ({
   select: [
-    { value: "is", label: i18n.operators.is },
-    { value: "is_not", label: i18n.operators.isNot },
-    { value: "empty", label: i18n.operators.empty },
-    { value: "not_empty", label: i18n.operators.notEmpty },
+    { value: 'is', label: i18n.operators.is },
+    { value: 'is_not', label: i18n.operators.isNot },
+    { value: 'empty', label: i18n.operators.empty },
+    { value: 'not_empty', label: i18n.operators.notEmpty },
   ],
   multiselect: [
-    { value: "is_any_of", label: i18n.operators.isAnyOf },
-    { value: "is_not_any_of", label: i18n.operators.isNotAnyOf },
-    { value: "includes_all", label: i18n.operators.includesAll },
-    { value: "excludes_all", label: i18n.operators.excludesAll },
-    { value: "empty", label: i18n.operators.empty },
-    { value: "not_empty", label: i18n.operators.notEmpty },
+    { value: 'is_any_of', label: i18n.operators.isAnyOf },
+    { value: 'is_not_any_of', label: i18n.operators.isNotAnyOf },
+    { value: 'includes_all', label: i18n.operators.includesAll },
+    { value: 'excludes_all', label: i18n.operators.excludesAll },
+    { value: 'empty', label: i18n.operators.empty },
+    { value: 'not_empty', label: i18n.operators.notEmpty },
   ],
   text: [
-    { value: "contains", label: i18n.operators.contains },
-    { value: "not_contains", label: i18n.operators.notContains },
-    { value: "starts_with", label: i18n.operators.startsWith },
-    { value: "ends_with", label: i18n.operators.endsWith },
-    { value: "is", label: i18n.operators.isExactly },
-    { value: "empty", label: i18n.operators.empty },
-    { value: "not_empty", label: i18n.operators.notEmpty },
+    { value: 'contains', label: i18n.operators.contains },
+    { value: 'not_contains', label: i18n.operators.notContains },
+    { value: 'starts_with', label: i18n.operators.startsWith },
+    { value: 'ends_with', label: i18n.operators.endsWith },
+    { value: 'is', label: i18n.operators.isExactly },
+    { value: 'empty', label: i18n.operators.empty },
+    { value: 'not_empty', label: i18n.operators.notEmpty },
   ],
   custom: [
-    { value: "is", label: i18n.operators.is },
-    { value: "after", label: i18n.operators.after },
-    { value: "is", label: i18n.operators.is },
-    { value: "between", label: i18n.operators.between },
-    { value: "empty", label: i18n.operators.empty },
-    { value: "not_empty", label: i18n.operators.notEmpty },
+    { value: 'is', label: i18n.operators.is },
+    { value: 'after', label: i18n.operators.after },
+    { value: 'is', label: i18n.operators.is },
+    { value: 'between', label: i18n.operators.between },
+    { value: 'empty', label: i18n.operators.empty },
+    { value: 'not_empty', label: i18n.operators.notEmpty },
   ],
 })
 
@@ -602,22 +593,22 @@ export const DEFAULT_OPERATORS: Record<string, FilterOperator[]> =
 const getOperatorsForField = <T = unknown,>(
   field: FilterFieldConfig<T>,
   values: T[],
-  i18n: FilterI18nConfig
+  i18n: FilterI18nConfig,
 ): FilterOperator[] => {
   if (field.operators) return field.operators
 
   const operators = createOperatorsFromI18n(i18n)
 
   // Determine field type for operator selection
-  let fieldType = field.type || "select"
+  let fieldType = field.type || 'select'
 
   // If it's a select field but has multiple values, treat as multiselect
-  if (fieldType === "select" && values.length > 1) {
-    fieldType = "multiselect"
+  if (fieldType === 'select' && values.length > 1) {
+    fieldType = 'multiselect'
   }
 
   // If it's a multiselect field or has multiselect operators, use multiselect operators
-  if (fieldType === "multiselect" || field.type === "multiselect") {
+  if (fieldType === 'multiselect' || field.type === 'multiselect') {
     return operators.multiselect
   }
 
@@ -664,14 +655,14 @@ function FilterOperatorDropdown<T = unknown>({
             key={op.value}
             onClick={() => onChange(op.value)}
             className={cn(
-              "data-highlighted:bg-accent data-highlighted:text-accent-foreground flex items-center justify-between"
+              'data-highlighted:bg-accent data-highlighted:text-accent-foreground flex items-center justify-between',
             )}
           >
             <span>{op.label}</span>
             <CheckIcon
               className={cn(
-                "text-primary ms-auto",
-                op.value === operator ? "opacity-100" : "opacity-0"
+                'text-primary ms-auto',
+                op.value === operator ? 'opacity-100' : 'opacity-0',
               )}
             />
           </DropdownMenuItem>
@@ -705,7 +696,7 @@ function SelectOptionsPopover<T = unknown>({
   inline = false,
 }: SelectOptionsPopoverProps<T>) {
   const [open, setOpen] = useState(false)
-  const [searchInput, setSearchInput] = useState("")
+  const [searchInput, setSearchInput] = useState('')
   const [highlightedIndex, setHighlightedIndex] = useState(-1)
   const inputRef = useRef<HTMLInputElement>(null)
   const context = useFilterContext()
@@ -724,13 +715,13 @@ function SelectOptionsPopover<T = unknown>({
   useEffect(() => {
     if (highlightedIndex >= 0 && open) {
       const element = document.getElementById(
-        `${baseId}-item-${highlightedIndex}`
+        `${baseId}-item-${highlightedIndex}`,
       )
-      element?.scrollIntoView({ block: "nearest" })
+      element?.scrollIntoView({ block: 'nearest' })
     }
   }, [highlightedIndex, open, baseId])
 
-  const isMultiSelect = field.type === "multiselect" || values.length > 1
+  const isMultiSelect = field.type === 'multiselect' || values.length > 1
   const effectiveValues =
     (field.value !== undefined ? (field.value as T[]) : values) || []
 
@@ -742,12 +733,12 @@ function SelectOptionsPopover<T = unknown>({
   // Filter options based on search input
   const filteredSelectedOptions = selectedOptions // Keep all selected visible
   const filteredUnselectedOptions = unselectedOptions.filter((opt) =>
-    opt.label.toLowerCase().includes(searchInput.toLowerCase())
+    opt.label.toLowerCase().includes(searchInput.toLowerCase()),
   )
 
   const allFilteredOptions = useMemo(
     () => [...filteredSelectedOptions, ...filteredUnselectedOptions],
-    [filteredSelectedOptions, filteredUnselectedOptions]
+    [filteredSelectedOptions, filteredUnselectedOptions],
   )
 
   const handleClose = () => {
@@ -772,36 +763,36 @@ function SelectOptionsPopover<T = unknown>({
                 : undefined
             }
             placeholder={context.i18n.placeholders.searchField(
-              field.label || ""
+              field.label || '',
             )}
             className={cn(
-              "border-input h-8 rounded-none border-0 bg-transparent! px-2 text-sm shadow-none",
-              "focus-visible:border-border focus-visible:ring-0 focus-visible:ring-offset-0",
-              open && "placeholder:text-foreground"
+              'border-input h-8 rounded-none border-0 bg-transparent! px-2 text-sm shadow-none',
+              'focus-visible:border-border focus-visible:ring-0 focus-visible:ring-offset-0',
+              open && 'placeholder:text-foreground',
             )}
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             onBlur={() => open && inputRef.current?.focus()}
             onClick={(e) => e.stopPropagation()}
             onKeyDown={(e) => {
-              if (e.key === "ArrowDown") {
+              if (e.key === 'ArrowDown') {
                 e.preventDefault()
                 if (allFilteredOptions.length > 0) {
                   setHighlightedIndex((prev) =>
-                    prev < allFilteredOptions.length - 1 ? prev + 1 : 0
+                    prev < allFilteredOptions.length - 1 ? prev + 1 : 0,
                   )
                 }
-              } else if (e.key === "ArrowUp") {
+              } else if (e.key === 'ArrowUp') {
                 e.preventDefault()
                 if (allFilteredOptions.length > 0) {
                   setHighlightedIndex((prev) =>
-                    prev > 0 ? prev - 1 : allFilteredOptions.length - 1
+                    prev > 0 ? prev - 1 : allFilteredOptions.length - 1,
                   )
                 }
-              } else if (e.key === "ArrowLeft") {
+              } else if (e.key === 'ArrowLeft') {
                 e.preventDefault()
                 setOpen(false)
-              } else if (e.key === "Enter" && highlightedIndex >= 0) {
+              } else if (e.key === 'Enter' && highlightedIndex >= 0) {
                 e.preventDefault()
                 const option = allFilteredOptions[highlightedIndex]
                 if (option) {
@@ -865,15 +856,15 @@ function SelectOptionsPopover<T = unknown>({
                       onMouseEnter={() => setHighlightedIndex(index)}
                       checked={true}
                       className={cn(
-                        "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
-                        option.className
+                        'data-highlighted:bg-accent data-highlighted:text-accent-foreground',
+                        option.className,
                       )}
                       onSelect={(e) => {
                         if (isMultiSelect) e.preventDefault()
                       }}
                       onCheckedChange={() => {
                         const next = effectiveValues.filter(
-                          (v) => v !== option.value
+                          (v) => v !== option.value,
                         ) as T[]
                         if (field.onValueChange) {
                           field.onValueChange(next)
@@ -915,8 +906,8 @@ function SelectOptionsPopover<T = unknown>({
                       onMouseEnter={() => setHighlightedIndex(overallIndex)}
                       checked={false}
                       className={cn(
-                        "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
-                        option.className
+                        'data-highlighted:bg-accent data-highlighted:text-accent-foreground',
+                        option.className,
                       )}
                       onSelect={(e) => {
                         if (isMultiSelect) e.preventDefault()
@@ -965,7 +956,7 @@ function SelectOptionsPopover<T = unknown>({
       onOpenChange={(open) => {
         setOpen(open)
         if (!open) {
-          setTimeout(() => setSearchInput(""), 200)
+          setTimeout(() => setSearchInput(''), 200)
         }
       }}
     >
@@ -997,7 +988,7 @@ function SelectOptionsPopover<T = unknown>({
       />
       <DropdownMenuContent
         align="start"
-        className={cn("w-[200px] px-0", field.className)}
+        className={cn('w-[200px] px-0', field.className)}
       >
         {renderMenuContent()}
       </DropdownMenuContent>
@@ -1014,7 +1005,7 @@ function FilterValueSelector<T = unknown>({
 }: FilterValueSelectorProps<T>) {
   const context = useFilterContext()
 
-  if (operator === "empty" || operator === "not_empty") {
+  if (operator === 'empty' || operator === 'not_empty') {
     return null
   }
 
@@ -1026,22 +1017,22 @@ function FilterValueSelector<T = unknown>({
     )
   }
 
-  if (field.type === "text") {
+  if (field.type === 'text') {
     return (
       <FilterInput
         type="text"
-        value={(values[0] as string) || ""}
+        value={(values[0] as string) || ''}
         onChange={(e) => onChange([e.target.value] as T[])}
         placeholder={field.placeholder}
         pattern={field.pattern}
         field={field}
-        className={cn("w-36", field.className)}
+        className={cn('w-36', field.className)}
         autoFocus={autoFocus}
       />
     )
   }
 
-  if (field.type === "select" || field.type === "multiselect") {
+  if (field.type === 'select' || field.type === 'multiselect') {
     return (
       <SelectOptionsPopover field={field} values={values} onChange={onChange} />
     )
@@ -1086,25 +1077,25 @@ export const FiltersContent = <T = unknown,>({
           if (filter.id === filterId) {
             const updatedFilter = { ...filter, ...updates }
             if (
-              updates.operator === "empty" ||
-              updates.operator === "not_empty"
+              updates.operator === 'empty' ||
+              updates.operator === 'not_empty'
             ) {
               updatedFilter.values = [] as T[]
             }
             return updatedFilter
           }
           return filter
-        })
+        }),
       )
     },
-    [filters, onChange]
+    [filters, onChange],
   )
 
   const removeFilter = useCallback(
     (filterId: string) => {
       onChange(filters.filter((filter) => filter.id !== filterId))
     },
-    [filters, onChange]
+    [filters, onChange],
   )
 
   return (
@@ -1114,7 +1105,7 @@ export const FiltersContent = <T = unknown,>({
           variant: context.variant,
           size: context.size,
         }),
-        context.className
+        context.className,
       )}
     >
       {filters.map((filter) => {
@@ -1156,9 +1147,9 @@ interface FiltersProps<T = unknown> {
   fields: FilterFieldsConfig<T>
   onChange: (filters: Filter<T>[]) => void
   className?: string
-  variant?: "solid" | "default"
-  size?: "sm" | "default" | "lg"
-  radius?: "default" | "full"
+  variant?: 'solid' | 'default'
+  size?: 'sm' | 'default' | 'lg'
+  radius?: 'default' | 'full'
   i18n?: Partial<FilterI18nConfig>
   showSearchInput?: boolean
   trigger?: React.ReactNode
@@ -1193,7 +1184,7 @@ function FilterSubmenuContent<T = unknown>({
   onBack,
   onClose,
 }: FilterSubmenuContentProps<T>) {
-  const [searchInput, setSearchInput] = useState("")
+  const [searchInput, setSearchInput] = useState('')
   const [highlightedIndex, setHighlightedIndex] = useState(-1)
   const inputRef = useRef<HTMLInputElement>(null)
   const baseId = useId()
@@ -1216,9 +1207,9 @@ function FilterSubmenuContent<T = unknown>({
   useEffect(() => {
     if (highlightedIndex >= 0 && isActive) {
       const element = document.getElementById(
-        `${baseId}-item-${highlightedIndex}`
+        `${baseId}-item-${highlightedIndex}`,
       )
-      element?.scrollIntoView({ block: "nearest" })
+      element?.scrollIntoView({ block: 'nearest' })
     }
   }, [highlightedIndex, isActive, baseId])
 
@@ -1255,11 +1246,11 @@ function FilterSubmenuContent<T = unknown>({
                 ? `${baseId}-item-${highlightedIndex}`
                 : undefined
             }
-            placeholder={i18n.placeholders.searchField(field.label || "")}
+            placeholder={i18n.placeholders.searchField(field.label || '')}
             className={cn(
-              "h-8 rounded-none border-0 bg-transparent! px-2 text-sm shadow-none",
-              "focus-visible:border-border focus-visible:ring-0 focus-visible:ring-offset-0",
-              isActive && "placeholder:text-foreground"
+              'h-8 rounded-none border-0 bg-transparent! px-2 text-sm shadow-none',
+              'focus-visible:border-border focus-visible:ring-0 focus-visible:ring-offset-0',
+              isActive && 'placeholder:text-foreground',
             )}
             value={searchInput}
             onBlur={() => isActive && inputRef.current?.focus()}
@@ -1271,36 +1262,36 @@ function FilterSubmenuContent<T = unknown>({
             }}
             onClick={(e) => e.stopPropagation()}
             onKeyDown={(e) => {
-              if (e.key === "ArrowDown") {
+              if (e.key === 'ArrowDown') {
                 e.preventDefault()
                 if (filteredOptions.length > 0) {
                   setHighlightedIndex((prev) =>
-                    prev < filteredOptions.length - 1 ? prev + 1 : 0
+                    prev < filteredOptions.length - 1 ? prev + 1 : 0,
                   )
                 }
-              } else if (e.key === "ArrowUp") {
+              } else if (e.key === 'ArrowUp') {
                 e.preventDefault()
                 if (filteredOptions.length > 0) {
                   setHighlightedIndex((prev) =>
-                    prev > 0 ? prev - 1 : filteredOptions.length - 1
+                    prev > 0 ? prev - 1 : filteredOptions.length - 1,
                   )
                 }
-              } else if (e.key === "ArrowLeft") {
+              } else if (e.key === 'ArrowLeft') {
                 e.preventDefault()
                 onBack?.()
-              } else if (e.key === "Enter" && highlightedIndex >= 0) {
+              } else if (e.key === 'Enter' && highlightedIndex >= 0) {
                 e.preventDefault()
                 const option = filteredOptions[highlightedIndex]
                 if (option) {
                   onToggle(
                     option.value as T,
-                    currentValues.includes(option.value)
+                    currentValues.includes(option.value),
                   )
                   if (!isMultiSelect) {
                     onBack?.()
                   }
                 }
-              } else if (e.key === "Escape") {
+              } else if (e.key === 'Escape') {
                 e.preventDefault()
                 onClose?.()
               }
@@ -1318,36 +1309,36 @@ function FilterSubmenuContent<T = unknown>({
           tabIndex={field.searchable === false ? 0 : -1}
           onKeyDown={(e) => {
             if (field.searchable === false) {
-              if (e.key === "ArrowDown") {
+              if (e.key === 'ArrowDown') {
                 e.preventDefault()
                 if (filteredOptions.length > 0) {
                   setHighlightedIndex((prev) =>
-                    prev < filteredOptions.length - 1 ? prev + 1 : 0
+                    prev < filteredOptions.length - 1 ? prev + 1 : 0,
                   )
                 }
-              } else if (e.key === "ArrowUp") {
+              } else if (e.key === 'ArrowUp') {
                 e.preventDefault()
                 if (filteredOptions.length > 0) {
                   setHighlightedIndex((prev) =>
-                    prev > 0 ? prev - 1 : filteredOptions.length - 1
+                    prev > 0 ? prev - 1 : filteredOptions.length - 1,
                   )
                 }
-              } else if (e.key === "ArrowLeft") {
+              } else if (e.key === 'ArrowLeft') {
                 e.preventDefault()
                 onBack?.()
-              } else if (e.key === "Enter" && highlightedIndex >= 0) {
+              } else if (e.key === 'Enter' && highlightedIndex >= 0) {
                 e.preventDefault()
                 const option = filteredOptions[highlightedIndex]
                 if (option) {
                   onToggle(
                     option.value as T,
-                    currentValues.includes(option.value)
+                    currentValues.includes(option.value),
                   )
                   if (!isMultiSelect) {
                     onBack?.()
                   }
                 }
-              } else if (e.key === "Escape") {
+              } else if (e.key === 'Escape') {
                 e.preventDefault()
                 onClose?.()
               }
@@ -1377,8 +1368,8 @@ function FilterSubmenuContent<T = unknown>({
                       onMouseEnter={() => setHighlightedIndex(index)}
                       checked={isSelected}
                       className={cn(
-                        "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
-                        option.className
+                        'data-highlighted:bg-accent data-highlighted:text-accent-foreground',
+                        option.className,
                       )}
                       onSelect={(e) => {
                         if (isMultiSelect) e.preventDefault()
@@ -1406,25 +1397,25 @@ export function Filters<T = unknown>({
   fields,
   onChange,
   className,
-  variant = "default",
-  size = "default",
-  radius = "default",
+  variant = 'default',
+  size = 'default',
+  radius = 'default',
   i18n,
   showSearchInput = true,
   trigger,
   allowMultiple = true,
   menuPopupClassName,
   enableShortcut = false,
-  shortcutKey = "f",
-  shortcutLabel = "F",
+  shortcutKey = 'f',
+  shortcutLabel = 'F',
 }: FiltersProps<T>) {
   const [addFilterOpen, setAddFilterOpen] = useState(false)
-  const [menuSearchInput, setMenuSearchInput] = useState("")
-  const [activeMenu, setActiveMenu] = useState<string>("root")
+  const [menuSearchInput, setMenuSearchInput] = useState('')
+  const [activeMenu, setActiveMenu] = useState<string>('root')
   const [openSubMenu, setOpenSubMenu] = useState<string | null>(null)
   const [highlightedIndex, setHighlightedIndex] = useState(-1)
   const [lastAddedFilterId, setLastAddedFilterId] = useState<string | null>(
-    null
+    null,
   )
   const rootInputRef = useRef<HTMLInputElement>(null)
   const rootId = useId()
@@ -1446,12 +1437,12 @@ export function Filters<T = unknown>({
       }
     }
 
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
   }, [enableShortcut, shortcutKey, addFilterOpen])
 
   useEffect(() => {
-    if (addFilterOpen && activeMenu === "root") {
+    if (addFilterOpen && activeMenu === 'root') {
       rootInputRef.current?.focus()
     }
   }, [addFilterOpen, activeMenu])
@@ -1463,9 +1454,9 @@ export function Filters<T = unknown>({
   useEffect(() => {
     if (highlightedIndex >= 0 && addFilterOpen) {
       const element = document.getElementById(
-        `${rootId}-item-${highlightedIndex}`
+        `${rootId}-item-${highlightedIndex}`,
       )
-      element?.scrollIntoView({ block: "nearest" })
+      element?.scrollIntoView({ block: 'nearest' })
     }
   }, [highlightedIndex, addFilterOpen, rootId])
 
@@ -1507,25 +1498,25 @@ export function Filters<T = unknown>({
           if (filter.id === filterId) {
             const updatedFilter = { ...filter, ...updates }
             if (
-              updates.operator === "empty" ||
-              updates.operator === "not_empty"
+              updates.operator === 'empty' ||
+              updates.operator === 'not_empty'
             ) {
               updatedFilter.values = [] as T[]
             }
             return updatedFilter
           }
           return filter
-        })
+        }),
       )
     },
-    [filters, onChange]
+    [filters, onChange],
   )
 
   const removeFilter = useCallback(
     (filterId: string) => {
       onChange(filters.filter((filter) => filter.id !== filterId))
     },
-    [filters, onChange]
+    [filters, onChange],
   )
 
   const addFilter = useCallback(
@@ -1534,24 +1525,24 @@ export function Filters<T = unknown>({
       if (field && field.key) {
         const defaultOperator =
           field.defaultOperator ||
-          (field.type === "multiselect" ? "is_any_of" : "is")
-        const defaultValues: unknown[] = field.type === "text" ? [""] : []
+          (field.type === 'multiselect' ? 'is_any_of' : 'is')
+        const defaultValues: unknown[] = field.type === 'text' ? [''] : []
         const newFilter = createFilter<T>(
           fieldKey,
           defaultOperator,
-          defaultValues as T[]
+          defaultValues as T[],
         )
         setLastAddedFilterId(newFilter.id)
         onChange([...filters, newFilter])
         setAddFilterOpen(false)
-        setMenuSearchInput("")
+        setMenuSearchInput('')
       }
     },
-    [fieldsMap, filters, onChange]
+    [fieldsMap, filters, onChange],
   )
 
   useEffect(() => {
-    if (addFilterOpen && activeMenu === "root") {
+    if (addFilterOpen && activeMenu === 'root') {
       rootInputRef.current?.focus()
     }
   }, [addFilterOpen, activeMenu])
@@ -1559,7 +1550,7 @@ export function Filters<T = unknown>({
   const selectableFields = useMemo(() => {
     const flatFields = flattenFields(fields)
     return flatFields.filter((field) => {
-      if (!field.key || field.type === "separator") return false
+      if (!field.key || field.type === 'separator') return false
       if (allowMultiple) return true
       return !filters.some((filter) => filter.field === field.key)
     })
@@ -1569,7 +1560,7 @@ export function Filters<T = unknown>({
     return selectableFields.filter(
       (f) =>
         !menuSearchInput ||
-        f.label?.toLowerCase().includes(menuSearchInput.toLowerCase())
+        f.label?.toLowerCase().includes(menuSearchInput.toLowerCase()),
     )
   }, [selectableFields, menuSearchInput])
 
@@ -1581,7 +1572,7 @@ export function Filters<T = unknown>({
 
   const triggerButton = useRender({
     render: trigger as React.ReactElement,
-    defaultTagName: "button",
+    defaultTagName: 'button',
   })
 
   return (
@@ -1605,16 +1596,16 @@ export function Filters<T = unknown>({
             onOpenChange={(open) => {
               setAddFilterOpen(open)
               if (!open) {
-                setMenuSearchInput("")
+                setMenuSearchInput('')
                 setSessionFilterIds({})
               } else {
-                setActiveMenu("root")
+                setActiveMenu('root')
               }
             }}
           >
             <DropdownMenuTrigger render={triggerButton} />
             <DropdownMenuContent
-              className={cn("w-[220px]", menuPopupClassName)}
+              className={cn('w-[220px]', menuPopupClassName)}
               align="start"
             >
               {showSearchInput && (
@@ -1631,76 +1622,76 @@ export function Filters<T = unknown>({
                       }
                       placeholder={mergedI18n.searchFields}
                       className={cn(
-                        "h-8 rounded-none border-0 bg-transparent! px-2 text-sm shadow-none",
-                        "focus-visible:border-border focus-visible:ring-0 focus-visible:ring-offset-0",
-                        activeMenu === "root" && "placeholder:text-foreground"
+                        'h-8 rounded-none border-0 bg-transparent! px-2 text-sm shadow-none',
+                        'focus-visible:border-border focus-visible:ring-0 focus-visible:ring-offset-0',
+                        activeMenu === 'root' && 'placeholder:text-foreground',
                       )}
                       value={menuSearchInput}
-                      onFocus={() => setActiveMenu("root")}
-                      onMouseEnter={() => setActiveMenu("root")}
+                      onFocus={() => setActiveMenu('root')}
+                      onMouseEnter={() => setActiveMenu('root')}
                       onBlur={() =>
-                        activeMenu === "root" && rootInputRef.current?.focus()
+                        activeMenu === 'root' && rootInputRef.current?.focus()
                       }
                       onChange={(e) => setMenuSearchInput(e.target.value)}
                       onClick={(e) => e.stopPropagation()}
                       onKeyDown={(e) => {
-                        if (e.key === "ArrowDown") {
+                        if (e.key === 'ArrowDown') {
                           e.preventDefault()
                           if (filteredFields.length > 0) {
                             setHighlightedIndex((prev) =>
-                              prev < filteredFields.length - 1 ? prev + 1 : 0
+                              prev < filteredFields.length - 1 ? prev + 1 : 0,
                             )
                           }
-                        } else if (e.key === "ArrowUp") {
+                        } else if (e.key === 'ArrowUp') {
                           e.preventDefault()
                           if (filteredFields.length > 0) {
                             setHighlightedIndex((prev) =>
-                              prev > 0 ? prev - 1 : filteredFields.length - 1
+                              prev > 0 ? prev - 1 : filteredFields.length - 1,
                             )
                           }
                         } else if (
-                          (e.key === "ArrowRight" || e.key === "ArrowLeft") &&
+                          (e.key === 'ArrowRight' || e.key === 'ArrowLeft') &&
                           highlightedIndex >= 0
                         ) {
                           const field = filteredFields[highlightedIndex]
                           const hasSubMenu =
                             field &&
-                            (field.type === "select" ||
-                              field.type === "multiselect") &&
+                            (field.type === 'select' ||
+                              field.type === 'multiselect') &&
                             field.options?.length
 
-                          if (e.key === "ArrowRight" && hasSubMenu) {
+                          if (e.key === 'ArrowRight' && hasSubMenu) {
                             e.preventDefault()
                             setOpenSubMenu(field.key || null)
-                            setActiveMenu(field.key || "root")
-                          } else if (e.key === "ArrowLeft") {
+                            setActiveMenu(field.key || 'root')
+                          } else if (e.key === 'ArrowLeft') {
                             e.preventDefault()
                             if (openSubMenu) {
                               setOpenSubMenu(null)
-                              setActiveMenu("root")
+                              setActiveMenu('root')
                             }
                           }
-                        } else if (e.key === "Enter" && highlightedIndex >= 0) {
+                        } else if (e.key === 'Enter' && highlightedIndex >= 0) {
                           e.preventDefault()
                           const field = filteredFields[highlightedIndex]
                           if (field.key) {
                             const hasSubMenu =
-                              (field.type === "select" ||
-                                field.type === "multiselect") &&
+                              (field.type === 'select' ||
+                                field.type === 'multiselect') &&
                               field.options?.length
                             if (!hasSubMenu) {
                               addFilter(field.key)
                             } else {
                               if (openSubMenu === field.key) {
                                 setOpenSubMenu(null)
-                                setActiveMenu("root")
+                                setActiveMenu('root')
                               } else {
                                 setOpenSubMenu(field.key)
                                 setActiveMenu(field.key)
                               }
                             }
                           }
-                        } else if (e.key === "Escape") {
+                        } else if (e.key === 'Escape') {
                           setAddFilterOpen(false)
                         }
                         e.stopPropagation()
@@ -1721,7 +1712,7 @@ export function Filters<T = unknown>({
                   className="flex max-h-[min(var(--available-height),24rem)] w-full scroll-pt-2 scroll-pb-2 flex-col overscroll-contain"
                   role="listbox"
                   id={`${rootId}-listbox`}
-                  onMouseEnter={() => setActiveMenu("root")}
+                  onMouseEnter={() => setActiveMenu('root')}
                 >
                   <ScrollArea className="**:data-[slot=scroll-area-scrollbar]:m-0">
                     {(() => {
@@ -1737,12 +1728,12 @@ export function Filters<T = unknown>({
                         const isHighlighted = highlightedIndex === index
                         const itemId = `${rootId}-item-${index}`
                         const hasSubMenu =
-                          (field.type === "select" ||
-                            field.type === "multiselect") &&
+                          (field.type === 'select' ||
+                            field.type === 'multiselect') &&
                           field.options?.length
 
                         if (hasSubMenu) {
-                          const isMultiSelect = field.type === "multiselect"
+                          const isMultiSelect = field.type === 'multiselect'
                           const fieldKey = field.key as string
                           const sessionFilterId = sessionFilterIds[fieldKey]
                           const sessionFilter = sessionFilterId
@@ -1760,7 +1751,7 @@ export function Filters<T = unknown>({
                                 } else {
                                   if (openSubMenu === fieldKey) {
                                     setOpenSubMenu(null)
-                                    setActiveMenu("root")
+                                    setActiveMenu('root')
                                   }
                                 }
                               }}
@@ -1772,7 +1763,7 @@ export function Filters<T = unknown>({
                                 data-highlighted={isHighlighted || undefined}
                                 onMouseEnter={() => {
                                   setHighlightedIndex(index)
-                                  setActiveMenu("root")
+                                  setActiveMenu('root')
                                 }}
                                 className="data-popup-open:bg-accent data-popup-open:text-accent-foreground data-highlighted:bg-accent data-highlighted:text-accent-foreground"
                               >
@@ -1796,14 +1787,14 @@ export function Filters<T = unknown>({
                                   }}
                                   onBack={() => {
                                     setOpenSubMenu(null)
-                                    setActiveMenu("root")
+                                    setActiveMenu('root')
                                   }}
                                   onClose={() => setAddFilterOpen(false)}
                                   onToggle={(value, isSelected) => {
                                     if (isMultiSelect) {
                                       const nextValues = isSelected
                                         ? (currentValues.filter(
-                                            (v) => v !== value
+                                            (v) => v !== value,
                                           ) as T[])
                                         : ([...currentValues, value] as T[])
 
@@ -1811,27 +1802,27 @@ export function Filters<T = unknown>({
                                         if (nextValues.length === 0) {
                                           onChange(
                                             filters.filter(
-                                              (f) => f.id !== sessionFilter.id
-                                            )
+                                              (f) => f.id !== sessionFilter.id,
+                                            ),
                                           )
                                           setSessionFilterIds((prev) => ({
                                             ...prev,
-                                            [fieldKey]: "",
+                                            [fieldKey]: '',
                                           }))
                                         } else {
                                           onChange(
                                             filters.map((f) =>
                                               f.id === sessionFilter.id
                                                 ? { ...f, values: nextValues }
-                                                : f
-                                            )
+                                                : f,
+                                            ),
                                           )
                                         }
                                       } else {
                                         const newFilter = createFilter<T>(
                                           fieldKey,
-                                          field.defaultOperator || "is_any_of",
-                                          nextValues
+                                          field.defaultOperator || 'is_any_of',
+                                          nextValues,
                                         )
                                         onChange([...filters, newFilter])
                                         setSessionFilterIds((prev) => ({
@@ -1842,8 +1833,8 @@ export function Filters<T = unknown>({
                                     } else {
                                       const newFilter = createFilter<T>(
                                         fieldKey,
-                                        field.defaultOperator || "is",
-                                        [value] as T[]
+                                        field.defaultOperator || 'is',
+                                        [value] as T[],
                                       )
                                       setLastAddedFilterId(newFilter.id)
                                       onChange([...filters, newFilter])
@@ -1914,11 +1905,11 @@ export function Filters<T = unknown>({
 export const createFilter = <T = unknown,>(
   field: string,
   operator?: string,
-  values: T[] = []
+  values: T[] = [],
 ): Filter<T> => ({
   id: `${Date.now()}-${Math.random().toString(36).substring(2, 11)}`,
   field,
-  operator: operator || "is",
+  operator: operator || 'is',
   values,
 })
 
@@ -1926,7 +1917,7 @@ export const createFilterGroup = <T = unknown,>(
   id: string,
   label: string,
   fields: FilterFieldConfig<T>[],
-  initialFilters: Filter<T>[] = []
+  initialFilters: Filter<T>[] = [],
 ): FilterGroup<T> => ({
   id,
   label,

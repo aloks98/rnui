@@ -6,8 +6,8 @@ import {
   useId,
   useRef,
   useState,
-} from "react"
-import { useDataGrid } from "@/components/data-grid/data-grid"
+} from 'react'
+import { useDataGrid } from '@/components/data-grid/data-grid'
 import {
   DataGridTableBase,
   DataGridTableBody,
@@ -24,7 +24,7 @@ import {
   DataGridTableHeadRowCellResize,
   DataGridTableRowSpacer,
   DataGridTableViewport,
-} from "@/components/data-grid/data-grid-table"
+} from '@/components/data-grid/data-grid-table'
 import {
   closestCenter,
   DndContext,
@@ -35,23 +35,23 @@ import {
   useSensor,
   useSensors,
   type DragEndEvent,
-} from "@dnd-kit/core"
+} from '@dnd-kit/core'
 import {
   horizontalListSortingStrategy,
   SortableContext,
   useSortable,
-} from "@dnd-kit/sortable"
-import { CSS } from "@dnd-kit/utilities"
+} from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 import {
   Cell,
   flexRender,
   Header,
   HeaderGroup,
   Row,
-} from "@tanstack/react-table"
+} from '@tanstack/react-table'
 
-import { Button } from "@/components/button"
-import { GripVerticalIcon } from "lucide-react"
+import { Button } from '@/components/button'
+import { GripVerticalIcon } from 'lucide-react'
 
 function DataGridTableDndHeader<TData>({
   header,
@@ -79,11 +79,11 @@ function DataGridTableDndHeader<TData>({
 
   const style: CSSProperties = {
     opacity: isDragging ? 0.8 : 1,
-    position: "relative",
+    position: 'relative',
     transform: CSS.Translate.toString(transform),
     transition,
-    cursor: isDragging ? "grabbing" : undefined,
-    whiteSpace: "nowrap",
+    cursor: isDragging ? 'grabbing' : undefined,
+    whiteSpace: 'nowrap',
     width: props.tableLayout?.columnsResizable
       ? `calc(var(--header-${header.id}-size) * 1px)`
       : header.column.getSize(),
@@ -101,12 +101,15 @@ function DataGridTableDndHeader<TData>({
           <Button
             size="icon-sm"
             variant="ghost"
-            className={`-ms-2 size-6 ${isDragging ? "cursor-grabbing" : "cursor-grab active:cursor-grabbing"}`}
+            className={`-ms-2 size-6 ${isDragging ? 'cursor-grabbing' : 'cursor-grab active:cursor-grabbing'}`}
             {...attributes}
             {...listeners}
             aria-label="Drag to reorder"
           >
-            <GripVerticalIcon className="opacity-60 hover:opacity-100" aria-hidden="true" />
+            <GripVerticalIcon
+              className="opacity-60 hover:opacity-100"
+              aria-hidden="true"
+            />
           </Button>
         )}
         <span className="grow truncate">
@@ -130,10 +133,10 @@ function DataGridTableDndCell<TData>({ cell }: { cell: Cell<TData, unknown> }) {
 
   const style: CSSProperties = {
     opacity: isDragging ? 0.8 : 1,
-    position: "relative",
+    position: 'relative',
     transform: CSS.Translate.toString(transform),
     transition,
-    cursor: isDragging ? "grabbing" : undefined,
+    cursor: isDragging ? 'grabbing' : undefined,
     width: props.tableLayout?.columnsResizable
       ? `calc(var(--col-${cell.column.id}-size) * 1px)`
       : cell.column.getSize(),
@@ -162,7 +165,7 @@ function DataGridTableDnd<TData>({
   const sensors = useSensors(
     useSensor(MouseSensor, {}),
     useSensor(TouchSensor, {}),
-    useSensor(KeyboardSensor, {})
+    useSensor(KeyboardSensor, {}),
   )
 
   useEffect(() => {
@@ -172,8 +175,8 @@ function DataGridTableDnd<TData>({
     const previousBodyCursor = body.style.cursor
     const previousDocumentCursor = documentElement.style.cursor
 
-    body.style.cursor = "grabbing"
-    documentElement.style.cursor = "grabbing"
+    body.style.cursor = 'grabbing'
+    documentElement.style.cursor = 'grabbing'
 
     return () => {
       body.style.cursor = previousBodyCursor
@@ -221,8 +224,8 @@ function DataGridTableDnd<TData>({
         viewportRef={containerRef}
         className={
           isDraggingColumn
-            ? "relative cursor-grabbing [&_*]:cursor-grabbing!"
-            : "relative"
+            ? 'relative cursor-grabbing [&_*]:cursor-grabbing!'
+            : 'relative'
         }
       >
         <DataGridTableBase>
@@ -253,7 +256,7 @@ function DataGridTableDnd<TData>({
           )}
 
           <DataGridTableBody>
-            {props.loadingMode === "skeleton" &&
+            {props.loadingMode === 'skeleton' &&
             isLoading &&
             pagination?.pageSize ? (
               Array.from({ length: pagination.pageSize }).map((_, rowIndex) => (

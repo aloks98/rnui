@@ -2,15 +2,15 @@
  * Core TypeScript types for chart components
  */
 
-import type { ComposeOption, EChartsCoreOption } from "echarts/core"
-import type { CSSProperties } from "react"
+import type { ComposeOption, EChartsCoreOption } from 'echarts/core'
+import type { CSSProperties } from 'react'
 import type {
   BarSeriesOption,
   LineSeriesOption,
   PieSeriesOption,
   ScatterSeriesOption,
   RadarSeriesOption,
-} from "echarts/charts"
+} from 'echarts/charts'
 import type {
   TitleComponentOption,
   TooltipComponentOption,
@@ -18,12 +18,12 @@ import type {
   GridComponentOption,
   RadarComponentOption,
   DatasetComponentOption,
-} from "echarts/components"
+} from 'echarts/components'
 
 /**
  * Theme mode
  */
-export type ThemeMode = "light" | "dark"
+export type ThemeMode = 'light' | 'dark'
 
 /**
  * shadcn/ui CSS variable names for chart colors
@@ -286,7 +286,7 @@ export interface BaseChartProps {
   /** Apply the built-in shadcn-style minimal defaults preset. Defaults to true. */
   preset?: boolean
   /** Renderer type ('canvas' or 'svg') */
-  renderer?: "canvas" | "svg"
+  renderer?: 'canvas' | 'svg'
   /** Loading state */
   loading?: boolean
   /** Loading options */

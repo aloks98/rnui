@@ -4,19 +4,19 @@
  * Registers ECharts themes and provides theme switching functionality.
  */
 
-import * as echarts from "echarts/core"
-import { extractShadcnColors, buildEChartsTheme } from "./theme-builder"
-import type { ThemeMode, ShadcnChartColors } from "./types"
+import * as echarts from 'echarts/core'
+import { extractShadcnColors, buildEChartsTheme } from './theme-builder'
+import type { ThemeMode, ShadcnChartColors } from './types'
 
 const lastThemeSignatureByName: Record<string, string | undefined> = {}
 
 function themeSignature(colors: ShadcnChartColors, mode: ThemeMode): string {
   const fontFamily =
-    typeof window !== "undefined" &&
-    typeof document !== "undefined" &&
+    typeof window !== 'undefined' &&
+    typeof document !== 'undefined' &&
     document.body
       ? getComputedStyle(document.body).fontFamily
-      : ""
+      : ''
   return JSON.stringify(colors) + `|mode:${mode}|font:${fontFamily}`
 }
 
@@ -27,10 +27,10 @@ export function registerShadcnTheme(
   mode: ThemeMode,
   element?: HTMLElement,
 ): void {
-  if (typeof window === "undefined" || typeof document === "undefined") return
+  if (typeof window === 'undefined' || typeof document === 'undefined') return
 
   const targetElement = element ?? document.documentElement
-  const themeName = mode === "dark" ? "shadcn-dark" : "shadcn-light"
+  const themeName = mode === 'dark' ? 'shadcn-dark' : 'shadcn-light'
 
   const colors = extractShadcnColors(targetElement)
   const sig = themeSignature(colors, mode)
@@ -46,30 +46,30 @@ export function registerShadcnTheme(
  * Get current theme mode based on system preference or DOM
  */
 export function getThemeMode(element?: HTMLElement): ThemeMode {
-  if (typeof window === "undefined") return "light"
+  if (typeof window === 'undefined') return 'light'
 
   const targetElement = element ?? document.documentElement
   const classList = targetElement.classList
 
-  if (classList.contains("dark")) return "dark"
-  if (classList.contains("light")) return "light"
+  if (classList.contains('dark')) return 'dark'
+  if (classList.contains('light')) return 'light'
 
   const attrMode = (
-    targetElement.getAttribute("data-theme") ??
-    targetElement.getAttribute("data-mode") ??
-    targetElement.getAttribute("data-color-scheme")
+    targetElement.getAttribute('data-theme') ??
+    targetElement.getAttribute('data-mode') ??
+    targetElement.getAttribute('data-color-scheme')
   )
     ?.trim()
     .toLowerCase()
-  if (attrMode === "dark" || attrMode === "light") return attrMode
+  if (attrMode === 'dark' || attrMode === 'light') return attrMode
 
   if (
     window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
+    window.matchMedia('(prefers-color-scheme: dark)').matches
   )
-    return "dark"
+    return 'dark'
 
-  return "light"
+  return 'light'
 }
 
 /**
@@ -77,5 +77,5 @@ export function getThemeMode(element?: HTMLElement): ThemeMode {
  */
 export function getThemeName(): string {
   const mode = getThemeMode()
-  return mode === "dark" ? "shadcn-dark" : "shadcn-light"
+  return mode === 'dark' ? 'shadcn-dark' : 'shadcn-light'
 }

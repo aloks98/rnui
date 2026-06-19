@@ -21,21 +21,21 @@ That gives you the warm-neutral default theme. Add presets to unlock the built-i
 ```
 
 ```html
-<html data-theme="ocean">
+<html data-theme="ocean"></html>
 ```
 
 ## Built-in presets
 
-| Theme | Personality | Font | Radius |
-| --- | --- | --- | --- |
-| `oxide` | Editorial craft, warm copper | Bitter + DM Sans | `0.375rem` |
-| `ocean` | Smooth aquatic, deep teal | Plus Jakarta Sans | `0.875rem` |
-| `violet` | Luxury creative, rich purple | Outfit | `1rem` |
-| `forest` | Organic natural, deep emerald | Fraunces + Source Sans 3 | `0.5rem` |
-| `rose` | Soft & bubbly, warm pink | Nunito | `1.25rem` |
-| `amber` | Sharp & energetic, golden | Sora | `0.25rem` |
-| `slate` | Professional tech, blue-gray | Geist | `0.5rem` |
-| `crimson` | Brutalist bold, scarlet | Instrument Sans | `0` |
+| Theme     | Personality                   | Font                     | Radius     |
+| --------- | ----------------------------- | ------------------------ | ---------- |
+| `oxide`   | Editorial craft, warm copper  | Bitter + DM Sans         | `0.375rem` |
+| `ocean`   | Smooth aquatic, deep teal     | Plus Jakarta Sans        | `0.875rem` |
+| `violet`  | Luxury creative, rich purple  | Outfit                   | `1rem`     |
+| `forest`  | Organic natural, deep emerald | Fraunces + Source Sans 3 | `0.5rem`   |
+| `rose`    | Soft & bubbly, warm pink      | Nunito                   | `1.25rem`  |
+| `amber`   | Sharp & energetic, golden     | Sora                     | `0.25rem`  |
+| `slate`   | Professional tech, blue-gray  | Geist                    | `0.5rem`   |
+| `crimson` | Brutalist bold, scarlet       | Instrument Sans          | `0`        |
 
 Themes declare `--font-sans` and sometimes `--font-heading`, but **don't load the fonts** — that's your choice (Google Fonts, `next/font`, self-hosted). Each preset's CSS file documents the Google Fonts URL in its header comment.
 
@@ -44,7 +44,7 @@ Themes declare `--font-sans` and sometimes `--font-heading`, but **don't load th
 The docs and most apps expect a `.dark` class on `<html>`:
 
 ```html
-<html data-theme="ocean" class="dark">
+<html data-theme="ocean" class="dark"></html>
 ```
 
 You can also scope themes to containers:
@@ -61,7 +61,7 @@ Define any `[data-theme="..."]` selector in your CSS:
 @import '@e412/rnui-themes';
 @import '@e412/rnui-themes/presets';
 
-[data-theme="brand"] {
+[data-theme='brand'] {
   --font-sans: 'My Brand Font', sans-serif;
   --radius: 0.75rem;
   --primary: oklch(0.55 0.2 180);
@@ -69,8 +69,8 @@ Define any `[data-theme="..."]` selector in your CSS:
   /* Anything not listed inherits from the defaults */
 }
 
-[data-theme="brand"].dark,
-.dark [data-theme="brand"] {
+[data-theme='brand'].dark,
+.dark [data-theme='brand'] {
   --primary: oklch(0.72 0.18 180);
   --primary-foreground: oklch(0.15 0.03 180);
 }
@@ -84,7 +84,7 @@ Since themes are plain CSS, your overrides cascade naturally:
 @import '@e412/rnui-themes/presets';
 
 /* Start from Ocean, customize the primary */
-[data-theme="ocean"] {
+[data-theme='ocean'] {
   --primary: oklch(0.48 0.15 220);
 }
 ```
@@ -110,11 +110,11 @@ document.documentElement.dataset.theme = 'violet'
 ## Imports
 
 ```css
-@import '@e412/rnui-themes';          /* everything: base + light + dark */
-@import '@e412/rnui-themes/base';     /* reset + body font + heading */
-@import '@e412/rnui-themes/light';    /* light variables on :root */
-@import '@e412/rnui-themes/dark';     /* dark variables on .dark */
-@import '@e412/rnui-themes/presets';  /* all 8 presets as [data-theme] */
+@import '@e412/rnui-themes'; /* everything: base + light + dark */
+@import '@e412/rnui-themes/base'; /* reset + body font + heading */
+@import '@e412/rnui-themes/light'; /* light variables on :root */
+@import '@e412/rnui-themes/dark'; /* dark variables on .dark */
+@import '@e412/rnui-themes/presets'; /* all 8 presets as [data-theme] */
 
 /* Individual presets (sets :root directly — use for single-theme apps) */
 @import '@e412/rnui-themes/oxide';

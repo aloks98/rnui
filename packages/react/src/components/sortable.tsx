@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from 'react'
 import {
   Children,
   cloneElement,
@@ -12,9 +12,9 @@ import {
   useLayoutEffect,
   useMemo,
   useState,
-} from "react"
-import { mergeProps } from "@base-ui/react/merge-props"
-import { useRender } from "@base-ui/react/use-render"
+} from 'react'
+import { mergeProps } from '@base-ui/react/merge-props'
+import { useRender } from '@base-ui/react/use-render'
 import {
   defaultDropAnimationSideEffects,
   DndContext,
@@ -31,7 +31,7 @@ import {
   useSensor,
   useSensors,
   type DraggableSyntheticListeners,
-} from "@dnd-kit/core"
+} from '@dnd-kit/core'
 import {
   arrayMove,
   defaultAnimateLayoutChanges,
@@ -41,11 +41,11 @@ import {
   useSortable,
   verticalListSortingStrategy,
   type AnimateLayoutChanges,
-} from "@dnd-kit/sortable"
-import { CSS } from "@dnd-kit/utilities"
-import { createPortal } from "react-dom"
+} from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
+import { createPortal } from 'react-dom'
 
-import { cn } from "@/lib/utils"
+import { cn } from '@/lib/utils'
 
 // Sortable Item Context
 const SortableItemContext = createContext<{
@@ -75,7 +75,7 @@ const dropAnimationConfig: DropAnimation = {
   sideEffects: defaultDropAnimationSideEffects({
     styles: {
       active: {
-        opacity: "0.4",
+        opacity: '0.4',
       },
     },
   }),
@@ -83,8 +83,8 @@ const dropAnimationConfig: DropAnimation = {
 
 // Multipurpose Sortable Component
 export interface SortableRootProps<T> extends Omit<
-  useRender.ComponentProps<"div">,
-  "onDragStart" | "onDragEnd" | "children"
+  useRender.ComponentProps<'div'>,
+  'onDragStart' | 'onDragEnd' | 'children'
 > {
   value: T[]
   onValueChange: (value: T[]) => void
@@ -95,7 +95,7 @@ export interface SortableRootProps<T> extends Omit<
     activeIndex: number
     overIndex: number
   }) => void
-  strategy?: "horizontal" | "vertical" | "grid"
+  strategy?: 'horizontal' | 'vertical' | 'grid'
   onDragStart?: (event: DragStartEvent) => void
   onDragEnd?: (event: DragEndEvent) => void
   modifiers?: Modifiers
@@ -108,7 +108,7 @@ function Sortable<T>({
   className,
   render,
   onMove,
-  strategy = "vertical",
+  strategy = 'vertical',
   onDragStart,
   onDragEnd,
   modifiers,
@@ -134,7 +134,7 @@ function Sortable<T>({
     }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
-    })
+    }),
   )
 
   const handleDragStart = useCallback(
@@ -142,7 +142,7 @@ function Sortable<T>({
       setActiveId(event.active.id)
       onDragStart?.(event)
     },
-    [onDragStart]
+    [onDragStart],
   )
 
   const handleDragEnd = useCallback(
@@ -155,10 +155,10 @@ function Sortable<T>({
 
       // Handle item reordering
       const activeIndex = value.findIndex(
-        (item: T) => getItemValue(item) === active.id
+        (item: T) => getItemValue(item) === active.id,
       )
       const overIndex = value.findIndex(
-        (item: T) => getItemValue(item) === over.id
+        (item: T) => getItemValue(item) === over.id,
       )
 
       if (activeIndex !== overIndex) {
@@ -170,7 +170,7 @@ function Sortable<T>({
         }
       }
     },
-    [value, getItemValue, onValueChange, onMove, onDragEnd]
+    [value, getItemValue, onValueChange, onMove, onDragEnd],
   )
 
   const handleDragCancel = useCallback(() => {
@@ -179,11 +179,11 @@ function Sortable<T>({
 
   const getStrategy = () => {
     switch (strategy) {
-      case "horizontal":
+      case 'horizontal':
         return rectSortingStrategy
-      case "grid":
+      case 'grid':
         return rectSortingStrategy
-      case "vertical":
+      case 'vertical':
       default:
         return verticalListSortingStrategy
     }
@@ -193,13 +193,13 @@ function Sortable<T>({
 
   const contextValue = useMemo(
     () => ({ activeId, modifiers }),
-    [activeId, modifiers]
+    [activeId, modifiers],
   )
 
   const defaultProps = {
-    "data-slot": "sortable",
-    "data-dragging": activeId !== null,
-    className: cn(activeId !== null && "cursor-grabbing!", className),
+    'data-slot': 'sortable',
+    'data-dragging': activeId !== null,
+    className: cn(activeId !== null && 'cursor-grabbing!', className),
     children,
   }
 
@@ -211,7 +211,7 @@ function Sortable<T>({
       if (isValidElement(child) && (child.props as any).value === activeId) {
         result = cloneElement(child as ReactElement<any>, {
           ...(child.props as any),
-          className: cn((child.props as any).className, "z-50"),
+          className: cn((child.props as any).className, 'z-50'),
         })
       }
     })
@@ -234,9 +234,9 @@ function Sortable<T>({
       >
         <SortableContext items={itemIds} strategy={getStrategy()}>
           {useRender({
-            defaultTagName: "div",
+            defaultTagName: 'div',
             render,
-            props: mergeProps<"div">(defaultProps, props),
+            props: mergeProps<'div'>(defaultProps, props),
           })}
         </SortableContext>
         {mounted &&
@@ -244,20 +244,20 @@ function Sortable<T>({
             <DragOverlay
               dropAnimation={dropAnimationConfig}
               modifiers={modifiers}
-              className={cn("z-50", activeId && "cursor-grabbing")}
+              className={cn('z-50', activeId && 'cursor-grabbing')}
             >
               <IsOverlayContext.Provider value={true}>
                 {overlayContent}
               </IsOverlayContext.Provider>
             </DragOverlay>,
-            document.body
+            document.body,
           )}
       </DndContext>
     </SortableInternalContext.Provider>
   )
 }
 
-export interface SortableItemProps extends useRender.ComponentProps<"div"> {
+export interface SortableItemProps extends useRender.ComponentProps<'div'> {
   value: string
   disabled?: boolean
 }
@@ -286,9 +286,9 @@ function SortableItem({
 
   if (isOverlay) {
     const defaultProps = {
-      "data-slot": "sortable-item",
-      "data-value": value,
-      "data-dragging": true,
+      'data-slot': 'sortable-item',
+      'data-value': value,
+      'data-dragging': true,
       className: cn(className),
       children: props.children,
     }
@@ -298,9 +298,9 @@ function SortableItem({
         value={{ listeners: undefined, isDragging: true, disabled: false }}
       >
         {useRender({
-          defaultTagName: "div",
+          defaultTagName: 'div',
           render,
-          props: mergeProps<"div">(defaultProps, props),
+          props: mergeProps<'div'>(defaultProps, props),
         })}
       </SortableItemContext.Provider>
     )
@@ -312,17 +312,17 @@ function SortableItem({
   } as CSSProperties
 
   const defaultProps = {
-    "data-slot": "sortable-item",
-    "data-value": value,
-    "data-dragging": isSortableDragging,
-    "data-disabled": disabled,
+    'data-slot': 'sortable-item',
+    'data-value': value,
+    'data-dragging': isSortableDragging,
+    'data-disabled': disabled,
     ref: setNodeRef,
     style,
     ...attributes,
     className: cn(
-      isSortableDragging && "opacity-50 z-50",
-      disabled && "opacity-50",
-      className
+      isSortableDragging && 'opacity-50 z-50',
+      disabled && 'opacity-50',
+      className,
     ),
     children: props.children,
   }
@@ -332,15 +332,15 @@ function SortableItem({
       value={{ listeners, isDragging: isSortableDragging, disabled }}
     >
       {useRender({
-        defaultTagName: "div",
+        defaultTagName: 'div',
         render,
-        props: mergeProps<"div">(defaultProps, props),
+        props: mergeProps<'div'>(defaultProps, props),
       })}
     </SortableItemContext.Provider>
   )
 }
 
-export interface SortableItemHandleProps extends useRender.ComponentProps<"div"> {
+export interface SortableItemHandleProps extends useRender.ComponentProps<'div'> {
   cursor?: boolean
 }
 
@@ -353,27 +353,27 @@ function SortableItemHandle({
   const { listeners, isDragging, disabled } = useContext(SortableItemContext)
 
   const defaultProps = {
-    "data-slot": "sortable-item-handle",
-    "data-dragging": isDragging,
-    "data-disabled": disabled,
+    'data-slot': 'sortable-item-handle',
+    'data-dragging': isDragging,
+    'data-disabled': disabled,
     ...listeners,
     className: cn(
-      cursor && (isDragging ? "cursor-grabbing!" : "cursor-grab!"),
-      className
+      cursor && (isDragging ? 'cursor-grabbing!' : 'cursor-grab!'),
+      className,
     ),
     children: props.children,
   }
 
   return useRender({
-    defaultTagName: "div",
+    defaultTagName: 'div',
     render,
-    props: mergeProps<"div">(defaultProps, props),
+    props: mergeProps<'div'>(defaultProps, props),
   })
 }
 
 export interface SortableOverlayProps extends Omit<
   React.ComponentProps<typeof DragOverlay>,
-  "children"
+  'children'
 > {
   children?: ReactNode | ((params: { value: UniqueIdentifier }) => ReactNode)
 }
@@ -390,7 +390,7 @@ function SortableOverlay({
 
   const content =
     activeId && children
-      ? typeof children === "function"
+      ? typeof children === 'function'
         ? children({ value: activeId })
         : children
       : null
@@ -401,14 +401,14 @@ function SortableOverlay({
     <DragOverlay
       dropAnimation={dropAnimationConfig}
       modifiers={modifiers}
-      className={cn("z-50", activeId && "cursor-grabbing", className)}
+      className={cn('z-50', activeId && 'cursor-grabbing', className)}
       {...props}
     >
       <IsOverlayContext.Provider value={true}>
         {content}
       </IsOverlayContext.Provider>
     </DragOverlay>,
-    document.body
+    document.body,
   )
 }
 

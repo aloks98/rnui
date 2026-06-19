@@ -1,6 +1,6 @@
-import * as React from "react"
+import * as React from 'react'
 
-import { cn } from "@/lib/utils"
+import { cn } from '@/lib/utils'
 
 export interface EmptyStateProps {
   icon?: React.ReactNode
@@ -10,13 +10,19 @@ export interface EmptyStateProps {
   className?: string
 }
 
-function EmptyState({ icon, title, description, action, className }: EmptyStateProps) {
+function EmptyState({
+  icon,
+  title,
+  description,
+  action,
+  className,
+}: EmptyStateProps) {
   return (
     <div
       data-slot="empty-state"
       className={cn(
-        "flex flex-col items-center justify-center gap-4 py-12 text-center",
-        className
+        'flex flex-col items-center justify-center gap-4 py-12 text-center',
+        className,
       )}
     >
       {icon && (
@@ -27,7 +33,9 @@ function EmptyState({ icon, title, description, action, className }: EmptyStateP
       <div className="flex flex-col gap-1.5">
         <h3 className="text-lg font-semibold text-foreground">{title}</h3>
         {description && (
-          <p className="max-w-sm text-sm text-muted-foreground">{description}</p>
+          <p className="max-w-sm text-sm text-muted-foreground">
+            {description}
+          </p>
         )}
       </div>
       {action && <div className="mt-2">{action}</div>}

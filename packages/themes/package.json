@@ -1,8 +1,10 @@
 {
   "name": "@e412/rnui-themes",
   "version": "0.0.1",
+  "files": [
+    "dist"
+  ],
   "type": "module",
-  "files": ["dist"],
   "main": "./dist/index.css",
   "exports": {
     ".": "./dist/index.css",
@@ -20,8 +22,7 @@
     "./presets": "./dist/presets.css"
   },
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   },
   "scripts": {
     "generate": "node scripts/generate-presets.mjs",

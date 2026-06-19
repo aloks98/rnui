@@ -5,6 +5,9 @@ import {
   AutocompleteContent,
   AutocompleteList,
   AutocompleteItem,
+  AutocompleteGroup,
+  AutocompleteGroupLabel,
+  AutocompleteCollection,
   AutocompleteEmpty,
   Label,
 } from '@e412/rnui-react'
@@ -57,10 +60,17 @@ export const WithGroups: Story = {
         <AutocompleteContent>
           <AutocompleteEmpty>No results found.</AutocompleteEmpty>
           <AutocompleteList>
-            {(item) => (
-              <AutocompleteItem key={item} value={item}>
-                {item}
-              </AutocompleteItem>
+            {(group) => (
+              <AutocompleteGroup key={group.label} items={group.items}>
+                <AutocompleteGroupLabel>{group.label}</AutocompleteGroupLabel>
+                <AutocompleteCollection>
+                  {(item) => (
+                    <AutocompleteItem key={item} value={item}>
+                      {item}
+                    </AutocompleteItem>
+                  )}
+                </AutocompleteCollection>
+              </AutocompleteGroup>
             )}
           </AutocompleteList>
         </AutocompleteContent>

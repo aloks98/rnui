@@ -3,7 +3,7 @@ title: Autocomplete
 description: A text input with inline suggestion filtering and selection.
 ---
 
-import { Autocomplete, AutocompleteInput, AutocompleteContent, AutocompleteList, AutocompleteItem, AutocompleteEmpty, Label } from '@e412/rnui-react';
+import { Autocomplete, AutocompleteInput, AutocompleteContent, AutocompleteList, AutocompleteItem, AutocompleteGroup, AutocompleteGroupLabel, AutocompleteCollection, AutocompleteEmpty, Label } from '@e412/rnui-react';
 
 The `Autocomplete` component provides a text input that displays a filtered list of suggestions as the user types. It supports flat item lists, grouped items, a clear button, and empty state messaging.
 
@@ -16,6 +16,9 @@ import {
   AutocompleteContent,
   AutocompleteList,
   AutocompleteItem,
+  AutocompleteGroup,
+  AutocompleteGroupLabel,
+  AutocompleteCollection,
   AutocompleteEmpty,
 } from '@e412/rnui-react';
 ```
@@ -64,7 +67,7 @@ import {
 
 ### With Groups
 
-Pass an array of `{ label, items }` objects to create categorized suggestions.
+Pass an array of `{ label, items }` objects to create categorized suggestions. When the items are grouped, `AutocompleteList`'s function receives each group, so render an `AutocompleteGroup` with an `AutocompleteGroupLabel` and an `AutocompleteCollection` that maps over the group's items.
 
 <Preview>
   <div className="grid w-full max-w-sm gap-1.5">
@@ -79,10 +82,17 @@ Pass an array of `{ label, items }` objects to create categorized suggestions.
       <AutocompleteContent>
         <AutocompleteEmpty>No results found.</AutocompleteEmpty>
         <AutocompleteList>
-          {(item) => (
-            <AutocompleteItem key={item} value={item}>
-              {item}
-            </AutocompleteItem>
+          {(group) => (
+            <AutocompleteGroup key={group.label} items={group.items}>
+              <AutocompleteGroupLabel>{group.label}</AutocompleteGroupLabel>
+              <AutocompleteCollection>
+                {(item) => (
+                  <AutocompleteItem key={item} value={item}>
+                    {item}
+                  </AutocompleteItem>
+                )}
+              </AutocompleteCollection>
+            </AutocompleteGroup>
           )}
         </AutocompleteList>
       </AutocompleteContent>
@@ -103,10 +113,17 @@ Pass an array of `{ label, items }` objects to create categorized suggestions.
     <AutocompleteContent>
       <AutocompleteEmpty>No results found.</AutocompleteEmpty>
       <AutocompleteList>
-        {(item) => (
-          <AutocompleteItem key={item} value={item}>
-            {item}
-          </AutocompleteItem>
+        {(group) => (
+          <AutocompleteGroup key={group.label} items={group.items}>
+            <AutocompleteGroupLabel>{group.label}</AutocompleteGroupLabel>
+            <AutocompleteCollection>
+              {(item) => (
+                <AutocompleteItem key={item} value={item}>
+                  {item}
+                </AutocompleteItem>
+              )}
+            </AutocompleteCollection>
+          </AutocompleteGroup>
         )}
       </AutocompleteList>
     </AutocompleteContent>
@@ -214,10 +231,17 @@ Add `showClear` to the input to allow users to reset their selection.
       <AutocompleteContent>
         <AutocompleteEmpty>No role found.</AutocompleteEmpty>
         <AutocompleteList>
-          {(item) => (
-            <AutocompleteItem key={item} value={item}>
-              {item}
-            </AutocompleteItem>
+          {(group) => (
+            <AutocompleteGroup key={group.label} items={group.items}>
+              <AutocompleteGroupLabel>{group.label}</AutocompleteGroupLabel>
+              <AutocompleteCollection>
+                {(item) => (
+                  <AutocompleteItem key={item} value={item}>
+                    {item}
+                  </AutocompleteItem>
+                )}
+              </AutocompleteCollection>
+            </AutocompleteGroup>
           )}
         </AutocompleteList>
       </AutocompleteContent>
@@ -239,10 +263,17 @@ Add `showClear` to the input to allow users to reset their selection.
     <AutocompleteContent>
       <AutocompleteEmpty>No role found.</AutocompleteEmpty>
       <AutocompleteList>
-        {(item) => (
-          <AutocompleteItem key={item} value={item}>
-            {item}
-          </AutocompleteItem>
+        {(group) => (
+          <AutocompleteGroup key={group.label} items={group.items}>
+            <AutocompleteGroupLabel>{group.label}</AutocompleteGroupLabel>
+            <AutocompleteCollection>
+              {(item) => (
+                <AutocompleteItem key={item} value={item}>
+                  {item}
+                </AutocompleteItem>
+              )}
+            </AutocompleteCollection>
+          </AutocompleteGroup>
         )}
       </AutocompleteList>
     </AutocompleteContent>
@@ -250,42 +281,6 @@ Add `showClear` to the input to allow users to reset their selection.
 </div>
 ```
 
-### Tag Input
-
-<Preview>
-  <div className="grid w-full max-w-sm gap-1.5">
-    <Label>Tags</Label>
-    <Autocomplete items={['React', 'TypeScript', 'Tailwind', 'Next.js', 'Node.js', 'GraphQL', 'Prisma', 'tRPC']}>
-      <AutocompleteInput placeholder="Add a tag..." />
-      <AutocompleteContent>
-        <AutocompleteEmpty>No tags found.</AutocompleteEmpty>
-        <AutocompleteList>
-          {(item) => (
-            <AutocompleteItem key={item} value={item}>
-              {item}
-            </AutocompleteItem>
-          )}
-        </AutocompleteList>
-      </AutocompleteContent>
-    </Autocomplete>
-  </div>
-</Preview>
-
-```tsx
-<div className="grid w-full max-w-sm gap-1.5">
-  <Label>Tags</Label>
-  <Autocomplete items={['React', 'TypeScript', 'Tailwind', 'Next.js', 'Node.js', 'GraphQL', 'Prisma', 'tRPC']}>
-    <AutocompleteInput placeholder="Add a tag..." />
-    <AutocompleteContent>
-      <AutocompleteEmpty>No tags found.</AutocompleteEmpty>
-      <AutocompleteList>
-        {(item) => (
-          <AutocompleteItem key={item} value={item}>
-            {item}
-          </AutocompleteItem>
-        )}
-      </AutocompleteList>
-    </AutocompleteContent>
-  </Autocomplete>
-</div>
-```
+<Callout type="info">
+  `Autocomplete` selects a single value into the input. For a multi-select input that keeps selections as removable tags, use the [Combobox](/docs/components/combobox#tags-input) component.
+</Callout>

@@ -3,7 +3,8 @@ title: Combobox
 description: A searchable dropdown for selecting from a list of options.
 ---
 
-import { Combobox, ComboboxInput, ComboboxContent, ComboboxList, ComboboxItem, ComboboxGroup, ComboboxLabel, ComboboxEmpty, ComboboxSeparator } from '@e412/rnui-react';
+import * as React from 'react';
+import { Combobox, ComboboxInput, ComboboxContent, ComboboxList, ComboboxItem, ComboboxGroup, ComboboxLabel, ComboboxEmpty, ComboboxSeparator, ComboboxValue, ComboboxChips, ComboboxChip, ComboboxChipsInput, useComboboxAnchor } from '@e412/rnui-react';
 
 The `Combobox` component combines a text input with a filterable dropdown list. Users can type to search and filter options, then select a value. It supports groups, separators, empty states, and a clear button.
 
@@ -20,6 +21,11 @@ import {
   ComboboxLabel,
   ComboboxEmpty,
   ComboboxSeparator,
+  ComboboxValue,
+  ComboboxChips,
+  ComboboxChip,
+  ComboboxChipsInput,
+  useComboboxAnchor,
 } from '@e412/rnui-react';
 ```
 
@@ -141,6 +147,225 @@ Organize items into labeled groups with separators.
     </ComboboxList>
   </ComboboxContent>
 </Combobox>
+```
+
+### Tags Input
+
+Add the `multiple` prop and compose `ComboboxChips`, `ComboboxValue`, and `ComboboxChip` to let users select several values that appear as removable tags. Point the popup at the chips container with the `anchor` prop so it spans the full width.
+
+export function TagsInputDemo() {
+  const anchor = useComboboxAnchor();
+  const tags = ['React', 'TypeScript', 'Tailwind', 'Next.js', 'Node.js', 'GraphQL', 'Prisma', 'tRPC'];
+  return (
+    <Combobox items={tags} multiple defaultValue={['React', 'TypeScript']}>
+      <ComboboxChips ref={anchor} className="w-full max-w-sm">
+        <ComboboxValue>
+          {(value) => (
+            <>
+              {value.map((tag) => (
+                <ComboboxChip key={tag} aria-label={tag}>
+                  {tag}
+                </ComboboxChip>
+              ))}
+              <ComboboxChipsInput placeholder={value.length > 0 ? '' : 'Add tags...'} />
+            </>
+          )}
+        </ComboboxValue>
+      </ComboboxChips>
+      <ComboboxContent anchor={anchor}>
+        <ComboboxEmpty>No tags found.</ComboboxEmpty>
+        <ComboboxList>
+          {(item) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  );
+}
+
+<Preview>
+  <TagsInputDemo />
+</Preview>
+
+```tsx
+function TagsInputDemo() {
+  const anchor = useComboboxAnchor();
+  const tags = ['React', 'TypeScript', 'Tailwind', 'Next.js', 'Node.js', 'GraphQL', 'Prisma', 'tRPC'];
+
+  return (
+    <Combobox items={tags} multiple defaultValue={['React', 'TypeScript']}>
+      <ComboboxChips ref={anchor} className="w-full max-w-sm">
+        <ComboboxValue>
+          {(value) => (
+            <>
+              {value.map((tag) => (
+                <ComboboxChip key={tag} aria-label={tag}>
+                  {tag}
+                </ComboboxChip>
+              ))}
+              <ComboboxChipsInput placeholder={value.length > 0 ? '' : 'Add tags...'} />
+            </>
+          )}
+        </ComboboxValue>
+      </ComboboxChips>
+      <ComboboxContent anchor={anchor}>
+        <ComboboxEmpty>No tags found.</ComboboxEmpty>
+        <ComboboxList>
+          {(item) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  );
+}
+```
+
+### Creatable Tags
+
+To let users add tags that aren't in the suggestion list, make the combobox controlled with `value`/`onValueChange` and `inputValue`/`onInputValueChange`. The selected array can hold values that aren't in `items`, so a free-form tag renders as a chip just like a picked suggestion. Commit the typed text on <kbd>Enter</kbd>, guarding against the case where a suggestion is highlighted (Base UI selects that itself).
+
+export function CreatableTagsDemo() {
+  const anchor = useComboboxAnchor();
+  const suggestions = ['React', 'TypeScript', 'Tailwind', 'Next.js', 'Node.js', 'GraphQL', 'Prisma', 'tRPC'];
+  const [value, setValue] = React.useState(['React']);
+  const [inputValue, setInputValue] = React.useState('');
+  const hasHighlightRef = React.useRef(false);
+  function addTag(tag) {
+    const next = tag.trim();
+    if (next === '' || value.includes(next)) {
+      return;
+    }
+    setValue((current) => [...current, next]);
+    setInputValue('');
+  }
+  return (
+    <Combobox
+      items={suggestions}
+      multiple
+      value={value}
+      onValueChange={setValue}
+      inputValue={inputValue}
+      onInputValueChange={setInputValue}
+      onItemHighlighted={(item) => {
+        hasHighlightRef.current = item != null;
+      }}
+    >
+      <ComboboxChips ref={anchor} className="w-full max-w-sm">
+        <ComboboxValue>
+          {(tags) => (
+            <>
+              {tags.map((tag) => (
+                <ComboboxChip key={tag} aria-label={tag}>
+                  {tag}
+                </ComboboxChip>
+              ))}
+              <ComboboxChipsInput
+                placeholder={tags.length > 0 ? '' : 'Add tags...'}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' && !hasHighlightRef.current && inputValue.trim() !== '') {
+                    event.preventDefault();
+                    addTag(inputValue);
+                  }
+                }}
+              />
+            </>
+          )}
+        </ComboboxValue>
+      </ComboboxChips>
+      <ComboboxContent anchor={anchor}>
+        <ComboboxEmpty>
+          {inputValue.trim() === '' ? 'No tags found.' : `Press Enter to add "${inputValue.trim()}"`}
+        </ComboboxEmpty>
+        <ComboboxList>
+          {(item) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  );
+}
+
+<Preview>
+  <CreatableTagsDemo />
+</Preview>
+
+```tsx
+function CreatableTagsDemo() {
+  const anchor = useComboboxAnchor();
+  const suggestions = ['React', 'TypeScript', 'Tailwind', 'Next.js', 'Node.js', 'GraphQL', 'Prisma', 'tRPC'];
+  const [value, setValue] = React.useState<string[]>(['React']);
+  const [inputValue, setInputValue] = React.useState('');
+  // Base UI selects the highlighted suggestion on Enter itself, so only
+  // treat Enter as "create" when nothing in the list is highlighted.
+  const hasHighlightRef = React.useRef(false);
+
+  function addTag(tag: string) {
+    const next = tag.trim();
+    if (next === '' || value.includes(next)) {
+      return;
+    }
+    setValue((current) => [...current, next]);
+    setInputValue('');
+  }
+
+  return (
+    <Combobox
+      items={suggestions}
+      multiple
+      value={value}
+      onValueChange={setValue}
+      inputValue={inputValue}
+      onInputValueChange={setInputValue}
+      onItemHighlighted={(item) => {
+        hasHighlightRef.current = item != null;
+      }}
+    >
+      <ComboboxChips ref={anchor} className="w-full max-w-sm">
+        <ComboboxValue>
+          {(tags) => (
+            <>
+              {tags.map((tag) => (
+                <ComboboxChip key={tag} aria-label={tag}>
+                  {tag}
+                </ComboboxChip>
+              ))}
+              <ComboboxChipsInput
+                placeholder={tags.length > 0 ? '' : 'Add tags...'}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' && !hasHighlightRef.current && inputValue.trim() !== '') {
+                    event.preventDefault();
+                    addTag(inputValue);
+                  }
+                }}
+              />
+            </>
+          )}
+        </ComboboxValue>
+      </ComboboxChips>
+      <ComboboxContent anchor={anchor}>
+        <ComboboxEmpty>
+          {inputValue.trim() === '' ? 'No tags found.' : `Press Enter to add "${inputValue.trim()}"`}
+        </ComboboxEmpty>
+        <ComboboxList>
+          {(item) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  );
+}
 ```
 
 ### Disabled

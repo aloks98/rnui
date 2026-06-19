@@ -1,32 +1,33 @@
 name: Release
 
-# Publishes to npm when a GitHub Release is published.
-# Typical flow:
-#   1. Merge changesets to main -> the Version workflow opens a "Version
-#      Packages" PR that bumps versions and updates changelogs. (Decline/close
-#      the PR if you're not ready to release.)
-#   2. Merge that PR when a feature set is complete.
-#   3. Create a GitHub Release whose tag matches the new version
-#      (e.g. `gh release create v0.1.0`).
-#   4. This workflow builds the bumped packages and publishes them to npm.
+# Standard changesets flow, in a single job:
+#   - Push to main WITH pending changesets -> opens/updates a "Version Packages"
+#     PR that bumps versions and writes changelogs. Nothing is published.
+#   - Push to main with NO pending changesets (i.e. you just merged that PR)
+#     -> publishes the bumped packages to npm, creates + pushes git tags, and
+#     creates a GitHub Release per package.
+#
+# So merging the "Version Packages" PR is your "release now" action. Pushes
+# that have nothing new to publish are a no-op (pnpm skips already-published
+# versions), so normal commits won't create spurious releases.
 on:
-  release:
-    types: [published]
+  push:
+    branches: [main]
 
 concurrency: release-${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  publish:
-    name: Publish to npm
+  release:
+    name: Version or publish
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write       # push the version PR branch and git tags
+      pull-requests: write  # open/update the "Version Packages" PR
     steps:
       - uses: actions/checkout@v4
         with:
-          # Check out the exact commit the release tag points at, so we publish
-          # the versions that were merged from the "Version Packages" PR.
-          ref: ${{ github.event.release.tag_name }}
+          # Required by changesets to compute tags and generate changelogs
+          fetch-depth: 0
 
       - uses: pnpm/action-setup@v4
 
@@ -50,5 +51,15 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish to npm
-        run: pnpm release:publish
+      - name: Create version PR or publish
+        uses: changesets/action@v1
+        with:
+          # When changesets exist on main, opens/updates the version PR.
+          version: pnpm release:version
+          # When no changesets exist, publishes and tags (see release:publish).
+          publish: pnpm release:publish
+          commit: "chore(release): version packages"
+          title: "chore(release): version packages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

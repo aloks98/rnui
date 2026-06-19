@@ -15,7 +15,7 @@
     "storybook": "pnpm --filter @e412/storybook dev",
     "storybook:build": "pnpm --filter @e412/storybook build",
     "release:version": "changeset version",
-    "release:publish": "pnpm publish -r --access public --no-git-checks",
+    "release:publish": "pnpm publish -r --access public --no-git-checks && pnpm exec changeset tag",
     "release": "pnpm build && pnpm release:version && pnpm release:publish"
   },
   "devDependencies": {

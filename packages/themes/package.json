@@ -1,6 +1,11 @@
 {
   "name": "@e412/rnui-themes",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aloks98/rnui.git",
+    "directory": "packages/themes"
+  },
   "files": [
     "dist"
   ],

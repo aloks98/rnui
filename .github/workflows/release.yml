@@ -23,6 +23,7 @@ jobs:
     permissions:
       contents: write       # push the version PR branch and git tags
       pull-requests: write  # open/update the "Version Packages" PR
+      id-token: write       # mint the OIDC token npm uses to sign provenance
     steps:
       - uses: actions/checkout@v4
         with:
@@ -63,3 +64,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: "true"  # publish with npm provenance attestation

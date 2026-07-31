@@ -9,6 +9,20 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  ssr: {
+    // fumadocs pulls in the full shiki bundle, whose lazy oniguruma wasm
+    // import can't be bundled by rolldown for the SSR build — keep shiki
+    // external so node resolves it (and onig.wasm) from node_modules.
+    // Subpaths must be listed explicitly; external matching is exact.
+    external: [
+      'shiki',
+      'shiki/core',
+      'shiki/engine/javascript',
+      'shiki/langs',
+      'shiki/themes',
+      'shiki/wasm',
+    ],
+  },
   plugins: [
     mdx(await import('./source.config')),
     tailwindcss(),

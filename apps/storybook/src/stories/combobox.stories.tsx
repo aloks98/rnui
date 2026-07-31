@@ -10,6 +10,11 @@ import {
   ComboboxLabel,
   ComboboxEmpty,
   ComboboxSeparator,
+  ComboboxValue,
+  ComboboxChips,
+  ComboboxChip,
+  ComboboxChipsInput,
+  useComboboxAnchor,
 } from '@e412/rnui-react'
 
 const meta = {
@@ -88,6 +93,128 @@ export const WithGroups: Story = {
       </ComboboxContent>
     </Combobox>
   ),
+}
+
+const tags = [
+  'React',
+  'TypeScript',
+  'Tailwind',
+  'Next.js',
+  'Node.js',
+  'GraphQL',
+  'Prisma',
+  'tRPC',
+]
+
+export const TagsInput: Story = {
+  render: () => {
+    const anchor = useComboboxAnchor()
+    return (
+      <Combobox items={tags} multiple defaultValue={['React', 'TypeScript']}>
+        <ComboboxChips ref={anchor} className="w-full max-w-sm">
+          <ComboboxValue>
+            {(value) => (
+              <>
+                {value.map((tag: string) => (
+                  <ComboboxChip key={tag} aria-label={tag}>
+                    {tag}
+                  </ComboboxChip>
+                ))}
+                <ComboboxChipsInput
+                  placeholder={value.length > 0 ? '' : 'Add tags...'}
+                />
+              </>
+            )}
+          </ComboboxValue>
+        </ComboboxChips>
+        <ComboboxContent anchor={anchor}>
+          <ComboboxEmpty>No tags found.</ComboboxEmpty>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem key={item} value={item}>
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    )
+  },
+}
+
+export const CreatableTags: Story = {
+  render: () => {
+    const anchor = useComboboxAnchor()
+    const [value, setValue] = React.useState<string[]>(['React'])
+    const [inputValue, setInputValue] = React.useState('')
+    // Base UI selects the highlighted suggestion on Enter itself, so only
+    // treat Enter as "create" when nothing in the list is highlighted.
+    const hasHighlightRef = React.useRef(false)
+
+    function addTag(tag: string) {
+      const next = tag.trim()
+      if (next === '' || value.includes(next)) {
+        return
+      }
+      setValue((current) => [...current, next])
+      setInputValue('')
+    }
+
+    return (
+      <Combobox
+        items={tags}
+        multiple
+        value={value}
+        onValueChange={setValue}
+        inputValue={inputValue}
+        onInputValueChange={setInputValue}
+        onItemHighlighted={(item) => {
+          hasHighlightRef.current = item != null
+        }}
+      >
+        <ComboboxChips ref={anchor} className="w-full max-w-sm">
+          <ComboboxValue>
+            {(selected: string[]) => (
+              <>
+                {selected.map((tag) => (
+                  <ComboboxChip key={tag} aria-label={tag}>
+                    {tag}
+                  </ComboboxChip>
+                ))}
+                <ComboboxChipsInput
+                  placeholder={selected.length > 0 ? '' : 'Add tags...'}
+                  onKeyDown={(event) => {
+                    if (
+                      event.key === 'Enter' &&
+                      !hasHighlightRef.current &&
+                      inputValue.trim() !== ''
+                    ) {
+                      event.preventDefault()
+                      addTag(inputValue)
+                    }
+                  }}
+                />
+              </>
+            )}
+          </ComboboxValue>
+        </ComboboxChips>
+        <ComboboxContent anchor={anchor}>
+          <ComboboxEmpty>
+            {inputValue.trim() === ''
+              ? 'No tags found.'
+              : `Press Enter to add "${inputValue.trim()}"`}
+          </ComboboxEmpty>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem key={item} value={item}>
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    )
+  },
 }
 
 export const Disabled: Story = {

@@ -23,10 +23,27 @@ export default defineConfig({
     lib: {
       entry: resolve(import.meta.dirname, 'src/index.ts'),
       formats: ['es', 'cjs'],
-      fileName: (format) => `index.${format === 'es' ? 'mjs' : 'cjs'}`,
     },
     rolldownOptions: {
       external,
+      // Preserve the module graph instead of emitting a single flat file so
+      // consumers only pull in the components they actually import.
+      output: [
+        {
+          format: 'es',
+          preserveModules: true,
+          preserveModulesRoot: 'src',
+          entryFileNames: '[name].mjs',
+          exports: 'named',
+        },
+        {
+          format: 'cjs',
+          preserveModules: true,
+          preserveModulesRoot: 'src',
+          entryFileNames: '[name].cjs',
+          exports: 'named',
+        },
+      ],
     },
     outDir: 'dist',
     emptyOutDir: true,

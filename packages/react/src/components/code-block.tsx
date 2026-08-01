@@ -1,9 +1,26 @@
 'use client'
 
 import * as React from 'react'
-import { codeToHtml, type BundledTheme } from 'shiki'
+import { createBundledHighlighter, createSingletonShorthands } from 'shiki/core'
+import { createJavaScriptRegexEngine } from 'shiki/engine/javascript'
+import { bundledLanguages } from 'shiki/langs'
+import { bundledThemes, type BundledTheme } from 'shiki/themes'
 import { cn } from '@/lib/utils'
 import { CopyButton } from '@/components/copy-button'
+
+// Fine-grained shiki setup instead of the full bundle: languages and themes
+// stay lazy (each is a dynamic import resolved on demand by string name), and
+// the JavaScript regex engine replaces the default oniguruma wasm engine so
+// consumers don't ship or load any wasm. `forgiving` skips the few grammar
+// patterns the JS engine can't emulate instead of throwing.
+const createHighlighter = /* @__PURE__ */ createBundledHighlighter({
+  langs: bundledLanguages,
+  themes: bundledThemes,
+  engine: () => createJavaScriptRegexEngine({ forgiving: true }),
+})
+
+const { codeToHtml } =
+  /* @__PURE__ */ createSingletonShorthands(createHighlighter)
 
 export interface CodeBlockTheme {
   light: BundledTheme

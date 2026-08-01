@@ -24,14 +24,8 @@
     "oxfmt": "^0.55.0",
     "typescript": "^5.8.0"
   },
-  "packageManager": "pnpm@10.8.0",
+  "packageManager": "pnpm@10.34.5",
   "engines": {
     "node": ">=20"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "sharp"
-    ]
   }
 }

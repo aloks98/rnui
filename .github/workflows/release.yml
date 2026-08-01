@@ -23,7 +23,7 @@ jobs:
     permissions:
       contents: write       # push the version PR branch and git tags
       pull-requests: write  # open/update the "Version Packages" PR
-      id-token: write       # mint the OIDC token npm uses to sign provenance
+      id-token: write       # OIDC token for npm trusted publishing + provenance
     steps:
       - uses: actions/checkout@v4
         with:
@@ -32,13 +32,13 @@ jobs:
 
       - uses: pnpm/action-setup@v4
 
-      # NOTE: registry-url is intentionally omitted. Setting it makes setup-node
-      # write an .npmrc that reads ${NODE_AUTH_TOKEN} and points npm at it via
-      # NPM_CONFIG_USERCONFIG — which previously left the publish unauthenticated
-      # (404). We configure auth explicitly below instead.
+      # NOTE: no npm token anywhere. Publishing authenticates via npm trusted
+      # publishing (OIDC): each package on npmjs.com trusts this repo's
+      # release.yml workflow, and pnpm (>= 10.14) exchanges the id-token for
+      # publish credentials automatically. Provenance comes with it for free.
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: pnpm
 
       - name: Install
@@ -46,11 +46,6 @@ jobs:
 
       - name: Build packages
         run: pnpm build
-
-      - name: Configure npm auth
-        run: pnpm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create version PR or publish
         uses: changesets/action@v1
@@ -63,5 +58,4 @@ jobs:
           title: "chore(release): version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: "true"  # publish with npm provenance attestation

@@ -80,11 +80,11 @@ export function App() {
 
 ```tsx
 <CodeBlock
-    code={\`import { Button } from '@e412/rnui-react'
+    code={`import { Button } from '@e412/rnui-react'
 
 export function App() {
   return <Button>Click me</Button>
-}\`}
+}`}
     language="tsx"
   />
 ```
@@ -103,7 +103,7 @@ Add a title bar to label the code block, useful for filenames or descriptions.
 
 ```tsx
 <CodeBlock
-    code={\`npm install @e412/rnui-react @e412/rnui-themes\`}
+    code={`npm install @e412/rnui-react @e412/rnui-themes`}
     title="Terminal"
     language="bash"
   />
@@ -136,7 +136,7 @@ export function UserCard({ name, email }) {
 
 ```tsx
 <CodeBlock
-    code={\`import { Card, CardHeader, CardTitle, CardContent } from '@e412/rnui-react'
+    code={`import { Card, CardHeader, CardTitle, CardContent } from '@e412/rnui-react'
 
 export function UserCard({ name, email }) {
   return (
@@ -149,7 +149,7 @@ export function UserCard({ name, email }) {
       </CardContent>
     </Card>
   )
-}\`}
+}`}
     language="tsx"
     showLineNumbers
   />
@@ -184,7 +184,7 @@ export function Counter() {
 
 ```tsx
 <CodeBlock
-    code={\`import { useState } from 'react'
+    code={`import { useState } from 'react'
 import { Button } from '@e412/rnui-react'
 
 export function Counter() {
@@ -198,7 +198,7 @@ export function Counter() {
       </Button>
     </div>
   )
-}\`}
+}`}
     language="tsx"
     showLineNumbers
     highlightLines={[5, 10, 11, 12]}
@@ -220,8 +220,8 @@ const x = 42`}
 
 ```tsx
 <CodeBlock
-    code={\`// This block has no copy button
-const x = 42\`}
+    code={`// This block has no copy button
+const x = 42`}
     language="ts"
     showCopy={false}
   />
@@ -243,9 +243,9 @@ const x = 42\`}
 
 ```tsx
 <CodeBlock
-    code={\`@import "tailwindcss";
+    code={`@import "tailwindcss";
 @import "@e412/rnui-themes";
-@source "../node_modules/@e412/rnui-react/dist";\`}
+@source "../node_modules/@e412/rnui-react/dist";`}
     language="css"
     title="globals.css"
   />
@@ -270,14 +270,14 @@ const x = 42\`}
 
 ```tsx
 <CodeBlock
-    code={\`{
+    code={`{
   "name": "@e412/rnui-react",
   "version": "0.0.1",
   "dependencies": {
     "react": ">=18",
     "tailwindcss": ">=4"
   }
-}\`}
+}`}
     language="json"
     showLineNumbers
   />
@@ -323,12 +323,12 @@ Use `InlineCode` for short code snippets within paragraphs.
 ```tsx
 <div className="flex flex-col gap-4">
     <CodeBlock
-      code={\`npm install @e412/rnui-react @e412/rnui-themes\`}
+      code={`npm install @e412/rnui-react @e412/rnui-themes`}
       title="npm"
       language="bash"
     />
     <CodeBlock
-      code={\`pnpm add @e412/rnui-react @e412/rnui-themes\`}
+      code={`pnpm add @e412/rnui-react @e412/rnui-themes`}
       title="pnpm"
       language="bash"
     />
@@ -358,7 +358,7 @@ export default defineConfig({
 
 ```tsx
 <CodeBlock
-    code={\`import { defineConfig } from 'vite'
+    code={`import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
@@ -367,7 +367,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-})\`}
+})`}
     language="tsx"
     title="vite.config.ts"
     showLineNumbers
@@ -394,14 +394,14 @@ export default defineConfig({
 
 ```tsx
 <CodeBlock
-    code={\`function Greeting({ name }: { name: string }) {
+    code={`function Greeting({ name }: { name: string }) {
   return (
     <div className="rounded-lg border p-4">
       <h2 className="text-lg font-bold">Hello, {name}!</h2>
       <p className="text-muted-foreground">Welcome back.</p>
     </div>
   )
-}\`}
+}`}
     language="tsx"
     showLineNumbers
   />

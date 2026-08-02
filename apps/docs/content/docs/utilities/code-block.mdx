@@ -3,7 +3,8 @@ title: CodeBlock
 description: Syntax-highlighted code blocks powered by Shiki with copy support, line numbers, and line highlighting.
 ---
 
-import { CodeBlock, InlineCode } from '@e412/rnui-react';
+import { InlineCode } from '@e412/rnui-react';
+import { CodeBlock } from '@/components/docs-code-block';
 
 CodeBlock renders syntax-highlighted code using Shiki. It supports multiple languages, line numbers, line highlighting, custom themes, and a built-in copy button.
 
@@ -11,6 +12,57 @@ CodeBlock renders syntax-highlighted code using Shiki. It supports multiple lang
 
 ```tsx
 import { CodeBlock, InlineCode } from '@e412/rnui-react';
+```
+
+## Highlighting setup
+
+CodeBlock ships with **no languages or themes registered** — without a highlighter it renders code as plain text. This keeps your build lean: shiki's full registry would otherwise force your bundler to emit a chunk for every one of its ~280 grammars (~12 MB of build output), even if you only ever render one language.
+
+### Register only what you render (recommended)
+
+Install the grammar and theme packages (they're tiny JSON files, fetched lazily on first render):
+
+```bash
+pnpm add @shikijs/langs @shikijs/themes
+```
+
+Create one highlighter and provide it to your app — every CodeBlock below the provider uses it. You can also pass it per-instance via the `highlighter` prop.
+
+```tsx
+import {
+  CodeBlockHighlighterProvider,
+  createCodeBlockHighlighter,
+} from '@e412/rnui-react';
+
+const highlighter = createCodeBlockHighlighter({
+  langs: {
+    tsx: () => import('@shikijs/langs/tsx'),
+    bash: () => import('@shikijs/langs/bash'),
+  },
+  themes: {
+    'github-light-default': () => import('@shikijs/themes/github-light-default'),
+    'github-dark-default': () => import('@shikijs/themes/github-dark-default'),
+  },
+});
+
+<CodeBlockHighlighterProvider highlighter={highlighter}>
+  <App />
+</CodeBlockHighlighterProvider>
+```
+
+Languages that aren't registered fall back to plain text.
+
+### Every language, zero config (opt-in)
+
+If you render arbitrary user-provided languages, import the full registry from its dedicated subpath. This is the explicit opt-in to the ~280 lazy grammar chunks in your build output — each grammar still only *loads* when rendered.
+
+```tsx
+import { CodeBlockHighlighterProvider } from '@e412/rnui-react';
+import { fullShikiHighlighter } from '@e412/rnui-react/code-block-full';
+
+<CodeBlockHighlighterProvider highlighter={fullShikiHighlighter}>
+  <App />
+</CodeBlockHighlighterProvider>
 ```
 
 ## Usage

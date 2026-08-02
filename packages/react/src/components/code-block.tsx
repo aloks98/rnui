@@ -2,29 +2,96 @@
 
 import * as React from 'react'
 import { createBundledHighlighter, createSingletonShorthands } from 'shiki/core'
+import type {
+  CodeToHastOptions,
+  DynamicImportLanguageRegistration,
+  DynamicImportThemeRegistration,
+  RegexEngine,
+} from 'shiki/core'
 import { createJavaScriptRegexEngine } from 'shiki/engine/javascript'
-import { bundledLanguages } from 'shiki/langs'
-import { bundledThemes, type BundledTheme } from 'shiki/themes'
 import { cn } from '@/lib/utils'
 import { CopyButton } from '@/components/copy-button'
 
-// Fine-grained shiki setup instead of the full bundle: languages and themes
-// stay lazy (each is a dynamic import resolved on demand by string name), and
-// the JavaScript regex engine replaces the default oniguruma wasm engine so
-// consumers don't ship or load any wasm. `forgiving` skips the few grammar
-// patterns the JS engine can't emulate instead of throwing.
-const createHighlighter = /* @__PURE__ */ createBundledHighlighter({
-  langs: bundledLanguages,
-  themes: bundledThemes,
-  engine: () => createJavaScriptRegexEngine({ forgiving: true }),
-})
+// CodeBlock deliberately ships with NO languages or themes registered: shiki's
+// bundled maps reference every grammar as a dynamic import, which forces
+// consumer bundlers to emit a chunk per grammar (~280 chunks / ~12 MB) even
+// though only the rendered ones load at runtime. Instead, consumers register
+// exactly what they render via createCodeBlockHighlighter, or opt into the
+// whole registry through the `@e412/rnui-react/code-block-full` subpath.
 
-const { codeToHtml } =
-  /* @__PURE__ */ createSingletonShorthands(createHighlighter)
+/** Same map shape as shiki's `bundledLanguages`: id -> lazy grammar import. */
+export type CodeBlockLangs = Record<string, DynamicImportLanguageRegistration>
+/** Same map shape as shiki's `bundledThemes`: name -> lazy theme import. */
+export type CodeBlockThemes = Record<string, DynamicImportThemeRegistration>
+
+export interface CreateCodeBlockHighlighterOptions {
+  langs: CodeBlockLangs
+  themes: CodeBlockThemes
+  /**
+   * Defaults to shiki's JavaScript regex engine (no wasm). Pass e.g.
+   * `() => createOnigurumaEngine(import('shiki/wasm'))` to override.
+   */
+  engine?: () => RegexEngine | Promise<RegexEngine>
+}
+
+export interface CodeBlockHighlighter {
+  codeToHtml: (code: string, options: CodeToHastOptions) => Promise<string>
+}
+
+/**
+ * Build a highlighter from an explicit set of language/theme registrations.
+ * The underlying shiki instance is created lazily on first highlight, and
+ * each grammar/theme is only fetched when a CodeBlock actually renders it.
+ *
+ * ```ts
+ * const highlighter = createCodeBlockHighlighter({
+ *   langs: { bash: () => import('@shikijs/langs/bash') },
+ *   themes: {
+ *     'github-light-default': () => import('@shikijs/themes/github-light-default'),
+ *     'github-dark-default': () => import('@shikijs/themes/github-dark-default'),
+ *   },
+ * })
+ * ```
+ */
+export function createCodeBlockHighlighter(
+  options: CreateCodeBlockHighlighterOptions,
+): CodeBlockHighlighter {
+  const createHighlighter = createBundledHighlighter({
+    langs: options.langs,
+    themes: options.themes,
+    // `forgiving` skips the few grammar patterns the JS engine can't emulate
+    // instead of throwing.
+    engine:
+      options.engine ??
+      (() => createJavaScriptRegexEngine({ forgiving: true })),
+  })
+  const { codeToHtml } = createSingletonShorthands(createHighlighter)
+  return { codeToHtml: codeToHtml as CodeBlockHighlighter['codeToHtml'] }
+}
+
+const CodeBlockHighlighterContext =
+  React.createContext<CodeBlockHighlighter | null>(null)
+
+export interface CodeBlockHighlighterProviderProps {
+  highlighter: CodeBlockHighlighter
+  children: React.ReactNode
+}
+
+/** Provide a highlighter to every CodeBlock below, instead of per-instance props. */
+function CodeBlockHighlighterProvider({
+  highlighter,
+  children,
+}: CodeBlockHighlighterProviderProps) {
+  return (
+    <CodeBlockHighlighterContext.Provider value={highlighter}>
+      {children}
+    </CodeBlockHighlighterContext.Provider>
+  )
+}
 
 export interface CodeBlockTheme {
-  light: BundledTheme
-  dark: BundledTheme
+  light: string
+  dark: string
 }
 
 export interface CodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -36,6 +103,11 @@ export interface CodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
   highlightLines?: number[]
   themes?: CodeBlockTheme
   fontSize?: string
+  /**
+   * Overrides the highlighter from CodeBlockHighlighterProvider. Without
+   * either, the code renders as plain text.
+   */
+  highlighter?: CodeBlockHighlighter
 }
 
 const defaultThemes: CodeBlockTheme = {
@@ -52,18 +124,30 @@ function CodeBlock({
   highlightLines = [],
   themes = defaultThemes,
   fontSize = '13px',
+  highlighter: highlighterProp,
   className,
   ...props
 }: CodeBlockProps) {
+  const contextHighlighter = React.useContext(CodeBlockHighlighterContext)
+  const highlighter = highlighterProp ?? contextHighlighter
   const [highlightedHtml, setHighlightedHtml] = React.useState<string>('')
   const [isLoading, setIsLoading] = React.useState(true)
 
   React.useEffect(() => {
     let cancelled = false
 
+    // No highlighter registered: render the code as plain text.
+    if (!highlighter) {
+      setHighlightedHtml('')
+      setIsLoading(false)
+      return
+    }
+
     const highlight = async () => {
       try {
-        const html = await codeToHtml(code, {
+        // An unregistered language or theme rejects here; the catch below
+        // falls back to rendering the code as plain text.
+        const html = await highlighter.codeToHtml(code, {
           lang: language,
           themes: {
             light: themes.light,
@@ -99,7 +183,7 @@ function CodeBlock({
     return () => {
       cancelled = true
     }
-  }, [code, language, themes, highlightLines, showLineNumbers])
+  }, [code, language, themes, highlightLines, showLineNumbers, highlighter])
 
   return (
     <div
@@ -190,4 +274,4 @@ function InlineCode({ className, ...props }: InlineCodeProps) {
   )
 }
 
-export { CodeBlock, InlineCode, defaultThemes }
+export { CodeBlock, CodeBlockHighlighterProvider, InlineCode, defaultThemes }

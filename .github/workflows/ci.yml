@@ -21,7 +21,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: pnpm
 
       - name: Install
@@ -29,6 +29,14 @@ jobs:
 
       - name: Build packages
         run: pnpm build
+
+      - name: Typecheck
+        run: pnpm --filter @e412/rnui-react typecheck
+
+      # Guards the CodeBlock slim-core contract: importing CodeBlock from the
+      # barrel must not pull shiki's full grammar registry into consumer builds.
+      - name: Tree-shaking check
+        run: pnpm --filter @e412/rnui-react check:treeshake
 
   # Lint and format checks are blocking: oxlint must report zero errors and
   # oxfmt must find no formatting drift. Run `pnpm format` locally to fix
@@ -43,7 +51,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: pnpm
 
       - name: Install

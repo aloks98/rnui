@@ -715,36 +715,53 @@ const JsonObject: React.FC<{
   )
 
   return (
-    <Collapsible open={isOpen} onOpenChange={() => toggleNode(path)} asChild>
-      <div>
-        {trigger}
-        <CollapsibleContent className="transition-all duration-200">
-          <div
-            className={cn(
-              'pl-5 border-l',
-              showColorIndent
-                ? indentColors[level % indentColors.length]
-                : 'border-border',
-            )}
-          >
-            {entries.map(([key, value], index) => {
-              const childPath = `${path}.${key}`
-              const dataType = getDataType(value)
-              const isChildCollapsible =
-                dataType === 'object' || dataType === 'array'
-              const isChildOpen =
-                isChildCollapsible && expandedPaths.has(childPath)
+    <Collapsible open={isOpen} onOpenChange={() => toggleNode(path)}>
+      {trigger}
+      <CollapsibleContent className="transition-all duration-200">
+        <div
+          className={cn(
+            'pl-5 border-l',
+            showColorIndent
+              ? indentColors[level % indentColors.length]
+              : 'border-border',
+          )}
+        >
+          {entries.map(([key, value], index) => {
+            const childPath = `${path}.${key}`
+            const dataType = getDataType(value)
+            const isChildCollapsible =
+              dataType === 'object' || dataType === 'array'
+            const isChildOpen =
+              isChildCollapsible && expandedPaths.has(childPath)
 
-              return (
-                <div
-                  key={key}
-                  className={cn(
-                    'group rounded-md',
-                    !isChildCollapsible && 'flex items-start min-h-6',
-                    isChildOpen ? '' : 'hover:bg-accent',
-                  )}
-                >
-                  {isChildCollapsible ? (
+            return (
+              <div
+                key={key}
+                className={cn(
+                  'group rounded-md',
+                  !isChildCollapsible && 'flex items-start min-h-6',
+                  isChildOpen ? '' : 'hover:bg-accent',
+                )}
+              >
+                {isChildCollapsible ? (
+                  <JsonNode
+                    data={value}
+                    level={level + 1}
+                    path={childPath}
+                    expandedPaths={expandedPaths}
+                    toggleNode={toggleNode}
+                    showComma={index < entries.length - 1}
+                    objectKey={key}
+                    truncation={truncation}
+                    showColorIndent={showColorIndent}
+                    collapseOn={collapseOn}
+                  />
+                ) : (
+                  <>
+                    <span className="text-info inline-flex items-center">
+                      {`'${key}'`}
+                    </span>
+                    <span className="text-muted-foreground">: </span>
                     <JsonNode
                       data={value}
                       level={level + 1}
@@ -752,40 +769,21 @@ const JsonObject: React.FC<{
                       expandedPaths={expandedPaths}
                       toggleNode={toggleNode}
                       showComma={index < entries.length - 1}
-                      objectKey={key}
                       truncation={truncation}
                       showColorIndent={showColorIndent}
                       collapseOn={collapseOn}
                     />
-                  ) : (
-                    <>
-                      <span className="text-info inline-flex items-center">
-                        {`'${key}'`}
-                      </span>
-                      <span className="text-muted-foreground">: </span>
-                      <JsonNode
-                        data={value}
-                        level={level + 1}
-                        path={childPath}
-                        expandedPaths={expandedPaths}
-                        toggleNode={toggleNode}
-                        showComma={index < entries.length - 1}
-                        truncation={truncation}
-                        showColorIndent={showColorIndent}
-                        collapseOn={collapseOn}
-                      />
-                    </>
-                  )}
-                </div>
-              )
-            })}
-          </div>
-          <div>
-            <span className="text-muted-foreground">{'}'}</span>
-            {showComma && <span className="text-muted-foreground">,</span>}
-          </div>
-        </CollapsibleContent>
-      </div>
+                  </>
+                )}
+              </div>
+            )
+          })}
+        </div>
+        <div>
+          <span className="text-muted-foreground">{'}'}</span>
+          {showComma && <span className="text-muted-foreground">,</span>}
+        </div>
+      </CollapsibleContent>
     </Collapsible>
   )
 }
@@ -870,80 +868,78 @@ const JsonArray: React.FC<{
   )
 
   return (
-    <Collapsible open={isOpen} onOpenChange={() => toggleNode(path)} asChild>
-      <div>
-        {trigger}
-        <CollapsibleContent className="transition-all duration-200">
-          <div
-            className={cn(
-              'pl-5 border-l',
-              showColorIndent
-                ? indentColors[level % indentColors.length]
-                : 'border-border',
-            )}
-          >
-            {itemsToShow.map((item, index) => {
-              const childPath = `${path}[${index}]`
-              const dataType = getDataType(item)
-              const isChildCollapsible =
-                dataType === 'object' || dataType === 'array'
-              const isChildOpen =
-                isChildCollapsible && expandedPaths.has(childPath)
+    <Collapsible open={isOpen} onOpenChange={() => toggleNode(path)}>
+      {trigger}
+      <CollapsibleContent className="transition-all duration-200">
+        <div
+          className={cn(
+            'pl-5 border-l',
+            showColorIndent
+              ? indentColors[level % indentColors.length]
+              : 'border-border',
+          )}
+        >
+          {itemsToShow.map((item, index) => {
+            const childPath = `${path}[${index}]`
+            const dataType = getDataType(item)
+            const isChildCollapsible =
+              dataType === 'object' || dataType === 'array'
+            const isChildOpen =
+              isChildCollapsible && expandedPaths.has(childPath)
 
-              return (
-                <div
-                  key={index}
-                  className={cn(
-                    'group rounded-md',
-                    !isChildCollapsible &&
-                      'flex sm:items-center items-start sm:h-6 h-auto',
-                    isChildOpen ? '' : 'hover:bg-accent',
-                  )}
-                >
-                  <JsonNode
-                    data={item}
-                    level={level + 1}
-                    path={childPath}
-                    expandedPaths={expandedPaths}
-                    toggleNode={toggleNode}
-                    showComma={index < data.length - 1}
-                    truncation={truncation}
-                    showColorIndent={showColorIndent}
-                    collapseOn={collapseOn}
-                  />
-                </div>
-              )
-            })}
-            {truncation.enabled && data.length > truncation.itemsPerArray && (
-              <div className="pl-5">
-                {!showAll ? (
-                  <Button
-                    variant="secondary"
-                    size="sm"
-                    onClick={() => setShowAll(true)}
-                    className="h-auto px-2 py-0.5 text-xs bg-secondary hover:bg-secondary/80 text-muted-foreground hover:text-foreground mt-1"
-                  >
-                    Show {data.length - truncation.itemsPerArray} more items...
-                  </Button>
-                ) : (
-                  <Button
-                    variant="secondary"
-                    size="sm"
-                    onClick={() => setShowAll(false)}
-                    className="h-auto px-2 py-0.5 text-xs bg-secondary hover:bg-secondary/80 text-muted-foreground hover:text-foreground mt-1"
-                  >
-                    Show Less
-                  </Button>
+            return (
+              <div
+                key={index}
+                className={cn(
+                  'group rounded-md',
+                  !isChildCollapsible &&
+                    'flex sm:items-center items-start sm:h-6 h-auto',
+                  isChildOpen ? '' : 'hover:bg-accent',
                 )}
+              >
+                <JsonNode
+                  data={item}
+                  level={level + 1}
+                  path={childPath}
+                  expandedPaths={expandedPaths}
+                  toggleNode={toggleNode}
+                  showComma={index < data.length - 1}
+                  truncation={truncation}
+                  showColorIndent={showColorIndent}
+                  collapseOn={collapseOn}
+                />
               </div>
-            )}
-          </div>
-          <div>
-            <span className="text-muted-foreground">]</span>
-            {showComma && <span className="text-muted-foreground">,</span>}
-          </div>
-        </CollapsibleContent>
-      </div>
+            )
+          })}
+          {truncation.enabled && data.length > truncation.itemsPerArray && (
+            <div className="pl-5">
+              {!showAll ? (
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={() => setShowAll(true)}
+                  className="h-auto px-2 py-0.5 text-xs bg-secondary hover:bg-secondary/80 text-muted-foreground hover:text-foreground mt-1"
+                >
+                  Show {data.length - truncation.itemsPerArray} more items...
+                </Button>
+              ) : (
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={() => setShowAll(false)}
+                  className="h-auto px-2 py-0.5 text-xs bg-secondary hover:bg-secondary/80 text-muted-foreground hover:text-foreground mt-1"
+                >
+                  Show Less
+                </Button>
+              )}
+            </div>
+          )}
+        </div>
+        <div>
+          <span className="text-muted-foreground">]</span>
+          {showComma && <span className="text-muted-foreground">,</span>}
+        </div>
+      </CollapsibleContent>
     </Collapsible>
   )
 }

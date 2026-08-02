@@ -11,7 +11,9 @@ export default defineConfig({
   plugins: [
     dts({
       include: ['src'],
-      rollupTypes: true,
+      // Per-module .d.ts files (mirroring preserveModules) so subpath exports
+      // like ./code-block-full can resolve their own types.
+      rollupTypes: false,
     }),
   ],
   resolve: {
@@ -21,7 +23,15 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: resolve(import.meta.dirname, 'src/index.ts'),
+      entry: {
+        index: resolve(import.meta.dirname, 'src/index.ts'),
+        // Subpath-only entry (not in the barrel): opting into the full shiki
+        // registry must be an explicit import.
+        'components/code-block-full': resolve(
+          import.meta.dirname,
+          'src/components/code-block-full.ts',
+        ),
+      },
       formats: ['es', 'cjs'],
     },
     rolldownOptions: {

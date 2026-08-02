@@ -1,10 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { CodeBlock, InlineCode } from '@e412/rnui-react'
+import {
+  CodeBlock,
+  CodeBlockHighlighterProvider,
+  InlineCode,
+} from '@e412/rnui-react'
+import { fullShikiHighlighter } from '@e412/rnui-react/code-block-full'
 
 const meta = {
   title: 'Components/CodeBlock',
   component: CodeBlock,
   tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <CodeBlockHighlighterProvider highlighter={fullShikiHighlighter}>
+        <Story />
+      </CodeBlockHighlighterProvider>
+    ),
+  ],
   argTypes: {
     language: {
       control: 'select',

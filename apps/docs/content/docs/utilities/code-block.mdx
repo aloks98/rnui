@@ -3,7 +3,8 @@ title: CodeBlock
 description: Syntax-highlighted code blocks powered by Shiki with copy support, line numbers, and line highlighting.
 ---
 
-import { CodeBlock, InlineCode } from '@e412/rnui-react';
+import { InlineCode } from '@e412/rnui-react';
+import { CodeBlock } from '@/components/docs-code-block';
 
 CodeBlock renders syntax-highlighted code using Shiki. It supports multiple languages, line numbers, line highlighting, custom themes, and a built-in copy button.
 
@@ -11,6 +12,57 @@ CodeBlock renders syntax-highlighted code using Shiki. It supports multiple lang
 
 ```tsx
 import { CodeBlock, InlineCode } from '@e412/rnui-react';
+```
+
+## Highlighting setup
+
+CodeBlock ships with **no languages or themes registered** — without a highlighter it renders code as plain text. This keeps your build lean: shiki's full registry would otherwise force your bundler to emit a chunk for every one of its ~280 grammars (~12 MB of build output), even if you only ever render one language.
+
+### Register only what you render (recommended)
+
+Install the grammar and theme packages (they're tiny JSON files, fetched lazily on first render):
+
+```bash
+pnpm add @shikijs/langs @shikijs/themes
+```
+
+Create one highlighter and provide it to your app — every CodeBlock below the provider uses it. You can also pass it per-instance via the `highlighter` prop.
+
+```tsx
+import {
+  CodeBlockHighlighterProvider,
+  createCodeBlockHighlighter,
+} from '@e412/rnui-react';
+
+const highlighter = createCodeBlockHighlighter({
+  langs: {
+    tsx: () => import('@shikijs/langs/tsx'),
+    bash: () => import('@shikijs/langs/bash'),
+  },
+  themes: {
+    'github-light-default': () => import('@shikijs/themes/github-light-default'),
+    'github-dark-default': () => import('@shikijs/themes/github-dark-default'),
+  },
+});
+
+<CodeBlockHighlighterProvider highlighter={highlighter}>
+  <App />
+</CodeBlockHighlighterProvider>
+```
+
+Languages that aren't registered fall back to plain text.
+
+### Every language, zero config (opt-in)
+
+If you render arbitrary user-provided languages, import the full registry from its dedicated subpath. This is the explicit opt-in to the ~280 lazy grammar chunks in your build output — each grammar still only *loads* when rendered.
+
+```tsx
+import { CodeBlockHighlighterProvider } from '@e412/rnui-react';
+import { fullShikiHighlighter } from '@e412/rnui-react/code-block-full';
+
+<CodeBlockHighlighterProvider highlighter={fullShikiHighlighter}>
+  <App />
+</CodeBlockHighlighterProvider>
 ```
 
 ## Usage
@@ -28,11 +80,11 @@ export function App() {
 
 ```tsx
 <CodeBlock
-    code={\`import { Button } from '@e412/rnui-react'
+    code={`import { Button } from '@e412/rnui-react'
 
 export function App() {
   return <Button>Click me</Button>
-}\`}
+}`}
     language="tsx"
   />
 ```
@@ -51,7 +103,7 @@ Add a title bar to label the code block, useful for filenames or descriptions.
 
 ```tsx
 <CodeBlock
-    code={\`npm install @e412/rnui-react @e412/rnui-themes\`}
+    code={`npm install @e412/rnui-react @e412/rnui-themes`}
     title="Terminal"
     language="bash"
   />
@@ -84,7 +136,7 @@ export function UserCard({ name, email }) {
 
 ```tsx
 <CodeBlock
-    code={\`import { Card, CardHeader, CardTitle, CardContent } from '@e412/rnui-react'
+    code={`import { Card, CardHeader, CardTitle, CardContent } from '@e412/rnui-react'
 
 export function UserCard({ name, email }) {
   return (
@@ -97,7 +149,7 @@ export function UserCard({ name, email }) {
       </CardContent>
     </Card>
   )
-}\`}
+}`}
     language="tsx"
     showLineNumbers
   />
@@ -132,7 +184,7 @@ export function Counter() {
 
 ```tsx
 <CodeBlock
-    code={\`import { useState } from 'react'
+    code={`import { useState } from 'react'
 import { Button } from '@e412/rnui-react'
 
 export function Counter() {
@@ -146,7 +198,7 @@ export function Counter() {
       </Button>
     </div>
   )
-}\`}
+}`}
     language="tsx"
     showLineNumbers
     highlightLines={[5, 10, 11, 12]}
@@ -168,8 +220,8 @@ const x = 42`}
 
 ```tsx
 <CodeBlock
-    code={\`// This block has no copy button
-const x = 42\`}
+    code={`// This block has no copy button
+const x = 42`}
     language="ts"
     showCopy={false}
   />
@@ -191,9 +243,9 @@ const x = 42\`}
 
 ```tsx
 <CodeBlock
-    code={\`@import "tailwindcss";
+    code={`@import "tailwindcss";
 @import "@e412/rnui-themes";
-@source "../node_modules/@e412/rnui-react/dist";\`}
+@source "../node_modules/@e412/rnui-react/dist";`}
     language="css"
     title="globals.css"
   />
@@ -218,14 +270,14 @@ const x = 42\`}
 
 ```tsx
 <CodeBlock
-    code={\`{
+    code={`{
   "name": "@e412/rnui-react",
   "version": "0.0.1",
   "dependencies": {
     "react": ">=18",
     "tailwindcss": ">=4"
   }
-}\`}
+}`}
     language="json"
     showLineNumbers
   />
@@ -271,12 +323,12 @@ Use `InlineCode` for short code snippets within paragraphs.
 ```tsx
 <div className="flex flex-col gap-4">
     <CodeBlock
-      code={\`npm install @e412/rnui-react @e412/rnui-themes\`}
+      code={`npm install @e412/rnui-react @e412/rnui-themes`}
       title="npm"
       language="bash"
     />
     <CodeBlock
-      code={\`pnpm add @e412/rnui-react @e412/rnui-themes\`}
+      code={`pnpm add @e412/rnui-react @e412/rnui-themes`}
       title="pnpm"
       language="bash"
     />
@@ -306,7 +358,7 @@ export default defineConfig({
 
 ```tsx
 <CodeBlock
-    code={\`import { defineConfig } from 'vite'
+    code={`import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
@@ -315,7 +367,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-})\`}
+})`}
     language="tsx"
     title="vite.config.ts"
     showLineNumbers
@@ -342,14 +394,14 @@ export default defineConfig({
 
 ```tsx
 <CodeBlock
-    code={\`function Greeting({ name }: { name: string }) {
+    code={`function Greeting({ name }: { name: string }) {
   return (
     <div className="rounded-lg border p-4">
       <h2 className="text-lg font-bold">Hello, {name}!</h2>
       <p className="text-muted-foreground">Welcome back.</p>
     </div>
   )
-}\`}
+}`}
     language="tsx"
     showLineNumbers
   />

@@ -68,6 +68,39 @@ ever need to touch `extraEntries`/`storyImports`/`provider`, do it as early in a
 campaign as possible. `overrides.<Name>.skip` is per-component; `cardMode`/
 `primaryStory` are excluded from keying entirely.
 
+## Brand fonts are self-hosted for the sync
+
+The theme presets name 10 web fonts but `@e412/rnui-themes` deliberately does not
+load them (the repo's own theming docs say to load them yourself). That meant
+Claude Design flagged *"Missing brand fonts … rendering with substitutes"* and
+every preset rendered with a fallback stack.
+
+Fixed by self-hosting them: `.design-sync/fetch-fonts.mjs` downloads the
+variable woff2 from Google Fonts (all 10 families are SIL OFL 1.1, so
+redistribution is fine) into `.design-sync/fonts/`, and
+`cfg.extraFonts: ["../../.design-sync/fonts/fonts.css"]` makes the build copy
+them to `ds-bundle/fonts/` and `@import` the sheet from `styles.css` — the
+closure designs actually receive. 20 faces (latin + latin-ext), 0.55 MB.
+
+Verified in chromium: 20 faces registered, 0 failed requests, all 10 families
+report `document.fonts.check()` true, and each preset resolves to its real body
+face (oxide→DM Sans, ocean→Plus Jakarta Sans, violet→Outfit, forest→Source Sans
+3, rose→Nunito, amber→Sora, slate→Geist, crimson→Instrument Sans).
+
+Notes for the next run:
+- **`extraFonts` is NOT in the grade key** (styling trust class, see
+  `configSlicesFor`), so adding fonts did not clear any grades.
+- **Previews are unaffected** — they render the default theme, whose
+  `--font-sans` is a system stack, so the compare oracle never sees these fonts.
+  That is also why `[FONT_MISSING]` never fired: nothing in the *default* theme
+  needs a webfont.
+- Re-run `node .design-sync/fetch-fonts.mjs` to refresh; it rewrites both the
+  woff2 files and `fonts.css`.
+- Only `oxide` and `forest` define `--font-heading`; the other six presets
+  inherit the `:root` system stack for headings, so their headings are NOT
+  branded. That is the themes package's own behavior — if it's unintended, the
+  fix belongs in `packages/themes`, not here.
+
 ## ⚠️ REPO BUG: percentage-width story roots are invisible in this repo's own Storybook
 
 `apps/storybook/.storybook/preview.tsx` sets a **global `layout: 'centered'`**. A centered

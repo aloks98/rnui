@@ -25,10 +25,24 @@ const { Button, Card, CardHeader, CardTitle, CardContent } = window.RnuiReact;
 ```
 
 Presets: `oxide`, `ocean`, `violet`, `forest`, `rose`, `amber`, `slate`,
-`crimson`. Each changes colors, radius, and the `--font-sans`/`--font-heading`
-values — but **their web fonts are not bundled**, so type falls back to the
-system stack unless you load the font yourself. The default theme uses a system
-stack by design and always renders correctly.
+`crimson`. Each changes colors, radius, and typography. **The brand fonts ship
+with this design system** (`fonts/`, reached via `styles.css`) — set
+`data-theme` and the real typeface renders, nothing to load:
+
+| Theme | Body (`--font-sans`) | Headings (`--font-heading`) |
+|---|---|---|
+| `oxide` | DM Sans | Bitter |
+| `forest` | Source Sans 3 | Fraunces |
+| `ocean` | Plus Jakarta Sans | system stack |
+| `violet` | Outfit | system stack |
+| `rose` | Nunito | system stack |
+| `amber` | Sora | system stack |
+| `slate` | Geist | system stack |
+| `crimson` | Instrument Sans | system stack |
+
+Only `oxide` and `forest` set a distinct heading face; the rest inherit the
+system stack for `h1`–`h6`. The default (no `data-theme`) is a system stack
+throughout, by design.
 
 Three components need a wrapper, and only these three:
 

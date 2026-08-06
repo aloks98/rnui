@@ -1,0 +1,48 @@
+{
+  "projectId": "06c8634f-1fde-4d6f-9598-7445be82a439",
+  "shape": "storybook",
+  "pkg": "@e412/rnui-react",
+  "globalName": "RnuiReact",
+  "entry": "dist/index.mjs",
+  "storybookConfigDir": "apps/storybook/.storybook",
+  "storybookStatic": ".design-sync/sb-reference",
+  "buildCmd": "pnpm run build",
+  "readmeHeader": ".design-sync/conventions.md",
+  "docsDir": "../../apps/docs/content/docs",
+  "titleMap": {
+    "Resizable": "ResizablePanelGroup",
+    "Sonner": "Toaster",
+    "Advanced": "EChart",
+    "useFileUpload": null
+  },
+  "extraEntries": ["echarts/charts"],
+  "docsMap": {
+    "ResizablePanelGroup": "../../apps/docs/content/docs/components/resizable.mdx",
+    "Sortable": "../../apps/docs/content/docs/utilities/sortable-list.mdx",
+    "Toaster": "../../apps/docs/content/docs/components/sonner.mdx"
+  },
+  "overrides": {
+    "AreaChart": { "cardMode": "column" },
+    "BarChart": { "cardMode": "column" },
+    "LineChart": { "cardMode": "column" },
+    "PieChart": { "cardMode": "column" },
+    "AspectRatio": { "cardMode": "column" },
+    "Card": { "cardMode": "column" },
+    "CopyButton": { "cardMode": "column" },
+    "DateSelector": { "cardMode": "column" },
+    "Progress": {
+      "cardMode": "single",
+      "primaryStory": "WithLabelAndValue",
+      "skip": ["components-progress--default", "components-progress--empty", "components-progress--full"]
+    },
+    "Separator": { "skip": ["components-separator--horizontal"] },
+    "Slider": {
+      "cardMode": "column",
+      "skip": ["components-slider--default", "components-slider--range"]
+    },
+    "EChart": { "cardMode": "column" },
+    "ScrollArea": { "cardMode": "column" },
+    "Stepper": { "cardMode": "column" },
+    "Tabs": { "cardMode": "column" }
+  }
+}
